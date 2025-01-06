@@ -1,27 +1,30 @@
 (sec:weekly)=
 # Week notes
 
-* [Course home page](https://phaustin.github.io/climate_students_eoas/home.html)
-
-* [github repository](https://github.com/phaustin/climate_students_eoas.git)
-
-* [E440 canvas page](https://canvas.ubc.ca/courses/152022)
-
-* [Course piazza page](https://piazza.com/ubc.ca/winterterm22024/eosc440)
-
-* [Textbook: Global Physical Climatology](https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&SS_jc=TC0001767901&title=Global%20physical%20climatology)
-
-
 ## Week 1
+
+### Getting started
+
+* {ref}`syllabus`
+
+### Some of our satellites
+
+* [Landsat](https://landsat.gsfc.nasa.gov/satellites/landsat-9/)
+
+* [GOES](https://www.goes-r.gov/products/baseline-cloud-moisture-imagery.html)
+
+* [The A-train](https://atrain.nasa.gov/)
+
+* [Earthcare](https://earth.esa.int/eogateway/missions/earthcare/description)
 
 ### Installing python on your laptop
 
-  * [Instructions for Macs](https://www.dropbox.com/scl/fi/643i5mgkk6px42bds0yns/python-setup_macos_2024.pdf?rlkey=sp6omrrm490kn7ur5nr6u873g&st=103jv1q2&dl=0)
-  * [Instructions for Windows](https://www.dropbox.com/scl/fi/1uj658e5fp60rpgucjgjl/python-setup_windows_2024.pdf?rlkey=qw0f9rm40r1yw09pfuz3qu8ty&st=gxyx4sw0&dl=0)
+* [Instructions for Macs](https://www.dropbox.com/scl/fi/ribiztx2t2vzmbsxvnxyi/python-setup_macos_2024.pdf?rlkey=miqlz5fxeg6sqoiatp57461bz&st=5tu7kgwk&dl=0)
+* [Instructions for Windows](https://www.dropbox.com/scl/fi/1zlod8dyqzj0qp23ge0hm/python-setup_windows_2024.pdf?rlkey=pwe8m5grzewselmhsk8bpzvef&st=7w0sp8h7&dl=0)
 
+#### Do for Wednesday's class:
 
-### In-class exercise
+* Read [Stull Chapter 2, pp. 34-40](https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf)
 
-* Download the ipynb file and the png image from this folder
+* Read my extra notes on the material covered on pp. 38-39: {ref}`week1_beerslaw`
 
-* [Week1 Jupyter notebook folder](https://www.dropbox.com/scl/fo/0npqmlwc2ni291i3g1oyf/AFSkoOIsBUWingbXV8RDnLg?rlkey=fv212zgn30hle15eltp7fhkxq&st=wmi2u9ty&dl=0)
