@@ -1,0 +1,12 @@
+format: jb-book
+root: notebooks/index.md
+parts:
+- caption: Front matter
+  chapters:
+  - file: notebooks/syllabus.md
+  - file: notebooks/integrity.md
+  - file: notebooks/texts.md
+- caption: Weekly topics
+  chapters:
+  - file: week_notes.md
+

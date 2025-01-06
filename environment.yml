@@ -1,0 +1,27 @@
+name: notebook
+channels:
+  - eoas_ubc
+  - conda-forge
+dependencies:
+  # NOTE: pip required for running tests in this repo
+  - python
+  - pyhdf
+  - numpy
+  - pip
+  - cartopy
+  - dask
+  - pyresample
+  - netcdf4
+  - jupyterlab
+  - jupytext
+  - pythia-datasets
+  - pytest
+  - rasterio
+  - rioxarray
+  - pystac-client
+  - shapely
+  - seaborn
+  - scikit-image
+  - goes2go
+  - jupyterlab-myst
+# conda-lock --kind explicit -f environment_trun.yml -p linux-64
