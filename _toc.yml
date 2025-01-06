@@ -1,7 +1,7 @@
 format: jb-book
 root: notebooks/index.md
 parts:
-- caption: Front matter
+- caption: Useful links
   chapters:
   - file: notebooks/syllabus.md
   - file: notebooks/integrity.md
@@ -9,4 +9,9 @@ parts:
 - caption: Weekly topics
   chapters:
   - file: week_notes.md
+- caption: Week 1
+  chapters:
+  - url: https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf
+    title: Stull Chapter 2, pp. 34-40
+  - file: notebooks/week1/beers_law.rst
 
