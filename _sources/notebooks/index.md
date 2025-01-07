@@ -4,7 +4,7 @@
 
 * [Course home page](https://phaustin.github.io/a301_eoas)
 
-* [Piazza discussions](https://piazza.com/ubc.ca/winterterm22024/atsc301)
+* [Piazza discussions](https://piazza.com/ubc.ca/winterterm22025/atsc_v3012012024w2)
 
 * [Canvas page](https://canvas.ubc.ca/courses/158920)
 
