@@ -24,6 +24,8 @@
 
 #### Do for Wednesday's class:
 
+* Sign up for piazza using the link on [canvas](https://canvas.ubc.ca/courses/158920)
+
 * Read [Stull Chapter 2, pp. 34-40](https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf)
 
 * Read my extra notes on the material covered on pp. 38-39: {ref}`week1_beerslaw`
