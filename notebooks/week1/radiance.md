@@ -1,12 +1,56 @@
-```{eval-rst}
-.. default-role:: math
-```
-
 (radiance)=
 
 # Solid angle and radiance
 
-My notes on Wallace and Hobbs Chapter 4, pp. 113-117
+My notes on Wallace and Hobbs Chapter 4, pp. 113-117.  The purpose of this note is to introduce a basic measurement of electromagnetic radiation, the **monochromatic radiance** or **monochromatic intensity**, introduced on pp. 114 of Wallace and Hobbs.   In the literature, there is no clear agreement about symbols.  Wikipedia uses [the letter L](https://en.wikipedia.org/wiki/Radiance) while Wallace and Hobbs use the letter I.   Regardless, it has the units of "watts per meter squared per micron bin width per steradian field of view".  Below I try to untangle this, thinking in terms of how a satellite actually would measure $I_\lambda$.
+
+Wallace and Hobbs also show how the radiance is related to the **irradiance**, or **radiant flux**.   Stull defines this quantity in terms of the monochromatic radiant flux emitted from a black surface:
+
+$$
+E_\lambda{ }^*=\frac{c_1}{\lambda^5 \cdot\left[\exp \left(c_2 /(\lambda \cdot T)\right)-1\right]}
+$$
+Note that both $I_\lambda$ and $E_\lambda$ are vectors, and in this case the direction of propagation of $E_\lambda$, called the **zenith angle** $\theta$, is perpendicular to the emitting surface.
+
+Note that there's nothing special about the blackbody emission, they are just photons in space.   Wallace and Hobbs show how to find the radiant flux given the radiance by integrating over a hemisphere:
+
+$$
+F_\lambda=\int_{2 \pi} I_\lambda \cos \theta d \omega
+$$
+
+To measure $F$, you could use a photo diode to count the number of
+photons per second hitting a sensor, recording the wavelength of each
+photon. To get the photon energy use Stull eq. 2.12
+
+$$
+\nu = c/\lambda
+$$
+
+where $\nu$ is the frequency and c is the speed of light, and then use
+Planck's constant (h) to convert frequency in Hz ($s^{-1}$) to
+energy in Joules
+
+$$
+energy = h \nu
+$$
+
+where $h=6.62607 \times 10^{-34}$ $J\,s$. Summing all
+the photon energies and dividing by the sensor area would give you the
+flux E.  Spreading that flux coming in at zenith angle $\theta$ over a surface that absorbs/reflects the photons would give you the irradiance  $F$.
+
+Below we'll go through each of these terms.
+
+## The $\cos \theta$ effect
+
+To see why the zenith angle matters to the irradiance, consider this figure:
+
+::: {figure} ../figures/costheta.png
+:width: 60%
+:name: costheta
+:alt: pha
+The surface area depends on zenith angle
+:::
+
+This is why shadows are longer for a setting sun.  The photons need to be spread over a larger area as the zenith angle $\theta$ increases towards 90 degrees.
 
 ## Monochromatic Radiance vs. total flux
 
@@ -18,28 +62,24 @@ equally to all wavelengths and because we are interested in particular
 wavelength ranges.  The figure below shows the field of view for a typical
 airborne scanning radiometer:
 
-```{figure} ./figures/c5_1.png
----
-width: 70%
-name: whiskbroom
-alt: pha
----
-Whiskbroom scanner trial
-```
+::: {figure} ../figures/c5_1.png
+:width: 70%
+:name: whiskbroom
+:alt: pha
+Whiskbroom scanner
+:::
 
 
 The photons reaching the sensor through the telescope are separated into
 particular wavelength regions using a filter wheel or a beam splitter:
 
 
-```{figure} ./figures/c5_5.png
----
-width: 70%
-name: filters
-alt: pha
----
+::: {figure} ../figures/c5_5.png
+:width: 70%
+:name: filters
+:alt: pha
 Waveband filters
-```
+:::
 
 ## Field of view
 
@@ -70,19 +110,17 @@ $$
 d\phi = \frac{dl}{r}
 $$
 
-**solid angle**
+### solid angle
 
 A pixel has two dimensions, which makes things more complicated.
 Consider the following spherical coordinate system:
 
-```{figure} ./figures/spherical.png
----
-width: 70%
-name: spherical_coords
-alt: pha
----
+:::{figure} ../figures/spherical.png
+:width: 70%
+:name: spherical_coords
+:alt: pha
 Spherical coordinates
-```
+:::
 
 $\theta$ is called the "zenith angle", and $\phi$ is called
 the "azimuth angle". Image our sensor is looking up in the direction
@@ -128,8 +166,6 @@ $$ (domegaA)
 
 measured in steradians
 
-
-## 
 
 ## Monochromatic flux
 
@@ -189,22 +225,3 @@ The *irradiance* or *radiant flux* **E** is defined as the energy
 (Joules) crossing a unit surface (1 $m^2$) in unit time (1 second)
 so it has units of $W\,m^{-2}$.
 
-To measure it, you could use a photo diode to count the number of
-photons per second hitting a sensor, recording the wavelength of each
-photon. To get the photon energy use Stull eq. 2.12
-
-$$
-\nu = c/\lambda
-$$
-
-where $\nu$ is the frequency and c is the speed of light, and then use
-Planck's constant (h) to convert frequency in Hz ($s^{-1}$) to
-energy in Joules
-
-$$
-energy = h \nu
-$$
-
-where $h=6.62607 \times 10^{-34}$ $J\,s$. Summing all
-the photon energies and dividing by the sensor area would give you the
-flux E.
