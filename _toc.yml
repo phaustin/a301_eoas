@@ -12,6 +12,9 @@ parts:
 - caption: Week 1
   chapters:
   - url: https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf
-    title: Stull Chapter 2, pp. 34-40
-  - file: notebooks/week1/beers_law.rst
-
+    title: Stull Chapter 2, pp. 34-43
+  - file: notebooks/week1/beers_law.md
+  - url: https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&SS_jc=TC0000517195&title=Atmospheric%20Science%3A%20An%20Introductory%20Survey
+    title: Wallace and Hobbs Chapter 4, pp. 113-118
+  - file: notebooks/week1/radiance.md
+    
