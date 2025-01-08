@@ -2,7 +2,9 @@
 
 ## Remote sensing
 
-[Practical Meteorology](https://www.eoas.ubc.ca/books/Practical_Meteorology) -- Chapters chapters 1, 2, 3, 6 and 8
+[Practical Meteorology](https://www.eoas.ubc.ca/books/Practical_Meteorology) -- Chapters  1, 2, 3, 6 and 8
+
+[Atmospheric Science: An Introductory Survey](https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&SS_jc=TC0000517195&title=Atmospheric%20Science%3A%20An%20Introductory%20Survey) -- Chapter 4
 
 ## Python
 
