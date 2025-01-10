@@ -1,5 +1,6 @@
 ---
 jupytext:
+  formats: md:myst,ipynb
   text_representation:
     extension: .md
     format_name: myst
@@ -21,7 +22,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 ```
 
-## Write a module to compute Stull 2.13
+## Write a function to compute Stull 2.13
 
 ```{code-cell} ipython3
 import numpy as np
@@ -62,7 +63,7 @@ def Flambda(wavel, Temp):
     return Flambda_val
 ```
 
-## import the function from that file and use it
+## run the function for a single temperature
 
 ```{code-cell} ipython3
 npoints = 10000
@@ -78,7 +79,7 @@ ax.set(xlim=[0, 50])
 ax.grid(True)
 ax.set(
     xlabel="wavelength (m)",
-    ylabel="$F_\lambda^*\ (W\,m^{-2}\,\mu^{-1}$)",
+    ylabel=r"$F_\lambda^*\ (W\,m^{-2}\,\mu^{-1}$)",
     title=f"Monochromatic blackbody flux at Temp={Temp} K",
 );
 ```
