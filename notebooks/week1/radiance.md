@@ -171,11 +171,11 @@ measured in steradians
 
 Handling the fact that we are only receiving photons in a specific
 wavelength range $\Delta \lambda$ is straight forward: we just
-divide the measured flux by the wavelength range to get
+divide the measured flux $F$ by the wavelength range to get
 $F_\lambda$, the monochromatic flux:
 
 $$
-F_\lambda\ (W\,m^{-2}\,\mu m^{-1}) = \frac{ \Delta E}{\Delta \lambda}
+F_\lambda\ (W\,m^{-2}\,\mu m^{-1}) = \frac{ F}{\Delta \lambda}
 $$
 
 and if I take $\lim{\Delta \lambda \to 0}$
