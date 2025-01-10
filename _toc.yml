@@ -1,5 +1,7 @@
 format: jb-book
 root: notebooks/index.md
+defaults:
+  maxdepth: 1
 parts:
 - caption: Useful links
   chapters:
@@ -17,4 +19,6 @@ parts:
   - url: https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&SS_jc=TC0000517195&title=Atmospheric%20Science%3A%20An%20Introductory%20Survey
     title: Wallace and Hobbs Chapter 4, pp. 113-118
   - file: notebooks/week1/radiance.md
+  - file: notebooks/week1/newflux.md
+  - file: notebooks/week1/planck_function.md
     

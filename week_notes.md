@@ -48,3 +48,16 @@
   - [Stull](https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf) pp. 34-43
   - [WH Chapter 4](https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&SS_jc=TC0000517195&title=Atmospheric%20Science%3A%20An%20Introductory%20Survey) pp. 113-118
  
+### Day 3 Friday
+
+- Note syllabus change: Midterm is now Monday, Feb. 24 -- {ref}`syllabus`
+- [Thermodynamic humour](https://m.xkcd.com/3032/)
+- Go over {ref}`week1-flux-from-radiance`
+
+
+#### Do for Monday
+
+- Read Wallace and Hobbs Section 4.3
+- Download and run {ref}`sec:planck` and modify it to reproduce Wallace and Hobbs Figure 4.6
+
+
