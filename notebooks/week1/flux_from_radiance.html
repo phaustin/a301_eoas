@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Beers and inverse squared laws &#8212; ATSC 301</title>
+    <title>Finding the flux given the radiance &#8212; ATSC 301</title>
   
   
   
@@ -64,12 +64,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week1/beers_law';</script>
-    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week1/beers_law.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week1/flux_from_radiance';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week1/flux_from_radiance.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Solid angle and radiance" href="radiance.html" />
-    <link rel="prev" title="Week notes" href="../../week_notes.html" />
+    <link rel="next" title="Integrating the Planck function with python" href="planck_function.html" />
+    <link rel="prev" title="Solid angle and radiance" href="radiance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,10 +180,10 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beers_law.html">Beers and inverse squared laws</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
 <li class="toctree-l1"><a class="reference internal" href="radiance.html">Solid angle and radiance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="newflux.html">Finding the flux given the radiance</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Finding the flux given the radiance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="planck_function.html">Integrating the Planck function with python</a></li>
 </ul>
 
@@ -239,7 +239,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/notebooks/week1/beers_law.md" target="_blank"
+      <li><a href="../../_sources/notebooks/week1/flux_from_radiance.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -249,7 +249,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.rst</span>
 </a>
 </li>
       
@@ -323,7 +323,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Beers and inverse squared laws</h1>
+    <h1>Finding the flux given the radiance</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -333,9 +333,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differences-differentials-and-derivatives">Differences, differentials and derivatives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beers-law-using-differentials">Beers law – using differentials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-square-law-in-class-problem-in-energy-conservation">Inverse Square Law: In-class problem in energy conservation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-the-cosine">Law of the cosine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-between-flux-and-radiance">Moving between flux and radiance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-form-e-pi-l">Final form: <span class="math notranslate nohighlight">\(E = \pi L\)</span></a></li>
 </ul>
             </nav>
         </div>
@@ -347,180 +347,97 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="beers-and-inverse-squared-laws">
-<span id="week1-beerslaw"></span><h1>Beers and inverse squared laws<a class="headerlink" href="#beers-and-inverse-squared-laws" title="Permalink to this heading">#</a></h1>
-<p>Comments/derivations for the material in  Stull p. 38-39</p>
-<section id="differences-differentials-and-derivatives">
-<span id="differences"></span><h2>Differences, differentials and derivatives<a class="headerlink" href="#differences-differentials-and-derivatives" title="Permalink to this heading">#</a></h2>
+  <section id="finding-the-flux-given-the-radiance">
+<span id="week2-flux-from-radiance"></span><h1>Finding the flux given the radiance<a class="headerlink" href="#finding-the-flux-given-the-radiance" title="Permalink to this heading">#</a></h1>
+<section id="law-of-the-cosine">
+<h2>Law of the cosine<a class="headerlink" href="#law-of-the-cosine" title="Permalink to this heading">#</a></h2>
+<p>Unless the sun is directly overhead, the flux  <span class="math notranslate nohighlight">\(E\)</span> on a level
+surface is going to be less than the flux perpendicular to the
+solar beam. The figure below shows the geometry:</p>
+<figure class="align-default" id="shadow">
+<a class="reference internal image-reference" href="../../_images/shadow.png"><img alt="../../_images/shadow.png" src="../../_images/shadow.png" style="width: 584.8499999999999px; height: 306.95px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\cos \theta\)</span> effect</span><a class="headerlink" href="#shadow" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Assuming that the y dimension (into and out of the screen) has unit
+length, then if flux <span class="math notranslate nohighlight">\(E_1\)</span> <span class="math notranslate nohighlight">\((W\,m^{-2})\)</span> is incident
+on surface 1, power flowing through surface 1 is:</p>
+<p><span class="math notranslate nohighlight">\(P_1 = E_1 \times A_1\)</span> Watts</p>
+<p>If we assume a direct beam of sunlight (so no inverse-square spreading),
+then all of that power passes through surface 2, and so the flux
+perpendicular to surface 2 is:</p>
+<p><strong>Law of the cosine</strong></p>
+<p><span class="math notranslate nohighlight">\(E_2 = P_1/A_2 = P_1/(A_1 /cos \theta) = E_1 \cos \theta\)</span></p>
+<p>This is the main reason why it’s cooler at sunset than at noon. It is
+also the reason your shadow can be taller or smaller than you.</p>
+</section>
+<section id="moving-between-flux-and-radiance">
+<span id="moving"></span><h2>Moving between flux and radiance<a class="headerlink" href="#moving-between-flux-and-radiance" title="Permalink to this heading">#</a></h2>
+<p>We saw in the <a class="reference internal" href="radiance.html#radiance"><span class="std std-ref">Solid angle and radiance</span></a> reading
+that the
+radiance and flux are related by:</p>
+<div class="math notranslate nohighlight">
+\[dE = L d\omega\]</div>
+<div class="math notranslate nohighlight">
+\[L = \frac{dE}{d\omega} \approx \frac{\Delta E}{\Delta \omega}\]</div>
+<p>A good way to think about this to ask yourself how a satellite would
+measure the radiance L in some direction. It would need to:</p>
 <ol class="arabic simple">
-<li><p>What is a derivative?</p></li>
-</ol>
-<ul>
-<li><p>According to
-<a class="reference external" href="https://en.wikipedia.org/wiki/Derivative">wikipedia</a>, a
-derivative is defined as:</p>
-<p>The derivative of a function of a real variable measures the
-sensitivity to change of a quantity (a function value or dependent
-variable) which is determined by another quantity (the independent
-variable).</p>
-</li>
-</ul>
-<ol class="arabic simple" start="2">
-<li><p>What is the derivative of <span class="math notranslate nohighlight">\(E = \sigma T^4\)</span> with respect to T?</p></li>
+<li><p>measure the power P reaching its sensor that has area A</p></li>
+<li><p>Calculate the flux E= P/A</p></li>
+<li><p>Divide that flux by the wavelength range of its filter (say
+<span class="math notranslate nohighlight">\(\Delta \lambda = 1\ \mu m\)</span>) to get the monochromatic
+flux:</p></li>
 </ol>
 <div class="math notranslate nohighlight">
-\[
-\frac{dE}{dT} = \frac{d \sigma T^4}{dT} = 4 \sigma T^3
-\]</div>
-<p>Does that mean that you are free to treat dE/dT as a fraction, and
-cancel dT in the denominator to write:</p>
-<div class="math notranslate nohighlight">
-\[
-dE = \frac{d \sigma T^4}{dT} dT = 4 \sigma T^3 dT
-\]</div>
-<p>Scientists (and mathematicians) do this all the time, but that isn’t how
-derivatives work – dE/dT is a function, not a fraction. So what is
-really going on?</p>
-<ol class="arabic simple" start="3">
-<li><p>Instead, we need to treat the differentials dE and dT as limits, not
-numbers. We know that the following is true: given a small
-temperature difference <span class="math notranslate nohighlight">\(\Delta T\)</span> the flux difference
-<span class="math notranslate nohighlight">\(\Delta E\)</span> is aproximately:</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-\Delta E \approx  \frac{dE}{dT} \Delta T =  4 \sigma T^3 \Delta T
-\]</div>
-<p>i.e. – change in x times slope = change in y.</p>
-<p>This equation in words is called a “first order Taylor series expansion”
-of the function <span class="math notranslate nohighlight">\(E = \sigma T^4\)</span>. It is not exact, but it gets
-better as <span class="math notranslate nohighlight">\(\Delta T\)</span> gets smaller. We can make it exact by writing
-out the whole Taylor series expansion which is a power series with an
-infinite number of terms. (See the Wikipedia entry
-<a class="reference external" href="https://en.wikipedia.org/wiki/Taylor_series">here</a>)</p>
+\[E_\lambda = \frac{E}{\Delta \lambda}\]</div>
 <ol class="arabic simple" start="4">
-<li><p>What is a differential?</p></li>
+<li><p>Divide the monochromatic radiance by the field of view of the
+telescope <span class="math notranslate nohighlight">\(\Delta \omega\)</span> to get the monochromatic radiance:</p></li>
 </ol>
-<p>Roughly, the differentials dE and dT represent limits that are evaluated
-by integration:</p>
-<p><span class="math notranslate nohighlight">\(dT = \lim{\  \Delta T \to 0}\)</span>, so that
-<span class="math notranslate nohighlight">\(\int dT = T\)</span> and</p>
 <div class="math notranslate nohighlight">
-\[
-dE = \lim_{ \Delta T \to 0} \Delta E
-\]</div>
-<p>So if we take the <span class="math notranslate nohighlight">\(\lim{\  \Delta T \to 0}\)</span> we can write</p>
-<div class="math notranslate nohighlight">
-\[
-dE = \frac{d \sigma T^4}{dT} dT = 4 \sigma T^3 dT
-\]</div>
-<p>Note that this is just doing the steps in Stull p. 38 in the opposite
-order. He starts with my last equation and winds up with 3). The
-advantage of the alternative approach we’re using here is that we don’t
-need to treat the function <span class="math notranslate nohighlight">\(\frac{dE}{dT}\)</span> as if it can be ripped
-apart to get <span class="math notranslate nohighlight">\(dE\)</span> and <span class="math notranslate nohighlight">\(dT\)</span>. If you really care, I recommend
-reading <a class="reference external" href="http://math.stackexchange.com/questions/23902/what-is-the-practical-difference-between-a-differential-and-a-derivative">this
-answer</a>
-to a question about differentials. This is also closely related to the
-<a class="reference external" href="https://en.wikipedia.org/wiki/Chain_rule">chain rule</a> for
-derivatives of functions.</p>
-<p>By taking the limit as <span class="math notranslate nohighlight">\(\Delta T\)</span> approaches 0 we’ve turned a
-<em>difference equation</em> for the number <span class="math notranslate nohighlight">\(\Delta E\)</span> (which we can
-solve in python) into a <em>differential equation</em> for the differential
-<span class="math notranslate nohighlight">\(dE\)</span> (which we can integrate using calculus).</p>
+\[L_\lambda = \frac{E_\lambda}{\Delta \omega}\]</div>
+<p>The setup for this is shown in the following figure:</p>
+<figure class="align-default" id="l-e">
+<a class="reference internal image-reference" href="../../_images/L_E.png"><img alt="../../_images/L_E.png" src="../../_images/L_E.png" style="width: 346.0px; height: 317.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Relationship between L and E</span><a class="headerlink" href="#l-e" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>So how would you calculate the flux E crossing through the bottom
+of this triangle if you knew the radiance L at every angle? Now you need
+to use the law of the cosines to move from the perpendicular surface
+with area <span class="math notranslate nohighlight">\(dA_1\)</span> to the surface you are interested in with larger
+area <span class="math notranslate nohighlight">\(dA_2 = dA_1/\cos \theta\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-cosflux">
+<span class="eqno">(5)<a class="headerlink" href="#equation-cosflux" title="Permalink to this equation">#</a></span>\[  dE_2 = \cos \theta dE_1 = \cos \theta L d\omega\]</div>
+<p>To get the flux from every angle requires that you integrate over
+a hemisphere. That means you need to integrate over all azimuths, so
+<span class="math notranslate nohighlight">\(\phi = 0 \to 2\pi\)</span> and over 90 degrees of zenith, so that
+<span class="math notranslate nohighlight">\(\theta = 0 \to \pi/2\)</span></p>
+<div class="math notranslate nohighlight" id="equation-fluxrel">
+<span class="eqno">(6)<a class="headerlink" href="#equation-fluxrel" title="Permalink to this equation">#</a></span>\[  E_2 = \int dE_2 = \int_0^{2\pi} \int_0^{\pi/2} \cos \theta \, L \, d \omega =\int_0^{2\pi} \int_0^{\pi/2} L \cos \theta  \sin \theta \, d\theta \, d \phi\]</div>
 </section>
-<section id="beers-law-using-differentials">
-<span id="beers-law-diff"></span><h2>Beers law – using differentials<a class="headerlink" href="#beers-law-using-differentials" title="Permalink to this heading">#</a></h2>
-<p>Both physics (Maxwell’s equations) and observations show that when a
-narrow beam of photons are travelling through a material (like air or
-water) of constant composition, the flux obeys “Beer’s law”:</p>
+<section id="final-form-e-pi-l">
+<span id="final-form"></span><h2>Final form: <span class="math notranslate nohighlight">\(E = \pi L\)</span><a class="headerlink" href="#final-form-e-pi-l" title="Permalink to this heading">#</a></h2>
+<p>The most common case for us is thermal emission, which is characterized
+by photons coming isotropically from all directions. In that case the
+surface emitted radiance <span class="math notranslate nohighlight">\(L^*\)</span> is independent of
+<span class="math notranslate nohighlight">\((\phi, \theta)\)</span> and can be taken outside of the integral. With
+that simplification, we’re down to trigonometric integrals from first
+year:</p>
+<div class="math notranslate nohighlight" id="equation-flux-final">
+<span class="eqno">(7)<a class="headerlink" href="#equation-flux-final" title="Permalink to this equation">#</a></span>\[ E_2 = E^* = \int_0^{2\pi}\int_0^{\pi/2} L^* \cos \theta  \sin \theta \, d\theta \, d \phi = 2 \pi L^*
+      \int_0^{\pi/2} \cos \theta  \sin \theta\, d\theta = 2\pi L^* \left( \frac{1}{2} \right)  = \pi L^*\]</div>
+<p>where we’ve continued to use an asterisk to denote that this is the
+radiation coming from a black surface, immediately next to the surface.</p>
+<p>More generally if we know <span class="math notranslate nohighlight">\(L\)</span> anywhere in space and know that it
+is independent of direction, the the irriadiance at that point is going
+to be:</p>
 <div class="math notranslate nohighlight">
-\[
-E(s) = E_i \exp (-n b s)
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(s\ (m)\)</span> is the distance travelled (the path length),
-<span class="math notranslate nohighlight">\(n\ (\#/m^3)\)</span> is the number denstiy of reflecting/absorbing
-particles and <span class="math notranslate nohighlight">\(b\ (m^2)\)</span> is the extinction cross section due to
-both absorption and scattering. You can think of <span class="math notranslate nohighlight">\(b\)</span> as the
-<em>target size</em> of the particles (molecules, smoke particles etc.) which
-may be much different than the physical size of the particle because of
-quantum mechanical and wave interference effects.</p>
-<p>To get the differential version of Beers law, take the derivitive and
-use the limit argument we went through above and get:</p>
-<div class="math notranslate nohighlight">
-\[
-dE = E_i (-nb) \exp(-nbs) ds =  (-nb) E ds
-\]</div>
-<p>or</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{dE}{E} = -n b ds
-\]</div>
-<p>If we define the differential optical depth as:</p>
-<div class="math notranslate nohighlight">
-\[
-d\tau = n b ds
-\]</div>
-<a name="diffbeers"></a><p>Then we ge:</p>
-<div class="math notranslate nohighlight" id="equation-diffbeers">
-<span class="eqno">(1)<a class="headerlink" href="#equation-diffbeers" title="Permalink to this equation">#</a></span>\[
-\frac{dE^\prime}{E^\prime} = d \ln E^\prime = -d \tau^\prime
-\]</div>
-<p>and integrating from <span class="math notranslate nohighlight">\(\tau^\prime=0,\ E^\prime=E_i\)</span> to
-<span class="math notranslate nohighlight">\(\tau^\prime = \tau,E^\prime = E\)</span> gives:</p>
-<div class="math notranslate nohighlight">
-\[
-\int_{E_i}^E  d \ln E^\prime = -\int_0^\tau d\tau^\prime
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\ln \left ( \frac{E}{E_i} \right ) = - \tau
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-E = E_i \exp (-\tau)
-\]</div>
-<p>which is stull 2.31c. An important point is that the extinction cross
-section <span class="math notranslate nohighlight">\(b\)</span> can vary enormously over small wavlength ranges
-(called “absorption bands”) where the cross section can increase by a
-factor of 100,000. This is why small concentrations of carbon dioxide
-have such large impacts on climate.</p>
-<p>Also note that now that we have the differential form of Beer’s law, we
-don’t have to assume that <span class="math notranslate nohighlight">\(n\)</span> or <span class="math notranslate nohighlight">\(b\)</span> are constant, we can
-make them depend on position and just do the (more complicated) integral
-to get <span class="math notranslate nohighlight">\(\tau\)</span></p>
-</section>
-<section id="inverse-square-law-in-class-problem-in-energy-conservation">
-<span id="week2-probs"></span><h2>Inverse Square Law: In-class problem in energy conservation<a class="headerlink" href="#inverse-square-law-in-class-problem-in-energy-conservation" title="Permalink to this heading">#</a></h2>
-<p>On page 39, Stull asserts the inverse square law:</p>
-<div class="math notranslate nohighlight">
-\[
-E_2 = E_1^* \left ( \frac{R_1^2}{R_2^2} \right )
-\]</div>
-<ol class="arabic">
-<li><p>Prove this using conservation of energy (i.e. conservation of Joules)</p></li>
-<li><p>Suppose a 10 cm x 10 cm piece of white paper with a visible
-reflectivity of 80% is pinned to a wall and illuminated by visible
-light with a flux of 100 <span class="math notranslate nohighlight">\(W\,m^{-2}\)</span>. If the paper reflects
-evenly in all directions (isotropic, not glossy), what is the flux
-from the paper 3 meters from the wall? What about 6 meters from the
-wall?  Post a set of python instructions that solve the problem on
-canvas chat, with the numerical answer.</p></li>
-<li><p>Stull defines the direct beam transmissivity as:</p>
-<div class="math notranslate nohighlight">
-\[
-   t = \frac{E}{E_{i}} = \exp(-\tau)
-   \]</div>
-<p>Suppose I have two pieces of translucent glass that absorb but don’t
-reflect light, and their indvidual transmissivities are <span class="math notranslate nohighlight">\(t_1\)</span> and
-<span class="math notranslate nohighlight">\(t_2\)</span>. Use conservation of energy to prove that if we stack the
-two pieces, the combined transmissivity will be <span class="math notranslate nohighlight">\(t_1 \times t_2\)</span>,
-which means that the combined optical depth will be
-<span class="math notranslate nohighlight">\(\tau_1 + \tau_2\)</span> (i.e. optical depths add). Note that I had to
-assume no reflection so that photons wouldn’t bounce back and forth
-between the two plates.  Post your explanation on canvas chat.</p>
-</li>
-</ol>
+\[E = \pi L\]</div>
+<p><strong>Question</strong> What happened to the inverse square law for flux E?</p>
 </section>
 </section>
 
@@ -555,20 +472,20 @@ between the two plates.  Post your explanation on canvas chat.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../week_notes.html"
+       href="radiance.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Week notes</p>
+        <p class="prev-next-title">Solid angle and radiance</p>
       </div>
     </a>
     <a class="right-next"
-       href="radiance.html"
+       href="planck_function.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Solid angle and radiance</p>
+        <p class="prev-next-title">Integrating the Planck function with python</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -588,9 +505,9 @@ between the two plates.  Post your explanation on canvas chat.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differences-differentials-and-derivatives">Differences, differentials and derivatives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beers-law-using-differentials">Beers law – using differentials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-square-law-in-class-problem-in-energy-conservation">Inverse Square Law: In-class problem in energy conservation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-the-cosine">Law of the cosine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-between-flux-and-radiance">Moving between flux and radiance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-form-e-pi-l">Final form: <span class="math notranslate nohighlight">\(E = \pi L\)</span></a></li>
 </ul>
   </nav></div>
 

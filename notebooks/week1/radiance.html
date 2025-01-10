@@ -68,6 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week1/radiance.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Finding the flux given the radiance" href="newflux.html" />
     <link rel="prev" title="Beers and inverse squared laws" href="beers_law.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -182,6 +183,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="beers_law.html">Beers and inverse squared laws</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="newflux.html">Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="planck_function.html">Integrating the Planck function with python</a></li>
 </ul>
 
     </div>
@@ -356,9 +359,9 @@ document.write(`
 <p>Wallace and Hobbs also show how the radiance is related to the <strong>irradiance</strong>, or <strong>radiant flux</strong>.   Stull defines this quantity in terms of the monochromatic radiant flux emitted from a black surface:</p>
 <div class="math notranslate nohighlight">
 \[
-E_\lambda{ }^*=\frac{c_1}{\lambda^5 \cdot\left[\exp \left(c_2 /(\lambda \cdot T)\right)-1\right]}
+F_\lambda{ }^*=\frac{c_1}{\lambda^5 \cdot\left[\exp \left(c_2 /(\lambda \cdot T)\right)-1\right]}
 \]</div>
-<p>Note that both <span class="math notranslate nohighlight">\(I_\lambda\)</span> and <span class="math notranslate nohighlight">\(E_\lambda\)</span> are vectors, and in this case the direction of propagation of <span class="math notranslate nohighlight">\(E_\lambda\)</span>, called the <strong>zenith angle</strong> <span class="math notranslate nohighlight">\(\theta\)</span>, is perpendicular to the emitting surface.</p>
+<p>Note that both <span class="math notranslate nohighlight">\(I_\lambda\)</span> and <span class="math notranslate nohighlight">\(F_\lambda\)</span> are vectors, and in this case the direction of propagation of <span class="math notranslate nohighlight">\(F_\lambda\)</span>, called the <strong>zenith angle</strong> <span class="math notranslate nohighlight">\(\theta\)</span>, is perpendicular to the emitting surface.</p>
 <p>Note that there’s nothing special about the blackbody emission, they are just photons in space.   Wallace and Hobbs show how to find the radiant flux given the radiance by integrating over a hemisphere:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -494,15 +497,15 @@ d\omega = \frac{dA}{r^2} = \frac{r^2 \sin \theta d\theta  d\phi}{r^2} = \sin \th
 <p>Handling the fact that we are only receiving photons in a specific
 wavelength range <span class="math notranslate nohighlight">\(\Delta \lambda\)</span> is straight forward: we just
 divide the measured flux by the wavelength range to get
-<span class="math notranslate nohighlight">\(E_\lambda\)</span>, the monochromatic flux:</p>
+<span class="math notranslate nohighlight">\(F_\lambda\)</span>, the monochromatic flux:</p>
 <div class="math notranslate nohighlight">
 \[
-E_\lambda\ (W\,m^{-2}\,\mu m^{-1}) = \frac{ \Delta E}{\Delta \lambda}
+F_\lambda\ (W\,m^{-2}\,\mu m^{-1}) = \frac{ \Delta E}{\Delta \lambda}
 \]</div>
 <p>and if I take <span class="math notranslate nohighlight">\(\lim{\Delta \lambda \to 0}\)</span></p>
 <div class="math notranslate nohighlight">
 \[
-dE = E_\lambda d \lambda
+dF = F_\lambda d \lambda
 \]</div>
 <p>so we can define <span class="math notranslate nohighlight">\(\Delta E\)</span> as the portion of the flux that
 is being transmitted by photons with wavelengths between
@@ -515,7 +518,7 @@ field of view <span class="math notranslate nohighlight">\(\Delta \omega\)</span
 the monochromatic radiance <span class="math notranslate nohighlight">\(I_\lambda\)</span> by:</p>
 <div class="math notranslate nohighlight" id="equation-llambda">
 <span class="eqno">(3)<a class="headerlink" href="#equation-llambda" title="Permalink to this equation">#</a></span>\[
-I_\lambda = \frac{\Delta E_\lambda}{\Delta \lambda \Delta \omega}
+I_\lambda = \frac{\Delta F_\lambda}{\Delta \lambda \Delta \omega}
 \]</div>
 <p>units: <span class="math notranslate nohighlight">\(W\,m^{-2}\,\mu m^{-1}\,sr^{-1}\)</span>.</p>
 <p>The monochromatic radiance <span class="math notranslate nohighlight">\(I_\lambda\)</span> is the variable that the
@@ -523,21 +526,26 @@ Modis thermal sensors deliver.</p>
 <p>Switching to differentials again, we’ve got:</p>
 <div class="math notranslate nohighlight" id="equation-de">
 <span class="eqno">(4)<a class="headerlink" href="#equation-de" title="Permalink to this equation">#</a></span>\[
-dE = I_\lambda d\lambda d\omega
+dF_\lambda = I_\lambda d\lambda d\omega
 \]</div>
-<p>Note that both <span class="math notranslate nohighlight">\(dE\)</span> and <span class="math notranslate nohighlight">\(I_\lambda\)</span> have a direction
+<p>Note that both <span class="math notranslate nohighlight">\(dF_\lambda\)</span> and <span class="math notranslate nohighlight">\(I_\lambda\)</span> have a direction
 associated with them – their direction of propagation, which is
 perpendicular to the surface the photons are passing through.</p>
-<p>Note that <a class="reference internal" href="#equation-de">(4)</a> assumes that all the energy is contained in the small solid
-angle <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">\omega</span></code>, which is true for satellites because they are using
+<p>Note that <span class="math notranslate nohighlight">\(dE\)</span> assumes that all the energy is contained in the small solid
+angle <span class="math notranslate nohighlight">\(d \omega\)</span>, which is true for satellites because they are using
 a telescope to focus on a small pixel.  If we want to instead measure all the energy
 crossing a surface from all directions, we need to integrate over all zenith and azimuth angles.</p>
 </section>
 <section id="some-definitions">
 <h2>Some definitions<a class="headerlink" href="#some-definitions" title="Permalink to this heading">#</a></h2>
-<p>The <em>irradiance</em> or <em>radiant flux</em> <strong>E</strong> is defined as the energy
+<ul class="simple">
+<li><p>The <em>irradiance</em> or <em>radiant flux</em> <strong>E</strong> is defined as the energy
 (Joules) crossing a unit surface (1 <span class="math notranslate nohighlight">\(m^2\)</span>) in unit time (1 second)
-so it has units of <span class="math notranslate nohighlight">\(W\,m^{-2}\)</span>.</p>
+so it has units of <span class="math notranslate nohighlight">\(W\,m^{-2}\)</span>.</p></li>
+<li><p>The <em>radiance</em> or <em>radiant intensity</em> is defined as the as the energy
+(Joules) crossing a unit surface (1 <span class="math notranslate nohighlight">\(m^2\)</span>) in unit time (1 second) over
+a unit solid angle, wo it has units of <span class="math notranslate nohighlight">\(W\,m^{-2}\,sr^{-1}\)</span></p></li>
+</ul>
 </section>
 </section>
 
@@ -579,6 +587,15 @@ so it has units of <span class="math notranslate nohighlight">\(W\,m^{-2}\)</spa
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Beers and inverse squared laws</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="newflux.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Finding the flux given the radiance</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

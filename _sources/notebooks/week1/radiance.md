@@ -7,9 +7,9 @@ My notes on Wallace and Hobbs Chapter 4, pp. 113-117.  The purpose of this note 
 Wallace and Hobbs also show how the radiance is related to the **irradiance**, or **radiant flux**.   Stull defines this quantity in terms of the monochromatic radiant flux emitted from a black surface:
 
 $$
-E_\lambda{ }^*=\frac{c_1}{\lambda^5 \cdot\left[\exp \left(c_2 /(\lambda \cdot T)\right)-1\right]}
+F_\lambda{ }^*=\frac{c_1}{\lambda^5 \cdot\left[\exp \left(c_2 /(\lambda \cdot T)\right)-1\right]}
 $$
-Note that both $I_\lambda$ and $E_\lambda$ are vectors, and in this case the direction of propagation of $E_\lambda$, called the **zenith angle** $\theta$, is perpendicular to the emitting surface.
+Note that both $I_\lambda$ and $F_\lambda$ are vectors, and in this case the direction of propagation of $F_\lambda$, called the **zenith angle** $\theta$, is perpendicular to the emitting surface.
 
 Note that there's nothing special about the blackbody emission, they are just photons in space.   Wallace and Hobbs show how to find the radiant flux given the radiance by integrating over a hemisphere:
 
@@ -172,16 +172,16 @@ measured in steradians
 Handling the fact that we are only receiving photons in a specific
 wavelength range $\Delta \lambda$ is straight forward: we just
 divide the measured flux by the wavelength range to get
-$E_\lambda$, the monochromatic flux:
+$F_\lambda$, the monochromatic flux:
 
 $$
-E_\lambda\ (W\,m^{-2}\,\mu m^{-1}) = \frac{ \Delta E}{\Delta \lambda}
+F_\lambda\ (W\,m^{-2}\,\mu m^{-1}) = \frac{ \Delta E}{\Delta \lambda}
 $$
 
 and if I take $\lim{\Delta \lambda \to 0}$
 
 $$
-dE = E_\lambda d \lambda
+dF = F_\lambda d \lambda
 $$
 
 so we can define $\Delta E$ as the portion of the flux that
@@ -196,7 +196,7 @@ field of view $\Delta \omega$ of the telescope, then we can get
 the monochromatic radiance $I_\lambda$ by:
 
 $$
-I_\lambda = \frac{\Delta E_\lambda}{\Delta \lambda \Delta \omega}
+I_\lambda = \frac{\Delta F_\lambda}{\Delta \lambda \Delta \omega}
 $$ (Llambda)
 
 units: $W\,m^{-2}\,\mu m^{-1}\,sr^{-1}$.
@@ -207,21 +207,24 @@ Modis thermal sensors deliver.
 Switching to differentials again, we've got:
 
 $$
-dE = I_\lambda d\lambda d\omega
+dF_\lambda = I_\lambda d\lambda d\omega
 $$ (dE)
 
-Note that both $dE$ and $I_\lambda$ have a direction
+Note that both $dF_\lambda$ and $I_\lambda$ have a direction
 associated with them -- their direction of propagation, which is
 perpendicular to the surface the photons are passing through.
 
-Note that {eq}`dE` assumes that all the energy is contained in the small solid
-angle `d \omega`, which is true for satellites because they are using
+Note that $dE$ assumes that all the energy is contained in the small solid
+angle $d \omega$, which is true for satellites because they are using
 a telescope to focus on a small pixel.  If we want to instead measure all the energy
 crossing a surface from all directions, we need to integrate over all zenith and azimuth angles.
 
 ## Some definitions
 
-The *irradiance* or *radiant flux* **E** is defined as the energy
+* The *irradiance* or *radiant flux* **E** is defined as the energy
 (Joules) crossing a unit surface (1 $m^2$) in unit time (1 second)
 so it has units of $W\,m^{-2}$.
 
+* The *radiance* or *radiant intensity* is defined as the as the energy
+(Joules) crossing a unit surface (1 $m^2$) in unit time (1 second) over
+a unit solid angle, wo it has units of $W\,m^{-2}\,sr^{-1}$

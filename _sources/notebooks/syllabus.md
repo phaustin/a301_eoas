@@ -51,8 +51,11 @@ By the end of this course you should have a good understanding of
 |                                                    | Cartopy mapping and image resampling             |   |
 | Assignment 3: Flux from radiance                  |                                                        |   |
 | **Week 6  2/10 - 2/14**                            | Pandas, Weighting functions for temperature retrieval  |   |
-| Assignment: mid-term review, mid-term
+| Assignment: mid-term review
 |                                                        |   |
+| **Midterm: Monday Feb. 24**                            |   |   |
+| 
+|
 | **Week 7  2/24 -  2/28**                            | xarray, geotiffs, Landsat and Sentinel data            |   |
 |                                                        |   |
 | **Week 8  3/3 - 3/7**                             | Reading cloud optimized geotiffs, Landsat channels     |   |
