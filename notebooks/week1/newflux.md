@@ -56,7 +56,7 @@ $$
 F_\lambda = \frac{F}{\Delta \lambda}
 $$
 
-4. Divide the monochromatic radiance by the field of view of the
+4. Multiply the monochromatic radiance by the field of view of the
    telescope $\Delta \omega$ to get the relationship between
    the monochromatic irradiance and radiance for a narrow beam:
 
@@ -104,7 +104,7 @@ Equation {eq}`fluxrel` is the formal definition of $F$ and is always correct.  T
 #### Parallel beam approximation (W&H p. 116)
 
 $$
-F=I \times \delta \omega
+F=I \times \Delta \omega
 $$
 
 This holds when:
