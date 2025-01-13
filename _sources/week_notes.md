@@ -61,3 +61,32 @@
 - Download and run {ref}`sec:planck` and modify it to reproduce Wallace and Hobbs Figure 4.6
 
 
+## Week 2
+
+### Day 4 Monday
+
+- Select [office hours](https://whenisgood.net/xj4khmm/results/4sfd25r) -- 11am Wed?
+- Go over {ref}`week1-review`
+- Get accounts on the [NASA earthdata website](https://urs.earthdata.nasa.gov/home)
+
+#### Do for Wednesday
+
+- Finish reading Wallace and Hobbs Section 4.3
+- For Assignment 1 (posted this evening, do next Monday at midnight)
+  - Unwrap the Planck function for temperature T and code this in Python.  That is, given W&H equation 4.4:
+  
+  $$
+  B_\lambda(T)=\frac{c_1 \lambda^{-5}}{\pi\left(e^{c_2 / \lambda T}-1\right)}
+  $$
+  
+  Solve for the "brightness temperature" $T_b$ such that, given a radiance $I_\lambda$:
+  
+  $$
+  B_\lambda(T_b) = I_\lambda
+  $$
+  
+  i.e.  find the temperature that a black body would need to have to emit $I_\lambda$ at wavelength $\lambda$
+  
+  Check your work by "round tripping"  -- find the radiance at a temperture $T$ using the Planck function, then insert that temperture into your brightness temperature function to make sure you get back that radiance.
+  
+  
