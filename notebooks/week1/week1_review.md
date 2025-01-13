@@ -128,7 +128,7 @@ print(f"Reflected flux at {R2:0.2f} meters = {reflect_flux_6:0.2g} W/m^2")
 +++
 
 5. In the answer to 4. you should have found that I is independent of distance from the surface.
-   Explain why, in the case of isotropic emission/reflection over a p lane surface
+   Explain why, in the case of isotropic emission/reflection over a plane surface
 
 
    $$
@@ -152,11 +152,32 @@ print(f"Reflected flux at {R2:0.2f} meters = {reflect_flux_6:0.2g} W/m^2")
    
    We know that $\sin \theta$ is rise/run  $\approx$ 0.5 km/800 km.  
 
-
+   Google tells me that the arcsin of 0.5/800 is 0.000654 radians.
+   
+   Make the variable substitution suggested in class:
+   
+   $$
+   \begin{aligned}
+   \mu &= \cos \theta \\
+   d\mu &= -\sin \theta d\theta \\
+   \int d\omega  & = \int_0^{2\pi}  \int_\mu^1 d\mu  d\phi \\
+   \omega &= 2\pi \times (1 - \mu)  = 2\pi \times 1.95312519 \times 10^{-7} = 1.227 \times 10^{-6} \ sr
+   \end{aligned}
+   $$
+   
+   Compare this to $area/R^2$ = $1/800^2$ = $1.5625 \times 10^{-6}$
+   
+   New question -- what is a more accurate area for the circular pixel in this case?  Does this make the approximation better?
 +++
 
 9. Change of variables:  Do W&H Exercise 4.13 to prove relationship 4.4
 
-```{code-cell} ipython3
+   $$
+   \nu &=  \lambda^{-1} \\
+   d\nu &=  (-\lambda^{-2}) d\lambda \\
+   I_\nu d\nu &= -I_\lambda d\lambda \\
+   I_\nu d\nu &= I_\lambda \lambda^2 d\nu \\
+   I_\nu &= \lambda^2 I_\lambda
+   $$
 
-```
+   What's going on with the minus sign?  if $\lambda_1 <\lambda_2$ then $\nu_1 > \nu_2$ so if $d\lambda$ is positive,  $d\nu$ is negative and vice versa.
