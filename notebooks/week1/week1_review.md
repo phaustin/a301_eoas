@@ -165,7 +165,7 @@ print(f"Reflected flux at {R2:0.2f} meters = {reflect_flux_6:0.2g} W/m^2")
    \end{aligned}
    $$
    
-   Compare this to $area/R^2$ = $1/800^2$ = $1.5625 \times 10^{-6}$
+   Compare this to $area/R^2$ = $1/800^2$ = $1.5625 \times 10^{-6}$ sr
    
    New question -- what is a more accurate area for the circular pixel in this case?  Does this make the approximation better?
 +++
@@ -180,4 +180,6 @@ print(f"Reflected flux at {R2:0.2f} meters = {reflect_flux_6:0.2g} W/m^2")
    I_\nu &= \lambda^2 I_\lambda
    $$
 
-   What's going on with the minus sign?  if $\lambda_1 <\lambda_2$ then $\nu_1 > \nu_2$ so if $d\lambda$ is positive,  $d\nu$ is negative and vice versa.
+   What's going on with the minus sign?  This is because integration over $\lambda$ and $\nu$ proceed in opposite directions. If $\Delta \lambda = \lambda_2 - \lambda_1$ is positive then $\Delta \nu =  \nu_2 - \nu_1$ is negative, and you would flip the limits of integration, which produces a cancelling minus sign.
+   
+   
