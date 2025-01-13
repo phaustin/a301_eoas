@@ -1,7 +1,7 @@
 format: jb-book
 root: notebooks/index.md
 defaults:
-  maxdepth: 1
+  maxdepth: 0
 parts:
 - caption: Useful links
   chapters:
@@ -21,4 +21,8 @@ parts:
   - file: notebooks/week1/radiance.md
   - file: notebooks/week1/newflux.md
   - file: notebooks/week1/planck_function.md
+  - file: notebooks/week1/week1_review.md
+    
+    
+    
     

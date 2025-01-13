@@ -61,3 +61,7 @@
 - Download and run {ref}`sec:planck` and modify it to reproduce Wallace and Hobbs Figure 4.6
 
 
+## Week 2
+
+
+
