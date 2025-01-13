@@ -15,25 +15,41 @@ kernelspec:
 (week1-review)=
 # Week 1 review questions/answers
 
+## Key week1 topics
+
+1. Definitions of solid angle/field of view, irradiance, radiance
+2. Explanation of how a satellite sensor measures radiance
+3. Conservation of radiance in a vacuum
+4. Derivation of Beer's law and optical depth (we'll return to this in more detail later)
+5. Calculating flux from radiance for two cases: 
+
+   - the parallel beam approximation ($I$ contained in a narrow field of view  e.g. solar direct beam) 
+   - isotropic radiance ($I$ independent of direction e.g. diffuse reflection or thermal emission) 
+
+
+
+
+## Study question solutions
+
 1. On page 39, Stull asserts the inverse square law:
 
-$$
-F_2 = F_1 \left ( \frac{R_1^2}{R_2^2} \right )
-$$ 
+    $$
+    F_2 = F_1 \left ( \frac{R_1^2}{R_2^2} \right )
+    $$ 
 
-Prove this using conservation of energy (i.e. conservation of Joules)
+    Prove this using conservation of energy (i.e. conservation of Joules)
 
-*Answer*: The total power, in Watts, passing through a hemisphere at $R_1$ is
+    **Answer**: The total power, in Watts, passing through a hemisphere at $R_1$ is
 
-$$
-P_1=F_1 \times 2 \pi R_1^2
-$$
+    $$
+    P_1=F_1 \times 2 \pi R_1^2
+    $$
 
-If $P_1$ is conserved then at distance $R_2$ the new flux is:
+    If $P_1$ is conserved then at distance $R_2$ the new flux is:
 
-$$
-F_2 = \frac{P_1}{2\pi R_2^2} = \frac{F_1 \times 2 \pi R_1^2}{2\pi R_2^2}
-$$
+    $$
+    F_2 = \frac{P_1}{2\pi R_2^2} = \frac{F_1 \times 2 \pi R_1^2}{2\pi R_2^2}
+    $$
 
 +++
 
@@ -42,7 +58,7 @@ $$
    light with a flux of 100 $W\,m^{-2}$. If the paper reflects
    evenly in all directions (isotropic, not glossy), what is the flux
    from the paper 3 meters from the wall? What about 6 meters from the
-   wall?   
+   wall?
 
 ```{code-cell} ipython3
 import numpy as np
@@ -62,7 +78,7 @@ print(f"Reflected flux at {R2:0.2f} meters = {reflect_flux_6:0.2g} W/m^2")
 
    $$
    t = \frac{F}{F_{i}} = \exp(-\tau)
-   $$
+   $$ (week1_beers)
 
    Suppose I have two pieces of translucent glass that absorb but don't
    reflect light, and their indvidual transmissivities are $t_1$ and
@@ -71,13 +87,76 @@ print(f"Reflected flux at {R2:0.2f} meters = {reflect_flux_6:0.2g} W/m^2")
    which means that the combined optical depth will be
    $\tau_1 + \tau_2$ (i.e. optical depths add). Note that I had to
    assume no reflection so that photons wouldn't bounce back and forth
-   between the two plates. 
+   between the two plates.
 
+   **Answer**:  From {eq}`week1_beers` we know that the flux exiting plate 1 is:
+   
+   $$
+   F_1 = F_i \exp(-\tau_1)
+   $$
+   
+   Because we know it is a direct beam (i.e. tiny solid angle $\Delta \omega$) there is no spherical
+   spreading and $F_2$ is just
+
+   $$
+   F_2 = F_1 \exp(-\tau_2) = F_i \exp(-\tau_1) \exp(-\tau_2) = F_i \exp(-(\tau_1 + \tau_2))
+   $$
+
++++
 
 4. Suppose you have a radiometer with a zoom telescope that can focus on 1 $km^2$ pixel at any distance.   If the surface is emitting radiance $I$ in all directions into a hemisphere, find both $F$ and $I$ at 10 km above the surface, and at 100 km above the surface, assuming you can use the parallel beam approximation.
 
-5. In the answer to 1) you should have found that I is independent of distance from the surface. Explain why {eq}`flux_short` doesn't  violate the inverse square law for flux F.
+    **Answer**
+    
+    Since we are using the parallel beam approximation, we can assume that:
+    
+    $$
+    F = I \Delta \omega
+    $$
+    for at nadir ($\theta = 0$).
+    
+    In each case, we make the approximation that
+    
+    $$
+    \Delta \omega \approx  \frac{area}{R^2}
+    $$  (approx_omega)
+    
+    Since $I$ is independent of distance in a vacuum,  $F$ obeys the inverse square law, that is the flux decreases as $1/R^2$
+    
+    New question -- how accurate is {eq}`approx_omega`  in each case?
 
-6. Find the solid angle for a 1 $km^2$ pixel viewed from 800 km, and compare that result to $Area/R^2$.
++++
 
-7. Change of variables:  Do W&H Exercise 4.13 to prove relationship 4.4
+5. In the answer to 4. you should have found that I is independent of distance from the surface.
+   Explain why, in the case of isotropic emission/reflection over a p lane surface
+
+
+   $$
+   F = \pi I
+   $$
+   doesn't  violate the inverse square law for flux F.
+
+   **Answer**  In contrast to the parallel beam case, over an infinite flat surface there is always more surface area to fill the
+   sensor field of view as the sensor moves away from the surface.  Therefore the power reacing the sensor increases by the area in the image
+   which increases by the $R^2$ as the sensor moves away.
+
++++
+
+8. Find the solid angle for a 1 $km^2$ pixel viewed from 800 km, and compare that result to $Area/R^2$.
+
+   We need to integrate the definition of the solid angle {eq}`domegaA`
+  
+   $$
+   \int d\omega   = \int_0^{2\pi}  \int_0^\theta \sin \theta d\theta  d\phi
+   $$
+   
+   We know that $\sin \theta$ is rise/run  $\approx$ 0.5 km/800 km.  
+
+
++++
+
+9. Change of variables:  Do W&H Exercise 4.13 to prove relationship 4.4
+
+```{code-cell} ipython3
+
+```
