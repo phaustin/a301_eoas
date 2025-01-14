@@ -184,7 +184,7 @@ $$
 dF = F_\lambda d \lambda
 $$
 
-so we can define $\Delta E$ as the portion of the flux that
+so we can define $\Delta F$ as the portion of the flux that
 is being transmitted by photons with wavelengths between
 $\lambda \to \lambda + \Delta \lambda$
 
@@ -208,20 +208,20 @@ Switching to differentials again, we've got:
 
 $$
 dF_\lambda = I_\lambda d\lambda d\omega
-$$ (dE)
+$$ (dF)
 
 Note that both $dF_\lambda$ and $I_\lambda$ have a direction
 associated with them -- their direction of propagation, which is
 perpendicular to the surface the photons are passing through.
 
-Note that $dE$ assumes that all the energy is contained in the small solid
+Note that $dF$ assumes that all the energy is contained in the small solid
 angle $d \omega$, which is true for satellites because they are using
 a telescope to focus on a small pixel.  If we want to instead measure all the energy
 crossing a surface from all directions, we need to integrate over all zenith and azimuth angles.
 
 ## Some definitions
 
-* The *irradiance* or *radiant flux* **E** is defined as the energy
+* The *irradiance* or *radiant flux* **F** is defined as the energy
 (Joules) crossing a unit surface (1 $m^2$) in unit time (1 second)
 so it has units of $W\,m^{-2}$.
 
