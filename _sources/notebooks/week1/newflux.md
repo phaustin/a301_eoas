@@ -1,4 +1,4 @@
-(week1-flux-from-radiance)=
+(sec:week1-flux-from-radiance)=
 
 # Finding the flux given the radiance
 

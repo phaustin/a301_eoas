@@ -1,10 +1,11 @@
 ---
 jupytext:
+  formats: md:myst,ipynb
   text_representation:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.0
+    jupytext_version: 1.16.6
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -13,6 +14,8 @@ kernelspec:
 
 (sec:planck)=
 # Integrating the Planck function with python
+
+- Download planck_function.ipynb from the [week1 folder](https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&st=n7iwqqem&dl=0)
 
 ```{code-cell} ipython3
 import numpy as np
@@ -88,7 +91,7 @@ ax.set(
 
 ## Convert flux to radiance
 
-This uses the reading {ref}`week2_flux_from_radiance`
+This uses the reading {ref}`sec:week1-flux-from-radiance`
 
 ```{code-cell} ipython3
 Lstar = Estar / np.pi
