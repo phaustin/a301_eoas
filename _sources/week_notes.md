@@ -89,4 +89,26 @@
   
   Check your work by "round tripping"  -- find the radiance at a temperture $T$ using the Planck function, then insert that temperture into your brightness temperature function to make sure you get back that radiance.
   
-  
+### Day 5 Wednesday
+
+#### Review/Announcements
+
+- {ref}`sec:assign1` is posted on canvas, due Tuesday, Jan 21 at 5pm
+
+- Review {ref}`sec:planck_sol`
+
+- Review: $\cos \theta$ for stream flow
+
+- [ESSA career fair registration (Tuesday evening Jan 21)](https://docs.google.com/forms/d/e/1FAIpQLSft_f1UuDeSllvymipSk1xeUPTqhlOEDEJk1n7TbQr7bGEzuQ/viewform)
+ 
+Today we shift from radiation, to mapping, and cover some notebooks about the use of the cartopy mapping package.
+
+
+#### Making maps
+
+- [Another xkcd classic](https://xkcd.com/977/)
+- Reading for Friday: Chapters 1 and 2 of [Understanding map projections](https://drive.google.com/file/d/1araPnZwMui9tBTPyLO_UHVC2DDEIdZ0p/view?usp=sharing)
+- In class: {ref}`sec:cartopy`
+- In class: {ref}`sec:vancartopy`
+- [download folder](https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&st=609jtnta&dl=0)
+
