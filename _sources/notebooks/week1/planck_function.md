@@ -13,7 +13,7 @@ kernelspec:
 ---
 
 (sec:planck)=
-# Integrating the Planck function with python
+# Plotting the Planck function with python
 
 - Download planck_function.ipynb from the [week1 folder](https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&st=n7iwqqem&dl=0)
 
@@ -37,10 +37,10 @@ c, h, k = 299_792_458.0, 6.626_070_04e-34, 1.380_648_52e-23
 c1 = 2.0 * h * c ** 2.0
 c2 = h * c / k
 sigma = 2.0 * np.pi ** 5.0 * k ** 4.0 / (15 * h ** 3.0 * c ** 2.0)
-print(f"in radiation.py, here is sigma {sigma}")
+print(f"in planck notebook, here is sigma {sigma}")
 
 
-def Elambda(wavel, Temp):
+def Flambda(wavel, Temp):
     """
     Calculate the blackbody radiant exitence (Stull 2.13)
 
@@ -59,24 +59,24 @@ def Elambda(wavel, Temp):
     Elambda:  float or arr
            monochromatic radiant exitence (W/m^2/m)
     """
-    Elambda_val = c1 * np.pi / (wavel ** 5.0 * (np.exp(c2 / (wavel * Temp)) - 1))
-    return Elambda_val
+    Flambda_val = c1 * np.pi / (wavel ** 5.0 * (np.exp(c2 / (wavel * Temp)) - 1))
+    return Flambda_val
 ```
 
-## import the function from that file and use it
+## use the function
 
 ```{code-cell} ipython3
 npoints = 10000
 Temp = 255  # K
 wavelengths = np.linspace(0.1, 500.0, npoints) * 1.0e-6  # meters
-Estar = Elambda(wavelengths, Temp)
+Fstar = Flambda(wavelengths, Temp)
 fig, ax = plt.subplots(1, 1, figsize=(10, 10))
-ax.plot(wavelengths * 1.0e6, Estar * 1.0e-6)
+ax.plot(wavelengths * 1.0e6, Fstar * 1.0e-6)
 ax.set(xlim=[0, 50])
 ax.grid(True)
 ax.set(
     xlabel="wavelength (m)",
-    ylabel=r"$E_\lambda^*\ (W\,m^{-2}\,\mu^{-1}$)",
+    ylabel=r"$F_\lambda^*\ (W\,m^{-2}\,\mu m^{-1}$)",
     title=f"Monochromatic blackbody flux at Temp={Temp} K",
 );
 ```
@@ -86,14 +86,17 @@ ax.set(
 This uses the reading {ref}`sec:week1-flux-from-radiance`
 
 ```{code-cell} ipython3
-Lstar = Estar / np.pi
+Blambda = Fstar / np.pi
 fig, ax = plt.subplots(1, 1, figsize=(10, 10))
-ax.plot(wavelengths * 1.0e6, Lstar * 1.0e-6)
+#
+# convert from meters to microns and per meters to per microns
+#
+ax.plot(wavelengths * 1.0e6, Blambda * 1.0e-6)
 ax.set(xlim=[0, 50])
 ax.grid(True)
 ax.set(
-    xlabel="wavelength (m)",
-    ylabel=r"$L_\lambda^*\ (W\,m^{-2}\,sr^{-1}\,\mu^{-1}$)",
+    xlabel=r"wavelength ($\mu m$)",
+    ylabel=r"$B_\lambda^*\ (W\,m^{-2}\,sr^{-1}\,\mu m^{-1}$)",
     title=f"Monochromatic blackbody radiance at Temp={Temp} K",
 );
 ```

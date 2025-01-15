@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Integrating the Planck function with python &#8212; ATSC 301</title>
+    <title>Plotting the Planck function with python &#8212; ATSC 301</title>
   
   
   
@@ -183,7 +183,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
 <li class="toctree-l1"><a class="reference internal" href="radiance.html">Solid angle and radiance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="newflux.html">Finding the flux given the radiance</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Integrating the Planck function with python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Plotting the Planck function with python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="week1_review.html">Week 1 review questions/answers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
@@ -330,7 +330,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Integrating the Planck function with python</h1>
+    <h1>Plotting the Planck function with python</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -341,7 +341,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-a-function-compute-stull-2-13">Write a function compute Stull 2.13</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-the-function-from-that-file-and-use-it">import the function from that file and use it</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-function">use the function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-flux-to-radiance">Convert flux to radiance</a></li>
 </ul>
             </nav>
@@ -354,8 +354,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="integrating-the-planck-function-with-python">
-<span id="sec-planck"></span><h1>Integrating the Planck function with python<a class="headerlink" href="#integrating-the-planck-function-with-python" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="plotting-the-planck-function-with-python">
+<span id="sec-planck"></span><h1>Plotting the Planck function with python<a class="headerlink" href="#plotting-the-planck-function-with-python" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Download planck_function.ipynb from the <a class="reference external" href="https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&amp;st=n7iwqqem&amp;dl=0">week1 folder</a></p></li>
 </ul>
@@ -383,10 +383,10 @@ document.write(`
 <span class="n">c1</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">c</span> <span class="o">**</span> <span class="mf">2.0</span>
 <span class="n">c2</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">c</span> <span class="o">/</span> <span class="n">k</span>
 <span class="n">sigma</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">**</span> <span class="mf">5.0</span> <span class="o">*</span> <span class="n">k</span> <span class="o">**</span> <span class="mf">4.0</span> <span class="o">/</span> <span class="p">(</span><span class="mi">15</span> <span class="o">*</span> <span class="n">h</span> <span class="o">**</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">c</span> <span class="o">**</span> <span class="mf">2.0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;in radiation.py, here is sigma </span><span class="si">{</span><span class="n">sigma</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;in planck notebook, here is sigma </span><span class="si">{</span><span class="n">sigma</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">Elambda</span><span class="p">(</span><span class="n">wavel</span><span class="p">,</span> <span class="n">Temp</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">Flambda</span><span class="p">(</span><span class="n">wavel</span><span class="p">,</span> <span class="n">Temp</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the blackbody radiant exitence (Stull 2.13)</span>
 
@@ -405,40 +405,40 @@ document.write(`
 <span class="sd">    Elambda:  float or arr</span>
 <span class="sd">           monochromatic radiant exitence (W/m^2/m)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">Elambda_val</span> <span class="o">=</span> <span class="n">c1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="p">(</span><span class="n">wavel</span> <span class="o">**</span> <span class="mf">5.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">c2</span> <span class="o">/</span> <span class="p">(</span><span class="n">wavel</span> <span class="o">*</span> <span class="n">Temp</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">Elambda_val</span>
+    <span class="n">Flambda_val</span> <span class="o">=</span> <span class="n">c1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="p">(</span><span class="n">wavel</span> <span class="o">**</span> <span class="mf">5.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">c2</span> <span class="o">/</span> <span class="p">(</span><span class="n">wavel</span> <span class="o">*</span> <span class="n">Temp</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Flambda_val</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>in radiation.py, here is sigma 5.670366816083269e-08
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>in planck notebook, here is sigma 5.670366816083269e-08
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="import-the-function-from-that-file-and-use-it">
-<h2>import the function from that file and use it<a class="headerlink" href="#import-the-function-from-that-file-and-use-it" title="Permalink to this heading">#</a></h2>
+<section id="use-the-function">
+<h2>use the function<a class="headerlink" href="#use-the-function" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npoints</span> <span class="o">=</span> <span class="mi">10000</span>
 <span class="n">Temp</span> <span class="o">=</span> <span class="mi">255</span>  <span class="c1"># K</span>
 <span class="n">wavelengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">500.0</span><span class="p">,</span> <span class="n">npoints</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.0e-6</span>  <span class="c1"># meters</span>
-<span class="n">Estar</span> <span class="o">=</span> <span class="n">Elambda</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">Temp</span><span class="p">)</span>
+<span class="n">Fstar</span> <span class="o">=</span> <span class="n">Flambda</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">Temp</span><span class="p">)</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span> <span class="o">*</span> <span class="mf">1.0e6</span><span class="p">,</span> <span class="n">Estar</span> <span class="o">*</span> <span class="mf">1.0e-6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span> <span class="o">*</span> <span class="mf">1.0e6</span><span class="p">,</span> <span class="n">Fstar</span> <span class="o">*</span> <span class="mf">1.0e-6</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
     <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;wavelength (m)&quot;</span><span class="p">,</span>
-    <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$E_\lambda^*\ (W\,m^{-2}\,\mu^{-1}$)&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$F_\lambda^*\ (W\,m^{-2}\,\mu m^{-1}$)&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Monochromatic blackbody flux at Temp=</span><span class="si">{</span><span class="n">Temp</span><span class="si">}</span><span class="s2"> K&quot;</span><span class="p">,</span>
 <span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2249cab3d3b131e750381ca5d609240d129552a0b54359a854f9585c6d2c944a.png" src="../../_images/2249cab3d3b131e750381ca5d609240d129552a0b54359a854f9585c6d2c944a.png" />
+<img alt="../../_images/4db1c16b3396a91e001e6a6b6c51eada66f3e2adcfed5ca1fa38733a596d7432.png" src="../../_images/4db1c16b3396a91e001e6a6b6c51eada66f3e2adcfed5ca1fa38733a596d7432.png" />
 </div>
 </div>
 </section>
@@ -447,21 +447,24 @@ document.write(`
 <p>This uses the reading <a class="reference internal" href="newflux.html#sec-week1-flux-from-radiance"><span class="std std-ref">Finding the flux given the radiance</span></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Lstar</span> <span class="o">=</span> <span class="n">Estar</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Blambda</span> <span class="o">=</span> <span class="n">Fstar</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span> <span class="o">*</span> <span class="mf">1.0e6</span><span class="p">,</span> <span class="n">Lstar</span> <span class="o">*</span> <span class="mf">1.0e-6</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># convert from meters to microns and per meters to per microns</span>
+<span class="c1">#</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span> <span class="o">*</span> <span class="mf">1.0e6</span><span class="p">,</span> <span class="n">Blambda</span> <span class="o">*</span> <span class="mf">1.0e-6</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;wavelength (m)&quot;</span><span class="p">,</span>
-    <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$L_\lambda^*\ (W\,m^{-2}\,sr^{-1}\,\mu^{-1}$)&quot;</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;wavelength ($\mu m$)&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$B_\lambda^*\ (W\,m^{-2}\,sr^{-1}\,\mu m^{-1}$)&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Monochromatic blackbody radiance at Temp=</span><span class="si">{</span><span class="n">Temp</span><span class="si">}</span><span class="s2"> K&quot;</span><span class="p">,</span>
 <span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c2ca1715739bfd4649baef4a7ccb664aed03f9ebda03a4e40f66acae00cc5652.png" src="../../_images/c2ca1715739bfd4649baef4a7ccb664aed03f9ebda03a4e40f66acae00cc5652.png" />
+<img alt="../../_images/f41f7f53fe2ee88d10a44aefdf881bfebaf17d674dbbff4be6255b0a7a614a09.png" src="../../_images/f41f7f53fe2ee88d10a44aefdf881bfebaf17d674dbbff4be6255b0a7a614a09.png" />
 </div>
 </div>
 </section>
@@ -532,7 +535,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-a-function-compute-stull-2-13">Write a function compute Stull 2.13</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-the-function-from-that-file-and-use-it">import the function from that file and use it</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-function">use the function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-flux-to-radiance">Convert flux to radiance</a></li>
 </ul>
   </nav></div>
