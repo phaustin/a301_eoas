@@ -101,7 +101,7 @@
 
 - [ESSA career fair registration (Tuesday evening Jan 21)](https://docs.google.com/forms/d/e/1FAIpQLSft_f1UuDeSllvymipSk1xeUPTqhlOEDEJk1n7TbQr7bGEzuQ/viewform)
  
-Today we shift from radiation, to mapping, and cover some notebooks about the use of the cartopy mapping package.
+Today we shift from radiation to mapping, and cover some notebooks about the use of the cartopy mapping package.
 
 
 #### Making maps
