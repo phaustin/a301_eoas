@@ -20,9 +20,12 @@
 * [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
 
 
-## Additional Resources (to be assigned)
+## Additional Resources
 
 ### Mapping
 
-* [Understanding map projections](https://drive.google.com/file/d/1araPnZwMui9tBTPyLO_UHVC2DDEIdZ0p/view?usp=sharing)
+* [Understanding map projections](https://drive.google.com/file/d/1araPnZwMui9tBTPyLO_UHVC2DDEIdZ0p/view?usp=sharing) Chapters 1 and 2
+
+
+
 
