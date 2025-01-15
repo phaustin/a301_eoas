@@ -89,4 +89,9 @@
   
   Check your work by "round tripping"  -- find the radiance at a temperture $T$ using the Planck function, then insert that temperture into your brightness temperature function to make sure you get back that radiance.
   
-  
+### Day 5 Wednesday
+
+#### Making maps
+
+- [Another xkcd classic](https://xkcd.com/977/)
+-
