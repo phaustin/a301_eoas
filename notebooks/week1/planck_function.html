@@ -340,7 +340,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-a-module-to-compute-stull-2-13">Write a module to compute Stull 2.13</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-a-function-compute-stull-2-13">Write a function compute Stull 2.13</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-the-function-from-that-file-and-use-it">import the function from that file and use it</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-flux-to-radiance">Convert flux to radiance</a></li>
 </ul>
@@ -367,13 +367,11 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="write-a-module-to-compute-stull-2-13">
-<h2>Write a module to compute Stull 2.13<a class="headerlink" href="#write-a-module-to-compute-stull-2-13" title="Permalink to this heading">#</a></h2>
-<p>this uses the “writefile” magic to save radiation.py into the same folder as this notebook.</p>
+<section id="write-a-function-compute-stull-2-13">
+<h2>Write a function compute Stull 2.13<a class="headerlink" href="#write-a-function-compute-stull-2-13" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%writefile</span> radiation.py
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="c1">#</span>
 <span class="c1"># get Stull&#39;s c_1 and c_2 from fundamental constants</span>
 <span class="c1">#</span>
@@ -413,7 +411,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Overwriting radiation.py
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>in radiation.py, here is sigma 5.670366816083269e-08
 </pre></div>
 </div>
 </div>
@@ -423,12 +421,7 @@ document.write(`
 <h2>import the function from that file and use it<a class="headerlink" href="#import-the-function-from-that-file-and-use-it" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">radiation</span>
-<span class="kn">from</span> <span class="nn">radiation</span> <span class="kn">import</span> <span class="n">Elambda</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;reading function from </span><span class="si">{</span><span class="n">radiation</span><span class="o">.</span><span class="vm">__file__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">npoints</span> <span class="o">=</span> <span class="mi">10000</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npoints</span> <span class="o">=</span> <span class="mi">10000</span>
 <span class="n">Temp</span> <span class="o">=</span> <span class="mi">255</span>  <span class="c1"># K</span>
 <span class="n">wavelengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">500.0</span><span class="p">,</span> <span class="n">npoints</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.0e-6</span>  <span class="c1"># meters</span>
 <span class="n">Estar</span> <span class="o">=</span> <span class="n">Elambda</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">Temp</span><span class="p">)</span>
@@ -438,17 +431,13 @@ document.write(`
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
     <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;wavelength (m)&quot;</span><span class="p">,</span>
-    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;$E_\lambda^*\ (W\,m^{-2}\,\mu^{-1}$)&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$E_\lambda^*\ (W\,m^{-2}\,\mu^{-1}$)&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Monochromatic blackbody flux at Temp=</span><span class="si">{</span><span class="n">Temp</span><span class="si">}</span><span class="s2"> K&quot;</span><span class="p">,</span>
 <span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>in radiation.py, here is sigma 5.670366816083269e-08
-reading function from /Users/phil/repos/a301_eoas/notebooks/week1/radiation.py
-</pre></div>
-</div>
 <img alt="../../_images/2249cab3d3b131e750381ca5d609240d129552a0b54359a854f9585c6d2c944a.png" src="../../_images/2249cab3d3b131e750381ca5d609240d129552a0b54359a854f9585c6d2c944a.png" />
 </div>
 </div>
@@ -465,18 +454,13 @@ reading function from /Users/phil/repos/a301_eoas/notebooks/week1/radiation.py
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
     <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;wavelength (m)&quot;</span><span class="p">,</span>
-    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;$L_\lambda^*\ (W\,m^{-2}\,sr^{-1}\,\mu^{-1}$)&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$L_\lambda^*\ (W\,m^{-2}\,sr^{-1}\,\mu^{-1}$)&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Monochromatic blackbody radiance at Temp=</span><span class="si">{</span><span class="n">Temp</span><span class="si">}</span><span class="s2"> K&quot;</span><span class="p">,</span>
-<span class="p">)</span>
+<span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0.5, 0, &#39;wavelength (m)&#39;),
- Text(0, 0.5, &#39;$L_\\lambda^*\\ (W\\,m^{-2}\\,sr^{-1}\\,\\mu^{-1}$)&#39;),
- Text(0.5, 1.0, &#39;Monochromatic blackbody radiance at Temp=255 K&#39;)]
-</pre></div>
-</div>
 <img alt="../../_images/c2ca1715739bfd4649baef4a7ccb664aed03f9ebda03a4e40f66acae00cc5652.png" src="../../_images/c2ca1715739bfd4649baef4a7ccb664aed03f9ebda03a4e40f66acae00cc5652.png" />
 </div>
 </div>
@@ -547,7 +531,7 @@ reading function from /Users/phil/repos/a301_eoas/notebooks/week1/radiation.py
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-a-module-to-compute-stull-2-13">Write a module to compute Stull 2.13</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-a-function-compute-stull-2-13">Write a function compute Stull 2.13</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-the-function-from-that-file-and-use-it">import the function from that file and use it</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-flux-to-radiance">Convert flux to radiance</a></li>
 </ul>

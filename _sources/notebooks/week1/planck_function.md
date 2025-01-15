@@ -22,12 +22,9 @@ import numpy as np
 from matplotlib import pyplot as plt
 ```
 
-## Write a module to compute Stull 2.13
-
-this uses the "writefile" magic to save radiation.py into the same folder as this notebook.
+## Write a function compute Stull 2.13
 
 ```{code-cell} ipython3
-%%writefile radiation.py
 import numpy as np
 #
 # get Stull's c_1 and c_2 from fundamental constants
@@ -69,11 +66,6 @@ def Elambda(wavel, Temp):
 ## import the function from that file and use it
 
 ```{code-cell} ipython3
-import radiation
-from radiation import Elambda
-
-print(f"reading function from {radiation.__file__}")
-
 npoints = 10000
 Temp = 255  # K
 wavelengths = np.linspace(0.1, 500.0, npoints) * 1.0e-6  # meters
@@ -84,7 +76,7 @@ ax.set(xlim=[0, 50])
 ax.grid(True)
 ax.set(
     xlabel="wavelength (m)",
-    ylabel="$E_\lambda^*\ (W\,m^{-2}\,\mu^{-1}$)",
+    ylabel=r"$E_\lambda^*\ (W\,m^{-2}\,\mu^{-1}$)",
     title=f"Monochromatic blackbody flux at Temp={Temp} K",
 );
 ```
@@ -101,7 +93,11 @@ ax.set(xlim=[0, 50])
 ax.grid(True)
 ax.set(
     xlabel="wavelength (m)",
-    ylabel="$L_\lambda^*\ (W\,m^{-2}\,sr^{-1}\,\mu^{-1}$)",
+    ylabel=r"$L_\lambda^*\ (W\,m^{-2}\,sr^{-1}\,\mu^{-1}$)",
     title=f"Monochromatic blackbody radiance at Temp={Temp} K",
-)
+);
+```
+
+```{code-cell} ipython3
+
 ```
