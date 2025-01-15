@@ -112,3 +112,7 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 - In class: {ref}`sec:vancartopy`
 - [download folder](https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&st=609jtnta&dl=0)
 
+#### Do for Friday
+
+- Read Chapters 1 and 2 of [Understanding map projections](https://drive.google.com/file/d/1araPnZwMui9tBTPyLO_UHVC2DDEIdZ0p/view?usp=sharing)
+- Finish {ref}`sec:cartopy` and {ref}`sec:vancartopy`
