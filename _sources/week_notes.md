@@ -106,7 +106,7 @@ Today we shift from radiation, to mapping, and cover some notebooks about the us
 
 #### Making maps
 
-- [Another xkcd classic](https://xkcd.com/977/)
+- [Another xkcd classic: map projections](https://xkcd.com/977/)
 - Reading for Friday: Chapters 1 and 2 of [Understanding map projections](https://drive.google.com/file/d/1araPnZwMui9tBTPyLO_UHVC2DDEIdZ0p/view?usp=sharing)
 - In class: {ref}`sec:cartopy`
 - In class: {ref}`sec:vancartopy`
