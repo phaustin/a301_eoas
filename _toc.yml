@@ -11,6 +11,9 @@ parts:
 - caption: Weekly topics
   chapters:
   - file: week_notes.md
+  - url: https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&st=n7iwqqem&dl=0
+    title: Notebook downloads
+
 - caption: Week 1
   chapters:
   - url: https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf
@@ -22,6 +25,13 @@ parts:
   - file: notebooks/week1/newflux.md
   - file: notebooks/week1/planck_function.md
   - file: notebooks/week1/week1_review.md
+- caption: Week 2
+  chapters:
+  - file: notebooks/week2/planck_sol.ipynb
+  - file: notebooks/week2/assign1.md
+  - file: notebooks/week2/cartopy_maps.md
+  - file: notebooks/week2/cartopy_mapping_vancouver.md
+    
     
     
     

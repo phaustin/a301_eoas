@@ -16,7 +16,8 @@ jupyter:
 (sec:planck)=
 # Plotting the Planck function
 
-Download this notebook from this link: [planck_function.ipynb](https://www.dropbox.com/scl/fi/0h4rc6v3zpfdffo6b2iim/planck_function.ipynb?rlkey=5oj4dxq7uabz84jwhgadpi3m6&st=lhui2utn&dl=0)
+Download assign1.ipynb from the [week 1 folder](https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&st=n7iwqqem&dl=0)
+
 
 ```python
 import numpy as np

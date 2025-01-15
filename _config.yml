@@ -9,7 +9,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 
 only_build_toc_files: true
 
-exclude_patterns: [".jupyter_cache/*",_build, Thumbs.db, .DS_Store, "*.ipynb_checkpoints"]
+exclude_patterns: ["*ipynb*",".jupyter_cache/*",_build, Thumbs.db, .DS_Store, "*.ipynb_checkpoints"]
 
 execute:
   execute_notebooks: cache
@@ -28,7 +28,7 @@ parse:
 
 repository:
   url: https://github.com/phaustin/a301_eoas
-  branch: jb
+  branch: main
   path_to_book: notebooks
 
 html:

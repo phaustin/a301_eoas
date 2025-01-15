@@ -14,14 +14,17 @@ kernelspec:
   name: python3
 ---
 
-(week3:coords)=
+(sec:vancartopy)=
 # Mapping Vancouver with cartopy 
 
-The pamphlet:
+- Download cartopy_mapping_vancouver.ipynb from the [week2 folder](https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&st=n7iwqqem&dl=0) 
 
-[Understanding map projections](https://drive.google.com/file/d/1araPnZwMui9tBTPyLO_UHVC2DDEIdZ0p/view?usp=sharing)
 
-Introduces geographic coordinate systems in Chapter 1.  They solve the problem of how to locate yourself on the earth's surface in three dimensions.  They specify an angular measure of units, a prime meridian, a spheroid and a datam (see chapter 1).
+The pamphlet: 
+
+- [Understanding map projections](https://drive.google.com/file/d/1araPnZwMui9tBTPyLO_UHVC2DDEIdZ0p/view?usp=sharing)
+
+   Introduces geographic coordinate systems in Chapter 1.  They solve the problem of how to locate yourself on the earth's surface in three dimensions.  They specify an angular measure of units, a prime meridian, a spheroid and a datam (see chapter 1).
 
 ## Basic points
 

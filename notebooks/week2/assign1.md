@@ -12,10 +12,12 @@ kernelspec:
   name: python3
 ---
 
-(sec:planck)=
-# Assignment 1, brightness temperatures - solution
+(sec:assign1)=
+# Assignment 1, brightness temperatures
 
-For this assignment you're asked to write a function to calculate the "brightness temperature", defined as the temperature a blackbody would need to have to emit an observed monochromatic radiance $I_\lambda$:
+- Download assign1.ipynb from the [week2 folder](https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&st=n7iwqqem&dl=0)
+
+- For this assignment you're asked to write a function to calculate the "brightness temperature", defined as the temperature a blackbody would need to have to emit an observed monochromatic radiance $I_\lambda$:
 
 $$
   B_\lambda(T_b) = I_{\lambda\,observed}
@@ -25,13 +27,11 @@ $$
 
 Fill in the notebooks cells indicated below and upload your notebook to canvas.
 
-Download this notebook from this link: [assign1.ipynb](https://www.dropbox.com/scl/fi/0h4rc6v3zpfdffo6b2iim/planck_function.ipynb?rlkey=5oj4dxq7uabz84jwhgadpi3m6&st=lhui2utn&dl=0)
-
 +++
 
-### Question 1
+## Question 1
 
-In the cell below, write a function that calculates the blackbody radiance.  You can/should just adapt the code from {ref}`planck_sol` so that it evaluates W&H 4.10:
+In the cell below, write a function that calculates the blackbody radiance.  You can/should just adapt the code from {ref}`sec:planck_sol` so that it evaluates W&H 4.10:
   
   $$
   B_\lambda(T)=\frac{c_1 \lambda^{-5}}{\pi\left(e^{c_2 / \lambda T}-1\right)}
@@ -64,14 +64,13 @@ def calc_Blambda(wavel, Temp):
     """
 ```
 
-````{code-cell} ipython3
+```{code-cell} ipython3
 ###  Question 1
 ###  your Blambda function here
 ###
+```
 
-
-
-### Question 2
+## Question 2
 ### brightness temperature function
 
 In the cell below, write a new function to compute the brightness temperature  $T_{bright}$.  It should have the following name and signature
@@ -93,15 +92,16 @@ def calc_Tbright(wavel, I):
     Tbright:  float or arr
            brightness temperature (K)
     """
-````
 
-````{code-cell} ipython3
+```
+
+```{code-cell} ipython3
 ### Question 2 answer
 ### your version of calc_Tbright here
 ###
+```
 
-
-### Question 3
+## Question 3
 
 Test your function by executing a round trip for some wavelength and temperature.  In the cell below, define a wavelength `wavelen` and a temperture `the_temp` and use them to calculate blackbody radiance `Iblack` with your function `calc_Blambda`.   Then calculate a brightness temperature `Tbright` using `calc_Tbright` and make sure it is equal to `the_temp` using the function [numpy.testing.assert_almost_equal](https://numpy.org/doc/2.1/reference/generated/numpy.testing.assert_almost_equal.html)
 
@@ -109,11 +109,9 @@ Something like:
 
 `np.testing.assert_almost_equal(the_temp, Tbright)`
 
-
-
 ```{code-cell} ipython3
 ### Question 3 answer
 #
 # your question 3 solution here
 #
-````
+```
