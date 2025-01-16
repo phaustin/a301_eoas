@@ -16,8 +16,8 @@ jupyter:
 (sec:planck_sol)=
 # Plotting the Planck function - solution
 
+- Download planck_sol.ipynb from the [week2 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
 
-- Download planck_sol.ipynb from the [week2 folder](https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&st=n7iwqqem&dl=0) 
 
 ```python
 import numpy as np

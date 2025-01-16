@@ -25,8 +25,7 @@ kernelspec:
 
 Source: [project pythia foundations](https://foundations.projectpythia.org/core/cartopy/cartopy.html)
 
-- Download cartopy_maps.ipynb from the [week2 folder](https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&st=n7iwqqem&dl=0) 
-
+- Download cartopy_maps.ipynb from the [week2 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
 
 +++
 
