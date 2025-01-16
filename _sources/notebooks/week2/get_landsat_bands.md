@@ -15,8 +15,7 @@ kernelspec:
 (week2:hls)=
 # Landsat 1: Dowloading Landsat and Sentinel data from NASA
 
-- Download get_landsat_bands.ipynb from the [week2 folder](https://drive.google.com/drive/folders/1-D6y9MlE8LZRLZg-qRCxPZSgar8kGjBT?usp=sharing)
-
+- Download get_landsat_bands.ipynb from the [week2 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
 
 
 ## Introduction
