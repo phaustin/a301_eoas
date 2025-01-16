@@ -15,10 +15,10 @@ kernelspec:
 (week2:hls)=
 # Landsat 1: Dowloading Landsat and Sentinel data from NASA
 
-- Download get_landsat_bands.ipynb from the [week2 folder](https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&st=n7iwqqem&dl=0) 
+- Download get_landsat_bands.ipynb from the [week2 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
 
 
-## Introduction
+## Introduction 
 
 This notebook goes over the procedure to locate and download 30 meter resolution
 Landsat and Sentinel data using NASA's Harmonized Landsat and Sentinel-2  dataset.
