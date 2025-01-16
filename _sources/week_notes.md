@@ -52,7 +52,7 @@
 
 - Note syllabus change: Midterm is now Monday, Feb. 24 -- {ref}`syllabus`
 - [Thermodynamic humour](https://m.xkcd.com/3032/)
-- Go over {ref}`week1-flux-from-radiance`
+- Go over {ref}`sec:week1-flux-from-radiance`
 
 
 #### Do for Monday
@@ -116,3 +116,8 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 
 - Read Chapters 1 and 2 of [Understanding map projections](https://drive.google.com/file/d/1araPnZwMui9tBTPyLO_UHVC2DDEIdZ0p/view?usp=sharing)
 - Finish {ref}`sec:cartopy` and {ref}`sec:vancartopy`
+
+### Day 6 Friday
+
+- Go over how to use rioxarray to plot a Landsat/Sentinel image of your choice:
+  The notebook: {ref}`week2:hls`

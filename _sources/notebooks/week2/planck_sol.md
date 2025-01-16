@@ -84,7 +84,7 @@ ax.set(
 
 ## Convert flux to radiance
 
-This uses the reading {ref}`week1-flux-from-radiance`
+This uses the reading {ref}`sec:week1-flux-from-radiance`
 
 ```python
 # convert isotropic flux to radiance

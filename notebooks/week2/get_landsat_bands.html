@@ -1,0 +1,1224 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Landsat 1: Dowloading Landsat and Sentinel data from NASA &#8212; ATSC 301</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week2/get_landsat_bands';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week2/get_landsat_bands.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Mapping Vancouver with cartopy" href="cartopy_mapping_vancouver.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ATSC 301</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    ATSC 301: 2024 Term 2 Winter
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Useful links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">ATSC 301: syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrity.html">UBC academic integrity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../texts.html">Texts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Week notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&amp;st=n7iwqqem&amp;dl=0">Notebook downloads</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">Plotting the Planck function with python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/week1_review.html">Week 1 review questions/answers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="planck_sol.html">Plotting the Planck function - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign1.html">Assignment 1, brightness temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cartopy_maps.html">Introduction to Cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cartopy_mapping_vancouver.html">Mapping Vancouver with cartopy</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/week2/get_landsat_bands.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Landsat 1: Dowloading Landsat and Sentinel data from NASA</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-objectives">Overview/objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">Authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doing-an-image-search-using-pystac-client">Doing an image search using pystac_client</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-the-search">setup the search</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-metadata-for-search-items">get the metadata for search items</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-assets-for-scene-1-june-14-2015">Get the assets for scene 1 (June 14, 2015)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-display-the-true-color-browse-image">Download and display the true-color browse image</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-the-band5-geotiff">Working with the Band5 geotiff</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-cookie-file-name-as-an-environmental-variable">set the cookie file name as an environmental variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-band-5-raster">Read the band 5 raster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-all-attributes">List all attributes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-coverage">Image  coverage</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#explain-why-the-two-estimates-are-correct-but-different">Explain why the two estimates are correct but different.</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-the-image">Scaling the image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-the-raster">Histogram the raster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-it-using-a-grey-palette">Plot it using a grey palette</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-out-the-raster-as-a-geotiff">Write out the raster as a geotiff</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#read-it-back-in-as-a-sanity-check">Read it back in as a sanity check</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">What’s next</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-monday-s-class">For Monday’s class</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="landsat-1-dowloading-landsat-and-sentinel-data-from-nasa">
+<span id="week2-hls"></span><h1>Landsat 1: Dowloading Landsat and Sentinel data from NASA<a class="headerlink" href="#landsat-1-dowloading-landsat-and-sentinel-data-from-nasa" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Download get_landsat_bands.ipynb from the <a class="reference external" href="https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&amp;amp;st=n7iwqqem&amp;amp;dl=0">week2 folder</a></p></li>
+</ul>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>This notebook goes over the procedure to locate and download 30 meter resolution
+Landsat and Sentinel data using NASA’s Harmonized Landsat and Sentinel-2  dataset.
+These two satellites have very similar radiometer bands, fly in similar orbits and
+have similar resolutions and swath widths.  NASA (Landsat) and the European Space Agency (ESA)
+have collaborated on a common dataset that gives corrected surface reflectivity and brightness
+temperatures for the two satellites.</p>
+</section>
+<section id="overview-objectives">
+<h2>Overview/objectives<a class="headerlink" href="#overview-objectives" title="Link to this heading">#</a></h2>
+<p>In the first few sections, we’ll go over how to select a Landsat scene for a particular place and range of dates, and look at the true-color browse image.  This image is available as jpg file without having to
+authenticate with an earthdata id.</p>
+<p>Then we’ll download a band 5, near-infrared geotif file, where tif stands for “tagged image format”.  Here is the <a class="reference external" href="https://en.wikipedia.org/wiki/TIFF">tif wikipedia article</a>. Unlike the jpg format, tif files don’t use lossy compression, and contain arbitrary metadata about the image.</p>
+<p>Python modules introduced below:</p>
+<ul class="simple">
+<li><p>earthaccess, to send credentials to NASA</p></li>
+<li><p>pystac_client, to search the image catalog for satellites, locations and dates</p></li>
+<li><p>rioxarray, to read the tif image into memory and store as an xarray.DataArray object</p></li>
+<li><p>xarray.DataArray, to access the metadata, make histograms and image plots</p></li>
+<li><p>matplotlib.Normalize, to enhance image contrast for plotting specific ranges of reflectivities</p></li>
+</ul>
+<p>We’ll go into more detail on xarray and matplotlib/cartopy in future notebooks.</p>
+<p>By the end of this notebook you should have a saved tif file of your landsat, band 5 image, and a good idea of what the reflective patterns of the image are.</p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>This notebook requires three additions to the a301 environment.  To install them, do</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">earthaccess</span> <span class="n">pystac</span><span class="o">-</span><span class="n">client</span> <span class="n">shapely</span>
+</pre></div>
+</div>
+</section>
+<section id="authentication">
+<h2>Authentication<a class="headerlink" href="#authentication" title="Link to this heading">#</a></h2>
+<p>To get NASA to give you your image, you’ll need your username and password that you created at <a class="reference external" href="https://urs.earthdata.nasa.gov">https://urs.earthdata.nasa.gov/</a></p>
+<p>You need to authenticate as described in: <a class="reference external" href="https://earthaccess.readthedocs.io/en/latest/howto/authenticate/">https://earthaccess.readthedocs.io/en/latest/howto/authenticate</a></p>
+<p>The following steps create a <code class="docutils literal notranslate"><span class="pre">~/.netrc</span></code> file, which  keeps your username and password for future use:</p>
+<ol class="arabic simple">
+<li><p>open a terminal and activate the a301 environment</p></li>
+<li><p>type <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-i</span></code> to get an interactive python session</p></li>
+<li><p>type <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">earthaccess</span></code></p></li>
+<li><p>type <code class="docutils literal notranslate"><span class="pre">auth</span> <span class="pre">=</span> <span class="pre">earthaccess.login(strategy=&quot;interactive&quot;,</span> <span class="pre">persist=True)</span></code> to create an authorization object and write the information into a netrc file for future reference.</p></li>
+</ol>
+<p>Then the next time you need to download or search HLS data you should just be able to do:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">earthaccess</span>
+<span class="n">auth</span> <span class="o">=</span> <span class="n">earthaccess</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;netrc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">earthaccess</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">auth</span> <span class="o">=</span> <span class="n">earthaccess</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;netrc&quot;</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;earthaccess&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>and your credentials will be read in from the netrc file.</p>
+<p>You can search the catalog without logging in, but once you ask for data, the earthaccess object will write a new file called “cookies.txt” in the directory  you started jupyterlab in.</p>
+</section>
+<section id="doing-an-image-search-using-pystac-client">
+<h2>Doing an image search using pystac_client<a class="headerlink" href="#doing-an-image-search-using-pystac-client" title="Link to this heading">#</a></h2>
+<p>STAC is an acronym for “Spatio-temporal asset catalog”, which is a standard way of cataloging
+GIS resources in the cloud.  A STAC catalog hold metadata, including web addresses, for geotiff
+files like those uploaded by the <a class="reference external" href="https://www.earthdata.nasa.gov/learn/articles/hls-cloud-efforts">NASA harmonized landsat-sentinel project</a> (HLS) to Amazon Web Services.</p>
+<p>We get the url for the stac catalog from the “Common Metadata Repository” stored on at <a class="reference external" href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/02_Data_Discovery_CMR-STAC_API.html">NASA CMR page</a>. The HLS project catalog is called “LPCLOUD”  (for land processes cloud and is available at <a class="reference external" href="https://cmr.earthdata.nasa.gov/stac/LPCLOUD">https://cmr.earthdata.nasa.gov/stac/LPCLOUD</a>.  This is called a “stac endpoint” and will receive
+and process requests sent to it by the pystac Client.</p>
+<p>We’ll also need the <a class="reference external" href="https://towardsdatascience.com/geospatial-adventures-step-1-shapely-e911e4f86361">shapely</a> library to specify a point on the earth that we want to be included in our search. In addition, we need to specify a date range to search.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w">  </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pystac_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">Client</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use shapely to create a point object holding the location of UBC.  Also create a datetime object showing the range of days you’re interested in searching for images.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_lon</span><span class="p">,</span> <span class="n">hls_lat</span> <span class="o">=</span> <span class="o">-</span><span class="mf">123.120</span><span class="p">,</span> <span class="mf">49.2827</span>
+<span class="n">center_point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">hls_lon</span><span class="p">,</span> <span class="n">hls_lat</span><span class="p">)</span>
+<span class="n">june_2015</span> <span class="o">=</span> <span class="s2">&quot;2015-06-01/2015-06-30&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># connect to the STAC endpoint</span>
+<span class="n">cmr_api_url</span> <span class="o">=</span> <span class="s2">&quot;https://cmr.earthdata.nasa.gov/stac/LPCLOUD&quot;</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">cmr_api_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="setup-the-search">
+<h3>setup the search<a class="headerlink" href="#setup-the-search" title="Link to this heading">#</a></h3>
+<p>The pystac client object takes the search parameters as the following keywords:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">search</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+    <span class="n">collections</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;HLSL30.v2.0&quot;</span><span class="p">],</span>
+    <span class="n">intersects</span><span class="o">=</span><span class="n">center_point</span><span class="p">,</span>
+    <span class="n">datetime</span><span class="o">=</span> <span class="n">june_2015</span>
+<span class="p">)</span> 
+<span class="c1"># uncomment below to see gory details</span>
+<span class="c1"># help(search)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-the-metadata-for-search-items">
+<h3>get the metadata for search items<a class="headerlink" href="#get-the-metadata-for-search-items" title="Link to this heading">#</a></h3>
+<p>This search should find 4 scenes – 2 of which have 4% cloud cover.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="n">search</span><span class="o">.</span><span class="n">item_collection</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">the_scene</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="si">{</span><span class="n">index</span><span class="si">=}</span><span class="se">\n</span><span class="s2">properties: </span><span class="si">{</span><span class="n">the_scene</span><span class="o">.</span><span class="n">properties</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># items</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">APIError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">items</span> <span class="o">=</span> <span class="n">search</span><span class="o">.</span><span class="n">item_collection</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">the_scene</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="si">{</span><span class="n">index</span><span class="si">=}</span><span class="se">\n</span><span class="s2">properties: </span><span class="si">{</span><span class="n">the_scene</span><span class="o">.</span><span class="n">properties</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/mini310/envs/a405/lib/python3.11/site-packages/pystac_client/item_search.py:765,</span> in <span class="ni">ItemSearch.item_collection</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">757</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">758</span><span class="sd"> Get the matching items as a :py:class:`pystac.ItemCollection`.</span>
+<span class="g g-Whitespace">    </span><span class="mi">759</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">760</span><span class="sd"> Return:</span>
+<span class="g g-Whitespace">    </span><span class="mi">761</span><span class="sd">     ItemCollection: The item collection</span>
+<span class="g g-Whitespace">    </span><span class="mi">762</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">763</span> <span class="c1"># Bypass the cache here, so that we can pass __preserve_dict__</span>
+<span class="g g-Whitespace">    </span><span class="mi">764</span> <span class="c1"># without mutating what&#39;s in the cache.</span>
+<span class="ne">--&gt; </span><span class="mi">765</span> <span class="n">feature_collection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">item_collection_as_dict</span><span class="o">.</span><span class="n">__wrapped__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">766</span> <span class="c1"># already signed in item_collection_as_dict</span>
+<span class="g g-Whitespace">    </span><span class="mi">767</span> <span class="k">return</span> <span class="n">ItemCollection</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">768</span>     <span class="n">feature_collection</span><span class="p">,</span> <span class="n">preserve_dict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span>
+<span class="g g-Whitespace">    </span><span class="mi">769</span> <span class="p">)</span>
+
+<span class="nn">File ~/mini310/envs/a405/lib/python3.11/site-packages/pystac_client/item_search.py:786,</span> in <span class="ni">ItemSearch.item_collection_as_dict</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">773</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">774</span><span class="sd"> Get the matching items as an item-collection-like dict.</span>
+<span class="g g-Whitespace">    </span><span class="mi">775</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">783</span><span class="sd">     Dict : A GeoJSON FeatureCollection</span>
+<span class="g g-Whitespace">    </span><span class="mi">784</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">785</span> <span class="n">features</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">--&gt; </span><span class="mi">786</span> <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pages_as_dicts</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">787</span>     <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">page</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">788</span>         <span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+
+<span class="nn">File ~/mini310/envs/a405/lib/python3.11/site-packages/pystac_client/item_search.py:736,</span> in <span class="ni">ItemSearch.pages_as_dicts</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">734</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_stac_io</span><span class="p">,</span> <span class="n">StacApiIO</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">735</span>     <span class="n">num_items</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="ne">--&gt; </span><span class="mi">736</span>     <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stac_io</span><span class="o">.</span><span class="n">get_pages</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">737</span>         <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">738</span>     <span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">739</span>         <span class="n">call_modifier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modifier</span><span class="p">,</span> <span class="n">page</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">740</span>         <span class="n">features</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="p">[])</span>
+
+<span class="nn">File ~/mini310/envs/a405/lib/python3.11/site-packages/pystac_client/stac_api_io.py:294,</span> in <span class="ni">StacApiIO.get_pages</span><span class="nt">(self, url, method, parameters)</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_pages</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span>     <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span>     <span class="n">method</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">286</span>     <span class="n">parameters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">288</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Iterator that yields dictionaries for each page at a STAC paging</span>
+<span class="g g-Whitespace">    </span><span class="mi">289</span><span class="sd">     endpoint, e.g., /collections, /search</span>
+<span class="g g-Whitespace">    </span><span class="mi">290</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">291</span><span class="sd">     Return:</span>
+<span class="g g-Whitespace">    </span><span class="mi">292</span><span class="sd">         Dict[str, Any] : JSON content from a single page</span>
+<span class="g g-Whitespace">    </span><span class="mi">293</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">294</span>     <span class="n">page</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">295</span>     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;features&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">page</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;collections&quot;</span><span class="p">)):</span>
+<span class="g g-Whitespace">    </span><span class="mi">296</span>         <span class="k">return</span> <span class="kc">None</span>
+
+<span class="nn">File ~/mini310/envs/a405/lib/python3.11/site-packages/pystac/stac_io.py:205,</span> in <span class="ni">StacIO.read_json</span><span class="nt">(self, source, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span> <span class="k">def</span><span class="w"> </span><span class="nf">read_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">HREF</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Read a dict from the given source.</span>
+<span class="g g-Whitespace">    </span><span class="mi">190</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span><span class="sd">     See :func:`StacIO.read_text &lt;pystac.StacIO.read_text&gt;` for usage of</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span><span class="sd">         given source.</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">205</span>     <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">json_loads</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+
+<span class="nn">File ~/mini310/envs/a405/lib/python3.11/site-packages/pystac_client/stac_api_io.py:168,</span> in <span class="ni">StacApiIO.read_text</span><span class="nt">(self, source, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="n">href</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">167</span> <span class="k">if</span> <span class="n">_is_url</span><span class="p">(</span><span class="n">href</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">168</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">href</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">169</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">170</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">href</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+
+<span class="nn">File ~/mini310/envs/a405/lib/python3.11/site-packages/pystac_client/stac_api_io.py:217,</span> in <span class="ni">StacApiIO.request</span><span class="nt">(self, href, method, headers, parameters)</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="k">raise</span> <span class="n">APIError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span> <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">217</span>     <span class="k">raise</span> <span class="n">APIError</span><span class="o">.</span><span class="n">from_response</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span>     <span class="k">return</span> <span class="n">resp</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+<span class="ne">APIError</span>: &lt;html&gt;
+  <span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">Request</span> <span class="n">Limit</span> <span class="n">Exceeded</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">CMR</span> <span class="n">Search</span> <span class="n">rate</span> <span class="n">exceeded</span><span class="o">.</span> <span class="n">Please</span> <span class="n">refer</span> <span class="n">to</span> <span class="n">the</span> <span class="n">following</span> <span class="k">for</span> <span class="n">guidance</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cmr</span><span class="o">.</span><span class="n">earthdata</span><span class="o">.</span><span class="n">nasa</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="n">site</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">search</span><span class="o">/</span><span class="n">api</span><span class="o">.</span><span class="n">html</span><span class="c1">#request-moderation</span>
+<span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-the-assets-for-scene-1-june-14-2015">
+<h3>Get the assets for scene 1 (June 14, 2015)<a class="headerlink" href="#get-the-assets-for-scene-1-june-14-2015" title="Link to this heading">#</a></h3>
+<p>Once we decide on the scene, we can access its assets.  It contains the href (url) for
+each of the landsat bands (except Band 8) – here are their wavelengths:  <a class="reference external" href="https://landsat.gsfc.nasa.gov/satellites/landsat-8/landsat-8-bands/">Landsat Bands</a></p>
+<p>What happened to band 8? It is in a wavelength range that is only measured by the Sentinel MSI scanner, not the Landsat OLI scanner.  The channel comparisons are given here:
+<a class="reference external" href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/">harmonized channels</a></p>
+<p>If we had found a Sentinel image instead, we would be missing the thermal channels in Landsat bands 10 and 11.</p>
+<p>There are also geotiffs for the</p>
+<ul class="simple">
+<li><p>Solar Azimuth Angle (SAA)</p></li>
+<li><p>Solar Zenith Angle (SZA)</p></li>
+<li><p>Sensor Azimuth Angle (VAA)</p></li>
+<li><p>Sensor Zenith Angle (VZA)</p></li>
+</ul>
+<p>and a jpg image file called ‘browse’ which is a 1000 x 1000 pixel true color image for the scene.  This image is created by mapping bands 2, 3 and 4 to the blue, green and red values in the browse jpg image file file.</p>
+<p>The filenames below show that the June 14 scene was taken by Landsat – Landsat filenames begin with HLS.L30, Sentinel with HLS.S30.  The number 30 is the pixel size in meters:  30 meters high by 30 meters wide</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_scene</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">hls_scene</span><span class="o">.</span><span class="n">assets</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">hls_scene</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">hls_scene</span><span class="o">.</span><span class="n">assets</span>
+
+<span class="ne">NameError</span>: name &#39;items&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="download-and-display-the-true-color-browse-image">
+<h3>Download and display the true-color browse image<a class="headerlink" href="#download-and-display-the-true-color-browse-image" title="Link to this heading">#</a></h3>
+<p>You can see the browse image by clicking on the asset href above. We can also use rioxarray to download the browse image from its url.  The browse image is stored as a red green blue jpg file:  <a class="reference external" href="https://en.wikipedia.org/wiki/JPEG">wikipedia page on jpg</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_browse</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">hls_scene</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s1">&#39;browse&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">href</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">hls_browse</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">hls_scene</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s1">&#39;browse&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">href</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;hls_scene&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">hls_browse</span></code> is an <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.htm">xarray DataArray</a>.  In this case it’s a simple 3 dimensional array with shape (3,1000,1000) holding the integer brightness levels (0-255), along with x,y values for each pixel.   These are just values of the pixel centers between 0-1000, since the browse image has no coordinate reference system attached.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">hls_browse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">type</span><span class="p">(</span><span class="n">hls_browse</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;hls_browse&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_browse</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">hls_browse</span>
+
+<span class="ne">NameError</span>: name &#39;hls_browse&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>and we can plot it using imshow</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">hls_browse</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">origin</span> <span class="o">=</span> <span class="s1">&#39;upper&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;June 14, 2015, Landsat 8&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">hls_browse</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">origin</span> <span class="o">=</span> <span class="s1">&#39;upper&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;June 14, 2015, Landsat 8&#39;</span><span class="p">);</span>
+
+<span class="ne">NameError</span>: name &#39;hls_browse&#39; is not defined
+</pre></div>
+</div>
+<img alt="../../_images/623ed9083cfec4dc13c8e852596212d3eccd832aa193547b03bae8b3d6a1bfef.png" src="../../_images/623ed9083cfec4dc13c8e852596212d3eccd832aa193547b03bae8b3d6a1bfef.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="working-with-the-band5-geotiff">
+<h2>Working with the Band5 geotiff<a class="headerlink" href="#working-with-the-band5-geotiff" title="Link to this heading">#</a></h2>
+<p>Landsat Band5 in the near-infrared spans wavelengths between  0.845–0.885 <span class="math notranslate nohighlight">\(\mu m\)</span> which are invisible to the human eye. This is a wavelength region where vegetation is very reflective,
+because the leaves want to absorb red photons for photosynthesis and reflect slightly longer near-ir photons so they don’t get absorbed and
+raise the leaf temperature.  This difference between red (Band4) and near-infrared (Band 5) is called the <a class="reference external" href="https://agrio.app/Red-Edge-reflectance-monitoring-for-early-plant-stress-detection/">“red edge”</a>.</p>
+<p>If you have managed to get your earthdata login into the <code class="docutils literal notranslate"><span class="pre">~/.netrc</span></code> file you should be able to download and save band 5 as shown below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band_name</span><span class="o">=</span><span class="s2">&quot;B05&quot;</span>
+<span class="n">hls_scene</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="n">band_name</span><span class="p">]</span><span class="o">.</span><span class="n">href</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">band_name</span><span class="o">=</span><span class="s2">&quot;B05&quot;</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">hls_scene</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="n">band_name</span><span class="p">]</span><span class="o">.</span><span class="n">href</span>
+
+<span class="ne">NameError</span>: name &#39;hls_scene&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<section id="set-the-cookie-file-name-as-an-environmental-variable">
+<h3>set the cookie file name as an environmental variable<a class="headerlink" href="#set-the-cookie-file-name-as-an-environmental-variable" title="Link to this heading">#</a></h3>
+<p>We got the browse image for free, but the actual bands require authorization. The nasa earthdata site will put an encrypted token into the file <code class="docutils literal notranslate"><span class="pre">cookies.txt</span></code> in the current directory (‘.’) when we ask for band data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GDAL_HTTP_COOKIEFILE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;./cookies.txt&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GDAL_HTTP_COOKIEJAR&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;./cookies.txt&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="read-the-band-5-raster">
+<h3>Read the band 5 raster<a class="headerlink" href="#read-the-band-5-raster" title="Link to this heading">#</a></h3>
+<p>The next cell reads in the raster.  By setting <code class="docutils literal notranslate"><span class="pre">masked=True</span></code> we are telling rasterio to look up the <code class="docutils literal notranslate"><span class="pre">_FillValue</span></code> tag in the
+geotiff, and replace all pixels that have that value to <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_band5</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">hls_scene</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s1">&#39;B05&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">href</span><span class="p">,</span><span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">hls_band5</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">hls_scene</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s1">&#39;B05&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">href</span><span class="p">,</span><span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;hls_scene&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_band5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">hls_band5</span>
+
+<span class="ne">NameError</span>: name &#39;hls_band5&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-all-attributes">
+<h3>List all attributes<a class="headerlink" href="#list-all-attributes" title="Link to this heading">#</a></h3>
+<p>Unlike the browse image, the actual band 5 tif has metadata.  xarray DataArray objects store metadata as “attributes”.  Here are all the attributes we fetched from the tif file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_band5</span><span class="o">.</span><span class="n">attrs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">hls_band5</span><span class="o">.</span><span class="n">attrs</span>
+
+<span class="ne">NameError</span>: name &#39;hls_band5&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The most important are the coordinate reference system for the image (UTM zone 10N), the coordinates of the upper left corner (not the center) (ULX, ULY), the pixel size (SPATIAL_RESOLUTION), cloud_coverage (4%), and the scale_factor we need to multiply by to get surface refectance from the packed data values.</p>
+<p>The DataArray also has three indexes, the first is just the number 1 (only 1 band in the tif), the next 2 are the x,y values of the center of each pixel in UTM 10N coordiates. Note that the  y array gets smaller as the index increases – the image is scanned from top to bottom.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_band5</span><span class="o">.</span><span class="n">indexes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">hls_band5</span><span class="o">.</span><span class="n">indexes</span>
+
+<span class="ne">NameError</span>: name &#39;hls_band5&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="image-coverage">
+<h3>Image  coverage<a class="headerlink" href="#image-coverage" title="Link to this heading">#</a></h3>
+<p>Here are two ways of finding the image width in km.  The first way gives 109.77 km</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="n">hls_band5</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">hls_band5</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mf">1000.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">((</span><span class="n">hls_band5</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">hls_band5</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mf">1000.</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;hls_band5&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The second gives 109.80 km.</p>
+<section id="explain-why-the-two-estimates-are-correct-but-different">
+<h4>Explain why the two estimates are correct but different.<a class="headerlink" href="#explain-why-the-two-estimates-are-correct-but-different" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_band5</span><span class="o">.</span><span class="n">NCOLS</span><span class="o">*</span><span class="mf">30.</span><span class="o">/</span><span class="mf">1000.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">hls_band5</span><span class="o">.</span><span class="n">NCOLS</span><span class="o">*</span><span class="mf">30.</span><span class="o">/</span><span class="mf">1000.</span>
+
+<span class="ne">NameError</span>: name &#39;hls_band5&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="scaling-the-image">
+<h3>Scaling the image<a class="headerlink" href="#scaling-the-image" title="Link to this heading">#</a></h3>
+<p>The cell below removes the useless unit index and converts the image from (1,3660,3660) to (3660,3660), then scales the array.
+Note that by doing arithemetic on the image, we lose all the metadata, but we keep the indexes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_raster</span> <span class="o">=</span> <span class="n">hls_band5</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+<span class="n">hls_raster</span> <span class="o">=</span> <span class="n">hls_raster</span><span class="o">*</span><span class="n">hls_band5</span><span class="o">.</span><span class="n">scale_factor</span>
+<span class="n">hls_raster</span><span class="o">.</span><span class="n">attrs</span><span class="p">,</span> <span class="n">hls_raster</span><span class="o">.</span><span class="n">indexes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">hls_raster</span> <span class="o">=</span> <span class="n">hls_band5</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">hls_raster</span> <span class="o">=</span> <span class="n">hls_raster</span><span class="o">*</span><span class="n">hls_band5</span><span class="o">.</span><span class="n">scale_factor</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">hls_raster</span><span class="o">.</span><span class="n">attrs</span><span class="p">,</span> <span class="n">hls_raster</span><span class="o">.</span><span class="n">indexes</span>
+
+<span class="ne">NameError</span>: name &#39;hls_band5&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_raster</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">hls_band5</span><span class="o">.</span><span class="n">attrs</span>
+<span class="n">hls_raster</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">hls_raster</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">hls_band5</span><span class="o">.</span><span class="n">attrs</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">hls_raster</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;hls_band5&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="histogram-the-raster">
+<h3>Histogram the raster<a class="headerlink" href="#histogram-the-raster" title="Link to this heading">#</a></h3>
+<p>Make sure the scaled band5 reflectance is in the range 0-1</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_raster</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">hls_raster</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">();</span>
+
+<span class="ne">NameError</span>: name &#39;hls_raster&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-it-using-a-grey-palette">
+<h3>Plot it using a grey palette<a class="headerlink" href="#plot-it-using-a-grey-palette" title="Link to this heading">#</a></h3>
+<p>We can use the Normalize object to adjust the maximum range we want to assign colors to.  In this case,
+we don’t want to waste colors on the very few pixels with reflectances higher than 0.8.  We’ll use a grey scale colormap.  Note that the DataArray object
+knows how to use the x and y indexes to label the axis tick marks in map coordinates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pal</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;Greys_r&quot;</span><span class="p">))</span>
+<span class="n">pal</span><span class="o">.</span><span class="n">set_bad</span><span class="p">(</span><span class="s2">&quot;0.75&quot;</span><span class="p">)</span>  <span class="c1"># color 75% grey np.nan cells</span>
+<span class="n">pal</span><span class="o">.</span><span class="n">set_over</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>  <span class="c1"># color cells &gt; vmax red</span>
+<span class="n">pal</span><span class="o">.</span><span class="n">set_under</span><span class="p">(</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>  <span class="c1"># color cells &lt; vmin black</span>
+<span class="n">vmin</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1">#anything under this is colored black</span>
+<span class="n">vmax</span> <span class="o">=</span> <span class="mf">0.8</span>  <span class="c1">#anything over this is colored white</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">Normalize</span>
+<span class="n">the_norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">hls_raster</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pal</span><span class="p">,</span> <span class="n">norm</span> <span class="o">=</span> <span class="n">the_norm</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Landsat band </span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">hls_raster</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pal</span><span class="p">,</span> <span class="n">norm</span> <span class="o">=</span> <span class="n">the_norm</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Landsat band </span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="ne">NameError</span>: name &#39;hls_raster&#39; is not defined
+</pre></div>
+</div>
+<img alt="../../_images/623ed9083cfec4dc13c8e852596212d3eccd832aa193547b03bae8b3d6a1bfef.png" src="../../_images/623ed9083cfec4dc13c8e852596212d3eccd832aa193547b03bae8b3d6a1bfef.png" />
+</div>
+</div>
+</section>
+<section id="write-out-the-raster-as-a-geotiff">
+<h3>Write out the raster as a geotiff<a class="headerlink" href="#write-out-the-raster-as-a-geotiff" title="Link to this heading">#</a></h3>
+<p>Save the original tif to disk so you don’t need to go back to NASA</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;repos/a301/satdata/landsat&#39;</span>
+<span class="n">band_name</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">writeit</span><span class="o">=</span><span class="kc">True</span>
+<span class="k">if</span> <span class="n">writeit</span><span class="p">:</span>
+   <span class="n">data_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+   <span class="n">outfile</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;hls_landsat8_</span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">.tif&quot;</span>
+   <span class="n">hls_band5</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">to_raster</span><span class="p">(</span><span class="n">outfile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">25</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">data_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">outfile</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;hls_landsat8_</span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">.tif&quot;</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">hls_band5</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">to_raster</span><span class="p">(</span><span class="n">outfile</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;hls_band5&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<section id="read-it-back-in-as-a-sanity-check">
+<h4>Read it back in as a sanity check<a class="headerlink" href="#read-it-back-in-as-a-sanity-check" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_band5</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span><span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">hls_band5</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 3660, 3660)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="what-s-next">
+<h2>What’s next<a class="headerlink" href="#what-s-next" title="Link to this heading">#</a></h2>
+<p>Now that we can get landsat and sentinel scenes, we need to be able to
+subset to a particular part of the image, apply the cloud mask to remove cloudy
+pixels and use channel ratios to infer surface properties.  That’s the topic for the
+next few notebooks.</p>
+<section id="for-monday-s-class">
+<h3>For Monday’s class<a class="headerlink" href="#for-monday-s-class" title="Link to this heading">#</a></h3>
+<p>For Monday, copy this notebook and edit it to download and save a new tif containing band 4 (red) for your location.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/week2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="cartopy_mapping_vancouver.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Mapping Vancouver with cartopy</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-objectives">Overview/objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">Authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doing-an-image-search-using-pystac-client">Doing an image search using pystac_client</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-the-search">setup the search</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-metadata-for-search-items">get the metadata for search items</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-assets-for-scene-1-june-14-2015">Get the assets for scene 1 (June 14, 2015)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-display-the-true-color-browse-image">Download and display the true-color browse image</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-the-band5-geotiff">Working with the Band5 geotiff</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-cookie-file-name-as-an-environmental-variable">set the cookie file name as an environmental variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-band-5-raster">Read the band 5 raster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-all-attributes">List all attributes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-coverage">Image  coverage</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#explain-why-the-two-estimates-are-correct-but-different">Explain why the two estimates are correct but different.</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-the-image">Scaling the image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-the-raster">Histogram the raster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-it-using-a-grey-palette">Plot it using a grey palette</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-out-the-raster-as-a-geotiff">Write out the raster as a geotiff</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#read-it-back-in-as-a-sanity-check">Read it back in as a sanity check</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">What’s next</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-monday-s-class">For Monday’s class</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Philip Austin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
