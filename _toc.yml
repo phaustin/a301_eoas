@@ -27,10 +27,11 @@ parts:
   - file: notebooks/week1/week1_review.md
 - caption: Week 2
   chapters:
-  - file: notebooks/week2/planck_sol.ipynb
+  - file: notebooks/week2/planck_sol.md
   - file: notebooks/week2/assign1.md
   - file: notebooks/week2/cartopy_maps.md
   - file: notebooks/week2/cartopy_mapping_vancouver.md
+  - file: notebooks/week2/get_landsat_bands.md
     
     
     

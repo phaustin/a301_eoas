@@ -12,8 +12,11 @@ kernelspec:
   name: python3
 ---
 
-(week7:hls)=
+(week2:hls)=
 # Landsat 1: Dowloading Landsat and Sentinel data from NASA
+
+- Download get_landsat_bands.ipynb from the [week2 folder](https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&st=n7iwqqem&dl=0) 
+
 
 ## Introduction
 
@@ -227,7 +230,6 @@ os.environ["GDAL_HTTP_COOKIEJAR"] = "./cookies.txt"
 The next cell reads in the raster.  By setting `masked=True` we are telling rasterio to look up the `_FillValue` tag in the
 geotiff, and replace all pixels that have that value to `np.nan`.
 
-
 ```{code-cell} ipython3
 hls_band5 = rioxarray.open_rasterio(hls_scene.assets['B05'].href,masked=True)
 ```
@@ -346,7 +348,7 @@ pixels and use channel ratios to infer surface properties.  That's the topic for
 next few notebooks.
 
 
-#### For Monday's class
+### For Monday's class
 For Monday, copy this notebook and edit it to download and save a new tif containing band 4 (red) for your location.
 
 ```{code-cell} ipython3
