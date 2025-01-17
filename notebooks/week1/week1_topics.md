@@ -19,7 +19,7 @@
 
 * [Course piazza page](https://piazza.com/class/lcoeg8tsp9zxq)
 
-* Installation instructions and the environment.yml file on [Dropbox](https://www.dropbox.com/sh/uosacqkiw7f5rmk/AABKGhCMXXkI3Q21U49uFIEya?dl=0)
+* Installation instructions and the environment.yml file on [Google Drive](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
 
 ## For Wednesday's class
 
@@ -72,6 +72,6 @@
 
 2) Modify {ref}`modis_level1b` to plot Channel 30 for your scene
 
-3) If you have trouble finding a scene, Friday's image is in the Dropbox folder at https://www.dropbox.com/sh/uosacqkiw7f5rmk/AABKGhCMXXkI3Q21U49uFIEya?dl=0
+3) If you have trouble finding a scene, Friday's image is in the Dropbox folder at https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharinghttps://www.dropbox.com/sh/uosacqkiw7f5rmk/AABKGhCMXXkI3Q21U49uFIEya?dl=0
 
 

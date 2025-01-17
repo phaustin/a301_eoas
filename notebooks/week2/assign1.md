@@ -15,7 +15,7 @@ kernelspec:
 (sec:assign1)=
 # Assignment 1, brightness temperatures
 
-- Download assign1.ipynb from the [week2 folder](https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&st=n7iwqqem&dl=0)
+- Download assign1.ipynb from the [week2 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
 
 - For this assignment you're asked to write a function to calculate the "brightness temperature", defined as the temperature a blackbody would need to have to emit an observed monochromatic radiance $I_\lambda$:
 

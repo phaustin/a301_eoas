@@ -125,7 +125,7 @@ cmr_api_url = "https://cmr.earthdata.nasa.gov/stac/LPCLOUD"
 client = Client.open(cmr_api_url)
 ```
 
-### setup the search
+### set up the search
 
 The pystac client object takes the search parameters as the following keywords:
 
@@ -230,12 +230,26 @@ os.environ["GDAL_HTTP_COOKIEJAR"] = "./cookies.txt"
 The next cell reads in the raster.  By setting `masked=True` we are telling rasterio to look up the `_FillValue` tag in the
 geotiff, and replace all pixels that have that value to `np.nan`.
 
-```{code-cell} ipython3
-hls_band5 = rioxarray.open_rasterio(hls_scene.assets['B05'].href,masked=True)
-```
+#### Use a local file if available
+
+This step is the one that requires authentication.  NASA counts the number of downloads your account makes in a day, and
+will deny access if you exceed a threshold (about 50 downloads).  At the bottom of the notebook in section {ref}`sec:writeout` we write band 5 to disk if the variable `writeit` is set to `True`.  If you want to use that file instead, set the variable `from_disk` to `True`
 
 ```{code-cell} ipython3
-hls_band5
+data_dir = Path().home() / 'repos/a301/satdata/landsat'
+band_name = 5
+data_dir.mkdir(exist_ok=True, parents=True)
+disk_file = data_dir / f"hls_landsat8_{band_name}.tif"
+has_file = disk_file.exists()
+
+from_disk = True
+if from_disk:
+    if not has_file:
+        raise IOError(f"can't find {disk_file}, rerun with from_disk=False and writeit=True") 
+    hls_band5 = rioxarray.open_rasterio(disk_file,masked=True)
+else:
+    # go to NASA
+    hls_band5 = rioxarray.open_rasterio(hls_scene.assets['B05'].href,masked=True)
 ```
 
 ### List all attributes
@@ -252,6 +266,14 @@ The DataArray also has three indexes, the first is just the number 1 (only 1 ban
 
 ```{code-cell} ipython3
 hls_band5.indexes
+```
+
+### Machine readable crs
+
+The `HORIZONTAL_CS_NAME` attribute is for humans.  To use the image CRS with a program like cartopy we need a more detailed version.  This is supplied by an accessor function added to xarray by rioxarray, with outputs the crs in "well known text (WKT)" format:
+
+```{code-cell} ipython3
+hls_band5.rio.crs
 ```
 
 ### Image  coverage
@@ -317,25 +339,18 @@ hls_raster.plot(ax=ax, cmap=pal, norm = the_norm)
 ax.set_title(f"Landsat band {band_name}");
 ```
 
+(sec:writeout)=
 ### Write out the raster as a geotiff
 
 Save the original tif to disk so you don't need to go back to NASA
 
 ```{code-cell} ipython3
-data_dir = Path().home() / 'repos/a301/satdata/landsat'
-band_name = 5
 writeit=True
 if writeit:
-   data_dir.mkdir(exist_ok=True, parents=True)
-   outfile = data_dir / f"hls_landsat8_{band_name}.tif"
-   hls_band5.rio.to_raster(outfile)
-```
-
-#### Read it back in as a sanity check
-
-```{code-cell} ipython3
-hls_band5 = rioxarray.open_rasterio(outfile,masked=True)
-hls_band5.shape
+    hls_band5.rio.to_raster(disk_file)
+    #check if write worked
+    hls_band5 = rioxarray.open_rasterio(disk_file,masked=True)
+    print(f"checking read, here is the crs: {hls_band5.rio.crs}")
 ```
 
 ## What's next
