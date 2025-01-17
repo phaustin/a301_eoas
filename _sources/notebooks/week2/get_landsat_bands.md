@@ -243,10 +243,6 @@ hls_band5
 Unlike the browse image, the actual band 5 tif has metadata.  xarray DataArray objects store metadata as "attributes".  Here are all the attributes we fetched from the tif file.
 
 ```{code-cell} ipython3
-hls_band5.rio.transform_bounds()
-```
-
-```{code-cell} ipython3
 hls_band5.attrs
 ```
 
