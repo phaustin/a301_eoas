@@ -19,8 +19,7 @@
 
 ### Installing python on your laptop
 
-* [Instructions for Macs](https://www.dropbox.com/scl/fi/ribiztx2t2vzmbsxvnxyi/python-setup_macos_2024.pdf?rlkey=miqlz5fxeg6sqoiatp57461bz&st=5tu7kgwk&dl=0)
-* [Instructions for Windows](https://www.dropbox.com/scl/fi/1zlod8dyqzj0qp23ge0hm/python-setup_windows_2024.pdf?rlkey=pwe8m5grzewselmhsk8bpzvef&st=7w0sp8h7&dl=0)
+* [Instructions for Macs and Windows in "Installation"](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
 
 #### Do for Wednesday's class:
 
@@ -110,7 +109,8 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 - Reading for Friday: Chapters 1 and 2 of [Understanding map projections](https://drive.google.com/file/d/1araPnZwMui9tBTPyLO_UHVC2DDEIdZ0p/view?usp=sharing)
 - In class: {ref}`sec:cartopy`
 - In class: {ref}`sec:vancartopy`
-- [download folder](https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&st=609jtnta&dl=0)
+- [download folder](
+
 
 #### Do for Friday
 
