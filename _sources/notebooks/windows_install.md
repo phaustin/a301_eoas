@@ -22,5 +22,5 @@ conda env create -n a301 -f environment_windows.yml
 conda activate a301
 ```
 
-7. Start `jupyter lab` and run the `get_landsat_bands.ipynb` notebook.  Note that the new environment includes `earthaccess` etc., so no need go install those. Report any issues on piazza.
+7. Start `jupyter lab` and run the `get_landsat_bands.ipynb` notebook.  Note that the new environment includes `earthaccess` etc., so no need to install those. Report any issues on piazza.
 
