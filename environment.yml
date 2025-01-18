@@ -9,7 +9,6 @@ dependencies:
   - numpy
   - pip
   - cartopy
-  - dask
   - pyresample
   - netcdf4
   - jupyterlab
@@ -20,6 +19,7 @@ dependencies:
   - rioxarray
   - pystac-client
   - shapely
+  - earthaccess
   - seaborn
   - scikit-image
   - goes2go

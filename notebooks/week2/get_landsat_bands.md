@@ -242,7 +242,7 @@ data_dir.mkdir(exist_ok=True, parents=True)
 disk_file = data_dir / f"hls_landsat8_{band_name}.tif"
 has_file = disk_file.exists()
 
-from_disk = True
+from_disk = False
 if from_disk:
     if not has_file:
         raise IOError(f"can't find {disk_file}, rerun with from_disk=False and writeit=True") 
@@ -313,7 +313,14 @@ hls_raster.x[0]
 Make sure the scaled band5 reflectance is in the range 0-1
 
 ```{code-cell} ipython3
-hls_raster.plot.hist();
+hls_raster
+```
+
+```{code-cell} ipython3
+#hls_raster.plot.hist();
+# ls_band5.plot.hist()
+from matplotlib import pyplot as plt
+#plt.hist(hls_raster.data.flat)
 ```
 
 ### Plot it using a grey palette
@@ -345,7 +352,7 @@ ax.set_title(f"Landsat band {band_name}");
 Save the original tif to disk so you don't need to go back to NASA
 
 ```{code-cell} ipython3
-writeit=True
+writeit=False
 if writeit:
     hls_band5.rio.to_raster(disk_file)
     #check if write worked
