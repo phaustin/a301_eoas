@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>UBC academic integrity &#8212; ATSC 301</title>
+    <title>Windows installation using a conda lock file &#8212; ATSC 301</title>
   
   
   
@@ -57,12 +57,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/integrity';</script>
-    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/integrity.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/windows_install';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/windows_install.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Texts" href="texts.html" />
-    <link rel="prev" title="ATSC 301: syllabus" href="syllabus.html" />
+    <link rel="prev" title="Landsat 1: Dowloading Landsat and Sentinel data from NASA" href="week2/get_landsat_bands.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,9 +174,9 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Useful links</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="syllabus.html">ATSC 301: syllabus</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">UBC academic integrity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrity.html">UBC academic integrity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="texts.html">Texts</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
@@ -204,8 +203,8 @@
 <li class="toctree-l1"><a class="reference internal" href="week2/get_landsat_bands.html">Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="windows_install.html">Windows installation using a conda lock file</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Windows installation using a conda lock file</a></li>
 </ul>
 
     </div>
@@ -260,7 +259,7 @@
       
       
       
-      <li><a href="../_sources/notebooks/integrity.md" target="_blank"
+      <li><a href="../_sources/notebooks/windows_install.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -342,7 +341,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>UBC academic integrity</h1>
+    <h1>Windows installation using a conda lock file</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -356,14 +355,25 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="ubc-academic-integrity">
-<h1>UBC academic integrity<a class="headerlink" href="#ubc-academic-integrity" title="Link to this heading">#</a></h1>
-<p>Academic honesty and integrity are essential principles of UBC and professional practice of anyone, no matter their career path. All UBC students are expected to behave as honest and responsible members of an academic community. All future professionals have an even greater responsibility to maintain the highest level of honesty and integrity, and we should all practice those habits during our time as students.</p>
-<p>Cheating on exams or assignments, plagiarizing or any other form of academic dishonesty are clear violations of these principles.  During ATSC 301 quizzes and exams, the use of  the web, and communicating with anyone other than the instructors or TAs present during the quiz/exam are all strictly forbidden.  Copying and/or disseminating exam or quiz questions are also forbidden.</p>
-<p>Inadequate contributions to work and study carried out as part of a team or group are also examples of irresponsible and unprofessional behavior. ATSC 301 labs and assignments require truthful reporting of partners / collaborations, as laid out in the course syllabus.</p>
-<p>The “signing” statement:</p>
-<p>As a student at UBC, I solemnly pledge to follow the policies, principles, rules, and guidelines of the University with respect to academic honesty, including acting with integrity in all interactions with colleagues and instructors.</p>
-<p>By signing this pledge, I promise to maintain the highest level of ethical behavior while taking this course, including adhering to the explicit instructions above.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="windows-installation-using-a-conda-lock-file">
+<span id="windows-install"></span><h1>Windows installation using a conda lock file<a class="headerlink" href="#windows-installation-using-a-conda-lock-file" title="Link to this heading">#</a></h1>
+<p>If you’re having trouble running the landsat notebook from the environment created by environment.yml, try these steps to reproduce exactly the working environment I have in windows.</p>
+<ol class="arabic simple">
+<li><p>Close all your anaconda terminal windows and in <code class="docutils literal notranslate"><span class="pre">settings-&gt;</span> <span class="pre">add</span> <span class="pre">or</span> <span class="pre">remove</span> <span class="pre">programs</span></code> remove miniconda3.</p></li>
+<li><p>Open explorer and go to Home and search for miniconda3.  You should not see a miniconda3 folder in your <code class="docutils literal notranslate"><span class="pre">c:\Users\username</span></code> folder.  If you do see it, remove that folder.</p></li>
+<li><p>Install the latest version of miniconda from <a class="reference external" href="https://www.anaconda.com/download">https://www.anaconda.com/download</a> (Note that you can skip registration if you want).</p></li>
+<li><p>Check under <code class="docutils literal notranslate"><span class="pre">add</span> <span class="pre">remove</span> <span class="pre">programs</span></code> to make sure you see <code class="docutils literal notranslate"><span class="pre">Miniconda3</span> <span class="pre">py312_24.11.1-0</span></code></p></li>
+<li><p>Download my <a class="reference external" href="https://drive.google.com/file/d/10KLRb80RB8xfq_AMfYdOUrDny5q2bC22/view?usp=sharing">environment_windows.yml</a> file. Google drive seems to think it’s an audio file, but it’s just plain text.  You can look at it <a class="reference external" href="https://github.com/phaustin/a301_eoas/blob/main/environment_windows.yml">here</a>.  Note that unlike <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>, it skips the solver and uses the exact file list from my <code class="docutils literal notranslate"><span class="pre">a301</span></code> environment.</p></li>
+<li><p>Move the <code class="docutils literal notranslate"><span class="pre">environment_windows.yml</span></code> file to your <code class="docutils literal notranslate"><span class="pre">~/repos/a301</span></code> folder, and create a new <code class="docutils literal notranslate"><span class="pre">a301</span></code> environment by opening an anaconda terminal and typing:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">repos</span><span class="o">/</span><span class="n">a301</span>
+<span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">a301</span> <span class="o">-</span><span class="n">f</span> <span class="n">environment_windows</span><span class="o">.</span><span class="n">yml</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">a301</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Start <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code> and run the <code class="docutils literal notranslate"><span class="pre">get_landsat_bands.ipynb</span></code> notebook.  Note that the new environment includes <code class="docutils literal notranslate"><span class="pre">earthaccess</span></code> etc., so no need go install those. Report any issues on piazza.</p></li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">
@@ -397,22 +407,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="syllabus.html"
+       href="week2/get_landsat_bands.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">ATSC 301: syllabus</p>
+        <p class="prev-next-title">Landsat 1: Dowloading Landsat and Sentinel data from NASA</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="texts.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Texts</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

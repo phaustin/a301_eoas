@@ -12,6 +12,10 @@ kernelspec:
   name: python3
 ---
 
+```{code-cell} ipython3
+import gdal
+```
+
 (week2:hls)=
 # Landsat 1: Dowloading Landsat and Sentinel data from NASA
 
@@ -74,6 +78,14 @@ Then the next time you need to download or search HLS data you should just be ab
 ```{code-cell} ipython3
 import earthaccess
 auth = earthaccess.login(strategy="netrc")
+```
+
+```{code-cell} ipython3
+auth.authenticated
+```
+
+```{code-cell} ipython3
+dir(auth)
 ```
 
 and your credentials will be read in from the netrc file.
@@ -313,7 +325,14 @@ hls_raster.x[0]
 Make sure the scaled band5 reflectance is in the range 0-1
 
 ```{code-cell} ipython3
-hls_raster.plot.hist();
+hls_raster
+```
+
+```{code-cell} ipython3
+#hls_raster.plot.hist();
+# ls_band5.plot.hist()
+from matplotlib import pyplot as plt
+#plt.hist(hls_raster.data.flat)
 ```
 
 ### Plot it using a grey palette
@@ -345,7 +364,7 @@ ax.set_title(f"Landsat band {band_name}");
 Save the original tif to disk so you don't need to go back to NASA
 
 ```{code-cell} ipython3
-writeit=True
+writeit=False
 if writeit:
     hls_band5.rio.to_raster(disk_file)
     #check if write worked
@@ -365,6 +384,10 @@ next few notebooks.
 
 ### For Monday's class
 For Monday, copy this notebook and edit it to download and save a new tif containing band 4 (red) for your location.
+
+```{code-cell} ipython3
+!python --version
+```
 
 ```{code-cell} ipython3
 

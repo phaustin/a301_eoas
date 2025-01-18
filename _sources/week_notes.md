@@ -121,3 +121,15 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 
 - Go over how to use rioxarray to plot a Landsat/Sentinel image of your choice:
   The notebook: {ref}`week2:hls`
+
+#### Do for Monday
+
+- Download a band 4 (red) tif file for your scene
+
+
+## Week 3
+
+### Day 7 Monday
+
+- Go over {ref}`windows_install`
+
