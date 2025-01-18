@@ -32,6 +32,9 @@ parts:
   - file: notebooks/week2/cartopy_maps.md
   - file: notebooks/week2/cartopy_mapping_vancouver.md
   - file: notebooks/week2/get_landsat_bands.md
+- caption: Week 3
+  chapters:
+  - file: notebooks/windows_install.md
     
     
     

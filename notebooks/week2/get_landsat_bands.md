@@ -254,7 +254,7 @@ data_dir.mkdir(exist_ok=True, parents=True)
 disk_file = data_dir / f"hls_landsat8_{band_name}.tif"
 has_file = disk_file.exists()
 
-from_disk = False
+from_disk = True
 if from_disk:
     if not has_file:
         raise IOError(f"can't find {disk_file}, rerun with from_disk=False and writeit=True") 
