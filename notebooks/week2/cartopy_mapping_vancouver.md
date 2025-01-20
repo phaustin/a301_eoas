@@ -83,6 +83,13 @@ projection = ccrs.LambertAzimuthalEqualArea(
     central_latitude=90, central_longitude=-90, globe=globe
 )
 print(f"pro4 program params: {projection.proj4_params}")
+type(projection)
+```
+
+```{code-cell} ipython3
+:trusted: true
+
+
 ```
 
 **Use matplotlib to draw the map and add a coastline**

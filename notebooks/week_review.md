@@ -12,10 +12,13 @@ kernelspec:
   name: python3
 ---
 
-(week1-review)=
-# Week 1 review questions/answers
+(week-review)=
+# Weekly review 
 
-## Key week1 topics
+(week1-review)=
+## Week 1
+
+### Key week1 topics
 
 1. Definitions of solid angle/field of view, irradiance, radiance
 2. Explanation of how a satellite sensor measures radiance
@@ -29,7 +32,7 @@ kernelspec:
 
 
 
-## Study question solutions
+### Week 1 Study question solutions
 
 1. On page 39, Stull asserts the inverse square law:
 
@@ -183,3 +186,12 @@ print(f"Reflected flux at {R2:0.2f} meters = {reflect_flux_6:0.2g} W/m^2")
    What's going on with the minus sign?  This is because integration over $\lambda$ and $\nu$ proceed in opposite directions. If $\Delta \lambda = \lambda_2 - \lambda_1$ is positive then $\Delta \nu =  \nu_2 - \nu_1$ is negative, and you would flip the limits of integration, which produces a cancelling minus sign.
    
    
+(week2-review)=
+## Week 2
+
+### Key week2 topics
+
+1. The $\cos \theta$ law for flux
+2. The derivation and use of the brightness temperature
+3. GIS concepts:  datum, map projection
+4. Software: making maps with cartopy, reading geotiff raster data with rioxarray

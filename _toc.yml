@@ -13,6 +13,7 @@ parts:
   - file: week_notes.md
   - url: https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&st=n7iwqqem&dl=0
     title: Notebook downloads
+  - file: notebooks/week_review.md
 
 - caption: Week 1
   chapters:
@@ -24,7 +25,6 @@ parts:
   - file: notebooks/week1/radiance.md
   - file: notebooks/week1/newflux.md
   - file: notebooks/week1/planck_function.md
-  - file: notebooks/week1/week1_review.md
 - caption: Week 2
   chapters:
   - file: notebooks/week2/planck_sol.md
@@ -35,6 +35,7 @@ parts:
 - caption: Week 3
   chapters:
   - file: notebooks/windows_install.md
+  - file: notebooks/week3/map_landsat.md
     
     
     
