@@ -71,7 +71,7 @@
 #### Do for Wednesday
 
 - Finish reading Wallace and Hobbs Section 4.3
-- For Assignment 1 (posted this evening, do next Monday at midnight)
+- For Assignment 1 (posted this evening, do next Tuesday at 5 pm)
   - Unwrap the Planck function for temperature T and code this in Python.  That is, given W&H equation 4.4:
   
   $$
@@ -132,4 +132,11 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 ### Day 7 Monday
 
 - Go over {ref}`windows_install`
+- Put an image on a map with {ref}`week3:map_landsat`
 
+#### Do for Wednesday
+
+- New consolidated review page started at {ref}`week-review`
+- start on [Assignment 2](https://canvas.ubc.ca/courses/158920/assignments/2088849)
+- Review Wallace and Hobbs Section 4.3.5 and 4.3.6 on Kirchoff's law and the greenhouse effect
+- Read Wallace and Hobbs Section 4.4

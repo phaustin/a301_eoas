@@ -1,0 +1,1290 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mapping the landsat scene &#8212; ATSC 301</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week3/map_landsat';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week3/map_landsat.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Windows installation using a conda lock file" href="../windows_install.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ATSC 301</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    ATSC 301: 2024 Term 2 Winter
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Useful links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">ATSC 301: syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrity.html">UBC academic integrity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../texts.html">Texts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Week notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&amp;st=n7iwqqem&amp;dl=0">Notebook downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_review.html">Weekly review</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">Plotting the Planck function with python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week2/planck_sol.html">Plotting the Planck function - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/assign1.html">Assignment 1, brightness temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_maps.html">Introduction to Cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_mapping_vancouver.html">Mapping Vancouver with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/get_landsat_bands.html">Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../windows_install.html">Windows installation using a conda lock file</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Mapping the landsat scene</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/week3/map_landsat.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mapping the landsat scene</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-band-5-image-and-read-it-in-to-a-dataarray">Open the band 5 image and read it in to a DataArray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-and-histogram-the-scene-using-the-scale-factor">Scale and histogram the scene using the <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-the-image-on-a-cartopy-map">Put the image on a cartopy map</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-affine-transform">Understanding the affine transform</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-transform-from-the-geotif">Get the transform from the geotif</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-transform-to-convert-row-col-to-x-y">Using the transform to convert (row,col) to (x,y)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-cartopy-map">Setting up the cartopy map</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dump-the-crs-into-a-wkt-string">1. dump the crs into a wkt string</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-cartopy-crs-object-from-the-wkt-string-using-the-pyproj-crs">2. make a cartopy crs object from the wkt string using the pyproj crs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-image-and-map-together">Plot the image and map together</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="mapping-the-landsat-scene">
+<span id="week3-map-landsat"></span><h1>Mapping the landsat scene<a class="headerlink" href="#mapping-the-landsat-scene" title="Link to this heading">#</a></h1>
+<p>In this notebook we read in the large (3660 x 3660 pixel) landsat band5 file we downloaded
+in the <a class="reference internal" href="../week2/get_landsat_bands.html#week2-hls"><span class="std std-ref">Landsat 1: Dowloading Landsat and Sentinel data from NASA</span></a> notebook.  In this notebook we use cartopy to plot the image along
+with the coastline on a georeferenced map.</p>
+<ul class="simple">
+<li><p>Download map_landsat.ipynb from the <a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing">week3 folder</a></p></li>
+</ul>
+<section id="open-the-band-5-image-and-read-it-in-to-a-dataarray">
+<h2>Open the band 5 image and read it in to a DataArray<a class="headerlink" href="#open-the-band-5-image-and-read-it-in-to-a-dataarray" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w">  </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cartopy</span><span class="w"> </span><span class="kn">import</span> <span class="n">crs</span> <span class="k">as</span> <span class="n">ccrs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;repos/a301/satdata/landsat&#39;</span>
+<span class="n">band_name</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">data_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">disk_file</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;hls_landsat8_</span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">.tif&quot;</span>
+<span class="n">has_file</span> <span class="o">=</span> <span class="n">disk_file</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">has_file</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;can&#39;t find </span><span class="si">{</span><span class="n">disk_file</span><span class="si">}</span><span class="s2">, rerun with the week2 get_landsat_scene notebook&quot;</span><span class="p">)</span> 
+<span class="n">hls_band5</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">disk_file</span><span class="p">,</span><span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="scale-and-histogram-the-scene-using-the-scale-factor">
+<h2>Scale and histogram the scene using the <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code><a class="headerlink" href="#scale-and-histogram-the-scene-using-the-scale-factor" title="Link to this heading">#</a></h2>
+<p>The data are stored as integer values, we need to divide by 10,000 to convert
+to surface reflectivities.  Make sure the band 5 values look reasonable</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_band5</span><span class="o">.</span><span class="n">scale_factor</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0001
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaled_band</span> <span class="o">=</span> <span class="n">hls_band5</span><span class="o">*</span><span class="n">hls_band5</span><span class="o">.</span><span class="n">scale_factor</span>
+<span class="n">scaled_band</span><span class="o">=</span><span class="n">scaled_band</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">scaled_band</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;band 5 reflectivities&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/010e7acb5a34a8e47392bda2c60f5a3f4e1957a401e99e47a9503b501c6ee4c3.png" src="../../_images/010e7acb5a34a8e47392bda2c60f5a3f4e1957a401e99e47a9503b501c6ee4c3.png" />
+</div>
+</div>
+</section>
+<section id="put-the-image-on-a-cartopy-map">
+<h2>Put the image on a cartopy map<a class="headerlink" href="#put-the-image-on-a-cartopy-map" title="Link to this heading">#</a></h2>
+<p>To put our raster image on a longitude/latitude map we need to be able to go back and forth between three different pixel coordinates</p>
+<ol class="arabic simple">
+<li><p>We need to translate between longitude/latitude and the (x,y) coordinates in our chosen map projection.
+This the job of the coordinate reference system (CRS) and the python projection module.</p></li>
+<li><p>We need to translate between the (x,y) coordinate system and the row,column numbers of our raster.  This is the job of the <code class="docutils literal notranslate"><span class="pre">affine</span> <span class="pre">transform</span></code></p></li>
+</ol>
+<section id="understanding-the-affine-transform">
+<h3>Understanding the affine transform<a class="headerlink" href="#understanding-the-affine-transform" title="Link to this heading">#</a></h3>
+<p>For our gridded image, we know the coordinates of the upper left corner <code class="docutils literal notranslate"><span class="pre">(ULX,</span> <span class="pre">ULY)</span></code>, the size of each pixel <span class="math notranslate nohighlight">\(\Delta x, \Delta y\)</span> <code class="docutils literal notranslate"><span class="pre">(30</span> <span class="pre">meters</span> <span class="pre">wide</span> <span class="pre">and</span> <span class="pre">high)</span></code>, and the number of
+rows and columns <code class="docutils literal notranslate"><span class="pre">(3660</span> <span class="pre">x</span> <span class="pre">3660)</span></code>.  Suppose we want the <code class="docutils literal notranslate"><span class="pre">(x,y)</span></code> coordinates of the upper left corner of the pixel at <code class="docutils literal notranslate"><span class="pre">row=100,col=300</span></code>?  Convince yourself that this is given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+x &amp;= ULX + col \times \Delta x \\
+y &amp;= ULY  - row \times \Delta y
+\end{split}\]</div>
+<p>where the negative sign means that the rows increase from top to bottom in the raster.  That information is stored in the geotiff as a <span class="math notranslate nohighlight">\(2 \times 3\)</span> matrix
+called the <code class="docutils literal notranslate"><span class="pre">affine</span> <span class="pre">transform</span></code>.</p>
+<p>Here is how you read the transform for the geotiff in rioxarray:</p>
+</section>
+<section id="get-the-transform-from-the-geotif">
+<h3>Get the transform from the geotif<a class="headerlink" href="#get-the-transform-from-the-geotif" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hls_band5</span><span class="o">.</span><span class="n">ULX</span><span class="si">=}</span><span class="s2"> m</span><span class="se">\n</span><span class="si">{</span><span class="n">hls_band5</span><span class="o">.</span><span class="n">ULY</span><span class="si">=}</span><span class="s2"> m</span><span class="se">\n</span><span class="si">{</span><span class="n">hls_band5</span><span class="o">.</span><span class="n">SPATIAL_RESOLUTION</span><span class="si">=}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+<span class="n">the_transform</span> <span class="o">=</span> <span class="n">hls_band5</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">the affine transform is: </span><span class="se">\n</span><span class="si">{</span><span class="n">the_transform</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hls_band5.ULX=399960 m
+hls_band5.ULY=5500020 m
+hls_band5.SPATIAL_RESOLUTION=30 m
+
+the affine transform is: 
+| 30.00, 0.00, 399960.00|
+| 0.00,-30.00, 5500020.00|
+| 0.00, 0.00, 1.00|
+</pre></div>
+</div>
+</div>
+</div>
+<p>A good  explanation for what all the other items in the matrix are is given in <a class="reference external" href="http://www.perrygeo.com/python-affine-transforms.html">Matthew Perry’s blog post</a>.  As he shows, using the transform we can get (x,y) by using the definition of the <code class="docutils literal notranslate"><span class="pre">*</span></code> operation created by the transform object.</p>
+</section>
+<section id="using-the-transform-to-convert-row-col-to-x-y">
+<h3>Using the transform to convert (row,col) to (x,y)<a class="headerlink" href="#using-the-transform-to-convert-row-col-to-x-y" title="Link to this heading">#</a></h3>
+<p>Get the (x,y) of the upper left corner using <code class="docutils literal notranslate"><span class="pre">*</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_ul</span><span class="p">,</span> <span class="n">y_ul</span> <span class="o">=</span> <span class="n">the_transform</span><span class="o">*</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">x_ul</span><span class="p">,</span> <span class="n">y_ul</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(399960.0, 5500020.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>get the (x,y) of the lower right corner</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_lr</span><span class="p">,</span> <span class="n">y_lr</span> <span class="o">=</span> <span class="n">the_transform</span><span class="o">*</span><span class="p">(</span><span class="mi">3661</span><span class="p">,</span><span class="mi">3361</span><span class="p">)</span>
+<span class="n">x_lr</span><span class="p">,</span> <span class="n">y_lr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(509790.0, 5399190.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that we need to add 1 to (nrows,ncols) because we want the lower right edge of the bottom pixel, not its upper left corner.</p>
+</section>
+</section>
+<section id="setting-up-the-cartopy-map">
+<h2>Setting up the cartopy map<a class="headerlink" href="#setting-up-the-cartopy-map" title="Link to this heading">#</a></h2>
+<p>Now set up a map with the correct extent in the x and y directions and correct crs.  Recall how we did this in <a class="reference internal" href="../week2/cartopy_mapping_vancouver.html#sec-vancartopy"><span class="std std-ref">Mapping Vancouver with cartopy</span></a></p>
+<p>First get the map projection.  Unforunately cartopy requires an <a class="reference external" href="https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset">epsg code</a> to create the crs, and the geotiff crs provides a name (UTM Zone 10) but not
+a code. By googling you can see that
+the code <a class="reference external" href="https://epsg.io/32610">epsg:32610</a>.  A rather hacky way to make that jump is to convert geotiff code to Well Known Text (WKT) and create
+a pyproj CRS object, which knows how to output
+its most likely epsg code.  Here are the two steps:</p>
+<section id="dump-the-crs-into-a-wkt-string">
+<h3>1. dump the crs into a wkt string<a class="headerlink" href="#dump-the-crs-into-a-wkt-string" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyproj.crs</span><span class="w"> </span><span class="kn">import</span> <span class="n">CRS</span>
+<span class="n">utm10</span> <span class="o">=</span> <span class="n">hls_band5</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">to_wkt</span><span class="p">()</span>
+<span class="n">utm10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;PROJCS[&quot;UTM Zone 10, Northern Hemisphere&quot;,GEOGCS[&quot;Unknown datum based upon the WGS 84 ellipsoid&quot;,DATUM[&quot;Not specified (based on WGS 84 spheroid)&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,-123],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH]]&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="make-a-cartopy-crs-object-from-the-wkt-string-using-the-pyproj-crs">
+<h3>2. make a cartopy crs object from the wkt string using the pyproj crs<a class="headerlink" href="#make-a-cartopy-crs-object-from-the-wkt-string-using-the-pyproj-crs" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proj_crs</span> <span class="o">=</span> <span class="n">CRS</span><span class="o">.</span><span class="n">from_wkt</span><span class="p">(</span><span class="n">utm10</span><span class="p">)</span>
+<span class="n">pyproj_epsg</span> <span class="o">=</span> <span class="n">proj_crs</span><span class="o">.</span><span class="n">to_epsg</span><span class="p">(</span><span class="n">min_confidence</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pyproj_epsg</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">cartopy_crs</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">epsg</span><span class="p">(</span><span class="n">pyproj_epsg</span><span class="p">)</span>
+<span class="n">cartopy_crs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pyproj_epsg=32610
+</pre></div>
+</div>
+<div class="output text_html"><?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="26.308518pt" height="180.72pt" viewBox="0 0 26.308518 180.72" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2025-01-19T16:29:29.038172</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.0, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 180.72 
+L 26.308518 180.72 
+L 26.308518 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 173.52 
+L 7.2 173.52 
+L 7.2 173.52 
+L 7.2 7.2 
+L 19.108518 7.2 
+L 19.108518 173.52 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="FeatureArtist_1">
+    <path clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+    <path clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+    <path d="M 17.918638 18.372536 
+L 18.551824 18.555031 
+L 18.546815 19.167284 
+L 17.878077 19.889707 
+L 17.140584 19.366512 
+L 17.367567 18.683999 
+L 17.918638 18.372536 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+    <path d="M 17.773801 17.077796 
+L 18.356283 17.362128 
+L 17.968018 17.845868 
+L 17.3153 17.971559 
+L 17.271054 17.690928 
+L 17.552826 17.030375 
+L 17.773801 17.077796 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+    <path clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+    <path d="M 19.108517 25.55427 
+L 18.886426 25.763219 
+L 18.09112 25.944339 
+L 17.924247 25.313437 
+L 18.83326 24.262515 
+L 16.58242 24.844576 
+L 15.835993 24.562662 
+L 16.306918 22.561338 
+L 16.67909 21.955082 
+L 18.092171 22.41723 
+L 19.108518 23.359539 
+M 19.108518 21.917261 
+L 18.951313 21.662653 
+L 19.108518 21.17609 
+L 19.108518 21.17609 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+    <path d="M 13.223536 22.903329 
+L 13.987429 21.402304 
+L 14.829733 20.071121 
+L 15.490355 20.04626 
+L 16.044334 19.694236 
+L 16.159406 21.22021 
+L 15.882262 21.944237 
+L 15.459024 22.080972 
+L 14.640891 22.990297 
+L 13.881421 23.324922 
+L 13.223536 22.903329 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+    <path d="M 13.934263 26.211037 
+L 14.71575 26.595608 
+L 16.103052 26.609204 
+L 16.689309 27.129948 
+L 17.383085 27.89197 
+L 16.728063 28.472827 
+L 15.412277 29.986002 
+L 14.730785 31.415911 
+L 14.767284 32.28301 
+L 13.094235 33.275191 
+L 12.759543 32.401577 
+L 11.341181 31.308245 
+L 11.641527 30.478533 
+L 12.104272 29.041772 
+L 12.628641 27.745916 
+L 12.12125 26.514707 
+L 13.934263 26.211037 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+    <path clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+    <path d="M 7.200001 73.319353 
+L 7.713528 73.522326 
+L 8.47314 73.864723 
+L 9.656023 74.126274 
+L 10.065571 74.825078 
+L 10.67356 75.784275 
+L 11.952817 76.626724 
+L 12.482718 77.726688 
+L 11.816898 77.995871 
+L 9.680163 77.044074 
+L 9.315085 76.326178 
+L 8.187908 75.580394 
+L 7.986118 75.003565 
+L 7.2 74.741166 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+    <path clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+    <path d="M 19.108518 105.752472 
+L 18.994685 105.655913 
+L 17.465649 105.507399 
+L 17.040248 105.198438 
+L 16.81722 104.118667 
+L 15.215529 102.160072 
+L 13.866875 99.422502 
+L 13.920357 98.964093 
+L 13.227421 98.312687 
+L 12.030856 96.650519 
+L 11.833152 95.035464 
+L 11.036387 93.944279 
+L 11.390494 92.308777 
+L 11.362206 90.61057 
+L 10.918353 89.085893 
+L 11.513744 87.229084 
+L 11.710715 85.43429 
+L 11.90269 83.638963 
+L 11.687234 80.978808 
+L 11.288148 79.27724 
+L 10.918469 78.349573 
+L 11.086848 77.966008 
+L 12.994793 78.660191 
+L 13.712537 80.529296 
+L 14.042805 80.003919 
+L 13.816882 78.38073 
+L 13.3629 76.757647 
+L 13.187888 76.752831 
+L 10.712828 74.775216 
+L 9.83009 73.891364 
+L 7.586253 72.962023 
+L 7.2 71.773786 
+L 7.2 71.773785 
+M 7.2 70.258476 
+L 7.263325 69.959465 
+L 7.200001 69.919311 
+M 7.2 34.918588 
+L 7.417141 34.780835 
+L 8.581494 34.427354 
+L 8.959914 35.296781 
+L 9.511894 34.882071 
+L 9.742341 33.961647 
+L 10.184943 34.20937 
+L 11.232458 36.057322 
+L 12.192063 34.741744 
+L 12.251466 36.251894 
+L 13.111819 35.935303 
+L 13.371144 35.354602 
+L 14.203894 35.456842 
+L 15.295841 36.251321 
+L 16.996488 36.864416 
+L 18.010369 37.103013 
+L 18.693492 36.892664 
+L 19.108517 37.224213 
+M 19.108518 38.627641 
+L 18.901137 38.879086 
+L 19.108517 38.916466 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+    <path clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+    <path d="M 19.108518 36.347359 
+L 18.618354 36.151705 
+L 18.022118 36.447546 
+L 17.008621 34.968432 
+L 17.43836 34.713088 
+L 18.435452 34.254155 
+L 19.108518 34.224774 
+M 19.108517 33.520452 
+L 18.854323 33.4682 
+L 17.468687 33.801674 
+L 16.528246 33.851633 
+L 16.124368 33.148234 
+L 17.537354 32.214978 
+L 16.560657 32.342108 
+L 15.417865 31.901512 
+L 15.835472 30.380034 
+L 16.187711 29.557422 
+L 17.605479 28.185645 
+L 18.240786 28.484874 
+L 18.084426 29.450076 
+L 19.108517 28.771455 
+L 19.108518 28.771455 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+    <path clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+    <path clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+   </g>
+   <g id="LineCollection_1">
+    <path d="M 7.2 14.85402 
+L 7.224864 14.771374 
+L 7.712546 13.15255 
+L 8.201248 11.534309 
+L 8.690877 9.916599 
+L 9.18134 8.299369 
+L 9.515254 7.200001 
+L 9.515254 7.2 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+    <path d="M 7.2 45.387572 
+L 7.353469 44.008348 
+L 7.541323 42.330505 
+L 7.7304 40.65275 
+L 7.920656 38.975081 
+L 8.112052 37.297496 
+L 8.304545 35.619991 
+L 8.498093 33.942563 
+L 8.692653 32.265211 
+L 8.888185 30.587931 
+L 9.084644 28.91072 
+L 9.281988 27.233575 
+L 9.480175 25.556495 
+L 9.67916 23.879474 
+L 9.878901 22.202511 
+L 10.079353 20.525602 
+L 10.280475 18.848744 
+L 10.482221 17.171933 
+L 10.684547 15.495168 
+L 10.887411 13.818443 
+L 11.090767 12.141757 
+L 11.294571 10.465105 
+L 11.49878 8.788485 
+L 11.69259 7.2 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+    <path d="M 19.108518 173.52 
+L 19.107868 171.845538 
+L 19.105919 170.171071 
+L 19.10267 168.496593 
+L 19.098123 166.822099 
+L 19.092279 165.147584 
+L 19.085138 163.473042 
+L 19.076703 161.798469 
+L 19.066974 160.123858 
+L 19.055955 158.449205 
+L 19.043647 156.774504 
+L 19.030053 155.09975 
+L 19.015175 153.424939 
+L 18.999018 151.750065 
+L 18.981584 150.075123 
+L 18.962877 148.400109 
+L 18.942901 146.725016 
+L 18.92166 145.049842 
+L 18.899158 143.37458 
+L 18.875401 141.699226 
+L 18.850393 140.023776 
+L 18.82414 138.348225 
+L 18.796647 136.672568 
+L 18.76792 134.996802 
+L 18.737965 133.320922 
+L 18.706789 131.644924 
+L 18.674397 129.968804 
+L 18.640797 128.292558 
+L 18.605996 126.616182 
+L 18.570002 124.939673 
+L 18.532821 123.263026 
+L 18.494462 121.586239 
+L 18.454933 119.909308 
+L 18.414242 118.23223 
+L 18.372398 116.555002 
+L 18.329411 114.87762 
+L 18.285288 113.200083 
+L 18.240039 111.522386 
+L 18.193675 109.844528 
+L 18.146204 108.166507 
+L 18.097638 106.488319 
+L 18.047986 104.809963 
+L 17.997259 103.131437 
+L 17.945468 101.452739 
+L 17.892624 99.773867 
+L 17.838738 98.09482 
+L 17.783822 96.415596 
+L 17.727888 94.736194 
+L 17.670948 93.056613 
+L 17.613013 91.376852 
+L 17.554097 89.69691 
+L 17.494213 88.016787 
+L 17.433372 86.336482 
+L 17.371588 84.655995 
+L 17.308875 82.975326 
+L 17.245245 81.294475 
+L 17.180714 79.613441 
+L 17.115294 77.932226 
+L 17.049001 76.250829 
+L 16.981848 74.569252 
+L 16.913849 72.887496 
+L 16.845021 71.20556 
+L 16.775377 69.523447 
+L 16.704933 67.841157 
+L 16.633704 66.158693 
+L 16.561706 64.476055 
+L 16.488954 62.793246 
+L 16.415465 61.110267 
+L 16.341254 59.427121 
+L 16.266337 57.743809 
+L 16.190732 56.060335 
+L 16.114454 54.376699 
+L 16.037521 52.692906 
+L 15.959949 51.008958 
+L 15.881755 49.324858 
+L 15.802956 47.640609 
+L 15.72357 45.956213 
+L 15.643615 44.271676 
+L 15.563107 42.586999 
+L 15.482065 40.902186 
+L 15.400506 39.217242 
+L 15.318449 37.532169 
+L 15.235911 35.846973 
+L 15.152911 34.161656 
+L 15.069467 32.476223 
+L 14.985598 30.790679 
+L 14.901322 29.105028 
+L 14.816658 27.419273 
+L 14.731624 25.73342 
+L 14.64624 24.047473 
+L 14.560524 22.361438 
+L 14.474495 20.675318 
+L 14.388173 18.989119 
+L 14.301576 17.302845 
+L 14.214725 15.616502 
+L 14.127637 13.930095 
+L 14.040333 12.243628 
+L 13.952831 10.557107 
+L 13.865152 8.870538 
+L 13.778153 7.2 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+    <path d="M 19.108518 21.301449 
+L 18.833352 20.077749 
+L 18.461506 18.428896 
+L 18.088584 16.780445 
+L 17.714664 15.132367 
+L 17.339821 13.484636 
+L 16.964132 11.837223 
+L 16.587674 10.190101 
+L 16.210522 8.543241 
+L 15.902402 7.200001 
+L 15.902402 7.2 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+    <path d="M 19.108518 9.342996 
+L 18.465433 7.815738 
+L 18.205839 7.200001 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+   </g>
+   <g id="LineCollection_2">
+    <path d="M 7.2 134.036361 
+L 7.644021 134.044513 
+L 8.646391 134.060591 
+L 9.648457 134.073447 
+L 10.650284 134.083085 
+L 11.651942 134.089507 
+L 12.653498 134.092718 
+L 13.65502 134.092718 
+L 14.656576 134.089507 
+L 15.658234 134.083085 
+L 16.660062 134.073447 
+L 17.662127 134.060591 
+L 18.664498 134.044513 
+L 19.108518 134.036361 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+    <path d="M 7.2 94.449987 
+L 7.84151 94.476663 
+L 8.658994 94.506245 
+L 9.47641 94.530888 
+L 10.293768 94.550595 
+L 11.111083 94.565371 
+L 11.928366 94.57522 
+L 12.74563 94.580144 
+L 13.562888 94.580144 
+L 14.380152 94.57522 
+L 15.197435 94.565371 
+L 16.01475 94.550595 
+L 16.832109 94.530888 
+L 17.649524 94.506245 
+L 18.467008 94.476663 
+L 19.108518 94.449987 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+    <path d="M 7.2 54.666805 
+L 7.551468 54.697808 
+L 8.084321 54.741188 
+L 8.617399 54.780225 
+L 9.150677 54.81492 
+L 9.684132 54.845275 
+L 10.217739 54.871291 
+L 10.751476 54.892969 
+L 11.285318 54.91031 
+L 11.819243 54.923315 
+L 12.353226 54.931985 
+L 12.887244 54.93632 
+L 13.421274 54.93632 
+L 13.955292 54.931985 
+L 14.489275 54.923315 
+L 15.0232 54.91031 
+L 15.557042 54.892969 
+L 16.090779 54.871291 
+L 16.624386 54.845275 
+L 17.157841 54.81492 
+L 17.691119 54.780225 
+L 18.224197 54.741188 
+L 18.75705 54.697808 
+L 19.108518 54.666805 
+L 19.108518 54.666805 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+    <path d="M 7.2 14.274688 
+L 7.209598 14.277662 
+L 7.387383 14.331809 
+L 7.565648 14.384305 
+L 7.744378 14.435145 
+L 7.923557 14.484325 
+L 8.10317 14.531843 
+L 8.283202 14.577694 
+L 8.463638 14.621876 
+L 8.644464 14.664385 
+L 8.825663 14.705217 
+L 9.007221 14.744371 
+L 9.189123 14.781842 
+L 9.371353 14.817629 
+L 9.553896 14.851729 
+L 9.736738 14.884139 
+L 9.919862 14.914857 
+L 10.103253 14.943881 
+L 10.286897 14.971208 
+L 10.470779 14.996837 
+L 10.654882 15.020765 
+L 10.839191 15.042992 
+L 11.023692 15.063515 
+L 11.208369 15.082333 
+L 11.393207 15.099445 
+L 11.578191 15.114849 
+L 11.763304 15.128544 
+L 11.948532 15.14053 
+L 12.13386 15.150804 
+L 12.319272 15.159368 
+L 12.504753 15.166219 
+L 12.690288 15.171359 
+L 12.875861 15.174785 
+L 13.061457 15.176498 
+L 13.247061 15.176498 
+L 13.432657 15.174785 
+L 13.61823 15.171359 
+L 13.803765 15.166219 
+L 13.989246 15.159368 
+L 14.174658 15.150804 
+L 14.359986 15.14053 
+L 14.545214 15.128544 
+L 14.730328 15.114849 
+L 14.915311 15.099445 
+L 15.100149 15.082333 
+L 15.284826 15.063515 
+L 15.469327 15.042992 
+L 15.653636 15.020765 
+L 15.837739 14.996837 
+L 16.021621 14.971208 
+L 16.205265 14.943881 
+L 16.388656 14.914857 
+L 16.571781 14.884139 
+L 16.754622 14.851729 
+L 16.937165 14.817629 
+L 17.119395 14.781842 
+L 17.301297 14.744371 
+L 17.482855 14.705217 
+L 17.664054 14.664385 
+L 17.84488 14.621876 
+L 18.025316 14.577694 
+L 18.205348 14.531843 
+L 18.384961 14.484325 
+L 18.56414 14.435145 
+L 18.74287 14.384305 
+L 18.921135 14.331809 
+L 19.09892 14.277662 
+L 19.108518 14.274687 
+" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 7.2 173.52 
+L 7.2 173.52 
+L 7.2 173.52 
+L 7.2 7.2 
+L 19.108518 7.2 
+L 19.108518 173.52 
+L 7.2 173.52 
+z
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p64a01fdb04">
+   <path d="M 7.2 173.52 
+L 7.2 173.52 
+L 7.2 173.52 
+L 7.2 7.2 
+L 19.108518 7.2 
+L 19.108518 173.52 
+z
+"/>
+  </clipPath>
+ </defs>
+</svg>
+<pre>&lt;cartopy._epsg._EPSGProjection object at 0x144e58ad0&gt;</pre></div></div>
+</div>
+<p>Borrow code from <a class="reference internal" href="../week2/cartopy_mapping_vancouver.html#sec-vancartopy"><span class="std std-ref">Mapping Vancouver with cartopy</span></a> for the palette</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pal</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;Greys_r&quot;</span><span class="p">))</span>
+<span class="n">pal</span><span class="o">.</span><span class="n">set_bad</span><span class="p">(</span><span class="s2">&quot;0.75&quot;</span><span class="p">)</span>  <span class="c1"># color 75% grey np.nan cells</span>
+<span class="n">pal</span><span class="o">.</span><span class="n">set_over</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>  <span class="c1"># color cells &gt; vmax red</span>
+<span class="n">pal</span><span class="o">.</span><span class="n">set_under</span><span class="p">(</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>  <span class="c1"># color cells &lt; vmin black</span>
+<span class="n">vmin</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1">#anything under this is colored black</span>
+<span class="n">vmax</span> <span class="o">=</span> <span class="mf">0.8</span>  <span class="c1">#anything over this is colored white</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">Normalize</span>
+<span class="n">the_norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="plot-the-image-and-map-together">
+<h2>Plot the image and map together<a class="headerlink" href="#plot-the-image-and-map-together" title="Link to this heading">#</a></h2>
+<p>Looks like the cartopy coastlines and the landsat image are offset a little in the
+north-south direction, needs some debugging.  Note the <code class="docutils literal notranslate"><span class="pre">alpha=0.4</span></code> parameter in the imshow
+call – that makes the image semi-transparent so we can see the coastlines.  Note that, unfortunately, cartopy has decided to
+call the crs the transform.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="n">cartopy_crs</span><span class="p">})</span>
+<span class="n">the_extent</span><span class="o">=</span><span class="p">[</span><span class="n">x_ul</span><span class="p">,</span> <span class="n">x_lr</span><span class="p">,</span><span class="n">y_lr</span><span class="p">,</span><span class="n">y_ul</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">(</span><span class="n">the_extent</span><span class="p">,</span><span class="n">cartopy_crs</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cartopy</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">GSHHSFeature</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="n">cs</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+    <span class="n">scaled_band</span><span class="p">,</span>
+    <span class="n">transform</span><span class="o">=</span><span class="n">cartopy_crs</span><span class="p">,</span>
+    <span class="n">extent</span><span class="o">=</span><span class="n">the_extent</span><span class="p">,</span>
+    <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;upper&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">pal</span><span class="p">,</span>
+    <span class="n">norm</span><span class="o">=</span><span class="n">the_norm</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Landsat Band 5, June 14&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/00a4842db80a4ff2e27ac5d09d318d17603d037be1b1f2fc6d3bd072976e86c9.png" src="../../_images/00a4842db80a4ff2e27ac5d09d318d17603d037be1b1f2fc6d3bd072976e86c9.png" />
+</div>
+</div>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Geotiffs carry two metadata items needed for mapping:</p>
+<ul class="simple">
+<li><p>The affine transform, which relates (row, col) on the raster to (x, y) on the map</p></li>
+<li><p>The coordinate reference system, which relates (x, y) on the map to (lat, lon) on the sphere</p></li>
+</ul>
+</li>
+<li><p>In cartopy, the crs is called the transform (unfortunate confusion with the affine transform), and the (x,y) coordinates of the left, right, bottom, top of the image is called the extent</p></li>
+<li><p>To put an image on a map, create an axis with the map projection, set the extent of the map, add coastlines, then add the image using imshow with the crs and extent you’ve used to create the axis.</p></li>
+<li><p>There is a standard set of codes for <a class="reference external" href="https://gis.stackexchange.com/questions/290718/how-many-crs-epsg-codes-are-there">thousands of different crs</a>, called the <a class="reference external" href="https://epsg.io/">epsg registry</a>.  All modern gis software is able to work with these codes, although not necessarily elegantly.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/week3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../windows_install.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Windows installation using a conda lock file</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-band-5-image-and-read-it-in-to-a-dataarray">Open the band 5 image and read it in to a DataArray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-and-histogram-the-scene-using-the-scale-factor">Scale and histogram the scene using the <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-the-image-on-a-cartopy-map">Put the image on a cartopy map</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-affine-transform">Understanding the affine transform</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-transform-from-the-geotif">Get the transform from the geotif</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-transform-to-convert-row-col-to-x-y">Using the transform to convert (row,col) to (x,y)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-cartopy-map">Setting up the cartopy map</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dump-the-crs-into-a-wkt-string">1. dump the crs into a wkt string</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-cartopy-crs-object-from-the-wkt-string-using-the-pyproj-crs">2. make a cartopy crs object from the wkt string using the pyproj crs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-image-and-map-together">Plot the image and map together</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Philip Austin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

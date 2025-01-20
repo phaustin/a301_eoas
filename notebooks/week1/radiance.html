@@ -186,6 +186,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Week notes</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&amp;st=n7iwqqem&amp;dl=0">Notebook downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_review.html">Weekly review</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="current nav bd-sidenav">
@@ -195,7 +196,6 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Solid angle and radiance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="newflux.html">Finding the flux given the radiance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="planck_function.html">Plotting the Planck function with python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week1_review.html">Week 1 review questions/answers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
 <ul class="nav bd-sidenav">
@@ -208,6 +208,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../windows_install.html">Windows installation using a conda lock file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">Mapping the landsat scene</a></li>
 </ul>
 
     </div>
@@ -509,7 +510,7 @@ d\phi = \frac{dl}{r}
 <p>measured in radians</p>
 <p>Solid angle:</p>
 <div class="math notranslate nohighlight" id="equation-domegaa">
-<span class="eqno">(2)<a class="headerlink" href="#equation-domegaa" title="Link to this equation">#</a></span>\[
+<span class="eqno">(4)<a class="headerlink" href="#equation-domegaa" title="Link to this equation">#</a></span>\[
 d\omega = \frac{dA}{r^2} = \frac{r^2 \sin \theta d\theta  d\phi}{r^2} = \sin \theta d\theta  d\phi
 \]</div>
 <p>measured in steradians</p>
@@ -540,7 +541,7 @@ is being transmitted by photons with wavelengths between
 field of view <span class="math notranslate nohighlight">\(\Delta \omega\)</span> of the telescope, then we can get
 the monochromatic radiance <span class="math notranslate nohighlight">\(I_\lambda\)</span> by:</p>
 <div class="math notranslate nohighlight" id="equation-llambda">
-<span class="eqno">(3)<a class="headerlink" href="#equation-llambda" title="Link to this equation">#</a></span>\[
+<span class="eqno">(5)<a class="headerlink" href="#equation-llambda" title="Link to this equation">#</a></span>\[
 I_\lambda = \frac{\Delta F_\lambda}{\Delta \lambda \Delta \omega}
 \]</div>
 <p>units: <span class="math notranslate nohighlight">\(W\,m^{-2}\,\mu m^{-1}\,sr^{-1}\)</span>.</p>
@@ -548,7 +549,7 @@ I_\lambda = \frac{\Delta F_\lambda}{\Delta \lambda \Delta \omega}
 Modis thermal sensors deliver.</p>
 <p>Switching to differentials again, we’ve got:</p>
 <div class="math notranslate nohighlight" id="equation-df">
-<span class="eqno">(4)<a class="headerlink" href="#equation-df" title="Link to this equation">#</a></span>\[
+<span class="eqno">(6)<a class="headerlink" href="#equation-df" title="Link to this equation">#</a></span>\[
 dF_\lambda = I_\lambda d\lambda d\omega
 \]</div>
 <p>Note that both <span class="math notranslate nohighlight">\(dF_\lambda\)</span> and <span class="math notranslate nohighlight">\(I_\lambda\)</span> have a direction

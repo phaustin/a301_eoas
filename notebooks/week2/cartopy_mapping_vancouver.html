@@ -184,6 +184,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Week notes</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&amp;st=n7iwqqem&amp;dl=0">Notebook downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_review.html">Weekly review</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="nav bd-sidenav">
@@ -193,7 +194,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">Solid angle and radiance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">Finding the flux given the radiance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">Plotting the Planck function with python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/week1_review.html">Week 1 review questions/answers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
 <ul class="current nav bd-sidenav">
@@ -206,6 +206,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../windows_install.html">Windows installation using a conda lock file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">Mapping the landsat scene</a></li>
 </ul>
 
     </div>
@@ -435,11 +436,15 @@ document.write(`
     <span class="n">central_latitude</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">central_longitude</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">globe</span><span class="o">=</span><span class="n">globe</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pro4 program params: </span><span class="si">{</span><span class="n">projection</span><span class="o">.</span><span class="n">proj4_params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">projection</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pro4 program params: {&#39;a&#39;: 6371228, &#39;b&#39;: 6371228, &#39;proj&#39;: &#39;laea&#39;, &#39;lon_0&#39;: -90, &#39;lat_0&#39;: 90, &#39;x_0&#39;: 0.0, &#39;y_0&#39;: 0.0}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cartopy.crs.LambertAzimuthalEqualArea
 </pre></div>
 </div>
 </div>
@@ -457,43 +462,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #95 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #95 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #471 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #471 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #95 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #95 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #471 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #471 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #95 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #95 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #471 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #471 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
-</pre></div>
-</div>
-<img alt="../../_images/a442bea6c691c7b1880990b767c3d588ca2f98498ed075691154be2f9c06c99f.png" src="../../_images/a442bea6c691c7b1880990b767c3d588ca2f98498ed075691154be2f9c06c99f.png" />
+<img alt="../../_images/8fffb0668a4d8b3bc70011790fd8fb97288d20555ae6e5a998237281e73ec5ff.png" src="../../_images/8fffb0668a4d8b3bc70011790fd8fb97288d20555ae6e5a998237281e73ec5ff.png" />
 </div>
 </div>
 <ul class="simple">
@@ -549,7 +518,7 @@ you have your region of interest</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vancouver map x, y: -2422235, -3712769 meters
 </pre></div>
 </div>
-<img alt="../../_images/942437e7fa1439a21348de0da80798d22f33a316da0ca0de34ea045cbab99073.png" src="../../_images/942437e7fa1439a21348de0da80798d22f33a316da0ca0de34ea045cbab99073.png" />
+<img alt="../../_images/a90db12b9e8c8950e9931acc6d4b69633e4b24a29257f3f4da0f3250ca131d43.png" src="../../_images/a90db12b9e8c8950e9931acc6d4b69633e4b24a29257f3f4da0f3250ca131d43.png" />
 </div>
 </div>
 </section>

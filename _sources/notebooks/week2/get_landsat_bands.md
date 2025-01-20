@@ -12,10 +12,6 @@ kernelspec:
   name: python3
 ---
 
-```{code-cell} ipython3
-import gdal
-```
-
 (week2:hls)=
 # Landsat 1: Dowloading Landsat and Sentinel data from NASA
 
@@ -82,10 +78,6 @@ auth = earthaccess.login(strategy="netrc")
 
 ```{code-cell} ipython3
 auth.authenticated
-```
-
-```{code-cell} ipython3
-dir(auth)
 ```
 
 and your credentials will be read in from the netrc file.
