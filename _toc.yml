@@ -36,6 +36,9 @@ parts:
   chapters:
   - file: notebooks/windows_install.md
   - file: notebooks/week3/map_landsat.md
+  - file: notebooks/week3/assign1_solution.md
+  - file: notebooks/week3/zoom_landsat.md
+  - file: notebooks/week3/kirchoff.md
     
     
     

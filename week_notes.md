@@ -140,3 +140,18 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 - start on [Assignment 2](https://canvas.ubc.ca/courses/158920/assignments/2088849)
 - Review Wallace and Hobbs Section 4.3.5 and 4.3.6 on Kirchoff's law and the greenhouse effect
 - Read Wallace and Hobbs Section 4.4
+
+### Day 8 Wednesday
+
+- {ref}`asign1:planck_solution`
+- Fixed the bug in {ref}`week3_bug`
+- New notebook on clipping an image region: {ref}`week3:image_zoom`
+- In-class worksheet: {ref}`week3:kirchoff`
+
+#### Do for Friday
+
+- Clip an interesting region and make sure your coastlines are correct
+- Write the region to a new geotiff
+- Read Wallace and Hobbs Section 4.5
+
+

@@ -13,7 +13,6 @@ kernelspec:
 ---
 
 (week3:kirchoff)=
-
 # Kirchoff worksheet
 
 ## Introduction
@@ -46,7 +45,7 @@ To see why this has to be true, consider {numref}`kirchoff`, where a blackbody (
 
 :::{figure} images/kirchoff.png
 :name: kirchoff
-:scale: 50
+:scale: 100
 
 Demonstration of Kirchoff’s law
 :::
@@ -57,10 +56,4 @@ Demonstration of Kirchoff’s law
 
 Suppose the reflectivity on for wall A is $\alpha_l =0.7$, so  $\alpha_l \neq \epsilon_l$ and Kirchoff's law is violated.  Find the net flux at wall A if this is true.   Why is this physically impossiblea?  Note that $\sigma 280^4$ is a flux, not a radiance, but that doesn't matter for this proof  (why not)?
 
-```{code-cell} ipython3
 
-
-
-
-0
-```

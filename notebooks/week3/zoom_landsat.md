@@ -13,7 +13,8 @@ kernelspec:
   name: python3
 ---
 
-(image_zoom)=
+(week3:image_zoom)=
+
 # Zooming an image
 
 We need to be able to select a small region of a landsat image to work with.  This notebook
@@ -28,6 +29,9 @@ We need to be able to select a small region of a landsat image to work with.  Th
   - Use the [pyproj module](https://pyproj4.github.io/pyproj/stable/examples.html) to find x,y from lat, lon
   - Use numpy slice objects to slice the rows and columns from the image
   - use rasterio to write a new tif file (will repeat with rioxarray when I get a chance
+
+
+- Download zoom_landsat.ipynb from the [week3 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
 
 ```{code-cell} ipython3
 import sat_lib
@@ -51,7 +55,7 @@ import geopandas as gpd
 from cartopy import crs as ccrs
 ```
 
-### Get the tiff files and calculate band 5 reflectance
+## Get the tiff files and calculate band 5 reflectance
 
 ```{code-cell} ipython3
 data_dir = Path().home() / 'repos/a301/satdata/landsat'
