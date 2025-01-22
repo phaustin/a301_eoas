@@ -1,6 +1,7 @@
 ---
 jupytext:
   formats: md:myst,ipynb
+  notebook_metadata_filter: all,-language_info,-toc,-latex_envs
   text_representation:
     extension: .md
     format_name: myst
@@ -12,29 +13,49 @@ kernelspec:
   name: python3
 ---
 
-(week3:zoom_landsat)=
-# Mapping the landsat scene
+(week3:image_zoom)=
 
-In this notebook we read in the large (3660 x 3660 pixel) landsat band5 file we downloaded 
-in the {ref}`week2:hls` notebook.  In this notebook we use cartopy to plot the image along
-with the coastline on a georeferenced map.
+# Zooming an image
 
-Download map_landsat.ipynb [from the downloads folder](
+We need to be able to select a small region of a landsat image to work with.  This notebook
 
-+++
+1. zooms in on a 400 pixel wide x 600 pixel high subscene centered on EOS South, using pyproj and the affine transform to map from lon,lat to x,y in UTM zone 10N to row, column in the landsat imag
 
-## Open the band 5 image and read it in to a DataArray
+2. Plots coastlines in the UTM-10N crs
+
+3. Calculates the new affine transform for the subcene, and writes the image out to a 1 Mbyte tiff file
+
+- Notable new features
+  - Use the [pyproj module](https://pyproj4.github.io/pyproj/stable/examples.html) to find x,y from lat, lon
+  - Use numpy slice objects to slice the rows and columns from the image
+  - use rasterio to write a new tif file (will repeat with rioxarray when I get a chance
+
+
+- Download zoom_landsat.ipynb from the [week3 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
 
 ```{code-cell} ipython3
-import numpy
-from pathlib  import Path
-from matplotlib import pyplot as plt
-import numpy as np
-from copy import copy
-import rioxarray
-from cartopy import crs as ccrs
-import cartopy
+import sat_lib
 ```
+
+```{code-cell} ipython3
+import copy
+import pprint
+from pathlib import Path
+
+import cartopy
+import numpy as np
+import numpy.random
+import rasterio
+from affine import Affine
+from matplotlib import pyplot as plt
+from matplotlib.colors import Normalize
+from pyproj import CRS, Transformer
+import rioxarray
+import geopandas as gpd
+from cartopy import crs as ccrs
+```
+
+## Get the tiff files and calculate band 5 reflectance
 
 ```{code-cell} ipython3
 data_dir = Path().home() / 'repos/a301/satdata/landsat'
@@ -48,160 +69,240 @@ if not has_file:
 hls_band5 = rioxarray.open_rasterio(disk_file,masked=True)
 ```
 
-## Scale and histogram the scene using the `scale_factor`
+## Save the crs and the affine transform for the full iamge
 
-The data are stored as integer values, we need to divide by 10,000 to convert
-to surface reflectivities.  Make sure the band 5 values look reasonable
+We need to keep both full_affine (the affine transform for the full scene, and the coordinate reference system for pyproj (called p_utl below).  
+
+Complication -- as before, cartopy can't use the pyproj p_utm, so need to do a convertion for cartopy_crs.
 
 ```{code-cell} ipython3
-hls_band5.scale_factor
+full_affine = hls_band5.rio.transform()
+hls_crs = hls_band5.rio.crs.to_wkt()
+b5_refl = hls_band5.data.squeeze()*hls_band5.scale_factor
+```
+
+## Convert to cartopy crs for map plot
+
+As in {ref}`week3:map_landsat` we've got to jump th rough hoops to get the correct cartopy crs. The problem is that hls forgot to put the epsg code in their tif file.
+
+```{code-cell} ipython3
+hls_crs
 ```
 
 ```{code-cell} ipython3
-scaled_band = hls_band5*hls_band5.scale_factor
-scaled_band=scaled_band.squeeze()
-```
-
-```{code-cell} ipython3
-fig, ax = plt.subplots(1,1)
-scaled_band.plot.hist(ax = ax)
-ax.set(title="band 5 reflectivities");
-```
-
-## Put the image on a cartopy map
-
-+++
-
-To put our raster image on a longitude/latitude map we need to be able to go back and forth between three different pixel coordinates
-
-1. We need to translate between longitude/latitude and the (x,y) coordinates in our chosen map projection.
-   This the job of the coordinate reference system (CRS) and the python projection module.
-2. We need to translate between the (x,y) coordinate system and the row,column numbers of our raster.  This is the job of the `affine transform`
-
-+++
-
-### Understanding the affine transform
-
-For our gridded image, we know the coordinates of the upper left corner `(ULX, ULY)`, the size of each pixel $\Delta x, \Delta y$ `(30 meters wide and high)`, and the number of
-rows and columns `(3660 x 3660)`.  Suppose we want the `(x,y)` coordinates of the upper left corner of the pixel at `row=100,col=300`?  Convince yourself that this is given by:
-
-$$
-x &= ULX + col \times \Delta x \\
-y &= ULY  - row \times \Delta y
-$$
-where the negative sign means that the rows increase from top to bottom in the raster.  That information is stored in the geotiff as a $2 \times 3$ matrix
-called the `affine transform`.
-
-Here is how you read the transform for the geotiff in rioxarray:
-
-+++
-
-### Get the transform from the geotif
-
-```{code-cell} ipython3
-print(f"{hls_band5.ULX=} m\n{hls_band5.ULY=} m\n{hls_band5.SPATIAL_RESOLUTION=} m")
-the_transform = hls_band5.rio.transform()
-print(f"\nthe affine transform is: \n{the_transform}")
-```
-
-A good  explanation for what all the other items in the matrix are is given in [Matthew Perry's blog post](http://www.perrygeo.com/python-affine-transforms.html).  As he shows, using the transform we can get (x,y) by using the definition of the `*` operation created by the transform object.
-
-+++
-
-### Using the transform to convert (row,col) to (x,y)
-
-+++
-
-Get the (x,y) of the upper left corner using `*`
-
-```{code-cell} ipython3
-x_ul, y_ul = the_transform*(0,0)
-x_ul, y_ul
-```
-
-get the (x,y) of the lower right corner
-
-```{code-cell} ipython3
-x_lr, y_lr = the_transform*(3661,3361)
-x_lr, y_lr
-```
-
-Note that we need to add 1 to (nrows,ncols) because we want the lower right edge of the bottom pixel, not it's upper left corner.
-
-+++
-
-## Setting up the cartopy map
-
-+++
-
-Now set up a map with the correct extent in the x and y directions and correct crs.  Recall how we did this in {ref}`sec:vancartopy`
-
-First get the map projection.  Unforunately cartopy requires an [epsg code](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset) to create the crs, and the geotiff crs provides a name (UTM Zone 10) but not
-a code. By googling you can see that
-the code [epsg:32610](https://epsg.io/32610).  A rather hacky way to make that jump is to convert geotiff code to Well Known Text (WKT) and create
-a pyproj CRS object, which knows how to output
-its most likely epsg code.  Here are the two steps:
-
-+++
-
-### 1. dump the crs into a wkt string
-
-```{code-cell} ipython3
-from pyproj.crs import CRS
-utm10 = hls_band5.rio.crs.to_wkt()
-utm10
-```
-
-### 2. make a cartopy crs object from the wkt string using the pyproj crs
-
-```{code-cell} ipython3
-proj_crs = CRS.from_wkt(utm10)
+proj_crs = CRS.from_wkt(hls_crs)
 pyproj_epsg = proj_crs.to_epsg(min_confidence=60)
 print(f"{pyproj_epsg=}")
 cartopy_crs = ccrs.epsg(pyproj_epsg)
-cartopy_crs
+proj_code = cartopy_crs.to_epsg()
+proj_code
 ```
 
-Borrow code from {ref}`sec:vancartopy` for the palette
+```{code-cell} ipython3
+plt.imshow(b5_refl);
+```
+
+### Pick a random selection  of 1000 pixels to histogram
+
+Don't need 3660 x 3660 pixels to get a feeling for the distribution
 
 ```{code-cell} ipython3
-pal = copy(plt.get_cmap("Greys_r"))
-pal.set_bad("0.75")  # color 75% grey np.nan cells
+subset = np.random.randint(0, high=len(b5_refl.flat), size=1000, dtype="l")
+plt.hist(b5_refl.flat[subset])
+plt.title("band 5 reflectance whole scene")
+```
+
+## Locate UBC on the map
+
+We need to project the center of campus from lon/lat to UTM 10N x,y using pyproj.Transformer and our crs (which in this case is UTM).  We can transform from lat,lon (p_lonlat) to x,y (p_utm) to anchor us to a known point in the map coordinates.
+
++++
+
+### Alert!! the epsg:4326 projection order is (lat, lon) (yikes)
+
+see [this stack exchage](https://gis.stackexchange.com/questions/434038/order-of-latitude-and-longitude-in-epsg4326).  Most projections are (lon, lat) which
+maps more logically to (x, y).  Compare the axis order on these two crs:
+
+```{code-cell} ipython3
+CRS.from_epsg(proj_code)
+```
+
+```{code-cell} ipython3
+CRS.from_epsg(4326)
+```
+
+```{code-cell} ipython3
+p_utm = CRS.from_epsg(proj_code)
+p_latlon = CRS.from_epsg(4326)
+transform = Transformer.from_crs(p_latlon, p_utm)
+ubc_lon = -123.2460 
+ubc_lat = 49.2606
+ubc_x, ubc_y = transform.transform(ubc_lat, ubc_lon)
+ubc_x,ubc_y
+```
+
+For more on epsg:4326 see [Justyna Jurkowska's](https://8thlight.com/insights/geographic-coordinate-systems-101#:~:text=EPSG%3A4326%2C%20also%20known%20as,Google%20Earth%20and%20GSP%20systems) blog entry.
+
++++
+
+## Locate UBC on the image
+
+Now we need to use the affine transform to go between x,y and
+col, row on the image.  The next cell creates two slice objects that extend  on either side of the center point.  The tilde (~) in front of the transform indicates that we're going from x,y to col,row, instead of col,row to x,y.  (See [this blog entry](http://www.perrygeo.com/python-affine-transforms.html) for reference.)  Remember that row 0 is the top row, with rows decreasing downward to the south.  To demonstrate, the cell below uses the tranform to calculate the x,y coordinates of the (0,0) corner.
+
+```{code-cell} ipython3
+full_ul_xy = np.array(full_affine * (0, 0))
+print(f"orig ul corner x,y (km)={full_ul_xy*1.e-3}")
+```
+
+## make our subscene 400 pixels wide and 600 pixels tall, using UBC as a reference point
+
+We need to find the right rows and columns on the image to save for the subscene.  Do this by working outward from UBC by a certain number of pixels in each direction, using the inverse of the full_affine transform to go from x,y to col,row
+
+```{code-cell} ipython3
+b5_refl.shape[0] - 2230
+```
+
+```{code-cell} ipython3
+ubc_col, ubc_row = ~full_affine * (ubc_x, ubc_y)
+ubc_col, ubc_row = int(ubc_col), int(ubc_row)
+offset_col = 200
+offset_row = 300
+l_col_offset = -offset_col
+r_col_offset = +offset_col
+b_row_offset = +offset_row
+t_row_offset = -offset_col
+col_slice = slice(ubc_col + l_col_offset, ubc_col + r_col_offset)
+row_slice = slice(ubc_row + t_row_offset, ubc_row + b_row_offset)
+section = b5_refl[row_slice, col_slice]
+ubc_ul_xy = full_affine * (col_slice.start, row_slice.start)
+ubc_lr_xy = full_affine * (col_slice.stop, row_slice.stop)
+ubc_ul_xy, ubc_lr_xy
+```
+
+```{code-cell} ipython3
+ubc_col, ubc_row
+```
+
+```{code-cell} ipython3
+ubc_x, ubc_y
+```
+
+```{code-cell} ipython3
+full_affine*(ubc_col, ubc_row)
+```
+
+```{code-cell} ipython3
+upper_left_col = ubc_col + l_col_offset
+upper_left_row = ubc_row + t_row_offset
+print(upper_left_row, upper_left_col)
+```
+
+# Plot the raw band 5 image, clipped to reflectivities below 0.6
+
+This is a simple check that we got the right section.  Note that matplotlib ignores the `figsize=(10,10)` argument in plt.subplots and keeps the correct aspect ratio for the image.  I have to make a copy of the palette so my changes "stick"
+
+```{code-cell} ipython3
+vmin = 0.0
+vmax = 0.6
+the_norm = Normalize(vmin=vmin, vmax=vmax, clip=False)
+palette = "viridis"
+pal = copy.copy(plt.get_cmap(palette))
+pal.set_bad("0.75")  # 75% grey for out-of-map cells
 pal.set_over("w")  # color cells > vmax red
 pal.set_under("k")  # color cells < vmin black
-vmin = 0.0  #anything under this is colored black
-vmax = 0.8  #anything over this is colored white
-from matplotlib.colors import Normalize
-the_norm = Normalize(vmin=vmin, vmax=vmax, clip=False)
+fig, ax = plt.subplots(1, 1, figsize=(10, 10))
+cs = ax.imshow(section, cmap=pal, norm=the_norm, origin="upper")
+fig.colorbar(cs, extend = 'both');
 ```
 
-## Plot the image and map together
+## put this on a map
 
-Looks like the cartopy coastlines and the landsat image are offset a little in the
-north-south direction, needs some debugging.  Note the `alpha=0.4` parameter in the imshow
-call -- that makes the image semi-transparent so we can see the coastlines.  Note that, unfortunately, cartopy has decided to
-call the crs the transform.
+Note that the origin is switched to "lower" in the x,y coordinate system below,
+since y increases upwards.  The coastline is very crude, but at least indicates we've got the coords roughly correct.  See the "high_res_map" notebook for a better coastline.
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots(1, 1, figsize=(8, 8), subplot_kw={"projection": cartopy_crs})
-the_extent=[x_ul, x_lr,y_lr,y_ul]
-ax.set_extent(the_extent,cartopy_crs)
-ax.gridlines(linewidth=2)
-ax.add_feature(cartopy.feature.GSHHSFeature(scale="auto", levels=[1, 2, 3]))
+fig2, ax = plt.subplots(1, 1, figsize=(10,10), subplot_kw={"projection": cartopy_crs})
+#
+# extent is distance betweenn sides, but the affine transform gives location of pixel centers
+# for these tiny pixels it doesn't make a noticeable difference
+#
+edge_offset = 15 #pxiels are 30 meters wide, so edges are 1/2 a pixel away from centers
+image_extent = [ubc_ul_xy[0] - edge_offset, ubc_lr_xy[0] + edge_offset, ubc_lr_xy[1] - edge_offset, ubc_ul_xy[1] + edge_offset]
+ax.set_extent(image_extent, crs=cartopy_crs);
 cs = ax.imshow(
-    scaled_band,
-    transform=cartopy_crs,
-    extent=the_extent,
-    origin="upper",
-    alpha=0.4,
+    section,
     cmap=pal,
-    norm=the_norm
+    norm=the_norm,
+    origin="upper",
+    extent=image_extent,
+    transform=cartopy_crs,
+    alpha=1,
 )
-ax.set(title="Landsat Band 5, June 14")
-fig.colorbar(cs, extend="both");
+ax.add_feature(cartopy.feature.GSHHSFeature(scale="auto", levels=[1, 2, 3],edgecolor='red'))
+# shape_project = cartopy.crs.Geodetic()
+# ax.add_geometries(
+#     df_coast["geometry"], shape_project, facecolor="none", edgecolor="red", lw=2
+# )
+#ax.coastlines(resolution="10m", color="red", lw=2)
+ax.plot(ubc_x, ubc_y, "ro", markersize=25)
+fig2.colorbar(cs, extend = 'both');
 ```
 
-## Summary
+##  Use  rasterio  to write a new tiff file
+
+(I'll give the same example with rioxarray when I get a chance)
+
+### Set the affine transform for the scene
+
+We can write this clipped image back out to a much smaller tiff file if we can come up with the new affine transform for the smaller scene.  Referring again [to the writeup](http://www.perrygeo.com/python-affine-transforms.html) we need:
+
+    a = width of a pixel
+    b = row rotation (typically zero)
+    c = x-coordinate of the upper-left corner of the upper-left pixel
+    d = column rotation (typically zero)
+    e = height of a pixel (typically negative)
+    f = y-coordinate of the of the upper-left corner of the upper-left pixel
+
+which will gives:
+
+new_affine=Affine(a,b,c,d,e,f)
+
+In addition, need to add a third dimension to the section array, because
+rasterio expects [band,x,y] for its writer.  Do this with np.newaxis in the next cell
+
+```{code-cell} ipython3
+image_height, image_width = section.shape
+ul_x, ul_y = ubc_ul_xy[0], ubc_ul_xy[1]
+new_affine = Affine(30.0, 0.0, ul_x, 0.0, -30.0, ul_y)
+out_section = section[np.newaxis, ...]
+print(out_section.shape)
+```
+
+### Now write this out to small_file.tiff
+
+Note that the new file does have the utm zone 10 epsg code, since we use the pyproj utm and not the one we got from hls_band5.rio.crs
+
+```{code-cell} ipython3
+tif_filename = data_dir / Path("small_file.tif")
+num_chans = 1
+with rasterio.open(
+    tif_filename,
+    "w",
+    driver="GTiff",
+    height=image_height,
+    width=image_width,
+    count=num_chans,
+    dtype=out_section.dtype,
+    crs=p_utm,
+    transform=new_affine,
+    nodata=0.0,
+) as dst:
+    dst.write(out_section)
+    section_profile = dst.profile
+
+print(f"section profile: {pprint.pformat(section_profile)}")
+```
 
 ```{code-cell} ipython3
 

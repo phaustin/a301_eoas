@@ -21,6 +21,10 @@ with the coastline on a georeferenced map.
 
 - Download map_landsat.ipynb from the [week3 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
 
+## bugfix Jan 20, 2025
+
+Now working with change at {ref}`week3_bug`
+
 +++
 
 ## Open the band 5 image and read it in to a DataArray
@@ -121,8 +125,20 @@ x_ul, y_ul
 
 get the (x,y) of the lower right corner
 
-```{code-cell} ipython3
++++
+
+(week3_bug)=
+### Bug: don't hardcode the dimensions
+
+```
 x_lr, y_lr = the_transform*(3661,3361)
+```
+
+that should be the number of columns, number of rows -- lesson learned: avoid hard coding numbers wenever possible
+
+```{code-cell} ipython3
+nrows, ncols = scaled_band.shape
+x_lr, y_lr = the_transform*(ncols, nrows)
 x_lr, y_lr
 ```
 
@@ -162,10 +178,14 @@ cartopy_crs = ccrs.epsg(pyproj_epsg)
 cartopy_crs
 ```
 
+```{code-cell} ipython3
+cartopy_crs.to_epsg()
+```
+
 Borrow code from {ref}`sec:vancartopy` for the palette
 
 ```{code-cell} ipython3
-pal = copy(plt.get_cmap("Greys_r"))
+pal = copy(plt.get_cmap("viridis"))
 pal.set_bad("0.75")  # color 75% grey np.nan cells
 pal.set_over("w")  # color cells > vmax red
 pal.set_under("k")  # color cells < vmin black
@@ -183,17 +203,21 @@ call -- that makes the image semi-transparent so we can see the coastlines.  Not
 call the crs the transform.
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots(1, 1, figsize=(8, 8), subplot_kw={"projection": cartopy_crs})
+scaled_band.shape
+```
+
+```{code-cell} ipython3
+fig, ax = plt.subplots(1, 1, figsize=(10, 10), subplot_kw={"projection": cartopy_crs})
 the_extent=[x_ul, x_lr,y_lr,y_ul]
 ax.set_extent(the_extent,cartopy_crs)
 ax.gridlines(linewidth=2)
-ax.add_feature(cartopy.feature.GSHHSFeature(scale="auto", levels=[1, 2, 3]))
+ax.add_feature(cartopy.feature.GSHHSFeature(scale="auto", levels=[1, 2, 3],edgecolor='red'))
 cs = ax.imshow(
     scaled_band,
     transform=cartopy_crs,
     extent=the_extent,
     origin="upper",
-    alpha=0.4,
+    alpha=1,
     cmap=pal,
     norm=the_norm
 )

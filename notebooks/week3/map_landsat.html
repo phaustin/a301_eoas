@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Mapping the landsat scene &#8212; ATSC 301</title>
   
@@ -63,6 +63,7 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week3/map_landsat.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Assignment 1, brightness temperatures - solution" href="assign1_solution.html" />
     <link rel="prev" title="Windows installation using a conda lock file" href="../windows_install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -208,6 +209,10 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../windows_install.html">Windows installation using a conda lock file</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign1_solution.html">Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoom_landsat.html">Zooming an image</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="kirchoff.html">Kirchoff worksheet</a></li>
 </ul>
 
     </div>
@@ -356,12 +361,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bugfix-jan-20-2025">bugfix Jan 20, 2025</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-band-5-image-and-read-it-in-to-a-dataarray">Open the band 5 image and read it in to a DataArray</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-and-histogram-the-scene-using-the-scale-factor">Scale and histogram the scene using the <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-the-image-on-a-cartopy-map">Put the image on a cartopy map</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-affine-transform">Understanding the affine transform</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-transform-from-the-geotif">Get the transform from the geotif</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-transform-to-convert-row-col-to-x-y">Using the transform to convert (row,col) to (x,y)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-don-t-hardcode-the-dimensions">Bug: don’t hardcode the dimensions</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-cartopy-map">Setting up the cartopy map</a><ul class="nav section-nav flex-column">
@@ -390,6 +397,10 @@ with the coastline on a georeferenced map.</p>
 <ul class="simple">
 <li><p>Download map_landsat.ipynb from the <a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing">week3 folder</a></p></li>
 </ul>
+<section id="bugfix-jan-20-2025">
+<h2>bugfix Jan 20, 2025<a class="headerlink" href="#bugfix-jan-20-2025" title="Link to this heading">#</a></h2>
+<p>Now working with change at <a class="reference internal" href="#week3-bug"><span class="std std-ref">Bug: don’t hardcode the dimensions</span></a></p>
+</section>
 <section id="open-the-band-5-image-and-read-it-in-to-a-dataarray">
 <h2>Open the band 5 image and read it in to a DataArray<a class="headerlink" href="#open-the-band-5-image-and-read-it-in-to-a-dataarray" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -522,15 +533,23 @@ the affine transform is:
 </div>
 </div>
 <p>get the (x,y) of the lower right corner</p>
+</section>
+<section id="bug-don-t-hardcode-the-dimensions">
+<span id="week3-bug"></span><h3>Bug: don’t hardcode the dimensions<a class="headerlink" href="#bug-don-t-hardcode-the-dimensions" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x_lr</span><span class="p">,</span> <span class="n">y_lr</span> <span class="o">=</span> <span class="n">the_transform</span><span class="o">*</span><span class="p">(</span><span class="mi">3661</span><span class="p">,</span><span class="mi">3361</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>that should be the number of columns, number of rows – lesson learned: avoid hard coding numbers wenever possible</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_lr</span><span class="p">,</span> <span class="n">y_lr</span> <span class="o">=</span> <span class="n">the_transform</span><span class="o">*</span><span class="p">(</span><span class="mi">3661</span><span class="p">,</span><span class="mi">3361</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="n">scaled_band</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">x_lr</span><span class="p">,</span> <span class="n">y_lr</span> <span class="o">=</span> <span class="n">the_transform</span><span class="o">*</span><span class="p">(</span><span class="n">ncols</span><span class="p">,</span> <span class="n">nrows</span><span class="p">)</span>
 <span class="n">x_lr</span><span class="p">,</span> <span class="n">y_lr</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(509790.0, 5399190.0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(509760.0, 5390220.0)
 </pre></div>
 </div>
 </div>
@@ -587,7 +606,7 @@ its most likely epsg code.  Here are the two steps:</p>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2025-01-19T16:29:29.038172</dc:date>
+    <dc:date>2025-01-22T08:27:28.263059</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -621,8 +640,8 @@ z
 " style="fill: #ffffff"/>
    </g>
    <g id="FeatureArtist_1">
-    <path clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
-    <path clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+    <path clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #000000"/>
+    <path clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #000000"/>
     <path d="M 17.918638 18.372536 
 L 18.551824 18.555031 
 L 18.546815 19.167284 
@@ -630,7 +649,7 @@ L 17.878077 19.889707
 L 17.140584 19.366512 
 L 17.367567 18.683999 
 L 17.918638 18.372536 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #000000"/>
     <path d="M 17.773801 17.077796 
 L 18.356283 17.362128 
 L 17.968018 17.845868 
@@ -638,8 +657,8 @@ L 17.3153 17.971559
 L 17.271054 17.690928 
 L 17.552826 17.030375 
 L 17.773801 17.077796 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
-    <path clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #000000"/>
+    <path clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #000000"/>
     <path d="M 19.108517 25.55427 
 L 18.886426 25.763219 
 L 18.09112 25.944339 
@@ -655,7 +674,7 @@ M 19.108518 21.917261
 L 18.951313 21.662653 
 L 19.108518 21.17609 
 L 19.108518 21.17609 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #000000"/>
     <path d="M 13.223536 22.903329 
 L 13.987429 21.402304 
 L 14.829733 20.071121 
@@ -667,7 +686,7 @@ L 15.459024 22.080972
 L 14.640891 22.990297 
 L 13.881421 23.324922 
 L 13.223536 22.903329 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #000000"/>
     <path d="M 13.934263 26.211037 
 L 14.71575 26.595608 
 L 16.103052 26.609204 
@@ -685,8 +704,8 @@ L 12.104272 29.041772
 L 12.628641 27.745916 
 L 12.12125 26.514707 
 L 13.934263 26.211037 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
-    <path clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #000000"/>
+    <path clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #000000"/>
     <path d="M 7.200001 73.319353 
 L 7.713528 73.522326 
 L 8.47314 73.864723 
@@ -701,8 +720,8 @@ L 9.315085 76.326178
 L 8.187908 75.580394 
 L 7.986118 75.003565 
 L 7.2 74.741166 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
-    <path clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #000000"/>
+    <path clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #000000"/>
     <path d="M 19.108518 105.752472 
 L 18.994685 105.655913 
 L 17.465649 105.507399 
@@ -760,8 +779,8 @@ L 19.108517 37.224213
 M 19.108518 38.627641 
 L 18.901137 38.879086 
 L 19.108517 38.916466 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
-    <path clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #000000"/>
+    <path clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #000000"/>
     <path d="M 19.108518 36.347359 
 L 18.618354 36.151705 
 L 18.022118 36.447546 
@@ -784,9 +803,9 @@ L 18.240786 28.484874
 L 18.084426 29.450076 
 L 19.108517 28.771455 
 L 19.108518 28.771455 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
-    <path clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
-    <path clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #000000"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #000000"/>
+    <path clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #000000"/>
+    <path clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #000000"/>
    </g>
    <g id="LineCollection_1">
     <path d="M 7.2 14.85402 
@@ -797,7 +816,7 @@ L 8.690877 9.916599
 L 9.18134 8.299369 
 L 9.515254 7.200001 
 L 9.515254 7.2 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
     <path d="M 7.2 45.387572 
 L 7.353469 44.008348 
 L 7.541323 42.330505 
@@ -822,7 +841,7 @@ L 11.090767 12.141757
 L 11.294571 10.465105 
 L 11.49878 8.788485 
 L 11.69259 7.2 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
     <path d="M 19.108518 173.52 
 L 19.107868 171.845538 
 L 19.105919 170.171071 
@@ -923,7 +942,7 @@ L 14.040333 12.243628
 L 13.952831 10.557107 
 L 13.865152 8.870538 
 L 13.778153 7.2 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
     <path d="M 19.108518 21.301449 
 L 18.833352 20.077749 
 L 18.461506 18.428896 
@@ -935,11 +954,11 @@ L 16.587674 10.190101
 L 16.210522 8.543241 
 L 15.902402 7.200001 
 L 15.902402 7.2 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
     <path d="M 19.108518 9.342996 
 L 18.465433 7.815738 
 L 18.205839 7.200001 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
    </g>
    <g id="LineCollection_2">
     <path d="M 7.2 134.036361 
@@ -956,7 +975,7 @@ L 16.660062 134.073447
 L 17.662127 134.060591 
 L 18.664498 134.044513 
 L 19.108518 134.036361 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
     <path d="M 7.2 94.449987 
 L 7.84151 94.476663 
 L 8.658994 94.506245 
@@ -973,7 +992,7 @@ L 16.832109 94.530888
 L 17.649524 94.506245 
 L 18.467008 94.476663 
 L 19.108518 94.449987 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
     <path d="M 7.2 54.666805 
 L 7.551468 54.697808 
 L 8.084321 54.741188 
@@ -999,7 +1018,7 @@ L 18.224197 54.741188
 L 18.75705 54.697808 
 L 19.108518 54.666805 
 L 19.108518 54.666805 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
     <path d="M 7.2 14.274688 
 L 7.209598 14.277662 
 L 7.387383 14.331809 
@@ -1068,7 +1087,7 @@ L 18.74287 14.384305
 L 18.921135 14.331809 
 L 19.09892 14.277662 
 L 19.108518 14.274687 
-" clip-path="url(#p64a01fdb04)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
+" clip-path="url(#p0ef2d2d3b0)" style="fill: none; stroke: #b0b0b0; stroke-width: 0.8"/>
    </g>
    <g id="patch_3">
     <path d="M 7.2 173.52 
@@ -1084,7 +1103,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p64a01fdb04">
+  <clipPath id="p0ef2d2d3b0">
    <path d="M 7.2 173.52 
 L 7.2 173.52 
 L 7.2 173.52 
@@ -1096,12 +1115,24 @@ z
   </clipPath>
  </defs>
 </svg>
-<pre>&lt;cartopy._epsg._EPSGProjection object at 0x144e58ad0&gt;</pre></div></div>
+<pre>&lt;cartopy._epsg._EPSGProjection object at 0x141649e80&gt;</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cartopy_crs</span><span class="o">.</span><span class="n">to_epsg</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32610
+</pre></div>
+</div>
+</div>
 </div>
 <p>Borrow code from <a class="reference internal" href="../week2/cartopy_mapping_vancouver.html#sec-vancartopy"><span class="std std-ref">Mapping Vancouver with cartopy</span></a> for the palette</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pal</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;Greys_r&quot;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pal</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;viridis&quot;</span><span class="p">))</span>
 <span class="n">pal</span><span class="o">.</span><span class="n">set_bad</span><span class="p">(</span><span class="s2">&quot;0.75&quot;</span><span class="p">)</span>  <span class="c1"># color 75% grey np.nan cells</span>
 <span class="n">pal</span><span class="o">.</span><span class="n">set_over</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>  <span class="c1"># color cells &gt; vmax red</span>
 <span class="n">pal</span><span class="o">.</span><span class="n">set_under</span><span class="p">(</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>  <span class="c1"># color cells &lt; vmin black</span>
@@ -1123,17 +1154,29 @@ call – that makes the image semi-transparent so we can see the coastlines.  No
 call the crs the transform.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="n">cartopy_crs</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaled_band</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3660, 3660)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="n">cartopy_crs</span><span class="p">})</span>
 <span class="n">the_extent</span><span class="o">=</span><span class="p">[</span><span class="n">x_ul</span><span class="p">,</span> <span class="n">x_lr</span><span class="p">,</span><span class="n">y_lr</span><span class="p">,</span><span class="n">y_ul</span><span class="p">]</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">(</span><span class="n">the_extent</span><span class="p">,</span><span class="n">cartopy_crs</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cartopy</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">GSHHSFeature</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cartopy</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">GSHHSFeature</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">))</span>
 <span class="n">cs</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
     <span class="n">scaled_band</span><span class="p">,</span>
     <span class="n">transform</span><span class="o">=</span><span class="n">cartopy_crs</span><span class="p">,</span>
     <span class="n">extent</span><span class="o">=</span><span class="n">the_extent</span><span class="p">,</span>
     <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;upper&quot;</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="n">cmap</span><span class="o">=</span><span class="n">pal</span><span class="p">,</span>
     <span class="n">norm</span><span class="o">=</span><span class="n">the_norm</span>
 <span class="p">)</span>
@@ -1143,7 +1186,7 @@ call the crs the transform.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/00a4842db80a4ff2e27ac5d09d318d17603d037be1b1f2fc6d3bd072976e86c9.png" src="../../_images/00a4842db80a4ff2e27ac5d09d318d17603d037be1b1f2fc6d3bd072976e86c9.png" />
+<img alt="../../_images/3a89a0a611b7bb7db21a1b9addb9cbebfb9a924bf8d1350c549d76c8be6aa18e.png" src="../../_images/3a89a0a611b7bb7db21a1b9addb9cbebfb9a924bf8d1350c549d76c8be6aa18e.png" />
 </div>
 </div>
 </section>
@@ -1202,6 +1245,15 @@ call the crs the transform.</p>
         <p class="prev-next-title">Windows installation using a conda lock file</p>
       </div>
     </a>
+    <a class="right-next"
+       href="assign1_solution.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Assignment 1, brightness temperatures - solution</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1218,12 +1270,14 @@ call the crs the transform.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bugfix-jan-20-2025">bugfix Jan 20, 2025</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-band-5-image-and-read-it-in-to-a-dataarray">Open the band 5 image and read it in to a DataArray</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-and-histogram-the-scene-using-the-scale-factor">Scale and histogram the scene using the <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-the-image-on-a-cartopy-map">Put the image on a cartopy map</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-affine-transform">Understanding the affine transform</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-transform-from-the-geotif">Get the transform from the geotif</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-transform-to-convert-row-col-to-x-y">Using the transform to convert (row,col) to (x,y)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-don-t-hardcode-the-dimensions">Bug: don’t hardcode the dimensions</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-cartopy-map">Setting up the cartopy map</a><ul class="nav section-nav flex-column">
