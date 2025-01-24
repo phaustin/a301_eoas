@@ -156,6 +156,14 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 
 ### Day 9 Friday
 
-- {ref}`week3:tau`
+- I've added the rioxarray `to_raster` example to show how to write a geotif with rioxarray in {ref}`week3:image_zoom`
+- Do the {ref}`week3:kirchoff`
+- Go over {ref}`week3:tau` with the setup for Wallace and Hobbs Problem 4.39
+
+#### Do for Monday
+
+- Finish Assignment 1
+- Write out clipped geotifs for your band 4 and band 5 images
+
 
 

@@ -1,7 +1,7 @@
 format: jb-book
 root: notebooks/index.md
 defaults:
-  maxdepth: 0
+  maxdepth: 1
 parts:
 - caption: Useful links
   chapters:
@@ -35,6 +35,7 @@ parts:
   - file: notebooks/week2/cartopy_mapping_vancouver.md
   - file: notebooks/week2/get_landsat_bands.md
 - caption: Week 3
+  numbered: true
   chapters:
   - file: notebooks/windows_install.md
   - file: notebooks/week3/map_landsat.md
