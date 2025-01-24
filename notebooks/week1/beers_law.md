@@ -112,7 +112,7 @@ use the limit argument we went through above and get:
 
 $$
 dF = F_i (-nb) \exp(-nbs) ds =  (-nb) F ds
-$$
+$$ (beers-flux)
 
 or
 

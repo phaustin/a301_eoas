@@ -43,7 +43,7 @@ Below we'll go through each of these terms.
 
 To see why the zenith angle matters to the irradiance, consider this figure:
 
-::: {figure} ../figures/costheta.png
+::: {figure} ./images/costheta.png
 :width: 60%
 :name: costheta
 :alt: pha
@@ -62,7 +62,7 @@ equally to all wavelengths and because we are interested in particular
 wavelength ranges.  The figure below shows the field of view for a typical
 airborne scanning radiometer:
 
-::: {figure} ../figures/c5_1.png
+::: {figure} ./images/c5_1.png
 :width: 70%
 :name: whiskbroom
 :alt: pha
@@ -74,7 +74,7 @@ The photons reaching the sensor through the telescope are separated into
 particular wavelength regions using a filter wheel or a beam splitter:
 
 
-::: {figure} ../figures/c5_5.png
+::: {figure} ./images/c5_5.png
 :width: 70%
 :name: filters
 :alt: pha
@@ -98,7 +98,7 @@ defines the angle.
 
 In the case that $l$=$r$ the angle is 1 radian:
 
-:::{figure} ../figures/Radian.png
+:::{figure} ./images/Radian.png
 :name: radian
 
 Definition of planar angle
@@ -115,7 +115,7 @@ $$
 A pixel has two dimensions, which makes things more complicated.
 Consider the following spherical coordinate system:
 
-:::{figure} ../figures/spherical.png
+:::{figure} ./images/spherical.png
 :width: 70%
 :name: spherical_coords
 :alt: pha
@@ -141,7 +141,7 @@ $$
 dA = width \times height = r \sin \theta d\phi \times r d\theta = r^2  \sin \theta d\theta d \phi
 $$
 
-:::{figure} ../figures/solid_angle.png
+:::{figure} ./images/solid_angle.png 
 :name: solid_angle
 
 Definition of solid angle

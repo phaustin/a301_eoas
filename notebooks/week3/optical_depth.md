@@ -66,7 +66,7 @@ $$
 \alpha + T &= \alpha + \exp(-\tau) = 1 \\
 \epsilon &= \alpha = (1 - \exp(-\tau)) 
 $$
-where we have used Kirchoff's law that $\alpha = \epsilon$.  So we're in a position to calculate absorption and emission for any part of the atmosphere, as long as we know it's composition, density and temperature.
+where we have used Kirchoff's law that $\alpha = \epsilon$.  So we're in a position to calculate absorption and emission for any part of the atmosphere, as long as we know its composition, density and temperature.
 
 ## The grey layer in Wallace and Hobbs problem 4.39
 
