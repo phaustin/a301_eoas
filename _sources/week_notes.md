@@ -154,4 +154,8 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 - Write the region to a new geotiff
 - Read Wallace and Hobbs Section 4.5
 
+### Day 9 Friday
+
+- {ref}`week3:tau`
+
 

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -213,6 +213,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">Zooming an image</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">Optical depth and heatng rate</a></li>
 </ul>
 
     </div>
@@ -434,7 +435,7 @@ telescope <span class="math notranslate nohighlight">\(\Delta \omega\)</span> to
 the monochromatic irradiance and radiance for a narrow beam:</p></li>
 </ol>
 <div class="math notranslate nohighlight" id="equation-flrel">
-<span class="eqno">(7)<a class="headerlink" href="#equation-flrel" title="Link to this equation">#</a></span>\[
+<span class="eqno">(8)<a class="headerlink" href="#equation-flrel" title="Link to this equation">#</a></span>\[
 F_\lambda = I_\lambda \Delta \omega
 \]</div>
 <p>Repeating this figure from the <a class="reference internal" href="radiance.html#radiance"><span class="std std-ref">Solid angle and radiance</span></a> reading:</p>
@@ -450,7 +451,7 @@ to use the law of the cosines to move from the perpendicular surface
 with area <span class="math notranslate nohighlight">\(dA_1\)</span> to the surface you are interested in with larger
 area <span class="math notranslate nohighlight">\(dA_2 = dA_1/\cos \theta\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-cosflux">
-<span class="eqno">(8)<a class="headerlink" href="#equation-cosflux" title="Link to this equation">#</a></span>\[
+<span class="eqno">(9)<a class="headerlink" href="#equation-cosflux" title="Link to this equation">#</a></span>\[
 dF_2 = \cos \theta dF_1 = \cos \theta I d\omega
 \]</div>
 <p>To get the flux from every angle requires that you integrate over
@@ -459,13 +460,13 @@ a hemisphere. That means you need to integrate over all azimuths, so
 <span class="math notranslate nohighlight">\(\theta = 0 \to \pi/2\)</span>, which is done in Wallace and Hobbs exercise 4.3
 on page 113:</p>
 <div class="math notranslate nohighlight" id="equation-fluxrel">
-<span class="eqno">(9)<a class="headerlink" href="#equation-fluxrel" title="Link to this equation">#</a></span>\[
+<span class="eqno">(10)<a class="headerlink" href="#equation-fluxrel" title="Link to this equation">#</a></span>\[
 F_2 = \int dF_2 = \int_0^{2\pi} \int_0^{\pi/2} \cos \theta \, I \, d \omega =\int_0^{2\pi} \int_0^{\pi/2} I \cos \theta  \sin \theta \, d\theta \, d \phi
 \]</div>
 <p>Note that you always do this integral over a plane surface containing the sensor.  That is, if you are interested in emission from the earth’s surface, you need to turn <a class="reference internal" href="#i-f"><span class="std std-numref">Fig. 8</span></a> upside down, and look downward at the source of the radiation.</p>
 <section id="two-approximations-to-fluxrel">
-<h3>Two approximations to <a class="reference internal" href="#equation-fluxrel">(9)</a><a class="headerlink" href="#two-approximations-to-fluxrel" title="Link to this heading">#</a></h3>
-<p>Equation <a class="reference internal" href="#equation-fluxrel">(9)</a> is the formal definition of <span class="math notranslate nohighlight">\(F\)</span> and is always correct.  There are two simplifications that are extremely useful:</p>
+<h3>Two approximations to <a class="reference internal" href="#equation-fluxrel">(10)</a><a class="headerlink" href="#two-approximations-to-fluxrel" title="Link to this heading">#</a></h3>
+<p>Equation <a class="reference internal" href="#equation-fluxrel">(10)</a> is the formal definition of <span class="math notranslate nohighlight">\(F\)</span> and is always correct.  There are two simplifications that are extremely useful:</p>
 <section id="parallel-beam-approximation-w-h-p-116">
 <h4>Parallel beam approximation (W&amp;H p. 116)<a class="headerlink" href="#parallel-beam-approximation-w-h-p-116" title="Link to this heading">#</a></h4>
 <div class="math notranslate nohighlight">
@@ -489,7 +490,7 @@ surface emitted radiance <span class="math notranslate nohighlight">\(B^*\)</spa
 that simplification, we’re down to trigonometric integrals from first
 year calculus:</p>
 <div class="math notranslate nohighlight" id="equation-flux-final">
-<span class="eqno">(10)<a class="headerlink" href="#equation-flux-final" title="Link to this equation">#</a></span>\[
+<span class="eqno">(11)<a class="headerlink" href="#equation-flux-final" title="Link to this equation">#</a></span>\[
 F_2 = F^* = \int_0^{2\pi}\int_0^{\pi/2} B \cos \theta  \sin \theta \, d\theta \, d \phi = 2 \pi B
       \int_0^{\pi/2} \cos \theta  \sin \theta\, d\theta = 2\pi B \left( \frac{1}{2} \right)  = \pi B
 \]</div>
@@ -499,7 +500,7 @@ radiation coming from a black surface, immediately above the surface.</p>
 is independent of direction, then the irriadiance at that point is going
 to be:</p>
 <div class="math notranslate nohighlight" id="equation-flux-short">
-<span class="eqno">(11)<a class="headerlink" href="#equation-flux-short" title="Link to this equation">#</a></span>\[
+<span class="eqno">(12)<a class="headerlink" href="#equation-flux-short" title="Link to this equation">#</a></span>\[
 F = \pi I
 \]</div>
 </section>
@@ -509,7 +510,7 @@ F = \pi I
 <h2>Worksheet questions<a class="headerlink" href="#worksheet-questions" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Suppose you have a radiometer with a zoom telescope that can focus on 1 <span class="math notranslate nohighlight">\(km^2\)</span> pixel at any distance.   If the surface is emitting radiance <span class="math notranslate nohighlight">\(I\)</span> in all directions into a hemisphere, find both <span class="math notranslate nohighlight">\(F\)</span> and <span class="math notranslate nohighlight">\(I\)</span> at 10 km above the surface, and at 100 km above the surface, assuming you can use the parallel beam.</p></li>
-<li><p>In the answer to 1) you should have found that I is independent of distance from the surface. Explain why <a class="reference internal" href="#equation-flux-short">(11)</a> doesn’t  violate the inverse square law for flux F.</p></li>
+<li><p>In the answer to 1) you should have found that I is independent of distance from the surface. Explain why <a class="reference internal" href="#equation-flux-short">(12)</a> doesn’t  violate the inverse square law for flux F.</p></li>
 <li><p>Find the solid angle for a 1 <span class="math notranslate nohighlight">\(km^2\)</span> pixel viewed from 800 km, and compare that result to <span class="math notranslate nohighlight">\(Area/R^2\)</span>.</p></li>
 <li><p>Change of variables:  Do W&amp;H Exercise 4.13 to prove relationship 4.4</p></li>
 </ol>

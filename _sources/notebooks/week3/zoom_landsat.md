@@ -34,10 +34,6 @@ We need to be able to select a small region of a landsat image to work with.  Th
 - Download zoom_landsat.ipynb from the [week3 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
 
 ```{code-cell} ipython3
-import sat_lib
-```
-
-```{code-cell} ipython3
 import copy
 import pprint
 from pathlib import Path
@@ -51,7 +47,6 @@ from matplotlib import pyplot as plt
 from matplotlib.colors import Normalize
 from pyproj import CRS, Transformer
 import rioxarray
-import geopandas as gpd
 from cartopy import crs as ccrs
 ```
 
@@ -171,13 +166,17 @@ offset_row = 300
 l_col_offset = -offset_col
 r_col_offset = +offset_col
 b_row_offset = +offset_row
-t_row_offset = -offset_col
+t_row_offset = -offset_row
 col_slice = slice(ubc_col + l_col_offset, ubc_col + r_col_offset)
 row_slice = slice(ubc_row + t_row_offset, ubc_row + b_row_offset)
 section = b5_refl[row_slice, col_slice]
 ubc_ul_xy = full_affine * (col_slice.start, row_slice.start)
 ubc_lr_xy = full_affine * (col_slice.stop, row_slice.stop)
 ubc_ul_xy, ubc_lr_xy
+```
+
+```{code-cell} ipython3
+print(section.shape)
 ```
 
 ```{code-cell} ipython3
@@ -279,7 +278,7 @@ out_section = section[np.newaxis, ...]
 print(out_section.shape)
 ```
 
-### Now write this out to small_file.tiff
+### Now write this out to small_file.tif
 
 Note that the new file does have the utm zone 10 epsg code, since we use the pyproj utm and not the one we got from hls_band5.rio.crs
 
@@ -302,6 +301,12 @@ with rasterio.open(
     section_profile = dst.profile
 
 print(f"section profile: {pprint.pformat(section_profile)}")
+```
+
+## Repeat the write with rioxarray
+
+```{code-cell} ipython3
+hls_band5.data = section
 ```
 
 ```{code-cell} ipython3

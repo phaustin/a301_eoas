@@ -6,9 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Week 1 review questions/answers &#8212; ATSC 301</title>
+    <title>Optical depth and heating rate &#8212; ATSC 301</title>
   
   
   
@@ -59,12 +59,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week1/week1_review';</script>
-    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week1/week1_review.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week3/optical_depth';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week3/optical_depth.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Plotting the Planck function - solution" href="../week2/planck_sol.html" />
-    <link rel="prev" title="Plotting the Planck function with python" href="planck_function.html" />
+    <link rel="prev" title="Kirchoff worksheet" href="kirchoff.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -181,21 +180,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../syllabus.html">ATSC 301: syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../integrity.html">UBC academic integrity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../texts.html">Texts</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Week notes</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&amp;st=n7iwqqem&amp;dl=0">Notebook downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_review.html">Weekly review</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
-<li class="toctree-l1"><a class="reference internal" href="beers_law.html">Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">Beers and inverse squared laws</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
-<li class="toctree-l1"><a class="reference internal" href="radiance.html">Solid angle and radiance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="newflux.html">Finding the flux given the radiance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="planck_function.html">Plotting the Planck function with python</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Week 1 review questions/answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">Plotting the Planck function with python</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
 <ul class="nav bd-sidenav">
@@ -206,9 +206,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../week2/get_landsat_bands.html">Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../windows_install.html">Windows installation using a conda lock file</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">Mapping and clipping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_landsat.html">Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign1_solution.html">Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoom_landsat.html">Zooming an image</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="kirchoff.html">Kirchoff worksheet</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Optical depth and heating rate</a></li>
 </ul>
 
     </div>
@@ -263,7 +268,7 @@
       
       
       
-      <li><a href="../../_sources/notebooks/week1/week1_review.md" target="_blank"
+      <li><a href="../../_sources/notebooks/week3/optical_depth.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -347,7 +352,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Week 1 review questions/answers</h1>
+    <h1>Optical depth and heating rate</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -357,8 +362,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-week1-topics">Key week1 topics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#study-question-solutions">Study question solutions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-on-optical-depth-and-the-greenhouse-effect">Notes on optical depth and the greenhouse effect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optical-depth-and-the-greybody-approximation">Optical depth and the greybody approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-grey-layer-in-wallace-and-hobbs-problem-4-39">The grey layer in Wallace and Hobbs problem 4.39</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -370,168 +377,85 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="week-1-review-questions-answers">
-<span id="week1-review"></span><h1>Week 1 review questions/answers<a class="headerlink" href="#week-1-review-questions-answers" title="Link to this heading">#</a></h1>
-<section id="key-week1-topics">
-<h2>Key week1 topics<a class="headerlink" href="#key-week1-topics" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Definitions of solid angle/field of view, irradiance, radiance</p></li>
-<li><p>Explanation of how a satellite sensor measures radiance</p></li>
-<li><p>Conservation of radiance in a vacuum</p></li>
-<li><p>Derivation of Beer’s law and optical depth (we’ll return to this in more detail later)</p></li>
-<li><p>Calculating flux from radiance for two cases:</p>
-<ul class="simple">
-<li><p>the parallel beam approximation (<span class="math notranslate nohighlight">\(I\)</span> contained in a narrow field of view  e.g. solar direct beam)</p></li>
-<li><p>isotropic radiance (<span class="math notranslate nohighlight">\(I\)</span> independent of direction e.g. diffuse reflection or thermal emission)</p></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="optical-depth-and-heating-rate">
+<span id="week3-tau"></span><h1>Optical depth and heating rate<a class="headerlink" href="#optical-depth-and-heating-rate" title="Link to this heading">#</a></h1>
+<section id="notes-on-optical-depth-and-the-greenhouse-effect">
+<h2>Notes on optical depth and the greenhouse effect<a class="headerlink" href="#notes-on-optical-depth-and-the-greenhouse-effect" title="Link to this heading">#</a></h2>
+<p>We need to connect the layer model showing Wallace and Hobbs Figure 4.9 p. 122 with Beer’s law and optical depth.</p>
+<figure class="align-default" id="black-layers">
+<a class="reference internal image-reference" href="../../_images/wh_2layer.png"><img alt="../../_images/wh_2layer.png" src="../../_images/wh_2layer.png" style="width: 567.0px; height: 420.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Wallace and Hobbs Figure 4.9: two black layers</span><a class="headerlink" href="#black-layers" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In <a class="reference internal" href="#black-layers"><span class="std std-numref">Fig. 10</span></a> the absorptivity <span class="math notranslate nohighlight">\(\alpha\)</span> and emissivity <span class="math notranslate nohighlight">\(\epsilon\)</span> are both 1, and the transmissivity <span class="math notranslate nohighlight">\(T\)</span> is 0, because the layers are black. But we know that in general the atmosphere is at least partially transparent in the longwave (we can measure the surface temperature from satellites), so that the flux
+transmissivity from Week 1 <a class="reference internal" href="../week1/beers_law.html#equation-beers-flux">(3)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-ftrans">
+<span class="eqno">(13)<a class="headerlink" href="#equation-ftrans" title="Link to this equation">#</a></span>\[
+\frac{F_{out}}{F_{in}} = \exp(-\tau)
+\]</div>
+<p>is greater than 0.  In fact if we average across all wavelengths and the depth of the atmosphere atmosphere, <span class="math notranslate nohighlight">\(T \approx 0.2\)</span> so <span class="math notranslate nohighlight">\(\epsilon \approx 0.8\)</span>)</p>
+<p>Wallace and Hobbs make two changes to <a class="reference internal" href="#equation-ftrans">(13)</a>:</p>
+<ol class="arabic">
+<li><p>They use radiance instead of flux</p>
+<p><a class="reference internal" href="#equation-ftrans">(13)</a> only works for “direct beam” flux.  Later in the course we’ll see how it has to be modified for the more general case of photons coming from all directions (specifically, we need to get to Wallace and Hobbs equation 4.44 on page 136).  Wallace and Hobbs equation 4.17 is always true though:</p>
+<div class="math notranslate nohighlight">
+\[
+   d I_\lambda=-I_\lambda \rho r k_\lambda d s = -I_\lambda \rho r k_\lambda dz/\cos \theta =  -I_\lambda \, d\tau/\cos \theta
+   \]</div>
+<p>where <span class="math notranslate nohighlight">\(\rho\)</span> is the air density (<span class="math notranslate nohighlight">\(kg\,m^{-3}\)</span>), <span class="math notranslate nohighlight">\(r\)</span> is the gas mixing ratio (kg gas/kg air) and <span class="math notranslate nohighlight">\(k_\lambda\)</span> is the mass absorption coefficient (<span class="math notranslate nohighlight">\(m^{2}\,kg^{-1}\)</span>).</p>
+<p>To get the flux equation <a class="reference internal" href="#equation-ftrans">(13)</a> for the direct beam (like the solar beam), just multiply by the small field of view <span class="math notranslate nohighlight">\(\Delta \omega\)</span>, since in that case <span class="math notranslate nohighlight">\(F = I \Delta \omega\)</span>.</p>
 </li>
+<li><p>they allow for “slant paths” where the beam is moving at an angle <span class="math notranslate nohighlight">\(\theta\)</span> from the vertical, and so covering a longer distance.  For <a class="reference internal" href="#equation-ftrans">(13)</a> we need to limit ourselves to straight up and down with <span class="math notranslate nohighlight">\(\theta = 0\)</span>.</p></li>
 </ol>
 </section>
-<section id="study-question-solutions">
-<h2>Study question solutions<a class="headerlink" href="#study-question-solutions" title="Link to this heading">#</a></h2>
-<ol class="arabic">
-<li><p>On page 39, Stull asserts the inverse square law:</p>
+<section id="optical-depth-and-the-greybody-approximation">
+<h2>Optical depth and the greybody approximation<a class="headerlink" href="#optical-depth-and-the-greybody-approximation" title="Link to this heading">#</a></h2>
+<p>So if the real atmosphere is semi-transparent, how do we modify  <a class="reference internal" href="#black-layers"><span class="std std-numref">Fig. 10</span></a>  to be more accurate?   We use the “greybody” approximation.  If we know the optical depth <span class="math notranslate nohighlight">\(\tau\)</span>, then we know the transmissivity <span class="math notranslate nohighlight">\(T = \exp(-\tau)\)</span>.   If we can neglect reflectivity <span class="math notranslate nohighlight">\(R\)</span> (a good approximation in the longwave), then Wallace and Hobbs equation 4.14 gets simpler:</p>
+<p>Conservation of energy:</p>
 <div class="math notranslate nohighlight">
 \[
-    F_2 = F_1 \left ( \frac{R_1^2}{R_2^2} \right )
-    \]</div>
-<p>Prove this using conservation of energy (i.e. conservation of Joules)</p>
-<p><strong>Answer</strong>: The total power, in Watts, passing through a hemisphere at <span class="math notranslate nohighlight">\(R_1\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[
-    P_1=F_1 \times 2 \pi R_1^2
-    \]</div>
-<p>If <span class="math notranslate nohighlight">\(P_1\)</span> is conserved then at distance <span class="math notranslate nohighlight">\(R_2\)</span> the new flux is:</p>
-<div class="math notranslate nohighlight">
-\[
-    F_2 = \frac{P_1}{2\pi R_2^2} = \frac{F_1 \times 2 \pi R_1^2}{2\pi R_2^2}
-    \]</div>
-</li>
-</ol>
-<ol class="arabic simple" start="2">
-<li><p>Suppose a 10 cm x 10 cm piece of white paper with a visible
-reflectivity of 80% is pinned to a wall and illuminated by visible
-light with a flux of 100 <span class="math notranslate nohighlight">\(W\,m^{-2}\)</span>. If the paper reflects
-evenly in all directions (isotropic, not glossy), what is the flux
-from the paper 3 meters from the wall? What about 6 meters from the
-wall?</p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="n">area</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">*</span><span class="mf">0.1</span> <span class="c1">#m^2</span>
-<span class="n">reflect</span><span class="o">=</span><span class="mf">0.8</span>
-<span class="n">incident_flux</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1">#W/m^2</span>
-<span class="n">reflect_power</span> <span class="o">=</span> <span class="mf">0.8</span><span class="o">*</span><span class="n">incident_flux</span><span class="o">*</span><span class="n">area</span>
-<span class="n">R1</span> <span class="o">=</span><span class="mi">3</span>  <span class="c1">#meters</span>
-<span class="n">reflect_flux_3</span> <span class="o">=</span> <span class="n">reflect_power</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">R1</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span> <span class="c1">#W/m^2</span>
-<span class="n">R2</span><span class="o">=</span><span class="mi">6</span> <span class="c1">#meters</span>
-<span class="n">reflect_flux_6</span> <span class="o">=</span> <span class="n">reflect_power</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">R2</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span> <span class="c1">#W/m^2</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reflected flux at </span><span class="si">{</span><span class="n">R1</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> meters = </span><span class="si">{</span><span class="n">reflect_flux_3</span><span class="si">:</span><span class="s2">0.2g</span><span class="si">}</span><span class="s2"> W/m^2&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reflected flux at </span><span class="si">{</span><span class="n">R2</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> meters = </span><span class="si">{</span><span class="n">reflect_flux_6</span><span class="si">:</span><span class="s2">0.2g</span><span class="si">}</span><span class="s2"> W/m^2&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reflected flux at 3.00 meters = 0.014 W/m^2
-Reflected flux at 6.00 meters = 0.0035 W/m^2
-</pre></div>
-</div>
-</div>
-</div>
-<ol class="arabic" start="3">
-<li><p>Stull defines the direct beam transmissivity as:</p>
-<div class="math notranslate nohighlight" id="equation-week1-beers">
-<span class="eqno">(10)<a class="headerlink" href="#equation-week1-beers" title="Link to this equation">#</a></span>\[
-   t = \frac{F}{F_{i}} = \exp(-\tau)
-   \]</div>
-<p>Suppose I have two pieces of translucent glass that absorb but don’t
-reflect light, and their indvidual transmissivities are <span class="math notranslate nohighlight">\(t_1\)</span> and
-<span class="math notranslate nohighlight">\(t_2\)</span>. Use conservation of energy to prove that if we stack the
-two pieces, the combined transmissivity will be <span class="math notranslate nohighlight">\(t_1 \times t_2\)</span>,
-which means that the combined optical depth will be
-<span class="math notranslate nohighlight">\(\tau_1 + \tau_2\)</span> (i.e. optical depths add). Note that I had to
-assume no reflection so that photons wouldn’t bounce back and forth
-between the two plates.</p>
-<p><strong>Answer</strong>:  From <a class="reference internal" href="#equation-week1-beers">(10)</a> we know that the flux exiting plate 1 is:</p>
-<div class="math notranslate nohighlight">
-\[
-   F_1 = F_i \exp(-\tau_1)
-   \]</div>
-<p>Because we know it is a direct beam (i.e. tiny solid angle <span class="math notranslate nohighlight">\(\Delta \omega\)</span>) there is no spherical
-spreading and <span class="math notranslate nohighlight">\(F_2\)</span> is just</p>
-<div class="math notranslate nohighlight">
-\[
-   F_2 = F_1 \exp(-\tau_2) = F_i \exp(-\tau_1) \exp(-\tau_2) = F_i \exp(-(\tau_1 + \tau_2))
-   \]</div>
-</li>
-</ol>
-<ol class="arabic" start="4">
-<li><p>Suppose you have a radiometer with a zoom telescope that can focus on 1 <span class="math notranslate nohighlight">\(km^2\)</span> pixel at any distance.   If the surface is emitting radiance <span class="math notranslate nohighlight">\(I\)</span> in all directions into a hemisphere, find both <span class="math notranslate nohighlight">\(F\)</span> and <span class="math notranslate nohighlight">\(I\)</span> at 10 km above the surface, and at 100 km above the surface, assuming you can use the parallel beam approximation.</p>
-<p><strong>Answer</strong></p>
-<p>Since we are using the parallel beam approximation, we can assume that:</p>
-<div class="math notranslate nohighlight">
-\[
-    F = I \Delta \omega
-    \]</div>
-<p>for at nadir (<span class="math notranslate nohighlight">\(\theta = 0\)</span>).</p>
-<p>In each case, we make the approximation that</p>
-<div class="math notranslate nohighlight" id="equation-approx-omega">
-<span class="eqno">(11)<a class="headerlink" href="#equation-approx-omega" title="Link to this equation">#</a></span>\[
-    \Delta \omega \approx  \frac{area}{R^2}
-    \]</div>
-<p>Since <span class="math notranslate nohighlight">\(I\)</span> is independent of distance in a vacuum,  <span class="math notranslate nohighlight">\(F\)</span> obeys the inverse square law, that is the flux decreases as <span class="math notranslate nohighlight">\(1/R^2\)</span></p>
-<p>New question – how accurate is <a class="reference internal" href="#equation-approx-omega">(11)</a>  in each case?</p>
-</li>
-</ol>
-<ol class="arabic" start="5">
-<li><p>In the answer to 4. you should have found that I is independent of distance from the surface.
-Explain why, in the case of isotropic emission/reflection over a plane surface</p>
-<div class="math notranslate nohighlight">
-\[
-   F = \pi I
-   \]</div>
-<p>doesn’t  violate the inverse square law for flux F.</p>
-<p><strong>Answer</strong>  In contrast to the parallel beam case, over an infinite flat surface there is always more surface area to fill the
-sensor field of view as the sensor moves away from the surface.  Therefore the power reacing the sensor increases by the area in the image
-which increases by the <span class="math notranslate nohighlight">\(R^2\)</span> as the sensor moves away.</p>
-</li>
-</ol>
-<ol class="arabic" start="8">
-<li><p>Find the solid angle for a 1 <span class="math notranslate nohighlight">\(km^2\)</span> pixel viewed from 800 km, and compare that result to <span class="math notranslate nohighlight">\(Area/R^2\)</span>.</p>
-<p>We need to integrate the definition of the solid angle <a class="reference internal" href="radiance.html#equation-domegaa">(2)</a></p>
-<div class="math notranslate nohighlight">
-\[
-   \int d\omega   = \int_0^{2\pi}  \int_0^\theta \sin \theta d\theta  d\phi
-   \]</div>
-<p>We know that <span class="math notranslate nohighlight">\(\sin \theta\)</span> is rise/run  <span class="math notranslate nohighlight">\(\approx\)</span> 0.5 km/800 km.</p>
-<p>Google tells me that the arcsin of 0.5/800 is 0.000654 radians.</p>
-<p>Make the variable substitution suggested in class:</p>
+\alpha + R + T = 1
+\]</div>
+<p>becomes</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-   \begin{aligned}
-   \mu &amp;= \cos \theta \\
-   d\mu &amp;= -\sin \theta d\theta \\
-   \int d\omega  &amp; = \int_0^{2\pi}  \int_\mu^1 d\mu  d\phi \\
-   \omega &amp;= 2\pi \times (1 - \mu)  = 2\pi \times 1.95312519 \times 10^{-7} = 1.227 \times 10^{-6} \ sr
-   \end{aligned}
-   \end{split}\]</div>
-<p>Compare this to <span class="math notranslate nohighlight">\(area/R^2\)</span> = <span class="math notranslate nohighlight">\(1/800^2\)</span> = <span class="math notranslate nohighlight">\(1.5625 \times 10^{-6}\)</span> sr</p>
-<p>New question – what is a more accurate area for the circular pixel in this case?  Does this make the approximation better?</p>
-</li>
-</ol>
-<ol class="arabic" start="9">
-<li><p>Change of variables:  Do W&amp;H Exercise 4.13 to prove relationship 4.4</p>
+\alpha + T &amp;= \alpha + \exp(-\tau) = 1 \\
+\epsilon &amp;= \alpha = (1 - \exp(-\tau)) 
+\end{split}\]</div>
+<p>where we have used Kirchoff’s law that <span class="math notranslate nohighlight">\(\alpha = \epsilon\)</span>.  So we’re in a position to calculate absorption and emission for any part of the atmosphere, as long as we know it’s composition, density and temperature.</p>
+</section>
+<section id="the-grey-layer-in-wallace-and-hobbs-problem-4-39">
+<h2>The grey layer in Wallace and Hobbs problem 4.39<a class="headerlink" href="#the-grey-layer-in-wallace-and-hobbs-problem-4-39" title="Link to this heading">#</a></h2>
+<p>Wallace and Hobbs problem 4.39 describes the folowing grey layer:</p>
+<figure class="align-default" id="grey-layers">
+<a class="reference internal image-reference" href="../../_images/wh_4_39_setup.png"><img alt="../../_images/wh_4_39_setup.png" src="../../_images/wh_4_39_setup.png" style="width: 637.0px; height: 442.4px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Wallace and Hobbs problem 4.39: A thin grey layer</span><a class="headerlink" href="#grey-layers" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Red arrows denote longwave radiation, and the yellow arrow is solar radiation. The arrow labeled <span class="math notranslate nohighlight">\(F\)</span> is the flux arriving from the sun, the unkown arrows are <span class="math notranslate nohighlight">\(L\)</span>, the flux emitted by the layer and <span class="math notranslate nohighlight">\(G\)</span> the flux arriving from below the layer.  There are two equations because at both the top and bottom of the layer the fluxes have to be exactly equal, or the layer would be heating or cooling.   Traditionally, downward arrows are given a positive sign, and negative arrows are given a positive sign.  To solve the problem, use the two equations to solve for <span class="math notranslate nohighlight">\(L\)</span> in terms of <span class="math notranslate nohighlight">\(F\)</span> and show that</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-   \nu &amp;=  \lambda^{-1} \\
-   d\nu &amp;=  (-\lambda^{-2}) d\lambda \\
-   I_\nu d\nu &amp;= -I_\lambda d\lambda \\
-   I_\nu d\nu &amp;= I_\lambda \lambda^2 d\nu \\
-   I_\nu &amp;= \lambda^2 I_\lambda
-   \end{split}\]</div>
-<p>What’s going on with the minus sign?  This is because integration over <span class="math notranslate nohighlight">\(\lambda\)</span> and <span class="math notranslate nohighlight">\(\nu\)</span> proceed in opposite directions. If <span class="math notranslate nohighlight">\(\Delta \lambda = \lambda_2 - \lambda_1\)</span> is positive then <span class="math notranslate nohighlight">\(\Delta \nu =  \nu_2 - \nu_1\)</span> is negative, and you would flip the limits of integration, which produces a cancelling minus sign.</p>
-</li>
+\[
+L = \frac{\alpha}{2 - \alpha} F
+\]</div>
+<p>To get Wallace and Hobbs answer, recognize that the definition of the equilibrium temperature <span class="math notranslate nohighlight">\(T_E\)</span> is the temperature a blackbody would need to balance <span class="math notranslate nohighlight">\(F\)</span>, that is:</p>
+<div class="math notranslate nohighlight">
+\[
+F = \sigma T_E^4
+\]</div>
+<p>and by Kirchoff’s law</p>
+<div class="math notranslate nohighlight">
+\[
+L = \epsilon \sigma T_L^4 = \alpha \sigma T_L^4
+\]</div>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Given values for gas density, mixing ratio and the absorption coefficient we can compute the optical depth along a path.</p></li>
+<li><p>Once we know the optical depth, and in the absense of reflection, we can get the transmivity <span class="math notranslate nohighlight">\(T\)</span>, the absorptivity <span class="math notranslate nohighlight">\(\alpha\)</span> and the emissivity <span class="math notranslate nohighlight">\(\epsilon\)</span></p></li>
+<li><p>We can then use that information to calculate the energy transfer between more realistic atmospheric layers, which will allows us to get the greenhouse effect later in the course.</p></li>
 </ol>
 </section>
 </section>
@@ -549,7 +473,7 @@ which increases by the <span class="math notranslate nohighlight">\(R^2\)</span>
         },
         kernelOptions: {
             name: "python3",
-            path: "./notebooks/week1"
+            path: "./notebooks/week3"
         },
         predefinedOutput: true
     }
@@ -567,22 +491,13 @@ which increases by the <span class="math notranslate nohighlight">\(R^2\)</span>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="planck_function.html"
+       href="kirchoff.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Plotting the Planck function with python</p>
+        <p class="prev-next-title">Kirchoff worksheet</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="../week2/planck_sol.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Plotting the Planck function - solution</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -600,8 +515,10 @@ which increases by the <span class="math notranslate nohighlight">\(R^2\)</span>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-week1-topics">Key week1 topics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#study-question-solutions">Study question solutions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-on-optical-depth-and-the-greenhouse-effect">Notes on optical depth and the greenhouse effect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optical-depth-and-the-greybody-approximation">Optical depth and the greybody approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-grey-layer-in-wallace-and-hobbs-problem-4-39">The grey layer in Wallace and Hobbs problem 4.39</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
   </nav></div>
 

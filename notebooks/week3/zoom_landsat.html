@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -211,6 +211,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Zooming an image</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="kirchoff.html">Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optical_depth.html">Optical depth and heatng rate</a></li>
 </ul>
 
     </div>
@@ -378,9 +379,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-this-on-a-map">put this on a map</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-rasterio-to-write-a-new-tiff-file">Use  rasterio  to write a new tiff file</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-affine-transform-for-the-scene">Set the affine transform for the scene</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-write-this-out-to-small-file-tiff">Now write this out to small_file.tiff</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-write-this-out-to-small-file-tif">Now write this out to small_file.tif</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-the-write-with-rioxarray">Repeat the write with rioxarray</a></li>
 </ul>
 </li>
 </ul>
@@ -415,18 +417,6 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sat_lib</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>in sat_lib init
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pprint</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -440,7 +430,6 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">Normalize</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pyproj</span><span class="w"> </span><span class="kn">import</span> <span class="n">CRS</span><span class="p">,</span> <span class="n">Transformer</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">cartopy</span><span class="w"> </span><span class="kn">import</span> <span class="n">crs</span> <span class="k">as</span> <span class="n">ccrs</span>
 </pre></div>
 </div>
@@ -538,7 +527,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;band 5 reflectance whole scene&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/f3d9692e155ce2f8219db9ec57737f9b1122e0e9fea8e756e69bbfae4eaea210.png" src="../../_images/f3d9692e155ce2f8219db9ec57737f9b1122e0e9fea8e756e69bbfae4eaea210.png" />
+<img alt="../../_images/d31d1056c343533988c395c416f673b6a6dc8897686f05440cb03da17fb172c7.png" src="../../_images/d31d1056c343533988c395c416f673b6a6dc8897686f05440cb03da17fb172c7.png" />
 </div>
 </div>
 </section>
@@ -660,7 +649,7 @@ col, row on the image.  The next cell creates two slice objects that extend  on 
 <span class="n">l_col_offset</span> <span class="o">=</span> <span class="o">-</span><span class="n">offset_col</span>
 <span class="n">r_col_offset</span> <span class="o">=</span> <span class="o">+</span><span class="n">offset_col</span>
 <span class="n">b_row_offset</span> <span class="o">=</span> <span class="o">+</span><span class="n">offset_row</span>
-<span class="n">t_row_offset</span> <span class="o">=</span> <span class="o">-</span><span class="n">offset_col</span>
+<span class="n">t_row_offset</span> <span class="o">=</span> <span class="o">-</span><span class="n">offset_row</span>
 <span class="n">col_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">ubc_col</span> <span class="o">+</span> <span class="n">l_col_offset</span><span class="p">,</span> <span class="n">ubc_col</span> <span class="o">+</span> <span class="n">r_col_offset</span><span class="p">)</span>
 <span class="n">row_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">ubc_row</span> <span class="o">+</span> <span class="n">t_row_offset</span><span class="p">,</span> <span class="n">ubc_row</span> <span class="o">+</span> <span class="n">b_row_offset</span><span class="p">)</span>
 <span class="n">section</span> <span class="o">=</span> <span class="n">b5_refl</span><span class="p">[</span><span class="n">row_slice</span><span class="p">,</span> <span class="n">col_slice</span><span class="p">]</span>
@@ -671,7 +660,19 @@ col, row on the image.  The next cell creates two slice objects that extend  on 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((476100.0, 5462460.0), (488100.0, 5447460.0))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((476100.0, 5465460.0), (488100.0, 5447460.0))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">section</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(600, 400)
 </pre></div>
 </div>
 </div>
@@ -721,7 +722,7 @@ col, row on the image.  The next cell creates two slice objects that extend  on 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1252 2538
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1152 2538
 </pre></div>
 </div>
 </div>
@@ -748,7 +749,7 @@ col, row on the image.  The next cell creates two slice objects that extend  on 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ffc2c8f36ca1be4bb8c23412447db0ef3cd58dff613e5d27133d36a9297814cb.png" src="../../_images/ffc2c8f36ca1be4bb8c23412447db0ef3cd58dff613e5d27133d36a9297814cb.png" />
+<img alt="../../_images/7fcb57341e1a7a2fe88e2d470553733f3a88769ad796352f2564328a9db4c132.png" src="../../_images/7fcb57341e1a7a2fe88e2d470553733f3a88769ad796352f2564328a9db4c132.png" />
 </div>
 </div>
 <section id="put-this-on-a-map">
@@ -786,7 +787,7 @@ since y increases upwards.  The coastline is very crude, but at least indicates 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e8c040e1e86a3284d3d3b90028b8a05c2afa9abe5ec39611657098cc9127672a.png" src="../../_images/e8c040e1e86a3284d3d3b90028b8a05c2afa9abe5ec39611657098cc9127672a.png" />
+<img alt="../../_images/ef5e2ed5b9239ea3e448810d1d73f1d23a3911324e1505eea1945054fbe75ce3.png" src="../../_images/ef5e2ed5b9239ea3e448810d1d73f1d23a3911324e1505eea1945054fbe75ce3.png" />
 </div>
 </div>
 </section>
@@ -819,14 +820,14 @@ rasterio expects [band,x,y] for its writer.  Do this with np.newaxis in the next
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 500, 400)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 600, 400)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="now-write-this-out-to-small-file-tiff">
-<h3>Now write this out to small_file.tiff<a class="headerlink" href="#now-write-this-out-to-small-file-tiff" title="Link to this heading">#</a></h3>
+<section id="now-write-this-out-to-small-file-tif">
+<h3>Now write this out to small_file.tif<a class="headerlink" href="#now-write-this-out-to-small-file-tif" title="Link to this heading">#</a></h3>
 <p>Note that the new file does have the utm zone 10 epsg code, since we use the pyproj utm and not the one we got from hls_band5.rio.crs</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -858,18 +859,70 @@ rasterio expects [band,x,y] for its writer.  Do this with np.newaxis in the next
  &#39;crs&#39;: CRS.from_wkt(&#39;PROJCS[&quot;WGS 84 / UTM zone 10N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,-123],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32610&quot;]]&#39;),
  &#39;driver&#39;: &#39;GTiff&#39;,
  &#39;dtype&#39;: &#39;float32&#39;,
- &#39;height&#39;: 500,
+ &#39;height&#39;: 600,
  &#39;interleave&#39;: &#39;band&#39;,
  &#39;nodata&#39;: 0.0,
  &#39;tiled&#39;: False,
  &#39;transform&#39;: Affine(30.0, 0.0, 476100.0,
-       0.0, -30.0, 5462460.0),
+       0.0, -30.0, 5465460.0),
  &#39;width&#39;: 400}
 </pre></div>
 </div>
 </div>
 </div>
 </section>
+</section>
+<section id="repeat-the-write-with-rioxarray">
+<h2>Repeat the write with rioxarray<a class="headerlink" href="#repeat-the-write-with-rioxarray" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_band5</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">section</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">hls_band5</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">section</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/core/common.py:333,</span> in <span class="ni">AttrAccessMixin.__setattr__</span><span class="nt">(self, name, value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">328</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Objects with ``__slots__`` raise AttributeError if you try setting an</span>
+<span class="g g-Whitespace">    </span><span class="mi">329</span><span class="sd"> undeclared attribute. This is desirable, but the error message could use some</span>
+<span class="g g-Whitespace">    </span><span class="mi">330</span><span class="sd"> improvement.</span>
+<span class="g g-Whitespace">    </span><span class="mi">331</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">332</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">333</span>     <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span> <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span>     <span class="c1"># Don&#39;t accidentally shadow custom AttributeErrors, e.g.</span>
+<span class="g g-Whitespace">    </span><span class="mi">336</span>     <span class="c1"># DataArray.dims.setter</span>
+<span class="g g-Whitespace">    </span><span class="mi">337</span>     <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">!=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">!r}</span><span class="s2"> object has no attribute </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">:</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/core/dataarray.py:799,</span> in <span class="ni">DataArray.data</span><span class="nt">(self, value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">797</span> <span class="nd">@data</span><span class="o">.</span><span class="n">setter</span>
+<span class="g g-Whitespace">    </span><span class="mi">798</span> <span class="k">def</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">799</span>     <span class="bp">self</span><span class="o">.</span><span class="n">variable</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">value</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/core/variable.py:480,</span> in <span class="ni">Variable.data</span><span class="nt">(self, data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">477</span> <span class="nd">@data</span><span class="o">.</span><span class="n">setter</span>
+<span class="g g-Whitespace">    </span><span class="mi">478</span> <span class="k">def</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">T_DuckArray</span> <span class="o">|</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">479</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">as_compatible_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">480</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">481</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/namedarray/core.py:537,</span> in <span class="ni">NamedArray._check_shape</span><span class="nt">(self, new_data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">535</span> <span class="k">def</span><span class="w"> </span><span class="nf">_check_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_data</span><span class="p">:</span> <span class="n">duckarray</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">_DType_co</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">536</span>     <span class="k">if</span> <span class="n">new_data</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">537</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">538</span>             <span class="sa">f</span><span class="s2">&quot;replacement data must match the </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&#39;s shape. &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">539</span>             <span class="sa">f</span><span class="s2">&quot;replacement data has shape </span><span class="si">{</span><span class="n">new_data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">; </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> has shape </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span>         <span class="p">)</span>
+
+<span class="ne">ValueError</span>: replacement data must match the Variable&#39;s shape. replacement data has shape (600, 400); Variable has shape (1, 3660, 3660)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -956,9 +1009,10 @@ rasterio expects [band,x,y] for its writer.  Do this with np.newaxis in the next
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-this-on-a-map">put this on a map</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-rasterio-to-write-a-new-tiff-file">Use  rasterio  to write a new tiff file</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-affine-transform-for-the-scene">Set the affine transform for the scene</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-write-this-out-to-small-file-tiff">Now write this out to small_file.tiff</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-write-this-out-to-small-file-tif">Now write this out to small_file.tif</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-the-write-with-rioxarray">Repeat the write with rioxarray</a></li>
 </ul>
 </li>
 </ul>
