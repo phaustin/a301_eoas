@@ -17,21 +17,25 @@ kernelspec:
 
 # Zooming an image
 
-We need to be able to select a small region of a landsat image to work with.  This notebook
+- Download zoom_landsat.ipynb from the [week3 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
+
+
+We need to be able to select a small region of a landsat image to work with.  This notebook:downloaded in the week3 folder in the [google drive]
+
 
 1. zooms in on a 400 pixel wide x 600 pixel high subscene centered on EOS South, using pyproj and the affine transform to map from lon,lat to x,y in UTM zone 10N to row, column in the landsat imag
 
 2. Plots coastlines in the UTM-10N crs
 
-3. Calculates the new affine transform for the subcene, and writes the image out to a 1 Mbyte tiff file
+3. Calculates the new affine transform for the subcene, and writes the image out to a 1 Mbyte tiff file using rasterio
+
+4. Repeats the write operation using rioxarray instead of rasterio
 
 - Notable new features
   - Use the [pyproj module](https://pyproj4.github.io/pyproj/stable/examples.html) to find x,y from lat, lon
   - Use numpy slice objects to slice the rows and columns from the image
-  - use rasterio to write a new tif file (will repeat with rioxarray when I get a chance
-
-
-- Download zoom_landsat.ipynb from the [week3 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
+  - use rioxarray `clip_box` to clip the desired rows and columns from the image
+  - use rasterio and rioxarray `to_raster` to write a new clipped tif file 
 
 ```{code-cell} ipython3
 import copy
@@ -150,8 +154,10 @@ full_ul_xy = np.array(full_affine * (0, 0))
 print(f"orig ul corner x,y (km)={full_ul_xy*1.e-3}")
 ```
 
-## make our subscene 400 pixels wide and 600 pixels tall, using UBC as a reference point
+(sec:slice)=
+## Slice the array
 
+Make our subscene 400 pixels wide and 600 pixels tall, using UBC as a reference point.
 We need to find the right rows and columns on the image to save for the subscene.  Do this by working outward from UBC by a certain number of pixels in each direction, using the inverse of the full_affine transform to go from x,y to col,row
 
 ```{code-cell} ipython3
@@ -248,9 +254,7 @@ ax.plot(ubc_x, ubc_y, "ro", markersize=25)
 fig2.colorbar(cs, extend = 'both');
 ```
 
-##  Use  rasterio  to write a new tiff file
-
-(I'll give the same example with rioxarray when I get a chance)
+##  Use  rasterio  to write a new tif file
 
 ### Set the affine transform for the scene
 
@@ -278,12 +282,18 @@ out_section = section[np.newaxis, ...]
 print(out_section.shape)
 ```
 
-### Now write this out to small_file.tif
+### Now write this out to band5_clipped_rasterio.tif
 
 Note that the new file does have the utm zone 10 epsg code, since we use the pyproj utm and not the one we got from hls_band5.rio.crs
 
 ```{code-cell} ipython3
-tif_filename = data_dir / Path("small_file.tif")
+filename = 'band5_clipped_rasterio.tif'
+tif_filename = data_dir / filename
+#
+# remove the file if it already exists
+#
+if tif_filename.exists():
+    tif_filename.unlink()
 num_chans = 1
 with rasterio.open(
     tif_filename,
@@ -305,8 +315,118 @@ print(f"section profile: {pprint.pformat(section_profile)}")
 
 ## Repeat the write with rioxarray
 
+We can also write a geotiff with rioxarray.  To do that we first need to create the DataArray, then
+add the attributes, coordinates, affine transform and crs, and then write it out using the `to_raster()` method
+
++++
+
+### Create the DataArray
+
+In {numref}`sec:slice` we used slices to clip the subscene around UBC.  For rioxarray, we can use 
+[clip_box](https://corteva.github.io/rioxarray/stable/rioxarray.html#rioxarray.raster_array.RasterArray.clip_box) to do
+the same thing.  We need to provide the bounding box x and y edges we want to clip to, these are
+given by (ubc_ul_xy, ubc_lr_xy).  clip_box wants them in the following order:
+
+```
+(ul_x, lr_y, lr_x, ul_y)
+```
+
+Below we unpack the x,y pairs and then put them into the right order.
+
 ```{code-cell} ipython3
-hls_band5.data = section
+ul_x, ul_y = ubc_ul_xy
+lr_x, lr_y = ubc_lr_xy
+bounding_box = (ul_x, lr_y, lr_x, ul_y)
+print(f"{bounding_box=}")
+```
+
+In the call below I'm using the `*` operator to [unpack the tuple](https://www.w3schools.com/python/python_tuples_unpack.asp)
+
+```{code-cell} ipython3
+da_band5 = hls_band5.rio.clip_box(*bounding_box)
+```
+
+#### Check the shape, attributes and coordinates
+
+clip_box clips the data, but it also clips the x,y coordinates so that we can still automatically
+label our image with x and y tick marks
+
+```{code-cell} ipython3
+da_band5
+```
+
+### check the image
+
+```{code-cell} ipython3
+fig, ax = plt.subplots(1,1, figsize=(6,6))
+da_band5.plot(ax=ax)
+ax.set_title(f"Landsat band {band_name}");
+```
+
+### add the transform and the crs
+
+```{code-cell} ipython3
+da_band5.data.dtype
+```
+
+```{code-cell} ipython3
+da_band5.rio.write_crs(p_utm, inplace=True)
+da_band5.rio.write_transform(new_affine, inplace=True);
+```
+
+### change some attributes
+
+We need to adjust some of the attributions for the new subscene.  To do this, copy the exiting attributes into
+a dictionary and rewrite the parts you want to change, adding any extras.
+
+```{code-cell} ipython3
+new_attrs = da_band5.attrs
+new_attrs['ULX']= ul_x
+new_attrs['ULY'] = ul_y
+band, nrows, ncols = da_band5.shape
+new_attrs['NROWS'] = nrows
+new_attrs['NCOLS'] = ncols
+new_attrs['history'] = "written by the zoom_landsat notebook"
+da_band5.rio.update_attrs(new_attrs, inplace = True);
+```
+
+#### check the attributes
+
+```{code-cell} ipython3
+da_band5.attrs['history']
+```
+
+### Write out the new geotiff
+
+```{code-cell} ipython3
+filename = 'band5_clipped_rio.tif'
+filename = data_dir / filename
+#
+# remove the file if it already exists
+#
+if tif_filename.exists():
+    tif_filename.unlink()
+da_band5.rio.to_raster(filename)
+```
+
+### read it back in to check
+
+```{code-cell} ipython3
+has_file = filename.exists()
+if not has_file:
+    raise IOError(f"can't find {filename}, something went wrong above") 
+small_band5 = rioxarray.open_rasterio(filename,masked=True)
+fig, ax = plt.subplots(1,1, figsize=(6,6))
+small_band5.plot(ax=ax)
+ax.set_title(f"Landsat band {band_name}");
+```
+
+#### note that we now have the correct epsg code
+
+Because we used the pyproj `p_utm` crs in our raster write we've fixed the missing epsg code problem.
+
+```{code-cell} ipython3
+small_band5.rio.crs
 ```
 
 ```{code-cell} ipython3
