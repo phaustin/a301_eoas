@@ -13,9 +13,9 @@ kernelspec:
 ---
 
 (week3:tau)=
-# Optical depth and heating rate
+# Optical depth and partial transmission
 
-## Notes on optical depth and the greenhouse effect
+## Notes on optical depth and grey layers
 
 We need to connect the layer model showing Wallace and Hobbs Figure 4.9 p. 122 with Beer's law and optical depth.
 
@@ -70,7 +70,7 @@ where we have used Kirchoff's law that $\alpha = \epsilon$.  So we're in a posit
 
 ## The grey layer in Wallace and Hobbs problem 4.39
 
-Wallace and Hobbs problem 4.39 describes the folowing grey layer:
+Wallace and Hobbs problem 4.39 describes the folowing grey layer, where I will write the layer temperature as $T_L$ instead of their $T^*$:
 
 :::{figure} images/wh_4_39_setup.png
 :name: grey_layers

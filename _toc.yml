@@ -18,6 +18,7 @@ parts:
   - file: notebooks/week_review.md
 
 - caption: Week 1
+  numbered: true
   chapters:
   - url: https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf
     title: Stull Chapter 2, pp. 34-43
@@ -28,6 +29,7 @@ parts:
   - file: notebooks/week1/newflux.md
   - file: notebooks/week1/planck_function.md
 - caption: Week 2
+  numbered: true
   chapters:
   - file: notebooks/week2/planck_sol.md
   - file: notebooks/week2/assign1.md
