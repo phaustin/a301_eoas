@@ -1,4 +1,5 @@
-# A301 Assigments
+(sec:assignments)=
+# A301 Assignments
 
 ## Assignment 1
 
