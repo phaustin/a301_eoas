@@ -15,7 +15,7 @@ kernelspec:
 (week3:tau)=
 # Optical depth and partial transmission
 
-## Notes on optical depth and grey layers
+## Notes on optical depth and grey layers 
 
 We need to connect the layer model showing Wallace and Hobbs Figure 4.9 p. 122 with Beer's law and optical depth.
 
@@ -42,7 +42,7 @@ Wallace and Hobbs make two changes to {eq}`ftrans`:
    
    $$
    d I_\lambda=-I_\lambda \rho r k_\lambda d s = -I_\lambda \rho r k_\lambda dz/\cos \theta =  -I_\lambda \, d\tau/\cos \theta
-   $$
+   $$ (eq:whtau)
    where $\rho$ is the air density ($kg\,m^{-3}$), $r$ is the gas mixing ratio (kg gas/kg air) and $k_\lambda$ is the mass absorption coefficient ($m^{2}\,kg^{-1}$).
 
    To get the flux equation {eq}`ftrans` for the direct beam (like the solar beam), just multiply by the small field of view $\Delta \omega$, since in that case $F = I \Delta \omega$.

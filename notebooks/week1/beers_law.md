@@ -118,7 +118,7 @@ or
 
 $$
 \frac{dF}{F} = -n b ds
-$$
+$$ (eq:difflux)
 
 If we define the differential optical depth as:
 
@@ -127,11 +127,11 @@ d\tau = n b ds
 $$
 
 
-Then we ge:
+Then we get:
 
 $$
 \frac{dF^\prime}{F^\prime} = d \ln F^\prime = -d \tau^\prime
-$$ (diffbeers)
+$$ (eq:diffbeers)
 
 and integrating from $\tau^\prime=0,\ F^\prime=F_i$ to
 $\tau^\prime = \tau,F^\prime = F$ gives:

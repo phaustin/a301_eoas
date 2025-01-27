@@ -195,3 +195,16 @@ print(f"Reflected flux at {R2:0.2f} meters = {reflect_flux_6:0.2g} W/m^2")
 2. The derivation and use of the brightness temperature
 3. GIS concepts:  datum, map projection
 4. Software: making maps with cartopy, reading geotiff raster data with rioxarray
+
+
+## Week 3
+
+### Key week3 topics
+
+1. Stefan- Boltzman: WH p. 119
+2. Kirchoff's law: WH p. 121 and problem 4.35
+3. Greenhouse effect and energy balance: WH p 122, Figure 4.9
+3. Beer's law: WH p. 122 eq. 4.16
+4. Optical depth, transmissivity, grey layers: WH p. 130 eq. 4.32
+5. Clipping Landsat scenes with a bounding box
+

@@ -165,5 +165,13 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 - Finish Assignment 1
 - Write out clipped geotifs for your band 4 and band 5 images
 
+## Week 4
+
+### Day 10 Monday
+
+- {ref}`week4:tau2`
+- {ref}`week4:clip_bands`
+- {ref}`assign3`
+
 
 

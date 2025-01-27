@@ -35,7 +35,7 @@ We need to be able to select a small region of a landsat image to work with.  Th
   - Use the [pyproj module](https://pyproj4.github.io/pyproj/stable/examples.html) to find x,y from lat, lon
   - Use numpy slice objects to slice the rows and columns from the image
   - use rioxarray `clip_box` to clip the desired rows and columns from the image
-  - use rasterio and rioxarray `to_raster` to write a new clipped tif file 
+  - use rasterio and rioxarray `to_raster` to write a new clipped tif file
 
 ```{code-cell} ipython3
 import copy
@@ -320,6 +320,7 @@ add the attributes, coordinates, affine transform and crs, and then write it out
 
 +++
 
+(zoom_landsat_array)=
 ### Create the DataArray
 
 In {numref}`sec:slice` we used slices to clip the subscene around UBC.  For rioxarray, we can use 
@@ -363,6 +364,7 @@ da_band5.plot(ax=ax)
 ax.set_title(f"Landsat band {band_name}");
 ```
 
+(week3:write_clipped)=
 ### add the transform and the crs
 
 ```{code-cell} ipython3
