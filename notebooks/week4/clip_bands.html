@@ -1,0 +1,963 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>17. Clipping multiple bands &#8212; ATSC 301</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week4/clip_bands';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week4/clip_bands.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="18. Optical depth II: mean free path" href="optical_depth2.html" />
+    <link rel="prev" title="16. Optical depth and partial transmission" href="../week3/optical_depth.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ATSC 301</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    ATSC 301: 2024 Term 2 Winter
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Useful links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">ATSC 301: syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrity.html">UBC academic integrity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../texts.html">Texts</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assigments</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Week notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&amp;st=n7iwqqem&amp;dl=0">Notebook downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_review.html">Weekly review</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">1. Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">2. Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">3. Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">4. Plotting the Planck function with python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week2/planck_sol.html">5. Plotting the Planck function - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/assign1.html">6. Assignment 1, brightness temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_maps.html">7. Introduction to Cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_mapping_vancouver.html">8. Mapping Vancouver with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/get_landsat_bands.html">9. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../windows_install.html">10. Windows installation using a conda lock file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">11. Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">12. Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">13. Zooming an image</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">15. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">16. Optical depth and partial transmission</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">17. Clipping multiple bands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optical_depth2.html">18. Optical depth II: mean free path</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/week4/clip_bands.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Clipping multiple bands</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">17.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-original-hls-tif-files-from-disk">17.2. Get the original hls tif files from disk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-geotif-metadata">17.3. Examine the geotif metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-gdalinfo-from-the-terminal">17.3.1. Using gdalinfo from the terminal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-python-gdal-api">17.3.2. Using the python gdal api</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dump-all-the-metadata">17.3.3. Dump all the metadata</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-bands-into-a-dictionary-and-scale">17.4. Read the bands into a dictionary and scale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-clipped-week3-band-5-file">17.5. Read the clipped week3 band 5 file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-bounding-box-using-the-upper-left-and-lower-right-corners">17.5.1. Create the bounding box using the upper left and lower right corners</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-pyproj-crs-to-copy-to-output-tif">17.5.2. Get the pyproj crs to copy to output tif</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clip-the-bands">17.6. Clip the bands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-brightness-temperature-in-band-11">17.7. Check the brightness temperature in band 11</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-the-clipped-geotiffs">17.8. Write the clipped geotiffs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-the-crs-and-the-affine-transform">17.8.1. Transfer the crs and the affine transform</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-some-attributes">17.8.2. change some attributes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-attributes">17.8.2.1. check the attributes</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-out-the-new-geotiffs">17.8.3. Write out the new geotiffs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-one-back-in-to-check">17.8.4. read one back in to check</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#note-that-we-now-have-the-correct-epsg-code">17.8.4.1. note that we now have the correct epsg code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="clipping-multiple-bands">
+<span id="week4-clip-bands"></span><h1><span class="section-number">17. </span>Clipping multiple bands<a class="headerlink" href="#clipping-multiple-bands" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">17.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>We are going to need to look at bands 2, 3, 4, 5, 9, 10 and 11.  This notebook uses the clipped band we wrote in
+<a class="reference internal" href="../week3/zoom_landsat.html#week3-image-zoom"><span class="std std-ref">Zooming an image</span></a> to get the clipping box, then reads in each of these bands, clips to the same box and scales them,
+and writes them out to new smaller geotifs.</p>
+<ul class="simple">
+<li><p>Download clip_bands.ipynb from the <a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing">week4 folder</a></p></li>
+<li><p>You’ll also need to copy the 5 tif files in the <a class="reference external" href="https://drive.google.com/drive/folders/1UwTc4MnneI2eZ6rHqKFzF4YdRRbQi4sS?usp=sharing">vancouver</a> folder into a new folder on your drive called <code class="docutils literal notranslate"><span class="pre">~/repos/a301/satdata/landsat/vancouver</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pprint</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">osgeo</span><span class="w"> </span><span class="kn">import</span> <span class="n">gdal</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy.random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">affine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Affine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">Normalize</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyproj</span><span class="w"> </span><span class="kn">import</span> <span class="n">CRS</span><span class="p">,</span> <span class="n">Transformer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cartopy</span><span class="w"> </span><span class="kn">import</span> <span class="n">crs</span> <span class="k">as</span> <span class="n">ccrs</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-the-original-hls-tif-files-from-disk">
+<h2><span class="section-number">17.2. </span>Get the original hls tif files from disk<a class="headerlink" href="#get-the-original-hls-tif-files-from-disk" title="Link to this heading">#</a></h2>
+<p>This cell finds all the 3660 x 3660 landsat tifs we downloaded in the satdata/landsat/vancouver folder.  We can use the <code class="docutils literal notranslate"><span class="pre">*</span></code> wildcard
+so we don’t have to type in long filenames, and the <code class="docutils literal notranslate"><span class="pre">**</span></code> wildcard so we look in all subfolders.  If you’re interested  here’s
+the <a class="reference external" href="https://en.wikipedia.org/wiki/Glob_(programming)#:~:text=6%20References-,Origin,command%3A%20%2Fetc%2Fglob.">wikipedia entry on globbing</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;repos/a301/satdata/landsat&#39;</span>
+<span class="n">the_tifs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/HLS.L30*tif&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">the_tifs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/HLS.L30.T10UDV.2015165T190019.v2.0.B04.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B03.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B02.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B11.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B10.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B09.tif&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="examine-the-geotif-metadata">
+<h2><span class="section-number">17.3. </span>Examine the geotif metadata<a class="headerlink" href="#examine-the-geotif-metadata" title="Link to this heading">#</a></h2>
+<section id="using-gdalinfo-from-the-terminal">
+<h3><span class="section-number">17.3.1. </span>Using gdalinfo from the terminal<a class="headerlink" href="#using-gdalinfo-from-the-terminal" title="Link to this heading">#</a></h3>
+<p>It turns out that rioxarray only copies part of the metadata into the <code class="docutils literal notranslate"><span class="pre">DataArray</span></code>.  To get all the metadata, we can use the underlying <a class="reference external" href="https://gdal.org/en/stable/programs/gdalinfo.html">gdal module</a>. Do the following:</p>
+<ul class="simple">
+<li><p>open a terminal</p></li>
+<li><p>cd to the folder holding the geotiff</p></li>
+<li><p>type <code class="docutils literal notranslate"><span class="pre">gdalinfo</span> <span class="pre">your_tif_name_here.tif</span></code></p></li>
+</ul>
+</section>
+<section id="using-the-python-gdal-api">
+<h3><span class="section-number">17.3.2. </span>Using the python gdal api<a class="headerlink" href="#using-the-python-gdal-api" title="Link to this heading">#</a></h3>
+<p>We can also do that from inside python.  To get all the information for the first tif, do:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Info</span><span class="p">(</span><span class="n">the_tifs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">info</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1">#info</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type(info)=&lt;class &#39;dict&#39;&gt;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/phil/mini310/envs/a301/lib/python3.13/site-packages/osgeo/gdal.py:311: FutureWarning: Neither gdal.UseExceptions() nor gdal.DontUseExceptions() has been explicitly called. In GDAL 4.0, exceptions will be enabled by default.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dump-all-the-metadata">
+<h3><span class="section-number">17.3.3. </span>Dump all the metadata<a class="headerlink" href="#dump-all-the-metadata" title="Link to this heading">#</a></h3>
+<p>You can print the  <code class="docutils literal notranslate"><span class="pre">info</span></code> dictionary to see the full gdal metadata dictionary.
+Scanning through it, will see that the <code class="docutils literal notranslate"><span class="pre">metadata</span></code> key has two sub-keys:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>info[&#39;metadata&#39;].keys()=dict_keys([&#39;&#39;, &#39;IMAGE_STRUCTURE&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>And looking at the first key shows all of the metadata that rioxarray transfers to the DataArray attributes.  these are the entries that we’ll need to change for our clipped, scaled image.  We need to change <code class="docutils literal notranslate"><span class="pre">NCOLS,</span> <span class="pre">NROWS,</span> <span class="pre">_FillValue,</span> <span class="pre">ULX,</span> <span class="pre">ULY</span> <span class="pre">and</span> <span class="pre">scale_factor</span></code> when we write the clipped geotif.  Descriptions of each of the metadata items are in the <a class="reference external" href="https://lpdaac.usgs.gov/documents/1007/HLS_User_Guide_V15_provisional.pdf">hls user guide</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>info[&#39;metadata&#39;][&#39;&#39;].keys()=dict_keys([&#39;ACCODE&#39;, &#39;add_offset&#39;, &#39;arop_ave_xshift(meters)&#39;, &#39;arop_ave_yshift(meters)&#39;, &#39;arop_ncp&#39;, &#39;arop_rmse(meters)&#39;, &#39;arop_s2_refimg&#39;, &#39;cloud_coverage&#39;, &#39;HLS_PROCESSING_TIME&#39;, &#39;HORIZONTAL_CS_NAME&#39;, &#39;L1_PROCESSING_TIME&#39;, &#39;LANDSAT_PRODUCT_ID&#39;, &#39;LANDSAT_SCENE_ID&#39;, &#39;long_name&#39;, &#39;MEAN_SUN_AZIMUTH_ANGLE&#39;, &#39;MEAN_SUN_ZENITH_ANGLE&#39;, &#39;MEAN_VIEW_AZIMUTH_ANGLE&#39;, &#39;MEAN_VIEW_ZENITH_ANGLE&#39;, &#39;NBAR_SOLAR_ZENITH&#39;, &#39;NCOLS&#39;, &#39;NROWS&#39;, &#39;OVR_RESAMPLING_ALG&#39;, &#39;PROCESSING_LEVEL&#39;, &#39;scale_factor&#39;, &#39;SENSING_TIME&#39;, &#39;SENSOR&#39;, &#39;SENTINEL2_TILEID&#39;, &#39;spatial_coverage&#39;, &#39;SPATIAL_RESOLUTION&#39;, &#39;TIRS_SSM_MODEL&#39;, &#39;TIRS_SSM_POSITION_STATUS&#39;, &#39;ULX&#39;, &#39;ULY&#39;, &#39;USGS_SOFTWARE&#39;, &#39;_FillValue&#39;, &#39;AREA_OR_POINT&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We want to check the <code class="docutils literal notranslate"><span class="pre">long_name</span></code> key in particular, to make sure we are looking at the right wavelength:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;&#39;</span><span class="p">][</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>info[&#39;metadata&#39;][&#39;&#39;][&#39;long_name&#39;]=&#39;Green&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The exact wavelength range for each hls landsat band is given in the <a class="reference external" href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/#hls-spectral-bands">spectral band table</a></p>
+</section>
+</section>
+<section id="read-the-bands-into-a-dictionary-and-scale">
+<h2><span class="section-number">17.4. </span>Read the bands into a dictionary and scale<a class="headerlink" href="#read-the-bands-into-a-dictionary-and-scale" title="Link to this heading">#</a></h2>
+<p>We’re ready to read all of the bands into a dictionary, keyed by the band <code class="docutils literal notranslate"><span class="pre">long_name</span></code>.  All the band names are listed in the
+<a class="reference external" href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/#hls-spectral-bands">spectral band table</a>. Note one complication – the <code class="docutils literal notranslate"><span class="pre">unit</span></code> attribute is only present for brightness temperatures, not reflectivities.</p>
+<p>Two notes on the next cell:</p>
+<ol class="arabic simple">
+<li><p>We use the <code class="docutils literal notranslate"><span class="pre">*=</span></code> assignment operator.  This is preferred because
+<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">*=</span> <span class="pre">5</span></code> is more concise than <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">a*5</span></code> and you don’t risk making a typo on the second <code class="docutils literal notranslate"><span class="pre">a</span></code></p></li>
+<li><p>We use <code class="docutils literal notranslate"><span class="pre">hls_band.data</span> <span class="pre">*=</span> <span class="pre">hls_band.scale_factor</span></code> instead of <code class="docutils literal notranslate"><span class="pre">hls_band</span> <span class="pre">*=</span> <span class="pre">hls_band.scale_factor</span></code>.  The second version
+converts the result into a plain numpy array and overwrites the xarray, losing all the attributes</p></li>
+<li><p>Because we set <code class="docutils literal notranslate"><span class="pre">masked=True</span></code>, all <code class="docutils literal notranslate"><span class="pre">-9999</span></code> values are changed to <code class="docutils literal notranslate"><span class="pre">np.nan</span></code> and <code class="docutils literal notranslate"><span class="pre">_FillValue</span></code> is deleted from
+the attributes.  That means we can multiply the data by the scale factor and not worry about the changed missing value.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band_dict</span><span class="o">=</span><span class="p">{}</span>
+<span class="k">for</span> <span class="n">tif_path</span> <span class="ow">in</span> <span class="n">the_tifs</span><span class="p">:</span>
+    <span class="n">hls_band</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">tif_path</span><span class="p">,</span><span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">band_name</span> <span class="o">=</span> <span class="n">hls_band</span><span class="o">.</span><span class="n">long_name</span>
+    <span class="c1">#</span>
+    <span class="c1"># multiply the data by the scale factor</span>
+    <span class="c1">#</span>
+    <span class="n">hls_band</span><span class="o">.</span><span class="n">data</span> <span class="o">*=</span> <span class="n">hls_band</span><span class="o">.</span><span class="n">scale_factor</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">band_name</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">band_dict</span><span class="p">[</span><span class="n">band_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">hls_band</span>
+    <span class="k">if</span> <span class="s1">&#39;unit&#39;</span> <span class="ow">in</span> <span class="n">hls_band</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hls_band</span><span class="o">.</span><span class="n">unit</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>band_name=&#39;Red&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>band_name=&#39;Green&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>band_name=&#39;Blue&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>band_name=&#39;TIRS2&#39;
+hls_band.unit=&#39;Celsius&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>band_name=&#39;TIRS1&#39;
+hls_band.unit=&#39;Celsius&#39;
+band_name=&#39;Cirrus&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="read-the-clipped-week3-band-5-file">
+<h2><span class="section-number">17.5. </span>Read the clipped week3 band 5 file<a class="headerlink" href="#read-the-clipped-week3-band-5-file" title="Link to this heading">#</a></h2>
+<p>Next we want to get the affine transform from week 3 clipped band file, so we can set the same bounding box for all tifs</p>
+<section id="create-the-bounding-box-using-the-upper-left-and-lower-right-corners">
+<h3><span class="section-number">17.5.1. </span>Create the bounding box using the upper left and lower right corners<a class="headerlink" href="#create-the-bounding-box-using-the-upper-left-and-lower-right-corners" title="Link to this heading">#</a></h3>
+<p>This should be identical to the bounding box we found in <a class="reference internal" href="../week3/zoom_landsat.html#zoom-landsat-array"><span class="std std-ref">Create the DataArray</span></a>, which was:</p>
+<p><code class="docutils literal notranslate"><span class="pre">bounding_box=(476100.0,</span> <span class="pre">5447460.0,</span> <span class="pre">488100.0,</span> <span class="pre">5465460.0)</span></code></p>
+<p>We can get them using the clipped affine transform.  Again, we search for the file using wild cards.  We just want
+the first file we find, which means we need convert the python generator returned by glob into a list we can index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span>  <span class="nb">list</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/band5_clipped*&#39;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="n">clipped_5</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">clipped_transform</span> <span class="o">=</span> <span class="n">clipped_5</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="p">()</span>
+<span class="n">clipped_transform</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/phil/repos/a301/satdata/landsat/vancouver/band5_clipped_rio.tif
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Affine(30.0, 0.0, 476100.0,
+       0.0, -30.0, 5465460.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span><span class="p">,</span> <span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="n">clipped_5</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(600, 400)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ul_x</span><span class="p">,</span> <span class="n">ul_y</span> <span class="o">=</span> <span class="n">clipped_transform</span> <span class="o">*</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">lr_x</span><span class="p">,</span> <span class="n">lr_y</span> <span class="o">=</span> <span class="n">clipped_transform</span> <span class="o">*</span> <span class="p">(</span><span class="n">ncols</span><span class="p">,</span> <span class="n">nrows</span><span class="p">)</span>
+<span class="n">bounding_box</span> <span class="o">=</span> <span class="p">(</span><span class="n">ul_x</span><span class="p">,</span> <span class="n">lr_y</span><span class="p">,</span> <span class="n">lr_x</span><span class="p">,</span> <span class="n">ul_y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bounding_box</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bounding_box=(476100.0, 5447460.0, 488100.0, 5465460.0)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-the-pyproj-crs-to-copy-to-output-tif">
+<h3><span class="section-number">17.5.2. </span>Get the pyproj crs to copy to output tif<a class="headerlink" href="#get-the-pyproj-crs-to-copy-to-output-tif" title="Link to this heading">#</a></h3>
+<p>We want the improved crs we wrote out in <a class="reference internal" href="../week3/zoom_landsat.html#week3-image-zoom"><span class="std std-ref">Zooming an image</span></a> for the band5 clipped tif, since  it includes the epsg code</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">good_crs</span> <span class="o">=</span> <span class="n">clipped_5</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">good_crs</span><span class="o">.</span><span class="n">to_epsg</span><span class="p">()</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>good_crs.to_epsg()=32610
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="clip-the-bands">
+<h2><span class="section-number">17.6. </span>Clip the bands<a class="headerlink" href="#clip-the-bands" title="Link to this heading">#</a></h2>
+<p>Loop through the dictionary and clip each xarray.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">band_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">band_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip_box</span><span class="p">(</span><span class="o">*</span><span class="n">bounding_box</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="check-the-brightness-temperature-in-band-11">
+<h2><span class="section-number">17.7. </span>Check the brightness temperature in band 11<a class="headerlink" href="#check-the-brightness-temperature-in-band-11" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;TIRS2&#39;</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">band_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;band </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">band_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">unit</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;band TIRS2 (Celsius)&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/935778b250235b927d4460e25aa532097741e37584d64f62116e7bd4b27331ab.png" src="../../_images/935778b250235b927d4460e25aa532097741e37584d64f62116e7bd4b27331ab.png" />
+</div>
+</div>
+</section>
+<section id="write-the-clipped-geotiffs">
+<h2><span class="section-number">17.8. </span>Write the clipped geotiffs<a class="headerlink" href="#write-the-clipped-geotiffs" title="Link to this heading">#</a></h2>
+<p>Put these into the vancouver folder.  We can copy code from <a class="reference internal" href="../week3/zoom_landsat.html#week3-write-clipped"><span class="std std-ref">add the transform and the crs</span></a></p>
+<section id="transfer-the-crs-and-the-affine-transform">
+<h3><span class="section-number">17.8.1. </span>Transfer the crs and the affine transform<a class="headerlink" href="#transfer-the-crs-and-the-affine-transform" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">band_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">value</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">write_crs</span><span class="p">(</span><span class="n">good_crs</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">value</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">write_transform</span><span class="p">(</span><span class="n">clipped_transform</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="change-some-attributes">
+<h3><span class="section-number">17.8.2. </span>change some attributes<a class="headerlink" href="#change-some-attributes" title="Link to this heading">#</a></h3>
+<p>We need to adjust some of the attributions for the new subscene.  To do this, copy the exiting attributes into
+a dictionary and rewrite the parts you want to change, adding any extras.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">band_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">new_attrs</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">attrs</span>
+    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">&#39;ULX&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">ul_x</span>
+    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">&#39;ULY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ul_y</span>
+    <span class="n">band</span><span class="p">,</span> <span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">&#39;NROWS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nrows</span>
+    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">&#39;NCOLS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ncols</span>
+    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">&#39;scale_factor&#39;</span><span class="p">]</span><span class="o">=</span><span class="mf">1.0</span>
+    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">&#39;FillValue&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;written by the week4 clip_bands notebook&quot;</span>
+    <span class="n">value</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">update_attrs</span><span class="p">(</span><span class="n">new_attrs</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="check-the-attributes">
+<h4><span class="section-number">17.8.2.1. </span>check the attributes<a class="headerlink" href="#check-the-attributes" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;written by the week4 clip_bands notebook&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="write-out-the-new-geotiffs">
+<h3><span class="section-number">17.8.3. </span>Write out the new geotiffs<a class="headerlink" href="#write-out-the-new-geotiffs" title="Link to this heading">#</a></h3>
+<p>We’ll also add jpg files for browsing</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">band_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">band_name</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">long_name</span>
+    <span class="n">tif_filename</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s1">&#39;vancouver&#39;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;week4_clipped_</span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">.tif&quot;</span>
+    <span class="c1">#</span>
+    <span class="c1"># remove the file if it already exists</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">tif_filename</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">tif_filename</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+    <span class="n">value</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">to_raster</span><span class="p">(</span><span class="n">tif_filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="read-one-back-in-to-check">
+<h3><span class="section-number">17.8.4. </span>read one back in to check<a class="headerlink" href="#read-one-back-in-to-check" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tif_filename</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s1">&#39;vancouver&#39;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;week4_clipped_TIRS2.tif&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tif_filename</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">has_file</span> <span class="o">=</span> <span class="n">tif_filename</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">has_file</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;can&#39;t find </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">, something went wrong above&quot;</span><span class="p">)</span> 
+<span class="n">small_band</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">tif_filename</span><span class="p">,</span><span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">band_name</span> <span class="o">=</span> <span class="n">small_band</span><span class="o">.</span><span class="n">long_name</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">small_band</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Landsat band </span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tif_filename=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/week4_clipped_TIRS2.tif&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/53bdb15a8820eec656f5a647bd556fdb27f35f0b2f6bab8cc8437583ba7db218.png" src="../../_images/53bdb15a8820eec656f5a647bd556fdb27f35f0b2f6bab8cc8437583ba7db218.png" />
+</div>
+</div>
+<section id="note-that-we-now-have-the-correct-epsg-code">
+<h4><span class="section-number">17.8.4.1. </span>note that we now have the correct epsg code<a class="headerlink" href="#note-that-we-now-have-the-correct-epsg-code" title="Link to this heading">#</a></h4>
+<p>Because we used the pyproj <code class="docutils literal notranslate"><span class="pre">good_crs</span></code> in our raster write we’ve fixed the missing epsg code problem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">small_band</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">to_epsg</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32610
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/week4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../week3/optical_depth.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>Optical depth and partial transmission</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="optical_depth2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Optical depth II: mean free path</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">17.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-original-hls-tif-files-from-disk">17.2. Get the original hls tif files from disk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-geotif-metadata">17.3. Examine the geotif metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-gdalinfo-from-the-terminal">17.3.1. Using gdalinfo from the terminal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-python-gdal-api">17.3.2. Using the python gdal api</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dump-all-the-metadata">17.3.3. Dump all the metadata</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-bands-into-a-dictionary-and-scale">17.4. Read the bands into a dictionary and scale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-clipped-week3-band-5-file">17.5. Read the clipped week3 band 5 file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-bounding-box-using-the-upper-left-and-lower-right-corners">17.5.1. Create the bounding box using the upper left and lower right corners</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-pyproj-crs-to-copy-to-output-tif">17.5.2. Get the pyproj crs to copy to output tif</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clip-the-bands">17.6. Clip the bands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-brightness-temperature-in-band-11">17.7. Check the brightness temperature in band 11</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-the-clipped-geotiffs">17.8. Write the clipped geotiffs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-the-crs-and-the-affine-transform">17.8.1. Transfer the crs and the affine transform</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-some-attributes">17.8.2. change some attributes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-attributes">17.8.2.1. check the attributes</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-out-the-new-geotiffs">17.8.3. Write out the new geotiffs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-one-back-in-to-check">17.8.4. read one back in to check</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#note-that-we-now-have-the-correct-epsg-code">17.8.4.1. note that we now have the correct epsg code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Philip Austin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

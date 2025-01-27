@@ -165,5 +165,20 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 - Finish Assignment 1
 - Write out clipped geotifs for your band 4 and band 5 images
 
+## Week 4
 
+### Day 10 Monday
+
+- More on optical depth: linking the mean free path to $\tau = 1$
+  - {ref}`week4:tau2`
+- New notebook -- how to write several clipped images given a bounding box
+  - {ref}`week4:clip_bands`
+- Assignment 3 due next Tuesday midnight
+  - {ref}`assign3`
+
+#### Do for Wednesday
+
+- Do Wallace and Hobbs problem 4.44 with pencil and paper
+- Start on {ref}`assign3`
+- Read Wallace and Hobbs through p. 133
 
