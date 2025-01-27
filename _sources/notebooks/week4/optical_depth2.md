@@ -30,13 +30,16 @@ $$
 \gamma_\lambda = \rho\,r\,k_\lambda
 $$
 
-Given that definition, we can go back to {eq}`eq:difflux` from week 2 and rewrite
+With that definiton we can go back to our {eq}`eq:difflux` from week 1 and rewrite
 
 $$
 \frac{dI}{I} = -n b ds
 $$
+where $s\ (m)$ is the distance travelled (the path length),
+$n\ (\#/m^3)$ is the number denstiy of absorbing
+particles and $b\ (m^2)/molecule$ is the absorption cross section per molecule.
+Using $\gamma_\lambda$ Beer's law becomes:
 
-as 
 
 $$
 \frac{dI}{I} = -\gamma ds
@@ -66,7 +69,7 @@ that reached $z$ and the fraction that reaches $z + \Delta z$.
 $$
 \int_z^{z+\Delta z} p(z) d z \approx p(z) \Delta z  =\exp \left ( -\gamma z\ \right )-\exp \left ( -\gamma (z+\Delta z) \right )
 $$
-where we've assumed that $p(z)$ is approximately constant over $\delta z$ and can be taken out of the integral.
+where we've assumed that $p(z)$ is approximately constant over $\Delta z$ and can be taken out of the integral.
 
 Finally, divide by $\Delta z$ and take the limit $\Delta z \rightarrow 0$ and get
 
@@ -90,7 +93,7 @@ $$
 
 ## Unit optical depth
 
-We have shown that the volume absorption coefficient $\gamma$ gives a measure for how far a photon can travel through the atmosphere before being absorbed.  What is optical depth that corresponds to that distance?  Do the integration between $z=0$ and $z=\overline{z} = 1/\gamma$, again assuming that $\gamma$ is independent of $z$:
+We have shown that the volume absorption coefficient $\gamma$ gives a measure for how far a photon can travel through the atmosphere before being absorbed.  What is the optical depth that corresponds to that distance?  Do the integration between $z=0$ and $z=\overline{z} = 1/\gamma$, again assuming that $\gamma$ is independent of $z$:
 
 $$
 \tau = \int_0^\overline{z} \gamma dz = \gamma \times \overline{z} = \gamma \times \frac{1}{\gamma} = 1

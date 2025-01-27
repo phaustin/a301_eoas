@@ -180,7 +180,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../integrity.html">UBC academic integrity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../texts.html">Texts</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assigments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assignments</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
 <ul class="nav bd-sidenav">
@@ -510,7 +510,7 @@ Scanning through it, will see that the <code class="docutils literal notranslate
 </div>
 </div>
 </div>
-<p>And looking at the first key shows all of the metadata that rioxarray transfers to the DataArray attributes.  these are the entries that we’ll need to change for our clipped, scaled image.  We need to change <code class="docutils literal notranslate"><span class="pre">NCOLS,</span> <span class="pre">NROWS,</span> <span class="pre">_FillValue,</span> <span class="pre">ULX,</span> <span class="pre">ULY</span> <span class="pre">and</span> <span class="pre">scale_factor</span></code> when we write the clipped geotif.  Descriptions of each of the metadata items are in the <a class="reference external" href="https://lpdaac.usgs.gov/documents/1007/HLS_User_Guide_V15_provisional.pdf">hls user guide</a></p>
+<p>And looking at the first key shows all of the metadata that rioxarray transfers to the DataArray attributes.  these are the entries that we’ll need to change for our clipped, scaled image.  We need to change <code class="docutils literal notranslate"><span class="pre">NCOLS,</span> <span class="pre">NROWS,</span> <span class="pre">ULX,</span> <span class="pre">ULY</span> <span class="pre">and</span> <span class="pre">scale_factor</span></code> when we write the clipped geotif.  Descriptions of each of the metadata items are in the <a class="reference external" href="https://lpdaac.usgs.gov/documents/1007/HLS_User_Guide_V15_provisional.pdf">hls user guide</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>

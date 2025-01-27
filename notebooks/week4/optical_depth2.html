@@ -181,7 +181,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../integrity.html">UBC academic integrity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../texts.html">Texts</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assigments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assignments</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
 <ul class="nav bd-sidenav">
@@ -399,12 +399,15 @@ d\tau_\lambda = \rho \, r \, k_\lambda dz
 \[
 \gamma_\lambda = \rho\,r\,k_\lambda
 \]</div>
-<p>Given that definition, we can go back to <a class="reference internal" href="../week1/beers_law.html#equation-eq-difflux">(1.2)</a> from week 2 and rewrite</p>
+<p>With that definiton we can go back to our <a class="reference internal" href="../week1/beers_law.html#equation-eq-difflux">(1.2)</a> from week 1 and rewrite</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{dI}{I} = -n b ds
 \]</div>
-<p>as</p>
+<p>where <span class="math notranslate nohighlight">\(s\ (m)\)</span> is the distance travelled (the path length),
+<span class="math notranslate nohighlight">\(n\ (\#/m^3)\)</span> is the number denstiy of absorbing
+particles and <span class="math notranslate nohighlight">\(b\ (m^2)/molecule\)</span> is the absorption cross section per molecule.
+Using <span class="math notranslate nohighlight">\(\gamma_\lambda\)</span> Beer’s law becomes:</p>
 <div class="math notranslate nohighlight" id="equation-eq-newdf">
 <span class="eqno">(18.1)<a class="headerlink" href="#equation-eq-newdf" title="Link to this equation">#</a></span>\[
 \frac{dI}{I} = -\gamma ds
@@ -432,7 +435,7 @@ that reached <span class="math notranslate nohighlight">\(z\)</span> and the fra
 \[
 \int_z^{z+\Delta z} p(z) d z \approx p(z) \Delta z  =\exp \left ( -\gamma z\ \right )-\exp \left ( -\gamma (z+\Delta z) \right )
 \]</div>
-<p>where we’ve assumed that <span class="math notranslate nohighlight">\(p(z)\)</span> is approximately constant over <span class="math notranslate nohighlight">\(\delta z\)</span> and can be taken out of the integral.</p>
+<p>where we’ve assumed that <span class="math notranslate nohighlight">\(p(z)\)</span> is approximately constant over <span class="math notranslate nohighlight">\(\Delta z\)</span> and can be taken out of the integral.</p>
 <p>Finally, divide by <span class="math notranslate nohighlight">\(\Delta z\)</span> and take the limit <span class="math notranslate nohighlight">\(\Delta z \rightarrow 0\)</span> and get</p>
 <div class="math notranslate nohighlight" id="equation-eq-pz">
 <span class="eqno">(18.3)<a class="headerlink" href="#equation-eq-pz" title="Link to this equation">#</a></span>\[
@@ -454,7 +457,7 @@ p(z)  = \left [ \exp \left ( -\gamma z\ \right )-\exp \left ( -\gamma (z+\Delta 
 </section>
 <section id="unit-optical-depth">
 <h2><span class="section-number">18.4. </span>Unit optical depth<a class="headerlink" href="#unit-optical-depth" title="Link to this heading">#</a></h2>
-<p>We have shown that the volume absorption coefficient <span class="math notranslate nohighlight">\(\gamma\)</span> gives a measure for how far a photon can travel through the atmosphere before being absorbed.  What is optical depth that corresponds to that distance?  Do the integration between <span class="math notranslate nohighlight">\(z=0\)</span> and <span class="math notranslate nohighlight">\(z=\overline{z} = 1/\gamma\)</span>, again assuming that <span class="math notranslate nohighlight">\(\gamma\)</span> is independent of <span class="math notranslate nohighlight">\(z\)</span>:</p>
+<p>We have shown that the volume absorption coefficient <span class="math notranslate nohighlight">\(\gamma\)</span> gives a measure for how far a photon can travel through the atmosphere before being absorbed.  What is the optical depth that corresponds to that distance?  Do the integration between <span class="math notranslate nohighlight">\(z=0\)</span> and <span class="math notranslate nohighlight">\(z=\overline{z} = 1/\gamma\)</span>, again assuming that <span class="math notranslate nohighlight">\(\gamma\)</span> is independent of <span class="math notranslate nohighlight">\(z\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \tau = \int_0^\overline{z} \gamma dz = \gamma \times \overline{z} = \gamma \times \frac{1}{\gamma} = 1
