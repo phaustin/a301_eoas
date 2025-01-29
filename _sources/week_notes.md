@@ -191,8 +191,8 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
   $$
   
 - If you're interested/motivated, try {ref}`pixi_install`
-- Finish - {ref}`week4:tau2`
-- {ref}`week4:clip_bands`
+- Finish: {ref}`week4:tau2`
+- Finish: {ref}`week4:clip_bands`
 - In-class coding:
 
   Write a function with the following signature:
