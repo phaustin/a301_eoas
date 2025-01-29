@@ -184,4 +184,45 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 
 ### Day 11 Wednesday
 
+- Discussion: what happened to $\cos \theta$ in problem 4.31?:
+
+  $$
+  d E=\pi r^2 I d \omega
+  $$
+  
 - If you're interested/motivated, try {ref}`pixi_install`
+- Finish - {ref}`week4:tau2`
+- {ref}`week4:clip_bands`
+- In-class coding:
+
+  Write a function with the following signature:
+
+  ```
+  def find_latlon(geotiff,column,row):
+      '''
+      Given the path to a geotiff file, use the geotiff crs and affine transform
+      to return the longitude and latitude of the center of the pixel at
+      (row, column)
+
+      Parameters
+      ----------
+
+      geotiff: pathlib.Path
+         path to a local geotiff file
+
+      row: float
+         row of the pixel in the raster
+      column: float
+         column of the pixel in the raster
+
+      Returns
+      -------
+
+      lonlat: (float, float)
+        longitude and latitude of the pixel center
+   ```
+
+#### Do for Friday
+
+- Test find_latlon on one of your clipped images
+- Read WH through p. 132  -- especially eq. 4.37
