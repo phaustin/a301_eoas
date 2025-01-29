@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>ATSC 301: syllabus &#8212; ATSC 301</title>
+    <title>pixi install for macos and windows &#8212; ATSC 301</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,12 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/syllabus';</script>
-    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/syllabus.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/pixi_install';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/pixi_install.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="UBC academic integrity" href="integrity.html" />
-    <link rel="prev" title="ATSC 301: 2024 Term 2 Winter" href="index.html" />
+    <link rel="next" title="Windows installation using a conda lock file" href="windows_install.html" />
+    <link rel="prev" title="A301 Assignments" href="assignments.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -176,12 +176,12 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Useful links</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">ATSC 301: syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">ATSC 301: syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="integrity.html">UBC academic integrity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="texts.html">Texts</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assignments.html">A301 Assignments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pixi_install.html">pixi install for macos and windows</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">pixi install for macos and windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="windows_install.html">Windows installation using a conda lock file</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
@@ -274,7 +274,7 @@
       
       
       
-      <li><a href="../_sources/notebooks/syllabus.md" target="_blank"
+      <li><a href="../_sources/notebooks/pixi_install.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -358,7 +358,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>ATSC 301: syllabus</h1>
+    <h1>pixi install for macos and windows</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -368,9 +368,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-objectives">Course objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-by-week-topics-subject-to-change-see-individual-weekly-topic-pages-on-the-course-website">Week by week topics (subject to change, see individual weekly topic pages on the course website)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">Macos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-the-installation">remove the installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-default-a301-environment">Creating the default a301 environment</a></li>
 </ul>
             </nav>
         </div>
@@ -382,181 +387,78 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="atsc-301-syllabus">
-<span id="syllabus"></span><h1>ATSC 301: syllabus<a class="headerlink" href="#atsc-301-syllabus" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Instructor:   Dr. Phil Austin</p></li>
-<li><p>Email:        paustin&#64;eoas.ubc.ca</p></li>
-<li><p>Office:       EOS South 157</p></li>
-<li><p>Office hours: TBD</p></li>
-<li><p>TA: Luke Brown <a class="reference external" href="mailto:lbrown&#37;&#52;&#48;eoas&#46;ubc&#46;ca">lbrown<span>&#64;</span>eoas<span>&#46;</span>ubc<span>&#46;</span>ca</a></p></li>
-<li><p>Course website: <a class="reference external" href="https://phaustin.github.io/a301_eoas">https://phaustin.github.io/a301_eoas</a></p></li>
-</ul>
-<section id="course-objectives">
-<h2>Course objectives<a class="headerlink" href="#course-objectives" title="Link to this heading">#</a></h2>
-<p>By the end of this course you should have a good understanding of</p>
-<ol class="arabic simple">
-<li><p>how radiation is emitted, absorbed, transmitted and reflected by
-surfaces, clouds, and the atmosphere  (the “forward problem”)</p></li>
-<li><p>how radiometers, radars and lidars are used to infer
-temperature and surface and cloud properties (the “inverse problem”)</p></li>
-<li><p>how orbiting radar and climate sensors (MODIS, Cloudsat, Calypso, GOES ABI) are combined with
-global forecast models to study the atmosphere, ocean and land surface</p></li>
-<li><p>how to map spatial remote sensing data the earth’s surface using Python’s geographic information software</p></li>
-<li><p>how to write clear, documented and tested code that can ingest, manipulate and display
-data, and how to turn equations into computer algorithms in Python</p></li>
-</ol>
+  <section class="tex2jax_ignore mathjax_ignore" id="pixi-install-for-macos-and-windows">
+<span id="pixi-install"></span><h1>pixi install for macos and windows<a class="headerlink" href="#pixi-install-for-macos-and-windows" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>There has been a lot of recent effort into developing modern installation tools for python.  One result is a conda replacement called pixi, developed with an open source license by a company
+called <a class="reference external" href="https://prefix.dev/">prefix.dev</a>.   If you’re having issues with a conda environment, there’s
+a good chance pixi might provide a more reliable alternative.</p>
 </section>
-<section id="evaluation">
-<h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Assessment</p></th>
-<th class="head"><p>weight</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Bi-Weekly Assignments/Quizzes</p></td>
-<td><p>45%</p></td>
-</tr>
-<tr class="row-odd"><td><p>Mid-term</p></td>
-<td><p>15%</p></td>
-</tr>
-<tr class="row-even"><td><p>Final (including takehome part)</p></td>
-<td><p>40%</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<section id="macos">
+<h3>Macos<a class="headerlink" href="#macos" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>a reminder about the <a class="reference external" href="https://students.ubc.ca/campus-life/student-code-conduct/">UBC code of conduct</a></p></li>
+<li><p>open a terminal and at the prompt type</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">repos</span><span class="o">/</span><span class="n">a301</span>
+</pre></div>
+</div>
+<p>At the prompt, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">fsSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pixi</span><span class="o">.</span><span class="n">sh</span><span class="o">/</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span> <span class="o">|</span> <span class="n">bash</span>
+</pre></div>
+</div>
+<p>which will run the installer.  Open a new terminal and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pixi</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<p>to test the installation.</p>
+</section>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Link to this heading">#</a></h3>
+<p>open a powershell terminal and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">powershell</span> <span class="o">-</span><span class="n">ExecutionPolicy</span> <span class="n">ByPass</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;irm -useb https://pixi.sh/install.ps1 | iex&quot;</span>
+</pre></div>
+</div>
+<p>which will run the installer.  Open a new terminal and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pixi</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<p>to test the installation.</p>
+</section>
+</section>
+<section id="remove-the-installation">
+<h2>remove the installation<a class="headerlink" href="#remove-the-installation" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>pixi is just a single file stored in</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/.</span><span class="n">pixi</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">pixi</span>
+</pre></div>
+</div>
+<p>to uninstall, move <code class="docutils literal notranslate"><span class="pre">~/.pixi</span></code> to the trash</p>
+</li>
 </ul>
 </section>
-<section id="week-by-week-topics-subject-to-change-see-individual-weekly-topic-pages-on-the-course-website">
-<h2>Week by week topics (subject to change, see individual weekly topic pages on the course website)<a class="headerlink" href="#week-by-week-topics-subject-to-change-see-individual-weekly-topic-pages-on-the-course-website" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Week</p></th>
-<th class="head"><p>Topic</p></th>
-<th class="head"><p></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Week 1  1/6 - 1/10</strong></p></td>
-<td><p>Introduction, course outline, Beer’s law, flux</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Week 2  1/13 - 1/17</strong></p></td>
-<td><p>Jupyter introduction, satellite data</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>Assignment 1: Brightness temperatures</p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Week 3  1/20 - 1/24</strong></p></td>
-<td><p>Reading geotifs</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Week 4  1/27 - 1/31</strong></p></td>
-<td><p>Geographic coordinate systems, Schwartzchild equation</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p>Assignment 2: Stull Chapter 2 problems</p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Week 5  2/3 - 2/7</strong></p></td>
-<td><p>Schwartzchild eqn with absorption and emission</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p></p></td>
-<td><p>Cartopy mapping and image resampling</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>Assignment 3: Flux from radiance</p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Week 6  2/10 - 2/14</strong></p></td>
-<td><p>Pandas, Weighting functions for temperature retrieval</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>Assignment: mid-term review</p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Midterm: Monday Feb. 24</strong></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Week 7  2/24 -  2/28</strong></p></td>
-<td><p>xarray, geotiffs, Landsat and Sentinel data</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Week 8  3/3 - 3/7</strong></p></td>
-<td><p>Reading cloud optimized geotiffs, Landsat channels</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>Assignment 4: NDVI</p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Week 9  3/10 - 3/14</strong></p></td>
-<td><p>Analyzing Cloudsat radar data</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Week 10 3/17 - 3/21</strong></p></td>
-<td><p>Comparing Cloudsat with the ECMWF model</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p>Assignment 5: Cloudsat and Landsat data</p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Week 11 3/24 - 3/28</strong></p></td>
-<td><p>Heating rates for climate modeling, false color images</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p>Assignment 6: Radar equation, Hurricane case study</p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Week 12 3/31 - 4/4</strong></p></td>
-<td><p>GIS processing review, final exam guide</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p>Assignment 7: Raster/vector overlays and true color</p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Week 13 4/7</strong></p></td>
-<td><p>Catch-up, review</p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
+<section id="creating-the-default-a301-environment">
+<h2>Creating the default a301 environment<a class="headerlink" href="#creating-the-default-a301-environment" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Download the file <a class="reference external" href="https://drive.google.com/file/d/1WDzlxmXF5mqMcvgGu8oNE8sKvQNCN3Ru/view?usp=sharing">pixi.toml</a></p></li>
+<li><p>Use finder or explorer to move the files to <code class="docutils literal notranslate"><span class="pre">~/repos/a301</span></code></p></li>
+<li><p>in the terminal, <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/repos/a301</span></code></p></li>
+<li><p>at the prompt type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pixi</span> <span class="n">update</span>
+</pre></div>
 </div>
+<p>which will install all the python packages in a new folder called at <code class="docutils literal notranslate"><span class="pre">~/repos/a301/.pixi</span></code> and
+write a lock file called <code class="docutils literal notranslate"><span class="pre">~/repos/a301/pixi.lock</span></code> which shows every installed package</p>
+</li>
+<li><p>Start jupyter by typing</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pixi</span> <span class="n">run</span> <span class="n">jupyter</span> <span class="n">lab</span>
+</pre></div>
+</div>
+<p>at the prompt</p>
+</li>
+</ul>
 </section>
 </section>
 
@@ -591,20 +493,20 @@ data, and how to turn equations into computer algorithms in Python</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="assignments.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">ATSC 301: 2024 Term 2 Winter</p>
+        <p class="prev-next-title">A301 Assignments</p>
       </div>
     </a>
     <a class="right-next"
-       href="integrity.html"
+       href="windows_install.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">UBC academic integrity</p>
+        <p class="prev-next-title">Windows installation using a conda lock file</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -624,9 +526,14 @@ data, and how to turn equations into computer algorithms in Python</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-objectives">Course objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-by-week-topics-subject-to-change-see-individual-weekly-topic-pages-on-the-course-website">Week by week topics (subject to change, see individual weekly topic pages on the course website)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">Macos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-the-installation">remove the installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-default-a301-environment">Creating the default a301 environment</a></li>
 </ul>
   </nav></div>
 

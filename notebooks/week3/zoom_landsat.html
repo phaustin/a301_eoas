@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>13. Zooming an image &#8212; ATSC 301</title>
+    <title>12. Zooming an image &#8212; ATSC 301</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -61,8 +61,8 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week3/zoom_landsat.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="15. Kirchoff worksheet" href="kirchoff.html" />
-    <link rel="prev" title="12. Assignment 1, brightness temperatures - solution" href="assign1_solution.html" />
+    <link rel="next" title="14. Kirchoff worksheet" href="kirchoff.html" />
+    <link rel="prev" title="11. Assignment 1, brightness temperatures - solution" href="assign1_solution.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,7 +180,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../integrity.html">UBC academic integrity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../texts.html">Texts</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assigments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pixi_install.html">pixi install for macos and windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windows_install.html">Windows installation using a conda lock file</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
 <ul class="nav bd-sidenav">
@@ -207,18 +209,17 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../windows_install.html">10. Windows installation using a conda lock file</a></li>
-<li class="toctree-l1"><a class="reference internal" href="map_landsat.html">11. Mapping the landsat scene</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assign1_solution.html">12. Assignment 1, brightness temperatures - solution</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Zooming an image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_landsat.html">10. Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign1_solution.html">11. Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Zooming an image</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="kirchoff.html">15. Kirchoff worksheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="optical_depth.html">16. Optical depth and partial transmission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kirchoff.html">14. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optical_depth.html">15. Optical depth and partial transmission</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">17. Clipping multiple bands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">18. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">16. Clipping multiple bands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">17. Optical depth II: mean free path</a></li>
 </ul>
 
     </div>
@@ -367,42 +368,42 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">13. Zooming an image</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-tiff-files-and-calculate-band-5-reflectance">13.1. Get the tiff files and calculate band 5 reflectance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-crs-and-the-affine-transform-for-the-full-iamge">13.2. Save the crs and the affine transform for the full iamge</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-to-cartopy-crs-for-map-plot">13.3. Convert to cartopy crs for map plot</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-a-random-selection-of-1000-pixels-to-histogram">13.3.1. Pick a random selection  of 1000 pixels to histogram</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">12. Zooming an image</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-tiff-files-and-calculate-band-5-reflectance">12.1. Get the tiff files and calculate band 5 reflectance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-crs-and-the-affine-transform-for-the-full-iamge">12.2. Save the crs and the affine transform for the full iamge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-to-cartopy-crs-for-map-plot">12.3. Convert to cartopy crs for map plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-a-random-selection-of-1000-pixels-to-histogram">12.3.1. Pick a random selection  of 1000 pixels to histogram</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#locate-ubc-on-the-map">13.4. Locate UBC on the map</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alert-the-epsg-4326-projection-order-is-lat-lon-yikes">13.4.1. Alert!! the epsg:4326 projection order is (lat, lon) (yikes)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#locate-ubc-on-the-map">12.4. Locate UBC on the map</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alert-the-epsg-4326-projection-order-is-lat-lon-yikes">12.4.1. Alert!! the epsg:4326 projection order is (lat, lon) (yikes)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#locate-ubc-on-the-image">13.5. Locate UBC on the image</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slice-the-array">13.6. Slice the array</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#locate-ubc-on-the-image">12.5. Locate UBC on the image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slice-the-array">12.6. Slice the array</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-raw-band-5-image-clipped-to-reflectivities-below-0-6">14. Plot the raw band 5 image, clipped to reflectivities below 0.6</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-this-on-a-map">14.1. put this on a map</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-rasterio-to-write-a-new-tif-file">14.2. Use  rasterio  to write a new tif file</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-affine-transform-for-the-scene">14.2.1. Set the affine transform for the scene</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-write-this-out-to-band5-clipped-rasterio-tif">14.2.2. Now write this out to band5_clipped_rasterio.tif</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-raw-band-5-image-clipped-to-reflectivities-below-0-6">13. Plot the raw band 5 image, clipped to reflectivities below 0.6</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-this-on-a-map">13.1. put this on a map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-rasterio-to-write-a-new-tif-file">13.2. Use  rasterio  to write a new tif file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-affine-transform-for-the-scene">13.2.1. Set the affine transform for the scene</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-write-this-out-to-band5-clipped-rasterio-tif">13.2.2. Now write this out to band5_clipped_rasterio.tif</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-the-write-with-rioxarray">14.3. Repeat the write with rioxarray</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-dataarray">14.3.1. Create the DataArray</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-shape-attributes-and-coordinates">14.3.1.1. Check the shape, attributes and coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-the-write-with-rioxarray">13.3. Repeat the write with rioxarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-dataarray">13.3.1. Create the DataArray</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-shape-attributes-and-coordinates">13.3.1.1. Check the shape, attributes and coordinates</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-image">14.3.2. check the image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-the-transform-and-the-crs">14.3.3. add the transform and the crs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-some-attributes">14.3.4. change some attributes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-attributes">14.3.4.1. check the attributes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-image">13.3.2. check the image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-the-transform-and-the-crs">13.3.3. add the transform and the crs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-some-attributes">13.3.4. change some attributes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-attributes">13.3.4.1. check the attributes</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-out-the-new-geotiff">14.3.5. Write out the new geotiff</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-it-back-in-to-check">14.3.6. read it back in to check</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#note-that-we-now-have-the-correct-epsg-code">14.3.6.1. note that we now have the correct epsg code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-out-the-new-geotiff">13.3.5. Write out the new geotiff</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-it-back-in-to-check">13.3.6. read it back in to check</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#note-that-we-now-have-the-correct-epsg-code">13.3.6.1. note that we now have the correct epsg code</a></li>
 </ul>
 </li>
 </ul>
@@ -422,7 +423,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="zooming-an-image">
-<span id="week3-image-zoom"></span><h1><span class="section-number">13. </span>Zooming an image<a class="headerlink" href="#zooming-an-image" title="Link to this heading">#</a></h1>
+<span id="week3-image-zoom"></span><h1><span class="section-number">12. </span>Zooming an image<a class="headerlink" href="#zooming-an-image" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Download zoom_landsat.ipynb from the <a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing">week3 folder</a></p></li>
 </ul>
@@ -464,7 +465,7 @@ document.write(`
 </div>
 </div>
 <section id="get-the-tiff-files-and-calculate-band-5-reflectance">
-<h2><span class="section-number">13.1. </span>Get the tiff files and calculate band 5 reflectance<a class="headerlink" href="#get-the-tiff-files-and-calculate-band-5-reflectance" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.1. </span>Get the tiff files and calculate band 5 reflectance<a class="headerlink" href="#get-the-tiff-files-and-calculate-band-5-reflectance" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;repos/a301/satdata/landsat&#39;</span>
@@ -482,7 +483,7 @@ document.write(`
 </div>
 </section>
 <section id="save-the-crs-and-the-affine-transform-for-the-full-iamge">
-<h2><span class="section-number">13.2. </span>Save the crs and the affine transform for the full iamge<a class="headerlink" href="#save-the-crs-and-the-affine-transform-for-the-full-iamge" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.2. </span>Save the crs and the affine transform for the full iamge<a class="headerlink" href="#save-the-crs-and-the-affine-transform-for-the-full-iamge" title="Link to this heading">#</a></h2>
 <p>We need to keep both full_affine (the affine transform for the full scene, and the coordinate reference system for pyproj (called p_utl below).</p>
 <p>Complication – as before, cartopy can’t use the pyproj p_utm, so need to do a convertion for cartopy_crs.</p>
 <div class="cell docutils container">
@@ -496,7 +497,7 @@ document.write(`
 </div>
 </section>
 <section id="convert-to-cartopy-crs-for-map-plot">
-<h2><span class="section-number">13.3. </span>Convert to cartopy crs for map plot<a class="headerlink" href="#convert-to-cartopy-crs-for-map-plot" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.3. </span>Convert to cartopy crs for map plot<a class="headerlink" href="#convert-to-cartopy-crs-for-map-plot" title="Link to this heading">#</a></h2>
 <p>As in <a class="reference internal" href="map_landsat.html#week3-map-landsat"><span class="std std-ref">Mapping the landsat scene</span></a> we’ve got to jump th rough hoops to get the correct cartopy crs. The problem is that hls forgot to put the epsg code in their tif file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -541,7 +542,7 @@ document.write(`
 </div>
 </div>
 <section id="pick-a-random-selection-of-1000-pixels-to-histogram">
-<h3><span class="section-number">13.3.1. </span>Pick a random selection  of 1000 pixels to histogram<a class="headerlink" href="#pick-a-random-selection-of-1000-pixels-to-histogram" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.3.1. </span>Pick a random selection  of 1000 pixels to histogram<a class="headerlink" href="#pick-a-random-selection-of-1000-pixels-to-histogram" title="Link to this heading">#</a></h3>
 <p>Don’t need 3660 x 3660 pixels to get a feeling for the distribution</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -561,10 +562,10 @@ document.write(`
 </section>
 </section>
 <section id="locate-ubc-on-the-map">
-<h2><span class="section-number">13.4. </span>Locate UBC on the map<a class="headerlink" href="#locate-ubc-on-the-map" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.4. </span>Locate UBC on the map<a class="headerlink" href="#locate-ubc-on-the-map" title="Link to this heading">#</a></h2>
 <p>We need to project the center of campus from lon/lat to UTM 10N x,y using pyproj.Transformer and our crs (which in this case is UTM).  We can transform from lat,lon (p_lonlat) to x,y (p_utm) to anchor us to a known point in the map coordinates.</p>
 <section id="alert-the-epsg-4326-projection-order-is-lat-lon-yikes">
-<h3><span class="section-number">13.4.1. </span>Alert!! the epsg:4326 projection order is (lat, lon) (yikes)<a class="headerlink" href="#alert-the-epsg-4326-projection-order-is-lat-lon-yikes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.4.1. </span>Alert!! the epsg:4326 projection order is (lat, lon) (yikes)<a class="headerlink" href="#alert-the-epsg-4326-projection-order-is-lat-lon-yikes" title="Link to this heading">#</a></h3>
 <p>see <a class="reference external" href="https://gis.stackexchange.com/questions/434038/order-of-latitude-and-longitude-in-epsg4326">this stack exchage</a>.  Most projections are (lon, lat) which
 maps more logically to (x, y).  Compare the axis order on these two crs:</p>
 <div class="cell docutils container">
@@ -636,7 +637,7 @@ Datum: World Geodetic System 1984 ensemble
 </section>
 </section>
 <section id="locate-ubc-on-the-image">
-<h2><span class="section-number">13.5. </span>Locate UBC on the image<a class="headerlink" href="#locate-ubc-on-the-image" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.5. </span>Locate UBC on the image<a class="headerlink" href="#locate-ubc-on-the-image" title="Link to this heading">#</a></h2>
 <p>Now we need to use the affine transform to go between x,y and
 col, row on the image.  The next cell creates two slice objects that extend  on either side of the center point.  The tilde (~) in front of the transform indicates that we’re going from x,y to col,row, instead of col,row to x,y.  (See <a class="reference external" href="http://www.perrygeo.com/python-affine-transforms.html">this blog entry</a> for reference.)  Remember that row 0 is the top row, with rows decreasing downward to the south.  To demonstrate, the cell below uses the tranform to calculate the x,y coordinates of the (0,0) corner.</p>
 <div class="cell docutils container">
@@ -654,7 +655,7 @@ col, row on the image.  The next cell creates two slice objects that extend  on 
 </div>
 </section>
 <section id="slice-the-array">
-<span id="sec-slice"></span><h2><span class="section-number">13.6. </span>Slice the array<a class="headerlink" href="#slice-the-array" title="Link to this heading">#</a></h2>
+<span id="sec-slice"></span><h2><span class="section-number">12.6. </span>Slice the array<a class="headerlink" href="#slice-the-array" title="Link to this heading">#</a></h2>
 <p>Make our subscene 400 pixels wide and 600 pixels tall, using UBC as a reference point.
 We need to find the right rows and columns on the image to save for the subscene.  Do this by working outward from UBC by a certain number of pixels in each direction, using the inverse of the full_affine transform to go from x,y to col,row</p>
 <div class="cell docutils container">
@@ -759,7 +760,7 @@ We need to find the right rows and columns on the image to save for the subscene
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="plot-the-raw-band-5-image-clipped-to-reflectivities-below-0-6">
-<h1><span class="section-number">14. </span>Plot the raw band 5 image, clipped to reflectivities below 0.6<a class="headerlink" href="#plot-the-raw-band-5-image-clipped-to-reflectivities-below-0-6" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">13. </span>Plot the raw band 5 image, clipped to reflectivities below 0.6<a class="headerlink" href="#plot-the-raw-band-5-image-clipped-to-reflectivities-below-0-6" title="Link to this heading">#</a></h1>
 <p>This is a simple check that we got the right section.  Note that matplotlib ignores the <code class="docutils literal notranslate"><span class="pre">figsize=(10,10)</span></code> argument in plt.subplots and keeps the correct aspect ratio for the image.  I have to make a copy of the palette so my changes “stick”</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -782,7 +783,7 @@ We need to find the right rows and columns on the image to save for the subscene
 </div>
 </div>
 <section id="put-this-on-a-map">
-<h2><span class="section-number">14.1. </span>put this on a map<a class="headerlink" href="#put-this-on-a-map" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.1. </span>put this on a map<a class="headerlink" href="#put-this-on-a-map" title="Link to this heading">#</a></h2>
 <p>Note that the origin is switched to “lower” in the x,y coordinate system below,
 since y increases upwards.  The coastline is very crude, but at least indicates we’ve got the coords roughly correct.  See the “high_res_map” notebook for a better coastline.</p>
 <div class="cell docutils container">
@@ -821,9 +822,9 @@ since y increases upwards.  The coastline is very crude, but at least indicates 
 </div>
 </section>
 <section id="use-rasterio-to-write-a-new-tif-file">
-<h2><span class="section-number">14.2. </span>Use  rasterio  to write a new tif file<a class="headerlink" href="#use-rasterio-to-write-a-new-tif-file" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.2. </span>Use  rasterio  to write a new tif file<a class="headerlink" href="#use-rasterio-to-write-a-new-tif-file" title="Link to this heading">#</a></h2>
 <section id="set-the-affine-transform-for-the-scene">
-<h3><span class="section-number">14.2.1. </span>Set the affine transform for the scene<a class="headerlink" href="#set-the-affine-transform-for-the-scene" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.2.1. </span>Set the affine transform for the scene<a class="headerlink" href="#set-the-affine-transform-for-the-scene" title="Link to this heading">#</a></h3>
 <p>We can write this clipped image back out to a much smaller tiff file if we can come up with the new affine transform for the smaller scene.  Referring again <a class="reference external" href="http://www.perrygeo.com/python-affine-transforms.html">to the writeup</a> we need:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>a = width of a pixel
 b = row rotation (typically zero)
@@ -855,7 +856,7 @@ rasterio expects [band,x,y] for its writer.  Do this with np.newaxis in the next
 </div>
 </section>
 <section id="now-write-this-out-to-band5-clipped-rasterio-tif">
-<h3><span class="section-number">14.2.2. </span>Now write this out to band5_clipped_rasterio.tif<a class="headerlink" href="#now-write-this-out-to-band5-clipped-rasterio-tif" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.2.2. </span>Now write this out to band5_clipped_rasterio.tif<a class="headerlink" href="#now-write-this-out-to-band5-clipped-rasterio-tif" title="Link to this heading">#</a></h3>
 <p>Note that the new file does have the utm zone 10 epsg code, since we use the pyproj utm and not the one we got from hls_band5.rio.crs</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -907,12 +908,12 @@ rasterio expects [band,x,y] for its writer.  Do this with np.newaxis in the next
 </section>
 </section>
 <section id="repeat-the-write-with-rioxarray">
-<h2><span class="section-number">14.3. </span>Repeat the write with rioxarray<a class="headerlink" href="#repeat-the-write-with-rioxarray" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.3. </span>Repeat the write with rioxarray<a class="headerlink" href="#repeat-the-write-with-rioxarray" title="Link to this heading">#</a></h2>
 <p>We can also write a geotiff with rioxarray.  To do that we first need to create the DataArray, then
 add the attributes, coordinates, affine transform and crs, and then write it out using the <code class="docutils literal notranslate"><span class="pre">to_raster()</span></code> method</p>
 <section id="create-the-dataarray">
-<span id="zoom-landsat-array"></span><h3><span class="section-number">14.3.1. </span>Create the DataArray<a class="headerlink" href="#create-the-dataarray" title="Link to this heading">#</a></h3>
-<p>In <a class="reference internal" href="#sec-slice"><span class="std std-numref">Section 13.6</span></a> we used slices to clip the subscene around UBC.  For rioxarray, we can use
+<span id="zoom-landsat-array"></span><h3><span class="section-number">13.3.1. </span>Create the DataArray<a class="headerlink" href="#create-the-dataarray" title="Link to this heading">#</a></h3>
+<p>In <a class="reference internal" href="#sec-slice"><span class="std std-numref">Section 12.6</span></a> we used slices to clip the subscene around UBC.  For rioxarray, we can use
 <a class="reference external" href="https://corteva.github.io/rioxarray/stable/rioxarray.html#rioxarray.raster_array.RasterArray.clip_box">clip_box</a> to do
 the same thing.  We need to provide the bounding box x and y edges we want to clip to, these are
 given by (ubc_ul_xy, ubc_lr_xy).  clip_box wants them in the following order:</p>
@@ -944,7 +945,7 @@ given by (ubc_ul_xy, ubc_lr_xy).  clip_box wants them in the following order:</p
 </div>
 </div>
 <section id="check-the-shape-attributes-and-coordinates">
-<h4><span class="section-number">14.3.1.1. </span>Check the shape, attributes and coordinates<a class="headerlink" href="#check-the-shape-attributes-and-coordinates" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">13.3.1.1. </span>Check the shape, attributes and coordinates<a class="headerlink" href="#check-the-shape-attributes-and-coordinates" title="Link to this heading">#</a></h4>
 <p>clip_box clips the data, but it also clips the x,y coordinates so that we can still automatically
 label our image with x and y tick marks</p>
 <div class="cell docutils container">
@@ -1370,7 +1371,7 @@ Attributes: (12/35)
 </section>
 </section>
 <section id="check-the-image">
-<h3><span class="section-number">14.3.2. </span>check the image<a class="headerlink" href="#check-the-image" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.3.2. </span>check the image<a class="headerlink" href="#check-the-image" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
@@ -1385,7 +1386,7 @@ Attributes: (12/35)
 </div>
 </section>
 <section id="add-the-transform-and-the-crs">
-<span id="week3-write-clipped"></span><h3><span class="section-number">14.3.3. </span>add the transform and the crs<a class="headerlink" href="#add-the-transform-and-the-crs" title="Link to this heading">#</a></h3>
+<span id="week3-write-clipped"></span><h3><span class="section-number">13.3.3. </span>add the transform and the crs<a class="headerlink" href="#add-the-transform-and-the-crs" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">da_band5</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span>
@@ -1408,7 +1409,7 @@ Attributes: (12/35)
 </div>
 </section>
 <section id="change-some-attributes">
-<h3><span class="section-number">14.3.4. </span>change some attributes<a class="headerlink" href="#change-some-attributes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.3.4. </span>change some attributes<a class="headerlink" href="#change-some-attributes" title="Link to this heading">#</a></h3>
 <p>We need to adjust some of the attributions for the new subscene.  To do this, copy the exiting attributes into
 a dictionary and rewrite the parts you want to change, adding any extras.</p>
 <div class="cell docutils container">
@@ -1426,7 +1427,7 @@ a dictionary and rewrite the parts you want to change, adding any extras.</p>
 </div>
 </div>
 <section id="check-the-attributes">
-<h4><span class="section-number">14.3.4.1. </span>check the attributes<a class="headerlink" href="#check-the-attributes" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">13.3.4.1. </span>check the attributes<a class="headerlink" href="#check-the-attributes" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">da_band5</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span>
@@ -1442,7 +1443,7 @@ a dictionary and rewrite the parts you want to change, adding any extras.</p>
 </section>
 </section>
 <section id="write-out-the-new-geotiff">
-<h3><span class="section-number">14.3.5. </span>Write out the new geotiff<a class="headerlink" href="#write-out-the-new-geotiff" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.3.5. </span>Write out the new geotiff<a class="headerlink" href="#write-out-the-new-geotiff" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;band5_clipped_rio.tif&#39;</span>
@@ -1459,7 +1460,7 @@ a dictionary and rewrite the parts you want to change, adding any extras.</p>
 </div>
 </section>
 <section id="read-it-back-in-to-check">
-<h3><span class="section-number">14.3.6. </span>read it back in to check<a class="headerlink" href="#read-it-back-in-to-check" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.3.6. </span>read it back in to check<a class="headerlink" href="#read-it-back-in-to-check" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">has_file</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
@@ -1477,7 +1478,7 @@ a dictionary and rewrite the parts you want to change, adding any extras.</p>
 </div>
 </div>
 <section id="note-that-we-now-have-the-correct-epsg-code">
-<h4><span class="section-number">14.3.6.1. </span>note that we now have the correct epsg code<a class="headerlink" href="#note-that-we-now-have-the-correct-epsg-code" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">13.3.6.1. </span>note that we now have the correct epsg code<a class="headerlink" href="#note-that-we-now-have-the-correct-epsg-code" title="Link to this heading">#</a></h4>
 <p>Because we used the pyproj <code class="docutils literal notranslate"><span class="pre">p_utm</span></code> crs in our raster write we’ve fixed the missing epsg code problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1532,7 +1533,7 @@ a dictionary and rewrite the parts you want to change, adding any extras.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>Assignment 1, brightness temperatures - solution</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Assignment 1, brightness temperatures - solution</p>
       </div>
     </a>
     <a class="right-next"
@@ -1540,7 +1541,7 @@ a dictionary and rewrite the parts you want to change, adding any extras.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">15. </span>Kirchoff worksheet</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>Kirchoff worksheet</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1560,42 +1561,42 @@ a dictionary and rewrite the parts you want to change, adding any extras.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">13. Zooming an image</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-tiff-files-and-calculate-band-5-reflectance">13.1. Get the tiff files and calculate band 5 reflectance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-crs-and-the-affine-transform-for-the-full-iamge">13.2. Save the crs and the affine transform for the full iamge</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-to-cartopy-crs-for-map-plot">13.3. Convert to cartopy crs for map plot</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-a-random-selection-of-1000-pixels-to-histogram">13.3.1. Pick a random selection  of 1000 pixels to histogram</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">12. Zooming an image</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-tiff-files-and-calculate-band-5-reflectance">12.1. Get the tiff files and calculate band 5 reflectance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-crs-and-the-affine-transform-for-the-full-iamge">12.2. Save the crs and the affine transform for the full iamge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-to-cartopy-crs-for-map-plot">12.3. Convert to cartopy crs for map plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-a-random-selection-of-1000-pixels-to-histogram">12.3.1. Pick a random selection  of 1000 pixels to histogram</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#locate-ubc-on-the-map">13.4. Locate UBC on the map</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alert-the-epsg-4326-projection-order-is-lat-lon-yikes">13.4.1. Alert!! the epsg:4326 projection order is (lat, lon) (yikes)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#locate-ubc-on-the-map">12.4. Locate UBC on the map</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alert-the-epsg-4326-projection-order-is-lat-lon-yikes">12.4.1. Alert!! the epsg:4326 projection order is (lat, lon) (yikes)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#locate-ubc-on-the-image">13.5. Locate UBC on the image</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slice-the-array">13.6. Slice the array</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#locate-ubc-on-the-image">12.5. Locate UBC on the image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slice-the-array">12.6. Slice the array</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-raw-band-5-image-clipped-to-reflectivities-below-0-6">14. Plot the raw band 5 image, clipped to reflectivities below 0.6</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-this-on-a-map">14.1. put this on a map</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-rasterio-to-write-a-new-tif-file">14.2. Use  rasterio  to write a new tif file</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-affine-transform-for-the-scene">14.2.1. Set the affine transform for the scene</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-write-this-out-to-band5-clipped-rasterio-tif">14.2.2. Now write this out to band5_clipped_rasterio.tif</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-raw-band-5-image-clipped-to-reflectivities-below-0-6">13. Plot the raw band 5 image, clipped to reflectivities below 0.6</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-this-on-a-map">13.1. put this on a map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-rasterio-to-write-a-new-tif-file">13.2. Use  rasterio  to write a new tif file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-affine-transform-for-the-scene">13.2.1. Set the affine transform for the scene</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-write-this-out-to-band5-clipped-rasterio-tif">13.2.2. Now write this out to band5_clipped_rasterio.tif</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-the-write-with-rioxarray">14.3. Repeat the write with rioxarray</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-dataarray">14.3.1. Create the DataArray</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-shape-attributes-and-coordinates">14.3.1.1. Check the shape, attributes and coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-the-write-with-rioxarray">13.3. Repeat the write with rioxarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-dataarray">13.3.1. Create the DataArray</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-shape-attributes-and-coordinates">13.3.1.1. Check the shape, attributes and coordinates</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-image">14.3.2. check the image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-the-transform-and-the-crs">14.3.3. add the transform and the crs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-some-attributes">14.3.4. change some attributes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-attributes">14.3.4.1. check the attributes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-image">13.3.2. check the image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-the-transform-and-the-crs">13.3.3. add the transform and the crs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-some-attributes">13.3.4. change some attributes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-attributes">13.3.4.1. check the attributes</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-out-the-new-geotiff">14.3.5. Write out the new geotiff</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-it-back-in-to-check">14.3.6. read it back in to check</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#note-that-we-now-have-the-correct-epsg-code">14.3.6.1. note that we now have the correct epsg code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-out-the-new-geotiff">13.3.5. Write out the new geotiff</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-it-back-in-to-check">13.3.6. read it back in to check</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#note-that-we-now-have-the-correct-epsg-code">13.3.6.1. note that we now have the correct epsg code</a></li>
 </ul>
 </li>
 </ul>

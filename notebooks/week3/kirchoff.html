@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>15. Kirchoff worksheet &#8212; ATSC 301</title>
+    <title>14. Kirchoff worksheet &#8212; ATSC 301</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -63,8 +63,8 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week3/kirchoff.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="16. Optical depth and partial transmission" href="optical_depth.html" />
-    <link rel="prev" title="13. Zooming an image" href="zoom_landsat.html" />
+    <link rel="next" title="15. Optical depth and partial transmission" href="optical_depth.html" />
+    <link rel="prev" title="12. Zooming an image" href="zoom_landsat.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,7 +182,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../integrity.html">UBC academic integrity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../texts.html">Texts</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assigments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pixi_install.html">pixi install for macos and windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windows_install.html">Windows installation using a conda lock file</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
 <ul class="nav bd-sidenav">
@@ -209,18 +211,17 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../windows_install.html">10. Windows installation using a conda lock file</a></li>
-<li class="toctree-l1"><a class="reference internal" href="map_landsat.html">11. Mapping the landsat scene</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assign1_solution.html">12. Assignment 1, brightness temperatures - solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="zoom_landsat.html">13. Zooming an image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_landsat.html">10. Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign1_solution.html">11. Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoom_landsat.html">12. Zooming an image</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">15. Kirchoff worksheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="optical_depth.html">16. Optical depth and partial transmission</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optical_depth.html">15. Optical depth and partial transmission</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">17. Clipping multiple bands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">18. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">16. Clipping multiple bands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">17. Optical depth II: mean free path</a></li>
 </ul>
 
     </div>
@@ -369,9 +370,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">15.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monochromatic-emissivity-epsilon-lambda">15.2. Monochromatic emissivity <span class="math notranslate nohighlight">\(\epsilon_\lambda\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-question">15.3. Worksheet question</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">14.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monochromatic-emissivity-epsilon-lambda">14.2. Monochromatic emissivity <span class="math notranslate nohighlight">\(\epsilon_\lambda\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-question">14.3. Worksheet question</a></li>
 </ul>
             </nav>
         </div>
@@ -384,9 +385,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="kirchoff-worksheet">
-<span id="week3-kirchoff"></span><h1><span class="section-number">15. </span>Kirchoff worksheet<a class="headerlink" href="#kirchoff-worksheet" title="Link to this heading">#</a></h1>
+<span id="week3-kirchoff"></span><h1><span class="section-number">14. </span>Kirchoff worksheet<a class="headerlink" href="#kirchoff-worksheet" title="Link to this heading">#</a></h1>
 <section id="introduction">
-<h2><span class="section-number">15.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>In section 4.3.4 on p. 120 Wallace and Hobbs present the following definitions:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -402,23 +403,23 @@ T_\lambda&amp;=\frac{I_\lambda(\text { transmitted })}{I_\lambda(\text { inciden
 \]</div>
 </section>
 <section id="monochromatic-emissivity-epsilon-lambda">
-<h2><span class="section-number">15.2. </span>Monochromatic emissivity <span class="math notranslate nohighlight">\(\epsilon_\lambda\)</span><a class="headerlink" href="#monochromatic-emissivity-epsilon-lambda" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.2. </span>Monochromatic emissivity <span class="math notranslate nohighlight">\(\epsilon_\lambda\)</span><a class="headerlink" href="#monochromatic-emissivity-epsilon-lambda" title="Link to this heading">#</a></h2>
 <p>Kirchoff’s law says that  “good absorbers are good emitters” or more exactly:</p>
 <div class="math notranslate nohighlight">
 \[
 \alpha_\lambda = \epsilon_\lambda 
 \]</div>
 <p>for any gas, liquid or solid in thermodynamic equilibrium.</p>
-<p>To see why this has to be true, consider <a class="reference internal" href="#kirchoff"><span class="std std-numref">Fig. 15.1</span></a>, where a blackbody (surface A) is facing a surface B at the same temperature, with absorptivity and emissivity that violate Kirchoff’s law (there is a vacuum between the two plates).</p>
+<p>To see why this has to be true, consider <a class="reference internal" href="#kirchoff"><span class="std std-numref">Fig. 14.1</span></a>, where a blackbody (surface A) is facing a surface B at the same temperature, with absorptivity and emissivity that violate Kirchoff’s law (there is a vacuum between the two plates).</p>
 <figure class="align-default" id="kirchoff">
 <a class="reference internal image-reference" href="../../_images/kirchoff.png"><img alt="../../_images/kirchoff.png" src="../../_images/kirchoff.png" style="width: 330.0px; height: 232.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 15.1 </span><span class="caption-text">Demonstration of Kirchoff’s law</span><a class="headerlink" href="#kirchoff" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 14.1 </span><span class="caption-text">Demonstration of Kirchoff’s law</span><a class="headerlink" href="#kirchoff" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="worksheet-question">
-<h2><span class="section-number">15.3. </span>Worksheet question<a class="headerlink" href="#worksheet-question" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.3. </span>Worksheet question<a class="headerlink" href="#worksheet-question" title="Link to this heading">#</a></h2>
 <p>Suppose the reflectivity on for wall A is <span class="math notranslate nohighlight">\(\alpha_l =0.7\)</span>, so  <span class="math notranslate nohighlight">\(\alpha_l \neq \epsilon_l\)</span> and Kirchoff’s law is violated.  Find the net flux at wall A if this is true.   Why is this physically impossiblea?  Note that <span class="math notranslate nohighlight">\(\sigma 280^4\)</span> is a flux, not a radiance, but that doesn’t matter for this proof  (why not)?</p>
 </section>
 </section>
@@ -459,7 +460,7 @@ T_\lambda&amp;=\frac{I_\lambda(\text { transmitted })}{I_\lambda(\text { inciden
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Zooming an image</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Zooming an image</p>
       </div>
     </a>
     <a class="right-next"
@@ -467,7 +468,7 @@ T_\lambda&amp;=\frac{I_\lambda(\text { transmitted })}{I_\lambda(\text { inciden
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">16. </span>Optical depth and partial transmission</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>Optical depth and partial transmission</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -487,9 +488,9 @@ T_\lambda&amp;=\frac{I_\lambda(\text { transmitted })}{I_\lambda(\text { inciden
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">15.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monochromatic-emissivity-epsilon-lambda">15.2. Monochromatic emissivity <span class="math notranslate nohighlight">\(\epsilon_\lambda\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-question">15.3. Worksheet question</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">14.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monochromatic-emissivity-epsilon-lambda">14.2. Monochromatic emissivity <span class="math notranslate nohighlight">\(\epsilon_\lambda\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-question">14.3. Worksheet question</a></li>
 </ul>
   </nav></div>
 
