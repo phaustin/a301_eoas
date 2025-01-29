@@ -8,9 +8,11 @@ parts:
   - file: notebooks/syllabus.md
   - file: notebooks/integrity.md
   - file: notebooks/texts.md
-  - url: https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing
+  - url:  https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing
     title: 2020 mid-term equation sheet
   - file: notebooks/assignments.md
+  - file: notebooks/pixi_install.md
+  - file: notebooks/windows_install.md
 - caption: Weekly topics
   chapters:
   - file: week_notes.md
@@ -40,7 +42,6 @@ parts:
 - caption: Week 3
   numbered: true
   chapters:
-  - file: notebooks/windows_install.md
   - file: notebooks/week3/map_landsat.md
   - file: notebooks/week3/assign1_solution.md
   - file: notebooks/week3/zoom_landsat.md

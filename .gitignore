@@ -2,3 +2,7 @@
 /.jupyter_cache/
 /.ipynb_checkpoints
 *.ipynb_checkpoints*
+
+# pixi environments
+.pixi
+*.egg-info

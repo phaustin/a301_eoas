@@ -11,6 +11,7 @@ dependencies:
   - cartopy
   - pyresample
   - netcdf4
+  - gdal
   - jupyterlab
   - jupytext
   - pythia-datasets

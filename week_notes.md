@@ -182,3 +182,6 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 - Start on {ref}`assign3`
 - Read Wallace and Hobbs through p. 133
 
+### Day 11 Wednesday
+
+- If you're interested/motivated, try {ref}`pixi_install`

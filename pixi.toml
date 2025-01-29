@@ -1,0 +1,13 @@
+[project]
+authors = ["Phil Austin <paustin@eos.ubc.ca>"]
+channels = ["conda-forge"]
+description = "Add a short description here"
+name = "a301_eoas"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = ">=3.13.1,<3.14"
+gdal = ">=3.10.1,<4"
