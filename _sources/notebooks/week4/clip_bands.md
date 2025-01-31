@@ -272,5 +272,17 @@ small_band.rio.crs.to_epsg()
 ```
 
 ```{code-cell} ipython3
+help(CRS)
+```
+
+```{code-cell} ipython3
+small_band.transform
+```
+
+```{code-cell} ipython3
+small_band.rio.transform()
+```
+
+```{code-cell} ipython3
 
 ```

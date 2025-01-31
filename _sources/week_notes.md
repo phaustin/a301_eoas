@@ -226,3 +226,15 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 
 - Test find_latlon on one of your clipped images
 - Read WH through p. 132  -- especially eq. 4.37
+
+### Day 12 Friday
+
+- Introduce {ref}`notebook_index`
+- {ref}`assign2a_solution`
+- Go over Wallace and Hobbs Figure 4.24 -- Beer's law
+- Finish `find_latlon` 
+
+#### Do for Monday
+
+- Work on Assignment 3
+- As part of  assignment 4, we'll write a `clip_image` function which takes a geotiff and a bounding box and writes out a clipped geotiff

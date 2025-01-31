@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -183,6 +183,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pixi_install.html">pixi install for macos and windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../windows_install.html">Windows installation using a conda lock file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebook_index.html">code snippets by notebook</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
 <ul class="nav bd-sidenav">
@@ -220,6 +221,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">16. Clipping multiple bands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optical_depth2.html">17. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">18. Assignment 2: solutions Part A</a></li>
 </ul>
 
     </div>
@@ -586,7 +588,9 @@ hls_band.unit=&#39;Celsius&#39;
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>band_name=&#39;TIRS1&#39;
 hls_band.unit=&#39;Celsius&#39;
-band_name=&#39;Cirrus&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>band_name=&#39;Cirrus&#39;
 </pre></div>
 </div>
 </div>
@@ -805,6 +809,959 @@ a dictionary and rewrite the parts you want to change, adding any extras.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32610
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">CRS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on class CRS in module pyproj.crs.crs:
+
+class CRS(builtins.object)
+ |  CRS(projparams: typing.Any | None = None, **kwargs) -&gt; None
+ |
+ |  A pythonic Coordinate Reference System manager.
+ |
+ |  .. versionadded:: 2.0.0
+ |
+ |  See: :c:func:`proj_create`
+ |
+ |  The functionality is based on other fantastic projects:
+ |
+ |  * `rasterio &lt;https://github.com/mapbox/rasterio/blob/c13f0943b95c0eaa36ff3f620bd91107aa67b381/rasterio/_crs.pyx&gt;`_  # noqa: E501
+ |  * `opendatacube &lt;https://github.com/opendatacube/datacube-core/blob/83bae20d2a2469a6417097168fd4ede37fd2abe5/datacube/utils/geometry/_base.py&gt;`_  # noqa: E501
+ |
+ |  Attributes
+ |  ----------
+ |  srs: str
+ |      The string form of the user input used to create the CRS.
+ |
+ |  Methods defined here:
+ |
+ |  __eq__(self, other: Any) -&gt; bool
+ |      Return self==value.
+ |
+ |  __getstate__(self) -&gt; dict[str, str]
+ |      Helper for pickle.
+ |
+ |  __hash__(self) -&gt; int
+ |      Return hash(self).
+ |
+ |  __init__(self, projparams: typing.Any | None = None, **kwargs) -&gt; None
+ |      Initialize a CRS class instance with:
+ |        - PROJ string
+ |        - Dictionary of PROJ parameters
+ |        - PROJ keyword arguments for parameters
+ |        - JSON string with PROJ parameters
+ |        - CRS WKT string
+ |        - An authority string [i.e. &#39;epsg:4326&#39;]
+ |        - An EPSG integer code [i.e. 4326]
+ |        - A tuple of (&quot;auth_name&quot;: &quot;auth_code&quot;) [i.e (&#39;epsg&#39;, &#39;4326&#39;)]
+ |        - An object with a `to_wkt` method.
+ |        - A :class:`pyproj.crs.CRS` class
+ |
+ |      Example usage:
+ |
+ |      &gt;&gt;&gt; from pyproj import CRS
+ |      &gt;&gt;&gt; crs_utm = CRS.from_user_input(26915)
+ |      &gt;&gt;&gt; crs_utm
+ |      &lt;Projected CRS: EPSG:26915&gt;
+ |      Name: NAD83 / UTM zone 15N
+ |      Axis Info [cartesian]:
+ |      - E[east]: Easting (metre)
+ |      - N[north]: Northing (metre)
+ |      Area of Use:
+ |      - name: North America - 96°W to 90°W and NAD83 by country
+ |      - bounds: (-96.0, 25.61, -90.0, 84.0)
+ |      Coordinate Operation:
+ |      - name: UTM zone 15N
+ |      - method: Transverse Mercator
+ |      Datum: North American Datum 1983
+ |      - Ellipsoid: GRS 1980
+ |      - Prime Meridian: Greenwich
+ |      &lt;BLANKLINE&gt;
+ |      &gt;&gt;&gt; crs_utm.area_of_use.bounds
+ |      (-96.0, 25.61, -90.0, 84.0)
+ |      &gt;&gt;&gt; crs_utm.ellipsoid
+ |      ELLIPSOID[&quot;GRS 1980&quot;,6378137,298.257222101,
+ |          LENGTHUNIT[&quot;metre&quot;,1],
+ |          ID[&quot;EPSG&quot;,7019]]
+ |      &gt;&gt;&gt; crs_utm.ellipsoid.inverse_flattening
+ |      298.257222101
+ |      &gt;&gt;&gt; crs_utm.ellipsoid.semi_major_metre
+ |      6378137.0
+ |      &gt;&gt;&gt; crs_utm.ellipsoid.semi_minor_metre
+ |      6356752.314140356
+ |      &gt;&gt;&gt; crs_utm.prime_meridian
+ |      PRIMEM[&quot;Greenwich&quot;,0,
+ |          ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+ |          ID[&quot;EPSG&quot;,8901]]
+ |      &gt;&gt;&gt; crs_utm.prime_meridian.unit_name
+ |      &#39;degree&#39;
+ |      &gt;&gt;&gt; crs_utm.prime_meridian.unit_conversion_factor
+ |      0.017453292519943295
+ |      &gt;&gt;&gt; crs_utm.prime_meridian.longitude
+ |      0.0
+ |      &gt;&gt;&gt; crs_utm.datum
+ |      DATUM[&quot;North American Datum 1983&quot;,
+ |          ELLIPSOID[&quot;GRS 1980&quot;,6378137,298.257222101,
+ |              LENGTHUNIT[&quot;metre&quot;,1]],
+ |          ID[&quot;EPSG&quot;,6269]]
+ |      &gt;&gt;&gt; crs_utm.coordinate_system
+ |      CS[Cartesian,2],
+ |          AXIS[&quot;(E)&quot;,east,
+ |              ORDER[1],
+ |              LENGTHUNIT[&quot;metre&quot;,1,
+ |                  ID[&quot;EPSG&quot;,9001]]],
+ |          AXIS[&quot;(N)&quot;,north,
+ |              ORDER[2],
+ |              LENGTHUNIT[&quot;metre&quot;,1,
+ |                  ID[&quot;EPSG&quot;,9001]]]
+ |      &gt;&gt;&gt; print(crs_utm.coordinate_operation.to_wkt(pretty=True))
+ |      CONVERSION[&quot;UTM zone 15N&quot;,
+ |          METHOD[&quot;Transverse Mercator&quot;,
+ |              ID[&quot;EPSG&quot;,9807]],
+ |          PARAMETER[&quot;Latitude of natural origin&quot;,0,
+ |              ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+ |              ID[&quot;EPSG&quot;,8801]],
+ |          PARAMETER[&quot;Longitude of natural origin&quot;,-93,
+ |              ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+ |              ID[&quot;EPSG&quot;,8802]],
+ |          PARAMETER[&quot;Scale factor at natural origin&quot;,0.9996,
+ |              SCALEUNIT[&quot;unity&quot;,1],
+ |              ID[&quot;EPSG&quot;,8805]],
+ |          PARAMETER[&quot;False easting&quot;,500000,
+ |              LENGTHUNIT[&quot;metre&quot;,1],
+ |              ID[&quot;EPSG&quot;,8806]],
+ |          PARAMETER[&quot;False northing&quot;,0,
+ |              LENGTHUNIT[&quot;metre&quot;,1],
+ |              ID[&quot;EPSG&quot;,8807]],
+ |          ID[&quot;EPSG&quot;,16015]]
+ |      &gt;&gt;&gt; crs = CRS(proj=&#39;utm&#39;, zone=10, ellps=&#39;WGS84&#39;)
+ |      &gt;&gt;&gt; print(crs.to_wkt(pretty=True))
+ |      PROJCRS[&quot;unknown&quot;,
+ |          BASEGEOGCRS[&quot;unknown&quot;,
+ |              DATUM[&quot;Unknown based on WGS84 ellipsoid&quot;,
+ |                  ELLIPSOID[&quot;WGS 84&quot;,6378137,298.257223563,
+ |                      LENGTHUNIT[&quot;metre&quot;,1],
+ |                      ID[&quot;EPSG&quot;,7030]]],
+ |              PRIMEM[&quot;Greenwich&quot;,0,
+ |                  ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+ |                  ID[&quot;EPSG&quot;,8901]]],
+ |          CONVERSION[&quot;UTM zone 10N&quot;,
+ |              METHOD[&quot;Transverse Mercator&quot;,
+ |                  ID[&quot;EPSG&quot;,9807]],
+ |              PARAMETER[&quot;Latitude of natural origin&quot;,0,
+ |                  ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+ |                  ID[&quot;EPSG&quot;,8801]],
+ |              PARAMETER[&quot;Longitude of natural origin&quot;,-123,
+ |                  ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+ |                  ID[&quot;EPSG&quot;,8802]],
+ |              PARAMETER[&quot;Scale factor at natural origin&quot;,0.9996,
+ |                  SCALEUNIT[&quot;unity&quot;,1],
+ |                  ID[&quot;EPSG&quot;,8805]],
+ |              PARAMETER[&quot;False easting&quot;,500000,
+ |                  LENGTHUNIT[&quot;metre&quot;,1],
+ |                  ID[&quot;EPSG&quot;,8806]],
+ |              PARAMETER[&quot;False northing&quot;,0,
+ |                  LENGTHUNIT[&quot;metre&quot;,1],
+ |                  ID[&quot;EPSG&quot;,8807]],
+ |              ID[&quot;EPSG&quot;,16010]],
+ |          CS[Cartesian,2],
+ |              AXIS[&quot;(E)&quot;,east,
+ |                  ORDER[1],
+ |                  LENGTHUNIT[&quot;metre&quot;,1,
+ |                      ID[&quot;EPSG&quot;,9001]]],
+ |              AXIS[&quot;(N)&quot;,north,
+ |                  ORDER[2],
+ |                  LENGTHUNIT[&quot;metre&quot;,1,
+ |                      ID[&quot;EPSG&quot;,9001]]]]
+ |      &gt;&gt;&gt; geod = crs.get_geod()
+ |      &gt;&gt;&gt; f&quot;+a={geod.a:.0f} +f={geod.f:.8f}&quot;
+ |      &#39;+a=6378137 +f=0.00335281&#39;
+ |      &gt;&gt;&gt; crs.is_projected
+ |      True
+ |      &gt;&gt;&gt; crs.is_geographic
+ |      False
+ |
+ |  __repr__(self) -&gt; str
+ |      Return repr(self).
+ |
+ |  __setstate__(self, state: dict[str, typing.Any])
+ |
+ |  __str__(self) -&gt; str
+ |      Return str(self).
+ |
+ |  cs_to_cf(self) -&gt; list[dict]
+ |      .. versionadded:: 3.0.0
+ |
+ |      This converts all coordinate systems (cs) in the CRS
+ |      to a list of Climate and Forecast (CF) Version 1.8 dicts.
+ |
+ |      :ref:`build_crs_cf`
+ |
+ |      Returns
+ |      -------
+ |      list[dict]:
+ |          CF-1.8 version of the coordinate systems.
+ |
+ |  equals(self, other: Any, ignore_axis_order: bool = False) -&gt; bool
+ |      .. versionadded:: 2.5.0
+ |
+ |      Check if the CRS objects are equivalent.
+ |
+ |      Parameters
+ |      ----------
+ |      other: Any
+ |          Check if the other object is equivalent to this object.
+ |          If the other object is not a CRS, it will try to create one.
+ |          On Failure, it will return False.
+ |      ignore_axis_order: bool, default=False
+ |          If True, it will compare the CRS class and ignore the axis order.
+ |
+ |      Returns
+ |      -------
+ |      bool
+ |
+ |  get_geod(self) -&gt; pyproj.geod.Geod | None
+ |      Returns
+ |      -------
+ |      pyproj.geod.Geod:
+ |          Geod object based on the ellipsoid.
+ |
+ |  get_non_deprecated(self) -&gt; list[&#39;CRS&#39;]
+ |      .. versionadded:: 3.7.0
+ |
+ |      Return a list of non-deprecated objects related to this.
+ |
+ |      Returns
+ |      -------
+ |      list[CRS]
+ |
+ |  is_exact_same(self, other: Any) -&gt; bool
+ |      Check if the CRS objects are the exact same.
+ |
+ |      Parameters
+ |      ----------
+ |      other: Any
+ |          Check if the other CRS is the exact same to this object.
+ |          If the other object is not a CRS, it will try to create one.
+ |          On Failure, it will return False.
+ |
+ |      Returns
+ |      -------
+ |      bool
+ |
+ |  list_authority(self, auth_name: str | None = None, min_confidence: int = 70) -&gt; list[_frozen_importlib.AuthorityMatchInfo]
+ |      .. versionadded:: 3.2.0
+ |
+ |      Return the authority names and codes best matching the CRS.
+ |
+ |      Example:
+ |
+ |      &gt;&gt;&gt; from pyproj import CRS
+ |      &gt;&gt;&gt; ccs = CRS(&quot;EPSG:4328&quot;)
+ |      &gt;&gt;&gt; ccs.list_authority()
+ |      [AuthorityMatchInfo(auth_name=&#39;EPSG&#39;, code=&#39;4326&#39;, confidence=100)]
+ |
+ |      If the CRS is bound, you can get an authority from
+ |      the source CRS:
+ |
+ |      &gt;&gt;&gt; from pyproj import CRS
+ |      &gt;&gt;&gt; ccs = CRS(&quot;+proj=geocent +datum=WGS84 +towgs84=0,0,0&quot;)
+ |      &gt;&gt;&gt; ccs.list_authority()
+ |      []
+ |      &gt;&gt;&gt; ccs.source_crs.list_authority()
+ |      [AuthorityMatchInfo(auth_name=&#39;EPSG&#39;, code=&#39;4978&#39;, confidence=70)]
+ |      &gt;&gt;&gt; ccs == CRS.from_authorty(&#39;EPSG&#39;, &#39;4978&#39;)
+ |      False
+ |
+ |      Parameters
+ |      ----------
+ |      auth_name: str, optional
+ |          The name of the authority to filter by.
+ |      min_confidence: int, default=70
+ |          A value between 0-100 where 100 is the most confident.
+ |          :ref:`min_confidence`
+ |
+ |      Returns
+ |      -------
+ |      list[AuthorityMatchInfo]:
+ |          List of authority matches for the CRS.
+ |
+ |  to_2d(self, name: str | None = None) -&gt; &#39;CRS&#39;
+ |      .. versionadded:: 3.6.0
+ |
+ |      Convert the current CRS to the 2D version if it makes sense.
+ |
+ |      Parameters
+ |      ----------
+ |      name: str, optional
+ |          CRS name. Defaults to use the name of the original CRS.
+ |
+ |      Returns
+ |      -------
+ |      CRS
+ |
+ |  to_3d(self, name: str | None = None) -&gt; &#39;CRS&#39;
+ |      .. versionadded:: 3.1.0
+ |
+ |      Convert the current CRS to the 3D version if it makes sense.
+ |
+ |      New vertical axis attributes:
+ |        - ellipsoidal height
+ |        - oriented upwards
+ |        - metre units
+ |
+ |      Parameters
+ |      ----------
+ |      name: str, optional
+ |          CRS name. Defaults to use the name of the original CRS.
+ |
+ |      Returns
+ |      -------
+ |      CRS
+ |
+ |  to_authority(self, auth_name: str | None = None, min_confidence: int = 70)
+ |      .. versionadded:: 2.2.0
+ |
+ |      Return the authority name and code best matching the CRS
+ |      or None if it a match is not found.
+ |
+ |      Example:
+ |
+ |      &gt;&gt;&gt; from pyproj import CRS
+ |      &gt;&gt;&gt; ccs = CRS(&quot;EPSG:4328&quot;)
+ |      &gt;&gt;&gt; ccs.to_authority()
+ |      (&#39;EPSG&#39;, &#39;4328&#39;)
+ |
+ |      If the CRS is bound, you can get an authority from
+ |      the source CRS:
+ |
+ |      &gt;&gt;&gt; from pyproj import CRS
+ |      &gt;&gt;&gt; ccs = CRS(&quot;+proj=geocent +datum=WGS84 +towgs84=0,0,0&quot;)
+ |      &gt;&gt;&gt; ccs.to_authority()
+ |      &gt;&gt;&gt; ccs.source_crs.to_authority()
+ |      (&#39;EPSG&#39;, &#39;4978&#39;)
+ |      &gt;&gt;&gt; ccs == CRS.from_authorty(&#39;EPSG&#39;, &#39;4978&#39;)
+ |      False
+ |
+ |      Parameters
+ |      ----------
+ |      auth_name: str, optional
+ |          The name of the authority to filter by.
+ |      min_confidence: int, default=70
+ |          A value between 0-100 where 100 is the most confident.
+ |          :ref:`min_confidence`
+ |
+ |      Returns
+ |      -------
+ |      tuple(str, str) or None:
+ |          The best matching (&lt;auth_name&gt;, &lt;code&gt;) for the confidence level.
+ |
+ |  to_cf(
+ |      self,
+ |      wkt_version: pyproj.enums.WktVersion | str = &lt;WktVersion.WKT2_2019: &#39;WKT2_2019&#39;&gt;,
+ |      errcheck: bool = False
+ |  ) -&gt; dict
+ |      .. versionadded:: 2.2.0
+ |
+ |      This converts a :obj:`pyproj.crs.CRS` object
+ |      to a Climate and Forecast (CF) Grid Mapping Version 1.8 dict.
+ |
+ |      :ref:`build_crs_cf`
+ |
+ |      Parameters
+ |      ----------
+ |      wkt_version: str or pyproj.enums.WktVersion
+ |          Version of WKT supported by CRS.to_wkt.
+ |          Default is :attr:`pyproj.enums.WktVersion.WKT2_2019`.
+ |      errcheck: bool, default=False
+ |          If True, will warn when parameters are ignored.
+ |
+ |      Returns
+ |      -------
+ |      dict:
+ |          CF-1.8 version of the projection.
+ |
+ |  to_dict(self) -&gt; dict
+ |      .. versionadded:: 2.2.0
+ |
+ |      Converts the CRS to dictionary of PROJ parameters.
+ |
+ |      .. warning:: You will likely lose important projection
+ |        information when converting to a PROJ string from
+ |        another format. See: https://proj.org/faq.html#what-is-the-best-format-for-describing-coordinate-reference-systems  # noqa: E501
+ |
+ |      Returns
+ |      -------
+ |      dict:
+ |          PROJ params in dict format.
+ |
+ |  to_epsg(self, min_confidence: int = 70) -&gt; int | None
+ |      Return the EPSG code best matching the CRS
+ |      or None if it a match is not found.
+ |
+ |      Example:
+ |
+ |      &gt;&gt;&gt; from pyproj import CRS
+ |      &gt;&gt;&gt; ccs = CRS(&quot;EPSG:4328&quot;)
+ |      &gt;&gt;&gt; ccs.to_epsg()
+ |      4328
+ |
+ |      If the CRS is bound, you can attempt to get an epsg code from
+ |      the source CRS:
+ |
+ |      &gt;&gt;&gt; from pyproj import CRS
+ |      &gt;&gt;&gt; ccs = CRS(&quot;+proj=geocent +datum=WGS84 +towgs84=0,0,0&quot;)
+ |      &gt;&gt;&gt; ccs.to_epsg()
+ |      &gt;&gt;&gt; ccs.source_crs.to_epsg()
+ |      4978
+ |      &gt;&gt;&gt; ccs == CRS.from_epsg(4978)
+ |      False
+ |
+ |      Parameters
+ |      ----------
+ |      min_confidence: int, default=70
+ |          A value between 0-100 where 100 is the most confident.
+ |          :ref:`min_confidence`
+ |
+ |
+ |      Returns
+ |      -------
+ |      int | None:
+ |          The best matching EPSG code matching the confidence level.
+ |
+ |  to_json(self, pretty: bool = False, indentation: int = 2) -&gt; str
+ |      .. versionadded:: 2.4.0
+ |
+ |      Convert the object to a JSON string.
+ |
+ |      Parameters
+ |      ----------
+ |      pretty: bool, default=False
+ |          If True, it will set the output to be a multiline string.
+ |      indentation: int, default=2
+ |          If pretty is True, it will set the width of the indentation.
+ |
+ |      Returns
+ |      -------
+ |      str
+ |
+ |  to_json_dict(self) -&gt; dict
+ |      .. versionadded:: 2.4.0
+ |
+ |      Convert the object to a JSON dictionary.
+ |
+ |      Returns
+ |      -------
+ |      dict
+ |
+ |  to_proj4(
+ |      self,
+ |      version: pyproj.enums.ProjVersion | int = &lt;ProjVersion.PROJ_5: 5&gt;
+ |  ) -&gt; str
+ |      Convert the projection to a PROJ string.
+ |
+ |      .. warning:: You will likely lose important projection
+ |        information when converting to a PROJ string from
+ |        another format. See:
+ |        https://proj.org/faq.html#what-is-the-best-format-for-describing-coordinate-reference-systems  # noqa: E501
+ |
+ |      Parameters
+ |      ----------
+ |      version: pyproj.enums.ProjVersion
+ |          The version of the PROJ string output.
+ |          Default is :attr:`pyproj.enums.ProjVersion.PROJ_4`.
+ |
+ |      Returns
+ |      -------
+ |      str
+ |
+ |  to_string(self) -&gt; str
+ |      .. versionadded:: 2.2.0
+ |
+ |      Convert the CRS to a string.
+ |
+ |      It attempts to convert it to the authority string.
+ |      Otherwise, it uses the string format of the user
+ |      input to create the CRS.
+ |
+ |      Returns
+ |      -------
+ |      str
+ |
+ |  to_wkt(
+ |      self,
+ |      version: pyproj.enums.WktVersion | str = &lt;WktVersion.WKT2_2019: &#39;WKT2_2019&#39;&gt;,
+ |      pretty: bool = False,
+ |      output_axis_rule: bool | None = None
+ |  ) -&gt; str
+ |      Convert the projection to a WKT string.
+ |
+ |      Version options:
+ |        - WKT2_2015
+ |        - WKT2_2015_SIMPLIFIED
+ |        - WKT2_2019
+ |        - WKT2_2019_SIMPLIFIED
+ |        - WKT1_GDAL
+ |        - WKT1_ESRI
+ |
+ |      .. versionadded:: 3.6.0 output_axis_rule
+ |
+ |      Parameters
+ |      ----------
+ |      version: pyproj.enums.WktVersion, optional
+ |          The version of the WKT output.
+ |          Default is :attr:`pyproj.enums.WktVersion.WKT2_2019`.
+ |      pretty: bool, default=False
+ |          If True, it will set the output to be a multiline string.
+ |      output_axis_rule: bool, optional, default=None
+ |          If True, it will set the axis rule on any case. If false, never.
+ |          None for AUTO, that depends on the CRS and version.
+ |
+ |      Returns
+ |      -------
+ |      str
+ |
+ |  ----------------------------------------------------------------------
+ |  Class methods defined here:
+ |
+ |  from_authority(auth_name: str, code: str | int) -&gt; &#39;CRS&#39;
+ |      .. versionadded:: 2.2.0
+ |
+ |      Make a CRS from an authority name and authority code
+ |
+ |      Parameters
+ |      ----------
+ |      auth_name: str
+ |          The name of the authority.
+ |      code : int or str
+ |          The code used by the authority.
+ |
+ |      Returns
+ |      -------
+ |      CRS
+ |
+ |  from_dict(proj_dict: dict) -&gt; &#39;CRS&#39;
+ |      .. versionadded:: 2.2.0
+ |
+ |      Make a CRS from a dictionary of PROJ parameters.
+ |
+ |      Parameters
+ |      ----------
+ |      proj_dict : str
+ |          PROJ params in dict format.
+ |
+ |      Returns
+ |      -------
+ |      CRS
+ |
+ |  from_epsg(code: str | int) -&gt; &#39;CRS&#39;
+ |      Make a CRS from an EPSG code
+ |
+ |      Parameters
+ |      ----------
+ |      code : int or str
+ |          An EPSG code.
+ |
+ |      Returns
+ |      -------
+ |      CRS
+ |
+ |  from_json(crs_json: str) -&gt; &#39;CRS&#39;
+ |      .. versionadded:: 2.4.0
+ |
+ |      Create CRS from a CRS JSON string.
+ |
+ |      Parameters
+ |      ----------
+ |      crs_json: str
+ |          CRS JSON string.
+ |
+ |      Returns
+ |      -------
+ |      CRS
+ |
+ |  from_json_dict(crs_dict: dict) -&gt; &#39;CRS&#39;
+ |      .. versionadded:: 2.4.0
+ |
+ |      Create CRS from a JSON dictionary.
+ |
+ |      Parameters
+ |      ----------
+ |      crs_dict: dict
+ |          CRS dictionary.
+ |
+ |      Returns
+ |      -------
+ |      CRS
+ |
+ |  from_proj4(in_proj_string: str) -&gt; &#39;CRS&#39;
+ |      .. versionadded:: 2.2.0
+ |
+ |      Make a CRS from a PROJ string
+ |
+ |      Parameters
+ |      ----------
+ |      in_proj_string : str
+ |          A PROJ string.
+ |
+ |      Returns
+ |      -------
+ |      CRS
+ |
+ |  from_string(in_crs_string: str) -&gt; &#39;CRS&#39;
+ |      Make a CRS from:
+ |
+ |      Initialize a CRS class instance with:
+ |       - PROJ string
+ |       - JSON string with PROJ parameters
+ |       - CRS WKT string
+ |       - An authority string [i.e. &#39;epsg:4326&#39;]
+ |
+ |      Parameters
+ |      ----------
+ |      in_crs_string : str
+ |          An EPSG, PROJ, or WKT string.
+ |
+ |      Returns
+ |      -------
+ |      CRS
+ |
+ |  from_user_input(value: Any, **kwargs) -&gt; &#39;CRS&#39;
+ |      Initialize a CRS class instance with:
+ |        - PROJ string
+ |        - Dictionary of PROJ parameters
+ |        - PROJ keyword arguments for parameters
+ |        - JSON string with PROJ parameters
+ |        - CRS WKT string
+ |        - An authority string [i.e. &#39;epsg:4326&#39;]
+ |        - An EPSG integer code [i.e. 4326]
+ |        - A tuple of (&quot;auth_name&quot;: &quot;auth_code&quot;) [i.e (&#39;epsg&#39;, &#39;4326&#39;)]
+ |        - An object with a `to_wkt` method.
+ |        - A :class:`pyproj.crs.CRS` class
+ |
+ |      Parameters
+ |      ----------
+ |      value : obj
+ |          A Python int, dict, or str.
+ |
+ |      Returns
+ |      -------
+ |      CRS
+ |
+ |  from_wkt(in_wkt_string: str) -&gt; &#39;CRS&#39;
+ |      .. versionadded:: 2.2.0
+ |
+ |      Make a CRS from a WKT string
+ |
+ |      Parameters
+ |      ----------
+ |      in_wkt_string : str
+ |          A WKT string.
+ |
+ |      Returns
+ |      -------
+ |      CRS
+ |
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |
+ |  from_cf(
+ |      in_cf: dict,
+ |      ellipsoidal_cs: typing.Any | None = None,
+ |      cartesian_cs: typing.Any | None = None,
+ |      vertical_cs: typing.Any | None = None
+ |  ) -&gt; &#39;CRS&#39;
+ |      .. versionadded:: 2.2.0
+ |
+ |      .. versionadded:: 3.0.0 ellipsoidal_cs, cartesian_cs, vertical_cs
+ |
+ |      This converts a Climate and Forecast (CF) Grid Mapping Version 1.8
+ |      dict to a :obj:`pyproj.crs.CRS` object.
+ |
+ |      :ref:`build_crs_cf`
+ |
+ |      Parameters
+ |      ----------
+ |      in_cf: dict
+ |          CF version of the projection.
+ |      ellipsoidal_cs: Any, optional
+ |          Input to create an Ellipsoidal Coordinate System.
+ |          Anything accepted by :meth:`pyproj.crs.CoordinateSystem.from_user_input`
+ |          or an Ellipsoidal Coordinate System created from :ref:`coordinate_system`.
+ |      cartesian_cs: Any, optional
+ |          Input to create a Cartesian Coordinate System.
+ |          Anything accepted by :meth:`pyproj.crs.CoordinateSystem.from_user_input`
+ |          or :class:`pyproj.crs.coordinate_system.Cartesian2DCS`.
+ |      vertical_cs: Any, optional
+ |          Input to create a Vertical Coordinate System accepted by
+ |          :meth:`pyproj.crs.CoordinateSystem.from_user_input`
+ |          or :class:`pyproj.crs.coordinate_system.VerticalCS`
+ |
+ |      Returns
+ |      -------
+ |      CRS
+ |
+ |  ----------------------------------------------------------------------
+ |  Readonly properties defined here:
+ |
+ |  area_of_use
+ |      Returns
+ |      -------
+ |      AreaOfUse:
+ |          The area of use object with associated attributes.
+ |
+ |  axis_info
+ |      Retrieves all relevant axis information in the CRS.
+ |      If it is a Bound CRS, it gets the axis list from the Source CRS.
+ |      If it is a Compound CRS, it gets the axis list from the Sub CRS list.
+ |
+ |      Returns
+ |      -------
+ |      list[Axis]:
+ |          The list of axis information.
+ |
+ |  coordinate_operation
+ |      .. versionadded:: 2.2.0
+ |
+ |      Returns
+ |      -------
+ |      CoordinateOperation
+ |
+ |  coordinate_system
+ |      .. versionadded:: 2.2.0
+ |
+ |      Returns
+ |      -------
+ |      CoordinateSystem
+ |
+ |  datum
+ |      .. versionadded:: 2.2.0
+ |
+ |      Returns
+ |      -------
+ |      Datum
+ |
+ |  ellipsoid
+ |      .. versionadded:: 2.2.0
+ |
+ |      Returns
+ |      -------
+ |      Ellipsoid:
+ |          The ellipsoid object with associated attributes.
+ |
+ |  geodetic_crs
+ |      .. versionadded:: 2.2.0
+ |
+ |      Returns
+ |      -------
+ |      CRS:
+ |          The geodeticCRS / geographicCRS from the CRS.
+ |
+ |  is_bound
+ |      Returns
+ |      -------
+ |      bool:
+ |          True if CRS is bound.
+ |
+ |  is_compound
+ |      .. versionadded:: 3.1.0
+ |
+ |      Returns
+ |      -------
+ |      bool:
+ |          True if CRS is compound.
+ |
+ |  is_deprecated
+ |      .. versionadded:: 3.7.0
+ |
+ |      Check if the CRS is deprecated
+ |
+ |      Returns
+ |      -------
+ |      bool
+ |
+ |  is_derived
+ |      .. versionadded:: 3.2.0
+ |
+ |      Returns
+ |      -------
+ |      bool:
+ |          True if CRS is a Derived CRS.
+ |
+ |  is_engineering
+ |      .. versionadded:: 2.2.0
+ |
+ |      Returns
+ |      -------
+ |      bool:
+ |          True if CRS is local/engineering.
+ |
+ |  is_geocentric
+ |      This checks if the CRS is geocentric and
+ |      takes into account if the CRS is bound.
+ |
+ |      Returns
+ |      -------
+ |      bool:
+ |          True if CRS is in geocentric (x/y) coordinates.
+ |
+ |  is_geographic
+ |      This checks if the CRS is geographic.
+ |      It will check if it has a geographic CRS
+ |      in the sub CRS if it is a compound CRS and will check if
+ |      the source CRS is geographic if it is a bound CRS.
+ |
+ |      Returns
+ |      -------
+ |      bool:
+ |          True if the CRS is in geographic (lon/lat) coordinates.
+ |
+ |  is_projected
+ |      This checks if the CRS is projected.
+ |      It will check if it has a projected CRS
+ |      in the sub CRS if it is a compound CRS and will check if
+ |      the source CRS is projected if it is a bound CRS.
+ |
+ |      Returns
+ |      -------
+ |      bool:
+ |          True if CRS is projected.
+ |
+ |  is_vertical
+ |      .. versionadded:: 2.2.0
+ |
+ |      This checks if the CRS is vertical.
+ |      It will check if it has a vertical CRS
+ |      in the sub CRS if it is a compound CRS and will check if
+ |      the source CRS is vertical if it is a bound CRS.
+ |
+ |      Returns
+ |      -------
+ |      bool:
+ |          True if CRS is vertical.
+ |
+ |  name
+ |      Returns
+ |      -------
+ |      str:
+ |          The name of the CRS (from :cpp:func:`proj_get_name`).
+ |
+ |  prime_meridian
+ |      .. versionadded:: 2.2.0
+ |
+ |      Returns
+ |      -------
+ |      PrimeMeridian:
+ |          The prime meridian object with associated attributes.
+ |
+ |  remarks
+ |      .. versionadded:: 2.4.0
+ |
+ |      Returns
+ |      -------
+ |      str:
+ |          Remarks about object.
+ |
+ |  scope
+ |      .. versionadded:: 2.4.0
+ |
+ |      Returns
+ |      -------
+ |      str:
+ |          Scope of object.
+ |
+ |  source_crs
+ |      The base CRS of a BoundCRS or a DerivedCRS/ProjectedCRS,
+ |      or the source CRS of a CoordinateOperation.
+ |
+ |      Returns
+ |      -------
+ |      CRS
+ |
+ |  sub_crs_list
+ |      If the CRS is a compound CRS, it will return a list of sub CRS objects.
+ |
+ |      Returns
+ |      -------
+ |      list[CRS]
+ |
+ |  target_crs
+ |      .. versionadded:: 2.2.0
+ |
+ |      Returns
+ |      -------
+ |      CRS:
+ |          The hub CRS of a BoundCRS or the target CRS of a CoordinateOperation.
+ |
+ |  type_name
+ |      Returns
+ |      -------
+ |      str:
+ |          The name of the type of the CRS object.
+ |
+ |  utm_zone
+ |      .. versionadded:: 2.6.0
+ |
+ |      Finds the UTM zone in a Projected CRS, Bound CRS, or Compound CRS
+ |
+ |      Returns
+ |      -------
+ |      str | None:
+ |          The UTM zone number and letter if applicable.
+ |
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |
+ |  __dict__
+ |      dictionary for instance variables
+ |
+ |  __weakref__
+ |      list of weak references to the object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">small_band</span><span class="o">.</span><span class="n">transform</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">small_band</span><span class="o">.</span><span class="n">transform</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/core/common.py:305,</span> in <span class="ni">AttrAccessMixin.__getattr__</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">303</span>         <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">KeyError</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">304</span>             <span class="k">return</span> <span class="n">source</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">305</span> <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span>     <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">!r}</span><span class="s2"> object has no attribute </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span> <span class="p">)</span>
+
+<span class="ne">AttributeError</span>: &#39;DataArray&#39; object has no attribute &#39;transform&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">small_band</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Affine(30.0, 0.0, 476100.0,
+       0.0, -30.0, 5465460.0)
 </pre></div>
 </div>
 </div>
