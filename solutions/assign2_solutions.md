@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Assignment 2: WH problems
+# Assignment 2: solutions
 
 WH 4.21, 4.25, 4.30, 4.31, 4.32, 4.39
 
@@ -146,7 +146,7 @@ $$
 $$
 
 So if $T_e=255 \mathrm{~K}$ then this change in albedo will produce
-$-0.0036 \times 255\ K = -0.9\ K$ cooling 
+$-0.0036 \times 255\ K = -0.9\ K$ cooling
 
 +++
 
@@ -162,15 +162,42 @@ Show that for radiation with very long wavelengths, the Planck monochromatic int
 
 A small, perfectly black, spherical satellite is in orbit around the Earth at an altitude of 2000 km as depicted in Fig. 4.37. What angle does the Earth subtend when viewed from the satellite?
 
+### Answer
+
+The setup is shown in {numref}`small_planet`
+
 +++
 
-### Answer
+:::{figure} images/small_planet.png
+:name: small_planet
+:scale: 60
+
+Demonstration of Kirchoff’s law
+:::
+
++++
+
 
 $$
 \begin{aligned}
 & \phi=\sin ^{-1}\left(\frac{6370}{8370}\right)=0.864 \mathrm{rad} \\
-& \int_0^{2 \pi} \int_0^\theta \sin \theta d \theta d \phi=\left.2 \pi(-\cos \theta)\right|_0 ^{0.864} \\
-&=2 \pi(1-\cos (0.864))=2.21 \mathrm{sr}
+&\omega = \int_0^{2 \pi} \int_0^\theta \sin \theta^\prime d \theta^\prime d \phi=\left.2 \pi(-\cos \theta)\right|_0 ^{0.864} \\
+&\omega =2 \pi(1-\cos (0.864))=2.21 \mathrm{sr}
+\end{aligned}
+$$
+
+
++++
+
+### But what is the flux?
+
+Question 4.31 requires the flux to a satellite in which a planet exactly fills this field of view?
+What is the flux for this case?
+
+$$
+\begin{aligned}
+F = \int_0^{2 \pi} \int_0^\theta \cos \theta \sin \theta d \theta d \phi=\left.2 \pi(-\cos \theta)\right|_0 ^{0.864} \\
+&\omega =2 \pi(1-\cos (0.864))=2.21 \mathrm{sr}
 \end{aligned}
 $$
 
@@ -178,29 +205,33 @@ $$
 
 ## Question 4.31
 
++++
 
 :::{figure} images/zoom_in.png
 :name: zoom_in
-:scale: 30
+:scale: 10
 
 Demonstration of Kirchoff’s law
 :::
+
++++
+
+
+
++++
 
 :::{figure} images/zoom_out.png
 :name: zoom_out
-:scale: 100
+:scale: 10
 
 Demonstration of Kirchoff’s law
 :::
 
-:::{figure} images/small_planet.png
-:name: small_planet
-:scale: 100
-
-Demonstration of Kirchoff’s law
-:::
++++
 
 
+
++++
 
 If the Earth radiates as a blackbody at an equivalent blackbody temperature $T_E=255 \mathrm{~K}$, calculate the radiative equilibrium temperature of the satellite when it is in the Earth's shadow.
 
