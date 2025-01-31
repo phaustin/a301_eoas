@@ -172,7 +172,7 @@ The setup is shown in {numref}`small_planet`
 :name: small_planet
 :scale: 60
 
-Demonstration of Kirchoff’s law
+Satellite problem setup
 :::
 
 +++
@@ -180,9 +180,9 @@ Demonstration of Kirchoff’s law
 
 $$
 \begin{aligned}
-& \phi=\sin ^{-1}\left(\frac{6370}{8370}\right)=0.864 \mathrm{rad} \\
-&\omega = \int_0^{2 \pi} \int_0^\theta \sin \theta^\prime d \theta^\prime d \phi=\left.2 \pi(-\cos \theta)\right|_0 ^{0.864} \\
-&\omega =2 \pi(1-\cos (0.864))=2.21 \mathrm{sr}
+& \phi=\sin ^{-1}\left(\frac{6370}{8370}\right)=0.864\ \mathrm{rad} \approx 49\ deg \\
+&\omega = \int_0^{2 \pi} \int_0^\theta \sin \theta^\prime d \theta^\prime d \phi^\prime=\left.2 \pi(-\cos \theta)\right|_0 ^{0.864} \\
+&\omega =2 \pi(1-\cos (0.864))=2.21\ \mathrm{sr}
 \end{aligned}
 $$
 
@@ -191,30 +191,44 @@ $$
 
 ### But what is the flux?
 
-Question 4.31 requires the flux to a satellite in which a planet exactly fills this field of view?
-What is the flux for this case?
+Question 4.31 requires the flux to the satellite if the radiance $I$ is independent of
+direction (isotropic).  If the radiance is $I$ in all directions, we have to find the component of each element $I d\omega$ in the
+direction of the satellite, which means we need to include $\cos \theta$
 
 $$
 \begin{aligned}
-F = \int_0^{2 \pi} \int_0^\theta \cos \theta \sin \theta d \theta d \phi=\left.2 \pi(-\cos \theta)\right|_0 ^{0.864} \\
-&\omega =2 \pi(1-\cos (0.864))=2.21 \mathrm{sr}
+F &= \int_0^{2 \pi} \int_0^\theta I \cos \theta^\prime \sin \theta^\prime d \theta^\prime d \phi^\prime=\left.2 \pi \left (-\frac{(\cos \theta)^2}{2} \right )\right|_0 ^{0.864} \\
+F &= I\,2 \pi \left (\frac{1 - (\cos \theta)^2}{2} \right )= 1.87 I
 \end{aligned}
 $$
 
-+++
+In Q4.31 Wallace and Hobbs neglect $\cos \theta$, which overestimates
+the flux as $2.21 I$ and introduces an error of about 20%.
+
+```{code-cell} ipython3
+import numpy  as np
+theta = 0.864
+cos2=np.cos(theta)**2.
+print(f"{cos2=:.3f}")
+result = 2*np.pi*(1 - cos2)/2.
+print( f"{result=:.3f}" )
+error = (result - 2.21)/result*100
+print(f"{error=:.2f}%")
+```
 
 ## Question 4.31
 
-+++
+If the Earth radiates as a blackbody at an equivalent blackbody temperature $T_E=255 \mathrm{~K}$, calculate the radiative equilibrium temperature of the satellite when it is in the Earth's shadow.
 
-:::{figure} images/zoom_in.png
-:name: zoom_in
-:scale: 10
+### Answer
 
-Demonstration of Kirchoff’s law
-:::
+Figure {numref}`zoom_out` shows a section of solid angle at a latitude of about 45 deg on the satellite.  How many Watts is arriving at that area?  We know that the flux (arrow) $F$ is arriving at an angle to the surface so we need to find the projection of the surface normal
+to the flux.  By the definition of solid angle, the surface area of the pixel is:
 
-+++
+$$
+dA = r^2 d\omega
+$$
+where $r$ is the radius of the satellite.
 
 
 
@@ -229,11 +243,23 @@ Demonstration of Kirchoff’s law
 
 +++
 
+:::{figure} images/zoom_in.png
+:name: zoom_in
+:scale: 10
+
+Solid angle of a piece of the satellite surfas at 45 deg latitude
+:::
+
++++
+
 
 
 +++
 
-If the Earth radiates as a blackbody at an equivalent blackbody temperature $T_E=255 \mathrm{~K}$, calculate the radiative equilibrium temperature of the satellite when it is in the Earth's shadow.
+
+
++++
+
 
 [Hint: Let $d E$ be the amount of radiation flux imparted to the satellite by the flux density $d E$ received within the infinitesimal element of solid angle $d \omega$.] Then,
 
