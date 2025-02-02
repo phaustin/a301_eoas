@@ -13,6 +13,7 @@ parts:
   - file: notebooks/assignments.md
   - file: notebooks/pixi_install.md
   - file: notebooks/windows_install.md
+  - file: notebooks/notebook_index.md
 - caption: Weekly topics
   chapters:
   - file: week_notes.md
@@ -52,7 +53,8 @@ parts:
   chapters:
       - file: notebooks/week4/clip_bands.md
       - file: notebooks/week4/optical_depth2.md
-
+      - file: solutions/assign2_solutionsA.md
+      
     
     
     

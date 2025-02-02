@@ -74,7 +74,7 @@ We can also do that from inside python.  To get all the information for the firs
 ```{code-cell} ipython3
 info = gdal.Info(the_tifs[1], format='json')
 print(f"{type(info)=}")
-#info
+info
 ```
 
 ### Dump all the metadata
@@ -269,6 +269,18 @@ Because we used the pyproj `good_crs` in our raster write we've fixed the missin
 
 ```{code-cell} ipython3
 small_band.rio.crs.to_epsg()
+```
+
+```{code-cell} ipython3
+help(CRS)
+```
+
+```{code-cell} ipython3
+small_band.transform
+```
+
+```{code-cell} ipython3
+small_band.rio.transform()
 ```
 
 ```{code-cell} ipython3

@@ -9,6 +9,8 @@
 
 - Assignment 2: Wallace and Hobbs Chapter 4 problems 4.21, 4.25, 4.30, 4.31, 4.32, 4.39
 
+- {ref}`assign2a_solution`
+
 (assign3)=
 ## Assignment 3
 

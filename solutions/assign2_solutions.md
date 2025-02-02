@@ -251,12 +251,16 @@ $$
 :name: zoom_in
 :scale: 10
 
-Solid angle of a piece of the satellite surface at 45 deg latitude
+Zoom in of {numref}`zoom_out`  showing the projected area $A \cos \theta$
 :::
 
 +++
 
-Now do this integral over the 
+Now do this integral over the side of the satellite facing the planet
+
+$$
+E &= \int dE = \int_0^{2\pi} \int_0^{\pi/2}  r^2 F \cos \theta \sin \theta d\theta d\phi = \pi r^2 F \\
+$$
 
 +++
 
