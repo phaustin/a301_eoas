@@ -14,16 +14,15 @@ jupyter:
   nbformat_minor: 5
 ---
 
-::: {#5956c65f-ce55-411f-930c-f16a297c0257 .cell .markdown}
-(week5-schwartz)=
 
+(week5-schwartz)=
 # The Schwartzchild Equation
 
 Coverage: Wallace and Hobbs Section 4.5.3 and [Stull Chapter 8](https://www.eoas.ubc.ca/books/Practical_Meteorology) p. 225
 
 ## Introduction
 
-This note mergers material from Wallace and Hobbs p. 135 and equation 4.42
+This note merges material from Wallace and Hobbs p. 135 and equation 4.42
 
 $$
 \begin{aligned}
@@ -32,7 +31,7 @@ I_\lambda\left(s_1\right)= & I_{\lambda 0} e^{-\tau_\lambda\left(s_1, 0\right)} 
 \end{aligned}
 $$
 
-and Stull equation 8.3
+with Stull equation 8.3
 
 $$
 \begin{gathered}

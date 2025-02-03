@@ -244,6 +244,17 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 
 ### Day 13 Monday
 
-- 
+- Note the new {ref}`mid_review1`
 - Go over {ref}`assign2b_solution`
 - My version of {ref}`week5:rowcol2latlon`
+
+### Do for Wednesday
+
+- Read Stull Chapter 8 pp. 219-226 together with:
+
+  - {ref}`week5-schwartz`
+  - work on your version of `clip_image`.  We want it to take a geotiff and two
+    slice objects (desired rows and columns) and write a new, smaller geotiff
+    with the raster selected using those two slices.
+    
+    
