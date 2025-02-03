@@ -155,6 +155,7 @@ $-0.0036 \times 255\ K = -0.9\ K$ cooling
 
 A small, perfectly black, spherical satellite is in orbit around the Earth at an altitude of 2000 km as depicted in Fig. 4.37. What angle does the Earth subtend when viewed from the satellite?
 
+(q4_30)=
 ### Q4.30 Answer
 
 The setup is shown in {numref}`small_planet`
@@ -172,8 +173,8 @@ Satellite problem setup
 
 $$
 \begin{aligned}
-& \phi=\sin ^{-1}\left(\frac{6370}{8370}\right)=0.864\ \mathrm{rad} \approx 49\ deg \\
-&\omega = \int_0^{2 \pi} \int_0^\theta \sin \theta^\prime d \theta^\prime d \phi^\prime=\left.2 \pi(-\cos \theta)\right|_0 ^{0.864} \\
+& \theta =\sin ^{-1}\left(\frac{6370}{8370}\right)=0.864\ \mathrm{rad} \approx 49\ deg \\
+&\omega = \int_0^{2 \pi} \int_0^\theta \sin \theta^\prime d \theta^\prime d \phi^\prime=\left.2 \pi(-\cos \theta)\right|_0^{0.864} \\
 &\omega =2 \pi(1-\cos (0.864))=2.21\ \mathrm{sr}
 \end{aligned}
 $$
@@ -191,7 +192,7 @@ $$
 F &= \int_0^{2 \pi} \int_0^\theta I \cos \theta^\prime \sin \theta^\prime d \theta^\prime d \phi^\prime=\left.2 \pi \left (-\frac{(\cos \theta)^2}{2} \right )\right|_0 ^{0.864} \\
 F &= I\,2 \pi \left (\frac{1 - (\cos \theta)^2}{2} \right )= 1.87 I
 \end{aligned}
-$$
+$$ (eq:exact)
 
 In Q4.31 Wallace and Hobbs neglect $\cos \theta$, which overestimates
 the flux as $2.21 I$ and introduces an error of about 20%.
@@ -207,6 +208,7 @@ error = (result - 2.21)/result*100
 print(f"{error=:.2f}%")
 ```
 
+(p4_31)=
 ## Question 4.31
 
 If the Earth radiates as a blackbody at an equivalent blackbody temperature $T_E=255 \mathrm{~K}$, calculate the radiative equilibrium temperature of the satellite when it is in the Earth's shadow.
@@ -273,7 +275,7 @@ and setting $Q = E$ gives
 
 $$
 4 \pi r^2 \sigma T_s^4  = \pi r^2 \times 1.87 \left ( \frac{  \sigma T_E^4}{\pi} \right )
-$$
+$$ (eq:equil)
 
 Solving for $T_s$:
 
@@ -282,3 +284,7 @@ Solving for $T_s$:
 $$
 T_s= T_E \left(\frac{1.77}{4 \pi}\right)^{1 / 4}
 $$
+
+```{code-cell} ipython3
+
+```

@@ -63,6 +63,7 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/solutions/assign2_solutionsA.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="19. Assignment 2: solutions part B" href="assign2_solutionsB.html" />
     <link rel="prev" title="17. Optical depth II: mean free path" href="../notebooks/week4/optical_depth2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -223,6 +224,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/week4/clip_bands.html">16. Clipping multiple bands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/week4/optical_depth2.html">17. Optical depth II: mean free path</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">18. Assignment 2: solutions Part A</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="assign2_solutionsB.html">19. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week5/rowcol2latlon.html">20. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week5/schwartz.html">21. The Schwartzchild Equation</a></li>
 </ul>
 
     </div>
@@ -519,7 +526,7 @@ d F_e=4 \sigma T_e^3 d T_e
 <h2><span class="section-number">18.2. </span>Question 4.30<a class="headerlink" href="#question-4-30" title="Link to this heading">#</a></h2>
 <p>A small, perfectly black, spherical satellite is in orbit around the Earth at an altitude of 2000 km as depicted in Fig. 4.37. What angle does the Earth subtend when viewed from the satellite?</p>
 <section id="q4-30-answer">
-<h3><span class="section-number">18.2.1. </span>Q4.30 Answer<a class="headerlink" href="#q4-30-answer" title="Link to this heading">#</a></h3>
+<span id="q4-30"></span><h3><span class="section-number">18.2.1. </span>Q4.30 Answer<a class="headerlink" href="#q4-30-answer" title="Link to this heading">#</a></h3>
 <p>The setup is shown in <a class="reference internal" href="#small-planet"><span class="std std-numref">Fig. 18.1</span></a></p>
 <figure class="align-default" id="small-planet">
 <a class="reference internal image-reference" href="../_images/small_planet.png"><img alt="../_images/small_planet.png" src="../_images/small_planet.png" style="width: 661.1999999999999px; height: 276.0px;" /></a>
@@ -530,8 +537,8 @@ d F_e=4 \sigma T_e^3 d T_e
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
-&amp; \phi=\sin ^{-1}\left(\frac{6370}{8370}\right)=0.864\ \mathrm{rad} \approx 49\ deg \\
-&amp;\omega = \int_0^{2 \pi} \int_0^\theta \sin \theta^\prime d \theta^\prime d \phi^\prime=\left.2 \pi(-\cos \theta)\right|_0 ^{0.864} \\
+&amp; \theta =\sin ^{-1}\left(\frac{6370}{8370}\right)=0.864\ \mathrm{rad} \approx 49\ deg \\
+&amp;\omega = \int_0^{2 \pi} \int_0^\theta \sin \theta^\prime d \theta^\prime d \phi^\prime=\left.2 \pi(-\cos \theta)\right|_0^{0.864} \\
 &amp;\omega =2 \pi(1-\cos (0.864))=2.21\ \mathrm{sr}
 \end{aligned}
 \end{split}\]</div>
@@ -541,8 +548,8 @@ d F_e=4 \sigma T_e^3 d T_e
 <p>Question 4.31 requires the flux to the satellite if the radiance <span class="math notranslate nohighlight">\(I\)</span> is independent of
 direction (isotropic).  If the radiance is <span class="math notranslate nohighlight">\(I\)</span> in all directions, we have to find the component of each element <span class="math notranslate nohighlight">\(I d\omega\)</span> in the
 direction of the satellite, which means we need to include <span class="math notranslate nohighlight">\(\cos \theta\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<div class="math notranslate nohighlight" id="equation-eq-exact">
+<span class="eqno">(18.5)<a class="headerlink" href="#equation-eq-exact" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
 F &amp;= \int_0^{2 \pi} \int_0^\theta I \cos \theta^\prime \sin \theta^\prime d \theta^\prime d \phi^\prime=\left.2 \pi \left (-\frac{(\cos \theta)^2}{2} \right )\right|_0 ^{0.864} \\
 F &amp;= I\,2 \pi \left (\frac{1 - (\cos \theta)^2}{2} \right )= 1.87 I
@@ -574,7 +581,7 @@ error=-21.65%
 </section>
 </section>
 <section id="question-4-31">
-<h2><span class="section-number">18.3. </span>Question 4.31<a class="headerlink" href="#question-4-31" title="Link to this heading">#</a></h2>
+<span id="p4-31"></span><h2><span class="section-number">18.3. </span>Question 4.31<a class="headerlink" href="#question-4-31" title="Link to this heading">#</a></h2>
 <p>If the Earth radiates as a blackbody at an equivalent blackbody temperature <span class="math notranslate nohighlight">\(T_E=255 \mathrm{~K}\)</span>, calculate the radiative equilibrium temperature of the satellite when it is in the Earth’s shadow.</p>
 <section id="q4-31-answer">
 <h3><span class="section-number">18.3.1. </span>Q4.31 Answer<a class="headerlink" href="#q4-31-answer" title="Link to this heading">#</a></h3>
@@ -619,8 +626,8 @@ E &amp;= \int dE = \int_0^{2\pi} \int_0^{\pi/2}  r^2 F \cos \theta \sin \theta d
 Q = 4 \pi r^2 \sigma T_s^4  
 \]</div>
 <p>and setting <span class="math notranslate nohighlight">\(Q = E\)</span> gives</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-eq-equil">
+<span class="eqno">(18.6)<a class="headerlink" href="#equation-eq-equil" title="Link to this equation">#</a></span>\[
 4 \pi r^2 \sigma T_s^4  = \pi r^2 \times 1.87 \left ( \frac{  \sigma T_E^4}{\pi} \right )
 \]</div>
 <p>Solving for <span class="math notranslate nohighlight">\(T_s\)</span>:</p>
@@ -671,6 +678,15 @@ T_s= T_E \left(\frac{1.77}{4 \pi}\right)^{1 / 4}
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><span class="section-number">17. </span>Optical depth II: mean free path</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="assign2_solutionsB.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">19. </span>Assignment 2: solutions part B</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

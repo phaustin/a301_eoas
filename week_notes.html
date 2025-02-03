@@ -181,7 +181,6 @@
 <li class="toctree-l1"><a class="reference internal" href="notebooks/syllabus.html">ATSC 301: syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/integrity.html">UBC academic integrity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/texts.html">Texts</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/assignments.html">A301 Assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/pixi_install.html">pixi install for macos and windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/windows_install.html">Windows installation using a conda lock file</a></li>
@@ -192,6 +191,11 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Week notes</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&amp;st=n7iwqqem&amp;dl=0">Notebook downloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/week_review.html">Weekly review</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midtherm</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/midterm/mid_term_reviewI.html">19. Sample mid-term questions I</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="nav bd-sidenav">
@@ -224,6 +228,12 @@
 <li class="toctree-l1"><a class="reference internal" href="notebooks/week4/clip_bands.html">16. Clipping multiple bands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/week4/optical_depth2.html">17. Optical depth II: mean free path</a></li>
 <li class="toctree-l1"><a class="reference internal" href="solutions/assign2_solutionsA.html">18. Assignment 2: solutions Part A</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="solutions/assign2_solutionsB.html">19. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/week5/rowcol2latlon.html">20. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/week5/schwartz.html">21. The Schwartzchild Equation</a></li>
 </ul>
 
     </div>
@@ -434,6 +444,11 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Do for Monday</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-5">Week 5</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-13-monday">Day 13 Monday</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Do for Wednesday</a></li>
 </ul>
 </li>
 </ul>
@@ -745,6 +760,30 @@ The notebook: <a class="reference internal" href="notebooks/week2/get_landsat_ba
 </section>
 </section>
 </section>
+<section id="week-5">
+<h2>Week 5<a class="headerlink" href="#week-5" title="Link to this heading">#</a></h2>
+<section id="day-13-monday">
+<h3>Day 13 Monday<a class="headerlink" href="#day-13-monday" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Note the new <span class="xref std std-ref">mid_review1</span></p></li>
+<li><p>Go over <a class="reference internal" href="solutions/assign2_solutionsB.html#assign2b-solution"><span class="std std-ref">Assignment 2: solutions part B</span></a></p></li>
+<li><p>My version of <a class="reference internal" href="notebooks/week5/rowcol2latlon.html#week5-rowcol2latlon"><span class="std std-ref">Getting lat,lon from row, column</span></a></p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>Do for Wednesday<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Read Stull Chapter 8 pp. 219-226 together with:</p>
+<ul>
+<li><p><a class="reference internal" href="notebooks/week5/schwartz.html#week5-schwartz"><span class="std std-ref">The Schwartzchild Equation</span></a></p></li>
+<li><p>work on your version of <code class="docutils literal notranslate"><span class="pre">clip_image</span></code>.  We want it to take a geotiff and two
+slice objects (desired rows and columns) and write a new, smaller geotiff
+with the raster selected using those two slices.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -873,6 +912,11 @@ The notebook: <a class="reference internal" href="notebooks/week2/get_landsat_ba
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Do for Monday</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-5">Week 5</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-13-monday">Day 13 Monday</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Do for Wednesday</a></li>
 </ul>
 </li>
 </ul>

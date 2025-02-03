@@ -125,7 +125,7 @@ june_2015 = "2015-06-01/2015-06-30"
 
 ```{code-cell} ipython3
 # connect to the STAC endpoint
-cmr_api_url = "https://cmr.earthdata.nasa.gov/stac/LPCLOUD"
+cmr_api_url = "https://cmr.earthdata.nasa.gov/stac/LPCLOUD" 
 client = Client.open(cmr_api_url)
 ```
 
