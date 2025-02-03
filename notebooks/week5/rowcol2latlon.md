@@ -44,7 +44,6 @@ print(f"{tif_filename=}")
 
 Here is how we did this using the code from - {ref}`week3:image_zoom`.
 
-
 ```{code-cell} ipython3
 # zone 10 UTM
 proj_code = 32610
@@ -74,24 +73,16 @@ proj_code = 32610
 #
 p_utm = CRS.from_epsg(proj_code)
 p_latlon = CRS.from_epsg(4326)
-transform = Transformer.from_crs(p_latlon, p_utm)
+transform = Transformer.from_crs(p_utm, p_latlon)
 ubc_lon = -123.2460 
 ubc_lat = 49.2606
-ubc_x, ubc_y = transform.transform(ubc_lat, ubc_lon)
-print(f"{ubc_x=:.2f} m, {ubc_y:.2f}")
-```
-
-### Now do x,y to lat/lon
-
-Just reverse the arguments to the Transformer
-
-```{code-cell} ipython3
-transform = Transformer.from_crs(p_utm, p_latlon)
-ubc_lat, ubc_lon = transform.transform(ubc_x, ubc_y) 
-print(f"{ubc_lon=:.3f} m, {ubc_lat:.3f}")
+ubc_lat, ubc_lon = transform.transform(ubc_x, ubc_y)
+print(f"{ubc_lat=:.2f} m, {ubc_lon=:.2f} m")
 ```
 
 ### wrap this in a function
+
+Find the lat/lon of the upper left corner with row=0, col=0
 
 ```{code-cell} ipython3
 def rowcol2latlon(tiffile,row,col):
@@ -143,7 +134,6 @@ print(f"{lon=:.1f} deg,{lat=:.1f} deg")
   a Proj object and a transform (lower case t) method.  These are
   in lots of examples on the web, but have been superseded by
   Transformer.transform
-  
 
 ```{code-cell} ipython3
 
