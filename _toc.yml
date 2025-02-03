@@ -54,9 +54,10 @@ parts:
       - file: notebooks/week4/clip_bands.md
       - file: notebooks/week4/optical_depth2.md
       - file: solutions/assign2_solutionsA.md
-      
-    
-    
-    
-    
-    
+- caption: Week 5
+  numbered: true
+  chapters:
+      - file: solutions/assign2_solutionsB.md
+      - file: notebooks/week5/rowcol2latlon.md
+      - file: notebooks/week5/schwartz.md
+        

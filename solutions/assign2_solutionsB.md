@@ -15,7 +15,7 @@ kernelspec:
 (assign2b_solution)=
 # Assignment 2: solutions part B
 
- 4.25,  4.32, 4.39
+ 4.25,  4.32
 
 +++ {"jp-MarkdownHeadingCollapsed": true}
 

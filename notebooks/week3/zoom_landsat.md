@@ -133,7 +133,7 @@ CRS.from_epsg(4326)
 ```{code-cell} ipython3
 p_utm = CRS.from_epsg(proj_code)
 p_latlon = CRS.from_epsg(4326)
-transform = Transformer.from_crs`(p_latlon, p_utm)
+transform = Transformer.from_crs(p_latlon, p_utm)
 ubc_lon = -123.2460 
 ubc_lat = 49.2606
 ubc_x, ubc_y = transform.transform(ubc_lat, ubc_lon)

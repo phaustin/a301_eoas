@@ -238,3 +238,12 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 
 - Work on Assignment 3
 - As part of  assignment 4, we'll write a `clip_image` function which takes a geotiff and a bounding box and writes out a clipped geotiff
+
+
+## Week 5
+
+### Day 13 Monday
+
+- 
+- Go over {ref}`assign2b_solution`
+- My version of {ref}`week5:rowcol2latlon`
