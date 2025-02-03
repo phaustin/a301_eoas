@@ -106,7 +106,7 @@ in the exact answer captures energy that's arriving from the full field of view.
   $$
   in the limit $R_E/d \rightarrow 0$
 
-  First recall that in the limit of $\theta \approx 0$  $\sin \theta = \theta$ and $\cos \theta \approx 1$,
+  First recall that, in the limit of $\theta \approx 0$,  $\sin \theta \approx \theta$ and $\cos \theta \approx 1$,
   which implies that $\sin^{-1} \theta = \theta$.  Since we know from
   {numref}`q4_30` that $\sin \theta = R_E/d$, we've got
 
