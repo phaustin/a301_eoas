@@ -190,7 +190,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&amp;st=n7iwqqem&amp;dl=0">Notebook downloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_review.html">Weekly review</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midtherm</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midterm</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI.html">19. Sample mid-term questions I</a></li>
@@ -383,8 +383,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">20.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transforming-lat-lon-to-utm">20.2. transforming lat/lon to utm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doing-the-inverse-utm-to-lat-lon">20.3. doing the inverse: utm to lat/lon</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-do-x-y-to-lat-lon">20.3.1. Now do x,y to lat/lon</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-this-in-a-function">20.3.2. wrap this in a function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-this-in-a-function">20.3.1. wrap this in a function</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-gotchas-to-watch-out-for">20.4. Two gotchas to watch out for</a></li>
@@ -476,40 +475,23 @@ the transform.</p>
 <span class="c1">#</span>
 <span class="n">p_utm</span> <span class="o">=</span> <span class="n">CRS</span><span class="o">.</span><span class="n">from_epsg</span><span class="p">(</span><span class="n">proj_code</span><span class="p">)</span>
 <span class="n">p_latlon</span> <span class="o">=</span> <span class="n">CRS</span><span class="o">.</span><span class="n">from_epsg</span><span class="p">(</span><span class="mi">4326</span><span class="p">)</span>
-<span class="n">transform</span> <span class="o">=</span> <span class="n">Transformer</span><span class="o">.</span><span class="n">from_crs</span><span class="p">(</span><span class="n">p_latlon</span><span class="p">,</span> <span class="n">p_utm</span><span class="p">)</span>
+<span class="n">transform</span> <span class="o">=</span> <span class="n">Transformer</span><span class="o">.</span><span class="n">from_crs</span><span class="p">(</span><span class="n">p_utm</span><span class="p">,</span> <span class="n">p_latlon</span><span class="p">)</span>
 <span class="n">ubc_lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">123.2460</span> 
 <span class="n">ubc_lat</span> <span class="o">=</span> <span class="mf">49.2606</span>
-<span class="n">ubc_x</span><span class="p">,</span> <span class="n">ubc_y</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ubc_lat</span><span class="p">,</span> <span class="n">ubc_lon</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ubc_x</span><span class="si">=:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m, </span><span class="si">{</span><span class="n">ubc_y</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ubc_lat</span><span class="p">,</span> <span class="n">ubc_lon</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ubc_x</span><span class="p">,</span> <span class="n">ubc_y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ubc_lat</span><span class="si">=:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m, </span><span class="si">{</span><span class="n">ubc_lon</span><span class="si">=:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ubc_x=482101.01 m, 5456455.22
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ubc_lat=49.26 m, ubc_lon=-123.25 m
 </pre></div>
 </div>
 </div>
 </div>
-<section id="now-do-x-y-to-lat-lon">
-<h3><span class="section-number">20.3.1. </span>Now do x,y to lat/lon<a class="headerlink" href="#now-do-x-y-to-lat-lon" title="Link to this heading">#</a></h3>
-<p>Just reverse the arguments to the Transformer</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transform</span> <span class="o">=</span> <span class="n">Transformer</span><span class="o">.</span><span class="n">from_crs</span><span class="p">(</span><span class="n">p_utm</span><span class="p">,</span> <span class="n">p_latlon</span><span class="p">)</span>
-<span class="n">ubc_lat</span><span class="p">,</span> <span class="n">ubc_lon</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ubc_x</span><span class="p">,</span> <span class="n">ubc_y</span><span class="p">)</span> 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ubc_lon</span><span class="si">=:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> m, </span><span class="si">{</span><span class="n">ubc_lat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ubc_lon=-123.246 m, 49.261
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 <section id="wrap-this-in-a-function">
-<h3><span class="section-number">20.3.2. </span>wrap this in a function<a class="headerlink" href="#wrap-this-in-a-function" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">20.3.1. </span>wrap this in a function<a class="headerlink" href="#wrap-this-in-a-function" title="Link to this heading">#</a></h3>
+<p>Find the lat/lon of the upper left corner with row=0, col=0</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rowcol2latlon</span><span class="p">(</span><span class="n">tiffile</span><span class="p">,</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">):</span>
@@ -640,8 +622,7 @@ Transformer.transform</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">20.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transforming-lat-lon-to-utm">20.2. transforming lat/lon to utm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doing-the-inverse-utm-to-lat-lon">20.3. doing the inverse: utm to lat/lon</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-do-x-y-to-lat-lon">20.3.1. Now do x,y to lat/lon</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-this-in-a-function">20.3.2. wrap this in a function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-this-in-a-function">20.3.1. wrap this in a function</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-gotchas-to-watch-out-for">20.4. Two gotchas to watch out for</a></li>
