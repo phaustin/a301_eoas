@@ -29,19 +29,32 @@ Recall WH 4.10:
 
 $$
 B_\lambda(T)=\frac{c_1 \lambda^{-5}}{\pi\left(e^{c_2 / \lambda T}-1\right)}
-$$
+$$ (eq:planck)
 
 In the limit $\lambda \rightarrow \infty$ the term $c_2 / \lambda T$ gets increasing small.  We can use the fact that 
 
 $$
-e^3  = 1+\frac{3^1}{1!}+\frac{3^2}{2!}+\frac{3^3}{3!}+ \ldots
+e^x  = 1+\frac{x^1}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!}+ \ldots
 $$
+to get the small x approximation by keeping only the first order term:
+
+$$
+e^x  \approx 1+ x
+$$ (eq:small)
+
+Inserting {eq}`eq:small` into {eq}`eq:planck` gives:
+
+$$
+B_\lambda(T) \approx \frac{c_1 \lambda^{-5} \lambda T}{\pi  c_2 } = \frac{c_1 \lambda^{-4} T}{\pi  c_2 } 
+$$ (eq:rj)
+
+which is the Rayleigh-Jean approximation.
 
 +++
 
 ## Question 4.32
 
-Show that the approach in Exercise 4.5 in the text, when applied to the previous exercise, yields a temperature of
+Show that the approach in Exercise 4.5 in the text, when applied {numref}`p4_31` yields a temperature of
 
 $$
 T_s=T_E\left[\frac{1}{4}\left(\frac{6371}{8371}\right)^2\right]^{1 / 4}=158 \mathrm{~K}
