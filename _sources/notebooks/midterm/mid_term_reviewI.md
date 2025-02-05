@@ -54,7 +54,7 @@ Flux E from a perfect blackbody
 
 ## C. Schwartzchild equation
 
-From Stull p. 224 and the {ref}`week4_schwartz` reading:
+From Stull p. 224 and the {ref}`week5-schwartz` reading:
 
 1. Show that $e_\lambda$ = $a_\lambda$ for a gas that absorbs and transmits but doesn't reflect.
    (hint: put the gas between two black plates, assume that the gas and the plates are at the
@@ -80,9 +80,5 @@ From Stull p. 224 and the {ref}`week4_schwartz` reading:
 
    **Hint:**
 
-   See the section "Adding emission to Beers law" in the {ref}`week5_schwartz` notes.
+   See the section "Adding emission to Beers law" in the {ref}`week5-schwartz` notes.
 
-
-```{code-cell} ipython3
-
-```
