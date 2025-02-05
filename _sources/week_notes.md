@@ -231,7 +231,6 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 
 - Introduce {ref}`notebook_index`
 - {ref}`assign2a_solution`
-- Go over Wallace and Hobbs Figure 4.24 -- Beer's law
 - Finish `find_latlon` 
 
 #### Do for Monday
@@ -244,7 +243,7 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 
 ### Day 13 Monday
 
-- Note the new {ref}`mid_review1`
+- Note the new {ref}`mid-review1`
 - Go over {ref}`assign2b_solution`
 - My version of {ref}`week5:rowcol2latlon`
 
@@ -259,10 +258,13 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
     
 ###  Day 14 Wednesday
 
+Topics:
+
+- Go over Wallace and Hobbs Figure 4.24 -- Beer's law
 - {ref}`assign4` due midnight next Wednesday
 - {ref}`assign2c_solution`
-- {ref}`mid-review` problem A.1 and A.2
-- Continue {ref}`week5-schwartz`
+- In-class: {ref}`mid-review1` problem A.1 and A.2
+- Continue with {ref}`week5-schwartz`
 - {ref}`hydro`
 - {ref}`week5:add_palette`
     
