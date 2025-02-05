@@ -64,4 +64,5 @@ parts:
       - file: solutions/assign2_solutionsB.md
       - file: notebooks/week5/rowcol2latlon.md
       - file: notebooks/week5/schwartz.md
-        
+      - file: notebooks/week5/add_palette.md  
+      - file: solutions/assign2_solutionsC.md
