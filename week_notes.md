@@ -257,4 +257,12 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
     slice objects (desired rows and columns) and write a new, smaller geotiff
     with the raster selected using those two slices.
     
+###  Day 14 Wednesday
+
+- {ref}`assign4` due midnight next Wednesday
+- {ref}`assign2c_solution`
+- {ref}`mid-review` problem A.1 and A.2
+- Continue {ref}`week5-schwartz`
+- {ref}`hydro`
+- {ref}`week5:add_palette`
     

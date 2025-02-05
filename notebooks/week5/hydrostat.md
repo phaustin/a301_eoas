@@ -1,5 +1,4 @@
 (hydro)=
-
 # Hydrostatic balance
 
 In order to calculate the optical depth we need *n*, the number concentration of molecules at a particular height in the atmosphere. This means that we need to know the density as a function of height.
@@ -58,7 +57,7 @@ In words -- $H_p$ gives the height at which gravity wins out over the kinetic en
    \int_{p_0}^{p}\!\,d \ln p =  - \int_{0 }^{z}\!\frac{1}{H_p} dz^\prime
    $$
 
-   Since temperature (and gravity) are changing with height, we need to know profiles of g(z) and T(z)
+   Since temperature (and gravity) are changing with height, we need to know profiles of g(z) and T(z) 
    to go any further. If we don't have those profiles, then a useful approximation is to define a vertically averaged $H_p$, since
    the average involves a large mass of air (about 10 metric tons/cubic meter), it will vary more slowly than the temperature at any one level on any given day, and we can still get a useful profile of pressure vs. height without having a specific sounding:
 

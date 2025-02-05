@@ -75,7 +75,7 @@ the_norm = Normalize(vmin=vmin, vmax=vmax, clip=False)
 palette = "viridis"
 pal = plt.get_cmap(palette)
 pal.set_bad("0.75")  # 75% grey for out-of-map cells
-pal.set_over("w")  # color cells > vmax red
+pal.set_over("w")  # color cells > vmax white
 pal.set_under("k")  # color cells < vmin black
 fig, ax = plt.subplots(1, 1, figsize=(4, 4))
 hls_blue.plot.imshow(ax=ax, cmap=pal, norm=the_norm, origin="upper",extend = "both");
@@ -90,7 +90,7 @@ def make_pal(vmin = None, vmax = None, palette = "viridis"):
     the_norm = Normalize(vmin=vmin, vmax=vmax, clip=False)
     pal = plt.get_cmap(palette)
     pal.set_bad("0.75")  # 75% grey for out-of-map cells
-    pal.set_over("w")  # color cells > vmax red
+    pal.set_over("w")  # color cells > vmax white
     pal.set_under("k")  # color cells < vmin black
     return the_norm, pal
 
@@ -113,7 +113,7 @@ def make_pal(ax,vmin = None, vmax = None, palette = "viridis"):
     the_norm = Normalize(vmin=vmin, vmax=vmax, clip=False)
     pal = plt.get_cmap(palette)
     pal.set_bad("0.75")  # 75% grey for out-of-map cells
-    pal.set_over("w")  # color cells > vmax red
+    pal.set_over("w")  # color cells > vmax white
     pal.set_under("k")  # color cells < vmin black
     out_dict=dict(ax=ax,cmap=pal,norm=the_norm, origin="upper",
                   extend = "both")
@@ -126,6 +126,10 @@ pal_dict = make_pal(ax,vmin, vmax)
 # pretty simple
 #
 hls_blue.plot.imshow(**pal_dict);
+```
+
+```{code-cell} ipython3
+
 ```
 
 ```{code-cell} ipython3
