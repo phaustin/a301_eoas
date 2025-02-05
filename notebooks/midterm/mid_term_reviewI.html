@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>19. Sample mid-term questions I &#8212; ATSC 301</title>
+    <title>Sample mid-term questions I &#8212; ATSC 301</title>
   
   
   
@@ -192,10 +192,10 @@
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&amp;st=n7iwqqem&amp;dl=0">Notebook downloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_review.html">Weekly review</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midtherm</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midterm</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Sample mid-term questions I</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Sample mid-term questions I</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="nav bd-sidenav">
@@ -231,9 +231,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">19. Assignment 2: solutions part B</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">20. Getting lat,lon from row, column</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">21. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">19. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">20. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">21. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">22. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">23. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">24. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">25. Hydrostatic balance</a></li>
 </ul>
 
     </div>
@@ -382,9 +386,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beers-law">19.1. Beers law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-angle-and-radiance">19.2. Solid angle and radiance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartzchild-equation">19.3. Schwartzchild equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-beers-law">A. Beers law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-solid-angle-and-radiance">B. Solid angle and radiance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-schwartzchild-equation">C. Schwartzchild equation</a></li>
 </ul>
             </nav>
         </div>
@@ -398,28 +402,28 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sample-mid-term-questions-i">
 <span id="mid-review1"></span><h1>Sample mid-term questions I<a class="headerlink" href="#sample-mid-term-questions-i" title="Link to this heading">#</a></h1>
-<section id="beers-law">
-<h2>Beers law<a class="headerlink" href="#beers-law" title="Link to this heading">#</a></h2>
-<p>Stull page 2.43 and the <span class="xref std std-ref">week2_beerslaw</span> reading:</p>
+<section id="a-beers-law">
+<h2>A. Beers law<a class="headerlink" href="#a-beers-law" title="Link to this heading">#</a></h2>
+<p>Stull page 2.43 and the <a class="reference internal" href="../week1/beers_law.html#week1-beerslaw"><span class="std std-ref">Beers and inverse squared laws</span></a> reading:</p>
 <ol class="arabic">
 <li><p>Prove that for a thin non-reflecting layer the change in emissivity
 = change in optical thickness, i.e. prove that:</p>
 <div class="math notranslate nohighlight" id="equation-thin">
 <span class="eqno">(3)<a class="headerlink" href="#equation-thin" title="Link to this equation">#</a></span>\[
-   \Delta e_\lambda \approx  \Delta \tau_\lambda
+   \Delta \epsilon_\lambda \approx  \Delta \tau_\lambda
    \]</div>
 </li>
 <li><p>Repeat the problem above, but for a layer with an optical depth of <span class="math notranslate nohighlight">\(\tau_\lambda=1\)</span>.
-How does that change {eq}<span class="math notranslate nohighlight">\(thin\)</span> ?</p></li>
+How does that change <a class="reference internal" href="#equation-thin">(3)</a> ?</p></li>
 <li><p>Suppose you put ozone molecules in a 1 km long tunnel and measure an optical thickness of
 0.5 using an ultraviolet laser. You know that the ozone mixing ratio is 1 g/kg and the air
 density is 1 kg/<span class="math notranslate nohighlight">\(m^3\)</span>. What is the extinction coefficient <span class="math notranslate nohighlight">\(k\)</span> in <span class="math notranslate nohighlight">\(m^2/kg\)</span>?</p></li>
-<li><p>Find the narrow beam transmission, absorption and emission for a series of
+<li><p>Find the narrow beam transmissivity, absorptivity and emissivity for a series of
 stacked layers of equal transmissivities and temperatures in a direction perpendicular to the layers.</p></li>
 </ol>
 </section>
-<section id="solid-angle-and-radiance">
-<h2>Solid angle and radiance<a class="headerlink" href="#solid-angle-and-radiance" title="Link to this heading">#</a></h2>
+<section id="b-solid-angle-and-radiance">
+<h2>B. Solid angle and radiance<a class="headerlink" href="#b-solid-angle-and-radiance" title="Link to this heading">#</a></h2>
 <p>From <a class="reference internal" href="../week1/radiance.html#radiance"><span class="std std-ref">Solid angle and radiance</span></a> reading:</p>
 <ol class="arabic simple">
 <li><p>Calculate the solid angle subtended by a cone with an angular width of
@@ -427,17 +431,24 @@ stacked layers of equal transmissivities and temperatures in a direction perpend
 <li><p>A laser pointer subtends the same solid angle as the sun: <span class="math notranslate nohighlight">\(7 \times 10^{-5}\)</span> sr. You shine it at a wall that is 10 meters away. What is the radius of the circular dot?</p></li>
 <li><p>What is the angle of the cone if <span class="math notranslate nohighlight">\(\omega = 7. \times 10^{-5}\ sr\)</span>?</p></li>
 <li><p>A satellite orbits 800 km above the earth and has a telescope with a field of view
-that covers 1 <span class="math notranslate nohighlight">\(km^2\)</span> directly below (i.e. at nadir). If that 1 <span class="math notranslate nohighlight">\(km^2\)</span> is ocean with
-an emissivity <span class="math notranslate nohighlight">\(e=1\)</span> at a temperature
-of 280 K, calculate the flux in <span class="math notranslate nohighlight">\(W\,m^2\)</span> reaching the satellite from all wavelengths
-from that pixel.</p></li>
+that covers 1 <span class="math notranslate nohighlight">\(km^2\)</span> directly below it (i.e. at nadir). If that 1 <span class="math notranslate nohighlight">\(km^2\)</span> is ocean with
+an emissivity <span class="math notranslate nohighlight">\(\epsilon =1\)</span> at a temperature
+of 280 K, calculate the sufrace flux in <span class="math notranslate nohighlight">\(W\,m^{-2}\)</span> reaching the satellite between 10-11 microns,
+assuming no atmospheric absorption or emission.</p></li>
 <li><p>Suppose that a satellite’s orbit changes from a height of 800 km to a height of 600 km
 above the surface. If the telescope field of view stays the same, prove that
 the radiance stays constant.</p></li>
 </ol>
+<p>For B.4 use the following figure to calculate the surface emission:</p>
+<figure class="align-default" id="planck">
+<a class="reference internal image-reference" href="../../_images/planck_a301.png"><img alt="../../_images/planck_a301.png" src="../../_images/planck_a301.png" style="width: 445.8px; height: 439.2px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Flux E from a perfect blackbody</span><a class="headerlink" href="#planck" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
-<section id="schwartzchild-equation">
-<h2>Schwartzchild equation<a class="headerlink" href="#schwartzchild-equation" title="Link to this heading">#</a></h2>
+<section id="c-schwartzchild-equation">
+<h2>C. Schwartzchild equation<a class="headerlink" href="#c-schwartzchild-equation" title="Link to this heading">#</a></h2>
 <p>From Stull p. 224 and the <span class="xref std std-ref">week4_schwartz</span> reading:</p>
 <ol class="arabic">
 <li><p>Show that <span class="math notranslate nohighlight">\(e_\lambda\)</span> = <span class="math notranslate nohighlight">\(a_\lambda\)</span> for a gas that absorbs and transmits but doesn’t reflect.
@@ -460,7 +471,7 @@ and show that the radiance at the top of a constant temperature layer is given b
    L_\lambda = L_{\lambda 0} \exp( -\Delta \tau_\lambda  ) + B_\lambda (1- \exp( -\Delta \tau_\lambda))\end{gathered}
    \]</div>
 <p><strong>Hint:</strong></p>
-<p>See the section “Adding emission to Beers law” in the <span class="xref std std-ref">week4_schwartz</span> notes.</p>
+<p>See the section “Adding emission to Beers law” in the <span class="xref std std-ref">week5_schwartz</span> notes.</p>
 </li>
 </ol>
 </section>
@@ -530,9 +541,9 @@ and show that the radiance at the top of a constant temperature layer is given b
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beers-law">19.1. Beers law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-angle-and-radiance">19.2. Solid angle and radiance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartzchild-equation">19.3. Schwartzchild equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-beers-law">A. Beers law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-solid-angle-and-radiance">B. Solid angle and radiance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-schwartzchild-equation">C. Schwartzchild equation</a></li>
 </ul>
   </nav></div>
 

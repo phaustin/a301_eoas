@@ -60,6 +60,14 @@ ubc_x, ubc_y = transform.transform(ubc_lat, ubc_lon)
 print(f"{ubc_x=:.2f} m, {ubc_y:.2f}")
 ```
 
+```{code-cell} ipython3
+#dir(transform)
+```
+
+```{code-cell} ipython3
+transform.description
+```
+
 ## doing the inverse: utm to lat/lon
 
 To go the other direction, just reverse the parameters in the Transformer call
@@ -74,8 +82,6 @@ proj_code = 32610
 p_utm = CRS.from_epsg(proj_code)
 p_latlon = CRS.from_epsg(4326)
 transform = Transformer.from_crs(p_utm, p_latlon)
-ubc_lon = -123.2460 
-ubc_lat = 49.2606
 ubc_lat, ubc_lon = transform.transform(ubc_x, ubc_y)
 print(f"{ubc_lat=:.2f} m, {ubc_lon=:.2f} m")
 ```

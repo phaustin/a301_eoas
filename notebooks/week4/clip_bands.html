@@ -179,7 +179,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../syllabus.html">ATSC 301: syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../integrity.html">UBC academic integrity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../texts.html">Texts</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pixi_install.html">pixi install for macos and windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../windows_install.html">Windows installation using a conda lock file</a></li>
@@ -190,6 +189,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Week notes</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&amp;st=n7iwqqem&amp;dl=0">Notebook downloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_review.html">Weekly review</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midterm</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI.html">Sample mid-term questions I</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="nav bd-sidenav">
@@ -225,9 +229,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">19. Assignment 2: solutions part B</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">20. Getting lat,lon from row, column</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">21. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">19. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">20. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">21. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">22. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">23. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">24. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">25. Hydrostatic balance</a></li>
 </ul>
 
     </div>
@@ -464,7 +472,7 @@ the <a class="reference external" href="https://en.wikipedia.org/wiki/Glob_(prog
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/HLS.L30.T10UDV.2015165T190019.v2.0.B04.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B03.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B02.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B11.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B10.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B09.tif&#39;)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/HLS.L30.T10UDV.2015165T190019.v2.0.B04.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B03.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B02.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B11.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B05.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B10.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B09.tif&#39;)]
 </pre></div>
 </div>
 </div>
@@ -703,7 +711,7 @@ the attributes.  That means we can multiply the data by the scale factor and not
     <span class="c1">#</span>
     <span class="c1"># multiply the data by the scale factor</span>
     <span class="c1">#</span>
-    <span class="n">hls_band</span><span class="o">.</span><span class="n">data</span> <span class="o">*=</span> <span class="n">hls_band</span><span class="o">.</span><span class="n">scale_factor</span>
+    <span class="c1">#  hls_band.data *= hls_band.scale_factor</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">band_name</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">band_dict</span><span class="p">[</span><span class="n">band_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">hls_band</span>
     <span class="k">if</span> <span class="s1">&#39;unit&#39;</span> <span class="ow">in</span> <span class="n">hls_band</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
@@ -713,19 +721,12 @@ the attributes.  That means we can multiply the data by the scale factor and not
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>band_name=&#39;Red&#39;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>band_name=&#39;Green&#39;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>band_name=&#39;Blue&#39;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>band_name=&#39;TIRS2&#39;
+band_name=&#39;Green&#39;
+band_name=&#39;Blue&#39;
+band_name=&#39;TIRS2&#39;
 hls_band.unit=&#39;Celsius&#39;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>band_name=&#39;TIRS1&#39;
+band_name=&#39;NIR&#39;
+band_name=&#39;TIRS1&#39;
 hls_band.unit=&#39;Celsius&#39;
 band_name=&#39;Cirrus&#39;
 </pre></div>
@@ -836,7 +837,7 @@ the first file we find, which means we need convert the python generator returne
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;band TIRS2 (Celsius)&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/935778b250235b927d4460e25aa532097741e37584d64f62116e7bd4b27331ab.png" src="../../_images/935778b250235b927d4460e25aa532097741e37584d64f62116e7bd4b27331ab.png" />
+<img alt="../../_images/0a736f9c220787e4ff0182b1e84cd43cf03a77d49fa7080f3e52b0d31112ad15.png" src="../../_images/0a736f9c220787e4ff0182b1e84cd43cf03a77d49fa7080f3e52b0d31112ad15.png" />
 </div>
 </div>
 </section>
@@ -915,7 +916,7 @@ a dictionary and rewrite the parts you want to change, adding any extras.</p>
 <h3><span class="section-number">16.8.4. </span>read one back in to check<a class="headerlink" href="#read-one-back-in-to-check" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tif_filename</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s1">&#39;vancouver&#39;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;week4_clipped_TIRS2.tif&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tif_filename</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s1">&#39;vancouver&#39;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;week4_clipped_TIRS1.tif&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tif_filename</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">has_file</span> <span class="o">=</span> <span class="n">tif_filename</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">has_file</span><span class="p">:</span>
@@ -929,10 +930,10 @@ a dictionary and rewrite the parts you want to change, adding any extras.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tif_filename=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/week4_clipped_TIRS2.tif&#39;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tif_filename=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/week4_clipped_TIRS1.tif&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/53bdb15a8820eec656f5a647bd556fdb27f35f0b2f6bab8cc8437583ba7db218.png" src="../../_images/53bdb15a8820eec656f5a647bd556fdb27f35f0b2f6bab8cc8437583ba7db218.png" />
+<img alt="../../_images/c6d044099e4138cf2d01b895af31675ecdd01a104436cea54f53b819a4b902b4.png" src="../../_images/c6d044099e4138cf2d01b895af31675ecdd01a104436cea54f53b819a4b902b4.png" />
 </div>
 </div>
 <section id="note-that-we-now-have-the-correct-epsg-code">

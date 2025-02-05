@@ -124,7 +124,7 @@ for tif_path in the_tifs:
     #
     # multiply the data by the scale factor
     #
-    hls_band.data *= hls_band.scale_factor
+    #  hls_band.data *= hls_band.scale_factor
     print(f"{band_name=}")
     band_dict[band_name] = hls_band
     if 'unit' in hls_band.attrs:
@@ -251,7 +251,7 @@ for key, value in band_dict.items():
 ### read one back in to check
 
 ```{code-cell} ipython3
-tif_filename = data_dir / 'vancouver' / f"week4_clipped_TIRS2.tif"
+tif_filename = data_dir / 'vancouver' / f"week4_clipped_TIRS1.tif"
 print(f"{tif_filename=}")
 has_file = tif_filename.exists()
 if not has_file:

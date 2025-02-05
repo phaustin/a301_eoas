@@ -140,10 +140,6 @@ ubc_x, ubc_y = transform.transform(ubc_lat, ubc_lon)
 ubc_x,ubc_y
 ```
 
-```{code-cell} ipython3
-lon, lat = transform(ubc_x, ubc_y, inverse=True)
-```
-
 For more on epsg:4326 see [Justyna Jurkowska's](https://8thlight.com/insights/geographic-coordinate-systems-101#:~:text=EPSG%3A4326%2C%20also%20known%20as,Google%20Earth%20and%20GSP%20systems) blog entry.
 
 +++
@@ -166,11 +162,6 @@ We need to find the right rows and columns on the image to save for the subscene
 
 ```{code-cell} ipython3
 b5_refl.shape[0] - 2230
-```
-
-```{code-cell} ipython3
-ubc_x, ubc_y = full_affine * (ubc_row, ubc_col)
-ubc_x, ubc_y
 ```
 
 ```{code-cell} ipython3

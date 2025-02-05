@@ -18,3 +18,6 @@
 - Upload clipped tif files for your scene for channels 2,3,4,5,9.10,11
 - Upload a notebook which draws a map on the coastline for one of your small scenes
   
+## Assignment 4
+
+- see {ref}`assign4`

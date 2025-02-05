@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>21. The Schwartzchild Equation &#8212; ATSC 301</title>
+    <title>22. The Schwartzchild Equation &#8212; ATSC 301</title>
   
   
   
@@ -63,7 +63,8 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week5/schwartz.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="20. Getting lat,lon from row, column" href="rowcol2latlon.html" />
+    <link rel="next" title="23. Adding a palette to an axis" href="add_palette.html" />
+    <link rel="prev" title="21. Getting lat,lon from row, column" href="rowcol2latlon.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -191,10 +192,10 @@
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&amp;st=n7iwqqem&amp;dl=0">Notebook downloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_review.html">Weekly review</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midtherm</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midterm</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI.html">19. Sample mid-term questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI.html">Sample mid-term questions I</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="nav bd-sidenav">
@@ -230,9 +231,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">19. Assignment 2: solutions part B</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rowcol2latlon.html">20. Getting lat,lon from row, column</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">21. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">19. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">20. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rowcol2latlon.html">21. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">22. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_palette.html">23. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">24. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydrostat.html">25. Hydrostatic balance</a></li>
 </ul>
 
     </div>
@@ -381,14 +386,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">21.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beer-s-law">21.2. Beer’s law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kirchoff-s-law">21.3. Kirchoff’s Law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-emission-to-beer-s-law">21.4. Adding emission to Beer’s law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-changing-with-height">21.5. Temperature changing with height</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-3-getting-to-stull-83">21.6. Getting to Stull 8.3 {#getting-to-stull-83}</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-4-getting-to-stull-84">21.7. Getting to Stull 8.4 {#getting-to-stull-84}</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-care">21.8. Why do we care?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">22.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beer-s-law">22.2. Beer’s law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kirchoff-s-law">22.3. Kirchoff’s Law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-emission-to-beer-s-law">22.4. Adding emission to Beer’s law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-changing-with-height">22.5. Temperature changing with height</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-3-getting-to-stull-83">22.6. Getting to Stull 8.3 {#getting-to-stull-83}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-4-getting-to-stull-84">22.7. Getting to Stull 8.4 {#getting-to-stull-84}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-care">22.8. Why do we care?</a></li>
 </ul>
             </nav>
         </div>
@@ -401,10 +406,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-schwartzchild-equation">
-<span id="week5-schwartz"></span><h1><span class="section-number">21. </span>The Schwartzchild Equation<a class="headerlink" href="#the-schwartzchild-equation" title="Link to this heading">#</a></h1>
+<span id="week5-schwartz"></span><h1><span class="section-number">22. </span>The Schwartzchild Equation<a class="headerlink" href="#the-schwartzchild-equation" title="Link to this heading">#</a></h1>
 <p>Coverage: Wallace and Hobbs Section 4.5.3 and <a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology">Stull Chapter 8</a> p. 225</p>
 <section id="introduction">
-<h2><span class="section-number">21.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>This note merges material from Wallace and Hobbs p. 135 and equation 4.42</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -415,7 +420,7 @@ I_\lambda\left(s_1\right)= &amp; I_{\lambda 0} e^{-\tau_\lambda\left(s_1, 0\righ
 \end{split}\]</div>
 <p>with Stull equation 8.3</p>
 <div class="math notranslate nohighlight" id="equation-stull1">
-<span class="eqno">(21.1)<a class="headerlink" href="#equation-stull1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.1)<a class="headerlink" href="#equation-stull1" title="Link to this equation">#</a></span>\[
 \begin{gathered}
          L_\lambda = \underbrace{B_\lambda(T_{skin} ) \hat{t}_{tot}}_{\text{surface contribution}} + \underbrace{\sum_{j=1}^n e_{\lambda,j} B_\lambda(T_j) \hat{t}_{\lambda,j}}_{\text{atmospheric contribution}}
    \end{gathered}
@@ -429,12 +434,12 @@ use <em>t</em> instead of <span class="math notranslate nohighlight">\(\tau\)</s
 </ol>
 </section>
 <section id="beer-s-law">
-<h2><span class="section-number">21.2. </span>Beer’s law<a class="headerlink" href="#beer-s-law" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.2. </span>Beer’s law<a class="headerlink" href="#beer-s-law" title="Link to this heading">#</a></h2>
 <p>How does this equation relate to Beer’s law, and how would we use it to calculate <span class="math notranslate nohighlight">\(L_\lambda\)</span> reaching a satellite for a particular set of surface/atmosphere conditions?</p>
-<p>Where does <a class="reference internal" href="#equation-stull1">(21.1)</a> come from? To derive this from the Beer’s law we need to include the fact that the atmosphere is emitting as well as absorbing radiation.</p>
+<p>Where does <a class="reference internal" href="#equation-stull1">(22.1)</a> come from? To derive this from the Beer’s law we need to include the fact that the atmosphere is emitting as well as absorbing radiation.</p>
 <p>Our previous form of Beer’s law looks like this <a class="reference internal" href="#../week2/beers_law.html#diffbeers"><span class="xref myst">(see beers)</span></a>:</p>
 <div class="math notranslate nohighlight" id="equation-diffbeers2">
-<span class="eqno">(21.2)<a class="headerlink" href="#equation-diffbeers2" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.2)<a class="headerlink" href="#equation-diffbeers2" title="Link to this equation">#</a></span>\[
 \frac{dE^\prime}{E^\prime} = \frac{dL^\prime \Delta \omega}{L^\prime \Delta \omega} = d \ln L^\prime = -d (n\,b\,s) = -d \tau^\prime
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(s\ (m)\)</span> is the distance travelled (the path length),
@@ -461,10 +466,10 @@ L = L_{skin} \exp (-\tau)  = L_{skin} \hat{t}_{tot} = B_\lambda(T_{skin}) \hat{t
 \[
 \hat{t}_{tot} = \exp (-\tau)
 \]</div>
-<p>This is the surface term in <a class="reference internal" href="#equation-stull1">(21.1)</a> above, assuming that the surface is radiating like a blackbody at temperature <span class="math notranslate nohighlight">\(T_{skin}\)</span>.</p>
+<p>This is the surface term in <a class="reference internal" href="#equation-stull1">(22.1)</a> above, assuming that the surface is radiating like a blackbody at temperature <span class="math notranslate nohighlight">\(T_{skin}\)</span>.</p>
 </section>
 <section id="kirchoff-s-law">
-<h2><span class="section-number">21.3. </span>Kirchoff’s Law<a class="headerlink" href="#kirchoff-s-law" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.3. </span>Kirchoff’s Law<a class="headerlink" href="#kirchoff-s-law" title="Link to this heading">#</a></h2>
 <p>Here’s a review of <a class="reference internal" href="../week3/kirchoff.html#week3-kirchoff"><span class="std std-ref">Kirchoff worksheet</span></a></p>
 <p>The atmosphere isn’t a blackbody, because it’s absorptivity <span class="math notranslate nohighlight">\(a = 1 - \hat{t}\)</span> (no reflection) is not equal to 1 at most wavelengths. Stull p. 41 defines the emissivity <em>e</em> as the fraction of the actual emitted radiance of an object/layer over the radiance a blackbody would emit at the same temperature:</p>
 <div class="math notranslate nohighlight">
@@ -477,16 +482,16 @@ e_\lambda = L_{emitted}/B_\lambda(T)
 a_\lambda = e_\lambda
 \]</div>
 <p>i.e. “good absorbers are good emitters” or Kirchoff’s Law.</p>
-<p>To see why this has to be true, consider <a class="reference internal" href="#kirchoff"><span class="std std-numref">Fig. 21.1</span></a>, where a blackbody (surface A) is facing a surface B at the same temperature, with absorptivity and emissivity that violate Kirchoff’s law (there is a vacuum between the two plates). Neither surface is transmitting, so surface B is absorbing <span class="math notranslate nohighlight">\(0.6 B_\lambda(T)\)</span> emitted by surface A and emitting <span class="math notranslate nohighlight">\(0.7 B_\lambda(T)\)</span> on its own. Because it is emitting more than it’s absorbed, it has to be cooling, but according to the second law of thermodynamics, objects at the same temperature can’t spontaneously change their temperature without doing work. So we know that <span class="math notranslate nohighlight">\(a_\lambda = e_\lambda\)</span>.</p>
+<p>To see why this has to be true, consider <a class="reference internal" href="#kirchoff"><span class="std std-numref">Fig. 22.1</span></a>, where a blackbody (surface A) is facing a surface B at the same temperature, with absorptivity and emissivity that violate Kirchoff’s law (there is a vacuum between the two plates). Neither surface is transmitting, so surface B is absorbing <span class="math notranslate nohighlight">\(0.6 B_\lambda(T)\)</span> emitted by surface A and emitting <span class="math notranslate nohighlight">\(0.7 B_\lambda(T)\)</span> on its own. Because it is emitting more than it’s absorbed, it has to be cooling, but according to the second law of thermodynamics, objects at the same temperature can’t spontaneously change their temperature without doing work. So we know that <span class="math notranslate nohighlight">\(a_\lambda = e_\lambda\)</span>.</p>
 <figure class="align-default" id="kirchoff">
 <a class="reference internal image-reference" href="../../_images/kirchoff1.png"><img alt="../../_images/kirchoff1.png" src="../../_images/kirchoff1.png" style="width: 340.5px; height: 213.5px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 21.1 </span><span class="caption-text">Demonstration of Kirchoff’s law</span><a class="headerlink" href="#kirchoff" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 22.1 </span><span class="caption-text">Demonstration of Kirchoff’s law</span><a class="headerlink" href="#kirchoff" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="adding-emission-to-beer-s-law">
-<h2><span class="section-number">21.4. </span>Adding emission to Beer’s law<a class="headerlink" href="#adding-emission-to-beer-s-law" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.4. </span>Adding emission to Beer’s law<a class="headerlink" href="#adding-emission-to-beer-s-law" title="Link to this heading">#</a></h2>
 <p>Now include the relationship between <span class="math notranslate nohighlight">\(\hat{t}\)</span>, <span class="math notranslate nohighlight">\(\tau\)</span>, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(e\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -494,7 +499,7 @@ a_\lambda = e_\lambda
 \]</div>
 <p>Differentiate this:</p>
 <div class="math notranslate nohighlight" id="equation-diffthat">
-<span class="eqno">(21.3)<a class="headerlink" href="#equation-diffthat" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.3)<a class="headerlink" href="#equation-diffthat" title="Link to this equation">#</a></span>\[
 d \hat{t}_\lambda = d \exp(-\tau_\lambda) = - \exp(-\tau_\lambda)\, d\tau_\lambda = -d\tau_\lambda
 \]</div>
 <p>where we have used the fact that for a thin layer we are expanding about <span class="math notranslate nohighlight">\(\tau = 0\)</span>.</p>
@@ -508,7 +513,7 @@ a_\lambda = (1 - \hat{t}_\lambda)
 \[
 e_\lambda = a_\lambda = (1 - \hat{t}_\lambda)
 \]</div>
-<p>So we can use <a class="reference internal" href="#equation-diffthat">(21.3)</a> to get</p>
+<p>So we can use <a class="reference internal" href="#equation-diffthat">(22.3)</a> to get</p>
 <div class="math notranslate nohighlight">
 \[
 de_\lambda = da_\lambda = d(1 - \hat{t}_\lambda) = -d\hat{t}_\lambda  = d\tau_\lambda
@@ -523,33 +528,33 @@ L_{emission} = e_\lambda B_{\lambda} (T_{layer})
 <figure class="align-default" id="schwartzchild">
 <a class="reference internal image-reference" href="../../_images/schwartzchild.png"><img alt="../../_images/schwartzchild.png" src="../../_images/schwartzchild.png" style="width: 708.5px; height: 476.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 21.2 </span><span class="caption-text">Radiance from an isolated layer and the surface</span><a class="headerlink" href="#schwartzchild" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 22.2 </span><span class="caption-text">Radiance from an isolated layer and the surface</span><a class="headerlink" href="#schwartzchild" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Before we integrate the entire atmosphere (with temperature changing with height) let’s just integrate the radiance across a layer that is thin enough so we can assume roughly constant temperature.</p>
 <ol class="arabic">
 <li><p>We know the emission from an infinitesimally thin layer:</p>
 <div class="math notranslate nohighlight" id="equation-dlemit">
-<span class="eqno">(21.4)<a class="headerlink" href="#equation-dlemit" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.4)<a class="headerlink" href="#equation-dlemit" title="Link to this equation">#</a></span>\[
     dL_{emission} = B_{\lambda} (T_{layer}) de_\lambda = B_{\lambda} (T_{layer}) d\tau_\lambda
     \]</div>
 </li>
 <li><p>Add the gain from <span class="math notranslate nohighlight">\(dL_{emission}\)</span> to the loss from <span class="math notranslate nohighlight">\(dL_{absorption}\)</span> to get
 the <strong>Schwartzchild equation</strong> without scattering:</p>
 <div class="math notranslate nohighlight" id="equation-schwart1">
-<span class="eqno">(21.5)<a class="headerlink" href="#equation-schwart1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.5)<a class="headerlink" href="#equation-schwart1" title="Link to this equation">#</a></span>\[
     dL_{\lambda,absorption} + dL_{\lambda,emission}  = -L_\lambda\, d\tau_\lambda + B_\lambda (T_{layer})\, d\tau_\lambda
     \]</div>
 </li>
-<li><p>We can rewrite <a class="reference internal" href="#equation-schwart1">(21.5)</a> as:</p>
+<li><p>We can rewrite <a class="reference internal" href="#equation-schwart1">(22.5)</a> as:</p>
 <div class="math notranslate nohighlight" id="equation-schwart2">
-<span class="eqno">(21.6)<a class="headerlink" href="#equation-schwart2" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.6)<a class="headerlink" href="#equation-schwart2" title="Link to this equation">#</a></span>\[
     \frac{dL_\lambda}{d\tau_\lambda} = -L_\lambda + B_\lambda (T_{layer})
     \]</div>
 </li>
 <li><p>In class I used change of variables to derived the following: if the temperature <span class="math notranslate nohighlight">\(T_{layer}\)</span> (and hence <span class="math notranslate nohighlight">\(B_\lambda(T_{layer})\)</span>) is constant with height and the radiance arriving at the base of the layer is <span class="math notranslate nohighlight">\(L_{\lambda 0} = B_{\lambda} T_{skin}\)</span> for a black surface with <span class="math notranslate nohighlight">\(e_\lambda = 1\)</span>, then the total radiance exiting the top of the layer is <span class="math notranslate nohighlight">\(L_{\lambda}\)</span> where:</p>
 <div class="math notranslate nohighlight" id="equation-consttb">
-<span class="eqno">(21.7)<a class="headerlink" href="#equation-consttb" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.7)<a class="headerlink" href="#equation-consttb" title="Link to this equation">#</a></span>\[
     \int_{L_{\lambda 0}}^{L_\lambda} \frac{dL^\prime_\lambda}{L^\prime_\lambda -
           B_\lambda} = - \int_{0}^{\tau_{T}} d\tau^\prime
     \]</div>
@@ -568,7 +573,7 @@ the surface is <span class="math notranslate nohighlight">\(L_{\lambda 0}\)</spa
 <p>where I have made use of the fact that <span class="math notranslate nohighlight">\(dB_\lambda = 0\)</span> since the temperature is constant.</p>
 <p>This means that we can now solve this by integrating a perfect differential:</p>
 <div class="math notranslate nohighlight" id="equation-consttc">
-<span class="eqno">(21.8)<a class="headerlink" href="#equation-consttc" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.8)<a class="headerlink" href="#equation-consttc" title="Link to this equation">#</a></span>\[
     \int_{U_0}^U d\ln U^\prime = \ln \left (\frac{U}{U_0} \right ) =  \ln \left (\frac{L_\lambda - B_\lambda}{L_{\lambda 0} - B_\lambda}
           \right ) = - \tau_{\lambda T}
     \]</div>
@@ -604,16 +609,16 @@ $$
 </ol>
 </section>
 <section id="temperature-changing-with-height">
-<span id="temp-height"></span><h2><span class="section-number">21.5. </span>Temperature changing with height<a class="headerlink" href="#temperature-changing-with-height" title="Link to this heading">#</a></h2>
+<span id="temp-height"></span><h2><span class="section-number">22.5. </span>Temperature changing with height<a class="headerlink" href="#temperature-changing-with-height" title="Link to this heading">#</a></h2>
 </section>
 <section id="getting-to-stull-8-3-getting-to-stull-83">
-<h2><span class="section-number">21.6. </span>Getting to Stull 8.3 {#getting-to-stull-83}<a class="headerlink" href="#getting-to-stull-8-3-getting-to-stull-83" title="Link to this heading">#</a></h2>
-<p>To get Stull’s eq. 8.3 (our <a class="reference internal" href="#equation-stull1">(21.1)</a>), we need integrate <a class="reference internal" href="#equation-schwart2">(21.6)</a> when temperature and therefor <span class="math notranslate nohighlight">\(B_\lambda(T)\)</span> is changing with height.</p>
+<h2><span class="section-number">22.6. </span>Getting to Stull 8.3 {#getting-to-stull-83}<a class="headerlink" href="#getting-to-stull-8-3-getting-to-stull-83" title="Link to this heading">#</a></h2>
+<p>To get Stull’s eq. 8.3 (our <a class="reference internal" href="#equation-stull1">(22.1)</a>), we need integrate <a class="reference internal" href="#equation-schwart2">(22.6)</a> when temperature and therefor <span class="math notranslate nohighlight">\(B_\lambda(T)\)</span> is changing with height.</p>
 <ul class="simple">
 <li><p>Here’s the Schwartzchild equation again:</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-schwartza">
-<span class="eqno">(21.9)<a class="headerlink" href="#equation-schwartza" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.9)<a class="headerlink" href="#equation-schwartza" title="Link to this equation">#</a></span>\[
 \frac{dL_\lambda}{d\tau_\lambda}= - L_{\lambda} + B_\lambda
 \]</div>
 <ul class="simple">
@@ -623,14 +628,14 @@ by <span class="math notranslate nohighlight">\(exp(\tau)\)</span> so that we’
 <li><p>Specifically, look at how the chain rule works for the product <span class="math notranslate nohighlight">\(L\exp(\tau)\)</span> :</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-chain">
-<span class="eqno">(21.10)<a class="headerlink" href="#equation-chain" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.10)<a class="headerlink" href="#equation-chain" title="Link to this equation">#</a></span>\[
 d(L\exp(\tau))=\exp(\tau)dL + L\exp(\tau)d\tau
 \]</div>
 <ul class="simple">
-<li><p>Now multiply both sides of <a class="reference internal" href="#equation-schwartza">(21.9)</a> by <span class="math notranslate nohighlight">\(exp(\tau)\)</span>:</p></li>
+<li><p>Now multiply both sides of <a class="reference internal" href="#equation-schwartza">(22.9)</a> by <span class="math notranslate nohighlight">\(exp(\tau)\)</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-integ1">
-<span class="eqno">(21.11)<a class="headerlink" href="#equation-integ1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.11)<a class="headerlink" href="#equation-integ1" title="Link to this equation">#</a></span>\[
 \exp(\tau) dL_\lambda +
 L_\lambda \exp(\tau)\,d\tau=\exp(\tau)B_\lambda(T) \,d\tau
 \]</div>
@@ -642,7 +647,7 @@ left, and integrate:</p>
     d\left( L_\lambda\exp(\tau)\right )=\exp(\tau)B_\lambda d\tau
     \]</div>
 <div class="math notranslate nohighlight" id="equation-chain2">
-<span class="eqno">(21.12)<a class="headerlink" href="#equation-chain2" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.12)<a class="headerlink" href="#equation-chain2" title="Link to this equation">#</a></span>\[
     \int_0^{\tau}d(L^\prime_\lambda\exp(\tau^\prime))=\int_0^{\tau}
      \exp(\tau^\prime)B^\prime_\lambda d\tau^\prime
     \]</div>
@@ -656,7 +661,7 @@ left, and integrate:</p>
     \end{gathered}
     \end{split}\]</div>
 </li>
-<li><p>Which means that when we integrate <a class="reference internal" href="#equation-chain2">(21.12)</a> we get:</p>
+<li><p>Which means that when we integrate <a class="reference internal" href="#equation-chain2">(22.12)</a> we get:</p>
 <div class="math notranslate nohighlight">
 \[
     L_\lambda\exp(\tau) - B_\lambda(T_{skin}) = \int_0^{\tau} \exp(\tau^\prime)B_\lambda(T^\prime) d\tau^\prime\nonumber
@@ -664,26 +669,26 @@ left, and integrate:</p>
 </li>
 <li><p>Dividing through by <span class="math notranslate nohighlight">\(\exp(\tau)\)</span> we get:</p>
 <div class="math notranslate nohighlight" id="equation-calc1">
-<span class="eqno">(21.13)<a class="headerlink" href="#equation-calc1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.13)<a class="headerlink" href="#equation-calc1" title="Link to this equation">#</a></span>\[
     L_\lambda(\tau)= B_\lambda(T_{skin})( \exp(-\tau) +    \int_0^{\tau} \exp\left(  - (\tau -\tau^\prime) \right )
     B_\lambda(T)\, d\tau^\prime
     \]</div>
 </li>
-<li><p>Equation <a class="reference internal" href="#equation-calc1">(21.13)</a> works for any height in the atmosphere. For the particular case at the top of the atmosphere where <span class="math notranslate nohighlight">\(\tau = \tau_{\lambda T}\)</span> we have</p>
+<li><p>Equation <a class="reference internal" href="#equation-calc1">(22.13)</a> works for any height in the atmosphere. For the particular case at the top of the atmosphere where <span class="math notranslate nohighlight">\(\tau = \tau_{\lambda T}\)</span> we have</p>
 <div class="math notranslate nohighlight" id="equation-calc2">
-<span class="eqno">(21.14)<a class="headerlink" href="#equation-calc2" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.14)<a class="headerlink" href="#equation-calc2" title="Link to this equation">#</a></span>\[
     L_\lambda(\tau_{\lambda T})= B_\lambda(T_{skin})( \exp(-\tau_{\lambda T}) +    \int_0^{\tau} \exp\left(  - (\tau_{\lambda T} -\tau^\prime) \right )
     B_\lambda(T)\, d\tau^\prime
     \]</div>
 </li>
-<li><p><strong>Compare</strong> <a class="reference internal" href="#equation-calc2">(21.14)</a> <strong>to Stull 8.3, which is:</strong></p>
+<li><p><strong>Compare</strong> <a class="reference internal" href="#equation-calc2">(22.14)</a> <strong>to Stull 8.3, which is:</strong></p>
 <div class="math notranslate nohighlight" id="equation-stull2">
-<span class="eqno">(21.15)<a class="headerlink" href="#equation-stull2" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.15)<a class="headerlink" href="#equation-stull2" title="Link to this equation">#</a></span>\[
     \begin{gathered}
             L_\lambda = B_\lambda(T_{skin} ) \hat{t}_{tot} + \sum_{j=1}^n e_\lambda B_\lambda(T_j) \hat{t}_{\lambda,j}
             \end{gathered}
     \]</div>
-<p>We can connect <a class="reference internal" href="#equation-stull2">(21.15)</a> and <a class="reference internal" href="#equation-calc2">(21.14)</a> if we recognize that</p>
+<p>We can connect <a class="reference internal" href="#equation-stull2">(22.15)</a> and <a class="reference internal" href="#equation-calc2">(22.14)</a> if we recognize that</p>
 <div class="math notranslate nohighlight">
 \[
     \hat{t}_{\lambda,j} =  \exp\left( -(\tau_{\lambda T} -\tau_j) \right )
@@ -698,47 +703,47 @@ the layers are thin enough so that we can make the approximation that:</p>
 </ul>
 </section>
 <section id="getting-to-stull-8-4-getting-to-stull-84">
-<span id="weightfuns"></span><h2><span class="section-number">21.7. </span>Getting to Stull 8.4 {#getting-to-stull-84}<a class="headerlink" href="#getting-to-stull-8-4-getting-to-stull-84" title="Link to this heading">#</a></h2>
+<span id="weightfuns"></span><h2><span class="section-number">22.7. </span>Getting to Stull 8.4 {#getting-to-stull-84}<a class="headerlink" href="#getting-to-stull-8-4-getting-to-stull-84" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>Equation 8.4 on p. 225 says:</p>
 <div class="math notranslate nohighlight" id="equation-stull3">
-<span class="eqno">(21.16)<a class="headerlink" href="#equation-stull3" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.16)<a class="headerlink" href="#equation-stull3" title="Link to this equation">#</a></span>\[
     \begin{gathered}
          L_\lambda = B_\lambda(T_{skin}) \hat{t}_{\lambda,tot} + \sum_{j=1}^n
          B_\lambda(T_j) \Delta \hat{t}_{\lambda,j}
        \end{gathered}
     \]</div>
 </li>
-<li><p>What happened to <span class="math notranslate nohighlight">\(e_\lambda(z_j)\)</span> and <span class="math notranslate nohighlight">\(\hat{t}_{\lambda,j}\)</span> from <a class="reference internal" href="#equation-stull2">(21.15)</a>? To see why this works, go back to the exact solution <a class="reference internal" href="#equation-calc2">(21.14)</a> and use the definition <span class="math notranslate nohighlight">\(\hat{t} =   \exp\left( -(\tau_{\lambda T} -\tau^\prime) \right )\)</span></p>
+<li><p>What happened to <span class="math notranslate nohighlight">\(e_\lambda(z_j)\)</span> and <span class="math notranslate nohighlight">\(\hat{t}_{\lambda,j}\)</span> from <a class="reference internal" href="#equation-stull2">(22.15)</a>? To see why this works, go back to the exact solution <a class="reference internal" href="#equation-calc2">(22.14)</a> and use the definition <span class="math notranslate nohighlight">\(\hat{t} =   \exp\left( -(\tau_{\lambda T} -\tau^\prime) \right )\)</span></p>
 <div class="math notranslate nohighlight" id="equation-calc3">
-<span class="eqno">(21.17)<a class="headerlink" href="#equation-calc3" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.17)<a class="headerlink" href="#equation-calc3" title="Link to this equation">#</a></span>\[
     L_\lambda(\tau_{\lambda T})= B_\lambda(T_{skin})( \exp(-\tau_{\lambda T}) +    \int_0^{\tau} B(T)\, \hat{t} \, d\tau^\prime
     \]</div>
 <p>Now recognize that you can do the following differential:</p>
 <div class="math notranslate nohighlight" id="equation-transdiff">
-<span class="eqno">(21.18)<a class="headerlink" href="#equation-transdiff" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.18)<a class="headerlink" href="#equation-transdiff" title="Link to this equation">#</a></span>\[
     d\hat{t} = \frac{ d\hat{t}_{j} }{d\tau^\prime}\, d \tau^\prime  =
          \exp\left( -(\tau_{\lambda T} -\tau^\prime)\right ) d \tau^\prime = \hat{t}\, d\tau^\prime
     \]</div>
-<p>So insert <a class="reference internal" href="#equation-transdiff">(21.18)</a> into <a class="reference internal" href="#equation-calc3">(21.17)</a> to get</p>
+<p>So insert <a class="reference internal" href="#equation-transdiff">(22.18)</a> into <a class="reference internal" href="#equation-calc3">(22.17)</a> to get</p>
 <div class="math notranslate nohighlight" id="equation-calc4">
-<span class="eqno">(21.19)<a class="headerlink" href="#equation-calc4" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.19)<a class="headerlink" href="#equation-calc4" title="Link to this equation">#</a></span>\[
     L_\lambda(\tau_{\lambda T})= B_\lambda(T_{skin}) \exp(-\tau_{\lambda T}) +    \int_0^{\tau_{\lambda T}} B_\lambda(T)\, d\hat{t}
     \]</div>
-<p>Which is just the calculus version of <a class="reference internal" href="#equation-stull3">(21.16)</a>. The <span class="math notranslate nohighlight">\(\Delta \hat{t}\)</span> term in <a class="reference internal" href="#equation-stull3">(21.16)</a> is called the “weighting function”, defined by</p>
+<p>Which is just the calculus version of <a class="reference internal" href="#equation-stull3">(22.16)</a>. The <span class="math notranslate nohighlight">\(\Delta \hat{t}\)</span> term in <a class="reference internal" href="#equation-stull3">(22.16)</a> is called the “weighting function”, defined by</p>
 <div class="math notranslate nohighlight" id="equation-weights">
-<span class="eqno">(21.20)<a class="headerlink" href="#equation-weights" title="Link to this equation">#</a></span>\[
+<span class="eqno">(22.20)<a class="headerlink" href="#equation-weights" title="Link to this equation">#</a></span>\[
     \Delta \hat{t} = \exp\left( -(\tau_{\lambda T} -\tau^\prime) \right )  \Delta \tau^\prime
     \]</div>
 <ul class="simple">
-<li><p><strong>Question</strong>: notice that as we make <span class="math notranslate nohighlight">\(\Delta \tau^\prime\)</span> thicker in <a class="reference internal" href="#equation-weights">(21.20)</a> the transmissivity <span class="math notranslate nohighlight">\(\Delta \hat{t}\)</span> becomes larger – why does this make sense?</p></li>
+<li><p><strong>Question</strong>: notice that as we make <span class="math notranslate nohighlight">\(\Delta \tau^\prime\)</span> thicker in <a class="reference internal" href="#equation-weights">(22.20)</a> the transmissivity <span class="math notranslate nohighlight">\(\Delta \hat{t}\)</span> becomes larger – why does this make sense?</p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="why-do-we-care">
-<h2><span class="section-number">21.8. </span>Why do we care?<a class="headerlink" href="#why-do-we-care" title="Link to this heading">#</a></h2>
-<p>We care because if we know <em>T(z)</em> and <span class="math notranslate nohighlight">\(\tau(z)\)</span> as a function of height we can use <a class="reference internal" href="#equation-weights">(21.20)</a> to calculate the weighting function <span class="math notranslate nohighlight">\(\Delta \hat{t}_\lambda\)</span> and find the radiance <span class="math notranslate nohighlight">\(L_\lambda\)</span> at the satellite using <a class="reference internal" href="#equation-stull3">(21.16)</a>. Alternatively, if we measure <span class="math notranslate nohighlight">\(L_\lambda\)</span> from satellites we can say something about <em>T(z)</em> and <span class="math notranslate nohighlight">\(\tau(z)\)</span></p>
+<h2><span class="section-number">22.8. </span>Why do we care?<a class="headerlink" href="#why-do-we-care" title="Link to this heading">#</a></h2>
+<p>We care because if we know <em>T(z)</em> and <span class="math notranslate nohighlight">\(\tau(z)\)</span> as a function of height we can use <a class="reference internal" href="#equation-weights">(22.20)</a> to calculate the weighting function <span class="math notranslate nohighlight">\(\Delta \hat{t}_\lambda\)</span> and find the radiance <span class="math notranslate nohighlight">\(L_\lambda\)</span> at the satellite using <a class="reference internal" href="#equation-stull3">(22.16)</a>. Alternatively, if we measure <span class="math notranslate nohighlight">\(L_\lambda\)</span> from satellites we can say something about <em>T(z)</em> and <span class="math notranslate nohighlight">\(\tau(z)\)</span></p>
 <div class="docutils">
 </div>
 <div class="docutils">
@@ -787,8 +792,17 @@ the layers are thin enough so that we can make the approximation that:</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">20. </span>Getting lat,lon from row, column</p>
+        <p class="prev-next-title"><span class="section-number">21. </span>Getting lat,lon from row, column</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="add_palette.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">23. </span>Adding a palette to an axis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -806,14 +820,14 @@ the layers are thin enough so that we can make the approximation that:</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">21.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beer-s-law">21.2. Beer’s law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kirchoff-s-law">21.3. Kirchoff’s Law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-emission-to-beer-s-law">21.4. Adding emission to Beer’s law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-changing-with-height">21.5. Temperature changing with height</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-3-getting-to-stull-83">21.6. Getting to Stull 8.3 {#getting-to-stull-83}</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-4-getting-to-stull-84">21.7. Getting to Stull 8.4 {#getting-to-stull-84}</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-care">21.8. Why do we care?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">22.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beer-s-law">22.2. Beer’s law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kirchoff-s-law">22.3. Kirchoff’s Law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-emission-to-beer-s-law">22.4. Adding emission to Beer’s law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-changing-with-height">22.5. Temperature changing with height</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-3-getting-to-stull-83">22.6. Getting to Stull 8.3 {#getting-to-stull-83}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-4-getting-to-stull-84">22.7. Getting to Stull 8.4 {#getting-to-stull-84}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-care">22.8. Why do we care?</a></li>
 </ul>
   </nav></div>
 

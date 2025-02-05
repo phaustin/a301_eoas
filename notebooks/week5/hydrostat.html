@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>21. Getting lat,lon from row, column &#8212; ATSC 301</title>
+    <title>25. Hydrostatic balance &#8212; ATSC 301</title>
   
   
   
@@ -57,12 +57,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week5/rowcol2latlon';</script>
-    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week5/rowcol2latlon.html" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week5/hydrostat';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week5/hydrostat.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="22. The Schwartzchild Equation" href="schwartz.html" />
-    <link rel="prev" title="20. Assignment 2: solutions part B" href="../../solutions/assign2_solutionsB.html" />
+    <link rel="prev" title="24. Assignment 2: solutions part C" href="../../solutions/assign2_solutionsC.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -231,11 +232,11 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">19. Assignment 4</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">20. Assignment 2: solutions part B</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">21. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rowcol2latlon.html">21. Getting lat,lon from row, column</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schwartz.html">22. The Schwartzchild Equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="add_palette.html">23. Adding a palette to an axis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">24. Assignment 2: solutions part C</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydrostat.html">25. Hydrostatic balance</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">25. Hydrostatic balance</a></li>
 </ul>
 
     </div>
@@ -290,7 +291,7 @@
       
       
       
-      <li><a href="../../_sources/notebooks/week5/rowcol2latlon.md" target="_blank"
+      <li><a href="../../_sources/notebooks/week5/hydrostat.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -374,7 +375,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Getting lat,lon from row, column</h1>
+    <h1>Hydrostatic balance</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -384,13 +385,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">21.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transforming-lat-lon-to-utm">21.2. transforming lat/lon to utm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doing-the-inverse-utm-to-lat-lon">21.3. doing the inverse: utm to lat/lon</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-this-in-a-function">21.3.1. wrap this in a function</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-gotchas-to-watch-out-for">21.4. Two gotchas to watch out for</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-heights">25.1. Scale Heights</a></li>
 </ul>
             </nav>
         </div>
@@ -402,177 +397,121 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="getting-lat-lon-from-row-column">
-<span id="week5-rowcol2latlon"></span><h1><span class="section-number">21. </span>Getting lat,lon from row, column<a class="headerlink" href="#getting-lat-lon-from-row-column" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Download rowcol2latlon.ipynb from the <a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing">week5 folder</a></p></li>
-</ul>
-<section id="introduction">
-<h2><span class="section-number">21.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>The function <code class="docutils literal notranslate"><span class="pre">rowcol2latlon</span></code> defined below takes the name of a tiffile and a row,column pair
-for the raster and returns the latitude and longitude of that pixel.  It uses the
-<a class="reference external" href="https://pyproj4.github.io/pyproj/stable/api/crs/crs.html#id2">pyproj.CRS</a> object to hold the coordinate reference system and the <a class="reference external" href="https://pyproj4.github.io/pyproj/stable/api/transformer.html#pyproj.transformer.Transformer">pyproj.Transformer</a>
-object to do
-the transform.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pyproj</span><span class="w"> </span><span class="kn">import</span> <span class="n">Transformer</span><span class="p">,</span> <span class="n">CRS</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;repos/a301/satdata/landsat&#39;</span>
-<span class="n">tif_filename</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s1">&#39;vancouver&#39;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;week4_clipped_TIRS2.tif&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tif_filename</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tif_filename=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/week4_clipped_TIRS2.tif&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="transforming-lat-lon-to-utm">
-<h2><span class="section-number">21.2. </span>transforming lat/lon to utm<a class="headerlink" href="#transforming-lat-lon-to-utm" title="Link to this heading">#</a></h2>
-<p>Here is how we did this using the code from - <a class="reference internal" href="../week3/zoom_landsat.html#week3-image-zoom"><span class="std std-ref">Zooming an image</span></a>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># zone 10 UTM</span>
-<span class="n">proj_code</span> <span class="o">=</span> <span class="mi">32610</span>
-<span class="c1">#</span>
-<span class="c1"># we want to go from x,y in utm zone 10 to lat,lon</span>
-<span class="c1"># first, get x,y from lat, lon, the show you can reverse that</span>
-<span class="c1">#</span>
-<span class="n">p_utm</span> <span class="o">=</span> <span class="n">CRS</span><span class="o">.</span><span class="n">from_epsg</span><span class="p">(</span><span class="n">proj_code</span><span class="p">)</span>
-<span class="n">p_latlon</span> <span class="o">=</span> <span class="n">CRS</span><span class="o">.</span><span class="n">from_epsg</span><span class="p">(</span><span class="mi">4326</span><span class="p">)</span>
-<span class="n">transform</span> <span class="o">=</span> <span class="n">Transformer</span><span class="o">.</span><span class="n">from_crs</span><span class="p">(</span><span class="n">p_latlon</span><span class="p">,</span> <span class="n">p_utm</span><span class="p">)</span>
-<span class="n">ubc_lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">123.2460</span> 
-<span class="n">ubc_lat</span> <span class="o">=</span> <span class="mf">49.2606</span>
-<span class="n">ubc_x</span><span class="p">,</span> <span class="n">ubc_y</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ubc_lat</span><span class="p">,</span> <span class="n">ubc_lon</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ubc_x</span><span class="si">=:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m, </span><span class="si">{</span><span class="n">ubc_y</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ubc_x=482101.01 m, 5456455.22
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#dir(transform)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transform</span><span class="o">.</span><span class="n">description</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;UTM zone 10N&#39;
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="doing-the-inverse-utm-to-lat-lon">
-<h2><span class="section-number">21.3. </span>doing the inverse: utm to lat/lon<a class="headerlink" href="#doing-the-inverse-utm-to-lat-lon" title="Link to this heading">#</a></h2>
-<p>To go the other direction, just reverse the parameters in the Transformer call</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># zone 10 UTM</span>
-<span class="n">proj_code</span> <span class="o">=</span> <span class="mi">32610</span>
-<span class="c1">#</span>
-<span class="c1"># we want to go from x,y in utm zone 10 to lat,lon</span>
-<span class="c1"># first, get x,y from lat, lon, the show you can reverse that</span>
-<span class="c1">#</span>
-<span class="n">p_utm</span> <span class="o">=</span> <span class="n">CRS</span><span class="o">.</span><span class="n">from_epsg</span><span class="p">(</span><span class="n">proj_code</span><span class="p">)</span>
-<span class="n">p_latlon</span> <span class="o">=</span> <span class="n">CRS</span><span class="o">.</span><span class="n">from_epsg</span><span class="p">(</span><span class="mi">4326</span><span class="p">)</span>
-<span class="n">transform</span> <span class="o">=</span> <span class="n">Transformer</span><span class="o">.</span><span class="n">from_crs</span><span class="p">(</span><span class="n">p_utm</span><span class="p">,</span> <span class="n">p_latlon</span><span class="p">)</span>
-<span class="n">ubc_lat</span><span class="p">,</span> <span class="n">ubc_lon</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ubc_x</span><span class="p">,</span> <span class="n">ubc_y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ubc_lat</span><span class="si">=:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m, </span><span class="si">{</span><span class="n">ubc_lon</span><span class="si">=:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ubc_lat=49.26 m, ubc_lon=-123.25 m
-</pre></div>
-</div>
-</div>
-</div>
-<section id="wrap-this-in-a-function">
-<h3><span class="section-number">21.3.1. </span>wrap this in a function<a class="headerlink" href="#wrap-this-in-a-function" title="Link to this heading">#</a></h3>
-<p>Find the lat/lon of the upper left corner with row=0, col=0</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rowcol2latlon</span><span class="p">(</span><span class="n">tiffile</span><span class="p">,</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    return the latitude and longitude of a row and column in a geotif</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-
-<span class="sd">    tiffile: Path object</span>
-<span class="sd">        path to a clipped tiffile</span>
-<span class="sd">    row: float</span>
-<span class="sd">       row of the pixel</span>
-<span class="sd">    col: float</span>
-<span class="sd">       column of the pixel</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-
-<span class="sd">    (lon, lat):  (float, float)</span>
-<span class="sd">       longitude (deg east) and latitude (deg north) on</span>
-<span class="sd">       a WGS84 datum</span>
-<span class="sd">    </span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">has_file</span> <span class="o">=</span> <span class="n">tiffile</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">has_file</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;can&#39;t find </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">, something went wrong above&quot;</span><span class="p">)</span> 
-    <span class="n">the_band</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">tif_filename</span><span class="p">,</span><span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">epsg_code</span> <span class="o">=</span> <span class="n">the_band</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">to_epsg</span><span class="p">()</span>
-    <span class="n">p_utm</span> <span class="o">=</span> <span class="n">CRS</span><span class="o">.</span><span class="n">from_epsg</span><span class="p">(</span><span class="n">epsg_code</span><span class="p">)</span>
-    <span class="n">p_latlon</span> <span class="o">=</span> <span class="n">CRS</span><span class="o">.</span><span class="n">from_epsg</span><span class="p">(</span><span class="mi">4326</span><span class="p">)</span>
-    <span class="n">affine_transform</span> <span class="o">=</span> <span class="n">the_band</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="p">()</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">affine_transform</span><span class="o">*</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span>
-    <span class="n">crs_transform</span> <span class="o">=</span> <span class="n">Transformer</span><span class="o">.</span><span class="n">from_crs</span><span class="p">(</span><span class="n">p_utm</span><span class="p">,</span> <span class="n">p_latlon</span><span class="p">)</span>
-    <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> 
-    <span class="k">return</span> <span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
-
-<span class="n">lon</span><span class="p">,</span> <span class="n">lat</span> <span class="o">=</span> <span class="n">rowcol2latlon</span><span class="p">(</span><span class="n">tif_filename</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lon</span><span class="si">=:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> deg,</span><span class="si">{</span><span class="n">lat</span><span class="si">=:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> deg&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lon=-123.3 deg,lat=49.3 deg
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="two-gotchas-to-watch-out-for">
-<h2><span class="section-number">21.4. </span>Two gotchas to watch out for<a class="headerlink" href="#two-gotchas-to-watch-out-for" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Don’t confuse the pyproj transformer.Transform with
-the affine transform – two completely different things</p></li>
-<li><p>pyproj has an alternate way of doing coordinate transforms using
-a Proj object and a transform (lower case t) method.  These are
-in lots of examples on the web, but have been superseded by
-Transformer.transform</p></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="hydrostatic-balance">
+<span id="hydro"></span><h1><span class="section-number">25. </span>Hydrostatic balance<a class="headerlink" href="#hydrostatic-balance" title="Link to this heading">#</a></h1>
+<p>In order to calculate the optical depth we need <em>n</em>, the number concentration of molecules at a particular height in the atmosphere. This means that we need to know the density as a function of height.</p>
+<p>At large scales it is a very good approximation to assume
+<em>hydrostatic balance</em>, which is the statement that the vertical
+pressure differential across a layer provides exactly the amount of
+force necessary to balance gravity, so the atmosphere is not rising or sinking:</p>
+<figure class="align-default" id="hydrofig">
+<a class="reference internal image-reference" href="../../_images/hydrostat.png"><img alt="../../_images/hydrostat.png" src="../../_images/hydrostat.png" style="width: 443.0px; height: 352.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 25.1 </span><span class="caption-text">Hydrostatic balance for a 1 <span class="math notranslate nohighlight">\(m^2\)</span> cross section of a layer</span><a class="headerlink" href="#hydrofig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In symbols, the balance shown by <a class="reference internal" href="#hydrofig"><span class="std std-numref">Fig. 25.1</span></a> implies that:</p>
+<div class="math notranslate nohighlight" id="equation-hydro-eq">
+<span class="eqno">(25.1)<a class="headerlink" href="#equation-hydro-eq" title="Link to this equation">#</a></span>\[
+dp = - \rho g dz
+\]</div>
+<p><strong>Question: is this the same pressure p as the local pressure given by
+the equation of state</strong>: <span class="math notranslate nohighlight">\(p=\rho R_d T\)</span>?</p>
+<section id="scale-heights">
+<h2><span class="section-number">25.1. </span>Scale Heights<a class="headerlink" href="#scale-heights" title="Link to this heading">#</a></h2>
+<p>In Chapter 1 (p. 8) Roland introduces the idea of a characteristic
+length scale for the variation of pressure in the atmosphere, and on page 14 he defines
+the equation of state for dry air. To get weighting functions for our
+sounding retrievals we need to now the optical depth <span class="math notranslate nohighlight">\(\tau\)</span> vs. height,
+which means that we need to know the gas density <span class="math notranslate nohighlight">\(\rho\)</span> as a function of height.
+Below I show how to get <span class="math notranslate nohighlight">\(\rho(z)\)</span> for typical atmospheric conditions.</p>
+<div class="math notranslate nohighlight">
+\[
+p = p_0 \exp \left ( \frac{-z}{H_p} \right )
+\]</div>
+<p>and on page</p>
+<p>In words – <span class="math notranslate nohighlight">\(H_p\)</span> gives the height at which gravity wins out over the kinetic energy of the air molecules – warmer atmospheres take longer to decrease their pressure by a factor of <span class="math notranslate nohighlight">\(\exp(-H_p/H_p) = \exp(-1)\)</span> (the e-folding height) because the air molecules have more energy to travel higher.</p>
+<ol class="arabic">
+<li><p>Do pressure first: Rewrite <a class="reference internal" href="#equation-hydro-eq">(25.1)</a> using the ideal gas law:</p>
+<div class="math notranslate nohighlight" id="equation-hydro1">
+<span class="eqno">(25.2)<a class="headerlink" href="#equation-hydro1" title="Link to this equation">#</a></span>\[
+   dp = - \rho g dz = - \frac{p}{R_d T}  g dz = \frac{p}{H_p}
+   \]</div>
+<p>where <span class="math notranslate nohighlight">\(H_p=R_d T/g\)</span> is the pressure scale height.</p>
+<div class="math notranslate nohighlight">
+\[
+   d\ln p = - \frac{dz }{H_p}
+   \]</div>
+<div class="math notranslate nohighlight">
+\[
+   \int_{p_0}^{p}\!\,d \ln p =  - \int_{0 }^{z}\!\frac{1}{H_p} dz^\prime
+   \]</div>
+<p>Since temperature (and gravity) are changing with height, we need to know profiles of g(z) and T(z)
+to go any further. If we don’t have those profiles, then a useful approximation is to define a vertically averaged <span class="math notranslate nohighlight">\(H_p\)</span>, since
+the average involves a large mass of air (about 10 metric tons/cubic meter), it will vary more slowly than the temperature at any one level on any given day, and we can still get a useful profile of pressure vs. height without having a specific sounding:</p>
+<div class="math notranslate nohighlight" id="equation-pressavg">
+<span class="eqno">(25.3)<a class="headerlink" href="#equation-pressavg" title="Link to this equation">#</a></span>\[
+   \frac{ 1}{\overline{H_p}} = \overline{ \left ( \frac{1 }{H_p} \right )} = \frac{\int_{0 }^{z}\!\frac{1}{H_p} dz^\prime  }{z-0}
+   \]</div>
+<p>Now we can replace the z integral by the average:</p>
+<div class="math notranslate nohighlight">
+\[
+   \int_{p_0}^{p}\!\,d \ln p =  - \int_{0 }^{z}\!\frac{1}{H_p} dz^\prime = -\frac{z}{\overline{H_p}}
+   \]</div>
+<p>and integrating the left-hand side:</p>
+<div class="math notranslate nohighlight">
+\[
+   \ln p/p_0 = - \frac{z }{\overline{H_p}}
+   \]</div>
+<p>Taking exp of both sides gives the pressure with height:</p>
+<div class="math notranslate nohighlight">
+\[
+   p = p_0 \exp \left ( - \frac{z }{\overline H_p} \right )
+   \]</div>
+<p>Values for <span class="math notranslate nohighlight">\(\overline{H_p}\)</span> are relatively constant for a particular climate regime, like midlatitude winter.</p>
+</li>
+<li><p>Now repeat this for density <span class="math notranslate nohighlight">\(\rho\)</span>. We need to use the chain rule for the equation of state:</p>
+<div class="math notranslate nohighlight">
+\[
+   \frac{dp }{dz}  = \frac{d }{dz}  (\rho R_d T) = R_d \left ( \frac{d\rho }{dz} T + \rho \frac{ dT}{dz} \right )  = - \rho g
+   \]</div>
+<div class="math notranslate nohighlight">
+\[
+   \frac{d\rho }{dz}  = -\frac{\rho }{T}  \left ( \frac{g }{R_d} + \frac{ dT}{dz} \right ) = - \rho \left ( \frac{1 }{H} +  \frac{1 }{T} \frac{dT }{dz} \right ) = - \frac{\rho}{H_\rho}
+   \]</div>
+<p>Bottom line – with this definition of the density scale height we’ve got an equation that looks like <a class="reference internal" href="#equation-hydro1">(25.2)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-densavg">
+<span class="eqno">(25.4)<a class="headerlink" href="#equation-densavg" title="Link to this equation">#</a></span>\[
+   \frac{d\rho }{\rho} = - \left ( \frac{1 }{H} +
+                      \frac{1 }{T} \frac{dT }{dz} \right ) dz = - \frac{dz }{H_\rho}
+   \]</div>
+<p>Pull the same trick for the vertical average:</p>
+<div class="math notranslate nohighlight" id="equation-denstrick">
+<span class="eqno">(25.5)<a class="headerlink" href="#equation-denstrick" title="Link to this equation">#</a></span>\[
+   \frac{ 1}{\overline{H_\rho}} = \overline{ \left ( \frac{1 }{H_\rho} \right )} = \frac{\int_{0 }^{z}\!\frac{1}{H_\rho} dz^\prime  }{z-0}
+   \]</div>
+<p>We use this vertical average in exactly the same way as before to
+get the density profile:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \begin{aligned}
+     \ln \rho/\rho_0 =&amp; - \frac{z }{\overline{H_\rho }} \\
+     \rho =&amp; \rho_0 \exp \left ( - \frac{z }{\overline H_\rho} \right )\end{aligned}
+   \end{split}\]</div>
+<p>In the hydrostatic.ipynb notebook I show that the midlatitude summer sounding gives
+<span class="math notranslate nohighlight">\(H_p\approx7.8\)</span> km and <span class="math notranslate nohighlight">\(H_\rho \approx 9.5\)</span> km. We can use the equations:</p>
+<div class="math notranslate nohighlight">
+\[
+   p = p_o \exp ( -z/H_p)
+   \]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+   \rho = \rho_0 \exp ( -z/H_\rho)
+   \]</div>
+<p>To calculate the optical depth for various atmospheric conditions.</p>
+</li>
+</ol>
 </section>
 </section>
 
@@ -607,22 +546,13 @@ Transformer.transform</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../solutions/assign2_solutionsB.html"
+       href="../../solutions/assign2_solutionsC.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">20. </span>Assignment 2: solutions part B</p>
+        <p class="prev-next-title"><span class="section-number">24. </span>Assignment 2: solutions part C</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="schwartz.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">22. </span>The Schwartzchild Equation</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -640,13 +570,7 @@ Transformer.transform</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">21.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transforming-lat-lon-to-utm">21.2. transforming lat/lon to utm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doing-the-inverse-utm-to-lat-lon">21.3. doing the inverse: utm to lat/lon</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-this-in-a-function">21.3.1. wrap this in a function</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-gotchas-to-watch-out-for">21.4. Two gotchas to watch out for</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-heights">25.1. Scale Heights</a></li>
 </ul>
   </nav></div>
 
