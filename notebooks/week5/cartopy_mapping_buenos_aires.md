@@ -17,11 +17,22 @@ kernelspec:
 (sec:bacartopy)=
 # Cartopy mapping Buenos Aires
 
-In order to run this notebook go to 
+In order to run this notebook go to [the download folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw) and get
+
+- week5/cartopy_mapping_buenos_aires.ipynb
+- week5/a301_lib.py
+- buenos_aires/*B02.tif
+
+the band2 (blue) tif needs to be in `~/repos/a301/satdata/landsat/buenos_aires/.`
 
 ## Introduction
 
+This notebook shows how to turn a Landsat Zone North UTM crs into a Zone South crs so that we can use cartopy.  Basically, all we need to do is to add a "false northing" of 10,000,000 meters to the upper left corner of the raster image, as it is defined in the affine transform that is stored in the geotiff metadata.  Once we have the Zone 21S transform, we can use it
+to find the image extent that cartopy needs to plot the raster along with the coastline.
 
+## Example
+
+Use Buenos Aires as a specifc test.
 
 Google says Buenos Aires in in UTM zone 21 South, with an epgs code of 32721
 
@@ -39,13 +50,13 @@ Landsat browse image of Buenos Aires
 
 +++
 
-## Set up the UTM CRS for Zone 21S
+## Import libraries
 
 +++
 
-The file `a301_lib.py` is a new python library containing course code.
-To start it contains `rowcol2latlon` from {ref}`week5:rowcol2latlon` and
-`make_pal` from {ref}`week5:add_palette`
+The file `a301_lib.py` is a new python module containing course code.
+For week 5 it  contains `rowcol2latlon` from {ref}`week5:rowcol2latlon` and
+`make_pal` from {ref}`week5:add_palette`.  We use the `make_pal` function below
 
 ```{code-cell} ipython3
 :trusted: true
@@ -65,10 +76,31 @@ import affine
 
 from matplotlib import pyplot as plt
 from matplotlib.colors import Normalize
+import warnings
+```
+
+silence weird cartopy geojson warnings  (doesn't seem to help)
+
+```{code-cell} ipython3
+:trusted: true
+
+warnings.filterwarnings("ignore")
+```
+
+## Set up the UTM CRS for Zone 21S
+
++++
+
+Here is the center of buenos aires
+
+```{code-cell} ipython3
+:trusted: true
 
 ba_lat = -34.6037 # deg N
 ba_lon = -58.3816 # deg E
 ```
+
+### The epsg code for Zone 21S is 32721
 
 ```{code-cell} ipython3
 :trusted: true
@@ -81,7 +113,7 @@ print(f"{ba_x=:.0f}, {ba_yS=:.0f}")
 
 ## Repeat this for UTM Zone 21N
 
-This has and epsg code of 32621
+This has an epsg code of 32621
 
 ```{code-cell} ipython3
 :trusted: true
@@ -104,27 +136,53 @@ You can see this when you subtract the y for Buenos Aires in 201N from the y in 
 print(f"false northing: {(ba_yS - ba_yN)=:.0f} meters")
 ```
 
-### The zone ends at 84 deg S
+### Zone 21S ends at 80 deg S
 
-First 21N
+see the [epsg website](https://epsg.io/32721)
+
+What is the most southern y point in Zone 21N  coordinates?
+
+Note that the x coords are identical in both projections, but
+
+sp_yS - sp_yN = 10,000,000
 
 ```{code-cell} ipython3
 :trusted: true
 
 sp_lon = -57. # zone 21 central meridian 57 deg W
-sp_lat = -84  #farthest south point
+sp_lat = -80  #farthest south point
 sp_x, sp_yN = the_crsN.transform_point(sp_lon, sp_lat, geodetic)
 print(f"{(sp_x,sp_yN)=}")
 ```
 
-### Now 21S
+### How about Zone 21S
 
 ```{code-cell} ipython3
 :trusted: true
 
 sp_x, sp_yS = the_crsS.transform_point(sp_lon, sp_lat, geodetic)
 print(f"{(sp_x,sp_yS)=}")
+print(f"{(sp_yS - sp_yN)=}")
 ```
+
+### How about the equator?
+
+```{code-cell} ipython3
+:trusted: true
+
+eq_lon = -57. # zone 21 central meridian 57 deg W
+eq_lat = 0  #farthest north point
+eq_x, eq_yS = the_crsS.transform_point(eq_lon, eq_lat, geodetic)
+print(f"{(eq_x,eq_yS)=}")
+eq_x, eq_yN = the_crsN.transform_point(eq_lon, eq_lat, geodetic)
+print(f"{(eq_x,eq_yN)=}")
+```
+
+So there's a 10 million meter discontinuity when you change zones at the equator.  NASA
+decided this was a problem, and did away with the false northing, permitting negative y values for Zone 21N.  Cartopy disagreed, and
+requires positive y values in each utm zone.
+
++++
 
 ## Draw a Buenos Aires map with the_CRSS south CRS
 

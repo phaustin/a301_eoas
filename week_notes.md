@@ -260,7 +260,6 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 
 Topics:
 
-- Go over Wallace and Hobbs Figure 4.24 -- Beer's law
 - {ref}`assign4` due midnight next Wednesday
 - {ref}`assign2c_solution`
 - In-class: {ref}`mid-review1` problem A.1 and A.2
@@ -268,3 +267,16 @@ Topics:
 - {ref}`hydro`
 - {ref}`week5:add_palette`
     
+##  Day 15 Friday
+
+- [Environment Canada Meteorology Scholarships](https://portal.scholarshippartners.ca/welcome/Meteorology-Awards/)
+- {ref}`sec:bacartopy`
+- Introduce {ref}`mid-review2`
+- Go over Wallace and Hobbs Figure 4.24 -- Beer's law
+- Continue with {ref}`week5-schwartz`
+
+### Do for Monday
+
+- Work on {ref}`assign4` and other midterm practice problems
+- Upload assignment 3 fixed images if you were having cartopy problems
+
