@@ -271,6 +271,9 @@ hls_band.plot.hist();
 
 ### Change the transform by adding the false northing
 
+We just need to add the northing to the f component and put the pieces
+back together.
+
 ```{code-cell} ipython3
 :trusted: true
 

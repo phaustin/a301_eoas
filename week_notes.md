@@ -267,7 +267,7 @@ Topics:
 - {ref}`hydro`
 - {ref}`week5:add_palette`
     
-##  Day 15 Friday
+###  Day 15 Friday
 
 - [Environment Canada Meteorology Scholarships](https://portal.scholarshippartners.ca/welcome/Meteorology-Awards/)
 - {ref}`sec:bacartopy`
@@ -275,7 +275,7 @@ Topics:
 - Go over Wallace and Hobbs Figure 4.24 -- Beer's law
 - Continue with {ref}`week5-schwartz`
 
-### Do for Monday
+#### Do for Monday
 
 - Work on {ref}`assign4` and other midterm practice problems
 - Upload assignment 3 fixed images if you were having cartopy problems
