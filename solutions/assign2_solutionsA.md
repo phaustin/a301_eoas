@@ -282,7 +282,7 @@ Solving for $T_s$:
 
 
 $$
-T_s= T_E \left(\frac{1.77}{4 \pi}\right)^{1 / 4}
+T_s= T_E \left(\frac{1.87}{4 \pi}\right)^{1 / 4}
 $$
 
 ```{code-cell} ipython3

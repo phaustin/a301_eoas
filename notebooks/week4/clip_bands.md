@@ -137,6 +137,7 @@ Next we want to get the affine transform from week 3 clipped band file, so we ca
 
 +++
 
+(bounding_box)=
 ### Create the bounding box using the upper left and lower right corners
 
 This should be identical to the bounding box we found in {ref}`zoom_landsat_array`, which was:

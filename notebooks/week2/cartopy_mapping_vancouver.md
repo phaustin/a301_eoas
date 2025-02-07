@@ -17,45 +17,15 @@ kernelspec:
 (sec:vancartopy)=
 # Mapping Vancouver with cartopy 
 
-- Download cartopy_mapping_vancouver.ipynb from the [week2 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
+- Download cartopy_mapping_buenos_aires.ipynb from the [week5 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
 
-The pamphlet: 
-
-- [Understanding map projections](https://drive.google.com/file/d/1araPnZwMui9tBTPyLO_UHVC2DDEIdZ0p/view?usp=sharing)
-
-   Introduces geographic coordinate systems in Chapter 1.  They solve the problem of how to locate yourself on the earth's surface in three dimensions.  They specify an angular measure of units, a prime meridian, a spheroid and a datam (see chapter 1).
-
-## Basic points
-
-We need to define two fundamental things:
-
-1.  A "[datum](https://www.maptools.com/tutorials/map_datum)"  (called a "globe" in cartopy) that gives the three dimensional shape of the earth (and other things)
-
-1.  A "[projection](https://en.wikipedia.org/wiki/List_of_map_projections)" that maps a point on the earth's surface onto an x-y coordinate system to make a 2-dimensional plot.
-
-1.  Our mapping module is called [cartopy](http://scitools.org.uk/cartopy/docs/latest/index.html).  Internally, it uses projection code in [pyproj](https://github.com/jswhit/pyproj), which in turn is a wrapper around C code called
-[proj4](https://proj4.org/usage/projections.html)
-
-## An example
-
-The [Equal Area Scalable Earth Grid](https://nsidc.org/data/ease)
-
-1. Datum: The original EASE grid assumed a spherical earth with a radius of 6371.228 km.  [EASE-2](https://nsidc.org/data/ease/versions.html) uses a datum called [WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)
-
-1. Both EASE and EASE-2 use the [Lambert Azimuthal Equal Area](https://en.wikipedia.org/wiki/Lambert_azimuthal_equal-area_projection) or LAEA
-
-## Map projections
-
-Chapter 2 describes map projections.  We will generally be using the LAEA projection for individual Modis granules.
-
-### plotting Vancouver on a map
-
-
-* Step 1: Use [cartopy](http://scitools.org.uk/cartopy/docs/latest/index.html) to make a LAEA map of BC including Vancouver.
 
 +++
 
-**This cell sets up the datum and the LAEA projection, with the tangent point at the North Pole and the central meridian at -90 degrees west of Greenwich**
+## Create the UTM zone 21S CRS
+
+Google says that Buenos Aires in in zone 22 South, which has an epsg code of 32721.
+
 
 ```{code-cell} ipython3
 :trusted: true
@@ -63,33 +33,6 @@ Chapter 2 describes map projections.  We will generally be using the LAEA projec
 import cartopy.crs as ccrs
 import matplotlib.pyplot as plt
 import cartopy
-#
-# Datum: radius of the earth in meters
-#
-radius = 6_371_228
-
-#
-# vancouver longitude, latitude indegrees
-#
-van_lon, van_lat = [-123.1207, 49.2827]
-#
-# use a simple sphere as the datum
-#
-globe = ccrs.Globe(ellipse=None, semimajor_axis=radius, semiminor_axis=radius)
-#
-# set up
-#
-projection = ccrs.LambertAzimuthalEqualArea(
-    central_latitude=90, central_longitude=-90, globe=globe
-)
-print(f"pro4 program params: {projection.proj4_params}")
-type(projection)
-```
-
-```{code-cell} ipython3
-:trusted: true
-
-
 ```
 
 **Use matplotlib to draw the map and add a coastline**
