@@ -107,7 +107,7 @@ $$
 
 i.e. "good absorbers are good emitters" or Kirchoff's Law.
 
-To see why this has to be true, consider {numref}`kirchoff`, where a blackbody (surface A) is facing a surface B at the same temperature, with absorptivity and emissivity that violate Kirchoff's law (there is a vacuum between the two plates). Neither surface is transmitting, so surface B is absorbing $0.6 B_\lambda(T)$ emitted by surface A and emitting $0.7 B_\lambda(T)$ on its own. Because it is emitting more than it's absorbed, it has to be cooling, but according to the second law of thermodynamics, objects at the same temperature can't spontaneously change their temperature without doing work. So we know that $a_\lambda = e_\lambda$.
+To see why this has to be true, consider {numref}`week3:kirchoff`, where a blackbody (surface A) is facing a surface B at the same temperature, with absorptivity and emissivity that violate Kirchoff's law (there is a vacuum between the two plates). Neither surface is transmitting, so surface B is absorbing $0.6 B_\lambda(T)$ emitted by surface A and emitting $0.7 B_\lambda(T)$ on its own. Because it is emitting more than it's absorbed, it has to be cooling, but according to the second law of thermodynamics, objects at the same temperature can't spontaneously change their temperature without doing work. So we know that $a_\lambda = e_\lambda$.
 
 :::{figure} figures/kirchoff.png
 :name: kirchoff

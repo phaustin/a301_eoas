@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -738,7 +738,7 @@ band_name=&#39;Cirrus&#39;
 <h2><span class="section-number">17.5. </span>Read the clipped week3 band 5 file<a class="headerlink" href="#read-the-clipped-week3-band-5-file" title="Link to this heading">#</a></h2>
 <p>Next we want to get the affine transform from week 3 clipped band file, so we can set the same bounding box for all tifs</p>
 <section id="create-the-bounding-box-using-the-upper-left-and-lower-right-corners">
-<h3><span class="section-number">17.5.1. </span>Create the bounding box using the upper left and lower right corners<a class="headerlink" href="#create-the-bounding-box-using-the-upper-left-and-lower-right-corners" title="Link to this heading">#</a></h3>
+<span id="bounding-box"></span><h3><span class="section-number">17.5.1. </span>Create the bounding box using the upper left and lower right corners<a class="headerlink" href="#create-the-bounding-box-using-the-upper-left-and-lower-right-corners" title="Link to this heading">#</a></h3>
 <p>This should be identical to the bounding box we found in <a class="reference internal" href="../week3/zoom_landsat.html#zoom-landsat-array"><span class="std std-ref">Create the DataArray</span></a>, which was:</p>
 <p><code class="docutils literal notranslate"><span class="pre">bounding_box=(476100.0,</span> <span class="pre">5447460.0,</span> <span class="pre">488100.0,</span> <span class="pre">5465460.0)</span></code></p>
 <p>We can get them using the clipped affine transform.  Again, we search for the file using wild cards.  We just want
