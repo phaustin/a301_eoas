@@ -14,7 +14,6 @@ jupyter:
   nbformat_minor: 5
 ---
 
-
 (week5-schwartz)=
 # The Schwartzchild Equation
 
@@ -46,6 +45,7 @@ If you go back to Stull Chapter 2 you can see that it involves:
 1.  the transmissivity $\hat{t}$ (note that I"ve changed the Stull's notation to
     use *t* instead of $\tau$)
 2.  the emissivity *e*
+
 
 ## Beer\'s law
 
@@ -91,7 +91,7 @@ This is the surface term in {eq}`stull1` above, assuming that the surface is rad
 
 ## Kirchoff's Law
 
-Here\'s a review of {ref}`week3:kirchoff`
+Here's a review of {ref}`week3:kirchoff`
 
 The atmosphere isn't a blackbody, because it's absorptivity $a = 1 - \hat{t}$ (no reflection) is not equal to 1 at most wavelengths. Stull p. 41 defines the emissivity *e* as the fraction of the actual emitted radiance of an object/layer over the radiance a blackbody would emit at the same temperature:
 
@@ -114,6 +114,7 @@ To see why this has to be true, consider {numref}`week3:kirchoff`, where a black
 :scale: 50
 Demonstration of Kirchoff's law
 :::
+
 
 ## Adding emission to Beer's law
 
@@ -154,6 +155,7 @@ Suppose the layer has constant temperature $T_{layer}$, then as usual
 $$
 L_{emission} = e_\lambda B_{\lambda} (T_{layer})
 $$
+
 
 How do we combine this emission with Beer's law to get the total radiance coming through the top of the layer?
 
@@ -217,31 +219,33 @@ Before we integrate the entire atmosphere (with temperature changing with height
           \right ) = - \tau_{\lambda T}
     $$ (constTc)
 
+
+
 Taking the $\exp$ of both sides:
 
-    $$
-    L_\lambda - B_\lambda = (L_{\lambda 0} - B_\lambda) \exp (-\tau_{\lambda T})
-    $$ (constTd)
+$$
+L_\lambda - B_\lambda = (L_{\lambda 0} - B_\lambda) \exp (-\tau_{\lambda T})
+$$ (constTd)
 
-    or rearranging and recognizing that the transmittance is $\hat{t_\lambda} = \exp(-\tau_{\lambda T} )$:
+or rearranging and recognizing that the transmittance is $\hat{t_\lambda} = \exp(-\tau_{\lambda T} )$:
 
-    $$
-    L_\lambda = L_{\lambda 0} \exp( -\tau_{\lambda T}  ) + B_\lambda (T_{layer})(1- \exp( -\tau_{\lambda T} ))
-    $$ (rad_constant)
+$$
+L_\lambda = L_{\lambda 0} \exp( -\tau_{\lambda T}  ) + B_\lambda (T_{layer})(1- \exp( -\tau_{\lambda T} ))
+$$ (rad_constant)
 
-    $$
-    L_\lambda = L_{\lambda 0} \hat{t}_{\lambda}  + B_\lambda (T_{layer})(1- \hat{t}_{\lambda})
-    $$
+$$
+L_\lambda = L_{\lambda 0} \hat{t}_{\lambda}  + B_\lambda (T_{layer})(1- \hat{t}_{\lambda})
+$$
 
-    $$
-    L_\lambda = L_{\lambda 0}  \hat{t}_{\lambda} + B_\lambda (T_{layer})a_\lambda
-    $$
+$$
+L_\lambda = L_{\lambda 0}  \hat{t}_{\lambda} + B_\lambda (T_{layer})a_\lambda
+$$
 
 1.  so bringing in Kirchoff's law, the radiance exiting the top of the isothermal layer of thickness $\Delta \tau$ is:
 
-    $$
-    L_\lambda = L_{\lambda 0}  \hat{t}_{\lambda} + e_\lambda B_\lambda
-    $$
+$$
+L_\lambda = L_{\lambda 0}  \hat{t}_{\lambda} + e_\lambda B_\lambda
+$$
 
 (temp-height)=
 
@@ -336,7 +340,6 @@ $$ (integ1)
     $$
 
 (weightfuns)=
-
 ## Getting to Stull 8.4 {#getting-to-stull-84}
 
 -   Equation 8.4 on p. 225 says:
@@ -378,11 +381,4 @@ $$ (integ1)
 ## Why do we care?
 
 We care because if we know *T(z)* and $\tau(z)$ as a function of height we can use {eq}`weights` to calculate the weighting function $\Delta \hat{t}_\lambda$ and find the radiance $L_\lambda$ at the satellite using {eq}`stull3`. Alternatively, if we measure $L_\lambda$ from satellites we can say something about *T(z)* and $\tau(z)$
-:::
-:::
-:::
 
-::: {#cda124ee-170f-4e54-ab4a-2ac2da295e4c .cell .code}
-``` python
-```
-:::
