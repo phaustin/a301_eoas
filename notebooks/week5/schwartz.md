@@ -53,7 +53,7 @@ How does this equation relate to Beer's law, and how would we use it to calculat
 
 Where does {eq}`stull1` come from? To derive this from the Beer's law we need to include the fact that the atmosphere is emitting as well as absorbing radiation.
 
-Our previous form of Beer's law looks like this [(see beers)](../week2/beers_law.html#diffbeers):
+Our previous form of Beer's law looks like this {ref}`beers-law-diff`
 
 $$
 \frac{dE^\prime}{E^\prime} = \frac{dL^\prime \Delta \omega}{L^\prime \Delta \omega} = d \ln L^\prime = -d (n\,b\,s) = -d \tau^\prime
