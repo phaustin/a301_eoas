@@ -439,7 +439,7 @@ use <em>t</em> instead of <span class="math notranslate nohighlight">\(\tau\)</s
 <h2><span class="section-number">24.2. </span>Beer’s law<a class="headerlink" href="#beer-s-law" title="Link to this heading">#</a></h2>
 <p>How does this equation relate to Beer’s law, and how would we use it to calculate <span class="math notranslate nohighlight">\(L_\lambda\)</span> reaching a satellite for a particular set of surface/atmosphere conditions?</p>
 <p>Where does <a class="reference internal" href="#equation-stull1">(24.1)</a> come from? To derive this from the Beer’s law we need to include the fact that the atmosphere is emitting as well as absorbing radiation.</p>
-<p>Our previous form of Beer’s law looks like this <a class="reference internal" href="#../week2/beers_law.html#diffbeers"><span class="xref myst">(see beers)</span></a>:</p>
+<p>Our previous form of Beer’s law looks like this <a class="reference internal" href="../week1/beers_law.html#beers-law-diff"><span class="std std-ref">Beers law – using differentials</span></a></p>
 <div class="math notranslate nohighlight" id="equation-diffbeers2">
 <span class="eqno">(24.2)<a class="headerlink" href="#equation-diffbeers2" title="Link to this equation">#</a></span>\[
 \frac{dE^\prime}{E^\prime} = \frac{dL^\prime \Delta \omega}{L^\prime \Delta \omega} = d \ln L^\prime = -d (n\,b\,s) = -d \tau^\prime
@@ -582,33 +582,30 @@ the surface is <span class="math notranslate nohighlight">\(L_{\lambda 0}\)</spa
 </li>
 </ol>
 <p>Taking the <span class="math notranslate nohighlight">\(\exp\)</span> of both sides:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$$
+<div class="math notranslate nohighlight" id="equation-consttd">
+<span class="eqno">(24.9)<a class="headerlink" href="#equation-consttd" title="Link to this equation">#</a></span>\[
 L_\lambda - B_\lambda = (L_{\lambda 0} - B_\lambda) \exp (-\tau_{\lambda T})
-$$ (constTd)
-
-or rearranging and recognizing that the transmittance is $\hat{t_\lambda} = \exp(-\tau_{\lambda T} )$:
-
-$$
+\]</div>
+<p>or rearranging and recognizing that the transmittance is <span class="math notranslate nohighlight">\(\hat{t_\lambda} = \exp(-\tau_{\lambda T} )\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-rad-constant">
+<span class="eqno">(24.10)<a class="headerlink" href="#equation-rad-constant" title="Link to this equation">#</a></span>\[
 L_\lambda = L_{\lambda 0} \exp( -\tau_{\lambda T}  ) + B_\lambda (T_{layer})(1- \exp( -\tau_{\lambda T} ))
-$$ (rad_constant)
-
-$$
-L_\lambda = L_{\lambda 0} \hat{t}_{\lambda}  + B_\lambda (T_{layer})(1- \hat{t}_{\lambda})
-$$
-
-$$
-L_\lambda = L_{\lambda 0}  \hat{t}_{\lambda} + B_\lambda (T_{layer})a_\lambda
-$$
-</pre></div>
-</div>
-<ol class="arabic">
-<li><p>so bringing in Kirchoff’s law, the radiance exiting the top of the isothermal layer of thickness <span class="math notranslate nohighlight">\(\Delta \tau\)</span> is:</p>
+\]</div>
 <div class="math notranslate nohighlight">
 \[
-    L_\lambda = L_{\lambda 0}  \hat{t}_{\lambda} + e_\lambda B_\lambda
-    \]</div>
-</li>
+L_\lambda = L_{\lambda 0} \hat{t}_{\lambda}  + B_\lambda (T_{layer})(1- \hat{t}_{\lambda})
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+L_\lambda = L_{\lambda 0}  \hat{t}_{\lambda} + B_\lambda (T_{layer})a_\lambda
+\]</div>
+<ol class="arabic simple">
+<li><p>so bringing in Kirchoff’s law, the radiance exiting the top of the isothermal layer of thickness <span class="math notranslate nohighlight">\(\Delta \tau\)</span> is:</p></li>
 </ol>
+<div class="math notranslate nohighlight">
+\[
+L_\lambda = L_{\lambda 0}  \hat{t}_{\lambda} + e_\lambda B_\lambda
+\]</div>
 </section>
 <section id="temperature-changing-with-height">
 <span id="temp-height"></span><h2><span class="section-number">24.5. </span>Temperature changing with height<a class="headerlink" href="#temperature-changing-with-height" title="Link to this heading">#</a></h2>
@@ -620,7 +617,7 @@ $$
 <li><p>Here’s the Schwartzchild equation again:</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-schwartza">
-<span class="eqno">(24.9)<a class="headerlink" href="#equation-schwartza" title="Link to this equation">#</a></span>\[
+<span class="eqno">(24.11)<a class="headerlink" href="#equation-schwartza" title="Link to this equation">#</a></span>\[
 \frac{dL_\lambda}{d\tau_\lambda}= - L_{\lambda} + B_\lambda
 \]</div>
 <ul class="simple">
@@ -630,14 +627,14 @@ by <span class="math notranslate nohighlight">\(exp(\tau)\)</span> so that we’
 <li><p>Specifically, look at how the chain rule works for the product <span class="math notranslate nohighlight">\(L\exp(\tau)\)</span> :</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-chain">
-<span class="eqno">(24.10)<a class="headerlink" href="#equation-chain" title="Link to this equation">#</a></span>\[
+<span class="eqno">(24.12)<a class="headerlink" href="#equation-chain" title="Link to this equation">#</a></span>\[
 d(L\exp(\tau))=\exp(\tau)dL + L\exp(\tau)d\tau
 \]</div>
 <ul class="simple">
-<li><p>Now multiply both sides of <a class="reference internal" href="#equation-schwartza">(24.9)</a> by <span class="math notranslate nohighlight">\(exp(\tau)\)</span>:</p></li>
+<li><p>Now multiply both sides of <a class="reference internal" href="#equation-schwartza">(24.11)</a> by <span class="math notranslate nohighlight">\(exp(\tau)\)</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-integ1">
-<span class="eqno">(24.11)<a class="headerlink" href="#equation-integ1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(24.13)<a class="headerlink" href="#equation-integ1" title="Link to this equation">#</a></span>\[
 \exp(\tau) dL_\lambda +
 L_\lambda \exp(\tau)\,d\tau=\exp(\tau)B_\lambda(T) \,d\tau
 \]</div>
@@ -649,7 +646,7 @@ left, and integrate:</p>
     d\left( L_\lambda\exp(\tau)\right )=\exp(\tau)B_\lambda d\tau
     \]</div>
 <div class="math notranslate nohighlight" id="equation-chain2">
-<span class="eqno">(24.12)<a class="headerlink" href="#equation-chain2" title="Link to this equation">#</a></span>\[
+<span class="eqno">(24.14)<a class="headerlink" href="#equation-chain2" title="Link to this equation">#</a></span>\[
     \int_0^{\tau}d(L^\prime_\lambda\exp(\tau^\prime))=\int_0^{\tau}
      \exp(\tau^\prime)B^\prime_\lambda d\tau^\prime
     \]</div>
@@ -663,7 +660,7 @@ left, and integrate:</p>
     \end{gathered}
     \end{split}\]</div>
 </li>
-<li><p>Which means that when we integrate <a class="reference internal" href="#equation-chain2">(24.12)</a> we get:</p>
+<li><p>Which means that when we integrate <a class="reference internal" href="#equation-chain2">(24.14)</a> we get:</p>
 <div class="math notranslate nohighlight">
 \[
     L_\lambda\exp(\tau) - B_\lambda(T_{skin}) = \int_0^{\tau} \exp(\tau^\prime)B_\lambda(T^\prime) d\tau^\prime\nonumber
@@ -671,26 +668,26 @@ left, and integrate:</p>
 </li>
 <li><p>Dividing through by <span class="math notranslate nohighlight">\(\exp(\tau)\)</span> we get:</p>
 <div class="math notranslate nohighlight" id="equation-calc1">
-<span class="eqno">(24.13)<a class="headerlink" href="#equation-calc1" title="Link to this equation">#</a></span>\[
+<span class="eqno">(24.15)<a class="headerlink" href="#equation-calc1" title="Link to this equation">#</a></span>\[
     L_\lambda(\tau)= B_\lambda(T_{skin})( \exp(-\tau) +    \int_0^{\tau} \exp\left(  - (\tau -\tau^\prime) \right )
     B_\lambda(T)\, d\tau^\prime
     \]</div>
 </li>
-<li><p>Equation <a class="reference internal" href="#equation-calc1">(24.13)</a> works for any height in the atmosphere. For the particular case at the top of the atmosphere where <span class="math notranslate nohighlight">\(\tau = \tau_{\lambda T}\)</span> we have</p>
+<li><p>Equation <a class="reference internal" href="#equation-calc1">(24.15)</a> works for any height in the atmosphere. For the particular case at the top of the atmosphere where <span class="math notranslate nohighlight">\(\tau = \tau_{\lambda T}\)</span> we have</p>
 <div class="math notranslate nohighlight" id="equation-calc2">
-<span class="eqno">(24.14)<a class="headerlink" href="#equation-calc2" title="Link to this equation">#</a></span>\[
+<span class="eqno">(24.16)<a class="headerlink" href="#equation-calc2" title="Link to this equation">#</a></span>\[
     L_\lambda(\tau_{\lambda T})= B_\lambda(T_{skin})( \exp(-\tau_{\lambda T}) +    \int_0^{\tau} \exp\left(  - (\tau_{\lambda T} -\tau^\prime) \right )
     B_\lambda(T)\, d\tau^\prime
     \]</div>
 </li>
-<li><p><strong>Compare</strong> <a class="reference internal" href="#equation-calc2">(24.14)</a> <strong>to Stull 8.3, which is:</strong></p>
+<li><p><strong>Compare</strong> <a class="reference internal" href="#equation-calc2">(24.16)</a> <strong>to Stull 8.3, which is:</strong></p>
 <div class="math notranslate nohighlight" id="equation-stull2">
-<span class="eqno">(24.15)<a class="headerlink" href="#equation-stull2" title="Link to this equation">#</a></span>\[
+<span class="eqno">(24.17)<a class="headerlink" href="#equation-stull2" title="Link to this equation">#</a></span>\[
     \begin{gathered}
             L_\lambda = B_\lambda(T_{skin} ) \hat{t}_{tot} + \sum_{j=1}^n e_\lambda B_\lambda(T_j) \hat{t}_{\lambda,j}
             \end{gathered}
     \]</div>
-<p>We can connect <a class="reference internal" href="#equation-stull2">(24.15)</a> and <a class="reference internal" href="#equation-calc2">(24.14)</a> if we recognize that</p>
+<p>We can connect <a class="reference internal" href="#equation-stull2">(24.17)</a> and <a class="reference internal" href="#equation-calc2">(24.16)</a> if we recognize that</p>
 <div class="math notranslate nohighlight">
 \[
     \hat{t}_{\lambda,j} =  \exp\left( -(\tau_{\lambda T} -\tau_j) \right )
@@ -709,52 +706,43 @@ the layers are thin enough so that we can make the approximation that:</p>
 <ul>
 <li><p>Equation 8.4 on p. 225 says:</p>
 <div class="math notranslate nohighlight" id="equation-stull3">
-<span class="eqno">(24.16)<a class="headerlink" href="#equation-stull3" title="Link to this equation">#</a></span>\[
+<span class="eqno">(24.18)<a class="headerlink" href="#equation-stull3" title="Link to this equation">#</a></span>\[
     \begin{gathered}
          L_\lambda = B_\lambda(T_{skin}) \hat{t}_{\lambda,tot} + \sum_{j=1}^n
          B_\lambda(T_j) \Delta \hat{t}_{\lambda,j}
        \end{gathered}
     \]</div>
 </li>
-<li><p>What happened to <span class="math notranslate nohighlight">\(e_\lambda(z_j)\)</span> and <span class="math notranslate nohighlight">\(\hat{t}_{\lambda,j}\)</span> from <a class="reference internal" href="#equation-stull2">(24.15)</a>? To see why this works, go back to the exact solution <a class="reference internal" href="#equation-calc2">(24.14)</a> and use the definition <span class="math notranslate nohighlight">\(\hat{t} =   \exp\left( -(\tau_{\lambda T} -\tau^\prime) \right )\)</span></p>
+<li><p>What happened to <span class="math notranslate nohighlight">\(e_\lambda(z_j)\)</span> and <span class="math notranslate nohighlight">\(\hat{t}_{\lambda,j}\)</span> from <a class="reference internal" href="#equation-stull2">(24.17)</a>? To see why this works, go back to the exact solution <a class="reference internal" href="#equation-calc2">(24.16)</a> and use the definition <span class="math notranslate nohighlight">\(\hat{t} =   \exp\left( -(\tau_{\lambda T} -\tau^\prime) \right )\)</span></p>
 <div class="math notranslate nohighlight" id="equation-calc3">
-<span class="eqno">(24.17)<a class="headerlink" href="#equation-calc3" title="Link to this equation">#</a></span>\[
+<span class="eqno">(24.19)<a class="headerlink" href="#equation-calc3" title="Link to this equation">#</a></span>\[
     L_\lambda(\tau_{\lambda T})= B_\lambda(T_{skin})( \exp(-\tau_{\lambda T}) +    \int_0^{\tau} B(T)\, \hat{t} \, d\tau^\prime
     \]</div>
 <p>Now recognize that you can do the following differential:</p>
 <div class="math notranslate nohighlight" id="equation-transdiff">
-<span class="eqno">(24.18)<a class="headerlink" href="#equation-transdiff" title="Link to this equation">#</a></span>\[
+<span class="eqno">(24.20)<a class="headerlink" href="#equation-transdiff" title="Link to this equation">#</a></span>\[
     d\hat{t} = \frac{ d\hat{t}_{j} }{d\tau^\prime}\, d \tau^\prime  =
          \exp\left( -(\tau_{\lambda T} -\tau^\prime)\right ) d \tau^\prime = \hat{t}\, d\tau^\prime
     \]</div>
-<p>So insert <a class="reference internal" href="#equation-transdiff">(24.18)</a> into <a class="reference internal" href="#equation-calc3">(24.17)</a> to get</p>
+<p>So insert <a class="reference internal" href="#equation-transdiff">(24.20)</a> into <a class="reference internal" href="#equation-calc3">(24.19)</a> to get</p>
 <div class="math notranslate nohighlight" id="equation-calc4">
-<span class="eqno">(24.19)<a class="headerlink" href="#equation-calc4" title="Link to this equation">#</a></span>\[
+<span class="eqno">(24.21)<a class="headerlink" href="#equation-calc4" title="Link to this equation">#</a></span>\[
     L_\lambda(\tau_{\lambda T})= B_\lambda(T_{skin}) \exp(-\tau_{\lambda T}) +    \int_0^{\tau_{\lambda T}} B_\lambda(T)\, d\hat{t}
     \]</div>
-<p>Which is just the calculus version of <a class="reference internal" href="#equation-stull3">(24.16)</a>. The <span class="math notranslate nohighlight">\(\Delta \hat{t}\)</span> term in <a class="reference internal" href="#equation-stull3">(24.16)</a> is called the “weighting function”, defined by</p>
+<p>Which is just the calculus version of <a class="reference internal" href="#equation-stull3">(24.18)</a>. The <span class="math notranslate nohighlight">\(\Delta \hat{t}\)</span> term in <a class="reference internal" href="#equation-stull3">(24.18)</a> is called the “weighting function”, defined by</p>
 <div class="math notranslate nohighlight" id="equation-weights">
-<span class="eqno">(24.20)<a class="headerlink" href="#equation-weights" title="Link to this equation">#</a></span>\[
+<span class="eqno">(24.22)<a class="headerlink" href="#equation-weights" title="Link to this equation">#</a></span>\[
     \Delta \hat{t} = \exp\left( -(\tau_{\lambda T} -\tau^\prime) \right )  \Delta \tau^\prime
     \]</div>
 <ul class="simple">
-<li><p><strong>Question</strong>: notice that as we make <span class="math notranslate nohighlight">\(\Delta \tau^\prime\)</span> thicker in <a class="reference internal" href="#equation-weights">(24.20)</a> the transmissivity <span class="math notranslate nohighlight">\(\Delta \hat{t}\)</span> becomes larger – why does this make sense?</p></li>
+<li><p><strong>Question</strong>: notice that as we make <span class="math notranslate nohighlight">\(\Delta \tau^\prime\)</span> thicker in <a class="reference internal" href="#equation-weights">(24.22)</a> the transmissivity <span class="math notranslate nohighlight">\(\Delta \hat{t}\)</span> becomes larger – why does this make sense?</p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="why-do-we-care">
 <h2><span class="section-number">24.8. </span>Why do we care?<a class="headerlink" href="#why-do-we-care" title="Link to this heading">#</a></h2>
-<p>We care because if we know <em>T(z)</em> and <span class="math notranslate nohighlight">\(\tau(z)\)</span> as a function of height we can use <a class="reference internal" href="#equation-weights">(24.20)</a> to calculate the weighting function <span class="math notranslate nohighlight">\(\Delta \hat{t}_\lambda\)</span> and find the radiance <span class="math notranslate nohighlight">\(L_\lambda\)</span> at the satellite using <a class="reference internal" href="#equation-stull3">(24.16)</a>. Alternatively, if we measure <span class="math notranslate nohighlight">\(L_\lambda\)</span> from satellites we can say something about <em>T(z)</em> and <span class="math notranslate nohighlight">\(\tau(z)\)</span></p>
-<div class="docutils">
-</div>
-<div class="docutils">
-<div class="{#cda124ee-170f-4e54-ab4a-2ac2da295e4c docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>We care because if we know <em>T(z)</em> and <span class="math notranslate nohighlight">\(\tau(z)\)</span> as a function of height we can use <a class="reference internal" href="#equation-weights">(24.22)</a> to calculate the weighting function <span class="math notranslate nohighlight">\(\Delta \hat{t}_\lambda\)</span> and find the radiance <span class="math notranslate nohighlight">\(L_\lambda\)</span> at the satellite using <a class="reference internal" href="#equation-stull3">(24.18)</a>. Alternatively, if we measure <span class="math notranslate nohighlight">\(L_\lambda\)</span> from satellites we can say something about <em>T(z)</em> and <span class="math notranslate nohighlight">\(\tau(z)\)</span></p>
 </section>
 </section>
 
