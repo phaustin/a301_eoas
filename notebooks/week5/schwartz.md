@@ -14,6 +14,8 @@ jupyter:
   nbformat_minor: 5
 ---
 
++++
+
 (week5-schwartz)=
 # The Schwartzchild Equation
 
@@ -47,13 +49,14 @@ If you go back to Stull Chapter 2 you can see that it involves:
 2.  the emissivity *e*
 
 
++++
 ## Beer\'s law
 
 How does this equation relate to Beer's law, and how would we use it to calculate $L_\lambda$ reaching a satellite for a particular set of surface/atmosphere conditions?
 
 Where does {eq}`stull1` come from? To derive this from the Beer's law we need to include the fact that the atmosphere is emitting as well as absorbing radiation.
 
-Our previous form of Beer's law looks like this {ref}`beers-law-diff`
+Our previous form of Beer's law looks like this [(see beers)](../week2/beers_law.html#diffbeers):
 
 $$
 \frac{dE^\prime}{E^\prime} = \frac{dL^\prime \Delta \omega}{L^\prime \Delta \omega} = d \ln L^\prime = -d (n\,b\,s) = -d \tau^\prime
@@ -89,9 +92,11 @@ $$
 
 This is the surface term in {eq}`stull1` above, assuming that the surface is radiating like a blackbody at temperature $T_{skin}$.
 
++++
+
 ## Kirchoff's Law
 
-Here's a review of {ref}`week3:kirchoff`
+Here\'s a review of {ref}`week3:kirchoff`
 
 The atmosphere isn't a blackbody, because it's absorptivity $a = 1 - \hat{t}$ (no reflection) is not equal to 1 at most wavelengths. Stull p. 41 defines the emissivity *e* as the fraction of the actual emitted radiance of an object/layer over the radiance a blackbody would emit at the same temperature:
 
@@ -115,7 +120,7 @@ To see why this has to be true, consider {numref}`week3:kirchoff`, where a black
 Demonstration of Kirchoff's law
 :::
 
-
++++
 ## Adding emission to Beer's law
 
 Now include the relationship between $\hat{t}$, $\tau$, $a$ and $e$:
@@ -155,7 +160,9 @@ Suppose the layer has constant temperature $T_{layer}$, then as usual
 $$
 L_{emission} = e_\lambda B_{\lambda} (T_{layer})
 $$
+:::
 
++++
 
 How do we combine this emission with Beer's law to get the total radiance coming through the top of the layer?
 
@@ -220,6 +227,7 @@ Before we integrate the entire atmosphere (with temperature changing with height
     $$ (constTc)
 
 
++++
 
 Taking the $\exp$ of both sides:
 
@@ -247,11 +255,13 @@ $$
 L_\lambda = L_{\lambda 0}  \hat{t}_{\lambda} + e_\lambda B_\lambda
 $$
 
++++
+
 (temp-height)=
 
 ## Temperature changing with height
 
-## Getting to Stull 8.3 {#getting-to-stull-83}
+## Getting to Stull 8.3 
 
 To get Stull's eq. 8.3 (our {eq}`stull1`), we need integrate {eq}`schwart2` when temperature and therefor $B_\lambda(T)$ is changing with height.
 
@@ -339,7 +349,10 @@ $$ (integ1)
     e_\lambda = de_\lambda = d\tau^\prime
     $$
 
++++
+
 (weightfuns)=
+
 ## Getting to Stull 8.4 {#getting-to-stull-84}
 
 -   Equation 8.4 on p. 225 says:
@@ -381,4 +394,3 @@ $$ (integ1)
 ## Why do we care?
 
 We care because if we know *T(z)* and $\tau(z)$ as a function of height we can use {eq}`weights` to calculate the weighting function $\Delta \hat{t}_\lambda$ and find the radiance $L_\lambda$ at the satellite using {eq}`stull3`. Alternatively, if we measure $L_\lambda$ from satellites we can say something about *T(z)* and $\tau(z)$
-
