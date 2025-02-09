@@ -389,13 +389,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">24.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beer-s-law">24.2. Beer’s law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kirchoff-s-law">24.3. Kirchoff’s Law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-emission-to-beer-s-law">24.4. Adding emission to Beer’s law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-changing-with-height">24.5. Temperature changing with height</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-3-getting-to-stull-83">24.6. Getting to Stull 8.3 {#getting-to-stull-83}</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-4-getting-to-stull-84">24.7. Getting to Stull 8.4 {#getting-to-stull-84}</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-care">24.8. Why do we care?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-emission-to-beer-s-law">24.2. Adding emission to Beer’s law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-changing-with-height">24.3. Temperature changing with height</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-3-getting-to-stull-83">24.4. Getting to Stull 8.3 {#getting-to-stull-83}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-4-getting-to-stull-84">24.5. Getting to Stull 8.4 {#getting-to-stull-84}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-care">24.6. Why do we care?</a></li>
 </ul>
             </nav>
         </div>
@@ -421,6 +419,8 @@ I_\lambda\left(s_1\right)= &amp; I_{\lambda 0} e^{-\tau_\lambda\left(s_1, 0\righ
 \end{aligned}
 \end{split}\]</div>
 <p>with Stull equation 8.3</p>
+<div class="docutils">
+<div class="{#44c11e2c-2871-4765-8c32-e15ca0168a8d docutils">
 <div class="math notranslate nohighlight" id="equation-stull1">
 <span class="eqno">(24.1)<a class="headerlink" href="#equation-stull1" title="Link to this equation">#</a></span>\[
 \begin{gathered}
@@ -434,9 +434,7 @@ I_\lambda\left(s_1\right)= &amp; I_{\lambda 0} e^{-\tau_\lambda\left(s_1, 0\righ
 use <em>t</em> instead of <span class="math notranslate nohighlight">\(\tau\)</span>)</p></li>
 <li><p>the emissivity <em>e</em></p></li>
 </ol>
-</section>
-<section id="beer-s-law">
-<h2><span class="section-number">24.2. </span>Beer’s law<a class="headerlink" href="#beer-s-law" title="Link to this heading">#</a></h2>
+<h2 class="rubric" id="beer-s-law">Beer’s law</h2>
 <p>How does this equation relate to Beer’s law, and how would we use it to calculate <span class="math notranslate nohighlight">\(L_\lambda\)</span> reaching a satellite for a particular set of surface/atmosphere conditions?</p>
 <p>Where does <a class="reference internal" href="#equation-stull1">(24.1)</a> come from? To derive this from the Beer’s law we need to include the fact that the atmosphere is emitting as well as absorbing radiation.</p>
 <p>Our previous form of Beer’s law looks like this <a class="reference internal" href="../week1/beers_law.html#beers-law-diff"><span class="std std-ref">Beers law – using differentials</span></a></p>
@@ -469,9 +467,7 @@ L = L_{skin} \exp (-\tau)  = L_{skin} \hat{t}_{tot} = B_\lambda(T_{skin}) \hat{t
 \hat{t}_{tot} = \exp (-\tau)
 \]</div>
 <p>This is the surface term in <a class="reference internal" href="#equation-stull1">(24.1)</a> above, assuming that the surface is radiating like a blackbody at temperature <span class="math notranslate nohighlight">\(T_{skin}\)</span>.</p>
-</section>
-<section id="kirchoff-s-law">
-<h2><span class="section-number">24.3. </span>Kirchoff’s Law<a class="headerlink" href="#kirchoff-s-law" title="Link to this heading">#</a></h2>
+<h2 class="rubric" id="kirchoff-s-law">Kirchoff’s Law</h2>
 <p>Here’s a review of <a class="reference internal" href="../week3/kirchoff.html#week3-kirchoff"><span class="std std-ref">Kirchoff worksheet</span></a></p>
 <p>The atmosphere isn’t a blackbody, because it’s absorptivity <span class="math notranslate nohighlight">\(a = 1 - \hat{t}\)</span> (no reflection) is not equal to 1 at most wavelengths. Stull p. 41 defines the emissivity <em>e</em> as the fraction of the actual emitted radiance of an object/layer over the radiance a blackbody would emit at the same temperature:</p>
 <div class="math notranslate nohighlight">
@@ -491,9 +487,11 @@ a_\lambda = e_\lambda
 <p><span class="caption-number">Fig. 24.1 </span><span class="caption-text">Demonstration of Kirchoff’s law</span><a class="headerlink" href="#kirchoff" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</div>
+</div>
 </section>
 <section id="adding-emission-to-beer-s-law">
-<h2><span class="section-number">24.4. </span>Adding emission to Beer’s law<a class="headerlink" href="#adding-emission-to-beer-s-law" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">24.2. </span>Adding emission to Beer’s law<a class="headerlink" href="#adding-emission-to-beer-s-law" title="Link to this heading">#</a></h2>
 <p>Now include the relationship between <span class="math notranslate nohighlight">\(\hat{t}\)</span>, <span class="math notranslate nohighlight">\(\tau\)</span>, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(e\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -608,10 +606,10 @@ L_\lambda = L_{\lambda 0}  \hat{t}_{\lambda} + e_\lambda B_\lambda
 \]</div>
 </section>
 <section id="temperature-changing-with-height">
-<span id="temp-height"></span><h2><span class="section-number">24.5. </span>Temperature changing with height<a class="headerlink" href="#temperature-changing-with-height" title="Link to this heading">#</a></h2>
+<span id="temp-height"></span><h2><span class="section-number">24.3. </span>Temperature changing with height<a class="headerlink" href="#temperature-changing-with-height" title="Link to this heading">#</a></h2>
 </section>
 <section id="getting-to-stull-8-3-getting-to-stull-83">
-<h2><span class="section-number">24.6. </span>Getting to Stull 8.3 {#getting-to-stull-83}<a class="headerlink" href="#getting-to-stull-8-3-getting-to-stull-83" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">24.4. </span>Getting to Stull 8.3 {#getting-to-stull-83}<a class="headerlink" href="#getting-to-stull-8-3-getting-to-stull-83" title="Link to this heading">#</a></h2>
 <p>To get Stull’s eq. 8.3 (our <a class="reference internal" href="#equation-stull1">(24.1)</a>), we need integrate <a class="reference internal" href="#equation-schwart2">(24.6)</a> when temperature and therefor <span class="math notranslate nohighlight">\(B_\lambda(T)\)</span> is changing with height.</p>
 <ul class="simple">
 <li><p>Here’s the Schwartzchild equation again:</p></li>
@@ -702,7 +700,7 @@ the layers are thin enough so that we can make the approximation that:</p>
 </ul>
 </section>
 <section id="getting-to-stull-8-4-getting-to-stull-84">
-<span id="weightfuns"></span><h2><span class="section-number">24.7. </span>Getting to Stull 8.4 {#getting-to-stull-84}<a class="headerlink" href="#getting-to-stull-8-4-getting-to-stull-84" title="Link to this heading">#</a></h2>
+<span id="weightfuns"></span><h2><span class="section-number">24.5. </span>Getting to Stull 8.4 {#getting-to-stull-84}<a class="headerlink" href="#getting-to-stull-8-4-getting-to-stull-84" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>Equation 8.4 on p. 225 says:</p>
 <div class="math notranslate nohighlight" id="equation-stull3">
@@ -741,7 +739,7 @@ the layers are thin enough so that we can make the approximation that:</p>
 </ul>
 </section>
 <section id="why-do-we-care">
-<h2><span class="section-number">24.8. </span>Why do we care?<a class="headerlink" href="#why-do-we-care" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">24.6. </span>Why do we care?<a class="headerlink" href="#why-do-we-care" title="Link to this heading">#</a></h2>
 <p>We care because if we know <em>T(z)</em> and <span class="math notranslate nohighlight">\(\tau(z)\)</span> as a function of height we can use <a class="reference internal" href="#equation-weights">(24.22)</a> to calculate the weighting function <span class="math notranslate nohighlight">\(\Delta \hat{t}_\lambda\)</span> and find the radiance <span class="math notranslate nohighlight">\(L_\lambda\)</span> at the satellite using <a class="reference internal" href="#equation-stull3">(24.18)</a>. Alternatively, if we measure <span class="math notranslate nohighlight">\(L_\lambda\)</span> from satellites we can say something about <em>T(z)</em> and <span class="math notranslate nohighlight">\(\tau(z)\)</span></p>
 </section>
 </section>
@@ -811,13 +809,11 @@ the layers are thin enough so that we can make the approximation that:</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">24.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beer-s-law">24.2. Beer’s law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kirchoff-s-law">24.3. Kirchoff’s Law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-emission-to-beer-s-law">24.4. Adding emission to Beer’s law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-changing-with-height">24.5. Temperature changing with height</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-3-getting-to-stull-83">24.6. Getting to Stull 8.3 {#getting-to-stull-83}</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-4-getting-to-stull-84">24.7. Getting to Stull 8.4 {#getting-to-stull-84}</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-care">24.8. Why do we care?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-emission-to-beer-s-law">24.2. Adding emission to Beer’s law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-changing-with-height">24.3. Temperature changing with height</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-3-getting-to-stull-83">24.4. Getting to Stull 8.3 {#getting-to-stull-83}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-4-getting-to-stull-84">24.5. Getting to Stull 8.4 {#getting-to-stull-84}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-care">24.6. Why do we care?</a></li>
 </ul>
   </nav></div>
 

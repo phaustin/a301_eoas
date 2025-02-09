@@ -14,7 +14,9 @@ jupyter:
   nbformat_minor: 5
 ---
 
+
 (week5-schwartz)=
+
 # The Schwartzchild Equation
 
 Coverage: Wallace and Hobbs Section 4.5.3 and [Stull Chapter 8](https://www.eoas.ubc.ca/books/Practical_Meteorology) p. 225
@@ -31,7 +33,9 @@ I_\lambda\left(s_1\right)= & I_{\lambda 0} e^{-\tau_\lambda\left(s_1, 0\right)} 
 $$
 
 with Stull equation 8.3
+:::
 
+::: {#44c11e2c-2871-4765-8c32-e15ca0168a8d .cell .markdown}
 $$
 \begin{gathered}
          L_\lambda = \underbrace{B_\lambda(T_{skin} ) \hat{t}_{tot}}_{\text{surface contribution}} + \underbrace{\sum_{j=1}^n e_{\lambda,j} B_\lambda(T_j) \hat{t}_{\lambda,j}}_{\text{atmospheric contribution}}
@@ -46,8 +50,7 @@ If you go back to Stull Chapter 2 you can see that it involves:
     use *t* instead of $\tau$)
 2.  the emissivity *e*
 
-
-## Beer\'s law
+## Beer's law
 
 How does this equation relate to Beer's law, and how would we use it to calculate $L_\lambda$ reaching a satellite for a particular set of surface/atmosphere conditions?
 
@@ -91,7 +94,7 @@ This is the surface term in {eq}`stull1` above, assuming that the surface is rad
 
 ## Kirchoff's Law
 
-Here's a review of {ref}`week3:kirchoff`
+Here\'s a review of {ref}`week3:kirchoff`
 
 The atmosphere isn't a blackbody, because it's absorptivity $a = 1 - \hat{t}$ (no reflection) is not equal to 1 at most wavelengths. Stull p. 41 defines the emissivity *e* as the fraction of the actual emitted radiance of an object/layer over the radiance a blackbody would emit at the same temperature:
 
@@ -114,7 +117,6 @@ To see why this has to be true, consider {numref}`week3:kirchoff`, where a black
 :scale: 50
 Demonstration of Kirchoff's law
 :::
-
 
 ## Adding emission to Beer's law
 
@@ -156,7 +158,6 @@ $$
 L_{emission} = e_\lambda B_{\lambda} (T_{layer})
 $$
 
-
 How do we combine this emission with Beer's law to get the total radiance coming through the top of the layer?
 
 The figure below shows the radiance emitted from the surface and from the thin layer, with their combine contribution to the top of the atmosphere radiance at optical depth $\tau_T$:
@@ -164,7 +165,6 @@ The figure below shows the radiance emitted from the surface and from the thin l
 :::{figure} figures/schwartzchild.png
 :name: schwartzchild
 :scale: 50
-
 Radiance from an isolated layer and the surface
 :::
 
@@ -218,8 +218,6 @@ Before we integrate the entire atmosphere (with temperature changing with height
     \int_{U_0}^U d\ln U^\prime = \ln \left (\frac{U}{U_0} \right ) =  \ln \left (\frac{L_\lambda - B_\lambda}{L_{\lambda 0} - B_\lambda}
           \right ) = - \tau_{\lambda T}
     $$ (constTc)
-
-
 
 Taking the $\exp$ of both sides:
 
@@ -340,6 +338,7 @@ $$ (integ1)
     $$
 
 (weightfuns)=
+
 ## Getting to Stull 8.4 {#getting-to-stull-84}
 
 -   Equation 8.4 on p. 225 says:
@@ -381,4 +380,3 @@ $$ (integ1)
 ## Why do we care?
 
 We care because if we know *T(z)* and $\tau(z)$ as a function of height we can use {eq}`weights` to calculate the weighting function $\Delta \hat{t}_\lambda$ and find the radiance $L_\lambda$ at the satellite using {eq}`stull3`. Alternatively, if we measure $L_\lambda$ from satellites we can say something about *T(z)* and $\tau(z)$
-
