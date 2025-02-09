@@ -1,22 +1,17 @@
 ---
-jupyter:
-  jupytext:
-    text_representation:
-      extension: .md
-      format_name: pandoc
-      format_version: 3.6.2
-      jupytext_version: 1.16.6
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
-  nbformat: 4
-  nbformat_minor: 5
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.6
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
 ---
 
-
 (week5-schwartz)=
-
 # The Schwartzchild Equation
 
 Coverage: Wallace and Hobbs Section 4.5.3 and [Stull Chapter 8](https://www.eoas.ubc.ca/books/Practical_Meteorology) p. 225
@@ -33,9 +28,8 @@ I_\lambda\left(s_1\right)= & I_{\lambda 0} e^{-\tau_\lambda\left(s_1, 0\right)} 
 $$
 
 with Stull equation 8.3
-:::
 
-::: {#44c11e2c-2871-4765-8c32-e15ca0168a8d .cell .markdown}
+
 $$
 \begin{gathered}
          L_\lambda = \underbrace{B_\lambda(T_{skin} ) \hat{t}_{tot}}_{\text{surface contribution}} + \underbrace{\sum_{j=1}^n e_{\lambda,j} B_\lambda(T_j) \hat{t}_{\lambda,j}}_{\text{atmospheric contribution}}
@@ -49,6 +43,8 @@ If you go back to Stull Chapter 2 you can see that it involves:
 1.  the transmissivity $\hat{t}$ (note that I"ve changed the Stull's notation to
     use *t* instead of $\tau$)
 2.  the emissivity *e*
+
++++
 
 ## Beer's law
 
@@ -92,6 +88,8 @@ $$
 
 This is the surface term in {eq}`stull1` above, assuming that the surface is radiating like a blackbody at temperature $T_{skin}$.
 
++++
+
 ## Kirchoff's Law
 
 Here\'s a review of {ref}`week3:kirchoff`
@@ -117,6 +115,8 @@ To see why this has to be true, consider {numref}`week3:kirchoff`, where a black
 :scale: 50
 Demonstration of Kirchoff's law
 :::
+
++++
 
 ## Adding emission to Beer's law
 
@@ -245,11 +245,12 @@ $$
 L_\lambda = L_{\lambda 0}  \hat{t}_{\lambda} + e_\lambda B_\lambda
 $$
 
-(temp-height)=
++++
 
+(temp-height)=
 ## Temperature changing with height
 
-## Getting to Stull 8.3 {#getting-to-stull-83}
+### Getting to Stull 8.3
 
 To get Stull's eq. 8.3 (our {eq}`stull1`), we need integrate {eq}`schwart2` when temperature and therefor $B_\lambda(T)$ is changing with height.
 
@@ -337,9 +338,10 @@ $$ (integ1)
     e_\lambda = de_\lambda = d\tau^\prime
     $$
 
-(weightfuns)=
++++
 
-## Getting to Stull 8.4 {#getting-to-stull-84}
+(weightfuns)=
+### Getting to Stull 8.4
 
 -   Equation 8.4 on p. 225 says:
 
