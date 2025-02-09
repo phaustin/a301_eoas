@@ -14,9 +14,9 @@ jupyter:
   nbformat_minor: 5
 ---
 
-+++
-
+::: {#cf27ffa7-e0a7-445e-be50-b3f5e18a97b9 .cell .markdown}
 (week5-schwartz)=
+
 # The Schwartzchild Equation
 
 Coverage: Wallace and Hobbs Section 4.5.3 and [Stull Chapter 8](https://www.eoas.ubc.ca/books/Practical_Meteorology) p. 225
@@ -24,7 +24,9 @@ Coverage: Wallace and Hobbs Section 4.5.3 and [Stull Chapter 8](https://www.eoas
 ## Introduction
 
 This note merges material from Wallace and Hobbs p. 135 and equation 4.42
+:::
 
+::: {#36d02aff-ef4d-45cc-a58b-35161b288b08 .cell .markdown}
 $$
 \begin{aligned}
 I_\lambda\left(s_1\right)= & I_{\lambda 0} e^{-\tau_\lambda\left(s_1, 0\right)} \\
@@ -47,9 +49,9 @@ If you go back to Stull Chapter 2 you can see that it involves:
 1.  the transmissivity $\hat{t}$ (note that I"ve changed the Stull's notation to
     use *t* instead of $\tau$)
 2.  the emissivity *e*
+:::
 
-
-+++
+::: {#f3ee4be1-dd53-4aa1-9333-2becfe1b5d54 .cell .markdown}
 ## Beer\'s law
 
 How does this equation relate to Beer's law, and how would we use it to calculate $L_\lambda$ reaching a satellite for a particular set of surface/atmosphere conditions?
@@ -91,9 +93,9 @@ $$
 $$
 
 This is the surface term in {eq}`stull1` above, assuming that the surface is radiating like a blackbody at temperature $T_{skin}$.
+:::
 
-+++
-
+::: {#1523e78d-d1fd-472a-ba2d-d26bf2622565 .cell .markdown}
 ## Kirchoff's Law
 
 Here\'s a review of {ref}`week3:kirchoff`
@@ -120,7 +122,14 @@ To see why this has to be true, consider {numref}`week3:kirchoff`, where a black
 Demonstration of Kirchoff's law
 :::
 
-+++
+::: {#a5d37483-f04a-4a80-97d8-4a6b514ad648 .cell .markdown}
+:::
+:::
+
+::: {#7aec1a72-ef7d-4f57-9de9-c9a611c5ce54 .cell .markdown}
+:::
+
+::: {#45b50f37-ff80-478f-8aec-3da675e0e95c .cell .markdown}
 ## Adding emission to Beer's law
 
 Now include the relationship between $\hat{t}$, $\tau$, $a$ and $e$:
@@ -162,8 +171,7 @@ L_{emission} = e_\lambda B_{\lambda} (T_{layer})
 $$
 :::
 
-+++
-
+::: {#74053875-1e5a-49f4-b37d-0efec120a886 .cell .markdown}
 How do we combine this emission with Beer's law to get the total radiance coming through the top of the layer?
 
 The figure below shows the radiance emitted from the surface and from the thin layer, with their combine contribution to the top of the atmosphere radiance at optical depth $\tau_T$:
@@ -171,10 +179,10 @@ The figure below shows the radiance emitted from the surface and from the thin l
 :::{figure} figures/schwartzchild.png
 :name: schwartzchild
 :scale: 50
-
 Radiance from an isolated layer and the surface
 :::
 
+::: {#0a67edb6-8945-4a0d-9079-a6a6da280665 .cell .markdown}
 Before we integrate the entire atmosphere (with temperature changing with height) let's just integrate the radiance across a layer that is thin enough so we can assume roughly constant temperature.
 
 1.  We know the emission from an infinitesimally thin layer:
@@ -225,10 +233,10 @@ Before we integrate the entire atmosphere (with temperature changing with height
     \int_{U_0}^U d\ln U^\prime = \ln \left (\frac{U}{U_0} \right ) =  \ln \left (\frac{L_\lambda - B_\lambda}{L_{\lambda 0} - B_\lambda}
           \right ) = - \tau_{\lambda T}
     $$ (constTc)
+    :::
+:::
 
-
-+++
-
+::: {#61fb364e-c18a-4480-984d-c954b3d85d51 .cell .markdown}
 Taking the $\exp$ of both sides:
 
 $$
@@ -254,14 +262,14 @@ $$
 $$
 L_\lambda = L_{\lambda 0}  \hat{t}_{\lambda} + e_\lambda B_\lambda
 $$
+:::
 
-+++
-
+::: {#495a294b-19f2-4202-9b3d-d4d82db34f8a .cell .markdown}
 (temp-height)=
 
 ## Temperature changing with height
 
-## Getting to Stull 8.3 
+## Getting to Stull 8.3 {#getting-to-stull-83}
 
 To get Stull's eq. 8.3 (our {eq}`stull1`), we need integrate {eq}`schwart2` when temperature and therefor $B_\lambda(T)$ is changing with height.
 
@@ -348,9 +356,9 @@ $$ (integ1)
     $$
     e_\lambda = de_\lambda = d\tau^\prime
     $$
+:::
 
-+++
-
+::: {#7b75080a-882d-4a79-b218-945ae806adef .cell .markdown}
 (weightfuns)=
 
 ## Getting to Stull 8.4 {#getting-to-stull-84}
@@ -394,3 +402,4 @@ $$ (integ1)
 ## Why do we care?
 
 We care because if we know *T(z)* and $\tau(z)$ as a function of height we can use {eq}`weights` to calculate the weighting function $\Delta \hat{t}_\lambda$ and find the radiance $L_\lambda$ at the satellite using {eq}`stull3`. Alternatively, if we measure $L_\lambda$ from satellites we can say something about *T(z)* and $\tau(z)$
+:::
