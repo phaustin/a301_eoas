@@ -289,4 +289,9 @@ Topics:
 - {ref}`week6:scale_heights`
 - {ref}`week6:weighting_funs`
 
+#### Do for Wednesday
+
+- Work on {ref}`assign4` and other midterm practice problems
+
+
 
