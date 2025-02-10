@@ -51,7 +51,7 @@ with $\sec \theta$=1 and  and absorption coefficient $k_\lambda$ both constant w
 The numbers:
 
 $$
-k_\lambda M &= 0.01\  m^2\,kg^{-1} \times 1\ kg\,m^{-2} = 0.01
+k_\lambda M = 0.01\  m^2\,kg^{-1} \times 1\ kg\,m^{-2} = 0.01
 $$
 
 $$
@@ -202,8 +202,6 @@ $$
 $$
 
 So the difference between the heights is 3 scale heights.
-
-
 
 ```{code-cell} ipython3
 np.log(0.05)
