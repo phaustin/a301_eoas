@@ -31,7 +31,7 @@ $$
 Here's the setup:
 
 :::{figure} images/wh_4_39_setup.png
-:name: grey_layers
+:name: grey_layers_wh
 :scale: 55
 Wallace and Hobbs problem 4.39: A thin grey layer
 :::

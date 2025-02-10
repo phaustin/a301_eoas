@@ -280,3 +280,13 @@ Topics:
 - Work on {ref}`assign4` and other midterm practice problems
 - Upload assignment 3 fixed images if you were having cartopy problems
 
+## Week 6
+
+###  Day 16 Monday
+
+- [2022 mid-term](https://drive.google.com/file/d/12ZDN8NZzgafeCMDTy4t0u-w80o3-foNT/view?usp=sharing)
+- {ref}`assign3_solution`
+- {ref}`week6:scale_heights`
+- {ref}`week6:weighting_funs`
+
+

@@ -41,10 +41,10 @@ $$
 $$
 for any gas, liquid or solid in thermodynamic equilibrium.
 
-To see why this has to be true, consider {numref}`kirchoff`, where a blackbody (surface A) is facing a surface B at the same temperature, with absorptivity and emissivity that violate Kirchoff’s law (there is a vacuum between the two plates). 
+To see why this has to be true, consider {numref}`kirchoff_fig`, where a blackbody (surface A) is facing a surface B at the same temperature, with absorptivity and emissivity that violate Kirchoff’s law (there is a vacuum between the two plates). 
 
 :::{figure} ./images/kirchoff.png
-:name: kirchoff
+:name: kirchoff_fig
 :scale: 100
 
 Demonstration of Kirchoff’s law
