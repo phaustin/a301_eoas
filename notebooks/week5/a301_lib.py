@@ -1,3 +1,7 @@
+'''
+version 0.2, week 6
+'''
+
 from pathlib import Path
 from matplotlib import pyplot as plt
 from matplotlib.colors import Normalize
@@ -5,6 +9,10 @@ from matplotlib.colors import Normalize
 from pathlib import Path
 from pyproj import Transformer, CRS
 import rioxarray
+
+g=9.8  #m/s^2 don't worry about g(z) for this class
+Rd=287.  #kg/m^3
+
 
 
 def rowcol2latlon(tiffile,row,col):
@@ -69,3 +77,79 @@ def make_pal(ax = None,vmin = None, vmax = None, palette = "viridis"):
     pal.set_under("k")  # color cells < vmin black
     out_dict=dict(cmap=pal,norm=the_norm)
     return out_dict
+
+def calcScaleHeight(df):
+    """
+    Calculate the pressure scale height H_p
+    
+    Parameters
+    ----------
+
+    df: pd.DataFrame
+
+    columns:
+    
+        T: vector (float)
+          temperature (K)
+
+        p: vector (float) of len(T)
+          pressure (pa)
+
+        z: vector (float) of len(T
+          height (m)
+
+    Returns
+    -------
+    
+    Hbar: vector (float) of len(T)
+      pressure scale height (m)
+    
+    """
+    z=df['z'].values
+    Temp=df['temp'].values
+    dz=np.diff(z)
+    TLayer=(Temp[1:] + Temp[0:-1])/2.
+    oneOverH=g/(Rd*TLayer)
+    Zthick=z[-1] - z[0]
+    oneOverHbar=np.sum(oneOverH*dz)/Zthick
+    Hbar = 1/oneOverHbar
+    return Hbar
+
+def calcDensHeight(df):
+    """
+    Calculate the density scale height H_rho
+    
+    Parameters
+    ----------
+
+    df: pd.DataFrame
+
+    df columns:
+    
+        T: vector (float)
+          temperature (K)
+
+        p: vector (float) of len(T)
+          pressure (pa)
+
+        z: vector (float) of len(T
+          height (m)
+      
+    Returns
+    -------
+    
+    Hbar: vector (float) of len(T)
+      density scale height (m)
+    """
+    z=df['z'].values
+    Temp=df['temp'].values
+    dz=np.diff(z)
+    TLayer=(Temp[1:] + Temp[0:-1])/2.
+    dTdz=np.diff(Temp)/np.diff(z)
+    oneOverH=g/(Rd*TLayer) + (1/TLayer*dTdz)
+    Zthick=z[-1] - z[0]
+    oneOverHbar=np.sum(oneOverH*dz)/Zthick
+    Hbar = 1/oneOverHbar
+    return Hbar
+
+

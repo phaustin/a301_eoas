@@ -15,6 +15,11 @@ kernelspec:
 (week6:scale_heights)=
 # Scale heights for typical atmospheric soundings
 
+Download  hydrostatic_balance from the [week6 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
+
+you will also need the new version of a`301_lib.py` and the `soundings` folder, all saved to the
+same folder as this notebook.
+
 +++
 
 ## Plot McClatchey's US Standard Atmospheres

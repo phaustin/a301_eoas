@@ -153,6 +153,9 @@ def calcDensHeight(df):
     Hbar = 1/oneOverHbar
     return Hbar
 
+c, h, k = 299792458.0, 6.62607004e-34, 1.38064852e-23
+c1 = 2.0 * h * c ** 2.0
+c2 = h * c / k
 
 def calc_radiance(wavel, Temp):
     """
@@ -195,6 +198,5 @@ def radiance_invert(wavel, L):
     c, h, k = 299792458.0, 6.62607004e-34, 1.38064852e-23
     c1 = 2.0 * h * c ** 2.0
     c2 = h * c / k
-    sigma = 2.0 * np.pi ** 5.0 * k ** 4.0 / (15 * h ** 3.0 * c ** 2.0)
     Tbright = c2 / (wavel * np.log(c1 / (wavel ** 5.0 * L) + 1.0))
     return Tbright
