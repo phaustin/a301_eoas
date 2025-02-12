@@ -11,12 +11,12 @@ parts:
   - file: notebooks/assignments.md
   - file: notebooks/pixi_install.md
   - file: notebooks/windows_install.md
+  - url:  https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
+    title: Notebook downloads
   - file: notebooks/notebook_index.md
 - caption: Weekly topics
   chapters:
   - file: week_notes.md
-  - url: https://www.dropbox.com/scl/fo/25w66p7nimcsm04dr1ce9/AOzTXQwlajVjByVQ7xWlgcA?rlkey=aup2jh41qqaposch0pn1fx0ed&st=n7iwqqem&dl=0
-    title: Notebook downloads
   - file: notebooks/week_review.md
 
 - caption: Midterm
@@ -80,4 +80,5 @@ parts:
       - file: solutions/assign3_solutions.md
       - file: notebooks/week6/hydrostatic_balance.md
       - file: notebooks/week6/weighting_functions.md
+      - file: notebooks/week6/heating_rate.md
       
