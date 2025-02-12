@@ -293,5 +293,15 @@ Topics:
 
 - Work on {ref}`assign4` and other midterm practice problems
 
+###  Day 17 Wednesday
+
+- {ref}`heating-rate`
+- Assignment 4 questions
+- Midterm review questions
+
+#### Do for Friday
+
+- Midterm review
+
 
 
