@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-(week5-schwartz)=
+(week5-schwartzA)=
 # The Schwartzchild Equation
 
 Coverage: Wallace and Hobbs Section 4.5.3 and [Stull Chapter 8](https://www.eoas.ubc.ca/books/Practical_Meteorology) p. 225

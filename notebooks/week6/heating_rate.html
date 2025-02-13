@@ -295,7 +295,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/notebooks/week6/heating_rate.rst" target="_blank"
+      <li><a href="../../_sources/notebooks/week6/heating_rate.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -305,7 +305,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.rst</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -389,9 +389,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review">32.1. Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartzchild-equation-for-flux">32.1. Schwartzchild equation for flux</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#net-flux">32.2. Net flux</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-change">32.3. Temperature change</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">32.4. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -403,83 +404,132 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="finding-the-heating-rate-of-the-atmosphere">
+  <section class="tex2jax_ignore mathjax_ignore" id="finding-the-heating-rate-of-the-atmosphere">
 <span id="heating-rate"></span><h1><span class="section-number">32. </span>Finding the heating rate of the atmosphere<a class="headerlink" href="#finding-the-heating-rate-of-the-atmosphere" title="Permalink to this heading">#</a></h1>
-<section id="review">
-<h2><span class="section-number">32.1. </span>Review<a class="headerlink" href="#review" title="Permalink to this heading">#</a></h2>
-<p>Now that we have  the diffusivity approximation from <span class="xref std std-ref">assign6a</span>, we can solve the Schwartzchild equation for fluxes.  First remember what it looks like for radiance:</p>
+<p>How does a climate model calculate the temperature change at every vertical level during a timestep? Wallace and Hobbs present
+the <strong>heating rate equation</strong> (eq. 4.52 on p. 136) which relates the change in temperature to the net flux divergence <span class="math notranslate nohighlight">\(Q_r\)</span> across
+a layer infinitesimal thickness:</p>
+<div class="math notranslate nohighlight">
+\[
+\rho c_p \frac{d T}{d t}= \frac{dF_n}{d z} = Q_r
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(F_n\)</span> = <span class="math notranslate nohighlight">\(F_\downarrow + F_\uparrow\)</span>, with the convention that downward flux is positive (heating) and upward flux is
+negative (cooling)</p>
+<p>They solve this with an approximation to get eq. 4.56:</p>
+<div class="math notranslate nohighlight" id="equation-wh-dtdt">
+<span class="eqno">(32.1)<a class="headerlink" href="#equation-wh-dtdt" title="Permalink to this equation">#</a></span>\[
+\left(\frac{d T}{d t}\right)_\nu=-\frac{\pi}{c_p} k_\nu r B_\nu(z) \frac{e^{-\tau_\nu / \bar{\mu}}}{\bar{\mu}}
+\]</div>
+<p>note that there is a typo below this equation, since <span class="math notranslate nohighlight">\(\overline{\mu} \neq 1.66\)</span>. As they say on p. 136 eq. 4.47</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{\bar{\mu}} \equiv \sec 53^{\circ}=1.66
+\]</div>
+<p>After the break we’ll derive <a class="reference internal" href="#equation-wh-dtdt">(32.1)</a> and use it, but for the midterm we will instead ignore that equation and calculate the heating rate
+the way a global climate model does.  We will still use the fact that you can
+convert the Schwartzchild equation for radiance into an equation for flux by multiplying the vertical optical thickness <span class="math notranslate nohighlight">\(\tau\)</span> by a factor
+of 1.66, effectively make the atmosphere <span class="math notranslate nohighlight">\(66\%\)</span> thicker for flux than for radiance.</p>
+<section id="schwartzchild-equation-for-flux">
+<h2><span class="section-number">32.1. </span>Schwartzchild equation for flux<a class="headerlink" href="#schwartzchild-equation-for-flux" title="Permalink to this heading">#</a></h2>
+<p>Here’s what the diffusivity approximation look like in practice.  First remember the Schwartzchild equation for flux:</p>
 <div class="math notranslate nohighlight" id="equation-main">
-<span class="eqno">(32.1)<a class="headerlink" href="#equation-main" title="Permalink to this equation">#</a></span>\[   L_\lambda(\tau_T)= B_\lambda(T_{skin}) \exp(-\tau_T) +    \int_0^{\tau_T} B_\lambda(T)\, d\hat{t}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\exp(-\tau_T)\)</span> is the total transmissivity of an atmosphere with optical thickness <span class="math notranslate nohighlight">\(\tau_T\)</span> and <span class="math notranslate nohighlight">\(\hat{t}\)</span> is the transmissivity of the atmosphere from the top of the atmosphere (where the optical depth=0, to a height at which the optical depth= <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
-<p>Here’s the picture:</p>
+<span class="eqno">(32.2)<a class="headerlink" href="#equation-main" title="Permalink to this equation">#</a></span>\[
+L_\lambda(\tau_T)= B_\lambda(T_{skin}) \exp(-\tau_T) +    \int_0^{\tau_T} B_\lambda(T)\, d\hat{t}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{t}(\tau_T) = \exp(-\tau_T)\)</span> is the total transmissivity of a layer with optical thickness <span class="math notranslate nohighlight">\(\tau_T\)</span> and
+<span class="math notranslate nohighlight">\(\hat{t} = \exp \left (-(\tau_T - \tau) \right )\)</span> is the transmissivity of the atmosphere from the top of the layer (where the optical depth=<span class="math notranslate nohighlight">\(\tau_T\)</span>), to a height at which the optical depth= <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
+<p>Here’s the picture, note that we’re using a coordinate system where <span class="math notranslate nohighlight">\(\tau\)</span> increases with height:</p>
 <figure class="align-default" id="schwartzchild-rep">
 <a class="reference internal image-reference" href="../../_images/schwartzchild1.png"><img alt="../../_images/schwartzchild1.png" src="../../_images/schwartzchild1.png" style="width: 566.8000000000001px; height: 380.8px;" /></a>
 </figure>
-<p>If <span class="math notranslate nohighlight">\(T\)</span> is constant with height then integrating <a class="reference internal" href="#equation-main">(32.1)</a> is simple:</p>
+<p>If <span class="math notranslate nohighlight">\(T\)</span> is constant with height then integrating <a class="reference internal" href="#equation-main">(32.2)</a> is simple:</p>
 <div class="math notranslate nohighlight" id="equation-main2">
-<span class="eqno">(32.2)<a class="headerlink" href="#equation-main2" title="Permalink to this equation">#</a></span>\[\begin{split}  \begin{aligned}
+<span class="eqno">(32.3)<a class="headerlink" href="#equation-main2" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
       L_\lambda(\tau_T) &amp;= B_\lambda(T_{skin}) \exp(-\tau_T) +    B_\lambda(T) \int_0^{\tau_T} \, d\hat{t}\\
         &amp;= B_\lambda(T_{skin}) \exp(-\tau_T) +    B_\lambda(T)(\hat{t}(\tau_T) - \hat{t}(0) ) \\
         &amp;= B_\lambda(T_{skin}) \exp(-\tau_T) +    B_\lambda(T)(1 - \exp(-\tau_T) )
-  \end{aligned}\end{split}\]</div>
-<p>For fluxes, we have a new flux transmission, <cite>hat{t}_f</cite> = <cite>exp(-1.666 tau)</cite>  So using that:</p>
+  \end{aligned}
+\end{split}\]</div>
+<p>For fluxes, we have a new flux transmission, <span class="math notranslate nohighlight">\(\hat{t}_f = \exp(-1.666 \tau)\)</span> So using that:</p>
 <div class="math notranslate nohighlight" id="equation-main3">
-<span class="eqno">(32.3)<a class="headerlink" href="#equation-main3" title="Permalink to this equation">#</a></span>\[\begin{split}  \begin{aligned}
-      E_\lambda(\tau_T) &amp;= E_{bb \lambda}(T_{skin}) \exp(-1.66 \tau_T) +    E_\lambda(T) \int_0^{\tau_T} \, d\hat{t}\\
-        &amp;= E_\lambda(T_{skin}) \exp(-1.66 \tau_T) +    E_\lambda(T)(\hat{t}_f(\tau_T) - \hat{t}(0) ) \\
-        &amp;= E_\lambda(T_{skin}) \exp(-1.666 \tau_T) +    E_\lambda(T)(1 - \exp(-1.666\tau_T) )
-  \end{aligned}\end{split}\]</div>
+<span class="eqno">(32.4)<a class="headerlink" href="#equation-main3" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+      F_\lambda(\tau_T) &amp;= F_{bb \lambda}(T_{skin}) \exp(-1.66 \tau_T) +    F_\lambda(T) \int_0^{\tau_T} \, d\hat{t}\\
+        &amp;= F_\lambda(T_{skin}) \exp(-1.66 \tau_T) +    F_\lambda(T)(\hat{t}_f(\tau_T) - \hat{t}(0) ) \\
+        &amp;= F_\lambda(T_{skin}) \exp(-1.666 \tau_T) +    F_\lambda(T)(1 - \exp(-1.666\tau_T) )
+  \end{aligned}
+\end{split}\]</div>
 </section>
 <section id="net-flux">
 <h2><span class="section-number">32.2. </span>Net flux<a class="headerlink" href="#net-flux" title="Permalink to this heading">#</a></h2>
-<p>If we want to know whether the atmosphere is heating or cooling at a particular place, however, we need
-to convert the monochromatic radiance <span class="math notranslate nohighlight">\(L_\lambda\)</span> into the corresponding broadband flux <span class="math notranslate nohighlight">\(E\)</span> by:</p>
-<ol class="arabic">
-<li><p>Integrating <span class="math notranslate nohighlight">\(\cos \theta L_\lambda d\omega\)</span> over a hemisphere to get the monochromatic flux <span class="math notranslate nohighlight">\(E_\lambda\)</span>
-as in <a class="reference internal" href="../week1/newflux.html#moving"><span class="std std-ref">Moving between flux and radiance</span></a> equation (1):</p>
-<div class="math notranslate nohighlight" id="equation-fluxrel">
-<span class="eqno">(32.4)<a class="headerlink" href="#equation-fluxrel" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{aligned}
-E_{\lambda \uparrow} &amp;= \int dE_\lambda = \int_0^{2\pi} \int_0^{\pi/2} \cos \theta \, L_\lambda \, d \omega =\int_0^{2\pi} \int_0^{\pi/2} L_\lambda \cos \theta  \sin \theta \, d\theta \ \, d \phi  \\
-&amp;= \int_0^{2\pi} \int_0^1 L_\lambda  \mu d \mu\ \, d \phi
-\end{aligned}\end{split}\]</div>
-<p>where the arrow <span class="math notranslate nohighlight">\(\uparrow\)</span> reminds us we have integrated over all upward pointing radiances</p>
-</li>
-<li><p>Integrating <span class="math notranslate nohighlight">\(E_\lambda\)</span> over all wavelengths to get <span class="math notranslate nohighlight">\(E\)</span>.   If we can do that, then we can get
-an energy budget for a layer that looks like this:</p>
+<p>This gives us the net upward flux at the top of the layer.  We can
+do the same integration the top of the atmosphere down and from <span class="math notranslate nohighlight">\(\theta=\pi/2\)</span> to <span class="math notranslate nohighlight">\(\theta = \pi\)</span> and
+get the downard flux passing through that level.
+Finally, we can integrate over all wavelengths to the the total net flux entering and leaving the layer.</p>
+<p>The final result will be a picture that looks like this:</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/layer_budget.png"><img alt="../../_images/layer_budget.png" src="../../_images/layer_budget.png" style="width: 446.6px; height: 284.90000000000003px;" /></a>
 </figure>
-</li>
-</ol>
 <p>To get the heating rate in <span class="math notranslate nohighlight">\(W\,m^{-2}\)</span> for the layer above, use the following convention:</p>
 <ol class="arabic">
 <li><p>Downward fluxes are positive (heating), upward fluxes are negative (cooling)</p></li>
-<li><p>The net flux <span class="math notranslate nohighlight">\(E_n = E_\uparrow + E_\downarrow\)</span></p></li>
+<li><p>The net flux <span class="math notranslate nohighlight">\(F_n = F_\uparrow + F_\downarrow\)</span></p></li>
 <li><p>The heating rate is then defined as:</p>
 <div class="math notranslate nohighlight">
-\[\Delta E_n = E_{nTop} - E_{nBot} = (60 - 20) - (80 - 25) = 40 - 55 = -15\ W\,m^{-2}\]</div>
+\[
+    \Delta F_n = F_{nTop} - F_{nBot} = \left ( (60 - 20) - (80 - 25) \right )= (40 - 55) = -15\ W\,m^{-2}
+    \]</div>
 </li>
 </ol>
-<p>In other words, the layer is cooling at a rate of -15 <span class="math notranslate nohighlight">\(W\,m^{-2}\)</span>, because more energy is
-exiting from top of the layer than is entering from below.</p>
+<p>In other words, the layer is cooling at a rate of -15 <span class="math notranslate nohighlight">\(W\,m^{-2}\)</span>, because less energy is
+entering from the top of the layer than is exiting from below.</p>
 </section>
 <section id="temperature-change">
 <h2><span class="section-number">32.3. </span>Temperature change<a class="headerlink" href="#temperature-change" title="Permalink to this heading">#</a></h2>
 <p>To turn the radiative heating rate into a rate of temperature change, we need to use the first law of thermodynamics
 (see Stull equation 3.4a):</p>
 <div class="math notranslate nohighlight">
-\[\frac{dH}{dt} = \Delta E_n\]</div>
-<p>where <span class="math notranslate nohighlight">\(H\)</span> (units: <span class="math notranslate nohighlight">\(Joules/m^2\)</span>)  is called the <em>enthalpy</em> (note that the units work out to <span class="math notranslate nohighlight">\(W/m^2\)</span>).  The enthalpy of
+\[
+\frac{dH}{dt} = \Delta F_n
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(H\)</span> (units: <span class="math notranslate nohighlight">\(Joules/m^2\)</span>) is called the <em>enthalpy</em> (note that the units work out to <span class="math notranslate nohighlight">\(W/m^2\)</span>). The enthalpy of
 a 1 <span class="math notranslate nohighlight">\(m^2\)</span> column of thickness <span class="math notranslate nohighlight">\(\Delta z\)</span> is related to the temperature T via the <strong>heat capacity at constant pressure</strong> <span class="math notranslate nohighlight">\(c_p\)</span>
-(units: <span class="math notranslate nohighlight">\(J\,kg^{-1}\,K^{-1}\)</span>  and the density <span class="math notranslate nohighlight">\(\rho\)</span> (<span class="math notranslate nohighlight">\(kg\,m^{-3}\)</span>):</p>
+(units: <span class="math notranslate nohighlight">\(J\,kg^{-1}\,K^{-1}\)</span> and the density <span class="math notranslate nohighlight">\(\rho\)</span> (<span class="math notranslate nohighlight">\(kg\,m^{-3}\)</span>):</p>
 <div class="math notranslate nohighlight">
-\[H=\rho\, c_p\, \Delta z\, T\]</div>
+\[
+H=\rho\, c_p\, \Delta z\, T
+\]</div>
 <p>We define the <strong>specific enthalpy</strong> <em>h</em> as the enthalpy/unit mass = <span class="math notranslate nohighlight">\(h=H/(\rho \Delta z)\)</span> where we are implicitly assuming that
 our column is 1 <span class="math notranslate nohighlight">\(m^2\)</span></p>
 <p>Putting these two equations together gives the heating rate, <span class="math notranslate nohighlight">\(Q_r\)</span> (units: K/second):</p>
+<div class="math notranslate nohighlight" id="equation-heating">
+<span class="eqno">(32.5)<a class="headerlink" href="#equation-heating" title="Permalink to this equation">#</a></span>\[\begin{split}
+\rho c_p \Delta z \frac{dT}{dt} &amp;= \Delta F_n\\
+Q_r = \frac{dT}{dt} &amp;= \frac{1}{\rho c_p} \frac{\Delta F_n}{\Delta z} = \frac{1}{\rho c_p} \frac{dF_n}{dz}
+\end{split}\]</div>
+</section>
+<section id="summary">
+<h2><span class="section-number">32.4. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>So the recipe for advancing the model 1 timestep:</p>
+<ol class="arabic">
+<li><p>calculate the optical depth <span class="math notranslate nohighlight">\(\tau\)</span> in every layer</p></li>
+<li><p>start from the surface and for each layer, calculate the flux transmittance, using <span class="math notranslate nohighlight">\(1.66 \tau\)</span> for the optical depth</p></li>
+<li><p>use the Schwartzchild equation with constant temperature to calculate the upward flux leaving the top of the layer, given the flux
+from below and the emission from the layer</p></li>
+<li><p>repeat starting at the top of the atmosphere and moving downward</p></li>
+<li><p>find the net flux <span class="math notranslate nohighlight">\(F_n\)</span> at each level, and the heating rate <span class="math notranslate nohighlight">\(Q_r\)</span> across each layer</p></li>
+<li><p>use <a class="reference internal" href="#equation-heating">(32.5)</a> to get the rate of change of temperature, and increase or decrease the temperature by</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\begin{aligned}\\\begin{split}\rho c_p \Delta z \frac{dT}{dt} &amp;= \Delta E_n\\\end{split}\\Q_r = \frac{dT}{dt} &amp;= \frac{1}{\rho c_p} \frac{\Delta E_n}{\Delta z} = \frac{1}{\rho c_p} \frac{dE_n}{dz}
-\end{aligned}\end{aligned}\end{align} \]</div>
+\[
+   \Delta T = Q_r \Delta t
+   \]</div>
+<p>where the timestep <span class="math notranslate nohighlight">\(\Delta t\)</span> is typically 20 minutes.</p>
+</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -538,9 +588,10 @@ our column is 1 <span class="math notranslate nohighlight">\(m^2\)</span></p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review">32.1. Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartzchild-equation-for-flux">32.1. Schwartzchild equation for flux</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#net-flux">32.2. Net flux</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-change">32.3. Temperature change</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">32.4. Summary</a></li>
 </ul>
   </nav></div>
 

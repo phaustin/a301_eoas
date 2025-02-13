@@ -4,7 +4,7 @@
 
 ## Schwartzchild with changing temperature
 
-From {ref}`week5-schwartz`
+From {ref}`week5-schwartzA`
 
 1. Equation {eq}`vary` allows you to find the radiance at
    height $z_T$ if given enough information about the atmosphere.

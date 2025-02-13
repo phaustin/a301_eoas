@@ -296,7 +296,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/notebooks/midterm/mid_term_reviewI.rst" target="_blank"
+      <li><a href="../../_sources/notebooks/midterm/mid_term_reviewI.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -306,7 +306,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.rst</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -390,10 +390,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beers-law">1.1. Beers law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-angle-and-radiance">1.2. Solid angle and radiance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartzchild-equation">1.3. Schwartzchild equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-assignment-3a">1.4. From assignment 3a</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-beers-law">1.1. A. Beers law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-solid-angle-and-radiance">1.2. B. Solid angle and radiance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-schwartzchild-equation">1.3. C. Schwartzchild equation</a></li>
 </ul>
             </nav>
         </div>
@@ -405,80 +404,80 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="sample-mid-term-questions-i">
-<span id="mid-review1"></span><h1><span class="section-number">1. </span>Sample mid-term questions I<a class="headerlink" href="#sample-mid-term-questions-i" title="Permalink to this heading">#</a></h1>
-<section id="beers-law">
-<h2><span class="section-number">1.1. </span>Beers law<a class="headerlink" href="#beers-law" title="Permalink to this heading">#</a></h2>
-<p>Stull page 2.43 and the <span class="xref std std-ref">week2_beerslaw</span> reading:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="sample-mid-term-questions-i">
+<span id="mid-review1b"></span><h1><span class="section-number">1. </span>Sample mid-term questions I<a class="headerlink" href="#sample-mid-term-questions-i" title="Permalink to this heading">#</a></h1>
+<section id="a-beers-law">
+<h2><span class="section-number">1.1. </span>A. Beers law<a class="headerlink" href="#a-beers-law" title="Permalink to this heading">#</a></h2>
+<p>Stull page 2.43 and the <a class="reference internal" href="../week1/beers_law.html#week1-beerslaw"><span class="std std-ref">Beers and inverse squared laws</span></a> reading:</p>
 <ol class="arabic">
-<li><p>Prove that for a thin  non-reflecting layer the change in emissivity
-=  change in optical thickness, i.e. prove that:</p>
+<li><p>Prove that for a thin non-reflecting layer the change in emissivity
+= change in optical thickness, i.e. prove that:</p>
 <div class="math notranslate nohighlight" id="equation-thin">
-<span class="eqno">(1.1)<a class="headerlink" href="#equation-thin" title="Permalink to this equation">#</a></span>\[   \Delta e_\lambda \approx  \Delta \tau_\lambda\]</div>
+<span class="eqno">(1.1)<a class="headerlink" href="#equation-thin" title="Permalink to this equation">#</a></span>\[
+   \Delta \epsilon_\lambda \approx  \Delta \tau_\lambda
+   \]</div>
 </li>
 <li><p>Repeat the problem above, but for a layer with an optical depth of <span class="math notranslate nohighlight">\(\tau_\lambda=1\)</span>.
 How does that change <a class="reference internal" href="#equation-thin">(1.1)</a> ?</p></li>
 <li><p>Suppose you put ozone molecules in a 1 km long tunnel and measure an optical thickness of
-0.5 using an ultraviolet laser.  You know that the ozone mixing ratio is 1 g/kg and the air
-density is 1 kg/<span class="math notranslate nohighlight">\(m^3\)</span>.  What is the extinction coefficient <span class="math notranslate nohighlight">\(k\)</span> in <span class="math notranslate nohighlight">\(m^2/kg\)</span>?</p></li>
-<li><p>Find the narrow beam transmission, absorption and emission for a series of
+0.5 using an ultraviolet laser. You know that the ozone mixing ratio is 1 g/kg and the air
+density is 1 kg/<span class="math notranslate nohighlight">\(m^3\)</span>. What is the extinction coefficient <span class="math notranslate nohighlight">\(k\)</span> in <span class="math notranslate nohighlight">\(m^2/kg\)</span>?</p></li>
+<li><p>Find the narrow beam transmissivity, absorptivity and emissivity for a series of
 stacked layers of equal transmissivities and temperatures in a direction perpendicular to the layers.</p></li>
 </ol>
 </section>
-<section id="solid-angle-and-radiance">
-<h2><span class="section-number">1.2. </span>Solid angle and radiance<a class="headerlink" href="#solid-angle-and-radiance" title="Permalink to this heading">#</a></h2>
+<section id="b-solid-angle-and-radiance">
+<h2><span class="section-number">1.2. </span>B. Solid angle and radiance<a class="headerlink" href="#b-solid-angle-and-radiance" title="Permalink to this heading">#</a></h2>
 <p>From <a class="reference internal" href="../week1/radiance.html#radiance"><span class="std std-ref">Solid angle and radiance</span></a> reading:</p>
 <ol class="arabic simple">
 <li><p>Calculate the solid angle subtended by a cone with an angular width of
 <span class="math notranslate nohighlight">\(\Delta \theta\)</span> =20 degrees.</p></li>
-<li><p>A laser pointer subtends the same solid angle as the sun: <span class="math notranslate nohighlight">\(7 \times 10^{-5}\)</span> sr.  You shine it at a wall that is 10 meters away.  What is the radius of the circular dot?</p></li>
+<li><p>A laser pointer subtends the same solid angle as the sun: <span class="math notranslate nohighlight">\(7 \times 10^{-5}\)</span> sr. You shine it at a wall that is 10 meters away. What is the radius of the circular dot?</p></li>
 <li><p>What is the angle of the cone if <span class="math notranslate nohighlight">\(\omega = 7. \times 10^{-5}\ sr\)</span>?</p></li>
 <li><p>A satellite orbits 800 km above the earth and has a telescope with a field of view
-that covers 1 <span class="math notranslate nohighlight">\(km^2\)</span> directly below (i.e. at nadir).  If that 1 <span class="math notranslate nohighlight">\(km^2\)</span> is ocean with
-an emissivity <span class="math notranslate nohighlight">\(e=1\)</span> at a temperature
-of 280 K, calculate the flux in <span class="math notranslate nohighlight">\(W\,m^2\)</span> reaching the satellite from all wavelengths
-from that pixel.</p></li>
+that covers 1 <span class="math notranslate nohighlight">\(km^2\)</span> directly below it (i.e. at nadir). If that 1 <span class="math notranslate nohighlight">\(km^2\)</span> is ocean with
+an emissivity <span class="math notranslate nohighlight">\(\epsilon =1\)</span> at a temperature
+of 280 K, calculate the sufrace flux in <span class="math notranslate nohighlight">\(W\,m^{-2}\)</span> reaching the satellite between 10-11 microns,
+assuming no atmospheric absorption or emission.</p></li>
 <li><p>Suppose that a satellite’s orbit changes from a height of 800 km to a height of 600 km
-above the surface.  If the telescope field of view stays the same, prove that
+above the surface. If the telescope field of view stays the same, prove that
 the radiance stays constant.</p></li>
 </ol>
+<p>For B.4 use the following figure to calculate the surface emission:</p>
+<figure class="align-default" id="planck">
+<a class="reference internal image-reference" href="../../_images/planck_a301.png"><img alt="../../_images/planck_a301.png" src="../../_images/planck_a301.png" style="width: 445.8px; height: 439.2px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">Flux E from a perfect blackbody</span><a class="headerlink" href="#planck" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
-<section id="schwartzchild-equation">
-<h2><span class="section-number">1.3. </span>Schwartzchild equation<a class="headerlink" href="#schwartzchild-equation" title="Permalink to this heading">#</a></h2>
-<p>From Stull p. 224 and the <a class="reference internal" href="../week5/schwartz.html#week4-schwartz"><span class="std std-ref">The Schwartzchild Equation</span></a> reading:</p>
+<section id="c-schwartzchild-equation">
+<h2><span class="section-number">1.3. </span>C. Schwartzchild equation<a class="headerlink" href="#c-schwartzchild-equation" title="Permalink to this heading">#</a></h2>
+<p>From Stull p. 224 and the <a class="reference internal" href="../week5/schwartz.html#week5-schwartza"><span class="std std-ref">The Schwartzchild Equation</span></a> reading:</p>
 <ol class="arabic">
 <li><p>Show that <span class="math notranslate nohighlight">\(e_\lambda\)</span> = <span class="math notranslate nohighlight">\(a_\lambda\)</span> for a gas that absorbs and transmits but doesn’t reflect.
-(hint:  put the gas between two black plates, assume that the gas and the plates are at the
+(hint: put the gas between two black plates, assume that the gas and the plates are at the
 same temperature and show that the 2nd law is violated if <span class="math notranslate nohighlight">\(e_\lambda \neq a_\lambda\)</span></p></li>
 <li><p>Integrate the Schwartzchild equation</p>
 <div class="math notranslate nohighlight">
-\[\begin{gathered}
-    \label{eq:sch1}
-     dL_{\lambda,absorption} + dL_{\lambda,emission}  = -L_\lambda\, d\tau_\lambda + B_\lambda (T_{layer})\, d\tau_\lambda
-  \end{gathered}\]</div>
+\[
+   \begin{gathered}
+       \label{eq:sch1}
+        dL_{\lambda,absorption} + dL_{\lambda,emission}  = -L_\lambda\, d\tau_\lambda + B_\lambda (T_{layer})\, d\tau_\lambda
+     \end{gathered}
+   \]</div>
 <p>across a constant temperature layer of thickness <span class="math notranslate nohighlight">\(\Delta \tau_\lambda\)</span> over a surface
 emitting radiance <span class="math notranslate nohighlight">\(L_{\lambda 0}\)</span>
 and show that the radiance at the top of a constant temperature layer is given by:</p>
 <div class="math notranslate nohighlight">
-\[\begin{gathered}
-L_\lambda = L_{\lambda 0} \exp( -\Delta \tau_\lambda  ) + B_\lambda (1- \exp( -\Delta \tau_\lambda))\end{gathered}\]</div>
+\[
+   \begin{gathered}
+   L_\lambda = L_{\lambda 0} \exp( -\Delta \tau_\lambda  ) + B_\lambda (1- \exp( -\Delta \tau_\lambda))\end{gathered}
+   \]</div>
 <p><strong>Hint:</strong></p>
-<p>See the section “Adding emission to Beers law” in the <a class="reference internal" href="../week5/schwartz.html#week4-schwartz"><span class="std std-ref">The Schwartzchild Equation</span></a> notes.</p>
+<p>See the section “Adding emission to Beers law” in the <a class="reference internal" href="../week5/schwartz.html#week5-schwartza"><span class="std std-ref">The Schwartzchild Equation</span></a> notes.</p>
 </li>
 </ol>
-</section>
-<section id="from-assignment-3a">
-<h2><span class="section-number">1.4. </span>From assignment 3a<a class="headerlink" href="#from-assignment-3a" title="Permalink to this heading">#</a></h2>
-<dl class="simple">
-<dt>4. A satellite orbits 800 km above the earth and has a telescope with a field of view</dt><dd><p>that covers 1 <span class="math notranslate nohighlight">\(km^2\)</span> directly below (i.e. at nadir).  If that 1 <span class="math notranslate nohighlight">\(km^2\)</span> is ocean with
-an emissivity $e=1$ at a temperature
-of 280 K, calculate the flux in $W,m^2$ reaching the satellite from all wavelengths
-from that pixel.</p>
-</dd>
-<dt>5. Suppose that a satellite’s orbit changes from a height of 800 km to a height of 600 km</dt><dd><p>above the surface.  If the telescope field of view stays the same, prove that
-the radiance stays constant.</p>
-</dd>
-</dl>
 </section>
 </section>
 
@@ -546,10 +545,9 @@ the radiance stays constant.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beers-law">1.1. Beers law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-angle-and-radiance">1.2. Solid angle and radiance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartzchild-equation">1.3. Schwartzchild equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-assignment-3a">1.4. From assignment 3a</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-beers-law">1.1. A. Beers law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-solid-angle-and-radiance">1.2. B. Solid angle and radiance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-schwartzchild-equation">1.3. C. Schwartzchild equation</a></li>
 </ul>
   </nav></div>
 
