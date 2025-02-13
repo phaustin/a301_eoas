@@ -1,8 +1,9 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -28,35 +29,39 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week2/get_landsat_bands';</script>
@@ -155,18 +160,7 @@
     <p class="title logo__title">ATSC 301</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -247,6 +241,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">29. Assignment 3: solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week6/hydrostatic_balance.html">30. Scale heights for typical atmospheric soundings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">31. Weighting functions for temperature retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">32. Finding the heating rate of the atmosphere</a></li>
 </ul>
 
     </div>
@@ -276,9 +271,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -372,9 +367,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -440,12 +435,12 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="landsat-1-dowloading-landsat-and-sentinel-data-from-nasa">
-<span id="week2-hls"></span><h1><span class="section-number">11. </span>Landsat 1: Dowloading Landsat and Sentinel data from NASA<a class="headerlink" href="#landsat-1-dowloading-landsat-and-sentinel-data-from-nasa" title="Link to this heading">#</a></h1>
+<span id="week2-hls"></span><h1><span class="section-number">11. </span>Landsat 1: Dowloading Landsat and Sentinel data from NASA<a class="headerlink" href="#landsat-1-dowloading-landsat-and-sentinel-data-from-nasa" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Download get_landsat_bands.ipynb from the <a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing">week2 folder</a></p></li>
 </ul>
 <section id="introduction">
-<h2><span class="section-number">11.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>This notebook goes over the procedure to locate and download 30 meter resolution
 Landsat and Sentinel data using NASA’s Harmonized Landsat and Sentinel-2  dataset.
 These two satellites have very similar radiometer bands, fly in similar orbits and
@@ -454,7 +449,7 @@ have collaborated on a common dataset that gives corrected surface reflectivity 
 temperatures for the two satellites.</p>
 </section>
 <section id="overview-objectives">
-<h2><span class="section-number">11.2. </span>Overview/objectives<a class="headerlink" href="#overview-objectives" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.2. </span>Overview/objectives<a class="headerlink" href="#overview-objectives" title="Permalink to this heading">#</a></h2>
 <p>In the first few sections, we’ll go over how to select a Landsat scene for a particular place and range of dates, and look at the true-color browse image.  This image is available as jpg file without having to
 authenticate with an earthdata id.</p>
 <p>Then we’ll download a band 5, near-infrared geotif file, where tif stands for “tagged image format”.  Here is the <a class="reference external" href="https://en.wikipedia.org/wiki/TIFF">tif wikipedia article</a>. Unlike the jpg format, tif files don’t use lossy compression, and contain arbitrary metadata about the image.</p>
@@ -470,14 +465,14 @@ authenticate with an earthdata id.</p>
 <p>By the end of this notebook you should have a saved tif file of your landsat, band 5 image, and a good idea of what the reflective patterns of the image are.</p>
 </section>
 <section id="installation">
-<h2><span class="section-number">11.3. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.3. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
 <p>This notebook requires three additions to the a301 environment.  To install them, do</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">earthaccess</span> <span class="n">pystac</span><span class="o">-</span><span class="n">client</span> <span class="n">shapely</span>
 </pre></div>
 </div>
 </section>
 <section id="authentication">
-<h2><span class="section-number">11.4. </span>Authentication<a class="headerlink" href="#authentication" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.4. </span>Authentication<a class="headerlink" href="#authentication" title="Permalink to this heading">#</a></h2>
 <p>To get NASA to give you your image, you’ll need your username and password that you created at <a class="reference external" href="https://urs.earthdata.nasa.gov">https://urs.earthdata.nasa.gov/</a></p>
 <p>You need to authenticate as described in: <a class="reference external" href="https://earthaccess.readthedocs.io/en/latest/howto/authenticate/">https://earthaccess.readthedocs.io/en/latest/howto/authenticate</a></p>
 <p>The following steps create a <code class="docutils literal notranslate"><span class="pre">~/.netrc</span></code> file, which  keeps your username and password for future use:</p>
@@ -490,7 +485,7 @@ authenticate with an earthdata id.</p>
 <p>Then the next time you need to download or search HLS data you should just be able to do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">earthaccess</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">earthaccess</span>
 <span class="n">auth</span> <span class="o">=</span> <span class="n">earthaccess</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;netrc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -518,7 +513,7 @@ authenticate with an earthdata id.</p>
 <p>You can search the catalog without logging in, but once you ask for data, the earthaccess object will write a new file called “cookies.txt” in the directory  you started jupyterlab in.</p>
 </section>
 <section id="doing-an-image-search-using-pystac-client">
-<h2><span class="section-number">11.5. </span>Doing an image search using pystac_client<a class="headerlink" href="#doing-an-image-search-using-pystac-client" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.5. </span>Doing an image search using pystac_client<a class="headerlink" href="#doing-an-image-search-using-pystac-client" title="Permalink to this heading">#</a></h2>
 <p>STAC is an acronym for “Spatio-temporal asset catalog”, which is a standard way of cataloging
 GIS resources in the cloud.  A STAC catalog hold metadata, including web addresses, for geotiff
 files like those uploaded by the <a class="reference external" href="https://www.earthdata.nasa.gov/learn/articles/hls-cloud-efforts">NASA harmonized landsat-sentinel project</a> (HLS) to Amazon Web Services.</p>
@@ -527,17 +522,17 @@ and process requests sent to it by the pystac Client.</p>
 <p>We’ll also need the <a class="reference external" href="https://towardsdatascience.com/geospatial-adventures-step-1-shapely-e911e4f86361">shapely</a> library to specify a point on the earth that we want to be included in our search. In addition, we need to specify a date range to search.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w">  </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">pathlib</span>  <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pystac_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">Client</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+<span class="kn">import</span> <span class="nn">rioxarray</span>
+<span class="kn">from</span> <span class="nn">pystac_client</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
 </pre></div>
 </div>
 </div>
@@ -562,7 +557,7 @@ and process requests sent to it by the pystac Client.</p>
 </div>
 </div>
 <section id="set-up-the-search">
-<h3><span class="section-number">11.5.1. </span>set up the search<a class="headerlink" href="#set-up-the-search" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.5.1. </span>set up the search<a class="headerlink" href="#set-up-the-search" title="Permalink to this heading">#</a></h3>
 <p>The pystac client object takes the search parameters as the following keywords:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -579,7 +574,7 @@ and process requests sent to it by the pystac Client.</p>
 </div>
 </section>
 <section id="get-the-metadata-for-search-items">
-<h3><span class="section-number">11.5.2. </span>get the metadata for search items<a class="headerlink" href="#get-the-metadata-for-search-items" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.5.2. </span>get the metadata for search items<a class="headerlink" href="#get-the-metadata-for-search-items" title="Permalink to this heading">#</a></h3>
 <p>This search should find 4 scenes – 2 of which have 4% cloud cover.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -688,7 +683,7 @@ properties: {&#39;datetime&#39;: &#39;2015-12-06T13:44:45.826Z&#39;, &#39;eo:clo
 </div>
 </section>
 <section id="get-the-assets-for-scene-1-june-14-2015">
-<h3><span class="section-number">11.5.3. </span>Get the assets for scene 1 (June 14, 2015)<a class="headerlink" href="#get-the-assets-for-scene-1-june-14-2015" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.5.3. </span>Get the assets for scene 1 (June 14, 2015)<a class="headerlink" href="#get-the-assets-for-scene-1-june-14-2015" title="Permalink to this heading">#</a></h3>
 <p>Once we decide on the scene, we can access its assets.  It contains the href (url) for
 each of the landsat bands (except Band 8) – here are their wavelengths:  <a class="reference external" href="https://landsat.gsfc.nasa.gov/satellites/landsat-8/landsat-8-bands/">Landsat Bands</a></p>
 <p>What happened to band 8? It is in a wavelength range that is only measured by the Sentinel MSI scanner, not the Landsat OLI scanner.  The channel comparisons are given here:
@@ -736,7 +731,7 @@ each of the landsat bands (except Band 8) – here are their wavelengths:  <a cl
 </div>
 </section>
 <section id="download-and-display-the-true-color-browse-image">
-<h3><span class="section-number">11.5.4. </span>Download and display the true-color browse image<a class="headerlink" href="#download-and-display-the-true-color-browse-image" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.5.4. </span>Download and display the true-color browse image<a class="headerlink" href="#download-and-display-the-true-color-browse-image" title="Permalink to this heading">#</a></h3>
 <p>You can see the browse image by clicking on the asset href above. We can also use rioxarray to download the browse image from its url.  The browse image is stored as a red green blue jpg file:  <a class="reference external" href="https://en.wikipedia.org/wiki/JPEG">wikipedia page on jpg</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1176,7 +1171,7 @@ Attributes:
 </section>
 </section>
 <section id="working-with-the-band5-geotiff">
-<h2><span class="section-number">11.6. </span>Working with the Band5 geotiff<a class="headerlink" href="#working-with-the-band5-geotiff" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.6. </span>Working with the Band5 geotiff<a class="headerlink" href="#working-with-the-band5-geotiff" title="Permalink to this heading">#</a></h2>
 <p>Landsat Band5 in the near-infrared spans wavelengths between  0.845–0.885 <span class="math notranslate nohighlight">\(\mu m\)</span> which are invisible to the human eye. This is a wavelength region where vegetation is very reflective,
 because the leaves want to absorb red photons for photosynthesis and reflect slightly longer near-ir photons so they don’t get absorbed and
 raise the leaf temperature.  This difference between red (Band4) and near-infrared (Band 5) is called the <a class="reference external" href="https://agrio.app/Red-Edge-reflectance-monitoring-for-early-plant-stress-detection/">“red edge”</a>.</p>
@@ -1195,11 +1190,11 @@ raise the leaf temperature.  This difference between red (Band4) and near-infrar
 </div>
 </div>
 <section id="set-the-cookie-file-name-as-an-environmental-variable">
-<h3><span class="section-number">11.6.1. </span>set the cookie file name as an environmental variable<a class="headerlink" href="#set-the-cookie-file-name-as-an-environmental-variable" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.6.1. </span>set the cookie file name as an environmental variable<a class="headerlink" href="#set-the-cookie-file-name-as-an-environmental-variable" title="Permalink to this heading">#</a></h3>
 <p>We got the browse image for free, but the actual bands require authorization. The nasa earthdata site will put an encrypted token into the file <code class="docutils literal notranslate"><span class="pre">cookies.txt</span></code> in the current directory (‘.’) when we ask for band data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GDAL_HTTP_COOKIEFILE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;./cookies.txt&quot;</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GDAL_HTTP_COOKIEJAR&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;./cookies.txt&quot;</span>
 </pre></div>
@@ -1208,11 +1203,11 @@ raise the leaf temperature.  This difference between red (Band4) and near-infrar
 </div>
 </section>
 <section id="read-the-band-5-raster">
-<h3><span class="section-number">11.6.2. </span>Read the band 5 raster<a class="headerlink" href="#read-the-band-5-raster" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.6.2. </span>Read the band 5 raster<a class="headerlink" href="#read-the-band-5-raster" title="Permalink to this heading">#</a></h3>
 <p>The next cell reads in the raster.  By setting <code class="docutils literal notranslate"><span class="pre">masked=True</span></code> we are telling rasterio to look up the <code class="docutils literal notranslate"><span class="pre">_FillValue</span></code> tag in the
 geotiff, and replace all pixels that have that value to <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>.</p>
 <section id="use-a-local-file-if-available">
-<h4><span class="section-number">11.6.2.1. </span>Use a local file if available<a class="headerlink" href="#use-a-local-file-if-available" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">11.6.2.1. </span>Use a local file if available<a class="headerlink" href="#use-a-local-file-if-available" title="Permalink to this heading">#</a></h4>
 <p>This step is the one that requires authentication.  NASA counts the number of downloads your account makes in a day, and
 will deny access if you exceed a threshold (about 50 downloads).  At the bottom of the notebook in section <a class="reference internal" href="#sec-writeout"><span class="std std-ref">Write out the raster as a geotiff</span></a> we write band 5 to disk if the variable <code class="docutils literal notranslate"><span class="pre">writeit</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>.  If you want to use that file instead, set the variable <code class="docutils literal notranslate"><span class="pre">from_disk</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
 <div class="cell docutils container">
@@ -1238,7 +1233,7 @@ will deny access if you exceed a threshold (about 50 downloads).  At the bottom 
 </section>
 </section>
 <section id="list-all-attributes">
-<h3><span class="section-number">11.6.3. </span>List all attributes<a class="headerlink" href="#list-all-attributes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.6.3. </span>List all attributes<a class="headerlink" href="#list-all-attributes" title="Permalink to this heading">#</a></h3>
 <p>Unlike the browse image, the actual band 5 tif has metadata.  xarray DataArray objects store metadata as “attributes”.  Here are all the attributes we fetched from the tif file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1315,7 +1310,7 @@ will deny access if you exceed a threshold (about 50 downloads).  At the bottom 
 </div>
 </section>
 <section id="machine-readable-crs">
-<h3><span class="section-number">11.6.4. </span>Machine readable crs<a class="headerlink" href="#machine-readable-crs" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.6.4. </span>Machine readable crs<a class="headerlink" href="#machine-readable-crs" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">HORIZONTAL_CS_NAME</span></code> attribute is for humans.  To use the image CRS with a program like cartopy we need a more detailed version.  This is supplied by an accessor function added to xarray by rioxarray, with outputs the crs in “well known text (WKT)” format:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1331,7 +1326,7 @@ will deny access if you exceed a threshold (about 50 downloads).  At the bottom 
 </div>
 </section>
 <section id="image-coverage">
-<h3><span class="section-number">11.6.5. </span>Image  coverage<a class="headerlink" href="#image-coverage" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.6.5. </span>Image  coverage<a class="headerlink" href="#image-coverage" title="Permalink to this heading">#</a></h3>
 <p>Here are two ways of finding the image width in km.  The first way gives 109.77 km</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1717,7 +1712,7 @@ Coordinates:
 </div>
 <p>The second gives 109.80 km.</p>
 <section id="explain-why-the-two-estimates-are-correct-but-different">
-<h4><span class="section-number">11.6.5.1. </span>Explain why the two estimates are correct but different.<a class="headerlink" href="#explain-why-the-two-estimates-are-correct-but-different" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">11.6.5.1. </span>Explain why the two estimates are correct but different.<a class="headerlink" href="#explain-why-the-two-estimates-are-correct-but-different" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_band5</span><span class="o">.</span><span class="n">NCOLS</span><span class="o">*</span><span class="mf">30.</span><span class="o">/</span><span class="mf">1000.</span>
@@ -1733,7 +1728,7 @@ Coordinates:
 </section>
 </section>
 <section id="scaling-the-image">
-<h3><span class="section-number">11.6.6. </span>Scaling the image<a class="headerlink" href="#scaling-the-image" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.6.6. </span>Scaling the image<a class="headerlink" href="#scaling-the-image" title="Permalink to this heading">#</a></h3>
 <p>The cell below removes the useless unit index and converts the image from (1,3660,3660) to (3660,3660), then scales the array.
 Note that by doing arithemetic on the image, we lose all the metadata, but we keep the indexes.</p>
 <div class="cell docutils container">
@@ -2150,7 +2145,7 @@ Coordinates:
 </div>
 </section>
 <section id="histogram-the-raster">
-<h3><span class="section-number">11.6.7. </span>Histogram the raster<a class="headerlink" href="#histogram-the-raster" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.6.7. </span>Histogram the raster<a class="headerlink" href="#histogram-the-raster" title="Permalink to this heading">#</a></h3>
 <p>Make sure the scaled band5 reflectance is in the range 0-1</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2591,7 +2586,7 @@ Attributes: (12/35)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#hls_raster.plot.hist();</span>
 <span class="c1"># ls_band5.plot.hist()</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="c1">#plt.hist(hls_raster.data.flat)</span>
 </pre></div>
 </div>
@@ -2599,7 +2594,7 @@ Attributes: (12/35)
 </div>
 </section>
 <section id="plot-it-using-a-grey-palette">
-<h3><span class="section-number">11.6.8. </span>Plot it using a grey palette<a class="headerlink" href="#plot-it-using-a-grey-palette" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.6.8. </span>Plot it using a grey palette<a class="headerlink" href="#plot-it-using-a-grey-palette" title="Permalink to this heading">#</a></h3>
 <p>We can use the Normalize object to adjust the maximum range we want to assign colors to.  In this case,
 we don’t want to waste colors on the very few pixels with reflectances higher than 0.8.  We’ll use a grey scale colormap.  Note that the DataArray object
 knows how to use the x and y indexes to label the axis tick marks in map coordinates.</p>
@@ -2611,7 +2606,7 @@ knows how to use the x and y indexes to label the axis tick marks in map coordin
 <span class="n">pal</span><span class="o">.</span><span class="n">set_under</span><span class="p">(</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>  <span class="c1"># color cells &lt; vmin black</span>
 <span class="n">vmin</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1">#anything under this is colored black</span>
 <span class="n">vmax</span> <span class="o">=</span> <span class="mf">0.8</span>  <span class="c1">#anything over this is colored white</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">Normalize</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
 <span class="n">the_norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2631,7 +2626,7 @@ knows how to use the x and y indexes to label the axis tick marks in map coordin
 </div>
 </section>
 <section id="write-out-the-raster-as-a-geotiff">
-<span id="sec-writeout"></span><h3><span class="section-number">11.6.9. </span>Write out the raster as a geotiff<a class="headerlink" href="#write-out-the-raster-as-a-geotiff" title="Link to this heading">#</a></h3>
+<span id="sec-writeout"></span><h3><span class="section-number">11.6.9. </span>Write out the raster as a geotiff<a class="headerlink" href="#write-out-the-raster-as-a-geotiff" title="Permalink to this heading">#</a></h3>
 <p>Save the original tif to disk so you don’t need to go back to NASA</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2648,13 +2643,13 @@ knows how to use the x and y indexes to label the axis tick marks in map coordin
 </section>
 </section>
 <section id="what-s-next">
-<h2><span class="section-number">11.7. </span>What’s next<a class="headerlink" href="#what-s-next" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.7. </span>What’s next<a class="headerlink" href="#what-s-next" title="Permalink to this heading">#</a></h2>
 <p>Now that we can get landsat and sentinel scenes, we need to be able to
 subset to a particular part of the image, apply the cloud mask to remove cloudy
 pixels and use channel ratios to infer surface properties.  That’s the topic for the
 next few notebooks.</p>
 <section id="for-monday-s-class">
-<h3><span class="section-number">11.7.1. </span>For Monday’s class<a class="headerlink" href="#for-monday-s-class" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.7.1. </span>For Monday’s class<a class="headerlink" href="#for-monday-s-class" title="Permalink to this heading">#</a></h3>
 <p>For Monday, copy this notebook and edit it to download and save a new tif containing band 4 (red) for your location.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2793,7 +2788,7 @@ By Philip Austin
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

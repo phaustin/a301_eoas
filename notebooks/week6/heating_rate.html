@@ -1,0 +1,598 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>32. Finding the heating rate of the atmosphere &#8212; ATSC 301</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week6/heating_rate';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week6/heating_rate.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="31. Weighting functions for temperature retrieval" href="weighting_functions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ATSC 301</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    ATSC 301: 2024 Term 2 Winter
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Useful links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">ATSC 301: syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrity.html">UBC academic integrity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../texts.html">Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pixi_install.html">pixi install for macos and windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windows_install.html">Windows installation using a conda lock file</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)">Notebook downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebook_index.html">code snippets by notebook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Week notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_review.html">Weekly review</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midterm</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/12ZDN8NZzgafeCMDTy4t0u-w80o3-foNT/view?usp=sharing">2022 mid-term</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI.html">1. Sample mid-term questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII.html">2. Midterm review questions II</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">3. Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">4. Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">5. Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">6. Plotting the Planck function with python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week2/planck_sol.html">7. Plotting the Planck function - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/assign1.html">8. Assignment 1, brightness temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_maps.html">9. Introduction to Cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_mapping_vancouver.html">10. Mapping Vancouver with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/get_landsat_bands.html">11. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">12. Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">13. Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">14. Zooming an image</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">16. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">17. Optical depth and partial transmission</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">18. Clipping multiple bands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">19. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">20. Assignment 2: solutions Part A</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">21. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">22. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">23. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">24. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">25. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">26. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">27. Hydrostatic balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">28. Cartopy mapping Buenos Aires</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">29. Assignment 3: solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydrostatic_balance.html">30. Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weighting_functions.html">31. Weighting functions for temperature retrieval</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">32. Finding the heating rate of the atmosphere</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/week6/heating_rate.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Finding the heating rate of the atmosphere</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review">32.1. Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#net-flux">32.2. Net flux</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-change">32.3. Temperature change</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="finding-the-heating-rate-of-the-atmosphere">
+<span id="heating-rate"></span><h1><span class="section-number">32. </span>Finding the heating rate of the atmosphere<a class="headerlink" href="#finding-the-heating-rate-of-the-atmosphere" title="Permalink to this heading">#</a></h1>
+<section id="review">
+<h2><span class="section-number">32.1. </span>Review<a class="headerlink" href="#review" title="Permalink to this heading">#</a></h2>
+<p>Now that we have  the diffusivity approximation from <span class="xref std std-ref">assign6a</span>, we can solve the Schwartzchild equation for fluxes.  First remember what it looks like for radiance:</p>
+<div class="math notranslate nohighlight" id="equation-main">
+<span class="eqno">(32.1)<a class="headerlink" href="#equation-main" title="Permalink to this equation">#</a></span>\[   L_\lambda(\tau_T)= B_\lambda(T_{skin}) \exp(-\tau_T) +    \int_0^{\tau_T} B_\lambda(T)\, d\hat{t}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\exp(-\tau_T)\)</span> is the total transmissivity of an atmosphere with optical thickness <span class="math notranslate nohighlight">\(\tau_T\)</span> and <span class="math notranslate nohighlight">\(\hat{t}\)</span> is the transmissivity of the atmosphere from the top of the atmosphere (where the optical depth=0, to a height at which the optical depth= <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
+<p>Here’s the picture:</p>
+<figure class="align-default" id="schwartzchild-rep">
+<a class="reference internal image-reference" href="../../_images/schwartzchild1.png"><img alt="../../_images/schwartzchild1.png" src="../../_images/schwartzchild1.png" style="width: 566.8000000000001px; height: 380.8px;" /></a>
+</figure>
+<p>If <span class="math notranslate nohighlight">\(T\)</span> is constant with height then integrating <a class="reference internal" href="#equation-main">(32.1)</a> is simple:</p>
+<div class="math notranslate nohighlight" id="equation-main2">
+<span class="eqno">(32.2)<a class="headerlink" href="#equation-main2" title="Permalink to this equation">#</a></span>\[\begin{split}  \begin{aligned}
+      L_\lambda(\tau_T) &amp;= B_\lambda(T_{skin}) \exp(-\tau_T) +    B_\lambda(T) \int_0^{\tau_T} \, d\hat{t}\\
+        &amp;= B_\lambda(T_{skin}) \exp(-\tau_T) +    B_\lambda(T)(\hat{t}(\tau_T) - \hat{t}(0) ) \\
+        &amp;= B_\lambda(T_{skin}) \exp(-\tau_T) +    B_\lambda(T)(1 - \exp(-\tau_T) )
+  \end{aligned}\end{split}\]</div>
+<p>For fluxes, we have a new flux transmission, <cite>hat{t}_f</cite> = <cite>exp(-1.666 tau)</cite>  So using that:</p>
+<div class="math notranslate nohighlight" id="equation-main3">
+<span class="eqno">(32.3)<a class="headerlink" href="#equation-main3" title="Permalink to this equation">#</a></span>\[\begin{split}  \begin{aligned}
+      E_\lambda(\tau_T) &amp;= E_{bb \lambda}(T_{skin}) \exp(-1.66 \tau_T) +    E_\lambda(T) \int_0^{\tau_T} \, d\hat{t}\\
+        &amp;= E_\lambda(T_{skin}) \exp(-1.66 \tau_T) +    E_\lambda(T)(\hat{t}_f(\tau_T) - \hat{t}(0) ) \\
+        &amp;= E_\lambda(T_{skin}) \exp(-1.666 \tau_T) +    E_\lambda(T)(1 - \exp(-1.666\tau_T) )
+  \end{aligned}\end{split}\]</div>
+</section>
+<section id="net-flux">
+<h2><span class="section-number">32.2. </span>Net flux<a class="headerlink" href="#net-flux" title="Permalink to this heading">#</a></h2>
+<p>If we want to know whether the atmosphere is heating or cooling at a particular place, however, we need
+to convert the monochromatic radiance <span class="math notranslate nohighlight">\(L_\lambda\)</span> into the corresponding broadband flux <span class="math notranslate nohighlight">\(E\)</span> by:</p>
+<ol class="arabic">
+<li><p>Integrating <span class="math notranslate nohighlight">\(\cos \theta L_\lambda d\omega\)</span> over a hemisphere to get the monochromatic flux <span class="math notranslate nohighlight">\(E_\lambda\)</span>
+as in <a class="reference internal" href="../week1/newflux.html#moving"><span class="std std-ref">Moving between flux and radiance</span></a> equation (1):</p>
+<div class="math notranslate nohighlight" id="equation-fluxrel">
+<span class="eqno">(32.4)<a class="headerlink" href="#equation-fluxrel" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{aligned}
+E_{\lambda \uparrow} &amp;= \int dE_\lambda = \int_0^{2\pi} \int_0^{\pi/2} \cos \theta \, L_\lambda \, d \omega =\int_0^{2\pi} \int_0^{\pi/2} L_\lambda \cos \theta  \sin \theta \, d\theta \ \, d \phi  \\
+&amp;= \int_0^{2\pi} \int_0^1 L_\lambda  \mu d \mu\ \, d \phi
+\end{aligned}\end{split}\]</div>
+<p>where the arrow <span class="math notranslate nohighlight">\(\uparrow\)</span> reminds us we have integrated over all upward pointing radiances</p>
+</li>
+<li><p>Integrating <span class="math notranslate nohighlight">\(E_\lambda\)</span> over all wavelengths to get <span class="math notranslate nohighlight">\(E\)</span>.   If we can do that, then we can get
+an energy budget for a layer that looks like this:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/layer_budget.png"><img alt="../../_images/layer_budget.png" src="../../_images/layer_budget.png" style="width: 446.6px; height: 284.90000000000003px;" /></a>
+</figure>
+</li>
+</ol>
+<p>To get the heating rate in <span class="math notranslate nohighlight">\(W\,m^{-2}\)</span> for the layer above, use the following convention:</p>
+<ol class="arabic">
+<li><p>Downward fluxes are positive (heating), upward fluxes are negative (cooling)</p></li>
+<li><p>The net flux <span class="math notranslate nohighlight">\(E_n = E_\uparrow + E_\downarrow\)</span></p></li>
+<li><p>The heating rate is then defined as:</p>
+<div class="math notranslate nohighlight">
+\[\Delta E_n = E_{nTop} - E_{nBot} = (60 - 20) - (80 - 25) = 40 - 55 = -15\ W\,m^{-2}\]</div>
+</li>
+</ol>
+<p>In other words, the layer is cooling at a rate of -15 <span class="math notranslate nohighlight">\(W\,m^{-2}\)</span>, because more energy is
+exiting from top of the layer than is entering from below.</p>
+</section>
+<section id="temperature-change">
+<h2><span class="section-number">32.3. </span>Temperature change<a class="headerlink" href="#temperature-change" title="Permalink to this heading">#</a></h2>
+<p>To turn the radiative heating rate into a rate of temperature change, we need to use the first law of thermodynamics
+(see Stull equation 3.4a):</p>
+<div class="math notranslate nohighlight">
+\[\frac{dH}{dt} = \Delta E_n\]</div>
+<p>where <span class="math notranslate nohighlight">\(H\)</span> (units: <span class="math notranslate nohighlight">\(Joules/m^2\)</span>)  is called the <em>enthalpy</em> (note that the units work out to <span class="math notranslate nohighlight">\(W/m^2\)</span>).  The enthalpy of
+a 1 <span class="math notranslate nohighlight">\(m^2\)</span> column of thickness <span class="math notranslate nohighlight">\(\Delta z\)</span> is related to the temperature T via the <strong>heat capacity at constant pressure</strong> <span class="math notranslate nohighlight">\(c_p\)</span>
+(units: <span class="math notranslate nohighlight">\(J\,kg^{-1}\,K^{-1}\)</span>  and the density <span class="math notranslate nohighlight">\(\rho\)</span> (<span class="math notranslate nohighlight">\(kg\,m^{-3}\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[H=\rho\, c_p\, \Delta z\, T\]</div>
+<p>We define the <strong>specific enthalpy</strong> <em>h</em> as the enthalpy/unit mass = <span class="math notranslate nohighlight">\(h=H/(\rho \Delta z)\)</span> where we are implicitly assuming that
+our column is 1 <span class="math notranslate nohighlight">\(m^2\)</span></p>
+<p>Putting these two equations together gives the heating rate, <span class="math notranslate nohighlight">\(Q_r\)</span> (units: K/second):</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{aligned}\\\begin{split}\rho c_p \Delta z \frac{dT}{dt} &amp;= \Delta E_n\\\end{split}\\Q_r = \frac{dT}{dt} &amp;= \frac{1}{\rho c_p} \frac{\Delta E_n}{\Delta z} = \frac{1}{\rho c_p} \frac{dE_n}{dz}
+\end{aligned}\end{aligned}\end{align} \]</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/week6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="weighting_functions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">31. </span>Weighting functions for temperature retrieval</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review">32.1. Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#net-flux">32.2. Net flux</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-change">32.3. Temperature change</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Philip Austin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
