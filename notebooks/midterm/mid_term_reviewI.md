@@ -1,5 +1,5 @@
 
-(mid-review1)=
+(mid-review1b)=
 # Sample mid-term questions I
 
 ## A. Beers law
@@ -54,7 +54,7 @@ Flux E from a perfect blackbody
 
 ## C. Schwartzchild equation
 
-From Stull p. 224 and the {ref}`week5-schwartz` reading:
+From Stull p. 224 and the {ref}`week5-schwartzA` reading:
 
 1. Show that $e_\lambda$ = $a_\lambda$ for a gas that absorbs and transmits but doesn't reflect.
    (hint: put the gas between two black plates, assume that the gas and the plates are at the
@@ -80,5 +80,5 @@ From Stull p. 224 and the {ref}`week5-schwartz` reading:
 
    **Hint:**
 
-   See the section "Adding emission to Beers law" in the {ref}`week5-schwartz` notes.
+   See the section "Adding emission to Beers law" in the {ref}`week5-schwartzA` notes.
 

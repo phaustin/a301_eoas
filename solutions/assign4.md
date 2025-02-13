@@ -16,7 +16,7 @@ kernelspec:
 # Assignment 4
 
 ## Q1 - Q3
-- From {ref}`mid-review1` do problems A.4, B.4, C.1
+- From {ref}`mid-review1b` do problems A.4, B.4, C.1
 
 ## Q4
 

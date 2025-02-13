@@ -243,7 +243,7 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 
 ### Day 13 Monday
 
-- Note the new {ref}`mid-review1`
+- Note the new {ref}`mid-review1b`
 - Go over {ref}`assign2b_solution`
 - My version of {ref}`week5:rowcol2latlon`
 
@@ -251,7 +251,7 @@ Today we shift from radiation to mapping, and cover some notebooks about the use
 
 - Read Stull Chapter 8 pp. 219-226 together with:
 
-  - {ref}`week5-schwartz`
+  - {ref}`week5-schwartzA`
   - work on your version of `clip_image`.  We want it to take a geotiff and two
     slice objects (desired rows and columns) and write a new, smaller geotiff
     with the raster selected using those two slices.
@@ -262,8 +262,8 @@ Topics:
 
 - {ref}`assign4` due midnight next Wednesday
 - {ref}`assign2c_solution`
-- In-class: {ref}`mid-review1` problem A.1 and A.2
-- Continue with {ref}`week5-schwartz`
+- In-class: {ref}`mid-review1b` problem A.1 and A.2
+- Continue with {ref}`week5-schwartzA`
 - {ref}`hydro`
 - {ref}`week5:add_palette`
     
@@ -273,7 +273,7 @@ Topics:
 - {ref}`sec:bacartopy`
 - Introduce {ref}`mid-review2`
 - Go over Wallace and Hobbs Figure 4.24 -- Beer's law
-- Continue with {ref}`week5-schwartz`
+- Continue with {ref}`week5-schwartzA`
 
 #### Do for Monday
 
