@@ -1,9 +1,9 @@
 (mid-review2-sols)=
-# Solutions: sample questions II
+# Midterm solutions: sample questions II
 
 ## Schwartzchild with changing temperature
 
-From {ref}`week4_schwartz`
+From {ref}`week5-schwartzA`
 
 1. Equation {eq}`vary2` allows you to find the radiance at
    height $z_T$ if given enough information about the atmosphere.
@@ -74,7 +74,7 @@ Two layers plus surface
 
 ## Beer's law
 
-From {ref}$week2_beerslaw$ and {ref}$week2_flux_from_radiance$
+From {ref}`week1-beerslaw` and {ref}`sec:week1-flux-from-radiance`
 
 1. A 5 km thick ozone layer absorbs 30% of the ultraviolet sunlight that
    passes through it when the sun is directly overhead.

@@ -1,5 +1,5 @@
 (mid-review1-sol)=
-# Solutions: midterm sample questions I
+# Midterm Solutions: midterm sample questions I
 
 ## Beers law
 
