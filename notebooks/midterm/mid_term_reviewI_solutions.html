@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. Midterm Solutions: midterm sample questions I &#8212; ATSC 301</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/midterm/mid_term_reviewI_solutions';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/midterm/mid_term_reviewI_solutions.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4. Midterm solutions: sample questions II" href="mid_term_reviewII_solutions.html" />
+    <link rel="prev" title="2. Midterm review questions II" href="mid_term_reviewII.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ATSC 301</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    ATSC 301: 2024 Term 2 Winter
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Useful links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">ATSC 301: syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrity.html">UBC academic integrity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../texts.html">Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pixi_install.html">pixi install for macos and windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windows_install.html">Windows installation using a conda lock file</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)">Notebook downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebook_index.html">code snippets by notebook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Week notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_review.html">Weekly review</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midterm</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/12ZDN8NZzgafeCMDTy4t0u-w80o3-foNT/view?usp=sharing">2022 mid-term</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mid_term_reviewI.html">1. Sample mid-term questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mid_term_reviewII.html">2. Midterm review questions II</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Midterm Solutions: midterm sample questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mid_term_reviewII_solutions.html">4. Midterm solutions: sample questions II</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">5. Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">6. Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">7. Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">8. Plotting the Planck function with python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week2/planck_sol.html">9. Plotting the Planck function - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/assign1.html">10. Assignment 1, brightness temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_maps.html">11. Introduction to Cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_mapping_vancouver.html">12. Mapping Vancouver with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/get_landsat_bands.html">13. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">14. Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">15. Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">16. Zooming an image</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">18. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">19. Optical depth and partial transmission</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">20. Clipping multiple bands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">21. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">22. Assignment 2: solutions Part A</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">23. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">24. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">25. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">26. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">27. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">28. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">29. Hydrostatic balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">30. Cartopy mapping Buenos Aires</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">31. Assignment 3: solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/hydrostatic_balance.html">32. Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">33. Weighting functions for temperature retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">34. Finding the heating rate of the atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/assign4_two_layer_sol.html">35. Assignment 4 two layer solution</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/midterm/mid_term_reviewI_solutions.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Midterm Solutions: midterm sample questions I</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beers-law">3.1. Beers law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-angle-and-radiance">3.2. Solid angle and radiance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartzchild-equation">3.3. Schwartzchild equation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="midterm-solutions-midterm-sample-questions-i">
+<span id="mid-review1-sol"></span><h1><span class="section-number">3. </span>Midterm Solutions: midterm sample questions I<a class="headerlink" href="#midterm-solutions-midterm-sample-questions-i" title="Link to this heading">#</a></h1>
+<section id="beers-law">
+<h2><span class="section-number">3.1. </span>Beers law<a class="headerlink" href="#beers-law" title="Link to this heading">#</a></h2>
+<p>Stull page 2.43 and the <span class="xref std std-ref">week2_beerslaw</span> reading:</p>
+<ol class="arabic">
+<li><p>Prove that for a thin non-reflecting layer the change in emissivity
+= change in optical thickness, i.e. prove that:</p>
+<div class="math notranslate nohighlight" id="equation-thin1">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-thin1" title="Link to this equation">#</a></span>\[
+   \Delta e_\lambda \approx  \Delta \tau_\lambda
+   \]</div>
+<p><strong>Answer:</strong></p>
+<p>Assuming no reflection, we know that the absorptivity is:</p>
+<p><span class="math notranslate nohighlight">\(a_\lambda = 1 - t_\lambda = 1 - \exp(-\tau)\)</span></p>
+<p>and from Kirchoff’s law:</p>
+<p><span class="math notranslate nohighlight">\(e_\lambda = a_\lambda\)</span></p>
+<p>so take the differential:</p>
+<p><span class="math notranslate nohighlight">\(d e_\lambda = da_\lambda = \exp(-\tau) d\tau\)</span></p>
+<p>but for a thin layer we are expanding about
+(tau=0,exp(-tau) = 1) so</p>
+<p><span class="math notranslate nohighlight">\(d e_\lambda \approx d\tau\)</span> or going to finite differences</p>
+<p><span class="math notranslate nohighlight">\(\Delta e_\lambda \approx \Delta \tau\)</span></p>
+</li>
+<li><p>Repeat the problem above, but for a layer with an optical depth of <span class="math notranslate nohighlight">\(\tau_\lambda=1\)</span>.
+How does that change <a class="reference internal" href="#equation-thin1">(3.1)</a> ?</p>
+<p><strong>Answer:</strong></p>
+<p>Now the relationship has to be:</p>
+<p><span class="math notranslate nohighlight">\(\Delta e_\lambda \approx \exp(-\tau) \Delta \tau\)</span></p>
+<p>which makes sense because we are adding a thin layer <span class="math notranslate nohighlight">\(\Delta \tau\)</span> onto
+an existing layer of thickness <span class="math notranslate nohighlight">\(\tau\)</span>, so the amount of light reaching
+the thin layer is going to be reduced by the transmittance <span class="math notranslate nohighlight">\(\exp( -\tau )\)</span></p>
+</li>
+<li><p>Suppose you put ozone molecules in a 1 km long tunnel and measure an optical thickness of
+0.5 using an ultraviolet laser. You know that the ozone mixing ratio is 1 g/kg and the air
+density is 1 kg/<span class="math notranslate nohighlight">\(m^3\)</span>. What is the extinction coefficient <span class="math notranslate nohighlight">\(k\)</span> in <span class="math notranslate nohighlight">\(m^2/kg\)</span>?</p>
+<p><strong>Answer:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   \kappa_\lambda = \frac{\tau}{\rho_{air} r_{mix} \Delta z}
+   \]</div>
+<p>Plugging in the numbers gives <span class="math notranslate nohighlight">\(k_\lambda = 0.5\ m^2/kg\)</span></p>
+<p><strong>Answer:</strong></p>
+<p>For the slant path we would need to replace the vertical optical thickness:</p>
+<div class="math notranslate nohighlight">
+\[
+   d \tau =  \kappa_\lambda \rho_g dz
+   \]</div>
+<p>with the slant path optical thickness <span class="math notranslate nohighlight">\(\tau_s\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   d \tau_s =  \kappa_\lambda \rho_g ds = \kappa_\lambda \rho_g dz/\cos \theta
+   = \kappa_\lambda \rho_g dz/\mu
+   \]</div>
+<p>Once we made that change, everything would work as before, just with a
+smaller transmittance due to the longer slant path for <span class="math notranslate nohighlight">\(\mu &lt; 1\)</span>.</p>
+</li>
+</ol>
+</section>
+<section id="solid-angle-and-radiance">
+<h2><span class="section-number">3.2. </span>Solid angle and radiance<a class="headerlink" href="#solid-angle-and-radiance" title="Link to this heading">#</a></h2>
+<p>From <a class="reference internal" href="../week1/radiance.html#radiance"><span class="std std-ref">Solid angle and radiance</span></a> reading:</p>
+<ol class="arabic">
+<li><p>Calculate the solid angle subtended by a cone with an angular width of
+<span class="math notranslate nohighlight">\(\Delta \theta\)</span> =20 degrees.</p>
+<p><strong>Answer</strong></p>
+<div class="math notranslate nohighlight" id="equation-solid">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-solid" title="Link to this equation">#</a></span>\[\begin{split}
+   \omega &amp;= \int_0^{2\pi} \int_0^{10} \sin \theta d\theta d\phi = -2\pi (\cos(10) - \cos(0)) \\
+     &amp;= 2\pi (1 - \cos(10)) = 2\pi(1 - 0.985) = 0.0954\ sr
+   \end{split}\]</div>
+</li>
+<li><p>A laser pointer subtends the same solid angle as the sun: <span class="math notranslate nohighlight">\(7 \times 10^{-5}\)</span> sr. You shine it at a wall that is 10 meters away. What is the radius of the circular dot?</p>
+<p><strong>Answer:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \begin{aligned}
+      r=10\ m \\
+      A/r^2= 7 \times 10{-5}\ sr \\
+      A=7 \times 10^{-3}\ m^2 = \pi R^2\\
+      R=(.007/(\pi))^{0.5} \approx 5\ cm
+   \end{aligned}
+   \end{split}\]</div>
+</li>
+<li><p>What is the angle of the cone if <span class="math notranslate nohighlight">\(\omega = 7. \times 10^{-5}\ sr\)</span>?</p>
+<p><strong>Answer:</strong></p>
+<p>R= 0.05 m at 10 m, <span class="math notranslate nohighlight">\(\theta = \tan^{-1}(0.05/10) \approx 0.005\)</span> radians or about 0.3 degrees</p>
+</li>
+<li><p>Suppose that a satellite’s orbit changes from a height of 800 km to a height of 600 km
+above the surface. If the telescope field of view stays the same, prove that
+the radiance stays constant.</p>
+<p><strong>Answer</strong>:</p>
+<p>Suppose that at a height of 800 km the satellite sees a circular area of 1 <span class="math notranslate nohighlight">\(km^2\)</span> in a single
+pixel. If the surface is emitting a flux of <span class="math notranslate nohighlight">\(E_{fsc}\ W/m^2\)</span> then the those photons will
+be emitted into a hemisphere of radius <span class="math notranslate nohighlight">\(h=800\ km\)</span>, and the flux at the satellite
+will be power/area = <span class="math notranslate nohighlight">\(E_{sfc} \times 1\ km^2\ Watts/(2 \pi h^2\ meters^2)\)</span>.</p>
+<p>Note that the flux
+will increase the altitude <span class="math notranslate nohighlight">\(h\)</span> decreases, because of the <span class="math notranslate nohighlight">\(1/h^2\)</span> factor.</p>
+<p>Now suppose the satellite descends to h=600 km. Again, if the power emitted by the surface stayed the same,
+then the flux reaching the satellite would
+increase by a factor <span class="math notranslate nohighlight">\((800/600)^2\)</span> because the same Watts are being distributed over a smaller
+hemisphere. The power emitted by the surface is reduced however, because the pixel is smaller.
+The pixel radius before was <span class="math notranslate nohighlight">\(R=800 \tan(\theta)\ km\)</span>, where <span class="math notranslate nohighlight">\(\theta\)</span> is the half-angle of the cone
+field of view of the telescope. At 600 km altitude, <span class="math notranslate nohighlight">\(R=600\,\tan(\theta)\)</span>, and since the pixel
+area is <span class="math notranslate nohighlight">\(\pi R^2= \pi h^2 (\tan\theta)^2\)</span> and <span class="math notranslate nohighlight">\(E_{sfc}\)</span> hasn’t changed, the emitted power is lower by <span class="math notranslate nohighlight">\((600/800)^2\)</span>, exactly
+counteracting the inverse squared increase in the flux due to bringing the satellite closer to the surface. Since the flux at the
+satellite is the same, and the field of view is the same, the radiance hasn’t changed.</p>
+</li>
+</ol>
+</section>
+<section id="schwartzchild-equation">
+<h2><span class="section-number">3.3. </span>Schwartzchild equation<a class="headerlink" href="#schwartzchild-equation" title="Link to this heading">#</a></h2>
+<p>From Stull p. 224 and the <span class="xref std std-ref">week4_schwartz</span> reading:</p>
+<ol class="arabic">
+<li><p>Show that <span class="math notranslate nohighlight">\(e_\lambda\)</span> = <span class="math notranslate nohighlight">\(a_\lambda\)</span> for a gas that absorbs and transmits but doesn’t reflect.
+(hint: put the gas between two black plates, assume that the gas and the plates are at the
+same temperature and show that the 2nd law is violated if <span class="math notranslate nohighlight">\(e_\lambda \neq a_\lambda\)</span></p>
+<p>Suppose the gas has absorptivity a and emissivity ε and they are new equal to each other.
+The it will be transmitting <span class="math notranslate nohighlight">\((1 - a)\sigma T^4\)</span> from the right wall to the left wall,
+and emitting <span class="math notranslate nohighlight">\(\epsilon \sigma T^4\)</span> to the left wall, while the (black) left wall will
+be emitting <span class="math notranslate nohighlight">\(\sigma T^4\)</span>. The temperature of the wall will change because the balance
+will be:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \begin{aligned}
+   \sigma T^4 &amp;= \epsilon \sigma T^4 + (1 - a) \sigma T^4 \\
+   &amp; \text{so:}\\
+   1 &amp;= 1 + (\epsilon - a)
+   \end{aligned}
+   \end{split}\]</div>
+<p>i.e. the flux at the wall will be unbalanced, and the temperature
+will change in violation of the 2nd law, unless ε=a for the gas.</p>
+</li>
+<li><p>Integrate the Schwartzchild equation</p>
+<div class="math notranslate nohighlight">
+\[
+   \begin{gathered}
+       \label{eq:sch1}
+        dL_{\lambda,absorption} + dL_{\lambda,emission}  = -L_\lambda\, d\tau_\lambda + B_\lambda (T_{layer})\, d\tau_\lambda
+     \end{gathered}
+   \]</div>
+<p>across a constant temperature layer of thickness <span class="math notranslate nohighlight">\(\Delta \tau_\lambda\)</span> over a surface
+emitting radiance <span class="math notranslate nohighlight">\(L_{\lambda 0}\)</span>
+and show that the radiance at the top of a constant temperature layer is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+   \begin{gathered}
+   L_\lambda = L_{\lambda 0} \exp( -\Delta \tau_\lambda  ) + B_\lambda (1- \exp( -\Delta \tau_\lambda))\end{gathered}
+   \]</div>
+<p><strong>Answer:</strong></p>
+<p>See the section “Adding emission to Beers law” in the <span class="xref std std-ref">week4_schwartz</span> notes.</p>
+</li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/midterm"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="mid_term_reviewII.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Midterm review questions II</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="mid_term_reviewII_solutions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Midterm solutions: sample questions II</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beers-law">3.1. Beers law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-angle-and-radiance">3.2. Solid angle and radiance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartzchild-equation">3.3. Schwartzchild equation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Philip Austin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

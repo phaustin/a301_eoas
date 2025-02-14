@@ -1,15 +1,14 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>28. Cartopy mapping Buenos Aires &#8212; ATSC 301</title>
+    <title>30. Cartopy mapping Buenos Aires &#8212; ATSC 301</title>
   
   
   
@@ -17,59 +16,59 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week5/cartopy_mapping_buenos_aires';</script>
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week5/cartopy_mapping_buenos_aires.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="29. Assignment 3: solutions" href="../../solutions/assign3_solutions.html" />
-    <link rel="prev" title="27. Hydrostatic balance" href="hydrostat.html" />
+    <link rel="next" title="31. Assignment 3: solutions" href="../../solutions/assign3_solutions.html" />
+    <link rel="prev" title="29. Hydrostatic balance" href="hydrostat.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -85,19 +84,8 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -105,7 +93,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -113,8 +100,8 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -130,7 +117,8 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -158,7 +146,14 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">ATSC 301</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -190,56 +185,59 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/12ZDN8NZzgafeCMDTy4t0u-w80o3-foNT/view?usp=sharing">2022 mid-term</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI.html">1. Sample mid-term questions I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII.html">2. Midterm review questions II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI_solutions.html">3. Midterm Solutions: midterm sample questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII_solutions.html">4. Midterm solutions: sample questions II</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">3. Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">5. Beers and inverse squared laws</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">4. Solid angle and radiance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">5. Finding the flux given the radiance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">6. Plotting the Planck function with python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">6. Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">7. Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">8. Plotting the Planck function with python</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week2/planck_sol.html">7. Plotting the Planck function - solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week2/assign1.html">8. Assignment 1, brightness temperatures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_maps.html">9. Introduction to Cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_mapping_vancouver.html">10. Mapping Vancouver with cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week2/get_landsat_bands.html">11. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/planck_sol.html">9. Plotting the Planck function - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/assign1.html">10. Assignment 1, brightness temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_maps.html">11. Introduction to Cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_mapping_vancouver.html">12. Mapping Vancouver with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/get_landsat_bands.html">13. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">12. Mapping the landsat scene</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">13. Assignment 1, brightness temperatures - solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">14. Zooming an image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">14. Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">15. Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">16. Zooming an image</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">16. Kirchoff worksheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">17. Optical depth and partial transmission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">18. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">19. Optical depth and partial transmission</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">18. Clipping multiple bands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">19. Optical depth II: mean free path</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">20. Assignment 2: solutions Part A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">20. Clipping multiple bands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">21. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">22. Assignment 2: solutions Part A</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">21. Assignment 4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">22. Assignment 2: solutions part B</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rowcol2latlon.html">23. Getting lat,lon from row, column</a></li>
-<li class="toctree-l1"><a class="reference internal" href="schwartz.html">24. The Schwartzchild Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="add_palette.html">25. Adding a palette to an axis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">26. Assignment 2: solutions part C</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydrostat.html">27. Hydrostatic balance</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">28. Cartopy mapping Buenos Aires</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">23. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">24. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rowcol2latlon.html">25. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schwartz.html">26. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_palette.html">27. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">28. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydrostat.html">29. Hydrostatic balance</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">30. Cartopy mapping Buenos Aires</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">29. Assignment 3: solutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/hydrostatic_balance.html">30. Scale heights for typical atmospheric soundings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">31. Weighting functions for temperature retrieval</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">32. Finding the heating rate of the atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">31. Assignment 3: solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/hydrostatic_balance.html">32. Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">33. Weighting functions for temperature retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">34. Finding the heating rate of the atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/assign4_two_layer_sol.html">35. Assignment 4 two layer solution</a></li>
 </ul>
 
     </div>
@@ -248,9 +246,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -269,9 +272,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -347,27 +350,19 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -388,31 +383,31 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">28.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">28.2. Example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">28.3. Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-utm-crs-for-zone-21s">28.4. Set up the UTM CRS for Zone 21S</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-epsg-code-for-zone-21s-is-32721">28.4.1. The epsg code for Zone 21S is 32721</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">30.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">30.2. Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">30.3. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-utm-crs-for-zone-21s">30.4. Set up the UTM CRS for Zone 21S</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-epsg-code-for-zone-21s-is-32721">30.4.1. The epsg code for Zone 21S is 32721</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-this-for-utm-zone-21n">28.5. Repeat this for UTM Zone 21N</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#false-northing">28.6. False northing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zone-21s-ends-at-80-deg-s">28.6.1. Zone 21S ends at 80 deg S</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-about-zone-21s">28.6.2. How about Zone 21S</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-about-the-equator">28.6.3. How about the equator?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-this-for-utm-zone-21n">30.5. Repeat this for UTM Zone 21N</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#false-northing">30.6. False northing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zone-21s-ends-at-80-deg-s">30.6.1. Zone 21S ends at 80 deg S</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-about-zone-21s">30.6.2. How about Zone 21S</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-about-the-equator">30.6.3. How about the equator?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-a-buenos-aires-map-with-the-crss-south-crs">28.7. Draw a Buenos Aires map with the_CRSS south CRS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-overlay-a-landsat-image">28.8. Now overlay a landsat image</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grab-the-affine-transform">28.8.1. Grab the affine transform</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#now-get-the-transform-for-zone-21n">28.8.1.1. Now get the transform for Zone 21N</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-a-buenos-aires-map-with-the-crss-south-crs">30.7. Draw a Buenos Aires map with the_CRSS south CRS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-overlay-a-landsat-image">30.8. Now overlay a landsat image</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grab-the-affine-transform">30.8.1. Grab the affine transform</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#now-get-the-transform-for-zone-21n">30.8.1.1. Now get the transform for Zone 21N</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-the-transform-by-adding-the-false-northing">28.8.2. Change the transform by adding the false northing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-modified-transform-to-get-the-extent-for-cartopy-in-the-21s-crs">28.8.3. Use the modified transform to get the extent for cartopy in the 21S crs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-the-transform-by-adding-the-false-northing">30.8.2. Change the transform by adding the false northing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-modified-transform-to-get-the-extent-for-cartopy-in-the-21s-crs">30.8.3. Use the modified transform to get the extent for cartopy in the 21S crs</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-new-make-pal">28.9. Use the new make_pal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-new-make-pal">30.9. Use the new make_pal</a></li>
 </ul>
             </nav>
         </div>
@@ -425,7 +420,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="cartopy-mapping-buenos-aires">
-<span id="sec-bacartopy"></span><h1><span class="section-number">28. </span>Cartopy mapping Buenos Aires<a class="headerlink" href="#cartopy-mapping-buenos-aires" title="Permalink to this heading">#</a></h1>
+<span id="sec-bacartopy"></span><h1><span class="section-number">30. </span>Cartopy mapping Buenos Aires<a class="headerlink" href="#cartopy-mapping-buenos-aires" title="Link to this heading">#</a></h1>
 <p>In order to run this notebook go to <a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw">the download folder</a> and get</p>
 <ul class="simple">
 <li><p>week5/cartopy_mapping_buenos_aires.ipynb</p></li>
@@ -434,12 +429,12 @@ document.write(`
 </ul>
 <p>the band2 (blue) tif needs to be in <code class="docutils literal notranslate"><span class="pre">~/repos/a301/satdata/landsat/buenos_aires/.</span></code></p>
 <section id="introduction">
-<h2><span class="section-number">28.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">30.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>This notebook shows how to turn a Landsat Zone North UTM crs into a Zone South crs so that we can use cartopy.  Basically, all we need to do is to add a “false northing” of 10,000,000 meters to the upper left corner of the raster image, as it is defined in the affine transform that is stored in the geotiff metadata.  Once we have the Zone 21S transform, we can use it
 to find the image extent that cartopy needs to plot the raster along with the coastline.</p>
 </section>
 <section id="example">
-<h2><span class="section-number">28.2. </span>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">30.2. </span>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
 <p>Use Buenos Aires as a specifc test.</p>
 <p>Google says Buenos Aires in in UTM zone 21 South, with an epgs code of 32721</p>
 <p>lat = -34.6037 deg S
@@ -448,34 +443,34 @@ lon = -58.3816 deg W</p>
 <figure class="align-default" id="ba-browse">
 <a class="reference internal image-reference" href="../../_images/buenos_aires.jpg"><img alt="../../_images/buenos_aires.jpg" src="../../_images/buenos_aires.jpg" style="width: 500.0px; height: 500.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 28.1 </span><span class="caption-text">Landsat browse image of Buenos Aires</span><a class="headerlink" href="#ba-browse" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 30.1 </span><span class="caption-text">Landsat browse image of Buenos Aires</span><a class="headerlink" href="#ba-browse" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="import-libraries">
-<h2><span class="section-number">28.3. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">30.3. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
 <p>The file <code class="docutils literal notranslate"><span class="pre">a301_lib.py</span></code> is a new python module containing course code.
 For week 5 it  contains <code class="docutils literal notranslate"><span class="pre">rowcol2latlon</span></code> from <a class="reference internal" href="rowcol2latlon.html#week5-rowcol2latlon"><span class="std std-ref">Getting lat,lon from row, column</span></a> and
 <code class="docutils literal notranslate"><span class="pre">make_pal</span></code> from <a class="reference internal" href="add_palette.html#week5-add-palette"><span class="std std-ref">Adding a palette to an axis</span></a>.  We use the <code class="docutils literal notranslate"><span class="pre">make_pal</span></code> function below</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">a301_lib</span> <span class="kn">import</span> <span class="n">make_pal</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">a301_lib</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_pal</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">cartopy</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span> <span class="nn">rioxarray</span>
-<span class="kn">import</span> <span class="nn">affine</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">affine</span>
 
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">Normalize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 </pre></div>
 </div>
 </div>
@@ -490,7 +485,7 @@ For week 5 it  contains <code class="docutils literal notranslate"><span class="
 </div>
 </section>
 <section id="set-up-the-utm-crs-for-zone-21s">
-<h2><span class="section-number">28.4. </span>Set up the UTM CRS for Zone 21S<a class="headerlink" href="#set-up-the-utm-crs-for-zone-21s" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">30.4. </span>Set up the UTM CRS for Zone 21S<a class="headerlink" href="#set-up-the-utm-crs-for-zone-21s" title="Link to this heading">#</a></h2>
 <p>Here is the center of buenos aires</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -501,7 +496,7 @@ For week 5 it  contains <code class="docutils literal notranslate"><span class="
 </div>
 </div>
 <section id="the-epsg-code-for-zone-21s-is-32721">
-<h3><span class="section-number">28.4.1. </span>The epsg code for Zone 21S is 32721<a class="headerlink" href="#the-epsg-code-for-zone-21s-is-32721" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.4.1. </span>The epsg code for Zone 21S is 32721<a class="headerlink" href="#the-epsg-code-for-zone-21s-is-32721" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geodetic</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">()</span>
@@ -520,7 +515,7 @@ For week 5 it  contains <code class="docutils literal notranslate"><span class="
 </section>
 </section>
 <section id="repeat-this-for-utm-zone-21n">
-<h2><span class="section-number">28.5. </span>Repeat this for UTM Zone 21N<a class="headerlink" href="#repeat-this-for-utm-zone-21n" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">30.5. </span>Repeat this for UTM Zone 21N<a class="headerlink" href="#repeat-this-for-utm-zone-21n" title="Link to this heading">#</a></h2>
 <p>This has an epsg code of 32621</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -538,7 +533,7 @@ For week 5 it  contains <code class="docutils literal notranslate"><span class="
 </div>
 </section>
 <section id="false-northing">
-<h2><span class="section-number">28.6. </span>False northing<a class="headerlink" href="#false-northing" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">30.6. </span>False northing<a class="headerlink" href="#false-northing" title="Link to this heading">#</a></h2>
 <p>Zone 21 North has negative y values south of the equator.   To eliminate this, someone decided to create a new zone,
 Zone 21 South, by adding 10,000,000 meters to every y value south of the equator, the “false northing”.</p>
 <p>You can see this when you subtract the y for Buenos Aires in 201N from the y in 21S:</p>
@@ -555,7 +550,7 @@ Zone 21 South, by adding 10,000,000 meters to every y value south of the equator
 </div>
 </div>
 <section id="zone-21s-ends-at-80-deg-s">
-<h3><span class="section-number">28.6.1. </span>Zone 21S ends at 80 deg S<a class="headerlink" href="#zone-21s-ends-at-80-deg-s" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.6.1. </span>Zone 21S ends at 80 deg S<a class="headerlink" href="#zone-21s-ends-at-80-deg-s" title="Link to this heading">#</a></h3>
 <p>see the <a class="reference external" href="https://epsg.io/32721">epsg website</a></p>
 <p>What is the most southern y point in Zone 21N  coordinates?</p>
 <p>Note that the x coords are identical in both projections, but</p>
@@ -577,7 +572,7 @@ Zone 21 South, by adding 10,000,000 meters to every y value south of the equator
 </div>
 </section>
 <section id="how-about-zone-21s">
-<h3><span class="section-number">28.6.2. </span>How about Zone 21S<a class="headerlink" href="#how-about-zone-21s" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.6.2. </span>How about Zone 21S<a class="headerlink" href="#how-about-zone-21s" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp_x</span><span class="p">,</span> <span class="n">sp_yS</span> <span class="o">=</span> <span class="n">the_crsS</span><span class="o">.</span><span class="n">transform_point</span><span class="p">(</span><span class="n">sp_lon</span><span class="p">,</span> <span class="n">sp_lat</span><span class="p">,</span> <span class="n">geodetic</span><span class="p">)</span>
@@ -595,7 +590,7 @@ Zone 21 South, by adding 10,000,000 meters to every y value south of the equator
 </div>
 </section>
 <section id="how-about-the-equator">
-<h3><span class="section-number">28.6.3. </span>How about the equator?<a class="headerlink" href="#how-about-the-equator" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.6.3. </span>How about the equator?<a class="headerlink" href="#how-about-the-equator" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eq_lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">57.</span> <span class="c1"># zone 21 central meridian 57 deg W</span>
@@ -620,7 +615,7 @@ requires positive y values in each utm zone.</p>
 </section>
 </section>
 <section id="draw-a-buenos-aires-map-with-the-crss-south-crs">
-<h2><span class="section-number">28.7. </span>Draw a Buenos Aires map with the_CRSS south CRS<a class="headerlink" href="#draw-a-buenos-aires-map-with-the-crss-south-crs" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">30.7. </span>Draw a Buenos Aires map with the_CRSS south CRS<a class="headerlink" href="#draw-a-buenos-aires-map-with-the-crss-south-crs" title="Link to this heading">#</a></h2>
 <p>follow <a class="reference internal" href="../week2/cartopy_mapping_vancouver.html#sec-vancartopy"><span class="std std-ref">Mapping Vancouver with cartopy</span></a></p>
 <p>make it 50 x 50 km with BA in the center</p>
 <div class="cell docutils container">
@@ -648,12 +643,30 @@ requires positive y values in each utm zone.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #95 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #95 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #491 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #491 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #1544 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #1544 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
+</pre></div>
+</div>
 <img alt="../../_images/c3251a18622b666d6deb61ed712970ec75ea5585bb26d16ddf25fb4f8af2c9be.png" src="../../_images/c3251a18622b666d6deb61ed712970ec75ea5585bb26d16ddf25fb4f8af2c9be.png" />
 </div>
 </div>
 </section>
 <section id="now-overlay-a-landsat-image">
-<h2><span class="section-number">28.8. </span>Now overlay a landsat image<a class="headerlink" href="#now-overlay-a-landsat-image" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">30.8. </span>Now overlay a landsat image<a class="headerlink" href="#now-overlay-a-landsat-image" title="Link to this heading">#</a></h2>
 <p>We need to take the affine transform from the landsat image and change it from zone 21N to 21S.  To do that
 we need to rewrite the upper-left corner Y value by adding 10,000,000 meters to it.</p>
 <div class="cell docutils container">
@@ -671,7 +684,7 @@ we need to rewrite the upper-left corner Y value by adding 10,000,000 meters to 
 </div>
 </div>
 <section id="grab-the-affine-transform">
-<h3><span class="section-number">28.8.1. </span>Grab the affine transform<a class="headerlink" href="#grab-the-affine-transform" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.8.1. </span>Grab the affine transform<a class="headerlink" href="#grab-the-affine-transform" title="Link to this heading">#</a></h3>
 <p>Recall from <a class="reference internal" href="../week3/map_landsat.html#week3-map-landsat"><span class="std std-ref">Mapping the landsat scene</span></a> that the <a class="reference external" href="https://www.perrygeo.com/python-affine-transforms.html">affine transform</a> handles
 the conversion from x, y to row, column and back.  The transform stored in the landsat images is written with Z 21N.  We need
 to turn that transform into 21S by add 10,000,000 m to the y value of the upper left corner.</p>
@@ -696,7 +709,7 @@ to turn that transform into 21S by add 10,000,000 m to the y value of the upper 
 </div>
 </div>
 <section id="now-get-the-transform-for-zone-21n">
-<h4><span class="section-number">28.8.1.1. </span>Now get the transform for Zone 21N<a class="headerlink" href="#now-get-the-transform-for-zone-21n" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">30.8.1.1. </span>Now get the transform for Zone 21N<a class="headerlink" href="#now-get-the-transform-for-zone-21n" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_tf</span> <span class="o">=</span> <span class="n">hls_band</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="p">()</span>
@@ -723,7 +736,7 @@ to turn that transform into 21S by add 10,000,000 m to the y value of the upper 
 </section>
 </section>
 <section id="change-the-transform-by-adding-the-false-northing">
-<h3><span class="section-number">28.8.2. </span>Change the transform by adding the false northing<a class="headerlink" href="#change-the-transform-by-adding-the-false-northing" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.8.2. </span>Change the transform by adding the false northing<a class="headerlink" href="#change-the-transform-by-adding-the-false-northing" title="Link to this heading">#</a></h3>
 <p>We just need to add the northing to the f component and put the pieces
 back together.</p>
 <div class="cell docutils container">
@@ -743,7 +756,7 @@ back together.</p>
 </div>
 </section>
 <section id="use-the-modified-transform-to-get-the-extent-for-cartopy-in-the-21s-crs">
-<h3><span class="section-number">28.8.3. </span>Use the modified transform to get the extent for cartopy in the 21S crs<a class="headerlink" href="#use-the-modified-transform-to-get-the-extent-for-cartopy-in-the-21s-crs" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.8.3. </span>Use the modified transform to get the extent for cartopy in the 21S crs<a class="headerlink" href="#use-the-modified-transform-to-get-the-extent-for-cartopy-in-the-21s-crs" title="Link to this heading">#</a></h3>
 <p>Find the corners like we did in <a class="reference internal" href="../week4/clip_bands.html#bounding-box"><span class="std std-ref">Create the bounding box using the upper left and lower right corners</span></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -770,7 +783,7 @@ back together.</p>
 </section>
 </section>
 <section id="use-the-new-make-pal">
-<h2><span class="section-number">28.9. </span>Use the new make_pal<a class="headerlink" href="#use-the-new-make-pal" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">30.9. </span>Use the new make_pal<a class="headerlink" href="#use-the-new-make-pal" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">make_pal</span><span class="p">)</span>
@@ -809,8 +822,8 @@ make_pal(ax=None, vmin=None, vmax=None, palette=&#39;viridis&#39;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;cmap&#39;: &lt;matplotlib.colors.ListedColormap at 0x13f739850&gt;,
- &#39;norm&#39;: &lt;matplotlib.colors.Normalize at 0x15f182190&gt;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;cmap&#39;: &lt;matplotlib.colors.ListedColormap at 0x15e349310&gt;,
+ &#39;norm&#39;: &lt;matplotlib.colors.Normalize at 0x15e7d09d0&gt;}
 </pre></div>
 </div>
 </div>
@@ -832,6 +845,24 @@ make_pal(ax=None, vmin=None, vmax=None, palette=&#39;viridis&#39;)
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #95 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #95 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #491 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #491 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #1544 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Possible issue encountered when converting Shape #1544 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
+</pre></div>
+</div>
 <img alt="../../_images/104dc3da690958f8129cb6897a03d570292bb73393bc9ddf9518b15f39a2d6cd.png" src="../../_images/104dc3da690958f8129cb6897a03d570292bb73393bc9ddf9518b15f39a2d6cd.png" />
 </div>
 </div>
@@ -874,7 +905,7 @@ make_pal(ax=None, vmin=None, vmax=None, palette=&#39;viridis&#39;)
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">27. </span>Hydrostatic balance</p>
+        <p class="prev-next-title"><span class="section-number">29. </span>Hydrostatic balance</p>
       </div>
     </a>
     <a class="right-next"
@@ -882,7 +913,7 @@ make_pal(ax=None, vmin=None, vmax=None, palette=&#39;viridis&#39;)
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">29. </span>Assignment 3: solutions</p>
+        <p class="prev-next-title"><span class="section-number">31. </span>Assignment 3: solutions</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -893,7 +924,8 @@ make_pal(ax=None, vmin=None, vmax=None, palette=&#39;viridis&#39;)
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -902,31 +934,31 @@ make_pal(ax=None, vmin=None, vmax=None, palette=&#39;viridis&#39;)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">28.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">28.2. Example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">28.3. Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-utm-crs-for-zone-21s">28.4. Set up the UTM CRS for Zone 21S</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-epsg-code-for-zone-21s-is-32721">28.4.1. The epsg code for Zone 21S is 32721</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">30.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">30.2. Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">30.3. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-utm-crs-for-zone-21s">30.4. Set up the UTM CRS for Zone 21S</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-epsg-code-for-zone-21s-is-32721">30.4.1. The epsg code for Zone 21S is 32721</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-this-for-utm-zone-21n">28.5. Repeat this for UTM Zone 21N</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#false-northing">28.6. False northing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zone-21s-ends-at-80-deg-s">28.6.1. Zone 21S ends at 80 deg S</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-about-zone-21s">28.6.2. How about Zone 21S</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-about-the-equator">28.6.3. How about the equator?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-this-for-utm-zone-21n">30.5. Repeat this for UTM Zone 21N</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#false-northing">30.6. False northing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zone-21s-ends-at-80-deg-s">30.6.1. Zone 21S ends at 80 deg S</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-about-zone-21s">30.6.2. How about Zone 21S</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-about-the-equator">30.6.3. How about the equator?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-a-buenos-aires-map-with-the-crss-south-crs">28.7. Draw a Buenos Aires map with the_CRSS south CRS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-overlay-a-landsat-image">28.8. Now overlay a landsat image</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grab-the-affine-transform">28.8.1. Grab the affine transform</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#now-get-the-transform-for-zone-21n">28.8.1.1. Now get the transform for Zone 21N</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-a-buenos-aires-map-with-the-crss-south-crs">30.7. Draw a Buenos Aires map with the_CRSS south CRS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-overlay-a-landsat-image">30.8. Now overlay a landsat image</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grab-the-affine-transform">30.8.1. Grab the affine transform</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#now-get-the-transform-for-zone-21n">30.8.1.1. Now get the transform for Zone 21N</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-the-transform-by-adding-the-false-northing">28.8.2. Change the transform by adding the false northing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-modified-transform-to-get-the-extent-for-cartopy-in-the-21s-crs">28.8.3. Use the modified transform to get the extent for cartopy in the 21S crs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-the-transform-by-adding-the-false-northing">30.8.2. Change the transform by adding the false northing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-modified-transform-to-get-the-extent-for-cartopy-in-the-21s-crs">30.8.3. Use the modified transform to get the extent for cartopy in the 21S crs</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-new-make-pal">28.9. Use the new make_pal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-new-make-pal">30.9. Use the new make_pal</a></li>
 </ul>
   </nav></div>
 
@@ -951,7 +983,7 @@ By Philip Austin
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -975,8 +1007,8 @@ By Philip Austin
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

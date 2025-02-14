@@ -303,5 +303,10 @@ Topics:
 
 - Midterm review
 
+###  Day 18 Friday
+
+- {ref}`mid-review1-sol`
+- {ref}`mid-review2-sols`
+- {ref}`assign4-2laysol`
 
 
