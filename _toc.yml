@@ -28,6 +28,8 @@ parts:
     title: 2022 mid-term
   - file: notebooks/midterm/mid_term_reviewI.md
   - file: notebooks/midterm/mid_term_reviewII.md
+  - file: notebooks/midterm/mid_term_reviewI_solutions.md
+  - file: notebooks/midterm/mid_term_reviewII_solutions.md
 
 - caption: Week 1
   numbered: true

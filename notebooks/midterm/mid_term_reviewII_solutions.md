@@ -21,9 +21,13 @@ From {ref}`week4_schwartz`
 
       - **Answer**:
 
-        ```{image} figures/midII_layers.png
-        :width: 60%
-        ```
+:::{figure} figures/midII_layers.png
+:name: layers
+:scale: 60
+
+Two layers plus surface
+:::
+
 
    2. Use the definition of the transmissivity
       $t(\tau_T, \tau^\prime)$ to prove that
@@ -187,6 +191,10 @@ From {ref}$week2_beerslaw$ and {ref}$week2_flux_from_radiance$
 
          which gives $T_{B} \approx 284\ K$
 
-    > ```{image} figures/a301_planck.png
-    > :width: 60%
-    > ```
+:::{figure} figures/a301_planck.png
+:name: planck
+:scale: 60
+
+Planck function
+:::
+
