@@ -192,7 +192,7 @@ From {ref}$week2_beerslaw$ and {ref}$week2_flux_from_radiance$
          which gives $T_{B} \approx 284\ K$
 
 :::{figure} figures/a301_planck.png
-:name: planck
+:name: planck_mid
 :scale: 60
 
 Planck function
