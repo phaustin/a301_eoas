@@ -208,6 +208,13 @@ Vertical radiance $L_\lambda$  with $\mu = 1$
      B_\lambda(T)\, d\tau^\prime 
 \end{align}
 
+\noindent
+Vertical radiance with change of variables to transmittance:   
+
+\begin{equation}
+       L_\lambda(\tau/\mu)= B_\lambda(T_{skin}) \hat{t}_{tot} +    \int_0^{\tau} B_\lambda(T) d\hat{t} 
+     \end{equation}
+\noindent
 
 Radiance for an isothermal layer:
 
@@ -215,6 +222,8 @@ Radiance for an isothermal layer:
   L_\lambda(\tau/\mu)&= B_\lambda(T_{skin}) \hat{t}_{tot} \nonumber\\
              &+  (1 - \exp(-\tau/\mu) )B_\lambda(T)
 \end{align}
+
+
 
 
 
@@ -241,7 +250,7 @@ Integrating over a hemisphere for flux, using the simple flux diffusivity approx
 Heating rate equation
 \begin{equation}
   \label{eq:fluxdiv}
-  \frac{dT}{dt} = \frac{-1}{\rho c_{pd}} \frac{dF_n}{dz}
+  \frac{dT}{dt} = \frac{1}{\rho c_{pd}} \frac{dF_n}{dz}
 \end{equation}
 
 \noindent
