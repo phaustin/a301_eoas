@@ -3,7 +3,7 @@
 
 ## Beers law
 
-Stull page 2.43 and the {ref}`week2_beerslaw` reading:
+Stull page 2.43 and the {ref}`week1-beerslaw` reading:
 
 1. Prove that for a thin non-reflecting layer the change in emissivity
    = change in optical thickness, i.e. prove that:
@@ -135,7 +135,7 @@ From {ref}`radiance` reading:
 
 ## Schwartzchild equation
 
-From Stull p. 224 and the {ref}`week4_schwartz` reading:
+From Stull p. 224 and the {ref}`week5-schwartzA` reading:
 
 1. Show that $e_\lambda$ = $a_\lambda$ for a gas that absorbs and transmits but doesn't reflect.
    (hint: put the gas between two black plates, assume that the gas and the plates are at the
@@ -178,4 +178,4 @@ From Stull p. 224 and the {ref}`week4_schwartz` reading:
 
    **Answer:**
 
-   See the section "Adding emission to Beers law" in the {ref}`week4_schwartz` notes.
+   See the section "Adding emission to Beers law" in the {ref}`week5-schwartzA` notes.

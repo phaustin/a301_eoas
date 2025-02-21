@@ -6,9 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>11. Introduction to Cartopy &#8212; ATSC 301</title>
+    <title>12. Introduction to Cartopy &#8212; ATSC 301</title>
   
   
   
@@ -16,19 +16,17 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -38,11 +36,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -55,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -64,11 +61,10 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week2/cartopy_maps.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="12. Mapping Vancouver with cartopy" href="cartopy_mapping_vancouver.html" />
-    <link rel="prev" title="10. Assignment 1, brightness temperatures" href="assign1.html" />
+    <link rel="next" title="13. Mapping Vancouver with cartopy" href="cartopy_mapping_vancouver.html" />
+    <link rel="prev" title="11. Assignment 1, brightness temperatures" href="assign1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -84,8 +80,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -93,6 +100,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -100,8 +108,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -117,8 +125,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -148,11 +155,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -181,63 +192,64 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Midterm</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1E6Gs6zUARHdEAb2UqIyMnyXj-jCiOiXw/view?usp=drive_link">2025 mid-term equation sheet</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/12ZDN8NZzgafeCMDTy4t0u-w80o3-foNT/view?usp=sharing">2022 mid-term</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI.html">1. Sample mid-term questions I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII.html">2. Midterm review questions II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI_solutions.html">3. Midterm Solutions: midterm sample questions I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII_solutions.html">4. Midterm solutions: sample questions II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/midterm_focus.html">5. Study topics for midterm –</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">5. Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">6. Beers and inverse squared laws</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">6. Solid angle and radiance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">7. Finding the flux given the radiance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">8. Plotting the Planck function with python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">7. Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">8. Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">9. Plotting the Planck function with python</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="planck_sol.html">9. Plotting the Planck function - solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assign1.html">10. Assignment 1, brightness temperatures</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Introduction to Cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cartopy_mapping_vancouver.html">12. Mapping Vancouver with cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="get_landsat_bands.html">13. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="planck_sol.html">10. Plotting the Planck function - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign1.html">11. Assignment 1, brightness temperatures</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Introduction to Cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cartopy_mapping_vancouver.html">13. Mapping Vancouver with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_landsat_bands.html">14. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">14. Mapping the landsat scene</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">15. Assignment 1, brightness temperatures - solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">16. Zooming an image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">15. Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">16. Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">17. Zooming an image</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">18. Kirchoff worksheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">19. Optical depth and partial transmission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">19. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">20. Optical depth and partial transmission</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">20. Clipping multiple bands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">21. Optical depth II: mean free path</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">22. Assignment 2: solutions Part A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">21. Clipping multiple bands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">22. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">23. Assignment 2: solutions Part A</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">23. Assignment 4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">24. Assignment 2: solutions part B</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">25. Getting lat,lon from row, column</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">26. The Schwartzchild Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">27. Adding a palette to an axis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">28. Assignment 2: solutions part C</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">29. Hydrostatic balance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">30. Cartopy mapping Buenos Aires</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">24. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">25. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">26. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">27. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">28. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">29. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">30. Hydrostatic balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">31. Cartopy mapping Buenos Aires</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">31. Assignment 3: solutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/hydrostatic_balance.html">32. Scale heights for typical atmospheric soundings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">33. Weighting functions for temperature retrieval</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">34. Finding the heating rate of the atmosphere</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/assign4_two_layer_sol.html">35. Assignment 4 two layer solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">32. Assignment 3: solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/hydrostatic_balance.html">33. Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">34. Weighting functions for temperature retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">35. Finding the heating rate of the atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/assign4_two_layer_sol.html">36. Assignment 4 two layer solution</a></li>
 </ul>
 
     </div>
@@ -246,14 +258,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -350,16 +357,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -383,36 +398,36 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">11.1. Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">11.2. Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">11.3. Imports</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts-map-projections-and-geoaxes">11.4. Basic concepts: map projections and <code class="docutils literal notranslate"><span class="pre">GeoAxes</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extend-matplotlib-s-axes-into-georeferenced-geoaxes">11.4.1. Extend Matplotlib’s <code class="docutils literal notranslate"><span class="pre">axes</span></code> into georeferenced <code class="docutils literal notranslate"><span class="pre">GeoAxes</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-map-with-a-specified-projection">11.4.2. Create a map with a specified projection</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-cartographic-features-to-the-map">11.4.3. Add cartographic features to the map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">12.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">12.2. Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">12.3. Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts-map-projections-and-geoaxes">12.4. Basic concepts: map projections and <code class="docutils literal notranslate"><span class="pre">GeoAxes</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extend-matplotlib-s-axes-into-georeferenced-geoaxes">12.4.1. Extend Matplotlib’s <code class="docutils literal notranslate"><span class="pre">axes</span></code> into georeferenced <code class="docutils literal notranslate"><span class="pre">GeoAxes</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-map-with-a-specified-projection">12.4.2. Create a map with a specified projection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-cartographic-features-to-the-map">12.4.3. Add cartographic features to the map</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-some-of-cartopy-s-map-projections">11.5. Explore some of Cartopy’s map projections</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mollweide-projection-often-used-with-global-satellite-mosaics">11.5.1. Mollweide Projection (often used with global satellite mosaics)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-in-the-cartographic-shapefiles">11.5.1.1. Add in the cartographic shapefiles</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-fancy-background-image-to-the-map">11.5.1.2. Add a fancy background image to the map.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-some-of-cartopy-s-map-projections">12.5. Explore some of Cartopy’s map projections</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mollweide-projection-often-used-with-global-satellite-mosaics">12.5.1. Mollweide Projection (often used with global satellite mosaics)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-in-the-cartographic-shapefiles">12.5.1.1. Add in the cartographic shapefiles</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-fancy-background-image-to-the-map">12.5.1.2. Add a fancy background image to the map.</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambert-azimuthal-equal-area-projection">11.5.2. Lambert Azimuthal Equal Area Projection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambert-azimuthal-equal-area-projection">12.5.2. Lambert Azimuthal Equal Area Projection</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-regional-maps">11.6. Create regional maps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cartopy-s-set-extent-method">11.6.1. Cartopy’s <code class="docutils literal notranslate"><span class="pre">set_extent</span></code> method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-regional-map-centered-over-new-york-state">11.6.2. Create a regional map centered over New York State</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-some-pre-defined-features">11.6.3. Add some pre-defined Features</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-lower-resolution-shapefiles-from-natural-earth">11.6.4. Use lower resolution shapefiles from Natural Earth</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-figure-with-two-different-regional-maps">11.6.5. A figure with two different regional maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-regional-maps">12.6. Create regional maps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cartopy-s-set-extent-method">12.6.1. Cartopy’s <code class="docutils literal notranslate"><span class="pre">set_extent</span></code> method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-regional-map-centered-over-new-york-state">12.6.2. Create a regional map centered over New York State</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-some-pre-defined-features">12.6.3. Add some pre-defined Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-lower-resolution-shapefiles-from-natural-earth">12.6.4. Use lower resolution shapefiles from Natural Earth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-figure-with-two-different-regional-maps">12.6.5. A figure with two different regional maps</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-of-plotting-data">11.7. An example of plotting data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">11.8. Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">11.9. What’s Next?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">11.10. Resources and References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-of-plotting-data">12.7. An example of plotting data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">12.8. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">12.9. What’s Next?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">12.10. Resources and References</a></li>
 </ul>
             </nav>
         </div>
@@ -428,13 +443,13 @@
 <a class="reference internal image-reference" href="../../_images/cartopy_logo.png"><img alt="../../_images/cartopy_logo.png" src="../../_images/cartopy_logo.png" style="width: 40%;" /></a>
 </figure>
 <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-cartopy">
-<span id="sec-cartopy"></span><h1><span class="section-number">11. </span>Introduction to Cartopy<a class="headerlink" href="#introduction-to-cartopy" title="Link to this heading">#</a></h1>
+<span id="sec-cartopy"></span><h1><span class="section-number">12. </span>Introduction to Cartopy<a class="headerlink" href="#introduction-to-cartopy" title="Link to this heading">#</a></h1>
 <p>Source: <a class="reference external" href="https://foundations.projectpythia.org/core/cartopy/cartopy.html">project pythia foundations</a></p>
 <ul class="simple">
 <li><p>Download cartopy_maps.ipynb from the <a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing">week2 folder</a></p></li>
 </ul>
 <section id="overview">
-<h2><span class="section-number">11.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Basic concepts: map projections and <code class="docutils literal notranslate"><span class="pre">GeoAxes</span></code></p></li>
 <li><p>Explore some of Cartopy’s map projections</p></li>
@@ -444,7 +459,7 @@
 <p>Later tutorials will focus on how to plot data on map projections.</p>
 </section>
 <section id="prerequisites">
-<h2><span class="section-number">11.2. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.2. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Concepts</p></th>
@@ -466,7 +481,7 @@
 </section>
 <hr class="docutils" />
 <section id="imports">
-<h2><span class="section-number">11.3. </span>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.3. </span>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
@@ -484,14 +499,14 @@
 </section>
 <hr class="docutils" />
 <section id="basic-concepts-map-projections-and-geoaxes">
-<h2><span class="section-number">11.4. </span>Basic concepts: map projections and <code class="docutils literal notranslate"><span class="pre">GeoAxes</span></code><a class="headerlink" href="#basic-concepts-map-projections-and-geoaxes" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.4. </span>Basic concepts: map projections and <code class="docutils literal notranslate"><span class="pre">GeoAxes</span></code><a class="headerlink" href="#basic-concepts-map-projections-and-geoaxes" title="Link to this heading">#</a></h2>
 <section id="extend-matplotlib-s-axes-into-georeferenced-geoaxes">
-<h3><span class="section-number">11.4.1. </span>Extend Matplotlib’s <code class="docutils literal notranslate"><span class="pre">axes</span></code> into georeferenced <code class="docutils literal notranslate"><span class="pre">GeoAxes</span></code><a class="headerlink" href="#extend-matplotlib-s-axes-into-georeferenced-geoaxes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.4.1. </span>Extend Matplotlib’s <code class="docutils literal notranslate"><span class="pre">axes</span></code> into georeferenced <code class="docutils literal notranslate"><span class="pre">GeoAxes</span></code><a class="headerlink" href="#extend-matplotlib-s-axes-into-georeferenced-geoaxes" title="Link to this heading">#</a></h3>
 <p>Recall that in Matplotlib, what we might tradtionally term a <em>figure</em> consists of two key components: a <code class="docutils literal notranslate"><span class="pre">figure</span></code> and an associated subplot <code class="docutils literal notranslate"><span class="pre">axes</span></code> instance.</p>
 <p>By virtue of importing Cartopy, we can now convert the <code class="docutils literal notranslate"><span class="pre">axes</span></code> into a <code class="docutils literal notranslate"><span class="pre">GeoAxes</span></code> by specifying a projection that we have imported from <em>Cartopy’s Coordinate Reference System</em> class as <code class="docutils literal notranslate"><span class="pre">ccrs</span></code>. This will effectively <em>georeference</em> the subplot.</p>
 </section>
 <section id="create-a-map-with-a-specified-projection">
-<h3><span class="section-number">11.4.2. </span>Create a map with a specified projection<a class="headerlink" href="#create-a-map-with-a-specified-projection" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.4.2. </span>Create a map with a specified projection<a class="headerlink" href="#create-a-map-with-a-specified-projection" title="Link to this heading">#</a></h3>
 <p>Here we’ll create a GeoAxes that uses the <code class="docutils literal notranslate"><span class="pre">PlateCarree</span></code> projection (basically a global lat-lon map projection, which translates from French to “flat square” in English, where each point is equally spaced in terms of degrees).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -502,7 +517,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b8eb55f89d1747e4b92d797b5b2bc98d77b6d9b6307db294e959e66482a23662.png" src="../../_images/b8eb55f89d1747e4b92d797b5b2bc98d77b6d9b6307db294e959e66482a23662.png" />
+<img alt="../../_images/eccc8e19739f62212ee2dfd537c74c8dd8d07d06bd83dffabfdec1464ec22dd6.png" src="../../_images/eccc8e19739f62212ee2dfd537c74c8dd8d07d06bd83dffabfdec1464ec22dd6.png" />
 </div>
 </div>
 <p>Although the figure seems empty, it has in fact been georeferenced, using one of Cartopy’s map projections that is provided by Cartopy’s <code class="docutils literal notranslate"><span class="pre">crs</span></code> (coordinate reference system) class. We can now add in cartographic features, in the form of <em>shapefiles</em>, to our subplot. One of them is <code class="docutils literal notranslate"><span class="pre">coastlines</span></code>, which is a callable <code class="docutils literal notranslate"><span class="pre">GeoAxes</span></code> method that can be plotted directly on our subplot.</p>
@@ -513,7 +528,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x104648d70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x107bb8750&gt;
 </pre></div>
 </div>
 </div>
@@ -529,12 +544,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a79b68e55e0d25fbbc4a90a25e7886c673d3eb33b78db5921ae642557059df67.png" src="../../_images/a79b68e55e0d25fbbc4a90a25e7886c673d3eb33b78db5921ae642557059df67.png" />
+<img alt="../../_images/1c3f053423884edc21874d8beed4a281d82a8b20c6190cf77ea8288dd2ddaef8.png" src="../../_images/1c3f053423884edc21874d8beed4a281d82a8b20c6190cf77ea8288dd2ddaef8.png" />
 </div>
 </div>
 </section>
 <section id="add-cartographic-features-to-the-map">
-<h3><span class="section-number">11.4.3. </span>Add cartographic features to the map<a class="headerlink" href="#add-cartographic-features-to-the-map" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.4.3. </span>Add cartographic features to the map<a class="headerlink" href="#add-cartographic-features-to-the-map" title="Link to this heading">#</a></h3>
 <p>Cartopy provides other cartographic features via its <code class="docutils literal notranslate"><span class="pre">features</span></code> class, which we’ve imported as <code class="docutils literal notranslate"><span class="pre">cfeature</span></code>. These are also shapefiles, downloaded on initial request from https://www.naturalearthdata.com/. Once downloaded, they “live” in your <code class="docutils literal notranslate"><span class="pre">~/.local/share/cartopy</span></code> directory (note the <code class="docutils literal notranslate"><span class="pre">~</span></code> represents your <i>home</i> directory).</p>
 <p>We add them to our subplot via the <code class="docutils literal notranslate"><span class="pre">add_feature</span></code> method. We can define attributes for them in a manner similar to Matplotlib’s <code class="docutils literal notranslate"><span class="pre">plot</span></code> method. A list of the various Natural Earth shapefiles appears in https://scitools.org.uk/cartopy/docs/latest/matplotlib/feature_interface.html .</p>
 <div class="cell docutils container">
@@ -545,7 +560,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x10798d090&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x12b4b2690&gt;
 </pre></div>
 </div>
 </div>
@@ -558,19 +573,19 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/37df5b8c9cc34baacbc21d043e2aa989f19502b89e14bdbafd680e2bf3fa6466.png" src="../../_images/37df5b8c9cc34baacbc21d043e2aa989f19502b89e14bdbafd680e2bf3fa6466.png" />
+<img alt="../../_images/2b5a078166461dea811101f03acadd09a057085ff0ded7dfbb34651de04f48da.png" src="../../_images/2b5a078166461dea811101f03acadd09a057085ff0ded7dfbb34651de04f48da.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="explore-some-of-cartopy-s-map-projections">
-<h2><span class="section-number">11.5. </span>Explore some of Cartopy’s map projections<a class="headerlink" href="#explore-some-of-cartopy-s-map-projections" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.5. </span>Explore some of Cartopy’s map projections<a class="headerlink" href="#explore-some-of-cartopy-s-map-projections" title="Link to this heading">#</a></h2>
 <div class="admonition alert alert-info">
 <p class="admonition-title">Info</p>
 <p>You can find a list of supported projections in Cartopy, with examples, at <a href="https://scitools.org.uk/cartopy/docs/latest/reference/crs.html">https://scitools.org.uk/cartopy/docs/latest/reference/crs.html</a></p>
 </div>
 <section id="mollweide-projection-often-used-with-global-satellite-mosaics">
-<h3><span class="section-number">11.5.1. </span>Mollweide Projection (often used with global satellite mosaics)<a class="headerlink" href="#mollweide-projection-often-used-with-global-satellite-mosaics" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.5.1. </span>Mollweide Projection (often used with global satellite mosaics)<a class="headerlink" href="#mollweide-projection-often-used-with-global-satellite-mosaics" title="Link to this heading">#</a></h3>
 <p>This time, we’ll define an object to store our projection definition. Any time we wish to use this particular projection later in the notebook, we can use the object name rather than repeating the same call to <code class="docutils literal notranslate"><span class="pre">ccrs</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -585,11 +600,11 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Mollweide Projection&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/93face383f546fb0e9fe334441a36f109e613e0329622fe3164bdbcc3d876374.png" src="../../_images/93face383f546fb0e9fe334441a36f109e613e0329622fe3164bdbcc3d876374.png" />
+<img alt="../../_images/59f07814ab163c3d36e7976d6f54de9b96aaa812db5c337588af9038032b8da6.png" src="../../_images/59f07814ab163c3d36e7976d6f54de9b96aaa812db5c337588af9038032b8da6.png" />
 </div>
 </div>
 <section id="add-in-the-cartographic-shapefiles">
-<h4><span class="section-number">11.5.1.1. </span>Add in the cartographic shapefiles<a class="headerlink" href="#add-in-the-cartographic-shapefiles" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">12.5.1.1. </span>Add in the cartographic shapefiles<a class="headerlink" href="#add-in-the-cartographic-shapefiles" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
@@ -599,12 +614,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6ec5dcaf60c0c6845698b0b5114526a29c9b352ab6ce4d5078309d340f8f8ca8.png" src="../../_images/6ec5dcaf60c0c6845698b0b5114526a29c9b352ab6ce4d5078309d340f8f8ca8.png" />
+<img alt="../../_images/e804e20a091f4810b312854ccd0d6d92b982678394ad0beb07254620aac375fd.png" src="../../_images/e804e20a091f4810b312854ccd0d6d92b982678394ad0beb07254620aac375fd.png" />
 </div>
 </div>
 </section>
 <section id="add-a-fancy-background-image-to-the-map">
-<h4><span class="section-number">11.5.1.2. </span>Add a fancy background image to the map.<a class="headerlink" href="#add-a-fancy-background-image-to-the-map" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">12.5.1.2. </span>Add a fancy background image to the map.<a class="headerlink" href="#add-a-fancy-background-image-to-the-map" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">stock_img</span><span class="p">()</span>
@@ -613,13 +628,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b563f49ea9f23e221c3e798f37a4a2285fa19189c216eacbdb0a24ff33b44942.png" src="../../_images/b563f49ea9f23e221c3e798f37a4a2285fa19189c216eacbdb0a24ff33b44942.png" />
+<img alt="../../_images/17a84e7a2620244599b31fa70bf8ad423268617e263a2518e34e7b03c3af4be3.png" src="../../_images/17a84e7a2620244599b31fa70bf8ad423268617e263a2518e34e7b03c3af4be3.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="lambert-azimuthal-equal-area-projection">
-<h3><span class="section-number">11.5.2. </span>Lambert Azimuthal Equal Area Projection<a class="headerlink" href="#lambert-azimuthal-equal-area-projection" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.5.2. </span>Lambert Azimuthal Equal Area Projection<a class="headerlink" href="#lambert-azimuthal-equal-area-projection" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">))</span>
@@ -632,15 +647,15 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d197e24be1131ef15786131b8f924a4be9dcffd31f2f0a853eb498f944be1348.png" src="../../_images/d197e24be1131ef15786131b8f924a4be9dcffd31f2f0a853eb498f944be1348.png" />
+<img alt="../../_images/0c9ad7e13851fbe739572a8643941d1f79fd5fbff3e986715289ea7fb02025df.png" src="../../_images/0c9ad7e13851fbe739572a8643941d1f79fd5fbff3e986715289ea7fb02025df.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="create-regional-maps">
-<h2><span class="section-number">11.6. </span>Create regional maps<a class="headerlink" href="#create-regional-maps" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.6. </span>Create regional maps<a class="headerlink" href="#create-regional-maps" title="Link to this heading">#</a></h2>
 <section id="cartopy-s-set-extent-method">
-<h3><span class="section-number">11.6.1. </span>Cartopy’s <code class="docutils literal notranslate"><span class="pre">set_extent</span></code> method<a class="headerlink" href="#cartopy-s-set-extent-method" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.6.1. </span>Cartopy’s <code class="docutils literal notranslate"><span class="pre">set_extent</span></code> method<a class="headerlink" href="#cartopy-s-set-extent-method" title="Link to this heading">#</a></h3>
 <p>Now, let’s go back to PlateCarree, but let’s use Cartopy’s <code class="docutils literal notranslate"><span class="pre">set_extent</span></code> method to restrict the map coverage to a North American view. Let’s also choose a lower resolution for coastlines, just to illustrate how one can specify that. Plot lat/lon lines as well.</p>
 <p>Reference for Natural Earth’s three resolutions (10m, 50m, 110m; higher is coarser): https://www.naturalearthdata.com/downloads/</p>
 <div class="cell docutils container">
@@ -673,7 +688,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/19ac1b18629c0929bd6c0a3a32960029a25bb2ecf3eab7ace01c5ff05d575afa.png" src="../../_images/19ac1b18629c0929bd6c0a3a32960029a25bb2ecf3eab7ace01c5ff05d575afa.png" />
+<img alt="../../_images/59a6c648a41acefdf4a2243881ae3280c15e23fca5b33c84fedea45b2a21050d.png" src="../../_images/59a6c648a41acefdf4a2243881ae3280c15e23fca5b33c84fedea45b2a21050d.png" />
 </div>
 </div>
 <div class="admonition alert alert-info">
@@ -698,7 +713,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/260c04fe82c3705d0430b1aa1e950c9fe5a48d3e93c52a91c45cabdb6c9b8b2b.png" src="../../_images/260c04fe82c3705d0430b1aa1e950c9fe5a48d3e93c52a91c45cabdb6c9b8b2b.png" />
+<img alt="../../_images/6a7cd0144f09d514e2818380a8297f426027336840ec6eec9b9bdca27e8352f7.png" src="../../_images/6a7cd0144f09d514e2818380a8297f426027336840ec6eec9b9bdca27e8352f7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -719,7 +734,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d8c9e28fcb43f8742a50d1d9d33a3d3c352107c62073fa1e779d5eee971c9d34.png" src="../../_images/d8c9e28fcb43f8742a50d1d9d33a3d3c352107c62073fa1e779d5eee971c9d34.png" />
+<img alt="../../_images/6638137bf96d2c5c22e44804b491b55f562325df830a535955453197711557aa.png" src="../../_images/6638137bf96d2c5c22e44804b491b55f562325df830a535955453197711557aa.png" />
 </div>
 </div>
 <div class="admonition alert alert-info">
@@ -728,7 +743,7 @@
 </div>
 </section>
 <section id="create-a-regional-map-centered-over-new-york-state">
-<h3><span class="section-number">11.6.2. </span>Create a regional map centered over New York State<a class="headerlink" href="#create-a-regional-map-centered-over-new-york-state" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.6.2. </span>Create a regional map centered over New York State<a class="headerlink" href="#create-a-regional-map-centered-over-new-york-state" title="Link to this heading">#</a></h3>
 <p>Set the domain for defining the plot region. We will use this in the <code class="docutils literal notranslate"><span class="pre">set_extent</span></code> line below. Since these coordinates are expressed in degrees, they correspond to the PlateCarree projection.</p>
 <div class="admonition alert alert-warning">
 <p class="admonition-title">Warning</p>
@@ -749,7 +764,7 @@
 </div>
 </section>
 <section id="add-some-pre-defined-features">
-<h3><span class="section-number">11.6.3. </span>Add some pre-defined Features<a class="headerlink" href="#add-some-pre-defined-features" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.6.3. </span>Add some pre-defined Features<a class="headerlink" href="#add-some-pre-defined-features" title="Link to this heading">#</a></h3>
 <p>Some pre-defined Features exist as <code class="docutils literal notranslate"><span class="pre">cartopy.feature</span></code> constants. The resolution of these pre-defined Features will depend on the areal extent of your map, which you specify via <code class="docutils literal notranslate"><span class="pre">set_extent</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -768,7 +783,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/35e9ae9249e7e35b27f044464fbde4dbbaf44b8469d160d691ab96b6ca9ac5ff.png" src="../../_images/35e9ae9249e7e35b27f044464fbde4dbbaf44b8469d160d691ab96b6ca9ac5ff.png" />
+<img alt="../../_images/3bfdff9136760e1949d5ef80842ff2e1df3391b17bd365c9bc594cd9b4f5bbe4.png" src="../../_images/3bfdff9136760e1949d5ef80842ff2e1df3391b17bd365c9bc594cd9b4f5bbe4.png" />
 </div>
 </div>
 <div class="admonition alert alert-info">
@@ -777,7 +792,7 @@
 </div>
 </section>
 <section id="use-lower-resolution-shapefiles-from-natural-earth">
-<h3><span class="section-number">11.6.4. </span>Use lower resolution shapefiles from Natural Earth<a class="headerlink" href="#use-lower-resolution-shapefiles-from-natural-earth" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.6.4. </span>Use lower resolution shapefiles from Natural Earth<a class="headerlink" href="#use-lower-resolution-shapefiles-from-natural-earth" title="Link to this heading">#</a></h3>
 <p>Let’s create a new map, but this time use lower-resolution shapefiles from Natural Earth, and also eliminate plotting the country borders.</p>
 <p>Notice this is a bit more involved. First we create objects for our lower-resolution shapefiles via the <code class="docutils literal notranslate"><span class="pre">NaturalEarthFeature</span></code> method from Cartopy’s <code class="docutils literal notranslate"><span class="pre">feature</span></code> class, and then we add them to the map with <code class="docutils literal notranslate"><span class="pre">add_feature</span></code>.</p>
 <div class="cell docutils container">
@@ -829,12 +844,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/408be15180d3979c99c2a862d00c1e2a897fd05b03fc871a7bcee99af16a8312.png" src="../../_images/408be15180d3979c99c2a862d00c1e2a897fd05b03fc871a7bcee99af16a8312.png" />
+<img alt="../../_images/0ca7787f30e9ce08a77056922f19eca8473d703e95bcca5c475c9b3ed3feea76.png" src="../../_images/0ca7787f30e9ce08a77056922f19eca8473d703e95bcca5c475c9b3ed3feea76.png" />
 </div>
 </div>
 </section>
 <section id="a-figure-with-two-different-regional-maps">
-<h3><span class="section-number">11.6.5. </span>A figure with two different regional maps<a class="headerlink" href="#a-figure-with-two-different-regional-maps" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.6.5. </span>A figure with two different regional maps<a class="headerlink" href="#a-figure-with-two-different-regional-maps" title="Link to this heading">#</a></h3>
 <p>Finally, let’s create a figure with two subplots. On one, we’ll repeat our hi-res NYS map; on the second, we’ll plot over a different part of the world.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -878,13 +893,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/527b5a23f444ae6a607d060aac0aaed4d514af22122f8aab342545cc08929680.png" src="../../_images/527b5a23f444ae6a607d060aac0aaed4d514af22122f8aab342545cc08929680.png" />
+<img alt="../../_images/b1e491f60472f607c110427839f37bcbdc428304e3f6a2379179745a081bd83c.png" src="../../_images/b1e491f60472f607c110427839f37bcbdc428304e3f6a2379179745a081bd83c.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="an-example-of-plotting-data">
-<h2><span class="section-number">11.7. </span>An example of plotting data<a class="headerlink" href="#an-example-of-plotting-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.7. </span>An example of plotting data<a class="headerlink" href="#an-example-of-plotting-data" title="Link to this heading">#</a></h2>
 <p>First, we’ll create a lat-lon grid and define some data on it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -896,7 +911,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2b81b1ebf9a46614fd83aaea9391adb91be774b6e1c422bc2682f8fd84f112e6.png" src="../../_images/2b81b1ebf9a46614fd83aaea9391adb91be774b6e1c422bc2682f8fd84f112e6.png" />
+<img alt="../../_images/2c83215f88248780d9c66cb55502e8ef6b5449d5ad593f757011fb93d5b54702.png" src="../../_images/2c83215f88248780d9c66cb55502e8ef6b5449d5ad593f757011fb93d5b54702.png" />
 </div>
 </div>
 <p>Plotting data on a Cartesian grid is equivalent to plotting data in the Plate Carree projection, where meridians and parallels are all straight lines with constant spacing. As a result of this simplicity, the global datasets we use often begin in the Plate Carree projection.</p>
@@ -912,13 +927,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0ce95af039d6b22c1c6bce266ba9595a87da3ab5e9765d6074cccea6173da36f.png" src="../../_images/0ce95af039d6b22c1c6bce266ba9595a87da3ab5e9765d6074cccea6173da36f.png" />
+<img alt="../../_images/f2deef91f4aad0edb2bf78e407d39105d02a372d6063d1585d8d1a7cde87d77d.png" src="../../_images/f2deef91f4aad0edb2bf78e407d39105d02a372d6063d1585d8d1a7cde87d77d.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="summary">
-<h2><span class="section-number">11.8. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.8. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Cartopy allows for georeferencing Matplotlib <code class="docutils literal notranslate"><span class="pre">axes</span></code> objects.</p></li>
 <li><p>Cartopy’s <code class="docutils literal notranslate"><span class="pre">crs</span></code> class supports a variety of map projections.</p></li>
@@ -927,11 +942,11 @@
 </section>
 <hr class="docutils" />
 <section id="what-s-next">
-<h2><span class="section-number">11.9. </span>What’s Next?<a class="headerlink" href="#what-s-next" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.9. </span>What’s Next?<a class="headerlink" href="#what-s-next" title="Link to this heading">#</a></h2>
 <p>In the next notebook, we will delve further into how one can transform data that is defined in one coordinate reference system (<code class="docutils literal notranslate"><span class="pre">crs</span></code>) so it displays properly on a map that uses a different <code class="docutils literal notranslate"><span class="pre">crs</span></code>.</p>
 </section>
 <section id="resources-and-references">
-<h2><span class="section-number">11.10. </span>Resources and References<a class="headerlink" href="#resources-and-references" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.10. </span>Resources and References<a class="headerlink" href="#resources-and-references" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy Documentation</a></p></li>
 <li><p><a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/reference/crs.html">Full list of projections in Cartopy</a></p></li>
@@ -978,7 +993,7 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Assignment 1, brightness temperatures</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Assignment 1, brightness temperatures</p>
       </div>
     </a>
     <a class="right-next"
@@ -986,7 +1001,7 @@
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>Mapping Vancouver with cartopy</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Mapping Vancouver with cartopy</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -997,8 +1012,7 @@
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1007,36 +1021,36 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">11.1. Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">11.2. Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">11.3. Imports</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts-map-projections-and-geoaxes">11.4. Basic concepts: map projections and <code class="docutils literal notranslate"><span class="pre">GeoAxes</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extend-matplotlib-s-axes-into-georeferenced-geoaxes">11.4.1. Extend Matplotlib’s <code class="docutils literal notranslate"><span class="pre">axes</span></code> into georeferenced <code class="docutils literal notranslate"><span class="pre">GeoAxes</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-map-with-a-specified-projection">11.4.2. Create a map with a specified projection</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-cartographic-features-to-the-map">11.4.3. Add cartographic features to the map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">12.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">12.2. Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">12.3. Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts-map-projections-and-geoaxes">12.4. Basic concepts: map projections and <code class="docutils literal notranslate"><span class="pre">GeoAxes</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extend-matplotlib-s-axes-into-georeferenced-geoaxes">12.4.1. Extend Matplotlib’s <code class="docutils literal notranslate"><span class="pre">axes</span></code> into georeferenced <code class="docutils literal notranslate"><span class="pre">GeoAxes</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-map-with-a-specified-projection">12.4.2. Create a map with a specified projection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-cartographic-features-to-the-map">12.4.3. Add cartographic features to the map</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-some-of-cartopy-s-map-projections">11.5. Explore some of Cartopy’s map projections</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mollweide-projection-often-used-with-global-satellite-mosaics">11.5.1. Mollweide Projection (often used with global satellite mosaics)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-in-the-cartographic-shapefiles">11.5.1.1. Add in the cartographic shapefiles</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-fancy-background-image-to-the-map">11.5.1.2. Add a fancy background image to the map.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-some-of-cartopy-s-map-projections">12.5. Explore some of Cartopy’s map projections</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mollweide-projection-often-used-with-global-satellite-mosaics">12.5.1. Mollweide Projection (often used with global satellite mosaics)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-in-the-cartographic-shapefiles">12.5.1.1. Add in the cartographic shapefiles</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-fancy-background-image-to-the-map">12.5.1.2. Add a fancy background image to the map.</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambert-azimuthal-equal-area-projection">11.5.2. Lambert Azimuthal Equal Area Projection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambert-azimuthal-equal-area-projection">12.5.2. Lambert Azimuthal Equal Area Projection</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-regional-maps">11.6. Create regional maps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cartopy-s-set-extent-method">11.6.1. Cartopy’s <code class="docutils literal notranslate"><span class="pre">set_extent</span></code> method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-regional-map-centered-over-new-york-state">11.6.2. Create a regional map centered over New York State</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-some-pre-defined-features">11.6.3. Add some pre-defined Features</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-lower-resolution-shapefiles-from-natural-earth">11.6.4. Use lower resolution shapefiles from Natural Earth</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-figure-with-two-different-regional-maps">11.6.5. A figure with two different regional maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-regional-maps">12.6. Create regional maps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cartopy-s-set-extent-method">12.6.1. Cartopy’s <code class="docutils literal notranslate"><span class="pre">set_extent</span></code> method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-regional-map-centered-over-new-york-state">12.6.2. Create a regional map centered over New York State</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-some-pre-defined-features">12.6.3. Add some pre-defined Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-lower-resolution-shapefiles-from-natural-earth">12.6.4. Use lower resolution shapefiles from Natural Earth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-figure-with-two-different-regional-maps">12.6.5. A figure with two different regional maps</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-of-plotting-data">11.7. An example of plotting data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">11.8. Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">11.9. What’s Next?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">11.10. Resources and References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-of-plotting-data">12.7. An example of plotting data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">12.8. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">12.9. What’s Next?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">12.10. Resources and References</a></li>
 </ul>
   </nav></div>
 
@@ -1085,8 +1099,8 @@ By Philip Austin
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

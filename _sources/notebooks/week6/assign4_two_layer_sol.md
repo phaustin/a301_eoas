@@ -20,7 +20,7 @@ kernelspec:
 For the following set of layers:
 
 :::{figure} figures/two_layer.png
-:name: twolayer
+:name: twolayer_sol
 :scale: 50
 
 Two grey layers over a black surface
@@ -49,9 +49,9 @@ Here is the energy budget (heating rate) for each layer where F means flux (posi
 or you could write the flux for each level (downward positive)
 
 - level 2 flux
-  - F2 = Sol - Tr2\*Tr1\*Fg - Tr2\*F1
-  - F1 = Sol - Tr1\*Fg + F2
-  - Fg = Sol + Tr1\*F2 + F1
+  - -F2 = Sol - Tr2\*Tr1\*Fg - Tr2\*F1
+  - -F1 = Sol - Tr1\*Fg + F2
+  - -Fg = Sol + Tr1\*F2 + F1
     
   
 Convince yourself that these two systems are identical -- i.e. that the heating rate for layer 2 is given by subtracting the flux through level 1 from the flux through level 2

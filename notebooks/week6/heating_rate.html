@@ -6,9 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>34. Finding the heating rate of the atmosphere &#8212; ATSC 301</title>
+    <title>35. Finding the heating rate of the atmosphere &#8212; ATSC 301</title>
   
   
   
@@ -16,19 +16,17 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -38,11 +36,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -55,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -66,11 +63,10 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week6/heating_rate.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="35. Assignment 4 two layer solution" href="assign4_two_layer_sol.html" />
-    <link rel="prev" title="33. Weighting functions for temperature retrieval" href="weighting_functions.html" />
+    <link rel="next" title="36. Assignment 4 two layer solution" href="assign4_two_layer_sol.html" />
+    <link rel="prev" title="34. Weighting functions for temperature retrieval" href="weighting_functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -86,8 +82,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -95,6 +102,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -102,8 +110,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -119,8 +127,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -150,11 +157,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -183,63 +194,64 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Midterm</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1E6Gs6zUARHdEAb2UqIyMnyXj-jCiOiXw/view?usp=drive_link">2025 mid-term equation sheet</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/12ZDN8NZzgafeCMDTy4t0u-w80o3-foNT/view?usp=sharing">2022 mid-term</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI.html">1. Sample mid-term questions I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII.html">2. Midterm review questions II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI_solutions.html">3. Midterm Solutions: midterm sample questions I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII_solutions.html">4. Midterm solutions: sample questions II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/midterm_focus.html">5. Study topics for midterm –</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">5. Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">6. Beers and inverse squared laws</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">6. Solid angle and radiance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">7. Finding the flux given the radiance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">8. Plotting the Planck function with python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">7. Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">8. Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">9. Plotting the Planck function with python</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week2/planck_sol.html">9. Plotting the Planck function - solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week2/assign1.html">10. Assignment 1, brightness temperatures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_maps.html">11. Introduction to Cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_mapping_vancouver.html">12. Mapping Vancouver with cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week2/get_landsat_bands.html">13. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/planck_sol.html">10. Plotting the Planck function - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/assign1.html">11. Assignment 1, brightness temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_maps.html">12. Introduction to Cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_mapping_vancouver.html">13. Mapping Vancouver with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/get_landsat_bands.html">14. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">14. Mapping the landsat scene</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">15. Assignment 1, brightness temperatures - solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">16. Zooming an image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">15. Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">16. Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">17. Zooming an image</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">18. Kirchoff worksheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">19. Optical depth and partial transmission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">19. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">20. Optical depth and partial transmission</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">20. Clipping multiple bands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">21. Optical depth II: mean free path</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">22. Assignment 2: solutions Part A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">21. Clipping multiple bands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">22. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">23. Assignment 2: solutions Part A</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">23. Assignment 4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">24. Assignment 2: solutions part B</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">25. Getting lat,lon from row, column</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">26. The Schwartzchild Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">27. Adding a palette to an axis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">28. Assignment 2: solutions part C</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">29. Hydrostatic balance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">30. Cartopy mapping Buenos Aires</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">24. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">25. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">26. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">27. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">28. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">29. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">30. Hydrostatic balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">31. Cartopy mapping Buenos Aires</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">31. Assignment 3: solutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydrostatic_balance.html">32. Scale heights for typical atmospheric soundings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="weighting_functions.html">33. Weighting functions for temperature retrieval</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">34. Finding the heating rate of the atmosphere</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assign4_two_layer_sol.html">35. Assignment 4 two layer solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">32. Assignment 3: solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydrostatic_balance.html">33. Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weighting_functions.html">34. Weighting functions for temperature retrieval</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">35. Finding the heating rate of the atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign4_two_layer_sol.html">36. Assignment 4 two layer solution</a></li>
 </ul>
 
     </div>
@@ -248,14 +260,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -352,16 +359,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -385,10 +400,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartzchild-equation-for-flux">34.1. Schwartzchild equation for flux</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#net-flux">34.2. Net flux</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-change">34.3. Temperature change</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">34.4. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartzchild-equation-for-flux">35.1. Schwartzchild equation for flux</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#net-flux">35.2. Net flux</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-change">35.3. Temperature change</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">35.4. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -401,7 +416,7 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="finding-the-heating-rate-of-the-atmosphere">
-<span id="heating-rate"></span><h1><span class="section-number">34. </span>Finding the heating rate of the atmosphere<a class="headerlink" href="#finding-the-heating-rate-of-the-atmosphere" title="Link to this heading">#</a></h1>
+<span id="heating-rate"></span><h1><span class="section-number">35. </span>Finding the heating rate of the atmosphere<a class="headerlink" href="#finding-the-heating-rate-of-the-atmosphere" title="Link to this heading">#</a></h1>
 <p>How does a climate model calculate the temperature change at every vertical level during a timestep? Wallace and Hobbs present
 the <strong>heating rate equation</strong> (eq. 4.52 on p. 136) which relates the change in temperature to the net flux divergence <span class="math notranslate nohighlight">\(Q_r\)</span> across
 a layer infinitesimal thickness:</p>
@@ -413,7 +428,7 @@ a layer infinitesimal thickness:</p>
 negative (cooling)</p>
 <p>They solve this with an approximation to get eq. 4.56:</p>
 <div class="math notranslate nohighlight" id="equation-wh-dtdt">
-<span class="eqno">(34.1)<a class="headerlink" href="#equation-wh-dtdt" title="Link to this equation">#</a></span>\[
+<span class="eqno">(35.1)<a class="headerlink" href="#equation-wh-dtdt" title="Link to this equation">#</a></span>\[
 \left(\frac{d T}{d t}\right)_\nu=-\frac{\pi}{c_p} k_\nu r B_\nu(z) \frac{e^{-\tau_\nu / \bar{\mu}}}{\bar{\mu}}
 \]</div>
 <p>note that there is a typo below this equation, since <span class="math notranslate nohighlight">\(\overline{\mu} \neq 1.66\)</span>. As they say on p. 136 eq. 4.47</p>
@@ -421,26 +436,26 @@ negative (cooling)</p>
 \[
 \frac{1}{\bar{\mu}} \equiv \sec 53^{\circ}=1.66
 \]</div>
-<p>After the break we’ll derive <a class="reference internal" href="#equation-wh-dtdt">(34.1)</a> and use it, but for the midterm we will instead ignore that equation and calculate the heating rate
+<p>After the break we’ll derive <a class="reference internal" href="#equation-wh-dtdt">(35.1)</a> and use it, but for the midterm we will instead ignore that equation and calculate the heating rate
 the way a global climate model does.  We will still use the fact that you can
 convert the Schwartzchild equation for radiance into an equation for flux by multiplying the vertical optical thickness <span class="math notranslate nohighlight">\(\tau\)</span> by a factor
 of 1.66, effectively make the atmosphere <span class="math notranslate nohighlight">\(66\%\)</span> thicker for flux than for radiance.</p>
 <section id="schwartzchild-equation-for-flux">
-<h2><span class="section-number">34.1. </span>Schwartzchild equation for flux<a class="headerlink" href="#schwartzchild-equation-for-flux" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">35.1. </span>Schwartzchild equation for flux<a class="headerlink" href="#schwartzchild-equation-for-flux" title="Link to this heading">#</a></h2>
 <p>Here’s what the diffusivity approximation look like in practice.  First remember the Schwartzchild equation for flux:</p>
 <div class="math notranslate nohighlight" id="equation-main">
-<span class="eqno">(34.2)<a class="headerlink" href="#equation-main" title="Link to this equation">#</a></span>\[
+<span class="eqno">(35.2)<a class="headerlink" href="#equation-main" title="Link to this equation">#</a></span>\[
 L_\lambda(\tau_T)= B_\lambda(T_{skin}) \exp(-\tau_T) +    \int_0^{\tau_T} B_\lambda(T)\, d\hat{t}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat{t}(\tau_T) = \exp(-\tau_T)\)</span> is the total transmissivity of a layer with optical thickness <span class="math notranslate nohighlight">\(\tau_T\)</span> and
 <span class="math notranslate nohighlight">\(\hat{t} = \exp \left (-(\tau_T - \tau) \right )\)</span> is the transmissivity of the atmosphere from the top of the layer (where the optical depth=<span class="math notranslate nohighlight">\(\tau_T\)</span>), to a height at which the optical depth= <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
 <p>Here’s the picture, note that we’re using a coordinate system where <span class="math notranslate nohighlight">\(\tau\)</span> increases with height:</p>
 <figure class="align-default" id="schwartzchild-rep">
-<a class="reference internal image-reference" href="../../_images/schwartzchild.png"><img alt="../../_images/schwartzchild.png" src="../../_images/schwartzchild.png" style="width: 566.8000000000001px; height: 380.8px;" /></a>
+<a class="reference internal image-reference" href="../../_images/schwartzchild1.png"><img alt="../../_images/schwartzchild1.png" src="../../_images/schwartzchild1.png" style="width: 566.8000000000001px; height: 380.8px;" /></a>
 </figure>
-<p>If <span class="math notranslate nohighlight">\(T\)</span> is constant with height then integrating <a class="reference internal" href="#equation-main">(34.2)</a> is simple:</p>
+<p>If <span class="math notranslate nohighlight">\(T\)</span> is constant with height then integrating <a class="reference internal" href="#equation-main">(35.2)</a> is simple:</p>
 <div class="math notranslate nohighlight" id="equation-main2">
-<span class="eqno">(34.3)<a class="headerlink" href="#equation-main2" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(35.3)<a class="headerlink" href="#equation-main2" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
       L_\lambda(\tau_T) &amp;= B_\lambda(T_{skin}) \exp(-\tau_T) +    B_\lambda(T) \int_0^{\tau_T} \, d\hat{t}\\
         &amp;= B_\lambda(T_{skin}) \exp(-\tau_T) +    B_\lambda(T)(\hat{t}(\tau_T) - \hat{t}(0) ) \\
@@ -449,7 +464,7 @@ L_\lambda(\tau_T)= B_\lambda(T_{skin}) \exp(-\tau_T) +    \int_0^{\tau_T} B_\lam
 \end{split}\]</div>
 <p>For fluxes, we have a new flux transmission, <span class="math notranslate nohighlight">\(\hat{t}_f = \exp(-1.666 \tau)\)</span> So using that:</p>
 <div class="math notranslate nohighlight" id="equation-main3">
-<span class="eqno">(34.4)<a class="headerlink" href="#equation-main3" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(35.4)<a class="headerlink" href="#equation-main3" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
       F_\lambda(\tau_T) &amp;= F_{bb \lambda}(T_{skin}) \exp(-1.66 \tau_T) +    F_\lambda(T) \int_0^{\tau_T} \, d\hat{t}\\
         &amp;= F_\lambda(T_{skin}) \exp(-1.66 \tau_T) +    F_\lambda(T)(\hat{t}_f(\tau_T) - \hat{t}(0) ) \\
@@ -458,7 +473,7 @@ L_\lambda(\tau_T)= B_\lambda(T_{skin}) \exp(-\tau_T) +    \int_0^{\tau_T} B_\lam
 \end{split}\]</div>
 </section>
 <section id="net-flux">
-<h2><span class="section-number">34.2. </span>Net flux<a class="headerlink" href="#net-flux" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">35.2. </span>Net flux<a class="headerlink" href="#net-flux" title="Link to this heading">#</a></h2>
 <p>This gives us the net upward flux at the top of the layer.  We can
 do the same integration the top of the atmosphere down and from <span class="math notranslate nohighlight">\(\theta=\pi/2\)</span> to <span class="math notranslate nohighlight">\(\theta = \pi\)</span> and
 get the downard flux passing through that level.
@@ -482,7 +497,7 @@ Finally, we can integrate over all wavelengths to the the total net flux enterin
 entering from the top of the layer than is exiting from below.</p>
 </section>
 <section id="temperature-change">
-<h2><span class="section-number">34.3. </span>Temperature change<a class="headerlink" href="#temperature-change" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">35.3. </span>Temperature change<a class="headerlink" href="#temperature-change" title="Link to this heading">#</a></h2>
 <p>To turn the radiative heating rate into a rate of temperature change, we need to use the first law of thermodynamics
 (see Stull equation 3.4a):</p>
 <div class="math notranslate nohighlight">
@@ -500,13 +515,13 @@ H=\rho\, c_p\, \Delta z\, T
 our column is 1 <span class="math notranslate nohighlight">\(m^2\)</span></p>
 <p>Putting these two equations together gives the heating rate, <span class="math notranslate nohighlight">\(Q_r\)</span> (units: K/second):</p>
 <div class="math notranslate nohighlight" id="equation-heating">
-<span class="eqno">(34.5)<a class="headerlink" href="#equation-heating" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(35.5)<a class="headerlink" href="#equation-heating" title="Link to this equation">#</a></span>\[\begin{split}
 \rho c_p \Delta z \frac{dT}{dt} &amp;= \Delta F_n\\
 Q_r = \frac{dT}{dt} &amp;= \frac{1}{\rho c_p} \frac{\Delta F_n}{\Delta z} = \frac{1}{\rho c_p} \frac{dF_n}{dz}
 \end{split}\]</div>
 </section>
 <section id="summary">
-<h2><span class="section-number">34.4. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">35.4. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>So the recipe for advancing the model 1 timestep:</p>
 <ol class="arabic">
 <li><p>calculate the optical depth <span class="math notranslate nohighlight">\(\tau\)</span> in every layer</p></li>
@@ -515,7 +530,7 @@ Q_r = \frac{dT}{dt} &amp;= \frac{1}{\rho c_p} \frac{\Delta F_n}{\Delta z} = \fra
 from below and the emission from the layer</p></li>
 <li><p>repeat starting at the top of the atmosphere and moving downward</p></li>
 <li><p>find the net flux <span class="math notranslate nohighlight">\(F_n\)</span> at each level, and the heating rate <span class="math notranslate nohighlight">\(Q_r\)</span> across each layer</p></li>
-<li><p>use <a class="reference internal" href="#equation-heating">(34.5)</a> to get the rate of change of temperature, and increase or decrease the temperature by</p>
+<li><p>use <a class="reference internal" href="#equation-heating">(35.5)</a> to get the rate of change of temperature, and increase or decrease the temperature by</p>
 <div class="math notranslate nohighlight">
 \[
    \Delta T = Q_r \Delta t
@@ -565,7 +580,7 @@ from below and the emission from the layer</p></li>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">33. </span>Weighting functions for temperature retrieval</p>
+        <p class="prev-next-title"><span class="section-number">34. </span>Weighting functions for temperature retrieval</p>
       </div>
     </a>
     <a class="right-next"
@@ -573,7 +588,7 @@ from below and the emission from the layer</p></li>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">35. </span>Assignment 4 two layer solution</p>
+        <p class="prev-next-title"><span class="section-number">36. </span>Assignment 4 two layer solution</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -584,8 +599,7 @@ from below and the emission from the layer</p></li>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -594,10 +608,10 @@ from below and the emission from the layer</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartzchild-equation-for-flux">34.1. Schwartzchild equation for flux</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#net-flux">34.2. Net flux</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-change">34.3. Temperature change</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">34.4. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartzchild-equation-for-flux">35.1. Schwartzchild equation for flux</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#net-flux">35.2. Net flux</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-change">35.3. Temperature change</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">35.4. Summary</a></li>
 </ul>
   </nav></div>
 
@@ -646,8 +660,8 @@ By Philip Austin
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

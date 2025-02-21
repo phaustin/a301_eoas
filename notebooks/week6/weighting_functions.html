@@ -6,9 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>33. Weighting functions for temperature retrieval &#8212; ATSC 301</title>
+    <title>34. Weighting functions for temperature retrieval &#8212; ATSC 301</title>
   
   
   
@@ -16,19 +16,17 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -38,11 +36,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -55,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -66,11 +63,10 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week6/weighting_functions.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="34. Finding the heating rate of the atmosphere" href="heating_rate.html" />
-    <link rel="prev" title="32. Scale heights for typical atmospheric soundings" href="hydrostatic_balance.html" />
+    <link rel="next" title="35. Finding the heating rate of the atmosphere" href="heating_rate.html" />
+    <link rel="prev" title="33. Scale heights for typical atmospheric soundings" href="hydrostatic_balance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -86,8 +82,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -95,6 +102,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -102,8 +110,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -119,8 +127,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -150,11 +157,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -183,62 +194,64 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Midterm</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1UbgglndY2kneFKL4ogSTLORaaRgnz3B6/view?usp=sharing">2020 mid-term equation sheet</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1E6Gs6zUARHdEAb2UqIyMnyXj-jCiOiXw/view?usp=drive_link">2025 mid-term equation sheet</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/12ZDN8NZzgafeCMDTy4t0u-w80o3-foNT/view?usp=sharing">2022 mid-term</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI.html">1. Sample mid-term questions I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII.html">2. Midterm review questions II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI_solutions.html">3. Midterm Solutions: midterm sample questions I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII_solutions.html">4. Midterm solutions: sample questions II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/midterm_focus.html">5. Study topics for midterm –</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">5. Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">6. Beers and inverse squared laws</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">6. Solid angle and radiance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">7. Finding the flux given the radiance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">8. Plotting the Planck function with python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">7. Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">8. Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">9. Plotting the Planck function with python</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week2/planck_sol.html">9. Plotting the Planck function - solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week2/assign1.html">10. Assignment 1, brightness temperatures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_maps.html">11. Introduction to Cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_mapping_vancouver.html">12. Mapping Vancouver with cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week2/get_landsat_bands.html">13. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/planck_sol.html">10. Plotting the Planck function - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/assign1.html">11. Assignment 1, brightness temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_maps.html">12. Introduction to Cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_mapping_vancouver.html">13. Mapping Vancouver with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/get_landsat_bands.html">14. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">14. Mapping the landsat scene</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">15. Assignment 1, brightness temperatures - solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">16. Zooming an image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">15. Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">16. Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">17. Zooming an image</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">18. Kirchoff worksheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">19. Optical depth and partial transmission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">19. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">20. Optical depth and partial transmission</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">20. Clipping multiple bands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">21. Optical depth II: mean free path</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">22. Assignment 2: solutions Part A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">21. Clipping multiple bands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">22. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">23. Assignment 2: solutions Part A</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">23. Assignment 4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">24. Assignment 2: solutions part B</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">25. Getting lat,lon from row, column</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">26. The Schwartzchild Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">27. Adding a palette to an axis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">28. Assignment 2: solutions part C</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">29. Hydrostatic balance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">30. Cartopy mapping Buenos Aires</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">24. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">25. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">26. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">27. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">28. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">29. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">30. Hydrostatic balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">31. Cartopy mapping Buenos Aires</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">31. Assignment 3: solutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hydrostatic_balance.html">32. Scale heights for typical atmospheric soundings</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">33. Weighting functions for temperature retrieval</a></li>
-<li class="toctree-l1"><a class="reference internal" href="heating_rate.html">34. Finding the heating rate of the atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">32. Assignment 3: solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydrostatic_balance.html">33. Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">34. Weighting functions for temperature retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heating_rate.html">35. Finding the heating rate of the atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign4_two_layer_sol.html">36. Assignment 4 two layer solution</a></li>
 </ul>
 
     </div>
@@ -247,14 +260,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -351,16 +359,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -384,20 +400,20 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#satellite-radiance-measured-in-the-co2-absorption-band">33.1. Satellite radiance measured in the CO2 absorption band</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transmittance-stull-figure-8-4c">33.1.1. Transmittance – Stull Figure 8.4c</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#radiance-and-brightness-temperature">33.1.2. Radiance and brightness temperature</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weighting-functions-from-stull">33.1.3. Weighting functions from Stull</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#satellite-radiance-measured-in-the-co2-absorption-band">34.1. Satellite radiance measured in the CO2 absorption band</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transmittance-stull-figure-8-4c">34.1.1. Transmittance – Stull Figure 8.4c</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#radiance-and-brightness-temperature">34.1.2. Radiance and brightness temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weighting-functions-from-stull">34.1.3. Weighting functions from Stull</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-weighting-functions-in-the-co-2-15-mu-m-absorption-band">33.2. Calculating the weighting functions in the <span class="math notranslate nohighlight">\(CO_2\)</span> 15 <span class="math notranslate nohighlight">\(\mu m\)</span> absorption band</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-get-the-optical-depth-from-a-sounding">33.2.1. First get the optical depth from a sounding</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-k-lambda-and-tau-lambda-for-co-2">33.2.2. Defining <span class="math notranslate nohighlight">\(k_\lambda\)</span> and <span class="math notranslate nohighlight">\(\tau_\lambda\)</span> for <span class="math notranslate nohighlight">\(CO_2\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-optical-depth">33.2.3. Plotting the optical depth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-weighting-functions-in-the-co-2-15-mu-m-absorption-band">34.2. Calculating the weighting functions in the <span class="math notranslate nohighlight">\(CO_2\)</span> 15 <span class="math notranslate nohighlight">\(\mu m\)</span> absorption band</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-get-the-optical-depth-from-a-sounding">34.2.1. First get the optical depth from a sounding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-k-lambda-and-tau-lambda-for-co-2">34.2.2. Defining <span class="math notranslate nohighlight">\(k_\lambda\)</span> and <span class="math notranslate nohighlight">\(\tau_\lambda\)</span> for <span class="math notranslate nohighlight">\(CO_2\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-optical-depth">34.2.3. Plotting the optical depth</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-weighting-functions">33.3. Plotting the weighting functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-the-schwartzchild-equation">33.4. Integrating the Schwartzchild equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-weighting-functions">34.3. Plotting the weighting functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-the-schwartzchild-equation">34.4. Integrating the Schwartzchild equation</a></li>
 </ul>
             </nav>
         </div>
@@ -410,7 +426,7 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="weighting-functions-for-temperature-retrieval">
-<span id="week6-weighting-funs"></span><h1><span class="section-number">33. </span>Weighting functions for temperature retrieval<a class="headerlink" href="#weighting-functions-for-temperature-retrieval" title="Link to this heading">#</a></h1>
+<span id="week6-weighting-funs"></span><h1><span class="section-number">34. </span>Weighting functions for temperature retrieval<a class="headerlink" href="#weighting-functions-for-temperature-retrieval" title="Link to this heading">#</a></h1>
 <p>Download  weighting_functions.ipynb from the <a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing">week6 folder</a></p>
 <p>you will also need the new version of a<code class="docutils literal notranslate"><span class="pre">301_lib.py</span></code> and the <code class="docutils literal notranslate"><span class="pre">soundings</span></code> folder, all saved to the
 same folder as this notebook.</p>
@@ -431,19 +447,19 @@ we should be able to invert the Schwartzchild equation for the temperature at 15
 this is not possible, because the weighting functions for each wavelength overlap with height.</p></li>
 </ol>
 <section id="satellite-radiance-measured-in-the-co2-absorption-band">
-<h2><span class="section-number">33.1. </span>Satellite radiance measured in the CO2 absorption band<a class="headerlink" href="#satellite-radiance-measured-in-the-co2-absorption-band" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">34.1. </span>Satellite radiance measured in the CO2 absorption band<a class="headerlink" href="#satellite-radiance-measured-in-the-co2-absorption-band" title="Link to this heading">#</a></h2>
 <section id="transmittance-stull-figure-8-4c">
-<h3><span class="section-number">33.1.1. </span>Transmittance – Stull Figure 8.4c<a class="headerlink" href="#transmittance-stull-figure-8-4c" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">34.1.1. </span>Transmittance – Stull Figure 8.4c<a class="headerlink" href="#transmittance-stull-figure-8-4c" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="stull-8-4-fig">
 <a class="reference internal image-reference" href="../../_images/stull_8_4c.png"><img alt="../../_images/stull_8_4c.png" src="../../_images/stull_8_4c.png" style="width: 693.0px; height: 467.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 33.1 </span><span class="caption-text">Stull Figure 8.4c</span><a class="headerlink" href="#stull-8-4-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 34.1 </span><span class="caption-text">Stull Figure 8.4c</span><a class="headerlink" href="#stull-8-4-fig" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>It’s a little hard to see in the figure, but there are 8 channels crunched between 13-15 microns, along the “shoulder” of the the main CO2 absorption band.</p>
 </section>
 <section id="radiance-and-brightness-temperature">
-<h3><span class="section-number">33.1.2. </span>Radiance and brightness temperature<a class="headerlink" href="#radiance-and-brightness-temperature" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">34.1.2. </span>Radiance and brightness temperature<a class="headerlink" href="#radiance-and-brightness-temperature" title="Link to this heading">#</a></h3>
 <p>The figure below is similar to Figure 8.4c, with the following differences:</p>
 <ol class="arabic simple">
 <li><p>The channel numbers are for an instrument called the VTPR (vertical temperature profiling radiometer), which has six channels indicated in the figure.</p></li>
@@ -455,22 +471,22 @@ That is, Channel 1 is at the center of the band – it has the lowest transmissi
 <figure class="align-default" id="wallace4-33">
 <a class="reference internal image-reference" href="../../_images/wallace4_33.png"><img alt="../../_images/wallace4_33.png" src="../../_images/wallace4_33.png" style="width: 672.0px; height: 823.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 33.2 </span><span class="caption-text">Stull Figure Prob 4.33</span><a class="headerlink" href="#wallace4-33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 34.2 </span><span class="caption-text">Stull Figure Prob 4.33</span><a class="headerlink" href="#wallace4-33" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="weighting-functions-from-stull">
-<h3><span class="section-number">33.1.3. </span>Weighting functions from Stull<a class="headerlink" href="#weighting-functions-from-stull" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">34.1.3. </span>Weighting functions from Stull<a class="headerlink" href="#weighting-functions-from-stull" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="stull-8-9">
 <a class="reference internal image-reference" href="../../_images/stull_8_9.png"><img alt="../../_images/stull_8_9.png" src="../../_images/stull_8_9.png" style="width: 707.0px; height: 343.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 33.3 </span><span class="caption-text">Stull Figure 8.9</span><a class="headerlink" href="#stull-8-9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 34.3 </span><span class="caption-text">Stull Figure 8.9</span><a class="headerlink" href="#stull-8-9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="calculating-the-weighting-functions-in-the-co-2-15-mu-m-absorption-band">
-<h2><span class="section-number">33.2. </span>Calculating the weighting functions in the <span class="math notranslate nohighlight">\(CO_2\)</span> 15 <span class="math notranslate nohighlight">\(\mu m\)</span> absorption band<a class="headerlink" href="#calculating-the-weighting-functions-in-the-co-2-15-mu-m-absorption-band" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">34.2. </span>Calculating the weighting functions in the <span class="math notranslate nohighlight">\(CO_2\)</span> 15 <span class="math notranslate nohighlight">\(\mu m\)</span> absorption band<a class="headerlink" href="#calculating-the-weighting-functions-in-the-co-2-15-mu-m-absorption-band" title="Link to this heading">#</a></h2>
 <p>Recall that we’ve got two versions of the Schwartzchild equation in Schwartzchild notes:</p>
 <p>Stull 8.4:</p>
 <div class="math notranslate nohighlight">
@@ -490,7 +506,7 @@ the blackbody emission <span class="math notranslate nohighlight">\(B_\lambda(T)
 the fraction of <span class="math notranslate nohighlight">\(B_\lambda(T)\)</span> that is going to reach the satellite.</p>
 <p>Below I show how to calculate the weight function in python.</p>
 <section id="first-get-the-optical-depth-from-a-sounding">
-<h3><span class="section-number">33.2.1. </span>First get the optical depth from a sounding<a class="headerlink" href="#first-get-the-optical-depth-from-a-sounding" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">34.2.1. </span>First get the optical depth from a sounding<a class="headerlink" href="#first-get-the-optical-depth-from-a-sounding" title="Link to this heading">#</a></h3>
 <p>This notebook uses the five standard atmospheres from  <a class="reference external" href="http://clouds.eos.ubc.ca/~phil/courses/atsc301/html/hydrostatic_balance.html">hydrostatic_balance.ipynb</a> to show how to use Stull eq. 8.4 to calculate radiance at the top of the atmosphere for wavelengths similar to the 6 sounder channels shown in the above figure.  I define a new function <strong>find_tau</strong> to calculate the optical thickness for a <span class="math notranslate nohighlight">\(CO_2\)</span>-like absorbing gas, and get the weighting functions at 7 wavelengths from the transmission.   I then  plot the brightness temperatures at each wavelength for each of the five standard atmospheres.</p>
 <p>We’re going to need the air density as a function of height, so we’ll require the <strong>calcDensHeight</strong>
 function from the hydrostatic balance notebook, which I’ve moved to the a301.thermo library:</p>
@@ -529,15 +545,19 @@ function from the hydrostatic balance notebook, which I’ve moved to the a301.t
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-{}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[PosixPath(&#39;soundings/tropics.csv&#39;), PosixPath(&#39;soundings/subsummer.csv&#39;), PosixPath(&#39;soundings/subwinter.csv&#39;), PosixPath(&#39;soundings/midwinter.csv&#39;), PosixPath(&#39;soundings/midsummer.csv&#39;)]
+{&#39;midsummer&#39;: PosixPath(&#39;soundings/midsummer.csv&#39;),
+ &#39;midwinter&#39;: PosixPath(&#39;soundings/midwinter.csv&#39;),
+ &#39;subsummer&#39;: PosixPath(&#39;soundings/subsummer.csv&#39;),
+ &#39;subwinter&#39;: PosixPath(&#39;soundings/subwinter.csv&#39;),
+ &#39;tropics&#39;: PosixPath(&#39;soundings/tropics.csv&#39;)}
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="defining-k-lambda-and-tau-lambda-for-co-2">
-<h3><span class="section-number">33.2.2. </span>Defining <span class="math notranslate nohighlight">\(k_\lambda\)</span> and <span class="math notranslate nohighlight">\(\tau_\lambda\)</span> for <span class="math notranslate nohighlight">\(CO_2\)</span><a class="headerlink" href="#defining-k-lambda-and-tau-lambda-for-co-2" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">34.2.2. </span>Defining <span class="math notranslate nohighlight">\(k_\lambda\)</span> and <span class="math notranslate nohighlight">\(\tau_\lambda\)</span> for <span class="math notranslate nohighlight">\(CO_2\)</span><a class="headerlink" href="#defining-k-lambda-and-tau-lambda-for-co-2" title="Link to this heading">#</a></h3>
 <p>I need values for the <strong>mass absorption coefficient</strong> <span class="math notranslate nohighlight">\(k_\lambda\)</span> (<span class="math notranslate nohighlight">\(m^2/kg\ CO2\)</span>) defined in <a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chaper 2</a> equation 2.31b.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -643,7 +663,7 @@ given a mixing ratio, absorption coefficient and a standard sounding:</p>
 </div>
 </section>
 <section id="plotting-the-optical-depth">
-<h3><span class="section-number">33.2.3. </span>Plotting the optical depth<a class="headerlink" href="#plotting-the-optical-depth" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">34.2.3. </span>Plotting the optical depth<a class="headerlink" href="#plotting-the-optical-depth" title="Link to this heading">#</a></h3>
 <p>This cell calls find_tau and plots <span class="math notranslate nohighlight">\(\tau_\lambda\)</span> for one wavelength as a function
 of height and pressure in a tropical atmosphere.</p>
 <div class="cell docutils container">
@@ -672,24 +692,13 @@ of height and pressure in a tropical atmosphere.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">r_gas</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># kg/kg</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">k_lambda</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># m^2/kg</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">df</span> <span class="o">=</span> <span class="n">sound_dict</span><span class="p">[</span><span class="s2">&quot;tropics&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">top</span> <span class="o">=</span> <span class="mf">20.0e3</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;z&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">top</span><span class="p">]</span>
-
-<span class="ne">KeyError</span>: &#39;tropics&#39;
-</pre></div>
-</div>
+<img alt="../../_images/22ac4c971e4a7afeff048848ceb151f1f8b0121b27eece0d89a48de185ab2b02.png" src="../../_images/22ac4c971e4a7afeff048848ceb151f1f8b0121b27eece0d89a48de185ab2b02.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="plotting-the-weighting-functions">
-<h2><span class="section-number">33.3. </span>Plotting the weighting functions<a class="headerlink" href="#plotting-the-weighting-functions" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">34.3. </span>Plotting the weighting functions<a class="headerlink" href="#plotting-the-weighting-functions" title="Link to this heading">#</a></h2>
 <p>Now we’re ready to calculate the weighting functions <span class="math notranslate nohighlight">\(\Delta \hat{t}\)</span> for different values of <span class="math notranslate nohighlight">\(k_\lambda\)</span></p>
 <p>This cell defines 7 wavenumbers (<span class="math notranslate nohighlight">\(1/\lambda\)</span>) in the CO2 absorption band between 666 and 766 <span class="math notranslate nohighlight">\(cm^{-1}\)</span>
 It makes a list of both the wavenumbers and the <span class="math notranslate nohighlight">\(k_\lambda\)</span> for each wavenumber, as well
@@ -722,18 +731,6 @@ as legend labels to use in plotting.</p>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>channel wavelengths (microns)  [15.01501502 14.6484375  14.2993327  13.96648045 13.64877161 13.34519573
  13.05483029]
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">wavelengths_um</span> <span class="o">=</span> <span class="n">wavelengths</span> <span class="o">*</span> <span class="mf">1.0e6</span>  <span class="c1"># in microns</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;channel wavelengths (microns) &quot;</span><span class="p">,</span> <span class="n">wavelengths_um</span><span class="p">)</span>  <span class="c1"># microns</span>
-<span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">df</span> <span class="o">=</span> <span class="n">sound_dict</span><span class="p">[</span><span class="s2">&quot;tropics&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">top</span> <span class="o">=</span> <span class="mf">20.0e3</span>  <span class="c1"># stop at 20 km</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;z&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">top</span><span class="p">]</span>
-
-<span class="ne">KeyError</span>: &#39;tropics&#39;
 </pre></div>
 </div>
 </div>
@@ -791,27 +788,12 @@ the transmittance = 1 at the top of the atmosphere where tau=tau_tot</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># make a list of tuples of k_lambda and its label</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># using zip</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">k_vals</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">k_lambda_list</span><span class="p">,</span> <span class="n">legend_string</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1">#</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1">#  find the height at mid-layer</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1">#</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">mid_height</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">height</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mf">2.0</span>
-
-<span class="ne">NameError</span>: name &#39;k_lambda_list&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/6e08478a607b216fda25dce6b765aabe42025e24f4f58cfe073db381bf63205d.png" src="../../_images/6e08478a607b216fda25dce6b765aabe42025e24f4f58cfe073db381bf63205d.png" />
 </div>
 </div>
 </section>
 <section id="integrating-the-schwartzchild-equation">
-<h2><span class="section-number">33.4. </span>Integrating the Schwartzchild equation<a class="headerlink" href="#integrating-the-schwartzchild-equation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">34.4. </span>Integrating the Schwartzchild equation<a class="headerlink" href="#integrating-the-schwartzchild-equation" title="Link to this heading">#</a></h2>
 <p>This final cell uses the weighting functions to integrate the Schwartchild equation (Stull 8.4)</p>
 <p>The weighting function is calculated at line 14, and the integral is done at line 15</p>
 <p>For plotting the radiances are turned into brightness temperatures at line 17</p>
@@ -855,11 +837,7 @@ the transmittance = 1 at the top of the atmosphere where tau=tau_tot</p>
  13.05483029]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/_k/0f_hlw7x2hq4vtcq0h8bvsm40000gr/T/ipykernel_40764/3329348047.py:28: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-  ax.legend(loc=&quot;best&quot;)
-</pre></div>
-</div>
-<img alt="../../_images/96062f2a0d6305781e45c4b7a8595dc102c093360e759558e11dd24adb1122d4.png" src="../../_images/96062f2a0d6305781e45c4b7a8595dc102c093360e759558e11dd24adb1122d4.png" />
+<img alt="../../_images/61dacfab263a7fafc34c4d67135b346a2000456f9a4623cf7086a5d8bfd26a3f.png" src="../../_images/61dacfab263a7fafc34c4d67135b346a2000456f9a4623cf7086a5d8bfd26a3f.png" />
 </div>
 </div>
 </section>
@@ -901,7 +879,7 @@ the transmittance = 1 at the top of the atmosphere where tau=tau_tot</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">32. </span>Scale heights for typical atmospheric soundings</p>
+        <p class="prev-next-title"><span class="section-number">33. </span>Scale heights for typical atmospheric soundings</p>
       </div>
     </a>
     <a class="right-next"
@@ -909,7 +887,7 @@ the transmittance = 1 at the top of the atmosphere where tau=tau_tot</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">34. </span>Finding the heating rate of the atmosphere</p>
+        <p class="prev-next-title"><span class="section-number">35. </span>Finding the heating rate of the atmosphere</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -920,8 +898,7 @@ the transmittance = 1 at the top of the atmosphere where tau=tau_tot</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -930,20 +907,20 @@ the transmittance = 1 at the top of the atmosphere where tau=tau_tot</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#satellite-radiance-measured-in-the-co2-absorption-band">33.1. Satellite radiance measured in the CO2 absorption band</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transmittance-stull-figure-8-4c">33.1.1. Transmittance – Stull Figure 8.4c</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#radiance-and-brightness-temperature">33.1.2. Radiance and brightness temperature</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weighting-functions-from-stull">33.1.3. Weighting functions from Stull</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#satellite-radiance-measured-in-the-co2-absorption-band">34.1. Satellite radiance measured in the CO2 absorption band</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transmittance-stull-figure-8-4c">34.1.1. Transmittance – Stull Figure 8.4c</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#radiance-and-brightness-temperature">34.1.2. Radiance and brightness temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weighting-functions-from-stull">34.1.3. Weighting functions from Stull</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-weighting-functions-in-the-co-2-15-mu-m-absorption-band">33.2. Calculating the weighting functions in the <span class="math notranslate nohighlight">\(CO_2\)</span> 15 <span class="math notranslate nohighlight">\(\mu m\)</span> absorption band</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-get-the-optical-depth-from-a-sounding">33.2.1. First get the optical depth from a sounding</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-k-lambda-and-tau-lambda-for-co-2">33.2.2. Defining <span class="math notranslate nohighlight">\(k_\lambda\)</span> and <span class="math notranslate nohighlight">\(\tau_\lambda\)</span> for <span class="math notranslate nohighlight">\(CO_2\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-optical-depth">33.2.3. Plotting the optical depth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-weighting-functions-in-the-co-2-15-mu-m-absorption-band">34.2. Calculating the weighting functions in the <span class="math notranslate nohighlight">\(CO_2\)</span> 15 <span class="math notranslate nohighlight">\(\mu m\)</span> absorption band</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-get-the-optical-depth-from-a-sounding">34.2.1. First get the optical depth from a sounding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-k-lambda-and-tau-lambda-for-co-2">34.2.2. Defining <span class="math notranslate nohighlight">\(k_\lambda\)</span> and <span class="math notranslate nohighlight">\(\tau_\lambda\)</span> for <span class="math notranslate nohighlight">\(CO_2\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-optical-depth">34.2.3. Plotting the optical depth</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-weighting-functions">33.3. Plotting the weighting functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-the-schwartzchild-equation">33.4. Integrating the Schwartzchild equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-weighting-functions">34.3. Plotting the weighting functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-the-schwartzchild-equation">34.4. Integrating the Schwartzchild equation</a></li>
 </ul>
   </nav></div>
 
@@ -992,8 +969,8 @@ By Philip Austin
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
