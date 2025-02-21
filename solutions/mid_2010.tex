@@ -1,0 +1,348 @@
+\documentclass[12pt]{article}
+\usepackage{xr,geometry,fancyhdr,hyperref,ifpdf,amsmath,rcs,lscape}
+\usepackage{color,lastpage,longtable,Ventry,url,paunits,shortcuts,smallsec,float,multicol}
+\geometry{letterpaper,top=0.75in,hmargin={0.75in,0.75in},headheight=0.75in}
+
+\onecolumn
+
+\pagestyle{fancy}
+\lhead{Name:}
+\chead{SN:} 
+\rhead{\rhead{page~\thepage/\pageref{LastPage}}}
+
+\lfoot{}
+\rfoot{}
+\cfoot{}
+
+\ifpdf
+    \usepackage[pdftex]{graphicx} 
+    \usepackage{hyperref}
+    \pdfcompresslevel=0
+    \DeclareGraphicsExtensions{.pdf,.jpg,.mps,.png}
+\else
+    \usepackage{hyperref}
+    \usepackage[dvips]{graphicx}
+    \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{`gzip -d #1}
+    \DeclareGraphicsExtensions{.eps,.eps.gz}
+\fi
+
+\graphicspath{{./figures/}}
+
+\begin{document}
+
+\begin{center}
+  A301 2010 Mid-term,  Friday Oct. 22
+\end{center}
+
+Answer all three questions (note weights).  Show all your work, and hand-in 
+all the question  pages plus
+the Planck function curve on p. 5 (used for problem 3) with your radiances
+marked on the plot.
+
+
+\begin{enumerate}
+
+
+\item[1) 10 pts] Equation (\ref{eq:vary}) allows you to find the radiance at height $z_T$
+if given enough information about the atmosphere.  
+
+\begin{equation*}
+  \tag{24}
+I^\uparrow (z_T,\mu) = I^\uparrow (0,\mu) \, Tr_{tot} + \int_0^{z_T} Tr(\tau_T, \tau^\prime) B(z^\prime)\, d\tau^\prime/\mu
+\end{equation*}
+
+\begin{enumerate}
+\item[a) 5] Draw a  sketch of the layer, and 
+label $I^\uparrow (0,\mu)$, $z_T$, $\mu$, $Tr_{tot}$, $Tr(\tau_T,\tau^\prime)$, $d\tau^\prime$,  $B(z^\prime)$,
+where $z^\prime= z_T/2$ km.
+
+
+\item[d) 5] Use the definition of the transmissivity $Tr(\tau_T, \tau^\prime)$ to prove that 
+
+  \begin{equation*}
+    \int_0^{z_T} Tr(\tau_T,\tau^\prime) B(z^\prime)\, d\tau^\prime/\mu = \int_0^{z_T} B(z^\prime)\, dTr^\prime
+  \end{equation*}
+
+\end{enumerate}
+
+\newpage
+
+\textbf{Extra space for question 1 and 2}
+
+\newpage
+
+
+\item[2) 12 pts] A 5 km thick ozone layer absorbs 30\% of the ultraviolet sunlight that passes through
+it when the sun is directly overhead.
+
+\begin{enumerate}
+
+
+\item[a) 3] What is the vertical optical thickness of the layer in the ultraviolet?
+(UV radiation is not reflected, only absorbed/transmitted)
+
+\item[b) 3] What is the value of the absorptivity at 4pm, when the sun is $60^\circ$ away
+from the zenith?
+
+\item[c) 2] If the UV solar flux is 200 \un{W\,m^{-2}} for overhead sun, what is
+the value of the flux at 4pm?
+
+\item[d) 4] What is the heating rate due to UV absorption at 4pm, in degrees/day?   Assume a constant air density
+of 0.5 \un{kg\,m^{-3}}  and a heat capacity of 1004 \un{J\,kg^{-1}\,K^{-1}}.
+
+
+\end{enumerate}
+
+
+\newpage
+
+\item[3) 11 pts] A 10 km thick layer of an an atmosphere has constant temperature
+$T_{atm}$=280 K, a pressure/density scale height of $H=8\ km$ and is filled with
+a gas with a mass absorption coefficient of $k_\lambda$ = 0.2 \un{kg\,m^{-2}} 
+at a wavelength of 10 \mum.  Underneath this layer is a black
+surface with a temperature of 290 K. The atmosphere is in hydrostatic
+equilibrium, the gas has a constant mixing ratio and a density 
+at the surface of $\rho_0 = 10^{-3}$ \un{kg\,m^{-3}}. Find:
+
+\begin{enumerate}
+\item[a) 3]  The vertical optical depth of the layer
+\item[b) 2] The layer transmission for radiance going straight up.
+\item[c) 4] The radiance, in \un{W\,m^{-2}\,sr^{-1}} 
+at the top of the layer due to the surface and atmosphere.
+\item[d) 2] The brightness temperature $T_b$ (K) that  a satellite would measure
+at $\lambda$=10 \mum if there were no absorption/emission above 10 km.
+
+\end{enumerate}
+
+
+\end{enumerate}
+
+
+
+\hspace{-1.5in}
+\includegraphics[width=9in]{longwave.pdf}
+
+
+\begin{center}
+  Useful equations
+\end{center}
+
+\begin{multicols}{2}
+
+
+\begin{eqnarray}
+  \label{eq:nu}
+  \nu &=& c / \lambda\\
+   E &=& h \nu
+\end{eqnarray}
+
+\begin{equation}
+  \label{eq:omega}
+  d \omega = \sin \theta d\theta d\phi = -d\mu d\phi \approx \frac{ A}{r^2} 
+\end{equation}
+
+\begin{equation}
+  \label{eq:cos}
+  S = S_0 \cos(\theta)
+\end{equation}
+
+\begin{equation}
+  \label{eq:conservation}
+  a_\lambda + r_\lambda + Tr_\lambda = 1
+\end{equation}
+
+\begin{equation}
+  \label{eq:intensity}
+  I_\lambda = \frac{\Delta F}{\Delta \omega \Delta \lambda}
+\end{equation}
+
+\begin{equation}
+  \label{eq:flux_int}
+  F = \int_{2 \pi} I \cos \theta \sin \theta d \theta d \phi
+\end{equation}
+
+\begin{equation}
+  \label{planck}
+B_\lambda(T)  = \frac{h c^2}{\lambda^5 \left [ \exp (h c/(\lambda k_B T )) -1 \right ] }
+\end{equation}
+
+
+\begin{equation}
+  \label{eq:pi}
+  F_{\lambda\,BB} = \pi B_\lambda
+\end{equation}
+
+
+\begin{equation}
+  \label{eq:stefan}
+  F_{BB}=\sigma T^4
+\end{equation}
+
+\noindent
+Heating rate equation
+\begin{equation}
+  \label{eq:fluxdiv}
+  \frac{dT}{dt} = \frac{-1}{\rho c_{pd}} \frac{dF_n}{dz}
+\end{equation}
+
+
+\begin{equation}
+  \label{eq:taylor}
+  F_\lambda(T) \approx F_{\lambda\, 0} + \left .\frac{dF_\lambda}{dT}  \right |_{T_0,\lambda} \!\!\! (T - T_0) + \ldots
+\end{equation}
+
+\begin{equation}
+  \label{eq:exp}
+  \exp(x) = 1 + x +  \frac{x^2}{2} + \frac{x^3}{3!} + \ldots
+\end{equation}
+
+\vspace{0.5in}
+
+
+
+$~$
+
+
+
+\noindent
+Beer's law for extinction:
+\begin{eqnarray}
+  \label{eq:extinct}
+\frac{dI_\lambda}{I_\lambda}  & = & - \kappa_{\lambda\, s} \rho_{g} ds - 
+                    \kappa_{\lambda\,a } \rho_{g} ds \nonumber\\
+        &=& - \kappa_{\lambda e} \rho_{g} ds = \kappa_{\lambda e} \rho_{g} dz/\mu
+\end{eqnarray}
+(assuming $\rho_{a}$=$\rho_{s}$=$\rho_{g}$).
+
+\noindent
+Beer's law integrated:
+
+\begin{equation}
+  \label{eq:binteg}
+  I= I_0 \exp (- \tau/\mu)
+\end{equation}
+
+
+$~$
+
+\noindent
+Hydrostatic equation:
+
+\begin{equation}
+  \label{eq:hydro}
+  dp = -\rho_{air}\, g\, dz
+\end{equation}
+
+$~$
+
+Hydrostatic equation integrated:
+
+\begin{equation}
+  \label{eq:hydroint}
+p = p_0 \exp(-z/H)
+\end{equation}
+
+
+\noindent
+Equation of state
+
+\begin{equation}
+  \label{eq:state}
+  p = R_d \rho_{air} T
+\end{equation}
+
+
+$~$
+
+\noindent
+vertical optical thickness:
+
+\begin{equation}
+  \label{eq:tauThick}
+  d \tau =  \kappa_\lambda \rho_g dz = \kappa_\lambda r_{mix} \rho_{air} dz = \beta_a dz
+\end{equation}
+
+\noindent
+integrate vertical optical thickness:
+
+\begin{equation}
+  \label{eq:tauup}
+  \tau(z_1, z_2 ) = \int_{z_1}^{z_{2}} k_\lambda r_{mix} \rho_{air}\, dz^\prime
+\end{equation}
+
+
+\noindent
+Transmission function for upwelling radiation
+
+\begin{eqnarray}
+Tr(\tau_1,\tau_2) &=& \exp ( - (\tau_1 - \tau_2)/\mu ) \nonumber\\
+\end{eqnarray}
+
+$~$
+
+
+$~$
+
+\noindent
+Schwarzchild's equation for an absorbing/emitting gas
+
+\begin{equation}
+  \label{eq:schwarz}
+  dI = -I\, d\tau/\mu + B_{\lambda}(z) d \tau /\mu
+\end{equation}
+
+$~$
+
+\noindent
+For an isothermal atmosphere:
+
+\begin{equation}
+\label{eq:isothermal}
+I_\uparrow = I_0 \exp( - \tau_T /\mu) + (1 - \exp( - \tau_T /\mu)) B_\lambda(T)
+\end{equation}
+
+
+\noindent
+Temperature varying with height:
+
+\begin{gather}
+  \label{eq:topa}
+  I^\uparrow (z_T,\mu) = \nonumber \\
+I^\uparrow (0,\mu) \, Tr_{tot} + \int_0^{z_T} Tr^\prime B(z^\prime)\, d\tau^\prime/\mu \label{eq:vary}\\
+I^\uparrow (0,\mu) \, Tr_{tot} + \int_0^{z_T} B(z^\prime)\, dTr^\prime \label{eq:trans}
+\end{gather}
+
+
+
+\rule{3cm}{.1mm}
+
+
+
+$~$
+
+\noindent
+Useful constants:
+
+$~$
+
+$c_{pd}=1004$ \un{J\, kg^{-1}}, 
+
+$\sigma=5.67 \times  10^{-8}$ \un{W\,m^{-2}\,K^{-4}}
+
+$k_b = 1.381  \times 10^{-23}$ \un{J\,K^{-1}} 
+
+$c=3 \times 10^{8}$ \un{m\,s^{-1}}
+
+$h=6.626 \times 10^{-34}$ \un{J\,s}
+
+$\pi \approx 3.14159$
+
+$R_d=287 \un{J\,kg^{-1}\,K^{-1}}$
+
+Solar radius=$7 \times 10^8$ m
+
+Earth-sun distance =$1.5 \times 10^{11}$ m
+
+\end{multicols}
+
+\end{document}
