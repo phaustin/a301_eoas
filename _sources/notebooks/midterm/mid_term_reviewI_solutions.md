@@ -226,7 +226,7 @@ From Stull p. 224 and the {ref}`week5-schwartzA` reading:
    **Answer:**
 
    Suppose the gas has absorptivity a and emissivity ε and they are not equal to each other.
-   The it will be transmitting $(1 - a)\sigma T^4$ from the right wall to the left wall,
+   The the gas will be transmitting $(1 - a)\sigma T^4$ from the right wall to the left wall,
    and emitting $\epsilon \sigma T^4$ to the left wall, while the (black) left wall will
    be emitting $\sigma T^4$. The temperature of the wall will change because the balance
    will be:
