@@ -221,7 +221,7 @@ From Stull p. 224 and the {ref}`week5-schwartzA` reading:
 
 1. Show that $e_\lambda$ = $a_\lambda$ for a gas that absorbs and transmits but doesn't reflect.
    (hint: put the gas between two black plates, assume that the gas and the plates are at the
-   same temperature and show that the 2nd law is violated if $e_\lambda \neq a_\lambda$
+   same temperature and show that the 2nd law is violated if $e_\lambda \neq a_\lambda$)
 
    **Answer:**
 
