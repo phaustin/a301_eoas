@@ -92,7 +92,7 @@ Stull page 2.43 and the {ref}`week1-beerslaw` reading:
    **Answer**
    
    First, note that temperature is a red herring, since we are assuming that the optical properties
-   of the material oare independent of temperature.
+   of the material are independent of temperature.
    
    If we assume the layers are not reflective, then every photon either has to be absorbed or
    transmitted as it goes through the layers.  The radiance through layer 1 is:
