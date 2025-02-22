@@ -221,12 +221,12 @@ From Stull p. 224 and the {ref}`week5-schwartzA` reading:
 
 1. Show that $e_\lambda$ = $a_\lambda$ for a gas that absorbs and transmits but doesn't reflect.
    (hint: put the gas between two black plates, assume that the gas and the plates are at the
-   same temperature and show that the 2nd law is violated if $e_\lambda \neq a_\lambda$
+   same temperature and show that the 2nd law is violated if $e_\lambda \neq a_\lambda$)
 
    **Answer:**
 
-   Suppose the gas has absorptivity a and emissivity ε and they are new equal to each other.
-   The it will be transmitting $(1 - a)\sigma T^4$ from the right wall to the left wall,
+   Suppose the gas has absorptivity a and emissivity ε and they are not equal to each other.
+   Then the gas will be transmitting $(1 - a)\sigma T^4$ from the right wall to the left wall,
    and emitting $\epsilon \sigma T^4$ to the left wall, while the (black) left wall will
    be emitting $\sigma T^4$. The temperature of the wall will change because the balance
    will be:
