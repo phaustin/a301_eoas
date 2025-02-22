@@ -1,0 +1,303 @@
+\documentclass[12pt]{article}
+\usepackage{calc,fancyhdr, url,hanging}
+\usepackage{paunits,multicol,shortcuts}
+\usepackage{geometry,graphicx}
+\usepackage{lastpage,multicol}
+\usepackage{amsmath}
+\geometry{letterpaper,top=50pt,hmargin={20mm,20mm},headheight=15pt} 
+\onecolumn
+
+\pagestyle{fancy}
+\lhead{Name:}
+
+
+
+\chead{SN:} 
+\rhead{\rhead{page~\thepage/\pageref{LastPage}}}
+
+\lfoot{}
+\rfoot{}
+\cfoot{}
+
+
+\begin{document}
+
+
+\begin{center}
+  \textbf{Useful Equations:}
+\end{center}
+
+
+
+\begin{multicols}{2}
+
+
+\noindent
+
+$~$
+
+\noindent
+
+$~$
+
+\textbf{Monochromatic radiance}:
+
+$L_\lambda\ (W\,m^{-2}\,sr^{-1}\,\mu m^{-1})$
+
+\vspace{0.1in}
+
+\textbf{Monochromatic flux}:
+
+$F_\lambda\ (W\,m^{-2}\,sr^{-1}\,\mu m^{-1})$
+
+
+\vspace{0.1in}
+
+\textbf{Net flux}:
+
+\begin{equation}
+  \label{eq:net}
+F_n = F_\downarrow + F_\uparrow
+\end{equation}
+
+(downward positive)
+
+\begin{equation}
+ \nu = c/\lambda 
+\end{equation}
+
+\begin{equation}
+E = h\nu
+\end{equation}
+
+\begin{equation}
+  \label{eq:omega}
+  d \omega = \sin \theta d\theta d\phi = -d\mu d\phi
+\end{equation}
+
+\begin{equation}
+  \label{eq:cos}
+  S = S_0 \cos(\theta)
+\end{equation}
+
+\begin{equation}
+  \label{eq:conservation}
+  a_\lambda + r_\lambda + t_\lambda = 1
+\end{equation}
+
+\begin{equation}
+  \label{eq:intensity}
+  L_\lambda = \frac{\Delta F}{\Delta \omega \Delta \lambda}
+\end{equation}
+
+
+\begin{equation}
+  \label{eq:black}
+F=\int_0^{2 \pi} \int_0^{\pi / 2} L \cos \theta \sin \theta d \theta d \phi \\
+\end{equation}
+
+\begin{equation}
+  \label{eq:black2}
+B_\lambda(T)=\frac{2 h c^2}{\lambda^5\left[\exp \left(h c /\left(\lambda k_B T\right)\right)-1\right]}
+\end{equation}
+
+\begin{equation}
+  \label{eq:pi}
+  F_{\lambda\,BB} = \pi B_\lambda
+\end{equation}
+
+\begin{equation}
+  \label{eq:stefan}
+  F_{BB}=\sigma T^4
+\end{equation}
+
+\begin{equation}
+  \label{eq:fluxdiv}
+  \frac{dT}{dt} = \frac{1}{\rho c_{pd}} \frac{dF_n}{dz}
+\end{equation}
+
+
+\begin{equation}
+  \label{eq:taylor}
+  F_\lambda(T) \approx F_{\lambda\, 0} + \left .\frac{dF_\lambda}{dT}  \right |_{T_0,\lambda} \!\!\! (T - T_0) + \ldots
+\end{equation}
+
+\begin{equation}
+  \label{eq:exp}
+  \exp(x) = 1 + x +  \frac{x^2}{2} + \frac{3^2}{3!} + \ldots
+\end{equation}
+
+\begin{equation}
+  \sin(\theta) = \theta - \frac{\theta^3}{3!} + \frac{\theta^5}{5!} + \ldots
+\end{equation}
+
+\begin{equation}
+  \cos(\theta) = 1 -  \frac{\theta^2}{2!} + \frac{\theta^4}{4!} + \ldots
+\end{equation}
+
+$~$
+
+\vspace{0.5in}
+
+
+
+
+\noindent
+
+$~$
+
+\noindent
+Beer's law for absorption and scattering (no emission) given
+slant path $s= dz/\mu$, volume extinction coefficient $b$,
+gas density $\rho_g$ (Stull chapter 2)
+
+\begin{align}
+  d\tau &= n\,b\,dz \\
+  d\tau &= \rho_g\,k\,dz \\
+  ds &= dz/\mu \\
+  \tau & = \int_{z_1}^{z_2} \rho_g k dz \\
+\frac{dL_\lambda}{L_\lambda}  & =  - \frac{d\tau}{\mu} 
+\end{align}               
+
+
+$~$
+
+\noindent
+Hydrostatic equation:
+
+\begin{equation}
+  \label{eq:hydro}
+  dp = -\rho_d\, g\, dz
+\end{equation}
+
+$~$
+
+\noindent
+Equation of state
+
+\begin{equation}
+  \label{eq:state}
+  p = R_d \rho_d T
+\end{equation}
+
+
+$~$
+\noindent
+Slant Transmission 
+
+\begin{eqnarray}
+\hat{t}  &=& \exp ( - \tau/\mu ) 
+\end{eqnarray}
+$~$
+
+\noindent
+Schwarzchild's equation
+
+\begin{equation}
+  \label{eq:schwarz}
+  dL = -L\, d\tau/\mu  + B_{\lambda}(z) d\tau/\mu
+\end{equation}
+$~$
+
+\noindent
+Vertical radiance $L_\lambda$  with $\mu = 1$
+
+\begin{align}
+  L_\lambda(\tau)&= B_\lambda(T_{skin})( \exp(-\tau)  \nonumber \\
+  &+    \int_0^{\tau} \exp\left(  - (\tau -\tau^\prime) \right )
+     B_\lambda(T)\, d\tau^\prime 
+\end{align}
+
+\noindent
+Vertical radiance with change of variables to transmittance:   
+
+\begin{equation}
+       L_\lambda(\tau/\mu)= B_\lambda(T_{skin}) \hat{t}_{tot} +    \int_0^{\tau} B_\lambda(T) d\hat{t} 
+     \end{equation}
+\noindent
+
+Radiance for an isothermal layer:
+
+\begin{align}
+  L_\lambda(\tau/\mu)&= B_\lambda(T_{skin}) \hat{t}_{tot} \nonumber\\
+             &+  (1 - \exp(-\tau/\mu) )B_\lambda(T)
+\end{align}
+
+
+
+
+
+\noindent
+Radiance along a slant path:
+
+\begin{align}
+  L_\lambda(\tau/\mu) &= B_\lambda(T_{skin})( \exp(-\tau/\mu) \nonumber \\
+  &+  \int_0^{\tau} \exp\left(  - (\tau -\tau^\prime)/\mu \right )
+     B_\lambda(T)\, d\tau^\prime/\mu 
+\end{align}
+
+    
+\noindent
+Integrating over a hemisphere for flux, using the simple flux diffusivity approximation:
+
+\begin{align}
+  F_\lambda &= \pi B_\lambda(T_{skin}) \exp(-1.66 \tau_{tot}) \nonumber \\
+  & +   \pi B_\lambda(T)(1 - \exp(-1.66 \tau))
+\end{align}
+
+
+\noindent
+Heating rate equation
+\begin{equation}
+  \label{eq:fluxdiv}
+  \frac{dT}{dt} = \frac{1}{\rho c_{pd}} \frac{dF_n}{dz}
+\end{equation}
+
+\noindent
+and integrated over all wavelengths:
+
+     \begin{align}
+       \label{eq:constantT}
+       F_{\uparrow} &= \sigma T_{skin}^4 \exp( -1.66 \overline{\tau}_{\lambda T}  ) \nonumber \\
+       & + \sigma T_{layer}^4(1- \exp( -1.66 \overline{\tau}_{\lambda T} ))
+     \end{align}
+
+\noindent
+Radar
+
+
+\rule{3cm}{.1mm}
+
+
+
+$~$
+
+\noindent
+Useful constants:
+
+$~$
+
+$c_{pd}=1004$ \un{J\, kg^{-1}\,K^{-1}}, 
+
+$\sigma=5.67 \times  10^{-8}$ \un{W\,m^{-2}\,K^{-4}}
+
+$k_b = 1.381  \times 10^{-23}$ \un{J\,K^{-1}} 
+
+$c=3 \times 10^{8}$ \un{m\,s^{-1}}
+
+$h=6.626 \times 10^{-34}$ \un{J\,s}
+
+$\pi \approx 3.14159$
+
+ $R_d=287 \un{J\,kg^{-1}\,K^{-1}}$
+
+
+\end{multicols}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
