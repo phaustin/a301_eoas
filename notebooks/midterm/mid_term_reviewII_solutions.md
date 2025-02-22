@@ -1,7 +1,7 @@
 (mid-review2-sols)=
 # Midterm solutions: sample questions II
 
-## Schwartzchild with changing temperature
+## D1. Schwartzchild with changing temperature
 
 From {ref}`week5-schwartzA`
 
@@ -19,7 +19,7 @@ From {ref}`week5-schwartzA`
       $d\tau^\prime$, $B(\tau^\prime)$, where
       $z^\prime= z_T/2$
 
-      - **Answer**:
+    **Answer**:
 
 :::{figure} figures/midII_layers.png
 :name: layers
@@ -72,7 +72,7 @@ Two layers plus surface
         If we substitute {eq}`eq_diff2` into the right hand side
         of {eq}`eq_orig2` we get the left hand side.
 
-## Beer's law
+## D2 Beer's law
 
 From {ref}`week1-beerslaw` and {ref}`sec:week1-flux-from-radiance`
 
@@ -116,7 +116,7 @@ From {ref}`week1-beerslaw` and {ref}`sec:week1-flux-from-radiance`
 
         So $E_{sfc} = 98/2 = 49\ W\,m^{-2}$
 
-## Hydrostatic equation
+## D3 Hydrostatic equation
 
  From {ref}`hydro` and the {ref}`week6:weighting_funs` notebook.
 

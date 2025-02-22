@@ -26,14 +26,12 @@ kernelspec:
 
    1. Find optical depth and transmisson profiles given a hydrostatic atmosphere with
       a specified scale height
-   2. Calculate broadband ($\sigma T^4/\pi\$) and monochromatic radiances and fluxes
+   2. Calculate broadband ($\sigma\,T^4 / \pi$) and monochromatic radiances and fluxes
    3. Calculate the flux observed by a satellite through an atmosphere of known properties
    4. Convert between radiance and brightness temperature
    5. Calculate heating/cooling rates for a layer
    6. Calculate field of view in steradians and find the flux through a field of view
-      given an isotropic source of radiation
-      
-      
+      given an isotropic source of radiation 
 
 2. Calcuate atmospheric/solar properties from radiation measurements
 
