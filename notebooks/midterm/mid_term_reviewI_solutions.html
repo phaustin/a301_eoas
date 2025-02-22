@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -252,6 +252,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">34. Weighting functions for temperature retrieval</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">35. Finding the heating rate of the atmosphere</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week6/assign4_two_layer_sol.html">36. Assignment 4 two layer solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4_solution.html">37. Assignment 4 solutions</a></li>
 </ul>
 
     </div>
@@ -400,9 +401,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beers-law">4.1. Beers law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-angle-and-radiance">4.2. Solid angle and radiance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartzchild-equation">4.3. Schwartzchild equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-beers-law">4.1. A. Beers law</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a1">4.1.1. A1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a2">4.1.2. A2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a3">4.1.3. A3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a4">4.1.4. A4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-angle-and-radiance">4.2. Solid angle and radiance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b1">4.2.1. B1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b2">4.2.2. B2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b3">4.2.3. B3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b4">4.2.4. B4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b5">4.2.5. B5</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartzchild-equation">4.3. Schwartzchild equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c1">4.3.1. C1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c2">4.3.2. C2</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -416,9 +434,11 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="midterm-solutions-midterm-sample-questions-i">
 <span id="mid-review1-sol"></span><h1><span class="section-number">4. </span>Midterm Solutions: midterm sample questions I<a class="headerlink" href="#midterm-solutions-midterm-sample-questions-i" title="Link to this heading">#</a></h1>
-<section id="beers-law">
-<h2><span class="section-number">4.1. </span>Beers law<a class="headerlink" href="#beers-law" title="Link to this heading">#</a></h2>
+<section id="a-beers-law">
+<h2><span class="section-number">4.1. </span>A. Beers law<a class="headerlink" href="#a-beers-law" title="Link to this heading">#</a></h2>
 <p>Stull page 2.43 and the <a class="reference internal" href="../week1/beers_law.html#week1-beerslaw"><span class="std std-ref">Beers and inverse squared laws</span></a> reading:</p>
+<section id="a1">
+<h3><span class="section-number">4.1.1. </span>A1<a class="headerlink" href="#a1" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>Prove that for a thin non-reflecting layer the change in emissivity
 = change in optical thickness, i.e. prove that:</p>
@@ -438,6 +458,11 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(d e_\lambda \approx d\tau\)</span> or going to finite differences</p>
 <p><span class="math notranslate nohighlight">\(\Delta e_\lambda \approx \Delta \tau\)</span></p>
 </li>
+</ol>
+</section>
+<section id="a2">
+<h3><span class="section-number">4.1.2. </span>A2<a class="headerlink" href="#a2" title="Link to this heading">#</a></h3>
+<ol class="arabic" start="2">
 <li><p>Repeat the problem above, but for a layer with an optical depth of <span class="math notranslate nohighlight">\(\tau_\lambda=1\)</span>.
 How does that change <a class="reference internal" href="#equation-thin1">(4.1)</a> ?</p>
 <p><strong>Answer:</strong></p>
@@ -447,6 +472,11 @@ How does that change <a class="reference internal" href="#equation-thin1">(4.1)<
 an existing layer of thickness <span class="math notranslate nohighlight">\(\tau\)</span>, so the amount of light reaching
 the thin layer is going to be reduced by the transmittance <span class="math notranslate nohighlight">\(\exp( -\tau )\)</span></p>
 </li>
+</ol>
+</section>
+<section id="a3">
+<h3><span class="section-number">4.1.3. </span>A3<a class="headerlink" href="#a3" title="Link to this heading">#</a></h3>
+<ol class="arabic" start="3">
 <li><p>Suppose you put ozone molecules in a 1 km long tunnel and measure an optical thickness of
 0.5 using an ultraviolet laser. You know that the ozone mixing ratio is 1 g/kg and the air
 density is 1 kg/<span class="math notranslate nohighlight">\(m^3\)</span>. What is the extinction coefficient <span class="math notranslate nohighlight">\(k\)</span> in <span class="math notranslate nohighlight">\(m^2/kg\)</span>?</p>
@@ -473,19 +503,53 @@ smaller transmittance due to the longer slant path for <span class="math notrans
 </li>
 </ol>
 </section>
+<section id="a4">
+<span id="mid-a4-solution"></span><h3><span class="section-number">4.1.4. </span>A4<a class="headerlink" href="#a4" title="Link to this heading">#</a></h3>
+<ol class="arabic" start="4">
+<li><p>Find the narrow beam transmissivity, absorptivity and emissivity for a series of
+stacked layers of equal transmissivities and temperatures in a direction perpendicular to the layers.</p>
+<p><strong>Answer</strong></p>
+<p>First, note that temperature is a red herring, since we are assuming that the optical properties
+of the material oare independent of temperature.</p>
+<p>If we assume the layers are not reflective, then every photon either has to be absorbed or
+transmitted as it goes through the layers.  The radiance through layer 1 is:</p>
+<div class="math notranslate nohighlight">
+\[
+   L_1 = L_0 \exp(-\tau)
+   \]</div>
+<p>while the radiance through layer 2 is</p>
+<div class="math notranslate nohighlight">
+\[
+   L_2 = L_1 \exp(-\tau) = L_0 \exp(-\tau) \exp(-\tau) = L_0 \exp(-2 \tau)
+   \]</div>
+<p>and so on.</p>
+<p>So if the number of layers is N, then the transmissivity is <span class="math notranslate nohighlight">\(\exp(-N \tau)\)</span>. If reflectivity
+is zero that means the absorptivity is <span class="math notranslate nohighlight">\(1 - \exp(-N \tau)\)</span> and by Kirchoff’s law
+that is also the emissivity.</p>
+</li>
+</ol>
+</section>
+</section>
 <section id="solid-angle-and-radiance">
 <h2><span class="section-number">4.2. </span>Solid angle and radiance<a class="headerlink" href="#solid-angle-and-radiance" title="Link to this heading">#</a></h2>
 <p>From <a class="reference internal" href="../week1/radiance.html#radiance"><span class="std std-ref">Solid angle and radiance</span></a> reading:</p>
+<section id="b1">
+<h3><span class="section-number">4.2.1. </span>B1<a class="headerlink" href="#b1" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>Calculate the solid angle subtended by a cone with an angular width of
 <span class="math notranslate nohighlight">\(\Delta \theta\)</span> =20 degrees.</p>
 <p><strong>Answer</strong></p>
 <div class="math notranslate nohighlight" id="equation-solid">
-<span class="eqno">(4.2)<a class="headerlink" href="#equation-solid" title="Link to this equation">#</a></span>\[\begin{split}
-   \omega &amp;= \int_0^{2\pi} \int_0^{10} \sin \theta d\theta d\phi = -2\pi (\cos(10) - \cos(0)) \\
-     &amp;= 2\pi (1 - \cos(10)) = 2\pi(1 - 0.985) = 0.0954\ sr
-   \end{split}\]</div>
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-solid" title="Link to this equation">#</a></span>\[
+   \omega = \int_0^{2\pi} \int_0^{10} \sin \theta d\theta d\phi = -2\pi (\cos(10) - \cos(0))
+     = 2\pi (1 - \cos(10)) = 2\pi(1 - 0.985) = 0.0954\ sr
+   \]</div>
 </li>
+</ol>
+</section>
+<section id="b2">
+<h3><span class="section-number">4.2.2. </span>B2<a class="headerlink" href="#b2" title="Link to this heading">#</a></h3>
+<ol class="arabic" start="2">
 <li><p>A laser pointer subtends the same solid angle as the sun: <span class="math notranslate nohighlight">\(7 \times 10^{-5}\)</span> sr. You shine it at a wall that is 10 meters away. What is the radius of the circular dot?</p>
 <p><strong>Answer:</strong></p>
 <div class="math notranslate nohighlight">
@@ -498,10 +562,49 @@ smaller transmittance due to the longer slant path for <span class="math notrans
    \end{aligned}
    \end{split}\]</div>
 </li>
+</ol>
+</section>
+<section id="b3">
+<h3><span class="section-number">4.2.3. </span>B3<a class="headerlink" href="#b3" title="Link to this heading">#</a></h3>
+<ol class="arabic" start="3">
 <li><p>What is the angle of the cone if <span class="math notranslate nohighlight">\(\omega = 7. \times 10^{-5}\ sr\)</span>?</p>
 <p><strong>Answer:</strong></p>
 <p>R= 0.05 m at 10 m, <span class="math notranslate nohighlight">\(\theta = \tan^{-1}(0.05/10) \approx 0.005\)</span> radians or about 0.3 degrees</p>
 </li>
+</ol>
+</section>
+<section id="b4">
+<span id="mid-b4-solution"></span><h3><span class="section-number">4.2.4. </span>B4<a class="headerlink" href="#b4" title="Link to this heading">#</a></h3>
+<ol class="arabic" start="4">
+<li><p>A satellite orbits 800 km above the earth and has a telescope with a field of view
+that covers 1 <span class="math notranslate nohighlight">\(km^2\)</span> directly below it (i.e. at nadir). If that 1 <span class="math notranslate nohighlight">\(km^2\)</span> is ocean with
+an emissivity <span class="math notranslate nohighlight">\(\epsilon =1\)</span> at a temperature
+of 280 K, calculate the surface flux in <span class="math notranslate nohighlight">\(W\,m^{-2}\)</span> reaching the satellite between 10-11 microns,
+assuming no atmospheric absorption or emission.</p>
+<p><strong>Answer:</strong></p>
+<p>We can use the parallel beam approximation for small solid angles:</p>
+<div class="math notranslate nohighlight">
+\[
+   \Delta \omega = \frac{A}{R^2} = \frac{1}{800^2} = 1.56 \times 10^{-6}\ sr
+   \]</div>
+<p>From the <a class="reference external" href="https://drive.google.com/file/d/12ZDN8NZzgafeCMDTy4t0u-w80o3-foNT/view">Planck diagram</a>
+I get a radiance from the 280 K ocean of about 7 <span class="math notranslate nohighlight">\(W\,m^2\,\mu m^{-1}\,sr^{-1}\)</span> at a wavelength
+of 10.5 <span class="math notranslate nohighlight">\(\mu m\)</span></p>
+<p>So putting that together gives:</p>
+<div class="math notranslate nohighlight">
+\[
+   F_{sat} = L_{sea} \times \Delta \omega \times \Delta \lambda =  7 \times 1.56 \times 10^{-6} \times 1 = 
+   1 \times 10^{-5}\ W\,m^{-2}
+   \]</div>
+</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">/</span><span class="mi">800</span><span class="o">**</span><span class="mf">2.</span><span class="p">,</span> <span class="mi">7</span><span class="o">*</span><span class="mf">1.56e-6</span>
+</pre></div>
+</div>
+</section>
+<section id="b5">
+<h3><span class="section-number">4.2.5. </span>B5<a class="headerlink" href="#b5" title="Link to this heading">#</a></h3>
+<ol class="arabic" start="5">
 <li><p>Suppose that a satellite’s orbit changes from a height of 800 km to a height of 600 km
 above the surface. If the telescope field of view stays the same, prove that
 the radiance stays constant.</p>
@@ -524,13 +627,17 @@ satellite is the same, and the field of view is the same, the radiance hasn’t 
 </li>
 </ol>
 </section>
+</section>
 <section id="schwartzchild-equation">
 <h2><span class="section-number">4.3. </span>Schwartzchild equation<a class="headerlink" href="#schwartzchild-equation" title="Link to this heading">#</a></h2>
 <p>From Stull p. 224 and the <a class="reference internal" href="../week5/schwartz.html#week5-schwartza"><span class="std std-ref">The Schwartzchild Equation</span></a> reading:</p>
+<section id="c1">
+<span id="mid-c1-solution"></span><h3><span class="section-number">4.3.1. </span>C1<a class="headerlink" href="#c1" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>Show that <span class="math notranslate nohighlight">\(e_\lambda\)</span> = <span class="math notranslate nohighlight">\(a_\lambda\)</span> for a gas that absorbs and transmits but doesn’t reflect.
 (hint: put the gas between two black plates, assume that the gas and the plates are at the
 same temperature and show that the 2nd law is violated if <span class="math notranslate nohighlight">\(e_\lambda \neq a_\lambda\)</span></p>
+<p><strong>Answer:</strong></p>
 <p>Suppose the gas has absorptivity a and emissivity ε and they are new equal to each other.
 The it will be transmitting <span class="math notranslate nohighlight">\((1 - a)\sigma T^4\)</span> from the right wall to the left wall,
 and emitting <span class="math notranslate nohighlight">\(\epsilon \sigma T^4\)</span> to the left wall, while the (black) left wall will
@@ -547,26 +654,28 @@ will be:</p>
 <p>i.e. the flux at the wall will be unbalanced, and the temperature
 will change in violation of the 2nd law, unless ε=a for the gas.</p>
 </li>
+</ol>
+</section>
+<section id="c2">
+<h3><span class="section-number">4.3.2. </span>C2<a class="headerlink" href="#c2" title="Link to this heading">#</a></h3>
+<ol class="arabic" start="2">
 <li><p>Integrate the Schwartzchild equation</p>
 <div class="math notranslate nohighlight">
 \[
-   \begin{gathered}
-       \label{eq:sch1}
         dL_{\lambda,absorption} + dL_{\lambda,emission}  = -L_\lambda\, d\tau_\lambda + B_\lambda (T_{layer})\, d\tau_\lambda
-     \end{gathered}
    \]</div>
 <p>across a constant temperature layer of thickness <span class="math notranslate nohighlight">\(\Delta \tau_\lambda\)</span> over a surface
 emitting radiance <span class="math notranslate nohighlight">\(L_{\lambda 0}\)</span>
 and show that the radiance at the top of a constant temperature layer is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-   \begin{gathered}
-   L_\lambda = L_{\lambda 0} \exp( -\Delta \tau_\lambda  ) + B_\lambda (1- \exp( -\Delta \tau_\lambda))\end{gathered}
+   L_\lambda = L_{\lambda 0} \exp( -\Delta \tau_\lambda  ) + B_\lambda (1- \exp( -\Delta \tau_\lambda))
    \]</div>
 <p><strong>Answer:</strong></p>
 <p>See the section “Adding emission to Beers law” in the <a class="reference internal" href="../week5/schwartz.html#week5-schwartza"><span class="std std-ref">The Schwartzchild Equation</span></a> notes.</p>
 </li>
 </ol>
+</section>
 </section>
 </section>
 
@@ -634,9 +743,26 @@ and show that the radiance at the top of a constant temperature layer is given b
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beers-law">4.1. Beers law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-angle-and-radiance">4.2. Solid angle and radiance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartzchild-equation">4.3. Schwartzchild equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-beers-law">4.1. A. Beers law</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a1">4.1.1. A1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a2">4.1.2. A2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a3">4.1.3. A3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a4">4.1.4. A4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-angle-and-radiance">4.2. Solid angle and radiance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b1">4.2.1. B1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b2">4.2.2. B2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b3">4.2.3. B3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b4">4.2.4. B4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b5">4.2.5. B5</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartzchild-equation">4.3. Schwartzchild equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c1">4.3.1. C1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c2">4.3.2. C2</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

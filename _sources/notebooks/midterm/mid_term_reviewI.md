@@ -35,9 +35,9 @@ From {ref}`radiance` reading:
 4. A satellite orbits 800 km above the earth and has a telescope with a field of view
    that covers 1 $km^2$ directly below it (i.e. at nadir). If that 1 $km^2$ is ocean with
    an emissivity $\epsilon =1$ at a temperature
-   of 280 K, calculate the sufrace flux in $W\,m^{-2}$ reaching the satellite between 10-11 microns,
+   of 280 K, calculate the surface flux in $W\,m^{-2}$ reaching the satellite between 10-11 microns,
    assuming no atmospheric absorption or emission.
-6. Suppose that a satellite's orbit changes from a height of 800 km to a height of 600 km
+5. Suppose that a satellite's orbit changes from a height of 800 km to a height of 600 km
    above the surface. If the telescope field of view stays the same, prove that
    the radiance stays constant.
 

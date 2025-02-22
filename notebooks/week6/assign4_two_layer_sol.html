@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -63,6 +63,7 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week6/assign4_two_layer_sol.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="37. Assignment 4 solutions" href="../../solutions/assign4_solution.html" />
     <link rel="prev" title="35. Finding the heating rate of the atmosphere" href="heating_rate.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -193,13 +194,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Midterm</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../midterm/midterm_focus.html">1. Study topics for midterm</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1E6Gs6zUARHdEAb2UqIyMnyXj-jCiOiXw/view?usp=drive_link">2025 mid-term equation sheet</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/12ZDN8NZzgafeCMDTy4t0u-w80o3-foNT/view?usp=sharing">2022 mid-term</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI.html">1. Sample mid-term questions I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII.html">2. Midterm review questions II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI_solutions.html">3. Midterm Solutions: midterm sample questions I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII_solutions.html">4. Midterm solutions: sample questions II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../midterm/midterm_focus.html">5. Study topics for midterm –</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI.html">2. Sample mid-term questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII.html">3. Midterm review questions II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI_solutions.html">4. Midterm Solutions: midterm sample questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII_solutions.html">5. Midterm solutions: sample questions II</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="nav bd-sidenav">
@@ -251,6 +252,7 @@
 <li class="toctree-l1"><a class="reference internal" href="weighting_functions.html">34. Weighting functions for temperature retrieval</a></li>
 <li class="toctree-l1"><a class="reference internal" href="heating_rate.html">35. Finding the heating rate of the atmosphere</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">36. Assignment 4 two layer solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4_solution.html">37. Assignment 4 solutions</a></li>
 </ul>
 
     </div>
@@ -417,10 +419,10 @@ document.write(`
 <section id="q4">
 <h2><span class="section-number">36.1. </span>Q4<a class="headerlink" href="#q4" title="Link to this heading">#</a></h2>
 <p>For the following set of layers:</p>
-<figure class="align-default" id="twolayer-sol">
-<a class="reference internal image-reference" href="../../_images/two_layer1.png"><img alt="../../_images/two_layer1.png" src="../../_images/two_layer1.png" style="width: 740.0px; height: 456.0px;" /></a>
+<figure class="align-default" id="twolayer-sol-fig">
+<a class="reference internal image-reference" href="../../_images/two_layer.png"><img alt="../../_images/two_layer.png" src="../../_images/two_layer.png" style="width: 740.0px; height: 456.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 36.1 </span><span class="caption-text">Two grey layers over a black surface</span><a class="headerlink" href="#twolayer-sol" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 36.1 </span><span class="caption-text">Two grey layers over a black surface</span><a class="headerlink" href="#twolayer-sol-fig" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -454,9 +456,9 @@ document.write(`
 <ul class="simple">
 <li><p>level 2 flux</p>
 <ul>
-<li><p>-F2 = Sol - Tr2*Tr1*Fg - Tr2*F1</p></li>
-<li><p>-F1 = Sol - Tr1*Fg + F2</p></li>
-<li><p>-Fg = Sol + Tr1*F2 + F1</p></li>
+<li><p>F2 = Sol - Tr2*Tr1*Fg - Tr2*F1</p></li>
+<li><p>F1 = Sol - Tr1*Fg + F2</p></li>
+<li><p>Fg = Sol + Tr1*F2 + F1</p></li>
 </ul>
 </li>
 </ul>
@@ -566,6 +568,15 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><span class="section-number">35. </span>Finding the heating rate of the atmosphere</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../../solutions/assign4_solution.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">37. </span>Assignment 4 solutions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

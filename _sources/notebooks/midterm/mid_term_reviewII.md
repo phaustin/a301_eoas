@@ -2,7 +2,7 @@
 
 # Midterm review questions II
 
-## Schwartzchild with changing temperature
+## D1. Schwartzchild with changing temperature
 
 From {ref}`week5-schwartzA`
 
@@ -25,7 +25,7 @@ From {ref}`week5-schwartzA`
       \int_0^{z_T} t(\tau_T,\tau^\prime) B(\tau^\prime)\, d\tau^\prime = \int_0^{z_T} B(t^\prime)\, dt^\prime
       $$ (eq_orig)
 
-## Beer's law
+## D2 Beer's law
 
 From {ref}`week1-beerslaw`
 
@@ -41,7 +41,7 @@ From {ref}`week1-beerslaw`
    4. If the UV solar flux is 200 $W\,m^{-2}$ for overhead sun, what is the value of
       the radiance and the flux at 4pm?
 
-## Hydrostatic equation
+## D3 Hydrostatic equation
 
 From {ref}`hydro` and the {ref}`week6:weighting_funs` notebook.
 

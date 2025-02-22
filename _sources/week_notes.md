@@ -305,8 +305,11 @@ Topics:
 
 ###  Day 18 Friday
 
+- [radiation in the news](https://www.washingtonpost.com/climate-environment/2025/02/14/global-warming-acceleration-clouds/)
 - {ref}`mid-review1-sol`
 - {ref}`mid-review2-sols`
 - {ref}`assign4-2laysol`
+
+- All Assignment 4 solutions: {ref}`assign4_solution`
 
 

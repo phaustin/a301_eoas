@@ -1,9 +1,11 @@
 (mid-review1-sol)=
 # Midterm Solutions: midterm sample questions I
 
-## Beers law
+## A. Beers law
 
 Stull page 2.43 and the {ref}`week1-beerslaw` reading:
+
+### A1
 
 1. Prove that for a thin non-reflecting layer the change in emissivity
    = change in optical thickness, i.e. prove that:
@@ -33,6 +35,8 @@ Stull page 2.43 and the {ref}`week1-beerslaw` reading:
 
    $\Delta e_\lambda \approx \Delta \tau$
 
+### A2
+
 2. Repeat the problem above, but for a layer with an optical depth of $\tau_\lambda=1$.
    How does that change {eq}`thin1` ?
 
@@ -45,6 +49,9 @@ Stull page 2.43 and the {ref}`week1-beerslaw` reading:
    which makes sense because we are adding a thin layer $\Delta \tau$ onto
    an existing layer of thickness $\tau$, so the amount of light reaching
    the thin layer is going to be reduced by the transmittance $\exp( -\tau )$
+
+### A3
+
 
 3. Suppose you put ozone molecules in a 1 km long tunnel and measure an optical thickness of
    0.5 using an ultraviolet laser. You know that the ozone mixing ratio is 1 g/kg and the air
@@ -76,9 +83,41 @@ Stull page 2.43 and the {ref}`week1-beerslaw` reading:
    Once we made that change, everything would work as before, just with a
    smaller transmittance due to the longer slant path for $\mu < 1$.
 
+(mid_a4_solution)=
+### A4
+
+4. Find the narrow beam transmissivity, absorptivity and emissivity for a series of
+   stacked layers of equal transmissivities and temperatures in a direction perpendicular to the layers.
+
+   **Answer**
+   
+   First, note that temperature is a red herring, since we are assuming that the optical properties
+   of the material oare independent of temperature.
+   
+   If we assume the layers are not reflective, then every photon either has to be absorbed or
+   transmitted as it goes through the layers.  The radiance through layer 1 is:
+   
+   $$
+   L_1 = L_0 \exp(-\tau)
+   $$
+   
+   while the radiance through layer 2 is 
+   
+   $$
+   L_2 = L_1 \exp(-\tau) = L_0 \exp(-\tau) \exp(-\tau) = L_0 \exp(-2 \tau)
+   $$
+   and so on.
+   
+   So if the number of layers is N, then the transmissivity is $\exp(-N \tau)$. If reflectivity
+   is zero that means the absorptivity is $1 - \exp(-N \tau)$ and by Kirchoff's law
+   that is also the emissivity.
+
+
 ## Solid angle and radiance
 
 From {ref}`radiance` reading:
+
+### B1
 
 1. Calculate the solid angle subtended by a cone with an angular width of
    $\Delta \theta$ =20 degrees.
@@ -86,9 +125,12 @@ From {ref}`radiance` reading:
    **Answer**
 
    $$
-   \omega &= \int_0^{2\pi} \int_0^{10} \sin \theta d\theta d\phi = -2\pi (\cos(10) - \cos(0)) \\
-     &= 2\pi (1 - \cos(10)) = 2\pi(1 - 0.985) = 0.0954\ sr
-   $$ (solid)
+   \omega = \int_0^{2\pi} \int_0^{10} \sin \theta d\theta d\phi = -2\pi (\cos(10) - \cos(0))
+     = 2\pi (1 - \cos(10)) = 2\pi(1 - 0.985) = 0.0954\ sr
+   $$(solid)
+
+
+### B2
 
 2. A laser pointer subtends the same solid angle as the sun: $7 \times 10^{-5}$ sr. You shine it at a wall that is 10 meters away. What is the radius of the circular dot?
 
@@ -103,13 +145,50 @@ From {ref}`radiance` reading:
    \end{aligned}
    $$
 
+### B3
+
 3. What is the angle of the cone if $\omega = 7. \times 10^{-5}\ sr$?
 
    **Answer:**
 
    R= 0.05 m at 10 m, $\theta = \tan^{-1}(0.05/10) \approx 0.005$ radians or about 0.3 degrees
 
-4. Suppose that a satellite's orbit changes from a height of 800 km to a height of 600 km
+(mid_b4_solution)=
+### B4
+
+
+4. A satellite orbits 800 km above the earth and has a telescope with a field of view
+   that covers 1 $km^2$ directly below it (i.e. at nadir). If that 1 $km^2$ is ocean with
+   an emissivity $\epsilon =1$ at a temperature
+   of 280 K, calculate the surface flux in $W\,m^{-2}$ reaching the satellite between 10-11 microns,
+   assuming no atmospheric absorption or emission.
+
+   **Answer:**
+   
+   We can use the parallel beam approximation for small solid angles:
+   
+   $$
+   \Delta \omega = \frac{A}{R^2} = \frac{1}{800^2} = 1.56 \times 10^{-6}\ sr
+   $$
+
+   From the [Planck diagram](https://drive.google.com/file/d/12ZDN8NZzgafeCMDTy4t0u-w80o3-foNT/view)
+   I get a radiance from the 280 K ocean of about 7 $W\,m^2\,\mu m^{-1}\,sr^{-1}$ at a wavelength
+   of 10.5 $\mu m$
+
+   So putting that together gives:
+
+   $$
+   F_{sat} = L_{sea} \times \Delta \omega \times \Delta \lambda =  7 \times 1.56 \times 10^{-6} \times 1 = 
+   1 \times 10^{-5}\ W\,m^{-2}
+   $$
+
+```python
+1/800**2., 7*1.56e-6
+```
+
+### B5
+
+5. Suppose that a satellite's orbit changes from a height of 800 km to a height of 600 km
    above the surface. If the telescope field of view stays the same, prove that
    the radiance stays constant.
 
@@ -137,9 +216,14 @@ From {ref}`radiance` reading:
 
 From Stull p. 224 and the {ref}`week5-schwartzA` reading:
 
+(mid_c1_solution)=
+### C1
+
 1. Show that $e_\lambda$ = $a_\lambda$ for a gas that absorbs and transmits but doesn't reflect.
    (hint: put the gas between two black plates, assume that the gas and the plates are at the
    same temperature and show that the 2nd law is violated if $e_\lambda \neq a_\lambda$
+
+   **Answer:**
 
    Suppose the gas has absorptivity a and emissivity ε and they are new equal to each other.
    The it will be transmitting $(1 - a)\sigma T^4$ from the right wall to the left wall,
@@ -158,13 +242,12 @@ From Stull p. 224 and the {ref}`week5-schwartzA` reading:
    i.e. the flux at the wall will be unbalanced, and the temperature
    will change in violation of the 2nd law, unless ε=a for the gas.
 
+### C2
+
 2. Integrate the Schwartzchild equation
 
    $$
-   \begin{gathered}
-       \label{eq:sch1}
         dL_{\lambda,absorption} + dL_{\lambda,emission}  = -L_\lambda\, d\tau_\lambda + B_\lambda (T_{layer})\, d\tau_\lambda
-     \end{gathered}
    $$
 
    across a constant temperature layer of thickness $\Delta \tau_\lambda$ over a surface
@@ -172,10 +255,10 @@ From Stull p. 224 and the {ref}`week5-schwartzA` reading:
    and show that the radiance at the top of a constant temperature layer is given by:
 
    $$
-   \begin{gathered}
-   L_\lambda = L_{\lambda 0} \exp( -\Delta \tau_\lambda  ) + B_\lambda (1- \exp( -\Delta \tau_\lambda))\end{gathered}
+   L_\lambda = L_{\lambda 0} \exp( -\Delta \tau_\lambda  ) + B_\lambda (1- \exp( -\Delta \tau_\lambda))
    $$
 
    **Answer:**
 
    See the section "Adding emission to Beers law" in the {ref}`week5-schwartzA` notes.
+
