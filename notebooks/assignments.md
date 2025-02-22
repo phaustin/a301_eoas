@@ -24,3 +24,4 @@
 ## Assignment 4
 
 - see {ref}`assign4`
+- {ref}`assign4_solution`

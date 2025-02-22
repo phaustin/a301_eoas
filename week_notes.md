@@ -310,4 +310,6 @@ Topics:
 - {ref}`mid-review2-sols`
 - {ref}`assign4-2laysol`
 
+- All Assignment 4 solutions: {ref}`assign4_solution`
+
 

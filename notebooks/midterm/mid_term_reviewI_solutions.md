@@ -83,6 +83,7 @@ Stull page 2.43 and the {ref}`week1-beerslaw` reading:
    Once we made that change, everything would work as before, just with a
    smaller transmittance due to the longer slant path for $\mu < 1$.
 
+(mid_a4_solution)=
 ### A4
 
 4. Find the narrow beam transmissivity, absorptivity and emissivity for a series of
@@ -152,7 +153,7 @@ From {ref}`radiance` reading:
 
    R= 0.05 m at 10 m, $\theta = \tan^{-1}(0.05/10) \approx 0.005$ radians or about 0.3 degrees
 
-
+(mid_b4_solution)=
 ### B4
 
 
@@ -215,6 +216,7 @@ From {ref}`radiance` reading:
 
 From Stull p. 224 and the {ref}`week5-schwartzA` reading:
 
+(mid_c1_solution)=
 ### C1
 
 1. Show that $e_\lambda$ = $a_\lambda$ for a gas that absorbs and transmits but doesn't reflect.
