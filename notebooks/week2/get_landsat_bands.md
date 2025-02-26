@@ -120,7 +120,9 @@ Use shapely to create a point object holding the location of UBC.  Also create a
 ```{code-cell} ipython3
 hls_lon, hls_lat = -58.3816, -34.607
 center_point = Point(hls_lon, hls_lat)
-june_2015 = "2015-01-01/2015-12-31"
+van_lon, van_lat = -123.120, 49.2827
+center_point = Point(van_lon, van_lat)
+june_2015 = "2015-06-01/2015-06-30"
 ```
 
 ```{code-cell} ipython3
@@ -146,10 +148,6 @@ search = client.search(
 ### get the metadata for search items
 
 This search should find 4 scenes -- 2 of which have 4% cloud cover.
-
-```{code-cell} ipython3
-lissearch
-```
 
 ```{code-cell} ipython3
 items = search.item_collection()
@@ -180,7 +178,7 @@ and a jpg image file called 'browse' which is a 1000 x 1000 pixel true color ima
 The filenames below show that the June 14 scene was taken by Landsat -- Landsat filenames begin with HLS.L30, Sentinel with HLS.S30.  The number 30 is the pixel size in meters:  30 meters high by 30 meters wide
 
 ```{code-cell} ipython3
-hls_scene = items[18]
+hls_scene = items[1]
 hls_scene.assets
 ```
 

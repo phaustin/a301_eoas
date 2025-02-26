@@ -52,7 +52,7 @@ the [wikipedia entry on globbing](https://en.wikipedia.org/wiki/Glob_(programmin
 
 ```{code-cell} ipython3
 data_dir = Path().home() / 'repos/a301/satdata/landsat'
-the_tifs = list(data_dir.glob('**/HLS.L30*tif'))
+the_tifs = list(data_dir.glob('**/vancouver/HLS.L30*tif'))
 print(the_tifs)
 ```
 
@@ -124,7 +124,7 @@ for tif_path in the_tifs:
     #
     # multiply the data by the scale factor
     #
-    #  hls_band.data *= hls_band.scale_factor
+    hls_band.data *= hls_band.scale_factor
     print(f"{band_name=}")
     band_dict[band_name] = hls_band
     if 'unit' in hls_band.attrs:
@@ -214,6 +214,10 @@ We need to adjust some of the attributions for the new subscene.  To do this, co
 a dictionary and rewrite the parts you want to change, adding any extras.
 
 ```{code-cell} ipython3
+band_dict['Red'].dtype
+```
+
+```{code-cell} ipython3
 for key, value in band_dict.items():
     new_attrs = value.attrs
     new_attrs['ULX']= ul_x
@@ -238,6 +242,10 @@ value.attrs['history']
 We'll also add jpg files for browsing
 
 ```{code-cell} ipython3
+band_dict['Blue']
+```
+
+```{code-cell} ipython3
 for key, value in band_dict.items():
     band_name = value.long_name
     tif_filename = data_dir / 'vancouver' / f"week4_clipped_{band_name}.tif"
@@ -246,13 +254,17 @@ for key, value in band_dict.items():
     #
     if tif_filename.exists():
         tif_filename.unlink()
-    value.rio.to_raster(tif_filename)
+    value.rio.to_raster(tif_filename,driver="GTiff")
 ```
 
 ### read one back in to check
 
 ```{code-cell} ipython3
-tif_filename = data_dir / 'vancouver' / f"week4_clipped_TIRS1.tif"
+small_band.plot.hist()
+```
+
+```{code-cell} ipython3
+tif_filename = list(data_dir.glob("**/*week4*TIRS1.tif"))[0]
 print(f"{tif_filename=}")
 has_file = tif_filename.exists()
 if not has_file:
@@ -270,20 +282,4 @@ Because we used the pyproj `good_crs` in our raster write we've fixed the missin
 
 ```{code-cell} ipython3
 small_band.rio.crs.to_epsg()
-```
-
-```{code-cell} ipython3
-help(CRS)
-```
-
-```{code-cell} ipython3
-small_band.transform
-```
-
-```{code-cell} ipython3
-small_band.rio.transform()
-```
-
-```{code-cell} ipython3
-
 ```
