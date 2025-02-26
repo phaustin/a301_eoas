@@ -423,12 +423,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stretched-band-5-nir">38.6.2. Stretched band 5 (nir)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-dataarray">38.6.3. Create the dataArray</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-attributes">38.6.4. Add attributes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-falsecolor-dataarray">38.6.5. Create the falsecolor dataArray</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#false-color-bands-5-4-3">38.6.5.1. False color bands 5,4,3</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-as-a-png-file">38.6.6. Save as a png file</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-it-back-in-to-check">38.6.7. Read it back in to check</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-falsecolor-dataarray">38.6.5. Create the falsecolor dataArray</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#false-color-bands-5-4-3">38.6.6. False color bands 5,4,3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-as-a-png-file">38.6.7. Save as a png file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-it-back-in-to-check">38.6.8. Read it back in to check</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-with-the-red-green-blue">38.7. Repeat with the red, green, blue</a><ul class="nav section-nav flex-column">
@@ -450,7 +448,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="making-color-composite-false-color-images">
-<span id="week10-false-color"></span><h1><span class="section-number">38. </span>Making color composite (“false color”) images<a class="headerlink" href="#making-color-composite-false-color-images" title="Link to this heading">#</a></h1>
+<span id="week7-false-color"></span><h1><span class="section-number">38. </span>Making color composite (“false color”) images<a class="headerlink" href="#making-color-composite-false-color-images" title="Link to this heading">#</a></h1>
 <section id="definitions-24-bit-color-true-color-false-color">
 <h2><span class="section-number">38.1. </span>Definitions: “24 bit color”, “true color”, “false color”<a class="headerlink" href="#definitions-24-bit-color-true-color-false-color" title="Link to this heading">#</a></h2>
 <p>Up to now we have been showing images using “8 bit color”, where pixel values are scaled from 0 to 255 and mapped to a palette with
@@ -898,7 +896,7 @@ values between 0 and 255, so all missing values have been converted to 0</p>
 <section id="create-the-dataarray">
 <h3><span class="section-number">38.6.3. </span>Create the dataArray<a class="headerlink" href="#create-the-dataarray" title="Link to this heading">#</a></h3>
 <p>Now that I have 3 bands scaled from 0-255, I can write them out as
-a png file, with new tags.  Recall from the <span class="xref std std-ref">week8:zoom_landsat</span> that I need
+a png file, with new tags.  Recall from the <a class="reference internal" href="../week3/zoom_landsat.html#week3-image-zoom"><span class="std std-ref">Zooming an image</span></a> that I need
 to supply the array, dimensions, coordinates and attributes.</p>
 <p>For the coordinate dictionary, I can borrow the ‘x’ and ‘y’ coordinates from band 3.</p>
 <div class="cell docutils container">
@@ -1390,8 +1388,9 @@ Attributes:
 </div>
 <p>The final image – the imshow function interprets any array with shape [3, nrows, ncols] as
 a false color image and presents it with rgb colors.</p>
+</section>
 <section id="false-color-bands-5-4-3">
-<h4><span class="section-number">38.6.5.1. </span>False color bands 5,4,3<a class="headerlink" href="#false-color-bands-5-4-3" title="Link to this heading">#</a></h4>
+<h3><span class="section-number">38.6.6. </span>False color bands 5,4,3<a class="headerlink" href="#false-color-bands-5-4-3" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">false_color</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">));</span>
@@ -1403,9 +1402,8 @@ a false color image and presents it with rgb colors.</p>
 </div>
 </div>
 </section>
-</section>
 <section id="save-as-a-png-file">
-<h3><span class="section-number">38.6.6. </span>Save as a png file<a class="headerlink" href="#save-as-a-png-file" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">38.6.7. </span>Save as a png file<a class="headerlink" href="#save-as-a-png-file" title="Link to this heading">#</a></h3>
 <p>Now that we have a standard 24 bit color 3 channel array we can create either a png or a jpg file that can be viewed with a browser.</p>
 <p>If the filename ends in png, rioxarray will save it in the standard png format.</p>
 <div class="cell docutils container">
@@ -1418,7 +1416,7 @@ a false color image and presents it with rgb colors.</p>
 </div>
 </section>
 <section id="read-it-back-in-to-check">
-<h3><span class="section-number">38.6.7. </span>Read it back in to check<a class="headerlink" href="#read-it-back-in-to-check" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">38.6.8. </span>Read it back in to check<a class="headerlink" href="#read-it-back-in-to-check" title="Link to this heading">#</a></h3>
 <p>Here’s the finished product – read back in from the png file</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1575,12 +1573,10 @@ to make a band 5,4,3 false color png file of your scene</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stretched-band-5-nir">38.6.2. Stretched band 5 (nir)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-dataarray">38.6.3. Create the dataArray</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-attributes">38.6.4. Add attributes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-falsecolor-dataarray">38.6.5. Create the falsecolor dataArray</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#false-color-bands-5-4-3">38.6.5.1. False color bands 5,4,3</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-as-a-png-file">38.6.6. Save as a png file</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-it-back-in-to-check">38.6.7. Read it back in to check</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-falsecolor-dataarray">38.6.5. Create the falsecolor dataArray</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#false-color-bands-5-4-3">38.6.6. False color bands 5,4,3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-as-a-png-file">38.6.7. Save as a png file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-it-back-in-to-check">38.6.8. Read it back in to check</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-with-the-red-green-blue">38.7. Repeat with the red, green, blue</a><ul class="nav section-nav flex-column">

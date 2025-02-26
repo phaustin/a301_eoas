@@ -13,7 +13,7 @@ kernelspec:
   name: python3
 ---
 
-(week10:false_color)=
+(week7:false_color)=
 # Making color composite ("false color") images
 
 +++
@@ -56,7 +56,7 @@ Below we'll show how to do a "histogram stretch".  Since the underlying data is 
 
 +++
 
-#### Running this notebook
+### Running this notebook
 - Download the `false_color.ipynb` notebook from week7 in our
 [gdrive folder](https://drive.google.com/drive/folders/1-D6y9MlE8LZRLZg-qRCxPZSgar8kGjBT?usp=drive_link)
 
@@ -326,7 +326,7 @@ ax.imshow(band_values[0, :, :]);
 ### Create the dataArray
 
 Now that I have 3 bands scaled from 0-255, I can write them out as
-a png file, with new tags.  Recall from the {ref}`week8:zoom_landsat` that I need
+a png file, with new tags.  Recall from the {ref}`week3:image_zoom` that I need
 to supply the array, dimensions, coordinates and attributes.
 
 For the coordinate dictionary, I can borrow the 'x' and 'y' coordinates from band 3.
@@ -373,7 +373,7 @@ a false color image and presents it with rgb colors.
 
 +++
 
-#### False color bands 5,4,3
+### False color bands 5,4,3
 
 ```{code-cell} ipython3
 false_color.plot.imshow(figsize=(6,9));
@@ -421,13 +421,13 @@ true_color.rio.write_crs(b3.rio.crs, inplace=True)
 true_color.rio.write_transform(b3.rio.transform(), inplace=True);
 ```
 
-#### bands 4,3,2 -- looking strange
+### bands 4,3,2 -- looking strange
 
 ```{code-cell} ipython3
 true_color.plot.imshow(figsize=(6,9));
 ```
 
-#### compare with the Nasa browse image
+### compare with the Nasa browse image
 
 Question: what's the difference between `DataArray.plot.imshow` and `IPython.display.Image`
 
