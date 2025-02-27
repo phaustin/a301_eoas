@@ -121,6 +121,11 @@ Note on the next cell:
 ```{code-cell} ipython3
 band_dict={}
 for tif_path in the_tifs:
+    #
+    # skip fmask for now
+    #
+    if 'Fmask' in str(tif_path):
+        continue
     hls_band = rioxarray.open_rasterio(tif_path,mask_and_scale=True)
     band_name = hls_band.long_name
     print(f"{band_name=}")
@@ -335,7 +340,7 @@ small_band.rio.crs.to_epsg(), small_band.rio.nodata,small_band.dtype
 
 #### Check the metadata
 
-Write all the metadata out to a file
+Write all the metadata out to a file for a detailed check
 
 ```{code-cell} ipython3
 info = gdal.Info(tif_filename, format='json')
