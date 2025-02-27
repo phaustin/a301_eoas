@@ -312,4 +312,17 @@ Topics:
 
 - All Assignment 4 solutions: {ref}`assign4_solution`
 
+## Week 7
+
+- {ref}`week7:false_color`
+
+#### Do for Friday
+
+- Read Stull Chapter 8 through p. 239
+- Start on Assignment 5a due Friday March 7:
+
+  - Write a function that takes 3 tif files and returns a rioxarray false color image. Use it
+to make a band 5,4,3 false color png file of your scene and upload the ipynb file
+
+
 

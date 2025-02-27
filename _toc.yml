@@ -76,7 +76,6 @@ parts:
       - file: solutions/assign2_solutionsC.md
       - file: notebooks/week5/hydrostat.md
       - file: notebooks/week5/cartopy_mapping_buenos_aires.md
-
 - caption: Week 6
   numbered: true
   chapters:
@@ -86,5 +85,8 @@ parts:
       - file: notebooks/week6/heating_rate.md
       - file: notebooks/week6/assign4_two_layer_sol.md
       - file: solutions/assign4_solution.md
-        
+- caption: Week 7
+  numbered: true
+  chapters:
+    - file: notebooks/week7/false_color.md
       
