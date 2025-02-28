@@ -17,7 +17,7 @@ kernelspec:
 # Clipping multiple bands-- v0.2
 
 
-2025/Feb/27: Fixed a problem where the datatype of the clipped arrays was changed from float32 to int16 when creating geotiffs.
+2025/Feb/27: Fixed a problem where the datatype of the clipped arrays was changed from float32 to int16 when creating geotiffs.  See {ref}`clip:create_arrays` for the new code.
 
 ## Introduction
 
@@ -81,7 +81,7 @@ We can also do that from inside python.  To get all the information for the firs
 
 ```{code-cell} ipython3
 info = gdal.Info(the_tifs[1], format='json')
-info
+info.keys()
 ```
 
 ### Dump all the metadata
@@ -134,6 +134,8 @@ for tif_path in the_tifs:
         print(f"{hls_band.unit=}")
 ```
 
+### check the dtype of the data and missing data
+
 ```{code-cell} ipython3
 band_dict['Green'].dtype, band_dict['Green'].rio.nodata
 ```
@@ -183,6 +185,7 @@ good_crs = clipped_5.rio.crs
 print(f"{good_crs.to_epsg()=}")
 ```
 
+(clip:create_arrays)=
 ## Create new clipped arrays
 
 Fixed in version 0.2:  Just copying all the metadata from the original NASA files led to issues with missing data values and the ouput datatype for the data. To fix this, create the rioxarray DataArrays from scratch with

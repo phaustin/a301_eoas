@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -447,13 +447,13 @@ document.write(`
 <a class="reference external" href="https://drive.google.com/drive/folders/1-D6y9MlE8LZRLZg-qRCxPZSgar8kGjBT?usp=drive_link">gdrive folder</a></p></li>
 <li><p>Download the folder <code class="docutils literal notranslate"><span class="pre">downloads/vancouver/week7</span></code> containing the clipped tif files produced by v0.2 of <a class="reference internal" href="../week4/clip_bands.html#week4-clip-bands"><span class="std std-ref">Clipping multiple bands– v0.2</span></a> and a new fmask file  <code class="docutils literal notranslate"><span class="pre">~/repos/a301/satdata/landsat/vancouver</span></code></p></li>
 </ul>
-<p>In <span class="xref std std-ref">week7:false_color</span> we created false color images using 3 bands.  One problem with
+<p>In <a class="reference internal" href="false_color.html#week7-false-color"><span class="std std-ref">Making color composite (“false color”) images</span></a> we created false color images using 3 bands.  One problem with
 those images is that half of the scene was water, which we aren’t particularly interested
 in.  In this notebook we use a mask file downloaded from NASA (<code class="docutils literal notranslate"><span class="pre">HLS.L30.T10UDV.2015165T190019.v2.0.Fmask.tif</span></code>) using <a class="reference internal" href="../week2/get_landsat_bands.html#week2-hls"><span class="std std-ref">Landsat 1: Dowloading Landsat and Sentinel data from NASA</span></a> to remove all the water pixels.  It cleans up the joint histograms significantly.</p>
 </section>
 <section id="read-in-the-clipped-image">
 <h2><span class="section-number">39.2. </span>Read in the clipped image<a class="headerlink" href="#read-in-the-clipped-image" title="Link to this heading">#</a></h2>
-<p>Copy some code from <span class="xref std std-ref">week7:false_color</span></p>
+<p>Copy some code from <a class="reference internal" href="false_color.html#week7-false-color"><span class="std std-ref">Making color composite (“false color”) images</span></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span>

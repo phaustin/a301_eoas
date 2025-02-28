@@ -412,7 +412,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dump-all-the-metadata">21.3.3. Dump all the metadata</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-bands-into-a-dictionary">21.4. Read the bands into a dictionary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-bands-into-a-dictionary">21.4. Read the bands into a dictionary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-dtype-of-the-data-and-missing-data">21.4.1. check the dtype of the data and missing data</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-clipped-week3-band-5-bounding-box">21.5. Read the clipped week3 band 5 bounding box</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-bounding-box-using-the-upper-left-and-lower-right-corners">21.5.1. Create the bounding box using the upper left and lower right corners</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-pyproj-crs-to-copy-to-output-tif">21.5.2. Get the pyproj crs to copy to output tif</a></li>
@@ -446,7 +449,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="clipping-multiple-bands-v0-2">
 <span id="week4-clip-bands"></span><h1><span class="section-number">21. </span>Clipping multiple bands– v0.2<a class="headerlink" href="#clipping-multiple-bands-v0-2" title="Link to this heading">#</a></h1>
-<p>2025/Feb/27: Fixed a problem where the datatype of the clipped arrays was changed from float32 to int16 when creating geotiffs.</p>
+<p>2025/Feb/27: Fixed a problem where the datatype of the clipped arrays was changed from float32 to int16 when creating geotiffs.  See <a class="reference internal" href="#clip-create-arrays"><span class="std std-ref">Create new clipped arrays</span></a> for the new code.</p>
 <section id="introduction">
 <h2><span class="section-number">21.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>We are going to need to look at bands 2, 3, 4, 5, 9, 10 and 11.  This notebook uses the clipped band we wrote in
@@ -522,7 +525,7 @@ the <a class="reference external" href="https://en.wikipedia.org/wiki/Glob_(prog
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Info</span><span class="p">(</span><span class="n">the_tifs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
-<span class="n">info</span>
+<span class="n">info</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -531,137 +534,7 @@ the <a class="reference external" href="https://en.wikipedia.org/wiki/Glob_(prog
   warnings.warn(
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;description&#39;: &#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B02.tif&#39;,
- &#39;driverShortName&#39;: &#39;GTiff&#39;,
- &#39;driverLongName&#39;: &#39;GeoTIFF&#39;,
- &#39;files&#39;: [&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/HLS.L30.T10UDV.2015165T190019.v2.0.B02.tif&#39;],
- &#39;size&#39;: [3660, 3660],
- &#39;coordinateSystem&#39;: {&#39;wkt&#39;: &#39;PROJCRS[&quot;UTM Zone 10, Northern Hemisphere&quot;,\n    BASEGEOGCRS[&quot;Unknown datum based upon the WGS 84 ellipsoid&quot;,\n        DATUM[&quot;Not specified (based on WGS 84 spheroid)&quot;,\n            ELLIPSOID[&quot;WGS 84&quot;,6378137,298.257223563,\n                LENGTHUNIT[&quot;metre&quot;,1],\n                ID[&quot;EPSG&quot;,7030]]],\n        PRIMEM[&quot;Greenwich&quot;,0,\n            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433,\n                ID[&quot;EPSG&quot;,9122]]]],\n    CONVERSION[&quot;Transverse Mercator&quot;,\n        METHOD[&quot;Transverse Mercator&quot;,\n            ID[&quot;EPSG&quot;,9807]],\n        PARAMETER[&quot;Latitude of natural origin&quot;,0,\n            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],\n            ID[&quot;EPSG&quot;,8801]],\n        PARAMETER[&quot;Longitude of natural origin&quot;,-123,\n            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],\n            ID[&quot;EPSG&quot;,8802]],\n        PARAMETER[&quot;Scale factor at natural origin&quot;,0.9996,\n            SCALEUNIT[&quot;unity&quot;,1],\n            ID[&quot;EPSG&quot;,8805]],\n        PARAMETER[&quot;False easting&quot;,500000,\n            LENGTHUNIT[&quot;metre&quot;,1],\n            ID[&quot;EPSG&quot;,8806]],\n        PARAMETER[&quot;False northing&quot;,0,\n            LENGTHUNIT[&quot;metre&quot;,1],\n            ID[&quot;EPSG&quot;,8807]]],\n    CS[Cartesian,2],\n        AXIS[&quot;easting&quot;,east,\n            ORDER[1],\n            LENGTHUNIT[&quot;metre&quot;,1,\n                ID[&quot;EPSG&quot;,9001]]],\n        AXIS[&quot;northing&quot;,north,\n            ORDER[2],\n            LENGTHUNIT[&quot;metre&quot;,1,\n                ID[&quot;EPSG&quot;,9001]]]]&#39;,
-  &#39;dataAxisToSRSAxisMapping&#39;: [1, 2]},
- &#39;geoTransform&#39;: [399960.0, 30.0, 0.0, 5500020.0, 0.0, -30.0],
- &#39;metadata&#39;: {&#39;&#39;: {&#39;ACCODE&#39;: &#39;Lasrc; Lasrc&#39;,
-   &#39;add_offset&#39;: &#39;0.0&#39;,
-   &#39;arop_ave_xshift(meters)&#39;: &#39;0, 0&#39;,
-   &#39;arop_ave_yshift(meters)&#39;: &#39;0, 0&#39;,
-   &#39;arop_ncp&#39;: &#39;0, 0&#39;,
-   &#39;arop_rmse(meters)&#39;: &#39;0, 0&#39;,
-   &#39;arop_s2_refimg&#39;: &#39;NONE&#39;,
-   &#39;cloud_coverage&#39;: &#39;4&#39;,
-   &#39;HLS_PROCESSING_TIME&#39;: &#39;2022-03-05T21:45:14Z&#39;,
-   &#39;HORIZONTAL_CS_NAME&#39;: &#39;UTM, WGS84, UTM ZONE 10; UTM, WGS84, UTM ZONE 10&#39;,
-   &#39;L1_PROCESSING_TIME&#39;: &#39;2020-09-09T04:39:55Z; 2020-09-09T04:39:25Z&#39;,
-   &#39;LANDSAT_PRODUCT_ID&#39;: &#39;LC08_L1TP_047025_20150614_20200909_02_T1; LC08_L1TP_047026_20150614_20200909_02_T1&#39;,
-   &#39;LANDSAT_SCENE_ID&#39;: &#39;LC80470252015165LGN02; LC80470262015165LGN02&#39;,
-   &#39;long_name&#39;: &#39;Blue&#39;,
-   &#39;MEAN_SUN_AZIMUTH_ANGLE&#39;: &#39;144.194636459219&#39;,
-   &#39;MEAN_SUN_ZENITH_ANGLE&#39;: &#39;29.6215707600637&#39;,
-   &#39;MEAN_VIEW_AZIMUTH_ANGLE&#39;: &#39;108.351563730551&#39;,
-   &#39;MEAN_VIEW_ZENITH_ANGLE&#39;: &#39;4.81243847783454&#39;,
-   &#39;NBAR_SOLAR_ZENITH&#39;: &#39;28.5475827060758&#39;,
-   &#39;NCOLS&#39;: &#39;3660&#39;,
-   &#39;NROWS&#39;: &#39;3660&#39;,
-   &#39;OVR_RESAMPLING_ALG&#39;: &#39;NEAREST&#39;,
-   &#39;PROCESSING_LEVEL&#39;: &#39;L1TP; L1TP&#39;,
-   &#39;scale_factor&#39;: &#39;0.0001&#39;,
-   &#39;SENSING_TIME&#39;: &#39;2015-06-14T19:00:19.1429430Z; 2015-06-14T19:00:43.0255080Z&#39;,
-   &#39;SENSOR&#39;: &#39;OLI_TIRS; OLI_TIRS&#39;,
-   &#39;SENTINEL2_TILEID&#39;: &#39;10UDV&#39;,
-   &#39;spatial_coverage&#39;: &#39;77&#39;,
-   &#39;SPATIAL_RESOLUTION&#39;: &#39;30&#39;,
-   &#39;TIRS_SSM_MODEL&#39;: &#39;ACTUAL; ACTUAL&#39;,
-   &#39;TIRS_SSM_POSITION_STATUS&#39;: &#39;NOMINAL; NOMINAL&#39;,
-   &#39;ULX&#39;: &#39;399960&#39;,
-   &#39;ULY&#39;: &#39;5500020&#39;,
-   &#39;USGS_SOFTWARE&#39;: &#39;LPGS_15.3.1c&#39;,
-   &#39;_FillValue&#39;: &#39;-9999&#39;,
-   &#39;AREA_OR_POINT&#39;: &#39;Area&#39;},
-  &#39;IMAGE_STRUCTURE&#39;: {&#39;COMPRESSION&#39;: &#39;DEFLATE&#39;,
-   &#39;INTERLEAVE&#39;: &#39;BAND&#39;,
-   &#39;PREDICTOR&#39;: &#39;2&#39;}},
- &#39;cornerCoordinates&#39;: {&#39;upperLeft&#39;: [399960.0, 5500020.0],
-  &#39;lowerLeft&#39;: [399960.0, 5390220.0],
-  &#39;lowerRight&#39;: [509760.0, 5390220.0],
-  &#39;upperRight&#39;: [509760.0, 5500020.0],
-  &#39;center&#39;: [454860.0, 5445120.0]},
- &#39;wgs84Extent&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
-  &#39;coordinates&#39;: [[[-124.3857276, 49.6444301],
-    [-124.3584538, 48.6570208],
-    [-122.8674487, 48.6649552],
-    [-122.8647864, 49.6526439],
-    [-124.3857276, 49.6444301]]]},
- &#39;bands&#39;: [{&#39;band&#39;: 1,
-   &#39;block&#39;: [256, 256],
-   &#39;type&#39;: &#39;Int16&#39;,
-   &#39;colorInterpretation&#39;: &#39;Gray&#39;,
-   &#39;description&#39;: &#39;Blue&#39;,
-   &#39;noDataValue&#39;: -9999.0,
-   &#39;overviews&#39;: [{&#39;size&#39;: [1830, 1830]},
-    {&#39;size&#39;: [915, 915]},
-    {&#39;size&#39;: [458, 458]},
-    {&#39;size&#39;: [229, 229]}],
-   &#39;offset&#39;: 0.0,
-   &#39;scale&#39;: 0.0001,
-   &#39;metadata&#39;: {}}],
- &#39;stac&#39;: {&#39;proj:shape&#39;: [3660, 3660],
-  &#39;proj:wkt2&#39;: &#39;PROJCRS[&quot;UTM Zone 10, Northern Hemisphere&quot;,\n    BASEGEOGCRS[&quot;Unknown datum based upon the WGS 84 ellipsoid&quot;,\n        DATUM[&quot;Not specified (based on WGS 84 spheroid)&quot;,\n            ELLIPSOID[&quot;WGS 84&quot;,6378137,298.257223563,\n                LENGTHUNIT[&quot;metre&quot;,1],\n                ID[&quot;EPSG&quot;,7030]]],\n        PRIMEM[&quot;Greenwich&quot;,0,\n            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433,\n                ID[&quot;EPSG&quot;,9122]]]],\n    CONVERSION[&quot;Transverse Mercator&quot;,\n        METHOD[&quot;Transverse Mercator&quot;,\n            ID[&quot;EPSG&quot;,9807]],\n        PARAMETER[&quot;Latitude of natural origin&quot;,0,\n            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],\n            ID[&quot;EPSG&quot;,8801]],\n        PARAMETER[&quot;Longitude of natural origin&quot;,-123,\n            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],\n            ID[&quot;EPSG&quot;,8802]],\n        PARAMETER[&quot;Scale factor at natural origin&quot;,0.9996,\n            SCALEUNIT[&quot;unity&quot;,1],\n            ID[&quot;EPSG&quot;,8805]],\n        PARAMETER[&quot;False easting&quot;,500000,\n            LENGTHUNIT[&quot;metre&quot;,1],\n            ID[&quot;EPSG&quot;,8806]],\n        PARAMETER[&quot;False northing&quot;,0,\n            LENGTHUNIT[&quot;metre&quot;,1],\n            ID[&quot;EPSG&quot;,8807]]],\n    CS[Cartesian,2],\n        AXIS[&quot;easting&quot;,east,\n            ORDER[1],\n            LENGTHUNIT[&quot;metre&quot;,1,\n                ID[&quot;EPSG&quot;,9001]]],\n        AXIS[&quot;northing&quot;,north,\n            ORDER[2],\n            LENGTHUNIT[&quot;metre&quot;,1,\n                ID[&quot;EPSG&quot;,9001]]]]&#39;,
-  &#39;proj:epsg&#39;: None,
-  &#39;proj:projjson&#39;: {&#39;$schema&#39;: &#39;https://proj.org/schemas/v0.7/projjson.schema.json&#39;,
-   &#39;type&#39;: &#39;ProjectedCRS&#39;,
-   &#39;name&#39;: &#39;UTM Zone 10, Northern Hemisphere&#39;,
-   &#39;base_crs&#39;: {&#39;name&#39;: &#39;Unknown datum based upon the WGS 84 ellipsoid&#39;,
-    &#39;datum&#39;: {&#39;type&#39;: &#39;GeodeticReferenceFrame&#39;,
-     &#39;name&#39;: &#39;Not specified (based on WGS 84 spheroid)&#39;,
-     &#39;ellipsoid&#39;: {&#39;name&#39;: &#39;WGS 84&#39;,
-      &#39;semi_major_axis&#39;: 6378137,
-      &#39;inverse_flattening&#39;: 298.257223563,
-      &#39;id&#39;: {&#39;authority&#39;: &#39;EPSG&#39;, &#39;code&#39;: 7030}}},
-    &#39;coordinate_system&#39;: {&#39;subtype&#39;: &#39;ellipsoidal&#39;,
-     &#39;axis&#39;: [{&#39;name&#39;: &#39;Longitude&#39;,
-       &#39;abbreviation&#39;: &#39;lon&#39;,
-       &#39;direction&#39;: &#39;east&#39;,
-       &#39;unit&#39;: &#39;degree&#39;},
-      {&#39;name&#39;: &#39;Latitude&#39;,
-       &#39;abbreviation&#39;: &#39;lat&#39;,
-       &#39;direction&#39;: &#39;north&#39;,
-       &#39;unit&#39;: &#39;degree&#39;}]}},
-   &#39;conversion&#39;: {&#39;name&#39;: &#39;Transverse Mercator&#39;,
-    &#39;method&#39;: {&#39;name&#39;: &#39;Transverse Mercator&#39;,
-     &#39;id&#39;: {&#39;authority&#39;: &#39;EPSG&#39;, &#39;code&#39;: 9807}},
-    &#39;parameters&#39;: [{&#39;name&#39;: &#39;Latitude of natural origin&#39;,
-      &#39;value&#39;: 0,
-      &#39;unit&#39;: &#39;degree&#39;,
-      &#39;id&#39;: {&#39;authority&#39;: &#39;EPSG&#39;, &#39;code&#39;: 8801}},
-     {&#39;name&#39;: &#39;Longitude of natural origin&#39;,
-      &#39;value&#39;: -123,
-      &#39;unit&#39;: &#39;degree&#39;,
-      &#39;id&#39;: {&#39;authority&#39;: &#39;EPSG&#39;, &#39;code&#39;: 8802}},
-     {&#39;name&#39;: &#39;Scale factor at natural origin&#39;,
-      &#39;value&#39;: 0.9996,
-      &#39;unit&#39;: &#39;unity&#39;,
-      &#39;id&#39;: {&#39;authority&#39;: &#39;EPSG&#39;, &#39;code&#39;: 8805}},
-     {&#39;name&#39;: &#39;False easting&#39;,
-      &#39;value&#39;: 500000,
-      &#39;unit&#39;: &#39;metre&#39;,
-      &#39;id&#39;: {&#39;authority&#39;: &#39;EPSG&#39;, &#39;code&#39;: 8806}},
-     {&#39;name&#39;: &#39;False northing&#39;,
-      &#39;value&#39;: 0,
-      &#39;unit&#39;: &#39;metre&#39;,
-      &#39;id&#39;: {&#39;authority&#39;: &#39;EPSG&#39;, &#39;code&#39;: 8807}}]},
-   &#39;coordinate_system&#39;: {&#39;subtype&#39;: &#39;Cartesian&#39;,
-    &#39;axis&#39;: [{&#39;name&#39;: &#39;Easting&#39;,
-      &#39;abbreviation&#39;: &#39;&#39;,
-      &#39;direction&#39;: &#39;east&#39;,
-      &#39;unit&#39;: &#39;metre&#39;},
-     {&#39;name&#39;: &#39;Northing&#39;,
-      &#39;abbreviation&#39;: &#39;&#39;,
-      &#39;direction&#39;: &#39;north&#39;,
-      &#39;unit&#39;: &#39;metre&#39;}]}},
-  &#39;proj:transform&#39;: [399960.0, 30.0, 0.0, 5500020.0, 0.0, -30.0],
-  &#39;raster:bands&#39;: [{&#39;data_type&#39;: &#39;int16&#39;,
-    &#39;nodata&#39;: None,
-    &#39;scale&#39;: None,
-    &#39;offset&#39;: None}],
-  &#39;eo:bands&#39;: [{&#39;name&#39;: &#39;b1&#39;, &#39;description&#39;: &#39;Blue&#39;}]}}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;description&#39;, &#39;driverShortName&#39;, &#39;driverLongName&#39;, &#39;files&#39;, &#39;size&#39;, &#39;coordinateSystem&#39;, &#39;geoTransform&#39;, &#39;metadata&#39;, &#39;cornerCoordinates&#39;, &#39;wgs84Extent&#39;, &#39;bands&#39;, &#39;stac&#39;])
 </pre></div>
 </div>
 </div>
@@ -752,6 +625,8 @@ band_name=&#39;Cirrus&#39;
 </div>
 </div>
 </div>
+<section id="check-the-dtype-of-the-data-and-missing-data">
+<h3><span class="section-number">21.4.1. </span>check the dtype of the data and missing data<a class="headerlink" href="#check-the-dtype-of-the-data-and-missing-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band_dict</span><span class="p">[</span><span class="s1">&#39;Green&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">band_dict</span><span class="p">[</span><span class="s1">&#39;Green&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">nodata</span>
@@ -764,6 +639,7 @@ band_name=&#39;Cirrus&#39;
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="read-the-clipped-week3-band-5-bounding-box">
 <h2><span class="section-number">21.5. </span>Read the clipped week3 band 5 bounding box<a class="headerlink" href="#read-the-clipped-week3-band-5-bounding-box" title="Link to this heading">#</a></h2>
@@ -842,7 +718,7 @@ the first file we find, which means we need convert the python generator returne
 </section>
 </section>
 <section id="create-new-clipped-arrays">
-<h2><span class="section-number">21.6. </span>Create new clipped arrays<a class="headerlink" href="#create-new-clipped-arrays" title="Link to this heading">#</a></h2>
+<span id="clip-create-arrays"></span><h2><span class="section-number">21.6. </span>Create new clipped arrays<a class="headerlink" href="#create-new-clipped-arrays" title="Link to this heading">#</a></h2>
 <p>Fixed in version 0.2:  Just copying all the metadata from the original NASA files led to issues with missing data values and the ouput datatype for the data. To fix this, create the rioxarray DataArrays from scratch with
 only those attributes that are consistent with the new mask_and_scaled array.
 We’ll add more attributes in <a class="reference internal" href="#change-attrs"><span class="std std-ref">change some attributes</span></a> below. In particular note
@@ -1433,12 +1309,12 @@ Attributes: (12/35)
     USGS_SOFTWARE:             LPGS_15.3.1c
     AREA_OR_POINT:             Area
     FillValue:                 nan
-    history:                   v0.2 -- written by the week4 clip_bands notebook</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>x</span>: 10</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-964c5e8e-70d4-4361-912b-452db0b89813' class='xr-array-in' type='checkbox' checked><label for='section-964c5e8e-70d4-4361-912b-452db0b89813' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>0.0736 0.0737 0.0838 0.0858 0.0921 0.1181 0.1909 0.2253 0.2223 0.1609</span></div><div class='xr-array-data'><pre>array([0.0736    , 0.0737    , 0.0838    , 0.0858    , 0.09209999,
+    history:                   v0.2 -- written by the week4 clip_bands notebook</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>x</span>: 10</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-7aa84e5c-ca4e-4dc8-93ee-c2f588edd458' class='xr-array-in' type='checkbox' checked><label for='section-7aa84e5c-ca4e-4dc8-93ee-c2f588edd458' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>0.0736 0.0737 0.0838 0.0858 0.0921 0.1181 0.1909 0.2253 0.2223 0.1609</span></div><div class='xr-array-data'><pre>array([0.0736    , 0.0737    , 0.0838    , 0.0858    , 0.09209999,
        0.11809999, 0.1909    , 0.2253    , 0.2223    , 0.1609    ],
-      dtype=float32)</pre></div></div></li><li class='xr-section-item'><input id='section-bc68f595-0ce5-4d33-89c5-425a26503a4b' class='xr-section-summary-in' type='checkbox'  checked><label for='section-bc68f595-0ce5-4d33-89c5-425a26503a4b' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>band</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1</div><input id='attrs-169e4571-50fe-40dc-a3aa-1bde415855b0' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-169e4571-50fe-40dc-a3aa-1bde415855b0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7b669c52-1b93-4812-a98d-6c7ec20edf08' class='xr-var-data-in' type='checkbox'><label for='data-7b669c52-1b93-4812-a98d-6c7ec20edf08' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(1)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>4.878e+05 4.878e+05 ... 4.881e+05</div><input id='attrs-709034c2-0878-4f9a-967d-51f266da52e1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-709034c2-0878-4f9a-967d-51f266da52e1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-766ae635-3cd2-443e-904d-fdbd5a4f3338' class='xr-var-data-in' type='checkbox'><label for='data-766ae635-3cd2-443e-904d-fdbd5a4f3338' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>x coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>units :</span></dt><dd>metre</dd></dl></div><div class='xr-var-data'><pre>array([487815., 487845., 487875., 487905., 487935., 487965., 487995., 488025.,
-       488055., 488085.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>y</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>5.447e+06</div><input id='attrs-0abc9154-da49-488c-ae13-63753ae493d0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0abc9154-da49-488c-ae13-63753ae493d0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c0e03701-de72-47c8-9939-6ab0326abe85' class='xr-var-data-in' type='checkbox'><label for='data-c0e03701-de72-47c8-9939-6ab0326abe85' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>y coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>units :</span></dt><dd>metre</dd></dl></div><div class='xr-var-data'><pre>array(5447475.)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-762c48da-2582-4a64-9c1c-b526549155e5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-762c48da-2582-4a64-9c1c-b526549155e5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fccb2f64-ce27-41ac-8c60-f7c696ed5fa0' class='xr-var-data-in' type='checkbox'><label for='data-fccb2f64-ce27-41ac-8c60-f7c696ed5fa0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 10N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,-123],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32610&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>projected_crs_name :</span></dt><dd>WGS 84 / UTM zone 10N</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>-123.0</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 10N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,-123],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32610&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>476100.0 30.0 0.0 5465460.0 0.0 -30.0</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-c4e51626-c3f8-4908-948b-c9574a8f8adf' class='xr-section-summary-in' type='checkbox'  ><label for='section-c4e51626-c3f8-4908-948b-c9574a8f8adf' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>x</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-ca552791-7a78-494b-8190-fb9c051b5752' class='xr-index-data-in' type='checkbox'/><label for='index-ca552791-7a78-494b-8190-fb9c051b5752' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([487815.0, 487845.0, 487875.0, 487905.0, 487935.0, 487965.0, 487995.0,
+      dtype=float32)</pre></div></div></li><li class='xr-section-item'><input id='section-c069d065-64de-4bf8-95e4-9c535683c570' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c069d065-64de-4bf8-95e4-9c535683c570' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>band</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1</div><input id='attrs-fa93cb73-b638-4730-8c7d-bd970fe906e2' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-fa93cb73-b638-4730-8c7d-bd970fe906e2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f68299bc-2e96-4b95-9a4e-d65c3c0be8fa' class='xr-var-data-in' type='checkbox'><label for='data-f68299bc-2e96-4b95-9a4e-d65c3c0be8fa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(1)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>4.878e+05 4.878e+05 ... 4.881e+05</div><input id='attrs-a7539ff7-580e-4190-aa72-9c34bbf18f53' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a7539ff7-580e-4190-aa72-9c34bbf18f53' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5453b0d3-9e0f-4fe3-8468-ebef78fd145b' class='xr-var-data-in' type='checkbox'><label for='data-5453b0d3-9e0f-4fe3-8468-ebef78fd145b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>x coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>units :</span></dt><dd>metre</dd></dl></div><div class='xr-var-data'><pre>array([487815., 487845., 487875., 487905., 487935., 487965., 487995., 488025.,
+       488055., 488085.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>y</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>5.447e+06</div><input id='attrs-46c03502-73db-4d24-a8e3-475a5c149936' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-46c03502-73db-4d24-a8e3-475a5c149936' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-61eafed7-f443-45dc-8dea-8ffdcb5d30e2' class='xr-var-data-in' type='checkbox'><label for='data-61eafed7-f443-45dc-8dea-8ffdcb5d30e2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>y coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>units :</span></dt><dd>metre</dd></dl></div><div class='xr-var-data'><pre>array(5447475.)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-18a97ca0-f70e-4c96-8b8d-203890120d0f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-18a97ca0-f70e-4c96-8b8d-203890120d0f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-00e62113-ecf1-4e0d-b236-00545f305445' class='xr-var-data-in' type='checkbox'><label for='data-00e62113-ecf1-4e0d-b236-00545f305445' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 10N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,-123],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32610&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>projected_crs_name :</span></dt><dd>WGS 84 / UTM zone 10N</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>-123.0</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 10N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,-123],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32610&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>476100.0 30.0 0.0 5465460.0 0.0 -30.0</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-6cc83e8e-015c-42cd-8e4d-49915ab655c1' class='xr-section-summary-in' type='checkbox'  ><label for='section-6cc83e8e-015c-42cd-8e4d-49915ab655c1' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>x</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-a686c4a8-e416-4ad2-9d47-911ed71f0573' class='xr-index-data-in' type='checkbox'/><label for='index-a686c4a8-e416-4ad2-9d47-911ed71f0573' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([487815.0, 487845.0, 487875.0, 487905.0, 487935.0, 487965.0, 487995.0,
        488025.0, 488055.0, 488085.0],
-      dtype=&#x27;float64&#x27;, name=&#x27;x&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9840acc9-4fee-4ca0-9281-e534e719d4a9' class='xr-section-summary-in' type='checkbox'  ><label for='section-9840acc9-4fee-4ca0-9281-e534e719d4a9' class='xr-section-summary' >Attributes: <span>(35)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>ACCODE :</span></dt><dd>Lasrc; Lasrc</dd><dt><span>arop_ave_xshift(meters) :</span></dt><dd>0, 0</dd><dt><span>arop_ave_yshift(meters) :</span></dt><dd>0, 0</dd><dt><span>arop_ncp :</span></dt><dd>0, 0</dd><dt><span>arop_rmse(meters) :</span></dt><dd>0, 0</dd><dt><span>arop_s2_refimg :</span></dt><dd>NONE</dd><dt><span>cloud_coverage :</span></dt><dd>4</dd><dt><span>HLS_PROCESSING_TIME :</span></dt><dd>2022-03-05T21:45:14Z</dd><dt><span>HORIZONTAL_CS_NAME :</span></dt><dd>UTM, WGS84, UTM ZONE 10; UTM, WGS84, UTM ZONE 10</dd><dt><span>L1_PROCESSING_TIME :</span></dt><dd>2020-09-09T04:39:55Z; 2020-09-09T04:39:25Z</dd><dt><span>LANDSAT_PRODUCT_ID :</span></dt><dd>LC08_L1TP_047025_20150614_20200909_02_T1; LC08_L1TP_047026_20150614_20200909_02_T1</dd><dt><span>LANDSAT_SCENE_ID :</span></dt><dd>LC80470252015165LGN02; LC80470262015165LGN02</dd><dt><span>long_name :</span></dt><dd>Blue</dd><dt><span>MEAN_SUN_AZIMUTH_ANGLE :</span></dt><dd>144.194636459219</dd><dt><span>MEAN_SUN_ZENITH_ANGLE :</span></dt><dd>29.6215707600637</dd><dt><span>MEAN_VIEW_AZIMUTH_ANGLE :</span></dt><dd>108.351563730551</dd><dt><span>MEAN_VIEW_ZENITH_ANGLE :</span></dt><dd>4.81243847783454</dd><dt><span>NBAR_SOLAR_ZENITH :</span></dt><dd>28.5475827060758</dd><dt><span>NCOLS :</span></dt><dd>400</dd><dt><span>NROWS :</span></dt><dd>600</dd><dt><span>OVR_RESAMPLING_ALG :</span></dt><dd>NEAREST</dd><dt><span>PROCESSING_LEVEL :</span></dt><dd>L1TP; L1TP</dd><dt><span>SENSING_TIME :</span></dt><dd>2015-06-14T19:00:19.1429430Z; 2015-06-14T19:00:43.0255080Z</dd><dt><span>SENSOR :</span></dt><dd>OLI_TIRS; OLI_TIRS</dd><dt><span>SENTINEL2_TILEID :</span></dt><dd>10UDV</dd><dt><span>spatial_coverage :</span></dt><dd>77</dd><dt><span>SPATIAL_RESOLUTION :</span></dt><dd>30</dd><dt><span>TIRS_SSM_MODEL :</span></dt><dd>ACTUAL; ACTUAL</dd><dt><span>TIRS_SSM_POSITION_STATUS :</span></dt><dd>NOMINAL; NOMINAL</dd><dt><span>ULX :</span></dt><dd>476100.0</dd><dt><span>ULY :</span></dt><dd>5465460.0</dd><dt><span>USGS_SOFTWARE :</span></dt><dd>LPGS_15.3.1c</dd><dt><span>AREA_OR_POINT :</span></dt><dd>Area</dd><dt><span>FillValue :</span></dt><dd>nan</dd><dt><span>history :</span></dt><dd>v0.2 -- written by the week4 clip_bands notebook</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;float64&#x27;, name=&#x27;x&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-6df061c7-b2ac-4826-ab66-9c05c8b87c9d' class='xr-section-summary-in' type='checkbox'  ><label for='section-6df061c7-b2ac-4826-ab66-9c05c8b87c9d' class='xr-section-summary' >Attributes: <span>(35)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>ACCODE :</span></dt><dd>Lasrc; Lasrc</dd><dt><span>arop_ave_xshift(meters) :</span></dt><dd>0, 0</dd><dt><span>arop_ave_yshift(meters) :</span></dt><dd>0, 0</dd><dt><span>arop_ncp :</span></dt><dd>0, 0</dd><dt><span>arop_rmse(meters) :</span></dt><dd>0, 0</dd><dt><span>arop_s2_refimg :</span></dt><dd>NONE</dd><dt><span>cloud_coverage :</span></dt><dd>4</dd><dt><span>HLS_PROCESSING_TIME :</span></dt><dd>2022-03-05T21:45:14Z</dd><dt><span>HORIZONTAL_CS_NAME :</span></dt><dd>UTM, WGS84, UTM ZONE 10; UTM, WGS84, UTM ZONE 10</dd><dt><span>L1_PROCESSING_TIME :</span></dt><dd>2020-09-09T04:39:55Z; 2020-09-09T04:39:25Z</dd><dt><span>LANDSAT_PRODUCT_ID :</span></dt><dd>LC08_L1TP_047025_20150614_20200909_02_T1; LC08_L1TP_047026_20150614_20200909_02_T1</dd><dt><span>LANDSAT_SCENE_ID :</span></dt><dd>LC80470252015165LGN02; LC80470262015165LGN02</dd><dt><span>long_name :</span></dt><dd>Blue</dd><dt><span>MEAN_SUN_AZIMUTH_ANGLE :</span></dt><dd>144.194636459219</dd><dt><span>MEAN_SUN_ZENITH_ANGLE :</span></dt><dd>29.6215707600637</dd><dt><span>MEAN_VIEW_AZIMUTH_ANGLE :</span></dt><dd>108.351563730551</dd><dt><span>MEAN_VIEW_ZENITH_ANGLE :</span></dt><dd>4.81243847783454</dd><dt><span>NBAR_SOLAR_ZENITH :</span></dt><dd>28.5475827060758</dd><dt><span>NCOLS :</span></dt><dd>400</dd><dt><span>NROWS :</span></dt><dd>600</dd><dt><span>OVR_RESAMPLING_ALG :</span></dt><dd>NEAREST</dd><dt><span>PROCESSING_LEVEL :</span></dt><dd>L1TP; L1TP</dd><dt><span>SENSING_TIME :</span></dt><dd>2015-06-14T19:00:19.1429430Z; 2015-06-14T19:00:43.0255080Z</dd><dt><span>SENSOR :</span></dt><dd>OLI_TIRS; OLI_TIRS</dd><dt><span>SENTINEL2_TILEID :</span></dt><dd>10UDV</dd><dt><span>spatial_coverage :</span></dt><dd>77</dd><dt><span>SPATIAL_RESOLUTION :</span></dt><dd>30</dd><dt><span>TIRS_SSM_MODEL :</span></dt><dd>ACTUAL; ACTUAL</dd><dt><span>TIRS_SSM_POSITION_STATUS :</span></dt><dd>NOMINAL; NOMINAL</dd><dt><span>ULX :</span></dt><dd>476100.0</dd><dt><span>ULY :</span></dt><dd>5465460.0</dd><dt><span>USGS_SOFTWARE :</span></dt><dd>LPGS_15.3.1c</dd><dt><span>AREA_OR_POINT :</span></dt><dd>Area</dd><dt><span>FillValue :</span></dt><dd>nan</dd><dt><span>history :</span></dt><dd>v0.2 -- written by the week4 clip_bands notebook</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1625,7 +1501,10 @@ small_band.data[0,-1,-10:]=array([0.2052    , 0.2226    , 0.18169999, 0.1635    
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dump-all-the-metadata">21.3.3. Dump all the metadata</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-bands-into-a-dictionary">21.4. Read the bands into a dictionary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-bands-into-a-dictionary">21.4. Read the bands into a dictionary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-dtype-of-the-data-and-missing-data">21.4.1. check the dtype of the data and missing data</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-clipped-week3-band-5-bounding-box">21.5. Read the clipped week3 band 5 bounding box</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-bounding-box-using-the-upper-left-and-lower-right-corners">21.5.1. Create the bounding box using the upper left and lower right corners</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-pyproj-crs-to-copy-to-output-tif">21.5.2. Get the pyproj crs to copy to output tif</a></li>
