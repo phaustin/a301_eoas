@@ -62,7 +62,6 @@ Below we'll show how to do a "histogram stretch".  Since the underlying data is 
 
 - Download the folder `downloads/vancouver/week7` containing the clipped tif files and place it in `~/repos/a301/satdata/landsat/vancouver`
 
-
 +++
 
 ## Read in the clipped image
@@ -366,7 +365,7 @@ false_color
 ```
 
 The final image -- the imshow function interprets any array with shape [3, nrows, ncols] as
-a false color image and presents it with rgb colors. 
+a false color image and presents it with rgb colors.
 
 +++
 

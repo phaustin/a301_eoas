@@ -194,10 +194,26 @@ We'll add more attributes in {ref}`change_attrs` below. In particular note
 that ULX, ULY, NROWS and NCOLS have not been updated from the original full scene.
 
 ```{code-cell} ipython3
-def make_new_array(rioarray,crs=None):
+def make_new_array(rio_da,crs=None):
     """
-    transfer data into a fresh DataArray, copying the selected metadata
-    from the input array
+    transfer data into from rio_da into a fresh DataArray, copying only the selected metadata
+    from rio_da.  This avoids copying old metadata from the original hls tif file
+
+    Parameters
+    ----------
+
+    rio_da: xarray DataArray
+       a DataArray with rasterio metadata
+    crs: optional pyproj crs
+       a crs which is able to return its epsg code
+       if it's missing, the crs from rio_da will be copied
+
+    Returns
+    -------
+
+    clipped_da: xarray.DataArray
+      a DataArray with metadata and data copied from rio_da
+    
 
     
     """
@@ -205,14 +221,14 @@ def make_new_array(rioarray,crs=None):
     # NASA hls files have bad crs, so allow for an override parameter
     #
     if crs is None:
-        crs = rioxarray.rio.crs
-    clipped_ds=xr.DataArray(rioarray.data,coords=rioarray.coords,
-                            dims=rioarray.dims)
-    clipped_ds.rio.write_crs(crs, inplace=True)
-    clipped_ds.rio.write_transform(rioarray.rio.transform(), inplace=True)
-    clipped_ds=clipped_ds.assign_attrs(rioarray.attrs)
-    clipped_ds = clipped_ds.rio.set_nodata(np.float32(np.nan))
-    return clipped_ds
+        crs = rio_da.rio.crs
+    clipped_da=xr.DataArray(rio_da.data,coords=rio_da.coords,
+                            dims=rio_da.dims)
+    clipped_da.rio.write_crs(crs, inplace=True)
+    clipped_da.rio.write_transform(rio_da.rio.transform(), inplace=True)
+    clipped_da=clipped_da.assign_attrs(rio_da.attrs)
+    clipped_da = clipped_da.rio.set_nodata(np.float32(np.nan))
+    return clipped_da
 ```
 
 ```{code-cell} ipython3

@@ -207,7 +207,7 @@ xarray_dict[var].plot.imshow(ax=ax,
 ax.set(title=f"{xarray_dict[var].long_name}");
 ```
 
-#### Mask the remaining bands
+### Mask the remaining bands
 
 Do this to every band except fmask
 
@@ -279,4 +279,3 @@ Due next Friday
 Write a function that takes an image and its fmask and returns a new image
 with all cloudy pixels set to np.nan.  Make a notebook that uses this function
 to plot a partly cloudy scene.
-
