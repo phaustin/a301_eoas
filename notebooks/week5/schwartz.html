@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -258,6 +258,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../week7/false_color.html">38. Making color composite (“false color”) images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week7/fmask.html">39. Using fmask to mask water pixels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/midterm/a301_2024t2_midterm_solution.html">40. A301 midterm solutions</a></li>
 </ul>
 
     </div>
@@ -409,7 +410,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">27.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beer-s-law">27.2. Beer’s law</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kirchoff-s-law">27.3. Kirchoff’s Law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-emission-to-beer-s-law">27.4. Adding emission to Beer’s law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-emission-to-beer-s-law">27.4. Adding emission to Beer’s law</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constant-temperature-integration">27.4.1. Constant temperature integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-of-variables">27.4.2. Change of variables</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-changing-with-height">27.5. Temperature changing with height</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-3">27.5.1. Getting to Stull 8.3</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-4">27.5.2. Getting to Stull 8.4</a></li>
@@ -554,6 +559,8 @@ L_{emission} = e_\lambda B_{\lambda} (T_{layer})
 </figcaption>
 </figure>
 <p>Before we integrate the entire atmosphere (with temperature changing with height) let’s just integrate the radiance across a layer that is thin enough so we can assume roughly constant temperature.</p>
+<section id="constant-temperature-integration">
+<span id="schwartz-constant"></span><h3><span class="section-number">27.4.1. </span>Constant temperature integration<a class="headerlink" href="#constant-temperature-integration" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>We know the emission from an infinitesimally thin layer:</p>
 <div class="math notranslate nohighlight" id="equation-dlemit">
@@ -582,25 +589,26 @@ the <strong>Schwartzchild equation</strong> without scattering:</p>
     \]</div>
 <p>Where the limits of integration run from just above the black surface (where the radiance from
 the surface is <span class="math notranslate nohighlight">\(L_{\lambda 0}\)</span>) and <span class="math notranslate nohighlight">\(\tau=0\)</span> to the top of the layer, (where the radiance is <span class="math notranslate nohighlight">\(L_\lambda\)</span>) and the optical thickness is <span class="math notranslate nohighlight">\(\tau_{\lambda T}\)</span>.</p>
+</li>
+</ol>
+</section>
+<section id="change-of-variables">
+<span id="schwartz-change"></span><h3><span class="section-number">27.4.2. </span>Change of variables<a class="headerlink" href="#change-of-variables" title="Link to this heading">#</a></h3>
 <p>To integrate this, make the change of variables:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-    \begin{align}
-    U^\prime &amp;= L^\prime_\lambda - B_\lambda \\
-    dU^\prime &amp;= dL^\prime_\lambda\\
-    \frac{dL^\prime_\lambda}{L^\prime_\lambda -
-         B_\lambda} &amp;= \frac{dU^\prime}{U^\prime} = d\ln U^\prime
-    \end{align}
-    \end{split}\]</div>
+U^\prime &amp;= L^\prime_\lambda - B_\lambda \\
+dU^\prime &amp;= dL^\prime_\lambda\\
+\frac{dL^\prime_\lambda}{L^\prime_\lambda -
+     B_\lambda} &amp;= \frac{dU^\prime}{U^\prime} = d\ln U^\prime
+\end{split}\]</div>
 <p>where I have made use of the fact that <span class="math notranslate nohighlight">\(dB_\lambda = 0\)</span> since the temperature is constant.</p>
 <p>This means that we can now solve this by integrating a perfect differential:</p>
 <div class="math notranslate nohighlight" id="equation-consttc">
 <span class="eqno">(27.8)<a class="headerlink" href="#equation-consttc" title="Link to this equation">#</a></span>\[
-    \int_{U_0}^U d\ln U^\prime = \ln \left (\frac{U}{U_0} \right ) =  \ln \left (\frac{L_\lambda - B_\lambda}{L_{\lambda 0} - B_\lambda}
-          \right ) = - \tau_{\lambda T}
-    \]</div>
-</li>
-</ol>
+\int_{U_0}^U d\ln U^\prime = \ln \left (\frac{U}{U_0} \right ) =  \ln \left (\frac{L_\lambda - B_\lambda}{L_{\lambda 0} - B_\lambda}
+      \right ) = - \tau_{\lambda T}
+\]</div>
 <p>Taking the <span class="math notranslate nohighlight">\(\exp\)</span> of both sides:</p>
 <div class="math notranslate nohighlight" id="equation-consttd">
 <span class="eqno">(27.9)<a class="headerlink" href="#equation-consttd" title="Link to this equation">#</a></span>\[
@@ -626,6 +634,7 @@ L_\lambda = L_{\lambda 0}  \hat{t}_{\lambda} + B_\lambda (T_{layer})a_\lambda
 \[
 L_\lambda = L_{\lambda 0}  \hat{t}_{\lambda} + e_\lambda B_\lambda
 \]</div>
+</section>
 </section>
 <section id="temperature-changing-with-height">
 <span id="temp-height"></span><h2><span class="section-number">27.5. </span>Temperature changing with height<a class="headerlink" href="#temperature-changing-with-height" title="Link to this heading">#</a></h2>
@@ -833,7 +842,11 @@ the layers are thin enough so that we can make the approximation that:</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">27.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beer-s-law">27.2. Beer’s law</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kirchoff-s-law">27.3. Kirchoff’s Law</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-emission-to-beer-s-law">27.4. Adding emission to Beer’s law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-emission-to-beer-s-law">27.4. Adding emission to Beer’s law</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constant-temperature-integration">27.4.1. Constant temperature integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-of-variables">27.4.2. Change of variables</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-changing-with-height">27.5. Temperature changing with height</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-3">27.5.1. Getting to Stull 8.3</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-to-stull-8-4">27.5.2. Getting to Stull 8.4</a></li>

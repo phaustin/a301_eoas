@@ -334,11 +334,17 @@ to make a band 5,4,3 false color png file of your scene and upload the ipynb fil
 
 ### Day 21 Friday
 
+- {ref}`mid2024:sol`
+
 - New version of {ref}`week4:clip_bands` that correctly saves the channel data as floating point
   numbers.  You'll need to rewrite your `clip_image` function using the approach
   of version 0.2 of the notebook in the week4 folder: see {ref}`clip:create_arrays`
   
+  - See [the 9 rules of debugging](https://medium.com/@abhinav.ittekot/9-golden-rules-for-debugging-8e94d879e3db)
+  
 - New notebook: {ref}`week7:fmask`
+
+  - the [Fmask algorithm](https://www.sciencedirect.com/science/article/pii/S0034425719302172)
 
 #### Do for Monday
 
