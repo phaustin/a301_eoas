@@ -83,9 +83,22 @@ If the surface is a blackbody with a temperature of 290 K, and
 
 #### Q1b answer
 
-- $\Delta \omega$ = $\frac{area}{R^2}$ = $\frac{10}{36000^2}$ = $7.7 \times 10^{-9}\ sr$
-    
-- $E = L_\uparrow(\tau_T) \Delta \lambda \,\Delta \omega = 5.41 \times 2 \times 7.7\times 10^{-9} = 8.4\times 10^{-8}\ W\,m^{-2}$
+  From the Planck diagram, at $\lambda=15\ \mu m$ I get:
+  
+  - $L_0 \approx 6\ W\,m^{-2}\,\mu m^{-1}\,sr^{-1}$
+  - $B_\lambda \approx 4.6\ W\,m^{-2}\,\mu m^{-1}\,sr^{-1}$
+
+Use equation (28) from the equation sheet, assume looking straight down
+so $\mu = 1$:
+
+$$
+ L_\lambda(\tau/\mu)= B_\lambda(T_{skin}) \hat{t}_{tot} 
+             &+  (1 - \exp(-\tau/\mu) )B_\lambda(T)
+$$
+  
+  $$L_\uparrow(\tau_T) = 6 \times 0.589   + (1 - 0.589) \times 4.6 = 5.41\ W\,m^{-2}\,\mu m^{-1}\,sr^{-1}$$
+  
+  From the Planck diagram 5.41 $W\,m^{-2}\,\mu m^{-1}\,sr^{-1}$ at 15 $\mu m$ is a brightness temperature of about 282 K.
 
 +++
 
@@ -122,13 +135,56 @@ If the surface is a blackbody with a temperature of 290 K, and
 
 +++
 
-Use equation (30) from the equation sheet
+Start with equation (30) from the equation sheet
+
+$$
+  F_\lambda &= \pi B_\lambda(T_{skin}) \exp(-1.66 \tau_{tot}) \nonumber \\
+  & +   \pi B_\lambda(T)(1 - \exp(-1.66 \tau))
+$$
+
+For the heating rate, we're also going to need to integrate over frequency, which we can do using Stefan-Boltzman
+
+$$
+  F = \sigma T_{skin}^4 \exp(-1.66 \tau_{tot}) 
+   +   \sigma T^4_{layer}(1 - \exp(-1.66 \tau_{tot}))
+$$
+where we've assumed that $\tau$ is constant with wavelength.
+
+Some numbers:  top of layer is level 2, bottom of layer is level 1
+downward flux is positive.  We want to find
+
+$$
+\frac{dF_n}{dz} \approx \frac{\Delta F_n}{\Delta z}
+$$
+
+At the base level 1:
+
+$F_\downarrow = \epsilon F_{layer}$ = 
+
+$F_\uparrow = F_{skin}$
+
+$F_{n1} = 
+
+```{code-cell} ipython3
+import numpy as np
+sigma = 5.67e-8
+Tlayer = 270
+Tskin=290
 
 
+tautot=0.53
+transtot = np.exp(-1.66*tautot)
+epsilon = 1 - transtot
+Flayer = epsilon*sigma*Tlayer**4
+Fskin = sigma*Tskin**4
+Fn1 = Flayer - Fskin
+print(f"{Flayer=:.1f}")
+print(f"{Fskin=:.1f}")
+print(f"{transtot=:.1f}")
+print(f"{epsilon=:.1f}")
+print(f"{Fn1=:.1f}")
+```
 
-+++
-
-<div class="page-break"></div>
 
 
 ## Q3 (6 points)
