@@ -17,7 +17,7 @@ kernelspec:
 # Clipping multiple bands-- v0.2
 
 
-2025/Feb/27: Fixed a problem where the datatype of the clipped arrays was changed from float32 to int16 when creating geotiffs.
+2025/Feb/27: Fixed a problem where the datatype of the clipped arrays was changed from float32 to int16 when creating geotiffs.  See {ref}`clip:create_arrays` for the new code.
 
 ## Introduction
 
@@ -81,7 +81,7 @@ We can also do that from inside python.  To get all the information for the firs
 
 ```{code-cell} ipython3
 info = gdal.Info(the_tifs[1], format='json')
-info
+info.keys()
 ```
 
 ### Dump all the metadata
@@ -134,6 +134,8 @@ for tif_path in the_tifs:
         print(f"{hls_band.unit=}")
 ```
 
+### check the dtype of the data and missing data
+
 ```{code-cell} ipython3
 band_dict['Green'].dtype, band_dict['Green'].rio.nodata
 ```
@@ -183,6 +185,7 @@ good_crs = clipped_5.rio.crs
 print(f"{good_crs.to_epsg()=}")
 ```
 
+(clip:create_arrays)=
 ## Create new clipped arrays
 
 Fixed in version 0.2:  Just copying all the metadata from the original NASA files led to issues with missing data values and the ouput datatype for the data. To fix this, create the rioxarray DataArrays from scratch with
@@ -191,10 +194,26 @@ We'll add more attributes in {ref}`change_attrs` below. In particular note
 that ULX, ULY, NROWS and NCOLS have not been updated from the original full scene.
 
 ```{code-cell} ipython3
-def make_new_array(rioarray,crs=None):
+def make_new_array(rio_da,crs=None):
     """
-    transfer data into a fresh DataArray, copying the selected metadata
-    from the input array
+    transfer data into from rio_da into a fresh DataArray, copying only the selected metadata
+    from rio_da.  This avoids copying old metadata from the original hls tif file
+
+    Parameters
+    ----------
+
+    rio_da: xarray DataArray
+       a DataArray with rasterio metadata
+    crs: optional pyproj crs
+       a crs which is able to return its epsg code
+       if it's missing, the crs from rio_da will be copied
+
+    Returns
+    -------
+
+    clipped_da: xarray.DataArray
+      a DataArray with metadata and data copied from rio_da
+    
 
     
     """
@@ -202,14 +221,14 @@ def make_new_array(rioarray,crs=None):
     # NASA hls files have bad crs, so allow for an override parameter
     #
     if crs is None:
-        crs = rioxarray.rio.crs
-    clipped_ds=xr.DataArray(rioarray.data,coords=rioarray.coords,
-                            dims=rioarray.dims)
-    clipped_ds.rio.write_crs(crs, inplace=True)
-    clipped_ds.rio.write_transform(rioarray.rio.transform(), inplace=True)
-    clipped_ds=clipped_ds.assign_attrs(rioarray.attrs)
-    clipped_ds = clipped_ds.rio.set_nodata(np.float32(np.nan))
-    return clipped_ds
+        crs = rio_da.rio.crs
+    clipped_da=xr.DataArray(rio_da.data,coords=rio_da.coords,
+                            dims=rio_da.dims)
+    clipped_da.rio.write_crs(crs, inplace=True)
+    clipped_da.rio.write_transform(rio_da.rio.transform(), inplace=True)
+    clipped_da=clipped_da.assign_attrs(rio_da.attrs)
+    clipped_da = clipped_da.rio.set_nodata(np.float32(np.nan))
+    return clipped_da
 ```
 
 ```{code-cell} ipython3

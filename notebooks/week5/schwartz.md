@@ -141,6 +141,8 @@ $$
 a_\lambda = (1 - \hat{t}_\lambda)
 $$
 
++++
+
 Kirchoff says:
 
 $$
@@ -159,6 +161,8 @@ $$
 L_{emission} = e_\lambda B_{\lambda} (T_{layer})
 $$
 
++++
+
 How do we combine this emission with Beer's law to get the total radiance coming through the top of the layer?
 
 The figure below shows the radiance emitted from the surface and from the thin layer, with their combine contribution to the top of the atmosphere radiance at optical depth $\tau_T$:
@@ -170,6 +174,17 @@ Radiance from an isolated layer and the surface
 :::
 
 Before we integrate the entire atmosphere (with temperature changing with height) let's just integrate the radiance across a layer that is thin enough so we can assume roughly constant temperature.
+
++++
+
+
+
++++
+
+(schwartz:constant)=
+### Constant temperature integration
+
++++
 
 1.  We know the emission from an infinitesimally thin layer:
 
@@ -200,25 +215,36 @@ Before we integrate the entire atmosphere (with temperature changing with height
     Where the limits of integration run from just above the black surface (where the radiance from
     the surface is $L_{\lambda 0}$) and $\tau=0$ to the top of the layer, (where the radiance is $L_\lambda$) and the optical thickness is $\tau_{\lambda T}$.
 
-    To integrate this, make the change of variables:
++++
 
-    $$
-    \begin{align}
-    U^\prime &= L^\prime_\lambda - B_\lambda \\
-    dU^\prime &= dL^\prime_\lambda\\
-    \frac{dL^\prime_\lambda}{L^\prime_\lambda -
-         B_\lambda} &= \frac{dU^\prime}{U^\prime} = d\ln U^\prime
-    \end{align}
-    $$
+   
 
-    where I have made use of the fact that $dB_\lambda = 0$ since the temperature is constant.
++++
 
-    This means that we can now solve this by integrating a perfect differential:
+(schwartz:change)=
+### Change of variables
 
-    $$
-    \int_{U_0}^U d\ln U^\prime = \ln \left (\frac{U}{U_0} \right ) =  \ln \left (\frac{L_\lambda - B_\lambda}{L_{\lambda 0} - B_\lambda}
-          \right ) = - \tau_{\lambda T}
-    $$ (constTc)
++++
+
+ To integrate this, make the change of variables:
+
+$$
+U^\prime &= L^\prime_\lambda - B_\lambda \\
+dU^\prime &= dL^\prime_\lambda\\
+\frac{dL^\prime_\lambda}{L^\prime_\lambda -
+     B_\lambda} &= \frac{dU^\prime}{U^\prime} = d\ln U^\prime
+$$
+
+where I have made use of the fact that $dB_\lambda = 0$ since the temperature is constant.
+
++++
+
+This means that we can now solve this by integrating a perfect differential:
+
+$$
+\int_{U_0}^U d\ln U^\prime = \ln \left (\frac{U}{U_0} \right ) =  \ln \left (\frac{L_\lambda - B_\lambda}{L_{\lambda 0} - B_\lambda}
+      \right ) = - \tau_{\lambda T}
+$$ (constTc)
 
 Taking the $\exp$ of both sides:
 
@@ -231,6 +257,8 @@ or rearranging and recognizing that the transmittance is $\hat{t_\lambda} = \exp
 $$
 L_\lambda = L_{\lambda 0} \exp( -\tau_{\lambda T}  ) + B_\lambda (T_{layer})(1- \exp( -\tau_{\lambda T} ))
 $$ (rad_constant)
+
++++
 
 $$
 L_\lambda = L_{\lambda 0} \hat{t}_{\lambda}  + B_\lambda (T_{layer})(1- \hat{t}_{\lambda})

@@ -89,4 +89,8 @@ parts:
   numbered: true
   chapters:
     - file: notebooks/week7/false_color.md
+    - file: notebooks/week7/fmask.md
+    - file: solutions/midterm/a301_2024t2_midterm_solution.md
+
+      
       

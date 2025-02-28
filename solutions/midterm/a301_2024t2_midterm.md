@@ -2,19 +2,19 @@
 jupytext:
   cell_metadata_filter: -all
   encoding: '# -*- coding: utf-8 -*-'
-  formats: ipynb,md:myst,py:percent
+  formats: ipynb,md:myst
   text_representation:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.16.7
+    jupytext_version: 1.16.6
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
 
-# A301 midterm
+# A301 midterm   
 
 Name (Last, First):
 

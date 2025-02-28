@@ -120,7 +120,7 @@ Here's how to list the individual bit order for each number in the mask.  We nee
 and then unpack the 8 bits using the numpy function `unpackbits`
 
 ```{code-cell} ipython3
-# var = xarray_dict['fmask'].data
+var = xarray_dict['fmask'].data
 var = fmask.data
 vals = np.unique(var)
 vals = vals.astype('uint8')
@@ -143,12 +143,12 @@ all other pixels into 0, because only (1 and 1) is 1, and all other bit postions
 with and to zero.
 
 ```{code-cell} ipython3
-fifth_bit_on = 0b00100000
+bit5_on = 0b00100000
 #
 # construct an array of the right shape filled with
 # the water bit
 #
-a_array = np.full(fmask.data.shape,fifth_bit_on)
+a_array = np.full(fmask.data.shape,bit5_on)
 #
 # turn the fmask values into unsigned bytes
 #
@@ -207,7 +207,7 @@ xarray_dict[var].plot.imshow(ax=ax,
 ax.set(title=f"{xarray_dict[var].long_name}");
 ```
 
-#### Mask the remain bands
+### Mask the remaining bands
 
 Do this to every band except fmask
 
@@ -268,7 +268,7 @@ axes[0].set(xlabel = "band 4 reflectivity",
 
 ## Caveat
 
-Histogram equalization won't work with masked scenes, since `exposure.equalize_hist` won't work with nans.  That's not a real problem though, because equalization if more about getting a qualitative instead of a quantitimpression.
+Histogram equalization won't work with masked scenes, since `exposure.equalize_hist` won't work with nans.  That's not a real problem though, because equalization if more about getting a qualitative, instead of a quantitative, impression.
 
 +++
 
@@ -279,7 +279,3 @@ Due next Friday
 Write a function that takes an image and its fmask and returns a new image
 with all cloudy pixels set to np.nan.  Make a notebook that uses this function
 to plot a partly cloudy scene.
-
-```{code-cell} ipython3
-
-```
