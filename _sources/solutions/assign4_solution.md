@@ -30,7 +30,7 @@ kernelspec:
 For the following set of layers:
 
 :::{figure} images/two_layer.png
-:name: twolayer
+:name: twolayer_sol
 :scale: 50
 
 Two grey layers over a black surface

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -230,7 +230,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="notebooks/week4/clip_bands.html">21. Clipping multiple bands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/week4/clip_bands.html">21. Clipping multiple bands– v0.2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/week4/optical_depth2.html">22. Optical depth II: mean free path</a></li>
 <li class="toctree-l1"><a class="reference internal" href="solutions/assign2_solutionsA.html">23. Assignment 2: solutions Part A</a></li>
 </ul>
@@ -257,6 +257,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="notebooks/week7/false_color.html">38. Making color composite (“false color”) images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/week7/fmask.html">39. Using fmask to mask water pixels</a></li>
 </ul>
 
     </div>
@@ -492,7 +493,15 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-7">Week 7</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Do for Friday</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-19-monday">Day 19 Monday</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-20-wednesday">Day 20 Wednesday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Do for Friday</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-21-friday">Day 21 Friday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Do for Monday</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -721,7 +730,7 @@ The notebook: <a class="reference internal" href="notebooks/week2/get_landsat_ba
 </li>
 <li><p>New notebook – how to write several clipped images given a bounding box</p>
 <ul>
-<li><p><a class="reference internal" href="notebooks/week4/clip_bands.html#week4-clip-bands"><span class="std std-ref">Clipping multiple bands</span></a></p></li>
+<li><p><a class="reference internal" href="notebooks/week4/clip_bands.html#week4-clip-bands"><span class="std std-ref">Clipping multiple bands– v0.2</span></a></p></li>
 </ul>
 </li>
 <li><p>Assignment 3 due next Tuesday midnight</p>
@@ -750,7 +759,7 @@ The notebook: <a class="reference internal" href="notebooks/week2/get_landsat_ba
 </li>
 <li><p>If you’re interested/motivated, try <a class="reference internal" href="notebooks/pixi_install.html#pixi-install"><span class="std std-ref">pixi install for macos and windows</span></a></p></li>
 <li><p>Finish: <a class="reference internal" href="notebooks/week4/optical_depth2.html#week4-tau2"><span class="std std-ref">Optical depth II: mean free path</span></a></p></li>
-<li><p>Finish: <a class="reference internal" href="notebooks/week4/clip_bands.html#week4-clip-bands"><span class="std std-ref">Clipping multiple bands</span></a></p></li>
+<li><p>Finish: <a class="reference internal" href="notebooks/week4/clip_bands.html#week4-clip-bands"><span class="std std-ref">Clipping multiple bands– v0.2</span></a></p></li>
 <li><p>In-class coding:</p>
 <p>Write a function with the following signature:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">find_latlon</span><span class="p">(</span><span class="n">geotiff</span><span class="p">,</span><span class="n">column</span><span class="p">,</span><span class="n">row</span><span class="p">):</span>
@@ -900,11 +909,20 @@ with the raster selected using those two slices.</p></li>
 </section>
 <section id="week-7">
 <h2>Week 7<a class="headerlink" href="#week-7" title="Link to this heading">#</a></h2>
+<section id="day-19-monday">
+<h3>Day 19 Monday<a class="headerlink" href="#day-19-monday" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="notebooks/week7/false_color.html#week7-false-color"><span class="std std-ref">Making color composite (“false color”) images</span></a></p></li>
+<li><p>mid-term</p></li>
+</ul>
+</section>
+<section id="day-20-wednesday">
+<h3>Day 20 Wednesday<a class="headerlink" href="#day-20-wednesday" title="Link to this heading">#</a></h3>
+<p>Went over</p>
+<ul class="simple">
+<li><p><span class="xref std std-ref">week7:false_color</span></p></li>
 </ul>
 <section id="id12">
-<h3>Do for Friday<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<h4>Do for Friday<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Read Stull Chapter 8 through p. 239</p></li>
 <li><p>Start on Assignment 5a due Friday March 7:</p>
@@ -914,6 +932,27 @@ to make a band 5,4,3 false color png file of your scene and upload the ipynb fil
 </ul>
 </li>
 </ul>
+</section>
+</section>
+<section id="day-21-friday">
+<h3>Day 21 Friday<a class="headerlink" href="#day-21-friday" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>New version of <code class="docutils literal notranslate"><span class="pre">clip_image</span></code> that correctly saves the channel data as floating point
+numbers.  You’ll need to rerun your scene channels with the new notebook in the week 4 folder.</p></li>
+<li><p>New notebook: <a class="reference internal" href="notebooks/week7/fmask.html#week7-fmask"><span class="std std-ref">Using fmask to mask water pixels</span></a></p></li>
+</ul>
+<section id="id13">
+<h4>Do for Monday<a class="headerlink" href="#id13" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Assignment 5b due Friday March 7</p>
+<ul>
+<li><p>Write a function that takes an image and its fmask and returns a new image
+with all cloudy pixels set to np.nan.  Make a notebook that uses this function
+to plot a partly cloudy scene.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 </section>
 </section>
@@ -1069,7 +1108,15 @@ to make a band 5,4,3 false color png file of your scene and upload the ipynb fil
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-7">Week 7</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Do for Friday</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-19-monday">Day 19 Monday</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-20-wednesday">Day 20 Wednesday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Do for Friday</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-21-friday">Day 21 Friday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Do for Monday</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

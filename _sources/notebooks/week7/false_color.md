@@ -89,45 +89,42 @@ red = list(data_dir.glob('**/*Red*tif'))[0]
 green = list(data_dir.glob('**/*Green*tif'))[0]
 nir =  list(data_dir.glob('**/*NIR*tif'))[0]
 band_dict = dict(zip(('red','green','nir','blue'),(red,green,nir,blue)))
-band_dict
 ```
-
-to fix: clip_bands wrote back unscaled data, so apply the scale factor again
 
 ```{code-cell} ipython3
 xarray_dict={}
-scale_factor=0.0001
 for key,filename in band_dict.items():
     print(key)
-    xarray_dict[key] = rioxarray.open_rasterio(filename);
-    xarray_dict[key] = scale_factor*xarray_dict[key].squeeze()
-xarray_dict
+    xarray_dict[key] = rioxarray.open_rasterio(filename,mask_and_scale=True);
+    xarray_dict[key] = xarray_dict[key].squeeze()
 ```
 
 ```{code-cell} ipython3
-xarray_dict['green'].plot.hist()
+xarray_dict['nir'].plot.hist();
 ```
 
 ```{code-cell} ipython3
 vmin = 0.0
-vmax = 0.2
+vmax = 0.5
 pal_dict = make_pal(vmin=vmin,vmax=vmax)
 fig, ax = plt.subplots(1,1)
-xarray_dict['green'].plot.imshow(ax=ax,
+var = 'nir'
+xarray_dict[var].plot.imshow(ax=ax,
                     norm = pal_dict['norm'],
                     cmap = pal_dict['cmap'],
                     extend = "both")
-ax.set(title="band3 (green, 0.55 um)");
+ax.set(title=f"{xarray_dict[var].long_name}");
 ```
 
-```{code-cell} ipython3
+### Give the bands shorter names
 
-```
+Makes it easier to type
 
 ```{code-cell} ipython3
 b2, b3, b4, b5 = xarray_dict['blue'],xarray_dict['green'], xarray_dict['red'], xarray_dict['nir']
 ```
 
+(false_color_joint)=
 ## Plotting joint histograms
 
 +++
@@ -309,7 +306,7 @@ for index, key in enumerate(['b5', 'b4', 'b3']):
     band_values[index, :, :] = img_as_ubyte(stretched)
 ```
 
-#### Note that we've lost our missing values
+### Note that we've lost our missing values
 
 There's no way to write an np.nan as a missing value in a datatype that can only take on
 values between 0 and 255, so all missing values have been converted to 0
@@ -373,7 +370,7 @@ a false color image and presents it with rgb colors.
 
 +++
 
-### False color bands 5,4,3
+#### False color bands 5,4,3
 
 ```{code-cell} ipython3
 false_color.plot.imshow(figsize=(6,9));

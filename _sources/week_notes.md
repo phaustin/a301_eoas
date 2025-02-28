@@ -314,6 +314,14 @@ Topics:
 
 ## Week 7
 
+###  Day 19 Monday
+
+- mid-term
+
+### Day 20 Wednesday
+
+Went over
+
 - {ref}`week7:false_color`
 
 #### Do for Friday
@@ -324,5 +332,18 @@ Topics:
   - Write a function that takes 3 tif files and returns a rioxarray false color image. Use it
 to make a band 5,4,3 false color png file of your scene and upload the ipynb file
 
+### Day 21 Friday
+
+- New version of `clip_image` that correctly saves the channel data as floating point
+  numbers.  You'll need to rerun your scene channels with the new notebook in the week 4 folder.
+
+- New notebook: {ref}`week7:fmask`
+
+#### Do for Monday
 
 
+- Assignment 5b due Friday March 7
+
+  - Write a function that takes an image and its fmask and returns a new image
+    with all cloudy pixels set to np.nan.  Make a notebook that uses this function
+    to plot a partly cloudy scene.
