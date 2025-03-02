@@ -16,7 +16,7 @@ kernelspec:
 (week8:goes_true_color)=
 # GOES-16: True Color Images from GOES ABI
 
-## Introduction -- test
+## Introduction
 
 This is a modified version of [Brian Blaylock's](http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html)
 [UCAR python gallery](https://unidata.github.io/python-gallery/examples/mapping_GOES16_TrueColor.html) notebook. 
@@ -120,17 +120,13 @@ and once with `rioxarray.open_rasterio` to get the crs and transform.  The bands
 Each band has data quality flag file `DQF_C01`, `DQF_C02` etc.
 
 ```{code-cell} ipython3
-help(goes_nearesttime)
-```
-
-```{code-cell} ipython3
 save_dir = Path.home() / "repos/a301/satdata/goes" 
 ```
 
 ```{code-cell} ipython3
 g = goes_nearesttime(
     datetime(2020, 6, 25, 18), satellite="goes16",product="ABI-L2-MCMIP", domain='C', 
-      return_as="xarray", save_dir = full_path, download = True, owverwrite = False)
+      return_as="xarray", save_dir = save_dir, download = True, overwrite = False
 )
 ```
 
