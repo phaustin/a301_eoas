@@ -16,12 +16,13 @@ kernelspec:
 (week8:goes_true_color)=
 # GOES-16: True Color Images from GOES ABI
 
-## Introduction -- test
+## Introduction
 
 This is a modified version of [Brian Blaylock's](http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html)
 [UCAR python gallery](https://unidata.github.io/python-gallery/examples/mapping_GOES16_TrueColor.html) notebook. 
 Blaylock is the author of the GOES download package [goes2go](https://goes2go.readthedocs.io/en/latest/) used below.
-I've made some changes to the notebook to expand the explanations and to port to rioxarray.
+I've made some changes to the notebook to expand the explanations and fix some bugs caused by changes to
+the data format and cartopy.
 
 The notebook shows how to make a true color image from the GOES-16
 Advanced Baseline Imager (ABI) level 2 data. We will plot the image with
@@ -33,31 +34,23 @@ unlike Modis or Landsat OLI, the ABI doesn't have a visible channel at green wav
 the near-ir 0.846--0.885  $\mu m$ wavelength range for green.  Since that channel is very responsive to
 plant chlorophyll it's possible to still  use that as part of a proxy for green as shown below.  As of this
 January, GOES 18 is now GOES West, and GOES 16 is GOES East, with GOES 17 moved into a parking position.
-For more background on GOES, see [NOAA's beginner guide to GOES](https://www.goes-r.gov/downloads/resources/documents/Beginners_Guide_to_GOES-R_Series_Data.pdf).  
+For more background on GOES, see [NOAA's beginner guide to GOES](https://www.goes-r.gov/downloads/resources/documents/Beginners_Guide_to_GOES-R_Series_Data.pdf).
+
+### Current GOES satellites
+
+There are three active GOES satellite on station as of February, 2025.  See [the NESDIS website](https://www.nesdis.noaa.gov/our-satellites/currently-flying/geostationary-satellites) for a full list.
+
+- GOES 16 is GOES East, parked at -75 degrees West longitude over the equator
+- GOES 18 is GOES West, parked at -136.9 degrees West longitude
+- GOES 19 will replace GOES 16 in April, 2025
 
 We will be using the [Advanced Baseline Imager Level 2 Cloud and Moisture Product](https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc:C01502) from the [Amazon AWS GOES repository](https://registry.opendata.aws/noaa-goes/).  The
 full list of available GOES products on AWS is [here](https://github.com/awslabs/open-data-docs/tree/main/docs/noaa/noaa-goes16).
 
-The file we'll download is the "Cloud Moisture Imagery" dataset -- abbreviated `ABI-L2-MCMIPC`
+The file we'll download is domain 'C' of  the "Cloud Moisture Imagery" dataset -- abbreviated `ABI-L2-MCMIPC`
 which expands to "Advanced Baseline Imager level 2 Cloud Moisture Imagery Product for the
-Continental US".  It's  about 68 Mbytes, compared to the full disk file (`ABI-L2-MCMIPC`) which
-is about 305 Mbytes.  A folder called `~/data` will be created to hold the download.
-
-+++
-
-## Relationship to previous notebooks
-
-* For a review of working with mapping using the cartopy crs and an image: 
-  - {ref}`week7:geotiff_xarray`
-  - {ref}`week9:test_dataset`
-  
-* For a review of using an indexer and xarray.isel to clip a dataset to a coordinate
-
-  - {ref}`week10:radar_micro`
-  
-* For a review of false color and image stacking
-
-  - {ref}`week10:false_color`
+Continental US".  It's  about 68 Mbytes, compared to the full disk file (`ABI-L2-MCMIPC domain F`) which
+is about 305 Mbytes.  A folder called `~/repos/a301/satdata/goes` will be created to hold the download.
 
 +++
 
@@ -77,58 +70,88 @@ These are the channels that contribute to the true-color composite:
 
 The workflow for the notebook:
 
-0) Download a scene using [goes2go](https://goes2go.readthedocs.io/en/latest/)
+0) Find a scene using [goes2go](https://goes2go.readthedocs.io/en/latest/)
 
-1) Read the metadata and channels into xarray datasets using xarray and rioxarray
+1) Read the metadata and channels into an xarray dataset
 
-2) Create a cartopy crs for the scene using the crs and extent of the image
+3) Create the cartopy crs for the scene using the crs 
 
-3) Produce a weighted "pseudo-green" image using a weighted combination of the 3 bands
+4) Get the `original_extent` for the image so we can plot it
 
-4) Clip the band values to 0-1 and apply a "gamma correction" (an alternative to histogram equalization, we used
-in {ref}`week10:false_color`)
+4) Produce a weighted "pseudo-green" image using a weighted combination of the 3 bands
 
-5) Stack the 3 bands in rgb order using [numpy depth stacking](https://numpy.org/doc/stable/reference/generated/numpy.dstack.html)
+5) Clip the band values to 0-1 and apply a "gamma correction" (an alternative to histogram equalization, we used
+in {ref}`week7:false_color`)
 
-6) Plot the mapped image using cartopy
+6) Stack the 3 bands in rgb order using [numpy depth stacking](https://numpy.org/doc/stable/reference/generated/numpy.dstack.html)
 
-7) Zoom the image by changing the axis extent
+7) Plot the mapped image using cartopy
+
+8) Zoom the image by changing the axis extent
 
 ```{code-cell} ipython3
 from goes2go.data import goes_nearesttime
-import rioxarray
 import xarray
-import a301_lib
 from datetime import datetime, timedelta
 from pathlib import Path
 import cartopy
-from pyresample.utils.cartopy import Projection
 import numpy as np
 
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 from pathlib import Path
+import warnings
+warnings.filterwarnings('ignore')
 ```
 
 ## Read in the data
 
-We're going to need to read the data twice -- once with `xarray.open_dataset` to get all the channel wavelengths
-and once with `rioxarray.open_rasterio` to get the crs and transform.  The bands are labeled `CMI_C01`, `CMI_C02` etc.
-Each band has data quality flag file `DQF_C01`, `DQF_C02` etc.
+NOAA stores the data in a file format called "netcdf" instead of geotiff.  Rioxarray isn't able to read
+the current version of these files, but plain xarray works.  The goes2go library loads an xarray plugin
+calle `metpy` that is able to read the crs information from the netcdf metadata, which is stored in
+set of attributes at `the_xarray.goes_imager_projection.attrs`.  The metpy plugin is able to read
+those attributes and return a cartopy crs for mapping.
+
+The 16 variables are labeled `CMI_C01`, `CMI_C02` etc.
+Each band has data quality flag file `DQF_C01`, `DQF_C02`, ... band wavelength data stored as `band_wavelength_C01, ...`, and a band id stored as `band_id_C01, ...`.
+
++++
+
+### Find the file on AWS using goes_nearesttime
+
+The data is stored on [Amazon S3](https://registry.opendata.aws/noaa-goes/) and can
+be downloaded via an `https` link given by `goes_nearresttime`
 
 ```{code-cell} ipython3
-g = goes_nearesttime(
-    datetime(2020, 6, 25, 18), satellite="goes16",product="ABI-L2-MCMIP", domain='C', 
-      return_as="xarray"
-)
+help(goes_nearesttime)
 ```
 
-By default the files are written into a folder called `~/data`
+```{code-cell} ipython3
+save_dir = Path.home() / "repos/a301/satdata/goes" 
+```
+
+#### Emoji bug!
+
+To read the data, set `getdata=True`
+
+After you do that, set `getdata=False` to remove the emojis, which confuse Jupyter
 
 ```{code-cell} ipython3
-full_path = Path.home() / "data" / g.path[0]
-full_path
+getdata = False
+if getdata:
+    g = goes_nearesttime(
+        datetime(2020, 6, 25, 18), satellite="goes16",product="ABI-L2-MCMIP", domain='C', 
+          return_as="xarray", save_dir = save_dir, download = True, overwrite = False
+    )
+    the_path = g.path[0]
+else:
+    the_path = ("noaa-goes16/ABI-L2-MCMIPC/2020/177/18/"
+                "OR_ABI-L2-MCMIPC-M6_G16_s20201771801172_e20201771803551_c20201771804104.nc")
+```
+
+```{code-cell} ipython3
+full_path = save_dir / the_path
 ```
 
 This example uses the **level 2 _multiband_ formatted file for the continental US (C)
@@ -152,51 +175,37 @@ Here's the naming scheme for files
 
 +++
 
-Note that goesC has the `rio` has the `goes_imager_projection` variable, while
-`goesC` has many more variables.
-
-Open both rio and dataset verisons of the file
+### open file and read crs
 
 ```{code-cell} ipython3
 goesC = xarray.open_dataset(full_path,mode = 'r',mask_and_scale = True)
-rioC = rioxarray.open_rasterio(full_path,'r',mask_and_scale = True)
-goesC = goesC.squeeze()
-rioC = rioC.squeeze()
-rioC
 ```
 
 ```{code-cell} ipython3
-goesC
+list(goesC.variables.keys())[:10]
 ```
 
-### data crs
+### read the crs from band 2
 
-This is the "Geostationary Satellite" projection, centered over the central US (where GOES 16 is stationed) at a longitude of -75 degrees
+The cartopy crs information is associated with individual variables, grab it from band 2 (arbitrary)
 
 ```{code-cell} ipython3
-rioC.rio.crs
+band_2 = goesC.metpy.parse_cf('CMI_C02')
+cartopy_crs = band_2.metpy.cartopy_crs
+cartopy_crs;
 ```
 
+Here are the y coordinates in the geostationary projection
+
 ```{code-cell} ipython3
-rioC['CMI_C01'].shape
+band_2.y
 ```
 
-## Get the extent and the crs, and create a cartopy crs
-
-The data projection is
+## Get the x,y extent and start time
 
 ```{code-cell} ipython3
-ll_x, ll_y, ur_x, ur_y = rioC.rio.bounds()
-original_extent = (ll_x,ur_x, ll_y, ur_y)
-```
-
-```{code-cell} ipython3
-cartopy_crs = Projection(rioC.rio.crs, bounds=original_extent)
-cartopy_crs
-```
-
-```{code-cell} ipython3
-cartopy_crs.bounds
+original_extent=(band_2.x.data.min(), band_2.x.data.max(), band_2.y.data.min(), band_2.y.data.max())
+original_extent
 ```
 
 ```{code-cell} ipython3
@@ -208,10 +217,6 @@ goesC.time_coverage_start
 Each file represents the data collected during one scan sequence for the
 domain. There are several different time stamps in this file, which are also
 found in the file's name.
-
-```{code-cell} ipython3
-
-```
 
 ```{code-cell} ipython3
 # Scan's start time, converted to datetime object
@@ -271,8 +276,7 @@ Most displays have a decoding gamma of 2.2.  See
 
 ### Natural vs. veggie green
 
-The GREEN "veggie" channel on GOES-16 does not measure visible green
-light. Instead, it measures a near-infrared band sensitive to chlorophyll. We
+The GREEN "veggie" channel on GOES-16 corresponds to the landsat NIR band 5. We
 could use that channel in place of green, but it would make the green in our
 image appear too vibrant. Instead, we will tone-down the green channel by
 interpolating the value to simulate a natural green color.
@@ -296,12 +300,16 @@ and B as the data for each channel.
 
 ## Check the band wavelengths
 
+Read the `band_wavelength` keys to double check the wavelengths for each of bands
+2, 3 and 1.
+
 ```{code-cell} ipython3
 # Confirm that each band is the wavelength we are interested in
 for band in [2, 3, 1]:
     band_wavelength = f"band_wavelength_C{band:02d}"
+    print(band_wavelength)
     long_name = goesC[band_wavelength].long_name
-    wavelength = goesC[band_wavelength].data
+    wavelength = goesC[band_wavelength].data[0]
     units = goesC[band_wavelength].units
     print(f"{long_name} is {wavelength:.2f} {units}")
 ```
@@ -446,7 +454,7 @@ ax = fig.add_subplot(1, 1, 1, projection=lc)
 #
 # lat/lons are given in "flat-square" projection
 #
-ax.set_extent([-135, -60, 10, 65], crs=ccrs.PlateCarree())
+ax.set_extent([-120, -65, 10, 55], crs=ccrs.PlateCarree())
 
 ax.imshow(
     RGB,
@@ -495,7 +503,7 @@ plt.title('GOES-16 True Color', loc='left', fontweight='bold', fontsize=15)
 plt.title('{}'.format(scan_start.strftime('%d %B %Y %H:%M UTC ')), loc='right');
 ```
 
-## Practice questions (takehome)
+## Practice questions (takehome exam prep)
 
 +++
 
@@ -515,3 +523,19 @@ box and save it to disk as a netcdf file with the correct affine transform and c
 ### Practice question 3
 
 Change the map projection in from lambert to azimuthal equal area -- does it look less weird?
+
++++
+
+### Practice question 4
+
+Write a channel out as a geotiff file by first converting it to a rioxarray
+
++++
+
+### Pratice question 5
+
+Use the full domain image to produce a picture of a region in the southern hemisphere or Canada
+
+```{code-cell} ipython3
+
+```
