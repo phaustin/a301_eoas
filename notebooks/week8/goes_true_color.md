@@ -13,12 +13,10 @@ kernelspec:
   name: python3
 ---
 
-+++
-
 (week8:goes_true_color)=
 # GOES-16: True Color Images from GOES ABI
 
-## Introduction
+## Introduction -- test
 
 This is a modified version of [Brian Blaylock's](http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html)
 [UCAR python gallery](https://unidata.github.io/python-gallery/examples/mapping_GOES16_TrueColor.html) notebook. 
@@ -45,7 +43,7 @@ which expands to "Advanced Baseline Imager level 2 Cloud Moisture Imagery Produc
 Continental US".  It's  about 68 Mbytes, compared to the full disk file (`ABI-L2-MCMIPC`) which
 is about 305 Mbytes.  A folder called `~/data` will be created to hold the download.
 
-+++ 
++++
 
 ## Relationship to previous notebooks
 
@@ -61,11 +59,11 @@ is about 305 Mbytes.  A folder called `~/data` will be created to hold the downl
 
   - {ref}`week10:false_color`
 
-+++ 
++++
 
 ## Channels and workflow
 
-+++ 
++++
 
 These are the channels that contribute to the true-color composite:
 
@@ -113,8 +111,6 @@ import cartopy.feature as cfeature
 from pathlib import Path
 ```
 
-+++ 
-
 ## Read in the data
 
 We're going to need to read the data twice -- once with `xarray.open_dataset` to get all the channel wavelengths
@@ -128,16 +124,12 @@ g = goes_nearesttime(
 )
 ```
 
-+++ 
-
 By default the files are written into a folder called `~/data`
 
 ```{code-cell} ipython3
 full_path = Path.home() / "data" / g.path[0]
 full_path
 ```
-
-+++ 
 
 This example uses the **level 2 _multiband_ formatted file for the continental US (C)
 domain** 
@@ -158,7 +150,7 @@ Here's the naming scheme for files
     c##### - File Creation  
     .nc    - NetCDF file extension
 
-+++ 
++++
 
 Note that goesC has the `rio` has the `goes_imager_projection` variable, while
 `goesC` has many more variables.
@@ -177,8 +169,6 @@ rioC
 goesC
 ```
 
-+++ 
-
 ### data crs
 
 This is the "Geostationary Satellite" projection, centered over the central US (where GOES 16 is stationed) at a longitude of -75 degrees
@@ -190,8 +180,6 @@ rioC.rio.crs
 ```{code-cell} ipython3
 rioC['CMI_C01'].shape
 ```
-
-+++ 
 
 ## Get the extent and the crs, and create a cartopy crs
 
@@ -214,8 +202,6 @@ cartopy_crs.bounds
 ```{code-cell} ipython3
 goesC.time_coverage_start
 ```
-
-+++ 
 
 ## Get Date and Time Information
 
@@ -250,8 +236,6 @@ print(f"File Created  :  {file_created}")
 print(f"Scan midpoint :  {midpoint}")
 ```
 
-+++ 
-
 ## True Color Recipe
 
 ### Gamma correction
@@ -283,7 +267,7 @@ Most displays have a decoding gamma of 2.2.  See
 [wikipedia](https://en.wikipedia.org/wiki/Gamma_correction), and this
 [tutorial](https://www.cambridgeincolour.com/tutorials/gamma-correction.htm) if you'd like to know more.
 
-+++ 
++++
 
 ### Natural vs. veggie green
 
@@ -308,7 +292,7 @@ The multiband formatted file we loaded is convenient because all the GOES
 channels are in the same NetCDF file. Next, we will assign our variables R, G,
 and B as the data for each channel.
 
-+++ 
++++
 
 ## Check the band wavelengths
 
@@ -321,8 +305,6 @@ for band in [2, 3, 1]:
     units = goesC[band_wavelength].units
     print(f"{long_name} is {wavelength:.2f} {units}")
 ```
-
-+++ 
 
 ## Clip the bands and apply the gamma correction
 
@@ -355,8 +337,6 @@ B = np.power(B, 1 / gamma)
 ######################################################################
 ```
 
-+++ 
-
 ## Make "true" green from the three bands
 
 ```{code-cell} ipython3
@@ -365,8 +345,6 @@ G_true = 0.45 * R + 0.1 * G + 0.45 * B
 G_true = np.maximum(G_true, 0)
 G_true = np.minimum(G_true, 1)
 ```
-
-+++ 
 
 ## Plot the raw images
 
@@ -397,8 +375,6 @@ ax4.axis("off")
 
 plt.subplots_adjust(wspace=0.02)
 ```
-
-+++ 
 
 ## Stack the tree images using dstack
 
@@ -431,8 +407,6 @@ ax2.set_title("%s" % scan_start.strftime("%d %B %Y %H:%M UTC "), loc="right")
 ax2.axis("off");
 ```
 
-+++ 
-
 ## Plot the mapped image using cartopy
 
 ```{code-cell} ipython3
@@ -455,8 +429,6 @@ ax.add_feature(ccrs.cartopy.feature.STATES)
 plt.title("GOES-16 True Color", loc="left", fontweight="semibold", fontsize=15)
 plt.title("%s" % scan_start.strftime("%d %B %Y %H:%M UTC "), loc="right");
 ```
-
-+++ 
 
 ## Changing the map projection and plot extent
 
@@ -489,8 +461,6 @@ ax.add_feature(ccrs.cartopy.feature.STATES)
 plt.title("GOES-16 True Color", loc="left", fontweight="semibold", fontsize=15)
 plt.title("%s" % scan_start.strftime("%d %B %Y %H:%M UTC "), loc="right");
 ```
-
-+++ 
 
 ## Change the axis extent (not the original image extent)
 
@@ -525,24 +495,22 @@ plt.title('GOES-16 True Color', loc='left', fontweight='bold', fontsize=15)
 plt.title('{}'.format(scan_start.strftime('%d %B %Y %H:%M UTC ')), loc='right');
 ```
 
-+++ 
-
 ## Practice questions (takehome)
 
-+++ 
++++
 
 ### Practice question 1
 
 Use a seaborn jointplot to compare the channel 1 (blue) histogram before and after the gamma correction
 
-+++ 
++++
 
 ### Practice question 2
 
 Use xarray.isel to clip just the portion of the abi scene that's in the [-114.75, -108.25, 36, 43] lon/lat bounding
 box and save it to disk as a netcdf file with the correct affine transform and crs
 
-+++ 
++++
 
 ### Practice question 3
 
