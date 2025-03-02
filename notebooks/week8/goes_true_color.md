@@ -15,7 +15,7 @@ kernelspec:
 
 +++ {"user_expressions": []}
 
-(week11:goes_true_color)=
+(week8:goes_true_color)=
 # GOES-16: True Color Images from GOES ABI
 
 ## Introduction
@@ -72,9 +72,9 @@ These are the channels that contribute to the true-color composite:
 
 |        --| Wavelength   | Channel | Description |
 |----------|:------------:|:-------:|:-----------:|
-| **Red**  | 0.64 &#181;m |    2    | Red Visible |
-| **Green**| 0.86 &#181;m |    3    | Veggie Near-IR|
-| **Blue** | 0.47 &#181;m |    1    | Blue Visible|
+| **Red**  | 0.64 m |    2    | Red Visible |
+| **Green**| 0.86 m |    3    | Veggie Near-IR|
+| **Blue** | 0.47 m |    1    | Blue Visible|
 
 
 The workflow for the notebook:
