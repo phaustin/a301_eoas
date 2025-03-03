@@ -181,7 +181,7 @@ M = 1.1 \times 9000 \times  (1 - 0.108) = 8831\ kg\,m^{-2}
 $$
 
 $$
-\frac{\Delta T}{\Delta t} = \frac{1}{M c_p}\frac{\Delta F_n}{\Delta z} = 10
+\frac{\Delta T}{\Delta t} = \frac{1}{M c_p}\frac{\Delta F_n}{\Delta z} = 10^{-4}\ K/day
 $$
 
 ```{code-cell} ipython3
@@ -234,7 +234,7 @@ stating all your assumptions.
 
 +++
 
-#### Q3 answer
+### Q3 answer
 
 Follow  {ref}`schwartz:constant`:
 

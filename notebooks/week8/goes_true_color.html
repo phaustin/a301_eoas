@@ -1,0 +1,1722 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>42. GOES-16: True Color Images from GOES ABI &#8212; ATSC 301</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week8/goes_true_color';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week8/goes_true_color.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="41. Python packages Part 1" href="install_part1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ATSC 301</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    ATSC 301: 2024 Term 2 Winter
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Useful links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">ATSC 301: syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrity.html">UBC academic integrity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../texts.html">Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pixi_install.html">pixi install for macos and windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windows_install.html">Windows installation using a conda lock file</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)">Notebook downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebook_index.html">code snippets by notebook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Week notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_review.html">Weekly review</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midterm</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../midterm/midterm_focus.html">1. Study topics for midterm</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1E6Gs6zUARHdEAb2UqIyMnyXj-jCiOiXw/view?usp=drive_link">2025 mid-term equation sheet</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/12ZDN8NZzgafeCMDTy4t0u-w80o3-foNT/view?usp=sharing">2022 mid-term</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI.html">2. Sample mid-term questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII.html">3. Midterm review questions II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI_solutions.html">4. Midterm Solutions: midterm sample questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII_solutions.html">5. Midterm solutions: sample questions II</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">6. Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">7. Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">8. Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">9. Plotting the Planck function with python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week2/planck_sol.html">10. Plotting the Planck function - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/assign1.html">11. Assignment 1, brightness temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_maps.html">12. Introduction to Cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_mapping_vancouver.html">13. Mapping Vancouver with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/get_landsat_bands.html">14. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">15. Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">16. Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">17. Zooming an image</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">19. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">20. Optical depth and partial transmission</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">21. Clipping multiple bands– v0.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">22. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">23. Assignment 2: solutions Part A</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">24. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">25. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">26. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">27. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">28. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">29. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">30. Hydrostatic balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">31. Cartopy mapping Buenos Aires</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">32. Assignment 3: solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/hydrostatic_balance.html">33. Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">34. Weighting functions for temperature retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">35. Finding the heating rate of the atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/assign4_two_layer_sol.html">36. Assignment 4 two layer solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4_solution.html">37. Assignment 4 solutions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week7/false_color.html">38. Making color composite (“false color”) images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week7/fmask.html">39. Using fmask to mask water pixels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/midterm/a301_2024t2_midterm_solution.html">40. A301 midterm solutions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="install_part1.html">41. Python packages Part 1</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">42. GOES-16: True Color Images from GOES ABI</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/week8/goes_true_color.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>GOES-16: True Color Images from GOES ABI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">42.1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-goes-satellites">42.1.1. Current GOES satellites</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#channels-and-workflow">42.2. Channels and workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-the-data">42.3. Read in the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-file-on-aws-using-goes-nearesttime">42.3.1. Find the file on AWS using goes_nearesttime</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#emoji-bug">42.3.1.1. Emoji bug!</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-file-and-read-crs">42.3.2. open file and read crs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-crs-from-band-2">42.3.3. read the crs from band 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-x-y-extent-and-start-time">42.4. Get the x,y extent and start time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-date-and-time-information">42.5. Get Date and Time Information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#true-color-recipe">42.6. True Color Recipe</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gamma-correction">42.6.1. Gamma correction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-vs-veggie-green">42.6.2. Natural vs. veggie green</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-band-wavelengths">42.7. Check the band wavelengths</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clip-the-bands-and-apply-the-gamma-correction">42.8. Clip the bands and apply the gamma correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-true-green-from-the-three-bands">42.9. Make “true” green from the three bands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-raw-images">42.10. Plot the raw images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stack-the-tree-images-using-dstack">42.11. Stack the tree images using dstack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-mapped-image-using-cartopy">42.12. Plot the mapped image using cartopy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-map-projection-and-plot-extent">42.13. Changing the map projection and plot extent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-the-axis-extent-not-the-original-image-extent">42.14. Change the axis extent (not the original image extent)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-questions-takehome-exam-prep">42.15. Practice questions (takehome exam prep)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-question-1">42.15.1. Practice question 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-question-2">42.15.2. Practice question 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-question-3">42.15.3. Practice question 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-question-4">42.15.4. Practice question 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pratice-question-5">42.15.5. Pratice question 5</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="goes-16-true-color-images-from-goes-abi">
+<span id="week8-goes-true-color"></span><h1><span class="section-number">42. </span>GOES-16: True Color Images from GOES ABI<a class="headerlink" href="#goes-16-true-color-images-from-goes-abi" title="Link to this heading">#</a></h1>
+<p>Download the <code class="docutils literal notranslate"><span class="pre">goes_true_color.ipynb</span></code> notebook from <a class="reference external" href="https://drive.google.com/drive/folders/1-D6y9MlE8LZRLZg-qRCxPZSgar8kGjBT?usp=drive_links">the week8 folder</a></p>
+<section id="introduction">
+<h2><span class="section-number">42.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>This is a modified version of <a class="reference external" href="http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html">Brian Blaylock’s</a>
+<a class="reference external" href="https://unidata.github.io/python-gallery/examples/mapping_GOES16_TrueColor.html">UCAR python gallery</a> notebook.
+Blaylock is the author of the GOES download package <a class="reference external" href="https://goes2go.readthedocs.io/en/latest/">goes2go</a> used below.
+I’ve made some changes to the notebook to expand the explanations and fix some bugs caused by changes to
+the data format and cartopy.</p>
+<p>The notebook shows how to make a true color image from the GOES-16
+Advanced Baseline Imager (ABI) level 2 data. We will plot the image with
+matplotlib and Cartopy. The image can be displayed on any map projection after
+applying a transformation.</p>
+<p>Some background:  Take a look at the 16 channels described on page 230 of <a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch08-satellite_radar-v102b.pdf">Stull Chapter 8</a>.  Note that
+unlike Modis or Landsat OLI, the ABI doesn’t have a visible channel at green wavelengths, substituting
+the near-ir 0.846–0.885  <span class="math notranslate nohighlight">\(\mu m\)</span> wavelength range for green.  Since that channel is very responsive to
+plant chlorophyll it’s possible to still  use that as part of a proxy for green as shown below.  As of March 2025
+GOES 18 is GOES West, and GOES 16 is GOES East, with GOES 17 moved into a parking position  and  GOES 19 ready to replace GOES 16 in Aparil.
+For more background on GOES, see <a class="reference external" href="https://www.goes-r.gov/downloads/resources/documents/Beginners_Guide_to_GOES-R_Series_Data.pdf">NOAA’s beginner guide to GOES</a>.</p>
+<section id="current-goes-satellites">
+<h3><span class="section-number">42.1.1. </span>Current GOES satellites<a class="headerlink" href="#current-goes-satellites" title="Link to this heading">#</a></h3>
+<p>There are three active GOES satellite on station as of February, 2025.  See <a class="reference external" href="https://www.nesdis.noaa.gov/our-satellites/currently-flying/geostationary-satellites">the NESDIS website</a> for a full list.</p>
+<ul class="simple">
+<li><p>GOES 16 is GOES East, parked at -75 degrees West longitude over the equator</p></li>
+<li><p>GOES 18 is GOES West, parked at -136.9 degrees West longitude</p></li>
+<li><p>GOES 19 will replace GOES 16 in April, 2025</p></li>
+</ul>
+<p>We will be using the <a class="reference external" href="https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc:C01502">Advanced Baseline Imager Level 2 Cloud and Moisture Product</a> from the <a class="reference external" href="https://registry.opendata.aws/noaa-goes/">Amazon AWS GOES repository</a>.  The
+full list of available GOES products on AWS is <a class="reference external" href="https://github.com/awslabs/open-data-docs/tree/main/docs/noaa/noaa-goes16">here</a>.</p>
+<p>The file we’ll download is domain ‘C’ of  the “Cloud Moisture Imagery” dataset – abbreviated <code class="docutils literal notranslate"><span class="pre">ABI-L2-MCMIPC</span></code>
+which expands to “Advanced Baseline Imager level 2 Cloud Moisture Imagery Product for the
+Continental US”.  It’s  about 68 Mbytes, compared to the full disk file (<code class="docutils literal notranslate"><span class="pre">ABI-L2-MCMIPC</span> <span class="pre">domain</span> <span class="pre">F</span></code>) which
+is about 305 Mbytes.  A folder called <code class="docutils literal notranslate"><span class="pre">~/repos/a301/satdata/goes</span></code> will be created to hold the download.</p>
+</section>
+</section>
+<section id="channels-and-workflow">
+<h2><span class="section-number">42.2. </span>Channels and workflow<a class="headerlink" href="#channels-and-workflow" title="Link to this heading">#</a></h2>
+<p>These are the channels that contribute to the true-color composite:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>–</p></th>
+<th class="head text-center"><p>Wavelength</p></th>
+<th class="head text-center"><p>Channel</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Red</strong></p></td>
+<td class="text-center"><p>0.64 m</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p>Red Visible</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Green</strong></p></td>
+<td class="text-center"><p>0.86 m</p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p>Veggie Near-IR</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Blue</strong></p></td>
+<td class="text-center"><p>0.47 m</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>Blue Visible</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The workflow for the notebook:</p>
+<ol class="arabic simple" start="0">
+<li><p>Find a scene using <a class="reference external" href="https://goes2go.readthedocs.io/en/latest/">goes2go</a></p></li>
+<li><p>Read the metadata and channels into an xarray dataset</p></li>
+<li><p>Create the cartopy crs for the scene using the xarray metpy plugin.</p></li>
+<li><p>Get the <code class="docutils literal notranslate"><span class="pre">original_extent</span></code> for the image in the geostationary projection crs  so we can plot it</p></li>
+<li><p>Produce a weighted “pseudo-green” image using a weighted combination of the 3 bands to replace the missing green band.</p></li>
+<li><p>Clip the band values to 0-1 and apply a “gamma correction” (an alternative to the histogram equalization we used
+in <a class="reference internal" href="../week7/false_color.html#week7-false-color"><span class="std std-ref">Making color composite (“false color”) images</span></a>)</p></li>
+<li><p>Stack the 3 bands in rgb order using <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dstack.html">numpy depth stacking</a></p></li>
+<li><p>Plot the mapped image using cartopy</p></li>
+<li><p>Zoom the image by changing the axis extent</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">goes2go.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">goes_nearesttime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.feature</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cfeature</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/phil/mini310/envs/a301/lib/python3.13/site-packages/goes2go/data.py:673: FutureWarning: &#39;H&#39; is deprecated and will be removed in a future version. Please use &#39;h&#39; instead of &#39;H&#39;.
+  within=pd.to_timedelta(config[&quot;nearesttime&quot;].get(&quot;within&quot;, &quot;1h&quot;)),
+/Users/phil/mini310/envs/a301/lib/python3.13/site-packages/goes2go/NEW.py:185: FutureWarning: &#39;H&#39; is deprecated and will be removed in a future version. Please use &#39;h&#39; instead of &#39;H&#39;.
+  within=pd.to_timedelta(config[&quot;nearesttime&quot;].get(&quot;within&quot;, &quot;1h&quot;)),
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="read-in-the-data">
+<h2><span class="section-number">42.3. </span>Read in the data<a class="headerlink" href="#read-in-the-data" title="Link to this heading">#</a></h2>
+<p>NOAA stores the data in a file format called <a class="reference external" href="https://foundations.projectpythia.org/core/data-formats/netcdf-cf.html">netcdf</a> instead of geotiff.  Rioxarray isn’t able to read
+the current netcdf version of these files, but plain xarray works.  The goes2go library loads an xarray plugin
+calle <code class="docutils literal notranslate"><span class="pre">metpy</span></code> that is able to read the crs information from the netcdf metadata, which is stored in
+set of attributes at <code class="docutils literal notranslate"><span class="pre">the_xarray.goes_imager_projection.attrs</span></code>.  We <code class="docutils literal notranslate"><span class="pre">metpy.parse_cf</span></code> function to read
+those attributes and return a cartopy crs for mapping.</p>
+<p>The 16 bands in the dataset are labeled <code class="docutils literal notranslate"><span class="pre">CMI_C01</span></code>, <code class="docutils literal notranslate"><span class="pre">CMI_C02</span></code> etc.
+Each band has data quality flag file <code class="docutils literal notranslate"><span class="pre">DQF_C01</span></code>, <code class="docutils literal notranslate"><span class="pre">DQF_C02</span></code>, …a band wavelength data stored as <code class="docutils literal notranslate"><span class="pre">band_wavelength_C01,</span> <span class="pre">...</span></code>, and a band id stored as <code class="docutils literal notranslate"><span class="pre">band_id_C01,</span> <span class="pre">...</span></code>.</p>
+<section id="find-the-file-on-aws-using-goes-nearesttime">
+<h3><span class="section-number">42.3.1. </span>Find the file on AWS using goes_nearesttime<a class="headerlink" href="#find-the-file-on-aws-using-goes-nearesttime" title="Link to this heading">#</a></h3>
+<p>The data is stored on <a class="reference external" href="https://registry.opendata.aws/noaa-goes/">Amazon S3</a> and can
+be downloaded via an <code class="docutils literal notranslate"><span class="pre">https</span></code> link given by <code class="docutils literal notranslate"><span class="pre">goes_nearresttime</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">goes_nearesttime</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function goes_nearesttime in module goes2go.data:
+
+goes_nearesttime(
+    attime,
+    within=Timedelta(&#39;0 days 01:00:00&#39;),
+    *,
+    satellite=&#39;noaa-goes16&#39;,
+    product=&#39;ABI-L2-MCMIP&#39;,
+    domain=&#39;C&#39;,
+    return_as=&#39;xarray&#39;,
+    download=True,
+    overwrite=False,
+    save_dir=PosixPath(&#39;/Users/phil/data&#39;),
+    bands=None,
+    s3_refresh=True,
+    ignore_missing=None,
+    verbose=True
+)
+    Get the GOES data nearest a specified time.
+
+    Parameters
+    ----------
+    attime : datetime
+        Time to find the nearest observation for.
+        May also use a pandas-interpretable datetime string.
+    within : timedelta or pandas-parsable timedelta str
+        Timerange tht the nearest observation must be.
+    satellite : {&#39;goes16&#39;, &#39;goes17&#39;, &#39;goes18&#39;}
+        Specify which GOES satellite.
+        The following alias may also be used:
+
+        - ``&#39;goes16&#39;``: 16, &#39;G16&#39;, or &#39;EAST&#39;
+        - ``&#39;goes17&#39;``: 17, &#39;G17&#39;, or &#39;WEST&#39;
+        - ``&#39;goes18&#39;``: 18, &#39;G18&#39;, or &#39;WEST&#39;
+
+    product : {&#39;ABI&#39;, &#39;GLM&#39;, other GOES product}
+        Specify the product name.
+
+        - &#39;ABI&#39; is an alias for ABI-L2-MCMIP Multichannel Cloud and Moisture Imagery
+        - &#39;GLM&#39; is an alias for GLM-L2-LCFA Geostationary Lightning Mapper
+
+        Others may include ``&#39;ABI-L1b-Rad&#39;``, ``&#39;ABI-L2-DMW&#39;``, etc.
+        For more available products, look at this `README
+        &lt;https://docs.opendata.aws/noaa-goes16/cics-readme.html&gt;`_
+    domain : {&#39;C&#39;, &#39;F&#39;, &#39;M&#39;}
+        ABI scan region indicator. Only required for ABI products if the
+        given product does not end with C, F, or M.
+
+        - C: Contiguous United States (alias &#39;CONUS&#39;)
+        - F: Full Disk (alias &#39;FULL&#39;)
+        - M: Mesoscale (alias &#39;MESOSCALE&#39;)
+
+    return_as : {&#39;xarray&#39;, &#39;filelist&#39;}
+        Return the data as an xarray.Dataset or as a list of files
+    download : bool
+        - True: Download the data to disk to the location set by :guilabel:`save_dir`
+        - False: Just load the data into memory.
+    save_dir : pathlib.Path or str
+        Path to save the data.
+    overwrite : bool
+        - True: Download the file even if it exists.
+        - False: Do not download the file if it already exists
+    bands : None, int, or list
+        ONLY FOR L1b-Rad products; specify the bands you want
+    s3_refresh : bool
+        Refresh the s3fs.S3FileSystem object when files are listed.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">save_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;repos/a301/satdata/goes&quot;</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<section id="emoji-bug">
+<h4><span class="section-number">42.3.1.1. </span>Emoji bug!<a class="headerlink" href="#emoji-bug" title="Link to this heading">#</a></h4>
+<p>This version of jupyter notebooks and/or goes2go triggers a pretty obscure bug.  A successful read prints out info with a couple of emoji to make the output look pretty.  Unfortunately, jupyter notebook is unable to save the notebook once the cell includes those emoji.  So you need to execute the cell below twice:  first to get the data with  <code class="docutils literal notranslate"><span class="pre">getdata=True</span></code> and then again to make the emoji go away with  <code class="docutils literal notranslate"><span class="pre">getdata=False</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">getdata</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">if</span> <span class="n">getdata</span><span class="p">:</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">goes_nearesttime</span><span class="p">(</span>
+        <span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span> <span class="n">satellite</span><span class="o">=</span><span class="s2">&quot;goes16&quot;</span><span class="p">,</span><span class="n">product</span><span class="o">=</span><span class="s2">&quot;ABI-L2-MCMIP&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> 
+          <span class="n">return_as</span><span class="o">=</span><span class="s2">&quot;xarray&quot;</span><span class="p">,</span> <span class="n">save_dir</span> <span class="o">=</span> <span class="n">save_dir</span><span class="p">,</span> <span class="n">download</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">overwrite</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">)</span>
+    <span class="n">the_path</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">the_path</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;noaa-goes16/ABI-L2-MCMIPC/2020/177/18/&quot;</span>
+                <span class="s2">&quot;OR_ABI-L2-MCMIPC-M6_G16_s20201771801172_e20201771803551_c20201771804104.nc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">full_path</span> <span class="o">=</span> <span class="n">save_dir</span> <span class="o">/</span> <span class="n">the_path</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This example uses the <strong>level 2 <em>multiband</em> formatted file for the continental US (C)
+domain</strong></p>
+<p>Here’s the pattern used for the file names:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>OR_ABI-L2-MCMIPC-M3_G16_s20181781922189_e20181781924562_c20181781925075.nc
+
+OR     - Indicates the system is operational  
+ABI    - Instrument type  
+L2     - Level 2 Data  
+MCMIP  - Multichannel Cloud and Moisture Imagery products  
+C     - CONUS file (created every 5 minutes) or F (full disk)
+M3     - Scan mode  
+G16    - GOES-16  
+s##### - Scan start: 4 digit year, 3 digit day of year (Julian day), hour, minute, second, tenth second  
+e##### - Scan end  
+c##### - File Creation  
+.nc    - NetCDF file extension
+</pre></div>
+</div>
+</section>
+</section>
+<section id="open-file-and-read-crs">
+<h3><span class="section-number">42.3.2. </span>open file and read crs<a class="headerlink" href="#open-file-and-read-crs" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">goesC</span> <span class="o">=</span> <span class="n">xarray</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">full_path</span><span class="p">,</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">mask_and_scale</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">goesC</span><span class="o">.</span><span class="n">variables</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>161
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are 161 different variables, here are the first 10 – the channels and their data quality flags:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">goesC</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;CMI_C01&#39;,
+ &#39;DQF_C01&#39;,
+ &#39;CMI_C02&#39;,
+ &#39;DQF_C02&#39;,
+ &#39;CMI_C03&#39;,
+ &#39;DQF_C03&#39;,
+ &#39;CMI_C04&#39;,
+ &#39;DQF_C04&#39;,
+ &#39;CMI_C05&#39;,
+ &#39;DQF_C05&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="read-the-crs-from-band-2">
+<h3><span class="section-number">42.3.3. </span>read the crs from band 2<a class="headerlink" href="#read-the-crs-from-band-2" title="Link to this heading">#</a></h3>
+<p>The cartopy crs information is associated with individual variables, grab it from band 2 (arbitrary choice)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band_2</span> <span class="o">=</span> <span class="n">goesC</span><span class="o">.</span><span class="n">metpy</span><span class="o">.</span><span class="n">parse_cf</span><span class="p">(</span><span class="s1">&#39;CMI_C02&#39;</span><span class="p">)</span>
+<span class="n">cartopy_crs</span> <span class="o">=</span> <span class="n">band_2</span><span class="o">.</span><span class="n">metpy</span><span class="o">.</span><span class="n">cartopy_crs</span>
+<span class="n">cartopy_crs</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are the y coordinates in the geostationary projection</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band_2</span><span class="o">.</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1f1f1f;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;y&#x27; (y: 1500)&gt; Size: 12kB
+array([4588197.756227, 4586193.790336, 4584189.824445, ..., 1588183.762427,
+       1586179.796536, 1584175.830645], shape=(1500,))
+Coordinates:
+    t          datetime64[ns] 8B ...
+    y_image    float32 4B 0.08624
+    x_image    float64 8B -1.122e+06
+  * y          (y) float64 12kB 4.588e+06 4.586e+06 ... 1.586e+06 1.584e+06
+    metpy_crs  object 8B Projection: geostationary
+Attributes:
+    units:          meter
+    axis:           Y
+    long_name:      GOES fixed grid projection y-coordinate
+    standard_name:  projection_y_coordinate</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'y'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>y</span>: 1500</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-7fc63d64-5f52-4832-8755-4b724d9ea713' class='xr-array-in' type='checkbox' checked><label for='section-7fc63d64-5f52-4832-8755-4b724d9ea713' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>4.588e+06 4.586e+06 4.584e+06 ... 1.588e+06 1.586e+06 1.584e+06</span></div><div class='xr-array-data'><pre>array([4588197.756227, 4586193.790336, 4584189.824445, ..., 1588183.762427,
+       1586179.796536, 1584175.830645], shape=(1500,))</pre></div></div></li><li class='xr-section-item'><input id='section-72cf25ea-304f-4b55-acc0-624070bb6420' class='xr-section-summary-in' type='checkbox'  checked><label for='section-72cf25ea-304f-4b55-acc0-624070bb6420' class='xr-section-summary' >Coordinates: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>t</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ab0c8486-692e-4a0e-bc8d-82af95cad438' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ab0c8486-692e-4a0e-bc8d-82af95cad438' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-15278dd6-026d-475f-a725-81776fc993c8' class='xr-var-data-in' type='checkbox'><label for='data-15278dd6-026d-475f-a725-81776fc993c8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>J2000 epoch mid-point between the start and end image scan in seconds</dd><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>axis :</span></dt><dd>T</dd><dt><span>bounds :</span></dt><dd>time_bounds</dd></dl></div><div class='xr-var-data'><pre>[1 values with dtype=datetime64[ns]]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>y_image</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>0.08624</div><input id='attrs-1ec58a01-c71a-498a-b5bc-33815d369010' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1ec58a01-c71a-498a-b5bc-33815d369010' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6ffd9627-7c82-4daa-9ea1-b03db2f97b1e' class='xr-var-data-in' type='checkbox'><label for='data-6ffd9627-7c82-4daa-9ea1-b03db2f97b1e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>GOES-R fixed grid projection y-coordinate center of image</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>units :</span></dt><dd>rad</dd><dt><span>axis :</span></dt><dd>Y</dd></dl></div><div class='xr-var-data'><pre>array(0.08624, dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>x_image</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-1.122e+06</div><input id='attrs-43efb074-29bb-484c-bffa-d2662d33ac0a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-43efb074-29bb-484c-bffa-d2662d33ac0a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1c0e49dc-dcb1-4b48-bf0b-bd0d1d5f7528' class='xr-var-data-in' type='checkbox'><label for='data-1c0e49dc-dcb1-4b48-bf0b-bd0d1d5f7528' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>GOES-R fixed grid projection x-coordinate center of image</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>units :</span></dt><dd>meter</dd><dt><span>axis :</span></dt><dd>X</dd></dl></div><div class='xr-var-data'><pre>array(-1122249.69459)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>4.588e+06 4.586e+06 ... 1.584e+06</div><input id='attrs-a63aa8f2-fe6f-4d75-a2db-e490bbe3b847' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a63aa8f2-fe6f-4d75-a2db-e490bbe3b847' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dd94ecb2-f305-47d3-b36a-0270c8540281' class='xr-var-data-in' type='checkbox'><label for='data-dd94ecb2-f305-47d3-b36a-0270c8540281' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meter</dd><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>GOES fixed grid projection y-coordinate</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd></dl></div><div class='xr-var-data'><pre>array([4588197.756227, 4586193.790336, 4584189.824445, ..., 1588183.762427,
+       1586179.796536, 1584175.830645], shape=(1500,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>metpy_crs</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>Projection: geostationary</div><input id='attrs-842332a5-7961-44e4-8c5c-8a2c1e46bdbf' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-842332a5-7961-44e4-8c5c-8a2c1e46bdbf' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2ddf785c-8df0-455d-840e-91e3f4362007' class='xr-var-data-in' type='checkbox'><label for='data-2ddf785c-8df0-455d-840e-91e3f4362007' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(&lt;metpy.plots.mapping.CFProjection object at 0x153753380&gt;,
+      dtype=object)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-7ea19d86-2d18-42a4-98e4-ae67bfa23ed7' class='xr-section-summary-in' type='checkbox'  ><label for='section-7ea19d86-2d18-42a4-98e4-ae67bfa23ed7' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>y</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-16730eb9-4992-43e8-a784-be41a91e8865' class='xr-index-data-in' type='checkbox'/><label for='index-16730eb9-4992-43e8-a784-be41a91e8865' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([ 4588197.756226748,  4586193.790335834,   4584189.82444492,
+        4582185.858554006,  4580181.892663091,  4578177.926772177,
+        4576173.427627966,  4574169.461737052,  4572165.495846137,
+        4570161.529955223,
+       ...
+        1602212.056916438, 1600207.8243988752,  1598203.858507961,
+       1596199.8926170468, 1594195.9267261326, 1592191.9608352184,
+       1590187.7283176556, 1588183.7624267414, 1586179.7965358272,
+        1584175.830644913],
+      dtype=&#x27;float64&#x27;, name=&#x27;y&#x27;, length=1500))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-98c95d62-ef15-4cae-a3ac-77e633cc4e92' class='xr-section-summary-in' type='checkbox'  checked><label for='section-98c95d62-ef15-4cae-a3ac-77e633cc4e92' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meter</dd><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>GOES fixed grid projection y-coordinate</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd></dl></div></li></ul></div></div></div></div>
+</div>
+</section>
+</section>
+<section id="get-the-x-y-extent-and-start-time">
+<h2><span class="section-number">42.4. </span>Get the x,y extent and start time<a class="headerlink" href="#get-the-x-y-extent-and-start-time" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">original_extent</span><span class="o">=</span><span class="p">(</span><span class="n">band_2</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">band_2</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">band_2</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">band_2</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">original_extent</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(-3626269.332309611),
+ np.float64(1381769.9431296065),
+ np.float64(1584175.830644913),
+ np.float64(4588197.756226748))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">goesC</span><span class="o">.</span><span class="n">time_coverage_start</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2020-06-25T18:01:17.2Z&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-date-and-time-information">
+<h2><span class="section-number">42.5. </span>Get Date and Time Information<a class="headerlink" href="#get-date-and-time-information" title="Link to this heading">#</a></h2>
+<p>Each file represents the data collected during one scan sequence for the
+domain. There are several different time stamps in this file, which are also
+found in the file’s name.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scan&#39;s start time, converted to datetime object</span>
+<span class="n">scan_start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">goesC</span><span class="o">.</span><span class="n">time_coverage_start</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S.</span><span class="si">%f</span><span class="s2">Z&quot;</span><span class="p">)</span>
+
+<span class="c1"># Scan&#39;s end time, converted to datetime object</span>
+<span class="n">scan_end</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">goesC</span><span class="o">.</span><span class="n">time_coverage_end</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S.</span><span class="si">%f</span><span class="s2">Z&quot;</span><span class="p">)</span>
+
+<span class="c1"># File creation time, convert to datetime object</span>
+<span class="n">file_created</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">goesC</span><span class="o">.</span><span class="n">date_created</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S.</span><span class="si">%f</span><span class="s2">Z&quot;</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># arithmetic on datetime objects</span>
+<span class="c1">#</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="p">(</span><span class="n">scan_end</span> <span class="o">-</span> <span class="n">scan_start</span><span class="p">)</span><span class="o">.</span><span class="n">seconds</span> <span class="o">/</span> <span class="mi">60</span>
+<span class="n">midpoint</span> <span class="o">=</span> <span class="n">scan_start</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span> <span class="o">=</span> <span class="n">duration</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Scan Start    : </span><span class="si">{</span><span class="n">scan_start</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Scan End      : </span><span class="si">{</span><span class="n">scan_end</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File Created  :  </span><span class="si">{</span><span class="n">file_created</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Scan midpoint :  </span><span class="si">{</span><span class="n">midpoint</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Scan Start    : 2020-06-25 18:01:17.200000
+Scan End      : 2020-06-25 18:03:55.100000
+File Created  :  2020-06-25 18:04:10.400000
+Scan midpoint :  2020-06-25 18:02:35.700000
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="true-color-recipe">
+<h2><span class="section-number">42.6. </span>True Color Recipe<a class="headerlink" href="#true-color-recipe" title="Link to this heading">#</a></h2>
+<section id="gamma-correction">
+<h3><span class="section-number">42.6.1. </span>Gamma correction<a class="headerlink" href="#gamma-correction" title="Link to this heading">#</a></h3>
+<p>Color images are a Red-Green-Blue (RGB) composite of three different
+channels. We will assign the following channels as our RGB values:</p>
+<p>RGB values must be between 0 and 1, same as the range of values of the
+reflectance channels. A gamma correction is applied to control the brightness
+and make the image not look too dark, where for input and output values brightness values
+V the gamma correction is:</p>
+<div class="math notranslate nohighlight" id="equation-eq-gamma">
+<span class="eqno">(42.1)<a class="headerlink" href="#equation-eq-gamma" title="Link to this equation">#</a></span>\[
+V_{out} = V_{in}^{1/\gamma}
+\]</div>
+<p>This correction will enhance the distance between smaller values ov <span class="math notranslate nohighlight">\(V_{in}\)</span> (i.e. more levels for darker colors)</p>
+<p>To see why this is, suppose <span class="math notranslate nohighlight">\(\gamma = 2\)</span>, so <span class="math notranslate nohighlight">\(1/\gamma\)</span>=0.5.  Take the derivative of <a class="reference internal" href="#equation-eq-gamma">(42.1)</a>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dV_{out}}{dV_{in}} = \frac{1}{\gamma V_{in}^{0.5}} 
+\]</div>
+<p>so the smaller the magnitude of <span class="math notranslate nohighlight">\(V_{in}\)</span>, the larger the difference between <span class="math notranslate nohighlight">\(dV_{out}\)</span> and <span class="math notranslate nohighlight">\(dV_{in}\)</span></p>
+<p>Most displays have a decoding gamma of 2.2.  See
+<a class="reference external" href="https://en.wikipedia.org/wiki/Gamma_correction">wikipedia</a>, and this
+<a class="reference external" href="https://www.cambridgeincolour.com/tutorials/gamma-correction.htm">tutorial</a> if you’d like to know more.</p>
+</section>
+<section id="natural-vs-veggie-green">
+<h3><span class="section-number">42.6.2. </span>Natural vs. veggie green<a class="headerlink" href="#natural-vs-veggie-green" title="Link to this heading">#</a></h3>
+<p>The GREEN “veggie” channel on GOES-16 corresponds to the landsat NIR band 5. We
+could use that channel in place of green, but it would make the green in our
+image appear too vibrant. Instead, we will tone-down the green channel by
+interpolating the value to simulate a natural green color.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-dc64639e-f396-4d55-9a10-19306c6079d4">
+<span class="eqno">(42.2)<a class="headerlink" href="#equation-dc64639e-f396-4d55-9a10-19306c6079d4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+pseudoGreen = (0.48358168*RED) + (0.06038137*GREEN) + (0.45706946*BLUE)
+\end{equation}\]</div>
+<p>or, a simple alternative (<a class="reference external" href="http://cimss.ssec.wisc.edu/goes/OCLOFactSheetPDFs/ABIQuickGuide_CIMSSRGB_v2.pdf">CIMSS Natural True
+Color</a>):</p>
+<div class="amsmath math notranslate nohighlight" id="equation-31bef8a8-2de5-4003-b3e2-4d771944b21e">
+<span class="eqno">(42.3)<a class="headerlink" href="#equation-31bef8a8-2de5-4003-b3e2-4d771944b21e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+pseudoGreen = (0.45*RED) + (0.1*GREEN) + (0.45*BLUE)
+\end{equation}\]</div>
+<p>The multiband formatted file we loaded is convenient because all the GOES
+channels are in the same NetCDF file. Next, we will assign our variables R, G,
+and B as the data for each channel.</p>
+</section>
+</section>
+<section id="check-the-band-wavelengths">
+<h2><span class="section-number">42.7. </span>Check the band wavelengths<a class="headerlink" href="#check-the-band-wavelengths" title="Link to this heading">#</a></h2>
+<p>Read the <code class="docutils literal notranslate"><span class="pre">band_wavelength</span></code> keys to double check the wavelengths for each of bands
+2, 3 and 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Confirm that each band is the wavelength we are interested in</span>
+<span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+    <span class="c1">#</span>
+    <span class="c1"># create the key and use it to grabe the name, wavelength and units</span>
+    <span class="c1">#</span>
+    <span class="n">band_wavelength</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;band_wavelength_C</span><span class="si">{</span><span class="n">band</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">band_wavelength</span><span class="p">)</span>
+    <span class="n">long_name</span> <span class="o">=</span> <span class="n">goesC</span><span class="p">[</span><span class="n">band_wavelength</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span>
+    <span class="n">wavelength</span> <span class="o">=</span> <span class="n">goesC</span><span class="p">[</span><span class="n">band_wavelength</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">units</span> <span class="o">=</span> <span class="n">goesC</span><span class="p">[</span><span class="n">band_wavelength</span><span class="p">]</span><span class="o">.</span><span class="n">units</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">long_name</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">wavelength</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">units</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>band_wavelength_C02
+ABI band 2 central wavelength is 0.64 um
+band_wavelength_C03
+ABI band 3 central wavelength is 0.87 um
+band_wavelength_C01
+ABI band 1 central wavelength is 0.47 um
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="clip-the-bands-and-apply-the-gamma-correction">
+<h2><span class="section-number">42.8. </span>Clip the bands and apply the gamma correction<a class="headerlink" href="#clip-the-bands-and-apply-the-gamma-correction" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">######################################################################</span>
+<span class="c1">#</span>
+
+<span class="c1"># Load the three channels into appropriate R, G, and B variables</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">goesC</span><span class="p">[</span><span class="s2">&quot;CMI_C02&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">goesC</span><span class="p">[</span><span class="s2">&quot;CMI_C03&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">goesC</span><span class="p">[</span><span class="s2">&quot;CMI_C01&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+
+<span class="c1">######################################################################</span>
+<span class="c1">#</span>
+
+<span class="c1"># Apply range limits for each channel. RGB values must be between 0 and 1</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">######################################################################</span>
+<span class="c1">#</span>
+
+<span class="c1"># Apply a gamma correction to the image</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">2.2</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">gamma</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">gamma</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">gamma</span><span class="p">)</span>
+
+<span class="c1">######################################################################</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="make-true-green-from-the-three-bands">
+<h2><span class="section-number">42.9. </span>Make “true” green from the three bands<a class="headerlink" href="#make-true-green-from-the-three-bands" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the &quot;True&quot; Green</span>
+<span class="n">G_true</span> <span class="o">=</span> <span class="mf">0.45</span> <span class="o">*</span> <span class="n">R</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">G</span> <span class="o">+</span> <span class="mf">0.45</span> <span class="o">*</span> <span class="n">B</span>
+<span class="n">G_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">G_true</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">G_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">G_true</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-the-raw-images">
+<h2><span class="section-number">42.10. </span>Plot the raw images<a class="headerlink" href="#plot-the-raw-images" title="Link to this heading">#</a></h2>
+<p>First, we plot each channel individually. The deeper the color means the
+satellite is observing more light in that channel. Clouds appear white becuase
+they reflect lots of red, green, and blue light. You will also notice that the
+land reflects a lot of “green” in the veggie channel becuase this channel is
+sensitive to the chlorophyll.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">([</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">,</span> <span class="n">ax4</span><span class="p">])</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Reds&quot;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Red&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;semibold&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greens&quot;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Veggie&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;semibold&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+<span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">G_true</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greens&quot;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;&quot;True&quot; Green&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;semibold&quot;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+<span class="n">ax4</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Blue&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;semibold&quot;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ffbc78a518d797fed270d7a16ca6a43ab6282193c8b794a1de4edbee31a39880.png" src="../../_images/ffbc78a518d797fed270d7a16ca6a43ab6282193c8b794a1de4edbee31a39880.png" />
+</div>
+</div>
+</section>
+<section id="stack-the-tree-images-using-dstack">
+<h2><span class="section-number">42.11. </span>Stack the tree images using dstack<a class="headerlink" href="#stack-the-tree-images-using-dstack" title="Link to this heading">#</a></h2>
+<p>Compare a stack with “veggie green” with  “true green” using false color images</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">######################################################################</span>
+<span class="c1"># The addition of the three channels results in a color image. We combine the</span>
+<span class="c1"># three channels in a stacked array and display the image with `imshow` again.</span>
+<span class="c1">#</span>
+
+<span class="c1"># The RGB array with the raw veggie band</span>
+<span class="n">RGB_veggie</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">([</span><span class="n">R</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">B</span><span class="p">])</span>
+
+<span class="c1"># The RGB array for the true color image</span>
+<span class="n">RGB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">([</span><span class="n">R</span><span class="p">,</span> <span class="n">G_true</span><span class="p">,</span> <span class="n">B</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># The RGB using the raw veggie band</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">RGB_veggie</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;GOES-16 RGB Raw Veggie&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;semibold&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">scan_start</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %B %Y %H:%M UTC &quot;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+<span class="c1"># The RGB for the true color image</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">RGB</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;GOES-16 RGB True Color&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;semibold&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">scan_start</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %B %Y %H:%M UTC &quot;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b967c08e6a0cc779eead2cbdfcdc09173e6cbdff5035d3e4a722149550a5c8f9.png" src="../../_images/b967c08e6a0cc779eead2cbdfcdc09173e6cbdff5035d3e4a722149550a5c8f9.png" />
+</div>
+</div>
+</section>
+<section id="plot-the-mapped-image-using-cartopy">
+<h2><span class="section-number">42.12. </span>Plot the mapped image using cartopy<a class="headerlink" href="#plot-the-mapped-image-using-cartopy" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">cartopy_crs</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+    <span class="n">RGB</span><span class="p">,</span>
+    <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;upper&quot;</span><span class="p">,</span>
+    <span class="n">extent</span><span class="o">=</span> <span class="n">original_extent</span><span class="p">,</span>
+    <span class="n">transform</span><span class="o">=</span><span class="n">cartopy_crs</span><span class="p">,</span>
+    <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span>
+    <span class="n">vmin</span><span class="o">=</span><span class="mf">162.0</span><span class="p">,</span>
+    <span class="n">vmax</span><span class="o">=</span><span class="mf">330.0</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;50m&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">ccrs</span><span class="o">.</span><span class="n">cartopy</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">STATES</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;GOES-16 True Color&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;semibold&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">scan_start</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %B %Y %H:%M UTC &quot;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/5dbbc925f93f83d1c76232490c4fdf0a5b8856501e6cbbff5cab78363cb1427f.png" src="../../_images/5dbbc925f93f83d1c76232490c4fdf0a5b8856501e6cbbff5cab78363cb1427f.png" />
+</div>
+</div>
+</section>
+<section id="changing-the-map-projection-and-plot-extent">
+<h2><span class="section-number">42.13. </span>Changing the map projection and plot extent<a class="headerlink" href="#changing-the-map-projection-and-plot-extent" title="Link to this heading">#</a></h2>
+<p>The next two cells show how to change the plotting crs and boundaries (extent) on a plot</p>
+<p>The plot below changes the crs to <a class="reference external" href="https://scitools.org.uk/cartopy/docs/v0.15/crs/projections.html#lambertconformal">LambertConformal</a>
+and sets the plotting extent to between -130- -60 deg lon and 10 - 65 deg lat</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="n">lc</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">LambertConformal</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=-</span><span class="mf">97.5</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># add an axiss with the lc projection</span>
+<span class="c1">#</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">lc</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># lat/lons are given in &quot;flat-square&quot; projection</span>
+<span class="c1">#</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">65</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">55</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+    <span class="n">RGB</span><span class="p">,</span>
+    <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;upper&quot;</span><span class="p">,</span>
+    <span class="n">extent</span><span class="o">=</span><span class="n">original_extent</span><span class="p">,</span>
+    <span class="n">transform</span><span class="o">=</span><span class="n">cartopy_crs</span><span class="p">,</span>
+    <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;50m&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">ccrs</span><span class="o">.</span><span class="n">cartopy</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">STATES</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;GOES-16 True Color&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;semibold&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">scan_start</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %B %Y %H:%M UTC &quot;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/793536d503f792d7e094d0dc32ba2aba23ac1a1c6a3927d6951b7ab0bdb5bc19.png" src="../../_images/793536d503f792d7e094d0dc32ba2aba23ac1a1c6a3927d6951b7ab0bdb5bc19.png" />
+</div>
+</div>
+</section>
+<section id="change-the-axis-extent-not-the-original-image-extent">
+<h2><span class="section-number">42.14. </span>Change the axis extent (not the original image extent)<a class="headerlink" href="#change-the-axis-extent-not-the-original-image-extent" title="Link to this heading">#</a></h2>
+<p>We can zoom the map to a lon/lat box by specifying a new extent for the axis
+between -114.5 - -108.25 deg Lon and 36-43 deg Lat  – Salt Lake City, Utah
+The axis crs is switched to PlateCarree, which is ok at this small scale (where the lat/lon parallels are basically straight lines)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1">#</span>
+<span class="c1"># GOES </span>
+<span class="c1">#</span>
+<span class="n">pc</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">pc</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># utah</span>
+<span class="c1">#</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mf">114.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">108.25</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">43</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">pc</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">RGB</span><span class="p">,</span> 
+          <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span>
+          <span class="n">extent</span><span class="o">=</span><span class="n">original_extent</span><span class="p">,</span>
+          <span class="n">transform</span><span class="o">=</span><span class="n">cartopy_crs</span><span class="p">,</span>
+          <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;50m&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">ccrs</span><span class="o">.</span><span class="n">cartopy</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">STATES</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;GOES-16 True Color&#39;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scan_start</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> %B %Y %H:%M UTC &#39;</span><span class="p">)),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/22920ba49f96012a1150306f3accc8d3a583ab5f3c7f802aeaaed3b587eabc11.png" src="../../_images/22920ba49f96012a1150306f3accc8d3a583ab5f3c7f802aeaaed3b587eabc11.png" />
+</div>
+</div>
+</section>
+<section id="practice-questions-takehome-exam-prep">
+<h2><span class="section-number">42.15. </span>Practice questions (takehome exam prep)<a class="headerlink" href="#practice-questions-takehome-exam-prep" title="Link to this heading">#</a></h2>
+<section id="practice-question-1">
+<h3><span class="section-number">42.15.1. </span>Practice question 1<a class="headerlink" href="#practice-question-1" title="Link to this heading">#</a></h3>
+<p>Use a seaborn jointplot to compare the channel 1 (blue) histogram before and after the gamma correction</p>
+</section>
+<section id="practice-question-2">
+<h3><span class="section-number">42.15.2. </span>Practice question 2<a class="headerlink" href="#practice-question-2" title="Link to this heading">#</a></h3>
+<p>Use xarray.isel to clip just the portion of the abi scene that’s in the [-114.75, -108.25, 36, 43] lon/lat bounding
+box and save it to disk as a netcdf file with the correct affine transform and crs</p>
+</section>
+<section id="practice-question-3">
+<h3><span class="section-number">42.15.3. </span>Practice question 3<a class="headerlink" href="#practice-question-3" title="Link to this heading">#</a></h3>
+<p>Change the map projection in from lambert to azimuthal equal area – does it look less weird?</p>
+</section>
+<section id="practice-question-4">
+<h3><span class="section-number">42.15.4. </span>Practice question 4<a class="headerlink" href="#practice-question-4" title="Link to this heading">#</a></h3>
+<p>Write a channel out as a geotiff file by first converting it to a rioxarray</p>
+</section>
+<section id="pratice-question-5">
+<h3><span class="section-number">42.15.5. </span>Pratice question 5<a class="headerlink" href="#pratice-question-5" title="Link to this heading">#</a></h3>
+<p>Use the full domain image to produce a picture of a region in the southern hemisphere or Canada</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/week8"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="install_part1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">41. </span>Python packages Part 1</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">42.1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-goes-satellites">42.1.1. Current GOES satellites</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#channels-and-workflow">42.2. Channels and workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-the-data">42.3. Read in the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-file-on-aws-using-goes-nearesttime">42.3.1. Find the file on AWS using goes_nearesttime</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#emoji-bug">42.3.1.1. Emoji bug!</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-file-and-read-crs">42.3.2. open file and read crs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-crs-from-band-2">42.3.3. read the crs from band 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-x-y-extent-and-start-time">42.4. Get the x,y extent and start time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-date-and-time-information">42.5. Get Date and Time Information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#true-color-recipe">42.6. True Color Recipe</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gamma-correction">42.6.1. Gamma correction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-vs-veggie-green">42.6.2. Natural vs. veggie green</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-band-wavelengths">42.7. Check the band wavelengths</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clip-the-bands-and-apply-the-gamma-correction">42.8. Clip the bands and apply the gamma correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-true-green-from-the-three-bands">42.9. Make “true” green from the three bands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-raw-images">42.10. Plot the raw images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stack-the-tree-images-using-dstack">42.11. Stack the tree images using dstack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-mapped-image-using-cartopy">42.12. Plot the mapped image using cartopy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-map-projection-and-plot-extent">42.13. Changing the map projection and plot extent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-the-axis-extent-not-the-original-image-extent">42.14. Change the axis extent (not the original image extent)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-questions-takehome-exam-prep">42.15. Practice questions (takehome exam prep)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-question-1">42.15.1. Practice question 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-question-2">42.15.2. Practice question 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-question-3">42.15.3. Practice question 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-question-4">42.15.4. Practice question 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pratice-question-5">42.15.5. Pratice question 5</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Philip Austin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

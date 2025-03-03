@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>6. Beers and inverse squared laws &#8212; ATSC 301</title>
+    <title>41. Python packages Part 1 &#8212; ATSC 301</title>
   
   
   
@@ -57,14 +57,12 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week1/beers_law';</script>
-    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week1/beers_law.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week8/install_part1';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week8/install_part1.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7. Solid angle and radiance" href="radiance.html" />
-    <link rel="prev" title="5. Midterm solutions: sample questions II" href="../midterm/mid_term_reviewII_solutions.html" />
+    <link rel="next" title="42. GOES-16: True Color Images from GOES ABI" href="goes_true_color.html" />
+    <link rel="prev" title="40. A301 midterm solutions" href="../../solutions/midterm/a301_2024t2_midterm_solution.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -203,13 +201,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII_solutions.html">5. Midterm solutions: sample questions II</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">6. Beers and inverse squared laws</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
-<li class="toctree-l1"><a class="reference internal" href="radiance.html">7. Solid angle and radiance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="newflux.html">8. Finding the flux given the radiance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="planck_function.html">9. Plotting the Planck function with python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">7. Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">8. Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">9. Plotting the Planck function with python</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
 <ul class="nav bd-sidenav">
@@ -261,9 +259,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../solutions/midterm/a301_2024t2_midterm_solution.html">40. A301 midterm solutions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week8/install_part1.html">41. Python packages Part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/goes_true_color.html">42. GOES-16: True Color Images from GOES ABI</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">41. Python packages Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goes_true_color.html">42. GOES-16: True Color Images from GOES ABI</a></li>
 </ul>
 
     </div>
@@ -318,7 +316,7 @@
       
       
       
-      <li><a href="../../_sources/notebooks/week1/beers_law.md" target="_blank"
+      <li><a href="../../_sources/notebooks/week8/install_part1.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -402,7 +400,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Beers and inverse squared laws</h1>
+    <h1>Python packages Part 1</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -412,9 +410,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differences-differentials-and-derivatives">6.1. Differences, differentials and derivatives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beers-law-using-differentials">6.2. Beers law – using differentials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-square-law-in-class-problem-in-energy-conservation">6.3. Inverse Square Law: In-class problem in energy conservation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">41.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-to-start">41.2. Where to start</a></li>
 </ul>
             </nav>
         </div>
@@ -426,179 +423,68 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="beers-and-inverse-squared-laws">
-<span id="week1-beerslaw"></span><h1><span class="section-number">6. </span>Beers and inverse squared laws<a class="headerlink" href="#beers-and-inverse-squared-laws" title="Link to this heading">#</a></h1>
-<p>Comments/derivations for the material in  Stull p. 38-39</p>
-<section id="differences-differentials-and-derivatives">
-<span id="differences"></span><h2><span class="section-number">6.1. </span>Differences, differentials and derivatives<a class="headerlink" href="#differences-differentials-and-derivatives" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>What is a derivative?</p></li>
-</ol>
+  <section class="tex2jax_ignore mathjax_ignore" id="python-packages-part-1">
+<span id="week8-install-part1"></span><h1><span class="section-number">41. </span>Python packages Part 1<a class="headerlink" href="#python-packages-part-1" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Download <code class="docutils literal notranslate"><span class="pre">install_part1.ipynb</span></code> and <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> from
+<a class="reference external" href="https://drive.google.com/drive/folders/1-D6y9MlE8LZRLZg-qRCxPZSgar8kGjBT?usp=drive_links">the week8 folder</a></p></li>
+<li><p>Obligatory <a class="reference external" href="https://xkcd.com/1987/">xkcd cartoon</a> from around 2017.</p></li>
+</ul>
+<section id="introduction">
+<h2><span class="section-number">41.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>This notebook goes over how to install a single python file, like
+<a class="reference external" href="https://github.com/phaustin/a301_lib/blob/main/src/a301_lib.py">a301_lib.py</a> so it can be imported into the a301 python environment.  The general task of creating, selecting and installing files
+is called “package management”, and programs that do that are called “package managers”.  None of this will be on the final exam, but if you are planning to work with python in the future, all of this should be on your to-learn list at some point relatively soon.</p>
+<p>Python packaging is especially complicated, because python has an extensive history (python 1.0 was released in January 1994) that predates any formal way of distributing code.  Python grew up along with the internet, and pioneered many of the ways that modern programming languages install libraries.  That process also meant that there were many competing experiments and dead ends, and a semi-standardized way of packaging libraries has only evolved in the last 5 years or so.</p>
+<p>Many modern languages that were created after python learned from python’s successes and failures, and designed a single installation manager from early in the language’s evolution (pkg for Julia, cargo for Rust, npm for javascript, etc.)  Python instead has about 6 package managers that can all use the same configuration files but do the basic process of package and environment management slightly differently.</p>
+<p>Python also is different in that
+there are two fundamentally different ways of approaching packaging, via the official python repository (<a class="reference external" href="https://pypi.org">pypi.org</a>) or via conda and <a class="reference external" href="https://conda-forge.org">conda-forge.org</a>.  This notebook only considers creating a package that is
+compatible with pypi.org.  A pypi package can also be wrapped as a conda package, but that topic
+is out of scope for A301.</p>
+</section>
+<section id="where-to-start">
+<h2><span class="section-number">41.2. </span>Where to start<a class="headerlink" href="#where-to-start" title="Link to this heading">#</a></h2>
+<p>There are an excellent set of tutorials developed by the <a class="reference external" href="https://www.pyopensci.org/">pyopenscience.org</a> and hosted as the <a class="reference external" href="https://www.pyopensci.org/python-package-guide/">python packaging guide</a>.  Their examples use a fairly new
+packaging tool called <a class="reference external" href="https://hatch.pypa.io/latest/">hatch</a>.  The a301_lib package instead uses
+the oldest python installation program called <a class="reference external" href="https://setuptools.pypa.io/en/latest/userguide/">setuptools</a> but for this simple example there
+is no real difference between the two approaches.</p>
 <ul>
-<li><p>According to
-<a class="reference external" href="https://en.wikipedia.org/wiki/Derivative">wikipedia</a>, a
-derivative is defined as:</p>
-<p>The derivative of a function of a real variable measures the
-sensitivity to change of a quantity (a function value or dependent
-variable) which is determined by another quantity (the independent
-variable).</p>
+<li><p>Step 1:  read <a class="reference external" href="https://www.pyopensci.org/python-package-guide/tutorials/intro.html#why-create-a-python-package">why create a python package</a></p></li>
+<li><p>Step 2: read <a class="reference external" href="https://www.pyopensci.org/python-package-guide/#python-packaging-for-scientists">python packaging for scientists</a></p></li>
+<li><p>Step 3: in class walk through of the a301_lib <a class="reference external" href="https://github.com/phaustin/a301_lib/blob/main/pyproject.toml">pyproject.toml</a></p></li>
+<li><p>Step 4:  how to use the library</p>
+<ul>
+<li><p>install with <a class="reference external" href="https://pip.pypa.io/en/stable/">pip</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">phaustin</span><span class="o">/</span><span class="n">a301_lib</span>
+</pre></div>
+</div>
+</li>
+<li><p>alternatively, download the <a class="reference external" href="https://github.com/phaustin/a301_lib/blob/main/requirements.txt">requirements.txt</a> file from <a class="reference external" href="https://drive.google.com/drive/folders/1-D6y9MlE8LZRLZg-qRCxPZSgar8kGjBT?usp=drive_links">the week8 folder</a> and do:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
 </li>
 </ul>
-<ol class="arabic simple" start="2">
-<li><p>What is the derivative of <span class="math notranslate nohighlight">\(F = \sigma T^4\)</span> with respect to T?</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-\frac{dF}{dT} = \frac{d \sigma T^4}{dT} = 4 \sigma T^3
-\]</div>
-<p>Does that mean that you are free to treat dF/dT as a fraction, and
-cancel dT in the denominator to write:</p>
-<div class="math notranslate nohighlight">
-\[
-dF = \frac{d \sigma T^4}{dT} dT = 4 \sigma T^3 dT
-\]</div>
-<p>Scientists (and mathematicians) do this all the time, but that isn’t how
-derivatives work – dF/dT is a function, not a fraction. So what is
-really going on?</p>
-<ol class="arabic simple" start="3">
-<li><p>Instead, we need to treat the differentials dF and dT as limits, not
-numbers. We know that the following is true: given a small
-temperature difference <span class="math notranslate nohighlight">\(\Delta T\)</span> the flux difference
-<span class="math notranslate nohighlight">\(\Delta F\)</span> is aproximately:</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-\Delta F \approx  \frac{dF}{dT} \Delta T =  4 \sigma T^3 \Delta T
-\]</div>
-<p>i.e. – change in x times slope = change in y.</p>
-<p>This equation in words is called a “first order Taylor series expansion”
-of the function <span class="math notranslate nohighlight">\(F = \sigma T^4\)</span>. It is not exact, but it gets
-better as <span class="math notranslate nohighlight">\(\Delta T\)</span> gets smaller. We can make it exact by writing
-out the whole Taylor series expansion which is a power series with an
-infinite number of terms. (See the Wikipedia entry
-<a class="reference external" href="https://en.wikipedia.org/wiki/Taylor_series">here</a>)</p>
-<ol class="arabic simple" start="4">
-<li><p>What is a differential?</p></li>
-</ol>
-<p>Roughly, the differentials dF and dT represent limits that are evaluated
-by integration:</p>
-<p><span class="math notranslate nohighlight">\(dT = \lim{\  \Delta T \to 0}\)</span>, so that
-<span class="math notranslate nohighlight">\(\int dT = T\)</span> and</p>
-<div class="math notranslate nohighlight">
-\[
-dF = \lim_{ \Delta T \to 0} \Delta F
-\]</div>
-<p>So if we take the <span class="math notranslate nohighlight">\(\lim{\  \Delta T \to 0}\)</span> we can write</p>
-<div class="math notranslate nohighlight">
-\[
-dF = \frac{d \sigma T^4}{dT} dT = 4 \sigma T^3 dT
-\]</div>
-<p>Note that this is just doing the steps in Stull p. 38 in the opposite
-order. He starts with my last equation and winds up with 3). The
-advantage of the alternative approach we’re using here is that we don’t
-need to treat the function <span class="math notranslate nohighlight">\(\frac{dF}{dT}\)</span> as if it can be ripped
-apart to get <span class="math notranslate nohighlight">\(dF\)</span> and <span class="math notranslate nohighlight">\(dT\)</span>. If you really care, I recommend
-reading <a class="reference external" href="http://math.stackexchange.com/questions/23902/what-is-the-practical-difference-between-a-differential-and-a-derivative">this
-answer</a>
-to a question about differentials. This is also closely related to the
-<a class="reference external" href="https://en.wikipedia.org/wiki/Chain_rule">chain rule</a> for
-derivatives of functions.</p>
-<p>By taking the limit as <span class="math notranslate nohighlight">\(\Delta T\)</span> approaches 0 we’ve turned a
-<em>difference equation</em> for the number <span class="math notranslate nohighlight">\(\Delta F\)</span> (which we can
-solve in python) into a <em>differential equation</em> for the differential
-<span class="math notranslate nohighlight">\(dF\)</span> (which we can integrate using calculus).</p>
-</section>
-<section id="beers-law-using-differentials">
-<span id="beers-law-diff"></span><h2><span class="section-number">6.2. </span>Beers law – using differentials<a class="headerlink" href="#beers-law-using-differentials" title="Link to this heading">#</a></h2>
-<p>Both physics (Maxwell’s equations) and observations show that when a
-narrow beam of photons are travelling through a material (like air or
-water) of constant composition, the flux obeys “Beer’s law”:</p>
-<div class="math notranslate nohighlight">
-\[
-F(s) = F_i \exp (-n b s)
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(s\ (m)\)</span> is the distance travelled (the path length),
-<span class="math notranslate nohighlight">\(n\ (\#/m^3)\)</span> is the number denstiy of reflecting/absorbing
-particles and <span class="math notranslate nohighlight">\(b\ (m^2)\)</span> is the extinction cross section due to
-both absorption and scattering. You can think of <span class="math notranslate nohighlight">\(b\)</span> as the
-<em>target size</em> of the particles (molecules, smoke particles etc.) which
-may be much different than the physical size of the particle because of
-quantum mechanical and wave interference effects.</p>
-<p>To get the differential version of Beers law, take the derivitive and
-use the limit argument we went through above and get:</p>
-<div class="math notranslate nohighlight" id="equation-beers-flux">
-<span class="eqno">(6.1)<a class="headerlink" href="#equation-beers-flux" title="Link to this equation">#</a></span>\[
-dF = F_i (-nb) \exp(-nbs) ds =  (-nb) F ds
-\]</div>
-<p>or</p>
-<div class="math notranslate nohighlight" id="equation-eq-difflux">
-<span class="eqno">(6.2)<a class="headerlink" href="#equation-eq-difflux" title="Link to this equation">#</a></span>\[
-\frac{dF}{F} = -n b ds
-\]</div>
-<p>If we define the differential optical depth as:</p>
-<div class="math notranslate nohighlight">
-\[
-d\tau = n b ds
-\]</div>
-<p>Then we get:</p>
-<div class="math notranslate nohighlight" id="equation-eq-diffbeers">
-<span class="eqno">(6.3)<a class="headerlink" href="#equation-eq-diffbeers" title="Link to this equation">#</a></span>\[
-\frac{dF^\prime}{F^\prime} = d \ln F^\prime = -d \tau^\prime
-\]</div>
-<p>and integrating from <span class="math notranslate nohighlight">\(\tau^\prime=0,\ F^\prime=F_i\)</span> to
-<span class="math notranslate nohighlight">\(\tau^\prime = \tau,F^\prime = F\)</span> gives:</p>
-<div class="math notranslate nohighlight">
-\[
-\int_{F_i}^F  d \ln F^\prime = -\int_0^\tau d\tau^\prime
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\ln \left ( \frac{F}{F_i} \right ) = - \tau
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-F = F_i \exp (-\tau)
-\]</div>
-<p>which is stull 2.31c. An important point is that the extinction cross
-section <span class="math notranslate nohighlight">\(b\)</span> can vary enormously over small wavlength ranges
-(called “absorption bands”) where the cross section can increase by a
-factor of 100,000. This is why small concentrations of carbon dioxide
-have such large impacts on climate.</p>
-<p>Also note that now that we have the differential form of Beer’s law, we
-don’t have to assume that <span class="math notranslate nohighlight">\(n\)</span> or <span class="math notranslate nohighlight">\(b\)</span> are constant, we can
-make them depend on position and just do the (more complicated) integral
-to get <span class="math notranslate nohighlight">\(\tau\)</span></p>
-</section>
-<section id="inverse-square-law-in-class-problem-in-energy-conservation">
-<h2><span class="section-number">6.3. </span>Inverse Square Law: In-class problem in energy conservation<a class="headerlink" href="#inverse-square-law-in-class-problem-in-energy-conservation" title="Link to this heading">#</a></h2>
-<p>On page 39, Stull asserts the inverse square law:</p>
-<div class="math notranslate nohighlight">
-\[
-F_2 = F_1^* \left ( \frac{R_1^2}{R_2^2} \right )
-\]</div>
-<ol class="arabic">
-<li><p>Prove this using conservation of energy (i.e. conservation of Joules)</p></li>
-<li><p>Suppose a 10 cm x 10 cm piece of white paper with a visible
-reflectivity of 80% is pinned to a wall and illuminated by visible
-light with a flux of 100 <span class="math notranslate nohighlight">\(W\,m^{-2}\)</span>. If the paper reflects
-evenly in all directions (isotropic, not glossy), what is the flux
-from the paper 3 meters from the wall? What about 6 meters from the
-wall?</p></li>
-<li><p>Stull defines the direct beam transmissivity as:</p>
-<div class="math notranslate nohighlight">
-\[
-   t = \frac{F}{F_{i}} = \exp(-\tau)
-   \]</div>
-<p>Suppose I have two pieces of translucent glass that absorb but don’t
-reflect light, and their indvidual transmissivities are <span class="math notranslate nohighlight">\(t_1\)</span> and
-<span class="math notranslate nohighlight">\(t_2\)</span>. Use conservation of energy to prove that if we stack the
-two pieces, the combined transmissivity will be <span class="math notranslate nohighlight">\(t_1 \times t_2\)</span>,
-which means that the combined optical depth will be
-<span class="math notranslate nohighlight">\(\tau_1 + \tau_2\)</span> (i.e. optical depths add). Note that I had to
-assume no reflection so that photons wouldn’t bounce back and forth
-between the two plates.</p>
 </li>
-</ol>
+<li><p>Step 5: test the installation</p>
+<ul>
+<li><p>the following should print out the path to <code class="docutils literal notranslate"><span class="pre">a301_lib.py</span></code> inside your
+miniconda install</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;import a301_lib;print(a301_lib.__file__)&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p>do <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code> in the terminal and you should see this line:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a301</span><span class="o">-</span><span class="n">lib</span>                  <span class="mf">0.1</span>                      <span class="n">pypi_0</span>    <span class="n">pypi</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -615,7 +501,7 @@ between the two plates.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./notebooks/week1"
+            path: "./notebooks/week8"
         },
         predefinedOutput: true
     }
@@ -633,20 +519,20 @@ between the two plates.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../midterm/mid_term_reviewII_solutions.html"
+       href="../../solutions/midterm/a301_2024t2_midterm_solution.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Midterm solutions: sample questions II</p>
+        <p class="prev-next-title"><span class="section-number">40. </span>A301 midterm solutions</p>
       </div>
     </a>
     <a class="right-next"
-       href="radiance.html"
+       href="goes_true_color.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Solid angle and radiance</p>
+        <p class="prev-next-title"><span class="section-number">42. </span>GOES-16: True Color Images from GOES ABI</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -666,9 +552,8 @@ between the two plates.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differences-differentials-and-derivatives">6.1. Differences, differentials and derivatives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beers-law-using-differentials">6.2. Beers law – using differentials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-square-law-in-class-problem-in-energy-conservation">6.3. Inverse Square Law: In-class problem in energy conservation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">41.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-to-start">41.2. Where to start</a></li>
 </ul>
   </nav></div>
 
