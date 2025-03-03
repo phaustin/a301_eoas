@@ -32,8 +32,8 @@ applying a transformation.
 Some background:  Take a look at the 16 channels described on page 230 of [Stull Chapter 8](https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch08-satellite_radar-v102b.pdf).  Note that
 unlike Modis or Landsat OLI, the ABI doesn't have a visible channel at green wavelengths, substituting
 the near-ir 0.846--0.885  $\mu m$ wavelength range for green.  Since that channel is very responsive to
-plant chlorophyll it's possible to still  use that as part of a proxy for green as shown below.  As of this
-January, GOES 18 is now GOES West, and GOES 16 is GOES East, with GOES 17 moved into a parking position.
+plant chlorophyll it's possible to still  use that as part of a proxy for green as shown below.  As of March 2025
+ GOES 18 is GOES West, and GOES 16 is GOES East, with GOES 17 moved into a parking position  and  GOES 19 ready to replace GOES 16 in Aparil.
 For more background on GOES, see [NOAA's beginner guide to GOES](https://www.goes-r.gov/downloads/resources/documents/Beginners_Guide_to_GOES-R_Series_Data.pdf).
 
 ### Current GOES satellites
@@ -74,20 +74,20 @@ The workflow for the notebook:
 
 1) Read the metadata and channels into an xarray dataset
 
-3) Create the cartopy crs for the scene using the crs 
+3) Create the cartopy crs for the scene using the xarray metpy plugin.
 
-4) Get the `original_extent` for the image so we can plot it
+4) Get the `original_extent` for the image in the geostationary projection crs  so we can plot it
 
-4) Produce a weighted "pseudo-green" image using a weighted combination of the 3 bands
+4) Produce a weighted "pseudo-green" image using a weighted combination of the 3 bands to replace the missing green band.
 
-5) Clip the band values to 0-1 and apply a "gamma correction" (an alternative to histogram equalization, we used
+6) Clip the band values to 0-1 and apply a "gamma correction" (an alternative to the histogram equalization we used
 in {ref}`week7:false_color`)
 
-6) Stack the 3 bands in rgb order using [numpy depth stacking](https://numpy.org/doc/stable/reference/generated/numpy.dstack.html)
+7) Stack the 3 bands in rgb order using [numpy depth stacking](https://numpy.org/doc/stable/reference/generated/numpy.dstack.html)
 
-7) Plot the mapped image using cartopy
+8) Plot the mapped image using cartopy
 
-8) Zoom the image by changing the axis extent
+9) Zoom the image by changing the axis extent
 
 ```{code-cell} ipython3
 from goes2go.data import goes_nearesttime
@@ -107,14 +107,14 @@ warnings.filterwarnings('ignore')
 
 ## Read in the data
 
-NOAA stores the data in a file format called "netcdf" instead of geotiff.  Rioxarray isn't able to read
-the current version of these files, but plain xarray works.  The goes2go library loads an xarray plugin
+NOAA stores the data in a file format called [netcdf](https://foundations.projectpythia.org/core/data-formats/netcdf-cf.html) instead of geotiff.  Rioxarray isn't able to read
+the current netcdf version of these files, but plain xarray works.  The goes2go library loads an xarray plugin
 calle `metpy` that is able to read the crs information from the netcdf metadata, which is stored in
-set of attributes at `the_xarray.goes_imager_projection.attrs`.  The metpy plugin is able to read
+set of attributes at `the_xarray.goes_imager_projection.attrs`.  We `metpy.parse_cf` function to read
 those attributes and return a cartopy crs for mapping.
 
-The 16 variables are labeled `CMI_C01`, `CMI_C02` etc.
-Each band has data quality flag file `DQF_C01`, `DQF_C02`, ... band wavelength data stored as `band_wavelength_C01, ...`, and a band id stored as `band_id_C01, ...`.
+The 16 bands in the dataset are labeled `CMI_C01`, `CMI_C02` etc.
+Each band has data quality flag file `DQF_C01`, `DQF_C02`, ...a band wavelength data stored as `band_wavelength_C01, ...`, and a band id stored as `band_id_C01, ...`.
 
 +++
 
@@ -133,9 +133,7 @@ save_dir = Path.home() / "repos/a301/satdata/goes"
 
 #### Emoji bug!
 
-To read the data, set `getdata=True`
-
-After you do that, set `getdata=False` to remove the emojis, which confuse Jupyter
+This version of jupyter notebooks and/or goes2go triggers a pretty obscure bug.  A successful read prints out info with a couple of emoji to make the output look pretty.  Unfortunately, jupyter notebook is unable to save the notebook once the cell includes those emoji.  So you need to execute the cell below twice:  first to get the data with  `getdata=True` and then again to make the emoji go away with  `getdata=False`
 
 ```{code-cell} ipython3
 getdata = False
@@ -157,7 +155,7 @@ full_path = save_dir / the_path
 This example uses the **level 2 _multiband_ formatted file for the continental US (C)
 domain** 
 
-Here's the naming scheme for files
+Here's the pattern used for the file names:
 
     OR_ABI-L2-MCMIPC-M3_G16_s20181781922189_e20181781924562_c20181781925075.nc
 
@@ -179,7 +177,10 @@ Here's the naming scheme for files
 
 ```{code-cell} ipython3
 goesC = xarray.open_dataset(full_path,mode = 'r',mask_and_scale = True)
+len(goesC.variables)
 ```
+
+There are 161 different variables, here are the first 10 -- the channels and their data quality flags:
 
 ```{code-cell} ipython3
 list(goesC.variables.keys())[:10]
@@ -187,7 +188,7 @@ list(goesC.variables.keys())[:10]
 
 ### read the crs from band 2
 
-The cartopy crs information is associated with individual variables, grab it from band 2 (arbitrary)
+The cartopy crs information is associated with individual variables, grab it from band 2 (arbitrary choice)
 
 ```{code-cell} ipython3
 band_2 = goesC.metpy.parse_cf('CMI_C02')
@@ -306,6 +307,9 @@ Read the `band_wavelength` keys to double check the wavelengths for each of band
 ```{code-cell} ipython3
 # Confirm that each band is the wavelength we are interested in
 for band in [2, 3, 1]:
+    #
+    # create the key and use it to grabe the name, wavelength and units
+    #
     band_wavelength = f"band_wavelength_C{band:02d}"
     print(band_wavelength)
     long_name = goesC[band_wavelength].long_name
@@ -449,7 +453,9 @@ and sets the plotting extent to between -130- -60 deg lon and 10 - 65 deg lat
 fig = plt.figure(figsize=(15, 12))
 
 lc = ccrs.LambertConformal(central_longitude=-97.5)
-
+#
+# add an axiss with the lc projection
+#
 ax = fig.add_subplot(1, 1, 1, projection=lc)
 #
 # lat/lons are given in "flat-square" projection
@@ -474,7 +480,7 @@ plt.title("%s" % scan_start.strftime("%d %B %Y %H:%M UTC "), loc="right");
 
 We can zoom the map to a lon/lat box by specifying a new extent for the axis
 between -114.5 - -108.25 deg Lon and 36-43 deg Lat  -- Salt Lake City, Utah
-The map crs is switched to PlateCarree, which is ok at the small scale (where the lat/lon parallels are basically straight lines)
+The axis crs is switched to PlateCarree, which is ok at this small scale (where the lat/lon parallels are basically straight lines)
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(8, 8))
