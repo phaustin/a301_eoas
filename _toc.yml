@@ -91,6 +91,11 @@ parts:
     - file: notebooks/week7/false_color.md
     - file: notebooks/week7/fmask.md
     - file: solutions/midterm/a301_2024t2_midterm_solution.md
+- caption: Week 8
+  numbered: true
+  chapters:
+    - file: notebooks/week8/install_part1.md
+    - file: notebooks/week8/goes_true_color.md
 
       
       

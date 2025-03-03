@@ -68,7 +68,9 @@ $$
 
 +++
 
-### Q1b (4 points)
+### 
+
+Q1b (4 points)
  
 If the surface is a blackbody with a temperature of 290 K, and
         the atmosphere has an constant temperature of 270 K, find the
@@ -119,7 +121,6 @@ $$
     
 - $F = L_\uparrow(\tau_T) \Delta \lambda \,\Delta \omega = 5.41 \times 2 \times 7.7\times 10^{-9} = 8.4\times 10^{-8}\ W\,m^{-2}$
 
-
 +++
 
 ## Q2 (8 points)
@@ -159,11 +160,29 @@ $$
 
 At the base level 1:
 
-$F_\downarrow = \epsilon F_{layer}$ = 
+$F_\downarrow = \epsilon \sigma T_{layer}^4$ = 176 $W\,m^{-2}$
 
-$F_\uparrow = F_{skin}$
+$F_\uparrow = F_{skin} = -\sigma T^4_{skin}$ = -401 $W\,m^{-2}$
 
-$F_{n1} = 
+$F_{n1} = F\uparrow + F_\downarrow = -224.7\ w\,m^{-2}$
+
+At the top level 2
+
+$F_{n2} = F_{layer} + (1 - \epsilon)F_{skin}$ = -388.9 $W\,m^{-2}$
+
+$$
+\Delta F = F_{n2} - F_{n1} = -164.2\ W\,m^{-2}
+$$
+
+Total mass M is the integral of the density from quesition 1
+
+$$
+M = 1.1 \times 9000 \times  (1 - 0.108) = 8831\ kg\,m^{-2}
+$$
+
+$$
+\frac{\Delta T}{\Delta t} = \frac{1}{M c_p}\frac{\Delta F_n}{\Delta z} = 10^{-4}\ K/day
+$$
 
 ```{code-cell} ipython3
 import numpy as np
@@ -177,15 +196,24 @@ transtot = np.exp(-1.66*tautot)
 epsilon = 1 - transtot
 Flayer = epsilon*sigma*Tlayer**4
 Fskin = sigma*Tskin**4
-Fn1 = Flayer - Fskin
+Fn1 = Flayer - Fskin  #level 1 net
+Fn2 = -Flayer - tautot*Fskin
+deltaF = Fn2 - Fn1
+deltaZ = 20000
+cp = 1004.
+M = 9000*1.1*(1 - 0.108)
+seconds_day = 24*3600.
+dTdt = (1/(M*cp))*(deltaF/deltaZ)*seconds_day
 print(f"{Flayer=:.1f}")
 print(f"{Fskin=:.1f}")
 print(f"{transtot=:.1f}")
 print(f"{epsilon=:.1f}")
 print(f"{Fn1=:.1f}")
+print(f"{Fn2=:.1f}")
+print(f"{deltaF=:.1f}")
+print(f"{M=:.1f}")
+print(f"{dTdt=:.5f}")
 ```
-
-
 
 ## Q3 (6 points)
 
@@ -206,7 +234,7 @@ stating all your assumptions.
 
 +++
 
-#### Q3 answer
+### Q3 answer
 
 Follow  {ref}`schwartz:constant`:
 

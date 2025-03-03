@@ -1,1 +1,1 @@
-git+https://github.com/eoas-ubc/paged_html_theme@master
+git+https://github.com/phaustin/a301_lib

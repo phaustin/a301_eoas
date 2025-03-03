@@ -247,9 +247,6 @@ axes[0].set(xlabel = "band 3 reflectivity",
             ylabel = "band 4 reflectivity");
 ```
 
-Note that the plot below looks funny because there are many water pixels with low reflectivity.  We'll mask
-these out in the next notebook
-
 ```{code-cell} ipython3
 fig = sns.jointplot(
     x=b4.data.ravel(),

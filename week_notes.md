@@ -340,7 +340,11 @@ to make a band 5,4,3 false color png file of your scene and upload the ipynb fil
   numbers.  You'll need to rewrite your `clip_image` function using the approach
   of version 0.2 of the notebook in the week4 folder: see {ref}`clip:create_arrays`
   
+  - See [the 9 rules of debugging](https://medium.com/@abhinav.ittekot/9-golden-rules-for-debugging-8e94d879e3db)
+  
 - New notebook: {ref}`week7:fmask`
+
+  - the [Fmask algorithm](https://www.sciencedirect.com/science/article/pii/S0034425719302172)
 
 #### Do for Monday
 
@@ -350,3 +354,13 @@ to make a band 5,4,3 false color png file of your scene and upload the ipynb fil
   - Write a function that takes an image and its fmask and returns a new image
     with all cloudy pixels set to np.nan.  Make a notebook that uses this function
     to plot a partly cloudy scene.
+
+
+### Day 23 Monday
+
+## Week 8
+
+- {ref}`week8:install_part1`
+- {ref}`week8:goes_true_color`
+
+
