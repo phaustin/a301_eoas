@@ -30,7 +30,7 @@ is no real difference between the two approaches.
 
 - Step 1:  read [why create a python package](https://www.pyopensci.org/python-package-guide/tutorials/intro.html#why-create-a-python-package)
 
-- Step 2: read [python packaging for scientists](https://www.pyopensci.org/python-package-guide/#python-packaging-for-scientists)
+- Step 2: read [python packaging for scientists](https://www.pyopensci.org/python-package-guide/#python-packaging-for-scientists) and [publishing packages]( (https://www.pyopensci.org/python-package-guide/package-structure-code/publish-python-package-pypi-conda.html)
 
 - Step 3: in class walk through of the a301_lib [pyproject.toml](https://github.com/phaustin/a301_lib/blob/main/pyproject.toml)
 
@@ -61,8 +61,11 @@ is no real difference between the two approaches.
     ```python
     a301-lib                  0.1                      pypi_0    pypi
     ```
-    
 
-```python
+- Step 5: More complex examples
 
-```
+  - [List of pyopensci accepted projects](https://www.pyopensci.org/python-packages.html)
+  
+  - [xclim example](https://xclim.readthedocs.io/en/stable/indices.html)
+  
+
