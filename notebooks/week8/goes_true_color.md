@@ -16,6 +16,9 @@ kernelspec:
 (week8:goes_true_color)=
 # GOES-16: True Color Images from GOES ABI
 
+Download the `goes_true_color` notebook from [the week8 folder](https://drive.google.com/drive/folders/1-D6y9MlE8LZRLZg-qRCxPZSgar8kGjBT?usp=drive_links)
+
+
 ## Introduction
 
 This is a modified version of [Brian Blaylock's](http://home.chpc.utah.edu/~u0553130/Brian_Blaylock/home.html)
