@@ -57,7 +57,7 @@ the [wikipedia entry on globbing](https://en.wikipedia.org/wiki/Glob_(programmin
 
 ```{code-cell} ipython3
 data_dir = Path().home() / 'repos/a301/satdata/landsat'
-the_tifs = list(data_dir.glob('**/vancouver/HLS.L30*tif'))
+the_tifs = list(data_dir.glob('**/vancouver_2023/HLS.L30*tif'))
 print(the_tifs)
 ```
 
