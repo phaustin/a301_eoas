@@ -186,6 +186,14 @@ len(goesC.variables)
 There are 161 different variables, here are the first 10 -- the channels and their data quality flags:
 
 ```{code-cell} ipython3
+goesC.x
+```
+
+```{code-cell} ipython3
+goesC.coords['x']
+```
+
+```{code-cell} ipython3
 list(goesC.variables.keys())[:10]
 ```
 
@@ -196,7 +204,13 @@ The cartopy crs information is associated with individual variables, grab it fro
 ```{code-cell} ipython3
 band_2 = goesC.metpy.parse_cf('CMI_C02')
 cartopy_crs = band_2.metpy.cartopy_crs
-cartopy_crs;
+cartopy_crs.to_wkt()
+```
+
+```{code-cell} ipython3
+import pyproj
+test = pyproj.CRS.from_user_input(cartopy_crs.to_wkt())
+test.to_json()
 ```
 
 Here are the y coordinates in the geostationary projection
@@ -292,9 +306,9 @@ pseudoGreen = (0.48358168*RED) + (0.06038137*GREEN) + (0.45706946*BLUE)
 or, a simple alternative ([CIMSS Natural True
 Color](http://cimss.ssec.wisc.edu/goes/OCLOFactSheetPDFs/ABIQuickGuide_CIMSSRGB_v2.pdf)):
 
-\begin{equation}
+$$
 pseudoGreen = (0.45*RED) + (0.1*GREEN) + (0.45*BLUE)
-\end{equation}
+$$
 
 The multiband formatted file we loaded is convenient because all the GOES
 channels are in the same NetCDF file. Next, we will assign our variables R, G,
@@ -319,6 +333,11 @@ for band in [2, 3, 1]:
     wavelength = goesC[band_wavelength].data[0]
     units = goesC[band_wavelength].units
     print(f"{long_name} is {wavelength:.2f} {units}")
+```
+
+```{code-cell} ipython3
+a=goesC["CMI_C02"]
+a.x
 ```
 
 ## Clip the bands and apply the gamma correction

@@ -122,7 +122,8 @@ hls_lon, hls_lat = -58.3816, -34.607
 center_point = Point(hls_lon, hls_lat)
 van_lon, van_lat = -123.120, 49.2827
 center_point = Point(van_lon, van_lat)
-june_2015 = "2015-06-01/2015-06-30"
+#june_2015 = "2015-06-01/2015-06-30"
+summer_2023 = "2023-06-01/2023-08-31"
 ```
 
 ```{code-cell} ipython3
@@ -139,7 +140,7 @@ The pystac client object takes the search parameters as the following keywords:
 search = client.search(
     collections=["HLSL30.v2.0"],
     intersects=center_point,
-    datetime= june_2015
+    datetime= summer_2023
 ) 
 # uncomment below to see gory details
 # help(search)

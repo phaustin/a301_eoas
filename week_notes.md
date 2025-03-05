@@ -363,4 +363,12 @@ to make a band 5,4,3 false color png file of your scene and upload the ipynb fil
 - {ref}`week8:install_part1`
 - {ref}`week8:goes_true_color`
 
+### Day 24 Wednesday
+
+- {ref}`week8:goes_landsat`
+
+#### Do for Friday
+
+Read Stull Chapter 8 through p. 248 on weather radar
+
 
