@@ -26,7 +26,7 @@ New material:
 
 1) I read the GOES image and crop it to a bounding box using the [satpy module](https://satpy.readthedocs.io/en/latest/)
 
-2) I create a set of python objects to hold the image extent, a point on the image and the bounding box using the [pydantic module]([pydantic library](https://realpython.com/python-pydantic/)
+2) I create a set of python objects to hold the image extent, a point on the image and the bounding box using the [pydantic library](https://realpython.com/python-pydantic/)
 
 3) I define a new function `find_bounds` that uses `type hints` to specify the required types for function parameters.  This extra safety isn't particularly useful for short programs using Jupyter notebooks, but it is very helpful when writing code that will be put in a library and used by other people.  Not required for your assignments, see [this type checking guide](https://realpython.com/python-type-checking/) for more information.
 

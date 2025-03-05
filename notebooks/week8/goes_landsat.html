@@ -459,7 +459,7 @@ are completely different (3 km for GOES and 30 m for Landsat)</p>
 <p>New material:</p>
 <ol class="arabic simple">
 <li><p>I read the GOES image and crop it to a bounding box using the <a class="reference external" href="https://satpy.readthedocs.io/en/latest/">satpy module</a></p></li>
-<li><p>I create a set of python objects to hold the image extent, a point on the image and the bounding box using the [pydantic module](<a class="reference external" href="https://realpython.com/python-pydantic/">pydantic library</a></p></li>
+<li><p>I create a set of python objects to hold the image extent, a point on the image and the bounding box using the <a class="reference external" href="https://realpython.com/python-pydantic/">pydantic library</a></p></li>
 <li><p>I define a new function <code class="docutils literal notranslate"><span class="pre">find_bounds</span></code> that uses <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">hints</span></code> to specify the required types for function parameters.  This extra safety isn’t particularly useful for short programs using Jupyter notebooks, but it is very helpful when writing code that will be put in a library and used by other people.  Not required for your assignments, see <a class="reference external" href="https://realpython.com/python-type-checking/">this type checking guide</a> for more information.</p></li>
 </ol>
 <section id="to-install">
