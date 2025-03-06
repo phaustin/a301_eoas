@@ -20,27 +20,6 @@ The cropping function for satpy left something to be desired -- it covered less 
 landsat scene
 
 
-## Introduction
-
-This notebook shows how to clip landsat and goes images to the same bounding box.  This could be useful to provide largescale atmospheric context, to
-check the data, or to fill in missing data (although the pixel sizes
-are completely different (3 km for GOES and 30 m for Landsat)
-
-New material:
-
-1) I read the GOES image and crop it to a bounding box using the [satpy module](https://satpy.readthedocs.io/en/latest/)
-
-2) I create a set of python objects to hold the image extent, a point on the image and the bounding box using the [pydantic module]([pydantic library](https://realpython.com/python-pydantic/)
-
-3) I define a new function `find_bounds` that uses `type hints` to specify the required types for function parameters.  This extra safety isn't particularly useful for short programs using Jupyter notebooks, but it is very helpful when writing code that will be put in a library and used by other people.  Not required for your assignments, see [this type checking guide](https://realpython.com/python-type-checking/) for more information.
-
-### To install
-
-- you'll need to install satpy and pydantic into the a301 environment
-
-  ```
-  conda install pydantic
-  conda install satpy
 
 - Download goes_landsat.ipynb from the [week8 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
   
@@ -57,7 +36,15 @@ from pyproj import CRS, Transformer
 import rioxarray
 import xarray as xr
 from cartopy import crs as ccrs
-from a301_lib import make_pal
+from a301_lib import (
+    make_pal,
+    Row_col_offsets,
+    Clip_point,
+    Bounding_box,
+    Cartopy_extent,
+    find_bounds
+    )
+    
 import pyproj
 import pydantic
 from goes2go.data import goes_nearesttime
@@ -121,53 +108,6 @@ a=band_dict['NIR']
 np.unique(np.diff(a.x))
 ```
 
-## Make some data container objects
-
-The [pydantic library](https://realpython.com/python-pydantic/) provides
-a way to create new python types that enforce the order and the type
-of their internal data.   This helps document the code and avoids errors
-caused by passing the wrong variables into a function.
-
-```{code-cell} ipython3
-from pydantic import BaseModel
-
-class Row_col_offsets(BaseModel):
-    """
-    row/col offsets needed to define
-    rows and column ranges in a region
-    """
-    west: int
-    south: int
-    east: int
-    north: int
-
-class Clip_point(BaseModel):
-    """
-    a location within the clipped region 
-    in geodetic coordinates
-    """
-    lon: float
-    lat: float
-
-class Bounding_box(BaseModel):
-    """
-    bounding box for rioxarray.clip_box in map coordinates
-    """
-    xmin: float
-    ymin: float
-    xmax: float
-    ymax: float
-
-class Cartopy_extent(BaseModel):
-    """
-    cartopy plotting extent in map coords
-    """
-    xmin: float
-    xmax: float
-    ymin: float
-    ymax: float
-```
-
 ## Define the image point and offsets
 
 To make the bounding box, we add column and row offsets
@@ -217,73 +157,7 @@ program that will catch type mismatches when you call `find_bounds` in
 your code.
 
 ```{code-cell} ipython3
-def find_bounds(
-    scene_ds: xr.DataArray,
-    offsets: Row_col_offsets,
-    image_point: Clip_point,
-    scene_crs: pyproj.CRS | None = None ) -> Bounding_box: 
-    """
-    Given a point in x,y map coordinates and
-    a set of row, column offsets, return a
-    bounding box that can be used by rio.clip_box to clip
-    the image
 
-    Parameters
-    ----------
-    scene_ds: rioxarray DataArray
-    offsets: west, south, east, north
-    image_point: lon, lat for point in image
-    scene_crs: Optional -- point in scene, if missing use scene_ds.rio.crs
-
-    Returns
-    -------
-
-    bounds: west, south, east, north bounds for rio.clip_box
-    """ 
-    if scene_crs is None:
-        #
-        # turn the rasterio CRS into a pyproj.CRS
-        #
-        scene_crs = pyproj.CRS(scene_ds.rio.crs)
-    #
-    # step 1: find the image point in utm coords
-    # need to transform the latlon point to x,y utm zone 10
-    #
-    full_affine = scene_ds.rio.transform()
-    p_latlon = CRS.from_epsg(4326)
-    transform = Transformer.from_crs(p_latlon, scene_crs)
-    image_x, image_y = transform.transform(image_point.lat, image_point.lon)
-    #
-    # step 2: find the row and column of the image point
-    #
-    image_col, image_row = ~full_affine * (image_x, image_y)
-    image_col, image_row = int(image_col), int(image_row)
-    #
-    # step 3 find the top, bottom, left and right rows and columns
-    # given the specified offsets
-    #
-    col_left, col_right = (image_col + offsets.west, image_col + 
-                           offsets.east)
-    row_bot, row_top = image_row + offsets.south, image_row + offsets.north
-    row_max, col_max = scene_ds.shape
-    #
-    # step 4: sanity check to make sure we haven't gone outside the image
-    #
-    if (col_left < 0 or col_right > (col_max -1) or
-         row_top < 0 or row_bot > (row_max -1)):
-        raise ValueError((f"bounds error with "
-                          f"{(col_left, col_right, row_bot, row_top)=}"
-                          f"\n{scene_ds.shape=}"))
-    #
-    # step 5: find the x,y corners of the bounding box
-    #
-    ul_x, ul_y = full_affine * (col_left, row_top)
-    lr_x, lr_y = full_affine * (col_right, row_bot)
-    #
-    # step 6 create a new instance of the Bounding_box object and return it
-    #
-    bounds = Bounding_box(xmin=ul_x,ymin=lr_y,xmax=lr_x,ymax=ul_y)
-    return bounds
 ```
 
 ## Find bounds and clip
