@@ -95,7 +95,7 @@ so $\mu = 1$:
 
 $$
  L_\lambda(\tau/\mu)= B_\lambda(T_{skin}) \hat{t}_{tot} 
-             &+  (1 - \exp(-\tau/\mu) )B_\lambda(T)
+             +  (1 - \exp(-\tau/\mu) )B_\lambda(T)
 $$
   
   $$L_\uparrow(\tau_T) = 6 \times 0.589   + (1 - 0.589) \times 4.6 = 5.41\ W\,m^{-2}\,\mu m^{-1}\,sr^{-1}$$

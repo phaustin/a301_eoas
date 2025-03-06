@@ -335,6 +335,11 @@ for band in [2, 3, 1]:
     print(f"{long_name} is {wavelength:.2f} {units}")
 ```
 
+```{code-cell} ipython3
+a=goesC["CMI_C02"]
+a.x
+```
+
 ## Clip the bands and apply the gamma correction
 
 ```{code-cell} ipython3
