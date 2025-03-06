@@ -13,8 +13,11 @@ kernelspec:
   name: python3
 ---
 
-(week8:goes_landsat)=
-# Combining goes and landsat data
+(week8:goes_landsat_rio)=
+# Combining goes and landsat data using rioxarray
+
+The cropping function for satpy left something to be desired -- it covered less than half of the clipped
+landsat scene
 
 ## Introduction
 
@@ -26,7 +29,7 @@ New material:
 
 1) I read the GOES image and crop it to a bounding box using the [satpy module](https://satpy.readthedocs.io/en/latest/)
 
-2) I create a set of python objects to hold the image extent, a point on the image and the bounding box using the [pydantic library](https://realpython.com/python-pydantic/)
+2) I create a set of python objects to hold the image extent, a point on the image and the bounding box using the [pydantic module]([pydantic library](https://realpython.com/python-pydantic/)
 
 3) I define a new function `find_bounds` that uses `type hints` to specify the required types for function parameters.  This extra safety isn't particularly useful for short programs using Jupyter notebooks, but it is very helpful when writing code that will be put in a library and used by other people.  Not required for your assignments, see [this type checking guide](https://realpython.com/python-type-checking/) for more information.
 
@@ -43,7 +46,6 @@ New material:
 - You'll also need to copy the band 5 hls tif files in the [vancouver_2023](https://drive.google.com/drive/folders/1UwTc4MnneI2eZ6rHqKFzF4YdRRbQi4sS?usp=sharing) folder into a new folder on your drive called `~/repos/a301/satdata/landsat/vancouver_2023`
 
 ```{code-cell} ipython3
-
 from pathlib import Path
 import json
 
@@ -98,14 +100,24 @@ for tif_path in the_tifs:
 ```
 
 ```{code-cell} ipython3
+landsat_nir = band_dict['NIR']
+landsat_crs = pyproj.CRS(landsat_nir.rio.crs)
+```
+
+```{code-cell} ipython3
 fig, ax = plt.subplots(1,1,figsize = (6,6))
 vmin = 0.0
 vmax = 0.5
 pal_dict = make_pal(vmin=vmin,vmax=vmax)
-band_dict['NIR'].plot.imshow(ax=ax,
+landsat_nir.plot.imshow(ax=ax,
                     norm = pal_dict['norm'],
                     cmap = pal_dict['cmap'],
                     extend = "both");
+```
+
+```{code-cell} ipython3
+a=band_dict['NIR']
+np.unique(np.diff(a.x))
 ```
 
 ## Make some data container objects
@@ -176,7 +188,7 @@ offsets = Row_col_offsets(west = -500,
 nir = band_dict['NIR']
 ```
 
-### Why parameter typing is helpful
+#### Why parameter typing is helpful
 
 In the box below, the class `Clip_point` cannot convert the string 'cinco' to a float,
 and will raise an exception.  Passing integers or strings that can be
@@ -189,8 +201,8 @@ a = 'cinco'
 b = '5'
 c = 5
 d = 5.
-# bad = Clip_point(lon = c, lat = a)
-#ok = Clip_point(lon = d, lat = b)
+#bad = Clip_point(lon = c, lat = a)
+ok = Clip_point(lon = d, lat = b)
 ```
 
 ### The find_bounds function
@@ -276,13 +288,13 @@ def find_bounds(
 ## Find bounds and clip
 
 ```{code-cell} ipython3
-landsat_bbox = find_bounds(nir, offsets, image_point)
+landsat_bbox = find_bounds(nir, offsets, image_point, scene_crs = landsat_crs)
 print(landsat_bbox)
 ```
 
 ```{code-cell} ipython3
 bounds_list = list(dict(landsat_bbox).values())
-clipped_ds = nir.rio.clip_box(*bounds_list)
+clipped_ds = landsat_nir.rio.clip_box(*bounds_list)
 clipped_ds.shape
 ```
 
@@ -303,7 +315,7 @@ save_dir = Path.home() / "repos/a301/satdata/goes"
 ### Read the landsat overpass time
 
 ```{code-cell} ipython3
-nir.SENSING_TIME
+landsat_nir.SENSING_TIME
 ```
 
 ### Get the coincident GOES 18 image
@@ -347,6 +359,10 @@ goes_crs = pyproj.CRS(cartopy_crs)
 ```
 
 ```{code-cell} ipython3
+np.unique(np.diff(c3.x))
+```
+
+```{code-cell} ipython3
 c3.plot.hist();
 ```
 
@@ -376,11 +392,23 @@ ax.add_feature(ccrs.cartopy.feature.STATES);
 We what to clip to the same region as our clipped landsat scene
 
 ```{code-cell} ipython3
-landsat_crs  = nir.rio.crs
-xmin,ymin,xmax,ymax = nir.rio.bounds()
+clipped_ds.shape
+```
+
+### Bug! copied the wrong CRS
+
+need the clipped crs, not the full scene.  The bug was in the next line below
+
+```{code-cell} ipython3
+# -> bad: landsat_crs  = nir.rio.crs
+xmin,ymin,xmax,ymax = clipped_ds.rio.bounds()
+print(f"{(xmax - xmin)=}")
+print(f"{(ymax - ymin)=}")
 transform = Transformer.from_crs(landsat_crs, goes_crs)
 xmin_goes,ymin_goes = transform.transform(xmin,ymin)
 xmax_goes,ymax_goes = transform.transform(xmax,ymax)
+print(f"{(xmax_goes - xmin_goes)=}")
+print(f"{(ymax_goes - ymin_goes)=}")
 bounds_goes = xmin_goes,ymin_goes,xmax_goes,ymax_goes
 #
 # now crop to these bounds
@@ -391,15 +419,16 @@ xmin,ymin,xmax,ymax = cropped_c3.area.area_extent
 cropped_c3.shape
 ```
 
-### TBD: fix this!
+##  Verdict: still not great
 
-Something is obviously wrong -- the landsat image is 30 km x 24 km
-bu this GOES image is 56 km x 80 km.  Will try  again with rioxarray.
-Navigation below looks good however.  How would you start debuggin this?
+Sub-optimal -- correct area, but the landsat image is 30 km x 24 km and the cropped GOES image is
+only 16 km x 18 km -- way to conservative.  We'll try switching to rioxarray in the next notebook
 
-+++
+```{code-cell} ipython3
+cropped_c3.shape, clipped_ds.shape
+```
 
-## Plot the cropped goes image
+### Plot the cropped goes image
 
 ```{code-cell} ipython3
 extent_cartopy = xmin,xmax,ymin,ymax
@@ -417,13 +446,8 @@ cs = ax.imshow(
 ax.set_extent(extent_cartopy,crs=cartopy_crs)
 ax.add_feature(cartopy.feature.GSHHSFeature(scale="auto", 
                                             levels=[1, 2, 3],edgecolor='red'));
-
 ```
 
 ### Next step
 
 Resample the GOES image to the Landsat grid for a pixel by pixel comparison
-
-```{code-cell} ipython3
-
-```

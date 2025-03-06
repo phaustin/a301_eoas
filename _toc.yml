@@ -31,6 +31,7 @@ parts:
   - file: notebooks/midterm/mid_term_reviewII.md
   - file: notebooks/midterm/mid_term_reviewI_solutions.md
   - file: notebooks/midterm/mid_term_reviewII_solutions.md
+  - file: solutions/midterm/a301_2024t2_midterm_solution.md
 
 - caption: Week 1
   numbered: true
@@ -90,7 +91,6 @@ parts:
   chapters:
     - file: notebooks/week7/false_color.md
     - file: notebooks/week7/fmask.md
-    - file: solutions/midterm/a301_2024t2_midterm_solution.md
 - caption: Week 8
   numbered: true
   chapters:
