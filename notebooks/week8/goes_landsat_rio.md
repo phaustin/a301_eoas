@@ -49,6 +49,7 @@ import pyproj
 import pydantic
 from goes2go.data import goes_nearesttime
 from datetime import datetime
+import affine
 ```
 
 ## Get the original hls tif files from disk
@@ -129,37 +130,6 @@ offsets = Row_col_offsets(west = -500,
 nir = band_dict['NIR']
 ```
 
-#### Why parameter typing is helpful
-
-In the box below, the class `Clip_point` cannot convert the string 'cinco' to a float,
-and will raise an exception.  Passing integers or strings that can be
-converted to float will succeed.  This becomes much  more helpful
-when you are trying to use someone's large library with complex parameters.
-
-```{code-cell} ipython3
-# try this 
-a = 'cinco'
-b = '5'
-c = 5
-d = 5.
-#bad = Clip_point(lon = c, lat = a)
-ok = Clip_point(lon = d, lat = b)
-```
-
-### The find_bounds function
-
-
-The function below has a signature with 3 required parameters (scene_ds, offsets, image_point)
-and one optional parameter (scene_crs).  Each parameter is followed by a *type hint*, which
-tells you the type of the parameter being passed.  It is only a hint -- the code will run
-even if you pass the wrong type, but you can run a separate type checking
-program that will catch type mismatches when you call `find_bounds` in 
-your code.
-
-```{code-cell} ipython3
-
-```
-
 ## Find bounds and clip
 
 ```{code-cell} ipython3
@@ -213,24 +183,82 @@ else:
 full_path = save_dir / the_path
 ```
 
-### Read the image with satpy
+### Read the image with goes2go
 
 ```{code-cell} ipython3
-from satpy import Scene
-goes_2023 = Scene(reader= "abi_l2_nc", filenames = list([str(full_path)]))
+goesC = xr.open_dataset(full_path,mode = 'r',mask_and_scale = True)
 ```
 
 ### Get the veggie band (nir)
 
 ```{code-cell} ipython3
-goes_2023.load(['C03'])
+c3 = goesC.metpy.parse_cf('CMI_C03')
+cartopy_crs = c3.metpy.cartopy_crs
+goes_crs = pyproj.CRS(cartopy_crs)
+goes_coords = dict(c3.coords)
+resolutionx = np.mean(np.diff(c3.x))
+resolutiony = np.mean(np.diff(c3.y))
+print(resolutionx, resolutiony)
+attrs = c3.attrs
+```
+
+### create the affine transform
+
+```{code-cell} ipython3
+ul_x = c3.x[0].data
+ul_y = c3.y[0].data
+lr_x = c3.y[-1].data
+lr_y = c3.y[-1].data
+new_affine = affine.Affine(resolutionx, 0.0, ul_x, 0.0, resolutiony, ul_y)
+new_affine
 ```
 
 ```{code-cell} ipython3
-c3 = goes_2023['C03']
-cartopy_crs = c3.area.to_cartopy_crs()
-original_extent = cartopy_crs.bounds
-goes_crs = pyproj.CRS(cartopy_crs)
+c3.plot.hist();
+```
+
+### Copy the data to a rioxarray
+
+```{code-cell} ipython3
+def make_new_rioxarray(
+    dataset:np.ndarray,
+    coords: dict,
+    dims: tuple,
+    crs: pyproj.CRS,
+    transform: affine.Affine,
+    attrs: dict | None = None) -> xr.DataArray:
+    """
+    create a new rioxarray from an ndarray plus components
+
+    Parameters
+    ----------
+
+    rio_da: xarray DataArray
+       a DataArray with rasterio metadata
+    crs: optional pyproj crs
+       a crs which is able to return its epsg code
+       if it's missing, the crs from rio_da will be copied
+
+    Returns
+    -------
+
+    clipped_da: xarray.DataArray
+      a DataArray with metadata and data copied from rio_da
+    
+    
+    """
+    #
+    # NASA hls files have bad crs, so allow for an override parameter
+    #
+    if crs is None:
+        crs = rio_da.rio.crs
+    clipped_da=xr.DataArray(rio_da.data,coords=rio_da.coords,
+                            dims=rio_da.dims)
+    clipped_da.rio.write_crs(crs, inplace=True)
+    clipped_da.rio.write_transform(rio_da.rio.transform(), inplace=True)
+    clipped_da=clipped_da.assign_attrs(rio_da.attrs)
+    clipped_da = clipped_da.rio.set_nodata(np.float32(np.nan))
+    return clipped_da
 ```
 
 ```{code-cell} ipython3
