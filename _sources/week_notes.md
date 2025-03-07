@@ -371,4 +371,16 @@ to make a band 5,4,3 false color png file of your scene and upload the ipynb fil
 
 Read Stull Chapter 8 through p. 248 on weather radar
 
+### Day 25 Friday
+
+- New {ref}`week8:goes_landsat` with bug fixed
+- New v0.2 of [a301_lib.py](https://github.com/phaustin/a301_lib/blob/main/src/a301_lib.py)
+- {ref}`week8:goes_landsat_rio`
+- {ref}`assign6`
+
+#### For Monday
+
+- Work on {ref}`assign6`
+- Read {ref}`week8:radar` along with the Stull weather radar pages
+
 

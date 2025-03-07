@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>9. Finding the flux given the radiance &#8212; ATSC 301</title>
+    <title>46. Notes on the radar equation &#8212; ATSC 301</title>
   
   
   
@@ -59,12 +59,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week1/newflux';</script>
-    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week1/newflux.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week8/radar';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week8/radar.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="10. Plotting the Planck function with python" href="planck_function.html" />
-    <link rel="prev" title="8. Solid angle and radiance" href="radiance.html" />
+    <link rel="prev" title="45. Assignment 6" href="../../solutions/assign6.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -204,13 +203,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../solutions/midterm/a301_2024t2_midterm_solution.html">6. A301 midterm solutions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
-<li class="toctree-l1"><a class="reference internal" href="beers_law.html">7. Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">7. Beers and inverse squared laws</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
-<li class="toctree-l1"><a class="reference internal" href="radiance.html">8. Solid angle and radiance</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Finding the flux given the radiance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="planck_function.html">10. Plotting the Planck function with python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">8. Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">9. Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">10. Plotting the Planck function with python</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
 <ul class="nav bd-sidenav">
@@ -261,13 +260,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../week7/fmask.html">40. Using fmask to mask water pixels</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week8/install_part1.html">41. Python packages Part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/goes_true_color.html">42. GOES-16: True Color Images from GOES ABI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat.html">43. Combining goes and landsat data using rioxarray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat_rio.html">44. Combining goes and landsat data using rioxarray</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="install_part1.html">41. Python packages Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goes_true_color.html">42. GOES-16: True Color Images from GOES ABI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goes_landsat.html">43. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goes_landsat_rio.html">44. Combining goes and landsat data using rioxarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6.html">45. Assignment 6</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/radar.html">46. Notes on the radar equation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">46. Notes on the radar equation</a></li>
 </ul>
 
     </div>
@@ -322,7 +321,7 @@
       
       
       
-      <li><a href="../../_sources/notebooks/week1/newflux.md" target="_blank"
+      <li><a href="../../_sources/notebooks/week8/radar.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -332,7 +331,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.rst</span>
 </a>
 </li>
       
@@ -406,7 +405,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Finding the flux given the radiance</h1>
+    <h1>Notes on the radar equation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -416,16 +415,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-the-cosine-using-power">9.1. Law of the cosine – using power</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-between-flux-and-radiance">9.2. Moving between flux and radiance</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-approximations-to-fluxrel">9.2.1. Two approximations to <code class="xref eq docutils literal notranslate"><span class="pre">fluxrel</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-beam-approximation-w-h-p-116">9.2.1.1. Parallel beam approximation (W&amp;H p. 116)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isotropic-radiance-f-pi-b">9.2.1.2. Isotropic radiance: <span class="math notranslate nohighlight">\(F = \pi B\)</span></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-questions">9.3. Worksheet questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-comments">46.1. Questions/Comments</a></li>
 </ul>
             </nav>
         </div>
@@ -437,136 +427,51 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="finding-the-flux-given-the-radiance">
-<span id="sec-week1-flux-from-radiance"></span><h1><span class="section-number">9. </span>Finding the flux given the radiance<a class="headerlink" href="#finding-the-flux-given-the-radiance" title="Link to this heading">#</a></h1>
-<section id="law-of-the-cosine-using-power">
-<h2><span class="section-number">9.1. </span>Law of the cosine – using power<a class="headerlink" href="#law-of-the-cosine-using-power" title="Link to this heading">#</a></h2>
-<p>Unless the sun is directly overhead, the flux  <span class="math notranslate nohighlight">\(F\)</span> on a level
-surface is going to be less than the flux perpendicular to the
-solar beam. The figure below shows the geometry:</p>
-<figure class="align-default" id="shadow">
-<a class="reference internal image-reference" href="../../_images/shadow.png"><img alt="../../_images/shadow.png" src="../../_images/shadow.png" style="width: 584.8499999999999px; height: 306.95px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 9.1 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\cos \theta\)</span> effect</span><a class="headerlink" href="#shadow" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Assuming that the y dimension (into and out of the screen) has unit
-length, then if flux <span class="math notranslate nohighlight">\(F_1\)</span> <span class="math notranslate nohighlight">\((W\,m^{-2})\)</span> is incident
-on surface 1, power flowing through surface 1 is:</p>
-<p><span class="math notranslate nohighlight">\(P_1 = F_1 \times A_1\)</span> Watts</p>
-<p>If we assume a direct beam of sunlight (so no inverse-square spreading),
-then all of that power passes through surface 2, and so the flux
-perpendicular to surface 2 is:</p>
-<p><span class="math notranslate nohighlight">\(F_2 = P_1/A_2 = P_1/(A_1 /cos \theta) = F_1 \cos \theta\)</span></p>
-<p>This is the main reason why it’s cooler at sunset than at noon. It is
-also the reason your shadow can be taller than you.</p>
-</section>
-<section id="moving-between-flux-and-radiance">
-<span id="moving"></span><h2><span class="section-number">9.2. </span>Moving between flux and radiance<a class="headerlink" href="#moving-between-flux-and-radiance" title="Link to this heading">#</a></h2>
-<p>We saw in the <a class="reference internal" href="radiance.html#radiance"><span class="std std-ref">Solid angle and radiance</span></a> reading
-that in the case that we have a very narrow beam of solid angle <span class="math notranslate nohighlight">\(d\omega\)</span>, the flux and radiance vectors are related by:</p>
+  <section id="notes-on-the-radar-equation">
+<span id="week8-radar"></span><h1><span class="section-number">46. </span>Notes on the radar equation<a class="headerlink" href="#notes-on-the-radar-equation" title="Link to this heading">#</a></h1>
+<p>Stull Chapter 8 page 246 has an excellent discussion of the <strong>radar equation</strong>,
+which relates the power <span class="math notranslate nohighlight">\(P_r\)</span> returning to the receiving antenna to radar and atmospheric variables</p>
 <div class="math notranslate nohighlight">
-\[
-dF_\lambda = I_\lambda d\omega
-\]</div>
-<p>where we are writing <span class="math notranslate nohighlight">\(dF\)</span> to indicate that you need to integrate this equation over a (possibly imaginary) flat surface to get the flux.  This is just Wallace and Hobbs equation 4.5 without the integral signs, in the particular case that we are looking straight down at the surface, i.e. <span class="math notranslate nohighlight">\(\theta =0\)</span> an <span class="math notranslate nohighlight">\(\cos \theta\)</span> = 1.</p>
-<p>A good way to think about this to ask yourself how a satellite would
-measure the radiance I in some direction. It would need to:</p>
-<ol class="arabic simple">
-<li><p>measure the power P reaching its sensor that has area A</p></li>
-<li><p>Calculate the flux F= P/A</p></li>
-<li><p>Divide that flux by the wavelength range of its filter (say
-<span class="math notranslate nohighlight">\(\Delta \lambda = 1\ \mu m\)</span>) to get the monochromatic
-flux:</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-F_\lambda = \frac{F}{\Delta \lambda}
-\]</div>
-<ol class="arabic simple" start="4">
-<li><p>Multiply the monochromatic radiance by the field of view of the
-telescope <span class="math notranslate nohighlight">\(\Delta \omega\)</span> to get the relationship between
-the monochromatic irradiance and radiance for a narrow beam:</p></li>
-</ol>
-<div class="math notranslate nohighlight" id="equation-flrel">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-flrel" title="Link to this equation">#</a></span>\[
-F_\lambda = I_\lambda \Delta \omega
-\]</div>
-<p>Repeating this figure from the <a class="reference internal" href="radiance.html#radiance"><span class="std std-ref">Solid angle and radiance</span></a> reading:</p>
-<figure class="align-default" id="i-f">
-<a class="reference internal image-reference" href="../../_images/I_F.png"><img alt="../../_images/I_F.png" src="../../_images/I_F.png" style="width: 346.0px; height: 317.0px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 9.2 </span><span class="caption-text">Relationship between I and F</span><a class="headerlink" href="#i-f" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>So how would you calculate the flux F crossing through the bottom
-of this triangle if you knew the radiance I at every angle? Now you need
-to use the law of the cosines to move from the perpendicular surface
-with area <span class="math notranslate nohighlight">\(dA_1\)</span> to the surface you are interested in with larger
-area <span class="math notranslate nohighlight">\(dA_2 = dA_1/\cos \theta\)</span>:</p>
-<div class="math notranslate nohighlight" id="equation-cosflux">
-<span class="eqno">(9.2)<a class="headerlink" href="#equation-cosflux" title="Link to this equation">#</a></span>\[
-dF_2 = \cos \theta dF_1 = \cos \theta I d\omega
-\]</div>
-<p>To get the flux from every angle requires that you integrate over
-a hemisphere. That means you need to integrate over all azimuths, so
-<span class="math notranslate nohighlight">\(\phi = 0 \to 2\pi\)</span> and over 90 degrees of zenith, so that
-<span class="math notranslate nohighlight">\(\theta = 0 \to \pi/2\)</span>, which is done in Wallace and Hobbs exercise 4.3
-on page 113:</p>
-<div class="math notranslate nohighlight" id="equation-fluxrel">
-<span class="eqno">(9.3)<a class="headerlink" href="#equation-fluxrel" title="Link to this equation">#</a></span>\[
-F_2 = \int dF_2 = \int_0^{2\pi} \int_0^{\pi/2} \cos \theta \, I \, d \omega =\int_0^{2\pi} \int_0^{\pi/2} I \cos \theta  \sin \theta \, d\theta \, d \phi
-\]</div>
-<p>Note that you always do this integral over a plane surface containing the sensor.  That is, if you are interested in emission from the earth’s surface, you need to turn <a class="reference internal" href="#i-f"><span class="std std-numref">Fig. 9.2</span></a> upside down, and look downward at the source of the radiation.</p>
-<section id="two-approximations-to-fluxrel">
-<h3><span class="section-number">9.2.1. </span>Two approximations to <a class="reference internal" href="#equation-fluxrel">(9.3)</a><a class="headerlink" href="#two-approximations-to-fluxrel" title="Link to this heading">#</a></h3>
-<p>Equation <a class="reference internal" href="#equation-fluxrel">(9.3)</a> is the formal definition of <span class="math notranslate nohighlight">\(F\)</span> and is always correct.  There are two simplifications that are extremely useful:</p>
-<section id="parallel-beam-approximation-w-h-p-116">
-<h4><span class="section-number">9.2.1.1. </span>Parallel beam approximation (W&amp;H p. 116)<a class="headerlink" href="#parallel-beam-approximation-w-h-p-116" title="Link to this heading">#</a></h4>
-<div class="math notranslate nohighlight">
-\[
-F=I \times \Delta \omega
-\]</div>
-<p>This holds when:</p>
+\[P_r = \underbrace{\frac{c \pi^3}{1025 \ln(2)}}_{\text{Gaussian beam factor + constants}} \times
+       \overbrace{\frac{P_t G^2 (\Delta \beta)^2 \Delta t}{\lambda^2}}^{\text{radar characteristics}} \times
+       \underbrace{\left ( \frac{|K|}{L_a R} \right )^2 Z}_{\text{atmospheric target characteristics}}\]</div>
+<p>where</p>
 <ul class="simple">
-<li><p>the <span class="math notranslate nohighlight">\(\Delta \omega\)</span>, the total solid angle of interest is very small, so that <span class="math notranslate nohighlight">\(I\)</span> can be moved out of the integral because it doesn’t vary</p></li>
-<li><p>the beam is directly parallel to the surface of interest, so that <span class="math notranslate nohighlight">\(\theta \approx 0\)</span> and <span class="math notranslate nohighlight">\(\cos \theta \approx 1\)</span></p></li>
-<li><p>In this case it’s typical that the approximation <span class="math notranslate nohighlight">\(\Delta \omega = A/R^2\)</span> is good enough  (we’ll do a problem on this)</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_t\)</span> = transmitter power</p></li>
+<li><p>G = gain of the transmitting antenna</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta \beta\)</span> = beam width in radians</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta t\)</span> = radar pulse with in seconds</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda\)</span> = radar wavelength</p></li>
+<li><p><span class="math notranslate nohighlight">\(K\)</span> = complex index of refraction for water/ice</p></li>
+<li><p>R=distance to target</p></li>
+<li><p><span class="math notranslate nohighlight">\(L_a\)</span> = attenuation factor <span class="math notranslate nohighlight">\(\geq\)</span> 1</p></li>
+<li><p>Z= <span class="math notranslate nohighlight">\(\int D^6 n(D) dD\)</span> where D is the drop diameter and n(D) is the drop size distribution</p></li>
 </ul>
-</section>
-<section id="isotropic-radiance-f-pi-b">
-<span id="final-form"></span><h4><span class="section-number">9.2.1.2. </span>Isotropic radiance: <span class="math notranslate nohighlight">\(F = \pi B\)</span><a class="headerlink" href="#isotropic-radiance-f-pi-b" title="Link to this heading">#</a></h4>
-<p>This is Wallace and Hobbs Exersize 4.3 on page 116.  Here we’re using the WH notation for the Planck function radiance:  the letter <span class="math notranslate nohighlight">\(B\)</span> (<span class="math notranslate nohighlight">\(W\,m^{-2}\,sr^{-1}\)</span>)</p>
-<p>A common case in this course is thermal emission or diffuse reflection, which is characterized
-by photons coming isotropically from all directions. In the thermal case the
-surface emitted radiance <span class="math notranslate nohighlight">\(B^*\)</span> is independent of
-<span class="math notranslate nohighlight">\((\phi, \theta)\)</span> and can be taken outside of the integral. With
-that simplification, we’re down to trigonometric integrals from first
-year calculus:</p>
-<div class="math notranslate nohighlight" id="equation-flux-final">
-<span class="eqno">(9.4)<a class="headerlink" href="#equation-flux-final" title="Link to this equation">#</a></span>\[
-F_2 = F^* = \int_0^{2\pi}\int_0^{\pi/2} B \cos \theta  \sin \theta \, d\theta \, d \phi = 2 \pi B
-      \int_0^{\pi/2} \cos \theta  \sin \theta\, d\theta = 2\pi B \left( \frac{1}{2} \right)  = \pi B
-\]</div>
-<p>where we’ve continued to use an asterisk to denote that this is the
-radiation coming from a black surface, immediately above the surface.</p>
-<p>More generally if we know <span class="math notranslate nohighlight">\(I\)</span> anywhere in space and know that it
-is independent of direction, then the irriadiance at that point is going
-to be:</p>
-<div class="math notranslate nohighlight" id="equation-flux-short">
-<span class="eqno">(9.5)<a class="headerlink" href="#equation-flux-short" title="Link to this equation">#</a></span>\[
-F = \pi I
-\]</div>
-</section>
-</section>
-</section>
-<section id="worksheet-questions">
-<h2><span class="section-number">9.3. </span>Worksheet questions<a class="headerlink" href="#worksheet-questions" title="Link to this heading">#</a></h2>
+<p>As Stull points out, if you divide and multiply this equation by <span class="math notranslate nohighlight">\(Z_1= 1\ mm^6\,m^{-3}\)</span> the equation becomes:</p>
+<div class="math notranslate nohighlight">
+\[\frac{P_r}{P_t}=\underbrace{\frac{\pi^3 G^2 (\Delta \beta)^2}{1024 \ln(2)}}_{b=10^{4.55}\ for\ Nexrad} \times
+       \overbrace{Z_1 c  \Delta t/\lambda^2}^{R_1^2 = (2.17 \times 10^{-10}\ km)^2\ for\ Nexrad} \times
+       \underbrace{\left ( \frac{|K|}{L_a R} \right )^2 \frac{Z}{Z_1}}_{\text{atmospheric target characteristics}}\]</div>
+<p>and taking <span class="math notranslate nohighlight">\(10 \log_{10}\)</span> of both sides:</p>
+<div class="math notranslate nohighlight">
+\[10 \log_{10} \left ( \frac{P_r}{P_t} \right ) = 10 \log_{10}(b) + 20 \log_{10} (R_1) + 20 \log_{10} \left | \frac{K}{L_a} \right |
+        - 20 \log_{10} (R) + 10 \log_{10} \frac{Z}{Z_1}\]</div>
+<p>Rearranging:</p>
+<div class="math notranslate nohighlight">
+\[10 \log_{10} \frac{Z}{Z_1} =  10 \log_{10} \left ( \frac{P_r}{P_t} \right ) - 10 \log_{10}(b)  - 20 \log_{10} \left | \frac{K}{L_a} \right |
+      +  20 \log_{10} \left ( \frac{R}{R_1} \right )\]</div>
+<p>where all the terms are now unitless.</p>
+<section id="questions-comments">
+<h2><span class="section-number">46.1. </span>Questions/Comments<a class="headerlink" href="#questions-comments" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Suppose you have a radiometer with a zoom telescope that can focus on 1 <span class="math notranslate nohighlight">\(km^2\)</span> pixel at any distance.   If the surface is emitting radiance <span class="math notranslate nohighlight">\(I\)</span> in all directions into a hemisphere, find both <span class="math notranslate nohighlight">\(F\)</span> and <span class="math notranslate nohighlight">\(I\)</span> at 10 km above the surface, and at 100 km above the surface, assuming you can use the parallel beam.</p></li>
-<li><p>In the answer to 1) you should have found that I is independent of distance from the surface. Explain why <a class="reference internal" href="#equation-flux-short">(9.5)</a> doesn’t  violate the inverse square law for flux F.</p></li>
-<li><p>Find the solid angle for a 1 <span class="math notranslate nohighlight">\(km^2\)</span> pixel viewed from 800 km, and compare that result to <span class="math notranslate nohighlight">\(Area/R^2\)</span>.</p></li>
-<li><p>Change of variables:  Do W&amp;H Exercise 4.13 to prove relationship 4.4</p></li>
+<li><p>Why does the returned power decrease as <span class="math notranslate nohighlight">\(1/R^2\)</span> and not the roundtrip spreading of <span class="math notranslate nohighlight">\(1/R^4\)</span> ?</p></li>
+<li><p>We have “hardwired” in a wavelength of 10 cm, a beam width of 0.95 deg, etc. which is specific to the WSR-88D radar.  We
+are also assuming that we are using the same antenna to receive and to transmit</p></li>
+<li><p>Transmitted power is 750,000 Watts, Received power can be as low as <span class="math notranslate nohighlight">\(10^{-15}\)</span> Watts</p></li>
+<li><p>Suppose you are given <span class="math notranslate nohighlight">\(Z_1\)</span> in <span class="math notranslate nohighlight">\(mm^6\,m^{-3}\)</span>, c in m/s, <span class="math notranslate nohighlight">\(\Delta t\)</span> in s and <span class="math notranslate nohighlight">\(\lambda\)</span> in cm.  How do you convert
+<span class="math notranslate nohighlight">\(Z_1 c  \Delta t/\lambda^2\)</span> to <span class="math notranslate nohighlight">\(km^2\)</span>?</p></li>
+<li><p>The reflectivity goes down as b and K increase and goes up as <span class="math notranslate nohighlight">\(L_a\)</span> and R increase – explain.</p></li>
+<li><p>Why is the width of the radar sample volume proportional to <span class="math notranslate nohighlight">\(\Delta t/2\)</span> instead of <span class="math notranslate nohighlight">\(\Delta t\)</span> ?</p></li>
 </ol>
 </section>
 </section>
@@ -584,7 +489,7 @@ F = \pi I
         },
         kernelOptions: {
             name: "python3",
-            path: "./notebooks/week1"
+            path: "./notebooks/week8"
         },
         predefinedOutput: true
     }
@@ -602,22 +507,13 @@ F = \pi I
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="radiance.html"
+       href="../../solutions/assign6.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Solid angle and radiance</p>
+        <p class="prev-next-title"><span class="section-number">45. </span>Assignment 6</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="planck_function.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Plotting the Planck function with python</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -635,16 +531,7 @@ F = \pi I
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-the-cosine-using-power">9.1. Law of the cosine – using power</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-between-flux-and-radiance">9.2. Moving between flux and radiance</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-approximations-to-fluxrel">9.2.1. Two approximations to <code class="xref eq docutils literal notranslate"><span class="pre">fluxrel</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-beam-approximation-w-h-p-116">9.2.1.1. Parallel beam approximation (W&amp;H p. 116)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isotropic-radiance-f-pi-b">9.2.1.2. Isotropic radiance: <span class="math notranslate nohighlight">\(F = \pi B\)</span></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-questions">9.3. Worksheet questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-comments">46.1. Questions/Comments</a></li>
 </ul>
   </nav></div>
 

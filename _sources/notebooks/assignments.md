@@ -33,3 +33,7 @@ Turn in a notebook that: 
 1) Contains a function  function that takes 3 tif files and returns a rioxarray false color image. Use it to make and plot a band 5,4,3 false color png file of your scene 
 
 2)  Contains a function that takes an image and its fmask and returns a new image with all cloudy pixels set to np.nan.   Use it to show the image of a partly cloudy scene (any landsat scene you'd like with more than 10% cloud fraction)
+
+## Assignment 6 
+
+- 

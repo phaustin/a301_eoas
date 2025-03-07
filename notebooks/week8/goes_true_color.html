@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -63,7 +63,7 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week8/goes_true_color.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="43. Combining goes and landsat data" href="goes_landsat.html" />
+    <link rel="next" title="43. Combining goes and landsat data using rioxarray" href="goes_landsat.html" />
     <link rel="prev" title="41. Python packages Part 1" href="install_part1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -264,7 +264,10 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="install_part1.html">41. Python packages Part 1</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">42. GOES-16: True Color Images from GOES ABI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="goes_landsat.html">43. Combining goes and landsat data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goes_landsat.html">43. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goes_landsat_rio.html">44. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6.html">45. Assignment 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radar.html">46. Notes on the radar equation</a></li>
 </ul>
 
     </div>
@@ -2096,8 +2099,8 @@ V_{out} = V_{in}^{1/\gamma}
 could use that channel in place of green, but it would make the green in our
 image appear too vibrant. Instead, we will tone-down the green channel by
 interpolating the value to simulate a natural green color.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a68f2ea3-902b-4cd4-a386-b7769f9ed794">
-<span class="eqno">(42.2)<a class="headerlink" href="#equation-a68f2ea3-902b-4cd4-a386-b7769f9ed794" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a5fdb681-f363-43ae-a499-9b2d2b6c1ad9">
+<span class="eqno">(42.2)<a class="headerlink" href="#equation-a5fdb681-f363-43ae-a499-9b2d2b6c1ad9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 pseudoGreen = (0.48358168*RED) + (0.06038137*GREEN) + (0.45706946*BLUE)
 \end{equation}\]</div>
 <p>or, a simple alternative (<a class="reference external" href="http://cimss.ssec.wisc.edu/goes/OCLOFactSheetPDFs/ABIQuickGuide_CIMSSRGB_v2.pdf">CIMSS Natural True
@@ -2845,7 +2848,7 @@ box and save it to disk as a netcdf file with the correct affine transform and c
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">43. </span>Combining goes and landsat data</p>
+        <p class="prev-next-title"><span class="section-number">43. </span>Combining goes and landsat data using rioxarray</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

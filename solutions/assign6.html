@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>ATSC 301: 2024 Term 2 Winter &#8212; ATSC 301</title>
+    <title>45. Assignment 6 &#8212; ATSC 301</title>
   
   
   
@@ -59,11 +59,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/index';</script>
-    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/index.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'solutions/assign6';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/solutions/assign6.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ATSC 301: syllabus" href="syllabus.html" />
+    <link rel="next" title="46. Notes on the radar equation" href="../notebooks/week8/radar.html" />
+    <link rel="prev" title="44. Combining goes and landsat data using rioxarray" href="../notebooks/week8/goes_landsat_rio.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -126,8 +127,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -146,7 +145,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="../notebooks/index.html">
   
   
   
@@ -171,104 +170,104 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../notebooks/index.html">
                     ATSC 301: 2024 Term 2 Winter
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Useful links</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="syllabus.html">ATSC 301: syllabus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="integrity.html">UBC academic integrity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="texts.html">Texts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assignments.html">A301 Assignments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pixi_install.html">pixi install for macos and windows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="windows_install.html">Windows installation using a conda lock file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/syllabus.html">ATSC 301: syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/integrity.html">UBC academic integrity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/texts.html">Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/assignments.html">A301 Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/pixi_install.html">pixi install for macos and windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/windows_install.html">Windows installation using a conda lock file</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)">Notebook downloads</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebook_index.html">code snippets by notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/notebook_index.html">code snippets by notebook</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../week_notes.html">Week notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week_review.html">Weekly review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week_review.html">Weekly review</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Midterm</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="midterm/midterm_focus.html">1. Study topics for midterm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/midterm/midterm_focus.html">1. Study topics for midterm</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1E6Gs6zUARHdEAb2UqIyMnyXj-jCiOiXw/view?usp=drive_link">2025 mid-term equation sheet</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/12ZDN8NZzgafeCMDTy4t0u-w80o3-foNT/view?usp=sharing">2022 mid-term</a></li>
-<li class="toctree-l1"><a class="reference internal" href="midterm/mid_term_reviewI.html">2. Sample mid-term questions I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="midterm/mid_term_reviewII.html">3. Midterm review questions II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="midterm/mid_term_reviewI_solutions.html">4. Midterm Solutions: midterm sample questions I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="midterm/mid_term_reviewII_solutions.html">5. Midterm solutions: sample questions II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/midterm/a301_2024t2_midterm_solution.html">6. A301 midterm solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/midterm/mid_term_reviewI.html">2. Sample mid-term questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/midterm/mid_term_reviewII.html">3. Midterm review questions II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/midterm/mid_term_reviewI_solutions.html">4. Midterm Solutions: midterm sample questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/midterm/mid_term_reviewII_solutions.html">5. Midterm solutions: sample questions II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="midterm/a301_2024t2_midterm_solution.html">6. A301 midterm solutions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week1/beers_law.html">7. Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week1/beers_law.html">7. Beers and inverse squared laws</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week1/radiance.html">8. Solid angle and radiance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week1/newflux.html">9. Finding the flux given the radiance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week1/planck_function.html">10. Plotting the Planck function with python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week1/radiance.html">8. Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week1/newflux.html">9. Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week1/planck_function.html">10. Plotting the Planck function with python</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="week2/planck_sol.html">11. Plotting the Planck function - solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week2/assign1.html">12. Assignment 1, brightness temperatures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week2/cartopy_maps.html">13. Introduction to Cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week2/cartopy_mapping_vancouver.html">14. Mapping Vancouver with cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week2/get_landsat_bands.html">15. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week2/planck_sol.html">11. Plotting the Planck function - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week2/assign1.html">12. Assignment 1, brightness temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week2/cartopy_maps.html">13. Introduction to Cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week2/cartopy_mapping_vancouver.html">14. Mapping Vancouver with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week2/get_landsat_bands.html">15. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="week3/map_landsat.html">16. Mapping the landsat scene</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week3/assign1_solution.html">17. Assignment 1, brightness temperatures - solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week3/zoom_landsat.html">18. Zooming an image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week3/map_landsat.html">16. Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week3/assign1_solution.html">17. Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week3/zoom_landsat.html">18. Zooming an image</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="week3/kirchoff.html">20. Kirchoff worksheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week3/optical_depth.html">21. Optical depth and partial transmission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week3/kirchoff.html">20. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week3/optical_depth.html">21. Optical depth and partial transmission</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="week4/clip_bands.html">22. Clipping multiple bands– v0.2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week4/optical_depth2.html">23. Optical depth II: mean free path</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/assign2_solutionsA.html">24. Assignment 2: solutions Part A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week4/clip_bands.html">22. Clipping multiple bands– v0.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week4/optical_depth2.html">23. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign2_solutionsA.html">24. Assignment 2: solutions Part A</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../solutions/assign4.html">25. Assignment 4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/assign2_solutionsB.html">26. Assignment 2: solutions part B</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week5/rowcol2latlon.html">27. Getting lat,lon from row, column</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week5/schwartz.html">28. The Schwartzchild Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week5/add_palette.html">29. Adding a palette to an axis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/assign2_solutionsC.html">30. Assignment 2: solutions part C</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week5/hydrostat.html">31. Hydrostatic balance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week5/cartopy_mapping_buenos_aires.html">32. Cartopy mapping Buenos Aires</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign4.html">25. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign2_solutionsB.html">26. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week5/rowcol2latlon.html">27. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week5/schwartz.html">28. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week5/add_palette.html">29. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign2_solutionsC.html">30. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week5/hydrostat.html">31. Hydrostatic balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week5/cartopy_mapping_buenos_aires.html">32. Cartopy mapping Buenos Aires</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../solutions/assign3_solutions.html">33. Assignment 3: solutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week6/hydrostatic_balance.html">34. Scale heights for typical atmospheric soundings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week6/weighting_functions.html">35. Weighting functions for temperature retrieval</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week6/heating_rate.html">36. Finding the heating rate of the atmosphere</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week6/assign4_two_layer_sol.html">37. Assignment 4 two layer solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/assign4_solution.html">38. Assignment 4 solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign3_solutions.html">33. Assignment 3: solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week6/hydrostatic_balance.html">34. Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week6/weighting_functions.html">35. Weighting functions for temperature retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week6/heating_rate.html">36. Finding the heating rate of the atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week6/assign4_two_layer_sol.html">37. Assignment 4 two layer solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign4_solution.html">38. Assignment 4 solutions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="week7/false_color.html">39. Making color composite (“false color”) images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week7/fmask.html">40. Using fmask to mask water pixels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week7/false_color.html">39. Making color composite (“false color”) images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week7/fmask.html">40. Using fmask to mask water pixels</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="week8/install_part1.html">41. Python packages Part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week8/goes_true_color.html">42. GOES-16: True Color Images from GOES ABI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week8/goes_landsat.html">43. Combining goes and landsat data using rioxarray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week8/goes_landsat_rio.html">44. Combining goes and landsat data using rioxarray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/assign6.html">45. Assignment 6</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week8/radar.html">46. Notes on the radar equation</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week8/install_part1.html">41. Python packages Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week8/goes_true_color.html">42. GOES-16: True Color Images from GOES ABI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week8/goes_landsat.html">43. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week8/goes_landsat_rio.html">44. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">45. Assignment 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week8/radar.html">46. Notes on the radar equation</a></li>
 </ul>
 
     </div>
@@ -323,7 +322,7 @@
       
       
       
-      <li><a href="../_sources/notebooks/index.md" target="_blank"
+      <li><a href="../_sources/solutions/assign6.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -407,7 +406,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>ATSC 301: 2024 Term 2 Winter</h1>
+    <h1>Assignment 6</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -417,7 +416,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-links">Useful links</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-planck-wavenumber">45.1. Q1 Planck wavenumber</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-stefan-boltzman">45.2. Q2 Stefan-Boltzman</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-wien-s-law">45.3. Q3 Wien’s law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-radar-rainrate">45.4. Q4  Radar Rainrate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-radar-rainrate-python">45.5. Q5 Radar Rainrate Python</a></li>
 </ul>
             </nav>
         </div>
@@ -429,41 +432,57 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="atsc-301-2024-term-2-winter">
-<h1>ATSC 301: 2024 Term 2 Winter<a class="headerlink" href="#atsc-301-2024-term-2-winter" title="Link to this heading">#</a></h1>
-<section id="useful-links">
-<h2>Useful links<a class="headerlink" href="#useful-links" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://phaustin.github.io/a301_eoas">Course home page</a></p></li>
-<li><p><a class="reference external" href="https://piazza.com/ubc.ca/winterterm22025/atsc_v3012012024w2">Piazza discussions</a></p></li>
-<li><p><a class="reference external" href="https://canvas.ubc.ca/courses/158920">Canvas page</a></p></li>
-<li><p><a class="reference internal" href="syllabus.html#syllabus"><span class="std std-ref">ATSC 301: syllabus</span></a></p></li>
-<li><p><a class="reference internal" href="../week_notes.html#sec-weekly"><span class="std std-ref">Week notes</span></a></p></li>
-<li><p><a class="reference internal" href="assignments.html#sec-assignments"><span class="std std-ref">A301 Assignments</span></a></p></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="assignment-6">
+<span id="assign6"></span><h1><span class="section-number">45. </span>Assignment 6<a class="headerlink" href="#assignment-6" title="Link to this heading">#</a></h1>
+<p>Upload a pdf and a notebook for the following problems:</p>
+<section id="q1-planck-wavenumber">
+<h2><span class="section-number">45.1. </span>Q1 Planck wavenumber<a class="headerlink" href="#q1-planck-wavenumber" title="Link to this heading">#</a></h2>
+<p>Planck’s law as a fundtion of wavelength</p>
+<div class="math notranslate nohighlight" id="equation-planck">
+<span class="eqno">(45.1)<a class="headerlink" href="#equation-planck" title="Link to this equation">#</a></span>\[
+B_\lambda(\lambda, T)=\frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c /\left(\lambda k_{\mathrm{B}} T\right)}-1}
+\]</div>
+<p>Use change of variables to rewrite <a class="reference internal" href="#equation-planck">(45.1)</a> in terms of wavenumber <span class="math notranslate nohighlight">\(\tilde{\nu} = 1/\lambda\)</span> and show that it is:</p>
+<div class="math notranslate nohighlight" id="equation-planck-wn">
+<span class="eqno">(45.2)<a class="headerlink" href="#equation-planck-wn" title="Link to this equation">#</a></span>\[
+B_{\tilde{\nu}}(\tilde{\nu}, T)=2 h c^2 \tilde{\nu}^3 \frac{1}{e^{h c \tilde{\nu} /\left(k_{\mathrm{B}} T\right)}-1}
+\]</div>
 </section>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
+<section id="q2-stefan-boltzman">
+<h2><span class="section-number">45.2. </span>Q2 Stefan-Boltzman<a class="headerlink" href="#q2-stefan-boltzman" title="Link to this heading">#</a></h2>
+<p>Integrate <a class="reference internal" href="#equation-planck-wn">(45.2)</a> to find the Stefan-Boltzman equation given that</p>
+<div class="math notranslate nohighlight" id="equation-planck-int">
+<span class="eqno">(45.3)<a class="headerlink" href="#equation-planck-int" title="Link to this equation">#</a></span>\[
+\int_0^\infty \frac{u^3}{(e^u -1 )} du = \frac{\pi^4}{15} 
+\]</div>
+<p>(<a class="reference external" href="https://en.wikipedia.org/wiki/Riemann_zeta_function">Riemann zeta function</a>)</p>
+</section>
+<section id="q3-wien-s-law">
+<h2><span class="section-number">45.3. </span>Q3 Wien’s law<a class="headerlink" href="#q3-wien-s-law" title="Link to this heading">#</a></h2>
+<p>Show that the maximum value for <a class="reference internal" href="#equation-planck">(45.1)</a> occurs at:</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_{max} \propto \frac{1}{T}
+\]</div>
+<p>(<a class="reference external" href="https://en.wikipedia.org/wiki/Wien%27s_displacement_law">Wien’s law</a>)</p>
+</section>
+<section id="q4-radar-rainrate">
+<h2><span class="section-number">45.4. </span>Q4  Radar Rainrate<a class="headerlink" href="#q4-radar-rainrate" title="Link to this heading">#</a></h2>
+<p>Integrate <span class="math notranslate nohighlight">\(Z=\int D^6 n(D) dD\)</span> on paper, assuming a Marshall Palmer size distribution and show that it integrates to:</p>
+<div class="math notranslate nohighlight">
+\[
+Z \approx 300 RR^{1.5}
+\]</div>
+<p>with Z in <span class="math notranslate nohighlight">\(mm^6\,m^{-3}\)</span> and RR in mm/hr.  It’s helpful to know that:</p>
+<div class="math notranslate nohighlight">
+\[
+\int^\infty_0 x^n \exp( -a x) dx = n! / a^{n+1}
+\]</div>
+</section>
+<section id="q5-radar-rainrate-python">
+<h2><span class="section-number">45.5. </span>Q5 Radar Rainrate Python<a class="headerlink" href="#q5-radar-rainrate-python" title="Link to this heading">#</a></h2>
+<p>Repeat using numerical integration in python (i.e. np.diff and np.sum) and show that the the result agrees.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -479,7 +498,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./notebooks"
+            path: "./solutions"
         },
         predefinedOutput: true
     }
@@ -496,12 +515,21 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../notebooks/week8/goes_landsat_rio.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">44. </span>Combining goes and landsat data using rioxarray</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="syllabus.html"
+       href="../notebooks/week8/radar.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">ATSC 301: syllabus</p>
+        <p class="prev-next-title"><span class="section-number">46. </span>Notes on the radar equation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -521,7 +549,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-links">Useful links</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-planck-wavenumber">45.1. Q1 Planck wavenumber</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-stefan-boltzman">45.2. Q2 Stefan-Boltzman</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-wien-s-law">45.3. Q3 Wien’s law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-radar-rainrate">45.4. Q4  Radar Rainrate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-radar-rainrate-python">45.5. Q5 Radar Rainrate Python</a></li>
 </ul>
   </nav></div>
 
