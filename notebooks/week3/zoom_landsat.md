@@ -223,8 +223,11 @@ fig.colorbar(cs, extend = 'both');
 
 ## put this on a map
 
-Note that the origin is switched to "lower" in the x,y coordinate system below,
-since y increases upwards.  The coastline is very crude, but at least indicates we've got the coords roughly correct.  See the "high_res_map" notebook for a better coastline.
+Cartopy will select the high resoluiton coastline automatically
+
+```{code-cell} ipython3
+cartopy_crs
+```
 
 ```{code-cell} ipython3
 fig2, ax = plt.subplots(1, 1, figsize=(10,10), subplot_kw={"projection": cartopy_crs})

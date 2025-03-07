@@ -14,16 +14,28 @@ kernelspec:
 ---
 
 (week8:goes_landsat_rio)=
-# Combining goes and landsat data
+# Combining goes and landsat data using rioxarray
 
-The cropping function for satpy left something to be desired -- it covered less than half of the clipped
-landsat scene
+This is a continuation of {ref}`week8_goes_landsat`.  We'll switch back from satpy to 
+goes2go to read in the GOES image, then clip it using `rio.clip_box`.  
 
+The question:  Does `rio.clip_box` give us a better match than `satpy.crop` for the Landsat 30 km x 24 km bounding box? If not, can we figure out why? The first part of the notebook is identical to the the Landsat section of {ref}`landsat_bounds_find_bounds`.  The GOES section
+switches to goes2go to get an xarray file instead of a satpy scene object, and then
+turns the xarray DataArray into a rio.DataArray by adding the GOES crs and affine transform.
 
+Finally, I use [rio.reproject_match](https://corteva.github.io/rioxarray/stable/examples/reproject_match.html) to resample the
+GOES image to the exact 30 meter Landsat grid, which forces and exact match with the Landsat
+bounding box.
 
-- Download goes_landsat.ipynb from the [week8 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
-  
-- You'll also need to copy the band 5 hls tif files in the [vancouver_2023](https://drive.google.com/drive/folders/1UwTc4MnneI2eZ6rHqKFzF4YdRRbQi4sS?usp=sharing) folder into a new folder on your drive called `~/repos/a301/satdata/landsat/vancouver_2023`
+## Installation
+
+- I've updated [a301_lib.py](https://github.com/phaustin/a301_lib/blob/main/src/a301_lib.py) to include the data structures and the `find_bounds` function from {ref}`goes_landsat`.  You'll need to reinstall the library with:
+
+```
+pip install -r requirements.txt --upgrade
+```
+- Download goes_landsat_rio.ipynb from the [week8 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
+
 
 ```{code-cell} ipython3
 from pathlib import Path
@@ -104,12 +116,7 @@ landsat_nir.plot.imshow(ax=ax,
                     extend = "both");
 ```
 
-```{code-cell} ipython3
-a=band_dict['NIR']
-np.unique(np.diff(a.x))
-```
-
-## Define the image point and offsets
+## Define the image point and boundary offsets
 
 To make the bounding box, we add column and row offsets
 to a point that we want in our image, in this case EOSC
@@ -127,25 +134,24 @@ offsets = Row_col_offsets(west = -500,
                 south =300,
                 east =  300,
                 north = -700)
-nir = band_dict['NIR']
 ```
 
 ## Find bounds and clip
 
 ```{code-cell} ipython3
-landsat_bbox = find_bounds(nir, offsets, image_point, scene_crs = landsat_crs)
+landsat_bbox = find_bounds(landsat_nir, offsets, image_point, scene_crs = landsat_crs)
 print(landsat_bbox)
 ```
 
 ```{code-cell} ipython3
 bounds_list = list(dict(landsat_bbox).values())
-clipped_ds = landsat_nir.rio.clip_box(*bounds_list)
-clipped_ds.shape
+clipped_landsat = landsat_nir.rio.clip_box(*bounds_list)
+clipped_landsat.shape
 ```
 
 ```{code-cell} ipython3
 fig, ax = plt.subplots(1,1,figsize = (6,6))
-clipped_ds.plot.imshow(ax=ax,
+clipped_landsat.plot.imshow(ax=ax,
                     norm = pal_dict['norm'],
                     cmap = pal_dict['cmap'],
                     extend = "both");
@@ -189,17 +195,48 @@ full_path = save_dir / the_path
 goesC = xr.open_dataset(full_path,mode = 'r',mask_and_scale = True)
 ```
 
-### Get the veggie band (nir)
+#### Note that the GOES coordinates are not in meters
+
+```{code-cell} ipython3
+print(f"GOES x distance {np.unique(np.diff(goesC.x))}")
+```
+
+```{code-cell} ipython3
+
+```
+
+### Get the veggie band (C03, nir)
+
+Note that the channel 3 coordinates are now in meters.  This is because the
+pixel size depends on the channel.  The size is larger for the thermal
+channels.  Note that also that the navigation is a little more variable
+than it was in satpy, where thee pixel sizes only differed in the 
+fifth decimal place, not the first.
 
 ```{code-cell} ipython3
 c3 = goesC.metpy.parse_cf('CMI_C03')
+print(f"GOES x distance {np.unique(np.diff(c3.x))}")
+```
+
+```{code-cell} ipython3
 cartopy_crs = c3.metpy.cartopy_crs
 goes_crs = pyproj.CRS(cartopy_crs)
 goes_coords = dict(c3.coords)
+goes_dims = c3.dims
+#
+# use average pixel size for the transform
+#
 resolutionx = np.mean(np.diff(c3.x))
 resolutiony = np.mean(np.diff(c3.y))
-print(resolutionx, resolutiony)
+missing = np.float32(np.nan)
+print(f"{(resolutionx, resolutiony)=}")
 attrs = c3.attrs
+attrs['valid_range'] = np.array([0.,1.])
+attrs['missing'] = missing
+```
+
+```{code-cell} ipython3
+c3.plot.hist();
 ```
 
 ### create the affine transform
@@ -209,65 +246,77 @@ ul_x = c3.x[0].data
 ul_y = c3.y[0].data
 lr_x = c3.y[-1].data
 lr_y = c3.y[-1].data
-new_affine = affine.Affine(resolutionx, 0.0, ul_x, 0.0, resolutiony, ul_y)
-new_affine
+goes_transform = affine.Affine(resolutionx, 0.0, ul_x, 0.0, resolutiony, ul_y)
+goes_transform
 ```
 
-```{code-cell} ipython3
-c3.plot.hist();
-```
+### Define make_new_rioxarray
 
-### Copy the data to a rioxarray
+This function assembles a rioxarray from numpy data plus
+all the necessary metadata.  There are 2 steps:  
+
+1) Create an [xarray.DataArray](https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html) with
+   data, coords, dims, optional attributes and a name (defaults to `name_here`)
+2) add the rioxarray metdata: crs, transform and optional missing value
 
 ```{code-cell} ipython3
 def make_new_rioxarray(
-    dataset:np.ndarray,
+    rawdata: np.ndarray,
     coords: dict,
     dims: tuple,
     crs: pyproj.CRS,
     transform: affine.Affine,
-    attrs: dict | None = None) -> xr.DataArray:
+    attrs: dict | None = None,
+    missing: float | None = None,
+    name: str | None = "name_here") -> xr.DataArray:
     """
     create a new rioxarray from an ndarray plus components
 
     Parameters
     ----------
 
-    rio_da: xarray DataArray
-       a DataArray with rasterio metadata
-    crs: optional pyproj crs
-       a crs which is able to return its epsg code
-       if it's missing, the crs from rio_da will be copied
+    rawdata: numpy array
+    crs: pyproj crs for scene
+    coords: xarray coordinate dict
+    dims: x and y dimension names from coorcds
+    transform: scene affine transform
+    attrs: optional attribute dictionary
+    missing: optional missing value
+    name: optional variable name, defaults to "name_here"
 
     Returns
     -------
 
-    clipped_da: xarray.DataArray
-      a DataArray with metadata and data copied from rio_da
-    
-    
+    rio_da: a new rioxarray
     """
-    #
-    # NASA hls files have bad crs, so allow for an override parameter
-    #
-    if crs is None:
-        crs = rio_da.rio.crs
-    clipped_da=xr.DataArray(rio_da.data,coords=rio_da.coords,
-                            dims=rio_da.dims)
-    clipped_da.rio.write_crs(crs, inplace=True)
-    clipped_da.rio.write_transform(rio_da.rio.transform(), inplace=True)
-    clipped_da=clipped_da.assign_attrs(rio_da.attrs)
-    clipped_da = clipped_da.rio.set_nodata(np.float32(np.nan))
-    return clipped_da
+    rio_da=xr.DataArray(rawdata.data,coords=coords,
+                            dims=dims,name=name)
+    rio_da.rio.write_crs(crs, inplace=True)
+    rio_da.rio.write_transform(transform, inplace=True)
+    if attrs is not None:
+        rio_da=rio_da.assign_attrs(attrs)
+    if missing is not None:
+        rio_da = rio_da.rio.set_nodata(missing)
+    return rio_da
 ```
 
-```{code-cell} ipython3
-np.unique(np.diff(c3.x))
-```
+### Use make_new_rioxarray to transform c3 into a rioxarray
 
 ```{code-cell} ipython3
-c3.plot.hist();
+goes_c3 = make_new_rioxarray(c3.data, goes_coords, goes_dims, 
+                    goes_crs, goes_transform, attrs, missing)
+print(goes_c3.name)
 ```
+
+### Get the full extent of the GOES scene
+
+```{code-cell} ipython3
+xmin, ymin, xmax, ymax = goes_c3.rio.transform_bounds(goes_crs)
+goes_extent = xmin, xmax, ymin,ymax
+goes_extent
+```
+
+### Plot the goes rioxarray
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(15, 12))
@@ -276,81 +325,133 @@ ax = fig.add_subplot(1, 1, 1, projection=lc)
 
 
 ax.imshow(
-    c3.data,
+    goes_c3.data,
     origin="upper",
-    extent=original_extent,
+    extent= goes_extent,
     transform=cartopy_crs,
     interpolation="none",
     vmin =0,
-    vmax=30,
+    vmax=0.5,
     alpha=0.6
 )
 ax.set_extent([-170, -110, 10, 55], crs=ccrs.PlateCarree())
-ax.coastlines(resolution="50m", color="black", linewidth=1)
-ax.add_feature(ccrs.cartopy.feature.STATES);
+ax.coastlines(resolution="50m", color="red", linewidth=1)
+ax.add_feature(ccrs.cartopy.feature.STATES, edgecolor="red");
 ```
 
-## Transform the landsat bounds to GOES coords
+## Now clip the GOES image to Landsat bounds
 
-We what to clip to the same region as our clipped landsat scene
+### Transform the landsat bounds to GOES coords
+
+We what to clip to the same region as our clipped landsat scene.  Note
+that we still wind up with a shrunken image with the wrong aspec ration
 
 ```{code-cell} ipython3
-clipped_ds.shape
+clipped_landsat.shape
 ```
 
-### Bug! copied the wrong CRS
-
-need the clipped crs, not the full scene
-
 ```{code-cell} ipython3
-# -> bad: landsat_crs  = nir.rio.crs
-xmin,ymin,xmax,ymax = clipped_ds.rio.bounds()
-print(f"{(xmax - xmin)=}")
-print(f"{(ymax - ymin)=}")
+xmin,ymin,xmax,ymax = clipped_landsat.rio.bounds()
+print(f"{(xmax - xmin)=} m")
+print(f"{(ymax - ymin)=} m")
+#
+# transform bounds from landsat to goes crs
+#
 transform = Transformer.from_crs(landsat_crs, goes_crs)
 xmin_goes,ymin_goes = transform.transform(xmin,ymin)
 xmax_goes,ymax_goes = transform.transform(xmax,ymax)
-print(f"{(xmax_goes - xmin_goes)=}")
-print(f"{(ymax_goes - ymin_goes)=}")
+print(f"{(xmax_goes - xmin_goes)=} m")
+print(f"{(ymax_goes - ymin_goes)=} m")
 bounds_goes = xmin_goes,ymin_goes,xmax_goes,ymax_goes
 #
-# now crop to these bounds
+# now crop to these bounds using clip_box
 #
-cropped_ds=goes_2023.crop(xy_bbox = bounds_goes)
-cropped_c3 = cropped_ds['C03']
-xmin,ymin,xmax,ymax = cropped_c3.area.area_extent
-cropped_c3.shape
+clipped_c3=goes_c3.rio.clip_box(*bounds_goes)
 ```
 
-##  Verdict: still not great
+##  Verdict: clipped regions still mismatched
 
-Sub-optimal -- correct area, but the landsat image is 30 km x 24 km and the cropped GOES image is
-only 16 km x 18 km -- way to conservative.  We'll try switching to rioxarray in the next notebook
+`rio.clip_box` gives us exactly the same result as satpy.crop in {ref}`goes_landsat`: the landsat image is 30 km x 24 km and the cropped GOES image is
+only 16 km x 18 km and GOES covers only part of the landsat boundary box.
 
 ```{code-cell} ipython3
-cropped_c3.shape, clipped_ds.shape
+print(f"{(clipped_c3.shape, clipped_landsat.shape)=}")
 ```
 
 ### Plot the cropped goes image
 
+As the plot below shows, it's an exact match for the result from the last notebook. Note
+how much loser the  GOES band 3 reflectivity is than the Landsat band 5 reflectivity above.
+That's because the big GOES pixels contain more mixtures of urban and rural land.
+
 ```{code-cell} ipython3
-extent_cartopy = xmin,xmax,ymin,ymax
-fig2, ax = plt.subplots(1, 1, figsize=(10,10), 
+extent_cartopy = xmin_goes,xmax_goes,ymin_goes,ymax_goes
+fig2, ax = plt.subplots(1, 1, figsize=(6,6), 
                         subplot_kw={"projection": cartopy_crs})
 cs = ax.imshow(
-    cropped_c3.data,
+    clipped_c3.data,
     origin="upper",
     extent=extent_cartopy,
     transform=cartopy_crs,
     alpha=1,
     vmin=0,
-    vmax=30
+    vmax=0.2
 )
 ax.set_extent(extent_cartopy,crs=cartopy_crs)
 ax.add_feature(cartopy.feature.GSHHSFeature(scale="auto", 
                                             levels=[1, 2, 3],edgecolor='red'));
 ```
 
-### Next step
+## The solution: resampling
 
-Resample the GOES image to the Landsat grid for a pixel by pixel comparison
+Resample the GOES image to the Landsat grid gives us aa pixel by pixel comparison that shows
+why the two domains look different.
+We use [rio.reproject_match](https://corteva.github.io/rioxarray/stable/examples/reproject_match.html) to resample the
+course goes image onto the 1000 x 800 Landsat domain.  Every GOES pixel now has exactly the
+same geographic location as every Landsat pixel.
+
+```{code-cell} ipython3
+matched_ds = clipped_c3.rio.reproject_match(clipped_landsat)
+matched_ds.shape
+```
+
+### Plot the resampled image
+
+The resampled image shows what the problem was:  the GOES crs is actually tilted with respect
+to the zone 10N UTM north-south coordinates, so there's no way to fit the GOES image into
+the Landsat bounding box without resampling.
+
+```{code-cell} ipython3
+epsg_code = matched_ds.rio.crs.to_epsg()
+cartopy_crs = ccrs.epsg(epsg_code)
+```
+
+```{code-cell} ipython3
+xmin_match,ymin_match,xmax_match,ymax_match = matched_ds.rio.bounds()
+extent_cartopy = xmin_match,xmax_match,ymin_match,ymax_match
+fig2, ax = plt.subplots(1, 1, figsize=(6,6), 
+                        subplot_kw={"projection": cartopy_crs})
+ax.set_extent(extent_cartopy,crs=cartopy_crs)
+cs = ax.imshow(
+    matched_ds.data,
+    origin="upper",
+    extent=extent_cartopy,
+    transform=cartopy_crs,
+    alpha=1,
+    vmin=0,
+    vmax=0.2
+)
+
+ax.add_feature(cartopy.feature.GSHHSFeature(scale="auto", 
+                                            levels=[1, 2, 3],edgecolor='red'));
+```
+
+## Summary
+
+If we want to fill the entire landsat clipped area with GOES data, we're going to need to
+increase the size of the GOES bounding box in the east and west directions to make up
+for the tilt in the coordinate reference system.
+
+```{code-cell} ipython3
+
+```

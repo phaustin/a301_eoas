@@ -13,11 +13,11 @@ kernelspec:
   name: python3
 ---
 
-(week8:goes_landsat_rio)=
+(week8:goes_landsat)=
 # Combining goes and landsat data using rioxarray
 
-The cropping function for satpy left something to be desired -- it covered less than half of the clipped
-landsat scene
+- 2025/March/7: fixed {ref}`crs_bug`
+
 
 ## Introduction
 
@@ -285,6 +285,7 @@ def find_bounds(
     return bounds
 ```
 
+(landsat_goes_find_bounds)=
 ## Find bounds and clip
 
 ```{code-cell} ipython3
@@ -395,6 +396,7 @@ We what to clip to the same region as our clipped landsat scene
 clipped_ds.shape
 ```
 
+(crs_bug)=
 ### Bug! copied the wrong CRS
 
 need the clipped crs, not the full scene.  The bug was in the next line below
@@ -419,10 +421,11 @@ xmin,ymin,xmax,ymax = cropped_c3.area.area_extent
 cropped_c3.shape
 ```
 
-##  Verdict: still not great
+##  Verdict: still not a match 
 
-Sub-optimal -- correct area, but the landsat image is 30 km x 24 km and the cropped GOES image is
-only 16 km x 18 km -- way to conservative.  We'll try switching to rioxarray in the next notebook
+With the bug fixed we've got the correct area, but the landsat image is 30 km x 24 km and the cropped GOES image is
+only 16 km x 18 km.  In the next notebook: {ref}`goes_landsat_rio` we show why there's a
+discrepancy.
 
 ```{code-cell} ipython3
 cropped_c3.shape, clipped_ds.shape

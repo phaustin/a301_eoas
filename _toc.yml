@@ -97,3 +97,8 @@ parts:
     - file: notebooks/week8/install_part1.md
     - file: notebooks/week8/goes_true_color.md
     - file: notebooks/week8/goes_landsat.md
+    - file: notebooks/week8/goes_landsat_rio.md
+    - file: solutions/assign6.md
+    - file: notebooks/week8/radar.rst
+      
+      
