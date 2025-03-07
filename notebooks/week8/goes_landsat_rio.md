@@ -16,10 +16,10 @@ kernelspec:
 (week8:goes_landsat_rio)=
 # Combining goes and landsat data using rioxarray
 
-This is a continuation of {ref}`week8_goes_landsat`.  We'll switch back from satpy to 
+This is a continuation of {ref}`week8:goes_landsat`.  We'll switch back from satpy to 
 goes2go to read in the GOES image, then clip it using `rio.clip_box`.  
 
-The question:  Does `rio.clip_box` give us a better match than `satpy.crop` for the Landsat 30 km x 24 km bounding box? If not, can we figure out why? The first part of the notebook is identical to the the Landsat section of {ref}`landsat_bounds_find_bounds`.  The GOES section
+The question:  Does `rio.clip_box` give us a better match than `satpy.crop` for the Landsat 30 km x 24 km bounding box? If not, can we figure out why? The first part of the notebook is identical to the the Landsat section of {ref}`landsat_goes_find_bounds`.  The GOES section
 switches to goes2go to get an xarray file instead of a satpy scene object, and then
 turns the xarray DataArray into a rio.DataArray by adding the GOES crs and affine transform.
 
@@ -29,13 +29,12 @@ bounding box.
 
 ## Installation
 
-- I've updated [a301_lib.py](https://github.com/phaustin/a301_lib/blob/main/src/a301_lib.py) to include the data structures and the `find_bounds` function from {ref}`goes_landsat`.  You'll need to reinstall the library with:
+- I've updated [a301_lib.py](https://github.com/phaustin/a301_lib/blob/main/src/a301_lib.py) to include the data structures and the `find_bounds` function from {ref}`week8:goes_landsat`.  You'll need to reinstall the library with:
 
 ```
 pip install -r requirements.txt --upgrade
 ```
 - Download goes_landsat_rio.ipynb from the [week8 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
-
 
 ```{code-cell} ipython3
 from pathlib import Path
@@ -371,7 +370,7 @@ clipped_c3=goes_c3.rio.clip_box(*bounds_goes)
 
 ##  Verdict: clipped regions still mismatched
 
-`rio.clip_box` gives us exactly the same result as satpy.crop in {ref}`goes_landsat`: the landsat image is 30 km x 24 km and the cropped GOES image is
+`rio.clip_box` gives us exactly the same result as satpy.crop in {ref}`week8:goes_landsat`: the landsat image is 30 km x 24 km and the cropped GOES image is
 only 16 km x 18 km and GOES covers only part of the landsat boundary box.
 
 ```{code-cell} ipython3

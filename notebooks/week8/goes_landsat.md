@@ -424,7 +424,7 @@ cropped_c3.shape
 ##  Verdict: still not a match 
 
 With the bug fixed we've got the correct area, but the landsat image is 30 km x 24 km and the cropped GOES image is
-only 16 km x 18 km.  In the next notebook: {ref}`goes_landsat_rio` we show why there's a
+only 16 km x 18 km.  In the next notebook: {ref}`week8:goes_landsat_rio` we show why there's a
 discrepancy.
 
 ```{code-cell} ipython3
