@@ -14,7 +14,7 @@ kernelspec:
   name: python3
 ---
 
-(week9:stanleypark)=
+(week9:clip_demo)=
 # What happened to Stanley Park?
  In the {ref}`week8:goes_landsat_rio` notebook we wound up with a cropped image
  that shaved off the western and eastern sides of our specified bounding box.

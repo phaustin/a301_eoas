@@ -398,9 +398,15 @@ Read Stull Chapter 8 through p. 248 on weather radar
 - More on the Schwartzchild equation: the diffuse flux approximation
 
   - {ref}`week9:diffusivity`
-  - {ref}`week9:diffuse_flux_python`
+  - {ref}`week9:pydiffuse`
 
 #### For Wednesday
 
 - Get the land cover tif for your Landsat region
 - work on {ref}`assign6`
+
+Read:
+
+- {ref}`week9:diffusivity`
+- {ref}`week9:pydiffuse`
+

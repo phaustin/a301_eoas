@@ -13,8 +13,8 @@ kernelspec:
   name: python3
 ---
 
-(week11:diffuse_flux)=
-# Calculating the diffuse flux
+(week9:pydiffuse)=
+# Calculating the diffuse flux: python code
 
 ```{code-cell} ipython3
 import matplotlib
