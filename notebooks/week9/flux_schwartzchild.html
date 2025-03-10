@@ -1,0 +1,825 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>49. Integrating the Schwartzchild equation &#8212; ATSC 301</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week9/flux_schwartzchild';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week9/flux_schwartzchild.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="50. Calculating the diffuse flux" href="diffuse_flux_python.html" />
+    <link rel="prev" title="48. Working with surface class data" href="rio_land_classification.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ATSC 301</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    ATSC 301: 2024 Term 2 Winter
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Useful links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">ATSC 301: syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrity.html">UBC academic integrity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../texts.html">Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pixi_install.html">pixi install for macos and windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windows_install.html">Windows installation using a conda lock file</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)">Notebook downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebook_index.html">code snippets by notebook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Week notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_review.html">Weekly review</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midterm</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../midterm/midterm_focus.html">1. Study topics for midterm</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1E6Gs6zUARHdEAb2UqIyMnyXj-jCiOiXw/view?usp=drive_link">2025 mid-term equation sheet</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/12ZDN8NZzgafeCMDTy4t0u-w80o3-foNT/view?usp=sharing">2022 mid-term</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI.html">2. Sample mid-term questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII.html">3. Midterm review questions II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI_solutions.html">4. Midterm Solutions: midterm sample questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII_solutions.html">5. Midterm solutions: sample questions II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/midterm/a301_2024t2_midterm_solution.html">6. A301 midterm solutions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">7. Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">8. Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">9. Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">10. Plotting the Planck function with python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week2/planck_sol.html">11. Plotting the Planck function - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/assign1.html">12. Assignment 1, brightness temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_maps.html">13. Introduction to Cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_mapping_vancouver.html">14. Mapping Vancouver with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/get_landsat_bands.html">15. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">16. Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">17. Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">18. Zooming an image</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">20. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">21. Optical depth and partial transmission</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">22. Clipping multiple bands– v0.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">23. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">24. Assignment 2: solutions Part A</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">25. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">26. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">27. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">28. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">29. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">30. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">31. Hydrostatic balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">32. Cartopy mapping Buenos Aires</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">33. Assignment 3: solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/hydrostatic_balance.html">34. Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">35. Weighting functions for temperature retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">36. Finding the heating rate of the atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/assign4_two_layer_sol.html">37. Assignment 4 two layer solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4_solution.html">38. Assignment 4 solutions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week7/false_color.html">39. Making color composite (“false color”) images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week7/fmask.html">40. Using fmask to mask water pixels</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week8/install_part1.html">41. Python packages Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_true_color.html">42. GOES-16: True Color Images from GOES ABI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat.html">43. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat_rio.html">44. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6.html">45. Assignment 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/radar.html">46. Notes on the radar equation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 9</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="clip_demo.html">47. What happened to Stanley Park?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rio_land_classification.html">48. Working with surface class data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">49. Integrating the Schwartzchild equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffuse_flux_python.html">50. Calculating the diffuse flux</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/week9/flux_schwartzchild.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Integrating the Schwartzchild equation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-over-wavelength">49.1. Integration over wavelength</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-over-optical-depth">49.2. Integration over optical depth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-over-angle-the-diffusivity-approximation">49.3. Integration over angle: The diffusivity approximation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accounting-for-slant-paths">49.3.1. Accounting for slant paths</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-changing-with-height">49.3.2. Temperature changing with height</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-over-mu-cos-theta">49.3.2.1. Integrating over <span class="math notranslate nohighlight">\(\mu=\cos \theta\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radiance-into-flux">49.4. Radiance into flux</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flux-transmissivity">49.4.1. Flux transmissivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-integrals">49.4.2. Exponential integrals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fluxes-continued">49.4.3. Fluxes continued</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="integrating-the-schwartzchild-equation">
+<span id="week9-diffusivity"></span><h1><span class="section-number">49. </span>Integrating the Schwartzchild equation<a class="headerlink" href="#integrating-the-schwartzchild-equation" title="Link to this heading">#</a></h1>
+<p>To calculate the radiative flux passing through an atmospheric layer we need to know the optical depth as a function
+of wavelength, height and direction and the temperature as a function of height. That means we need to do
+three separate integrations with respect to <span class="math notranslate nohighlight">\(\lambda\)</span>, <span class="math notranslate nohighlight">\(\tau\)</span>, and <span class="math notranslate nohighlight">\(\theta\)</span>, assuming that the radiance is
+independent of azimuth <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
+<section id="integration-over-wavelength">
+<h2><span class="section-number">49.1. </span>Integration over wavelength<a class="headerlink" href="#integration-over-wavelength" title="Link to this heading">#</a></h2>
+<p>Typically this integration is done over a set of intervals (perhaps 30-40) with different values of the absorption coefficient <span class="math notranslate nohighlight">\(k_\lambda\)</span> for each of the absorbing gasses (assumed independent). We also need to integrate the
+Planck function over wavelength. From <a class="reference internal" href="../../solutions/assign6.html#assign6"><span class="std std-ref">Assignment 6</span></a> we know that:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^\infty B_{\lambda} d\lambda = \frac{\sigma}{\pi} T^4
+\]</div>
+<p>Below we’ll also define <span class="math notranslate nohighlight">\(\overline{\tau}\)</span> as the average over a wavelength interval <span class="math notranslate nohighlight">\(\Delta \lambda\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\overline{\tau} = \frac{\int_{\Delta \lambda} \tau_\lambda d\lambda}{\Delta \lambda}
+\]</div>
+</section>
+<section id="integration-over-optical-depth">
+<h2><span class="section-number">49.2. </span>Integration over optical depth<a class="headerlink" href="#integration-over-optical-depth" title="Link to this heading">#</a></h2>
+<p>For slant paths start by rewriting <a class="reference internal" href="../week5/schwartz.html#equation-schwart2">(28.6)</a> in <a class="reference internal" href="../week5/schwartz.html#week5-schwartza"><span class="std std-ref">The Schwartzchild Equation</span></a> to account for <span class="math notranslate nohighlight">\(\mu = \cos \theta\)</span></p>
+<div class="math notranslate nohighlight" id="equation-schwart3">
+<span class="eqno">(49.1)<a class="headerlink" href="#equation-schwart3" title="Link to this equation">#</a></span>\[
+   dL_\lambda= \left ( -L_\lambda + B_\lambda (T_{layer} ) \right ) \frac{d\tau_\lambda}{\mu}
+\]</div>
+<p>For constant temperature and <span class="math notranslate nohighlight">\(\mu=1\)</span> we know how to solve this:</p>
+<div class="math notranslate nohighlight" id="equation-rep-constant">
+<span class="eqno">(49.2)<a class="headerlink" href="#equation-rep-constant" title="Link to this equation">#</a></span>\[
+L_\lambda = L_{\lambda 0} \exp( -\tau_{\lambda T}/\mu  ) + B_\lambda (T_{layer})(1- \exp( -\tau_{\lambda T} /\mu))
+\]</div>
+</section>
+<section id="integration-over-angle-the-diffusivity-approximation">
+<h2><span class="section-number">49.3. </span>Integration over angle: The diffusivity approximation<a class="headerlink" href="#integration-over-angle-the-diffusivity-approximation" title="Link to this heading">#</a></h2>
+<p>Integrating <a class="reference internal" href="#equation-schwart3">(49.1)</a> over a hemisphere with <span class="math notranslate nohighlight">\(\mu\)</span> changing between <span class="math notranslate nohighlight">\(0 \rightarrow 1\)</span> adds a fair
+amount of complexity.  Luckily, as we’ve seen in Wallace and Hobbs, the end result is equivalent to assuming
+the photons are traveling in the direction <span class="math notranslate nohighlight">\(\theta = 53.6\)</span> degrees.  Where does this come from?</p>
+<section id="accounting-for-slant-paths">
+<h3><span class="section-number">49.3.1. </span>Accounting for slant paths<a class="headerlink" href="#accounting-for-slant-paths" title="Link to this heading">#</a></h3>
+<p>Nothing in the derivation of <a class="reference internal" href="../week5/schwartz.html#equation-rad-constant">(28.10)</a> prevents us from
+setting the zenith angle for the photon paths
+to something besides <span class="math notranslate nohighlight">\(\cos \theta = 0\ (\mu = 1)\)</span>. Step 1 is to remember the relationship between
+<span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(F\)</span>. For upward flux we integrate over the upward facing hemisphere:</p>
+<div class="math notranslate nohighlight" id="equation-allangles2">
+<span class="eqno">(49.9)<a class="headerlink" href="#equation-allangles2" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{align}
+        F&amp;= \int_0^{2 \pi} \int_0^{\pi/2} \cos \theta\, L \sin \theta d\theta d\phi \\
+        &amp;\text{or changing variables $\mu=\cos \theta$ integrating over azimuth $\phi$}: \\
+        F&amp;= 2\pi\int_0^{1}  \mu  L d\mu
+\end{align}
+\end{split}\]</div>
+<p>For <a class="reference internal" href="../week5/schwartz.html#equation-rad-constant">(28.10)</a> we took <span class="math notranslate nohighlight">\(L\)</span> out of the integral and got <span class="math notranslate nohighlight">\(F=\pi L\)</span>, but this isn’t an option now, because the transmissivity depends on <span class="math notranslate nohighlight">\(\mu\)</span>. Specifically, with <span class="math notranslate nohighlight">\(\mu \neq 1\)</span> we have new
+definitions for the <strong>slant transmissivity</strong> <span class="math notranslate nohighlight">\(\hat{t}_s\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-fluxtrans4">
+<span class="eqno">(49.4)<a class="headerlink" href="#equation-fluxtrans4" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{align}
+        \hat{t_s} &amp;= \exp \left ( \frac{(\tau - \tau^\prime)}{\mu} \right ) \\
+   d\hat{t_s} &amp;=\frac{d \hat{t_s}(\tau^\prime,\tau)}{d\tau^\prime} d\tau^\prime =
+        \exp\left( -\frac{(\tau -
+   \tau^\prime)}{\mu} \right ) \frac{1}{\mu} d\tau^\prime
+ \end{align}
+\end{split}\]</div>
+<p>We can’t integrate this transmission over <span class="math notranslate nohighlight">\(\mu\)</span> analytically, but the integrals are easy
+to do numerically. As you’ll show in a separate notebook, the following “diffusivity”
+approximation is quite good:</p>
+<div class="math notranslate nohighlight" id="equation-diffusivity">
+<span class="eqno">(49.5)<a class="headerlink" href="#equation-diffusivity" title="Link to this equation">#</a></span>\[
+\hat{t}_f =  \int_0^1 \mu \exp \left ( \frac{(\tau - \tau^\prime)}{\mu} \right ) d\mu
+    =  \exp \left (-1.66 (\tau - \tau^\prime) \right )
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{t_f}\)</span> is called the <strong>flux transmissivity</strong>.</p>
+<p>This gives a the upward flux version of <a class="reference internal" href="#equation-rep-constant">(49.2)</a>:</p>
+<div class="math notranslate nohighlight">
+\[
+F_{\lambda \uparrow} = \pi L_{\lambda 0} \exp( -1.66 \tau_{\lambda T}  ) + \pi B_\lambda (T_{layer})(1- \exp( -1.66\tau_{\lambda T} ))
+\]</div>
+<p>And if we then integrate this over all wavelengths we get the <strong>broadband flux equation</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+F_{\lambda \uparrow} = \sigma T_0^4 \exp( -1.66 \overline{\tau}_{\lambda T}  ) + \sigma T_{layer}^4(1- \exp( -1.66 \overline{\tau}_{\lambda T} ))
+\]</div>
+</section>
+<section id="temperature-changing-with-height">
+<h3><span class="section-number">49.3.2. </span>Temperature changing with height<a class="headerlink" href="#temperature-changing-with-height" title="Link to this heading">#</a></h3>
+<p>To summarize: define the “diffusivity approximation” as: replace the vertical optical thickness <span class="math notranslate nohighlight">\(\tau\)</span> by
+<span class="math notranslate nohighlight">\(\frac{5}{3} \tau\)</span> and multiply blackbody radiances by <span class="math notranslate nohighlight">\(\pi\)</span>.  But what about the case where temperature is
+changing with height?</p>
+<ul>
+<li><p>Start with the equation for the upward radiance with <span class="math notranslate nohighlight">\(\mu=1\)</span> which we saw in {eq}<span class="math notranslate nohighlight">\(calc1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    L_\lambda(\tau)= B_\lambda(T_{skin})( \exp(-\tau) +    \int_0^{\tau} \exp\left(  - (\tau -\tau^\prime) \right )
+    B_\lambda(T)\, d\tau^\prime
+    \]</div>
+</li>
+<li><p>Add the fact that the photons that travel along a slant path have lower transmissivity.
+In fact: they travel a distance <span class="math notranslate nohighlight">\(\Delta s = \Delta z/\cos \theta = \Delta z/\mu\)</span> which
+is Stull’s <span class="math notranslate nohighlight">\(\Delta s\)</span> in his equation 2.31b</p>
+<div class="math notranslate nohighlight" id="equation-newslant">
+<span class="eqno">(49.6)<a class="headerlink" href="#equation-newslant" title="Link to this equation">#</a></span>\[
+    L_\lambda(\tau,\mu)= B_\lambda(T_{skin})( \exp(-\tau/\mu) +    \int_0^{\tau} \exp\left(  - (\tau -\tau^\prime)/\mu \right )
+      B_\lambda(T)\, \frac{d\tau^\prime}{\mu}
+    \]</div>
+</li>
+<li><p>So define a new transmission for the slant path:</p></li>
+<li><p>and use it to rewrite <a class="reference internal" href="#equation-newslant">(49.6)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-newslant2">
+<span class="eqno">(49.7)<a class="headerlink" href="#equation-newslant2" title="Link to this equation">#</a></span>\[
+    L_\lambda(\tau,\mu)= B_\lambda(T_{skin}) \hat{t}_{stot}  +    \int_0^{\tau} B_\lambda(T)\,d\hat{t_s}
+    \]</div>
+</li>
+</ul>
+<section id="integrating-over-mu-cos-theta">
+<h4><span class="section-number">49.3.2.1. </span>Integrating over <span class="math notranslate nohighlight">\(\mu=\cos \theta\)</span><a class="headerlink" href="#integrating-over-mu-cos-theta" title="Link to this heading">#</a></h4>
+<ul>
+<li><p>In the <span class="xref std std-ref">week2_flux_from_radiance</span> notes we turned blackbody isotropic radiance
+into a flux by taking the normal component and integrating over the hemisphere, in <a class="reference internal" href="../week1/newflux.html#equation-flux-final">(9.4)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-allangles2">
+<span class="eqno">(49.9)<a class="headerlink" href="#equation-allangles2" title="Link to this equation">#</a></span>\[\begin{split}
+    \begin{align}
+      F_\lambda&amp;= \int_0^{2 \pi} \int_0^{\pi/2} \cos \theta\, L_\lambda \sin \theta d\theta d\phi \\
+               &amp;= 2 \pi  \int_0^1 \mu \, L_\lambda  d\mu
+     \end{align}
+    \end{split}\]</div>
+<p>assuming no dependence on <span class="math notranslate nohighlight">\(\phi\)</span> and substituting <span class="math notranslate nohighlight">\(\mu= \cos \theta\)</span></p>
+<div class="math notranslate nohighlight" id="equation-allangles2">
+<span class="eqno">(49.9)<a class="headerlink" href="#equation-allangles2" title="Link to this equation">#</a></span>\[
+    F_\lambda=  2 \pi L_\lambda \int_0^1 \mu  d\mu  = 2 \pi \frac{\mu^2}{2} \Bigg \rvert_0^1 = 2 \pi  L_\lambda \frac{ 1}{ 2}
+      = \pi L_\lambda
+    \]</div>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="radiance-into-flux">
+<h2><span class="section-number">49.4. </span>Radiance into flux<a class="headerlink" href="#radiance-into-flux" title="Link to this heading">#</a></h2>
+<p>So do this to <code class="xref eq docutils literal notranslate"><span class="pre">Luptrans</span></code></p>
+<div class="math notranslate nohighlight" id="equation-allanglesmu">
+<span class="eqno">(49.10)<a class="headerlink" href="#equation-allanglesmu" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{gather}
+ F_\uparrow = \int_0^{2 \pi} \int_0^{\pi/2} \cos \theta\,
+ L_\lambda \sin \theta d\theta d\phi =  2\pi \int_0^1 \mu L_\lambda d \mu \notag\\
+ = 2 \pi B_{\lambda 0}(T_s) \int_0^1 \mu  \exp(-\tau/\mu) d\mu \nonumber\\
+ + 2 \pi \int_0^1
+ \int_0^{\tau} \exp\left( -\frac{(\tau - \tau^\prime)}{\mu} \right ) B_\lambda(T)\,d\tau^\prime d\mu
+\end{gather}
+\end{split}\]</div>
+<p>The difference
+is that now our expression for <span class="math notranslate nohighlight">\(L_\lambda(\tau,\mu, \phi)\)</span> depends on
+the zenith angle <span class="math notranslate nohighlight">\(\theta\)</span>, so that the integral is more difficult (actually
+it’s impossible to do analytically).</p>
+<section id="flux-transmissivity">
+<h3><span class="section-number">49.4.1. </span>Flux transmissivity<a class="headerlink" href="#flux-transmissivity" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>To make progress, first swap the limits of integration (ok because the layers<br />
+are plane parallel)</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-allanglesmuswapii">
+<span class="eqno">(49.11)<a class="headerlink" href="#equation-allanglesmuswapii" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{gather}
+      F_\uparrow =   \pi B_{\lambda 0}(T_s)\, 2 \int_0^1 \mu  \exp(-\tau/\mu) d\mu
+      +      \nonumber\\
+     \int_0^{\tau} \pi B_\lambda(T)\, 2 \int_0^1 \exp\left( -\frac{(\tau - \tau^\prime)}{\mu}
+     \right ) \, d\mu\, d\tau^\prime
+ \end{gather}
+\end{split}\]</div>
+<p>(Remember that <span class="math notranslate nohighlight">\(T\)</span> does depend on <span class="math notranslate nohighlight">\(z\)</span>, and therefore <span class="math notranslate nohighlight">\(B_\lambda(T)\)</span> has to stay inside the <span class="math notranslate nohighlight">\(\tau^\prime\)</span> integral.)</p>
+<ul class="simple">
+<li><p>Look what happens to this equation if we define <span class="math notranslate nohighlight">\(t_f\)</span>, the flux transmissivity as:</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-fluxtrans">
+<span class="eqno">(49.12)<a class="headerlink" href="#equation-fluxtrans" title="Link to this equation">#</a></span>\[
+t_f=  2 \int_0^1 \mu  \exp(-(\tau - \tau^\prime)/\mu) d\mu
+\]</div>
+<p>and differentiating wrt <span class="math notranslate nohighlight">\(\tau^\prime\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-fluxtransb">
+<span class="eqno">(49.13)<a class="headerlink" href="#equation-fluxtransb" title="Link to this equation">#</a></span>\[
+dt_f=  2 \int_0^1  \exp(-(\tau - \tau^\prime)/\mu) d\mu d\tau^\prime
+\]</div>
+<p>Plug these into <a class="reference internal" href="#equation-allanglesmuswapii">(49.11)</a> and get:</p>
+<div class="math notranslate nohighlight" id="equation-allangles2b">
+<span class="eqno">(49.14)<a class="headerlink" href="#equation-allangles2b" title="Link to this equation">#</a></span>\[
+F_\uparrow = \pi  B_{\lambda 0}(T_s) \, t_f(0,\tau)
+    +  \int_0^{\tau}  \pi \, B_\lambda(T)\,d t_f(\tau^\prime,\tau)
+\]</div>
+</section>
+<section id="exponential-integrals">
+<h3><span class="section-number">49.4.2. </span>Exponential integrals<a class="headerlink" href="#exponential-integrals" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>But how do we get values for <span class="math notranslate nohighlight">\(t_f\)</span> and <span class="math notranslate nohighlight">\(dt_f\)</span> if we can’t do</p></li>
+</ul>
+<p>the integration? – Use python to evaluate</p>
+<div class="math notranslate nohighlight" id="equation-fluxtrans2">
+<span class="eqno">(49.15)<a class="headerlink" href="#equation-fluxtrans2" title="Link to this equation">#</a></span>\[
+t_f=  2 \int_0^1 \mu  \exp(-(\tau - \tau^\prime)/\mu) d\mu = 2 E_3(\tau)
+\]</div>
+<p>exactly.</p>
+<ul class="simple">
+<li><p>We wouldn’t be any further ahead except that, it turns out to
+a very good approximation:</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-expapprox0">
+<span class="eqno">(49.16)<a class="headerlink" href="#equation-expapprox0" title="Link to this equation">#</a></span>\[
+t_f(\tau) = 2 E_3(\tau) \approx \exp \left (- \frac{5}{3} \tau \right )
+\]</div>
+<p>In words, that means that the flux sees a layer that is effectively 5/3 times
+thicker, compared with the layer faced by photons pointed at <span class="math notranslate nohighlight">\(\mu=1\)</span> (straight up).
+Be sure you understand why this make physical sense.</p>
+</section>
+<section id="fluxes-continued">
+<h3><span class="section-number">49.4.3. </span>Fluxes continued<a class="headerlink" href="#fluxes-continued" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight" id="equation-expapprox2">
+<span class="eqno">(49.17)<a class="headerlink" href="#equation-expapprox2" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{gather}
+   t_f(\tau) = 2 E_3(\tau) \approx \exp \left (- \frac{5}{3} \tau \right ) = \\
+   \exp \left (- \tau/(3/5) \right )
+   =\exp \left (- \tau/\cos 53^\circ \right ) \\
+   = \exp \left (- \tau/ \overline{\mu} \right )
+ \end{gather}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>So you if you like you can think of the flux as if it was a radiance</p></li>
+</ul>
+<p>going through the layer at an angle of <span class="math notranslate nohighlight">\(53^\circ\)</span>.</p>
+<p>or rewriting <a class="reference internal" href="#equation-allangles2b">(49.14)</a></p>
+<p>Or just think of it as passing though a layer that’s
+1.66 times thicker than <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-allangles3">
+<span class="eqno">(49.18)<a class="headerlink" href="#equation-allangles3" title="Link to this equation">#</a></span>\[
+F_\uparrow = \pi  B_{\lambda 0}(T_s) \, t_f(0,1.66\tau)
+   +  \int_0^{\tau}  \pi \, B_\lambda(T)\,d t_f(1.66\tau^\prime,1.66\tau)
+\]</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/week9"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="rio_land_classification.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">48. </span>Working with surface class data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="diffuse_flux_python.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">50. </span>Calculating the diffuse flux</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-over-wavelength">49.1. Integration over wavelength</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-over-optical-depth">49.2. Integration over optical depth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-over-angle-the-diffusivity-approximation">49.3. Integration over angle: The diffusivity approximation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accounting-for-slant-paths">49.3.1. Accounting for slant paths</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-changing-with-height">49.3.2. Temperature changing with height</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-over-mu-cos-theta">49.3.2.1. Integrating over <span class="math notranslate nohighlight">\(\mu=\cos \theta\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radiance-into-flux">49.4. Radiance into flux</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flux-transmissivity">49.4.1. Flux transmissivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-integrals">49.4.2. Exponential integrals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fluxes-continued">49.4.3. Fluxes continued</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Philip Austin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

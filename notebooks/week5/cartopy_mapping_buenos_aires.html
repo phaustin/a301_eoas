@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -266,6 +266,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat_rio.html">44. Combining goes and landsat data using rioxarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6.html">45. Assignment 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week8/radar.html">46. Notes on the radar equation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 9</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week9/clip_demo.html">47. What happened to Stanley Park?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/rio_land_classification.html">48. Working with surface class data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/flux_schwartzchild.html">49. Integrating the Schwartzchild equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/diffuse_flux_python.html">50. Calculating the diffuse flux</a></li>
 </ul>
 
     </div>
@@ -714,9 +721,8 @@ to turn that transform into 21S by add 10,000,000 m to the y value of the upper 
 <p>First grab the blue band for the scene</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_band</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">the_tif</span><span class="p">,</span><span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hls_band</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">the_tif</span><span class="p">,</span><span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">hls_band</span> <span class="o">=</span> <span class="n">hls_band</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
-<span class="n">hls_band</span> <span class="o">=</span> <span class="n">hls_band</span><span class="o">*</span><span class="n">hls_band</span><span class="o">.</span><span class="n">scale_factor</span>
 </pre></div>
 </div>
 </div>
@@ -743,7 +749,7 @@ to turn that transform into 21S by add 10,000,000 m to the y value of the upper 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/301ecacc08cb2f8feecff70223c2c12a1e37805ef4fcfdd92883000ea8270a32.png" src="../../_images/301ecacc08cb2f8feecff70223c2c12a1e37805ef4fcfdd92883000ea8270a32.png" />
+<img alt="../../_images/7378aeaf4bc7ce709fc39c8e51f8aa3699e75497ea617e8668e90b84b0d76382.png" src="../../_images/7378aeaf4bc7ce709fc39c8e51f8aa3699e75497ea617e8668e90b84b0d76382.png" />
 </div>
 </div>
 </section>
@@ -835,8 +841,8 @@ make_pal(ax=None, vmin=None, vmax=None, palette=&#39;viridis&#39;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;cmap&#39;: &lt;matplotlib.colors.ListedColormap at 0x13f739850&gt;,
- &#39;norm&#39;: &lt;matplotlib.colors.Normalize at 0x15f182190&gt;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;cmap&#39;: &lt;matplotlib.colors.ListedColormap at 0x129cf1190&gt;,
+ &#39;norm&#39;: &lt;matplotlib.colors.Normalize at 0x129eca190&gt;}
 </pre></div>
 </div>
 </div>

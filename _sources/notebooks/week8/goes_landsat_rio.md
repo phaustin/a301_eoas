@@ -61,6 +61,7 @@ import pydantic
 from goes2go.data import goes_nearesttime
 from datetime import datetime
 import affine
+import json
 ```
 
 ## Get the original hls tif files from disk
@@ -135,7 +136,7 @@ offsets = Row_col_offsets(west = -500,
                 north = -700)
 ```
 
-## Find bounds and clip
+## Find landsat bounds and clip
 
 ```{code-cell} ipython3
 landsat_bbox = find_bounds(landsat_nir, offsets, image_point, scene_crs = landsat_crs)
@@ -154,6 +155,30 @@ clipped_landsat.plot.imshow(ax=ax,
                     norm = pal_dict['norm'],
                     cmap = pal_dict['cmap'],
                     extend = "both");
+```
+
+(week8:output_bounds)=
+### Save landsat latlon bounds to a file
+
+Added 2025/Mar7:  We need to read these bound in 
+
+```{code-cell} ipython3
+p_latlon = pyproj.CRS.from_epsg(4326)
+xmin,ymin,xmax,ymax = clipped_landsat.rio.bounds()
+transform = Transformer.from_crs(landsat_crs, p_latlon, always_xy =True)
+xmin_ll,ymin_ll = transform.transform(xmin,ymin)
+xmax_ll,ymax_ll = transform.transform(xmax,ymax)
+output = dict(ll_lon=xmin_ll,ll_lat=ymin_ll,ur_lon=xmax_ll,ur_lat=ymax_ll)
+print(output)
+with open("landsat_bounds.json","w") as outfile:
+    json.dump(output,outfile)
+```
+
+### Save clipped image to a tif file
+
+```{code-cell} ipython3
+filename = data_dir / "vancouver_2023/clipped_band5.tif"
+clipped_landsat.rio.to_raster(filename)
 ```
 
 ## Get GOES image
@@ -201,7 +226,7 @@ print(f"GOES x distance {np.unique(np.diff(goesC.x))}")
 ```
 
 ```{code-cell} ipython3
-
+goesC.cdm_data_type
 ```
 
 ### Get the veggie band (C03, nir)
@@ -368,6 +393,27 @@ bounds_goes = xmin_goes,ymin_goes,xmax_goes,ymax_goes
 clipped_c3=goes_c3.rio.clip_box(*bounds_goes)
 ```
 
+(week8:rio_save_goes)=
+### Save goes latlon bounds to a file
+
+```{code-cell} ipython3
+xmin,ymin,xmax,ymax = clipped_c3.rio.bounds()
+transform = Transformer.from_crs(goes_crs, p_latlon, always_xy =True)
+xmin_ll,ymin_ll = transform.transform(xmin,ymin)
+xmax_ll,ymax_ll = transform.transform(xmax,ymax)
+output = dict(ll_lon=xmin_ll,ll_lat=ymin_ll,ur_lon=xmax_ll,ur_lat=ymax_ll)
+print(output)
+with open("goes_bounds.json","w") as outfile:
+    json.dump(output,outfile)
+```
+
+### Save the goes_crs
+
+```{code-cell} ipython3
+with open('goes_crs.json','w') as outfile:
+    outfile.write(goes_crs.to_json())
+```
+
 ##  Verdict: clipped regions still mismatched
 
 `rio.clip_box` gives us exactly the same result as satpy.crop in {ref}`week8:goes_landsat`: the landsat image is 30 km x 24 km and the cropped GOES image is
@@ -377,10 +423,11 @@ only 16 km x 18 km and GOES covers only part of the landsat boundary box.
 print(f"{(clipped_c3.shape, clipped_landsat.shape)=}")
 ```
 
+(week8:cropped_goes)=
 ### Plot the cropped goes image
 
 As the plot below shows, it's an exact match for the result from the last notebook. Note
-how much loser the  GOES band 3 reflectivity is than the Landsat band 5 reflectivity above.
+how much lower the  GOES band 3 reflectivity is than the Landsat band 5 reflectivity above.
 That's because the big GOES pixels contain more mixtures of urban and rural land.
 
 ```{code-cell} ipython3
@@ -414,6 +461,7 @@ matched_ds = clipped_c3.rio.reproject_match(clipped_landsat)
 matched_ds.shape
 ```
 
+(week8:resampled_goes)=
 ### Plot the resampled image
 
 The resampled image shows what the problem was:  the GOES crs is actually tilted with respect
@@ -449,7 +497,9 @@ ax.add_feature(cartopy.feature.GSHHSFeature(scale="auto",
 
 If we want to fill the entire landsat clipped area with GOES data, we're going to need to
 increase the size of the GOES bounding box in the east and west directions to make up
-for the tilt in the coordinate reference system.
+for the tilt in the coordinate reference system.  In general, you need to
+transform the image into the projection that you want to clip in.  If we
+want to clip along lines of constant longitude, as with UTM or PlateCarree projections, then we need to resample the geostationary image into that coordinate system.
 
 ```{code-cell} ipython3
 

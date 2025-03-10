@@ -19,7 +19,7 @@ Upload a pdf and a notebook for the following problems:
 
 ## Q1 Planck wavenumber
 
-Planck's law as a fundtion of wavelength
+Planck's law as a function of wavelength:
 
 $$
 B_\lambda(\lambda, T)=\frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c /\left(\lambda k_{\mathrm{B}} T\right)}-1}
@@ -40,6 +40,18 @@ $$
 \int_0^\infty \frac{u^3}{(e^u -1 )} du = \frac{\pi^4}{15} 
 $$ (planck_int)
 ([Riemann zeta function](https://en.wikipedia.org/wiki/Riemann_zeta_function))
+
+i.e. show that:
+
+$$
+\int_0^\infty B_{\nu} d\nu = \frac{\sigma}{\pi} T^4
+$$
+
+where 
+
+$$
+\sigma=\frac{2 \pi^4 k^4}{15 c^2 h^3}
+$$
 
 ## Q3 Wien's law
 
@@ -67,5 +79,4 @@ $$
 
 ## Q5 Radar Rainrate Python
 
-Repeat using numerical integration in python (i.e. np.diff and np.sum) and show that the the result agrees.
-
+Repeat using numerical integration in python (i.e. np.diff and np.sum) and show that the  result agrees.

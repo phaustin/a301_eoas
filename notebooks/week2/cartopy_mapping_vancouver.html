@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -267,6 +267,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6.html">45. Assignment 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week8/radar.html">46. Notes on the radar equation</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 9</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week9/clip_demo.html">47. What happened to Stanley Park?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/rio_land_classification.html">48. Working with surface class data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/flux_schwartzchild.html">49. Integrating the Schwartzchild equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/diffuse_flux_python.html">50. Calculating the diffuse flux</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -414,8 +421,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-utm-zone-21s-crs">14.1. Create the UTM zone 21S CRS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-plot-a-location-of-your-choice">14.2. Now plot a location of your choice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-points">14.1. Basic points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example">14.2. An example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-projections">14.3. Map projections</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-vancouver-on-a-map">14.3.1. plotting Vancouver on a map</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-plot-a-location-of-your-choice">14.4. Now plot a location of your choice</a></li>
 </ul>
             </nav>
         </div>
@@ -430,16 +442,75 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="mapping-vancouver-with-cartopy">
 <span id="sec-vancartopy"></span><h1><span class="section-number">14. </span>Mapping Vancouver with cartopy<a class="headerlink" href="#mapping-vancouver-with-cartopy" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p>Download cartopy_mapping_buenos_aires.ipynb from the <a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing">week5 folder</a></p></li>
+<li><p>Download cartopy_mapping_vancouver.ipynb from the <a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing">week2 folder</a></p></li>
 </ul>
-<section id="create-the-utm-zone-21s-crs">
-<h2><span class="section-number">14.1. </span>Create the UTM zone 21S CRS<a class="headerlink" href="#create-the-utm-zone-21s-crs" title="Link to this heading">#</a></h2>
-<p>Google says that Buenos Aires in in zone 22 South, which has an epsg code of 32721.</p>
+<p>The pamphlet:</p>
+<ul>
+<li><p><a class="reference external" href="https://drive.google.com/file/d/1araPnZwMui9tBTPyLO_UHVC2DDEIdZ0p/view?usp=sharing">Understanding map projections</a></p>
+<p>Introduces geographic coordinate systems in Chapter 1.  They solve the problem of how to locate yourself on the earth’s surface in three dimensions.  They specify an angular measure of units, a prime meridian, a spheroid and a datam (see chapter 1).</p>
+</li>
+</ul>
+<section id="basic-points">
+<h2><span class="section-number">14.1. </span>Basic points<a class="headerlink" href="#basic-points" title="Link to this heading">#</a></h2>
+<p>We need to define two fundamental things:</p>
+<ol class="arabic simple">
+<li><p>A “<a class="reference external" href="https://www.maptools.com/tutorials/map_datum">datum</a>”  (called a “globe” in cartopy) that gives the three dimensional shape of the earth (and other things)</p></li>
+<li><p>A “<a class="reference external" href="https://en.wikipedia.org/wiki/List_of_map_projections">projection</a>” that maps a point on the earth’s surface onto an x-y coordinate system to make a 2-dimensional plot.</p></li>
+<li><p>Our mapping module is called <a class="reference external" href="http://scitools.org.uk/cartopy/docs/latest/index.html">cartopy</a>.  Internally, it uses projection code in <a class="reference external" href="https://github.com/jswhit/pyproj">pyproj</a>, which in turn is a wrapper around C code called
+<a class="reference external" href="https://proj4.org/usage/projections.html">proj4</a></p></li>
+</ol>
+</section>
+<section id="an-example">
+<h2><span class="section-number">14.2. </span>An example<a class="headerlink" href="#an-example" title="Link to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://nsidc.org/data/ease">Equal Area Scalable Earth Grid</a></p>
+<ol class="arabic simple">
+<li><p>Datum: The original EASE grid assumed a spherical earth with a radius of 6371.228 km.  <a class="reference external" href="https://nsidc.org/data/ease/versions.html">EASE-2</a> uses a datum called <a class="reference external" href="https://en.wikipedia.org/wiki/World_Geodetic_System">WGS 84</a></p></li>
+<li><p>Both EASE and EASE-2 use the <a class="reference external" href="https://en.wikipedia.org/wiki/Lambert_azimuthal_equal-area_projection">Lambert Azimuthal Equal Area</a> or LAEA</p></li>
+</ol>
+</section>
+<section id="map-projections">
+<h2><span class="section-number">14.3. </span>Map projections<a class="headerlink" href="#map-projections" title="Link to this heading">#</a></h2>
+<p>Chapter 2 describes map projections.  We will generally be using the LAEA projection for individual Modis granules.</p>
+<section id="plotting-vancouver-on-a-map">
+<h3><span class="section-number">14.3.1. </span>plotting Vancouver on a map<a class="headerlink" href="#plotting-vancouver-on-a-map" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Step 1: Use <a class="reference external" href="http://scitools.org.uk/cartopy/docs/latest/index.html">cartopy</a> to make a LAEA map of BC including Vancouver.</p></li>
+</ul>
+<p><strong>This cell sets up the datum and the LAEA projection, with the tangent point at the North Pole and the central meridian at -90 degrees west of Greenwich</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">cartopy</span>
+<span class="c1">#</span>
+<span class="c1"># Datum: radius of the earth in meters</span>
+<span class="c1">#</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">6_371_228</span>
+
+<span class="c1">#</span>
+<span class="c1"># vancouver longitude, latitude indegrees</span>
+<span class="c1">#</span>
+<span class="n">van_lon</span><span class="p">,</span> <span class="n">van_lat</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">123.1207</span><span class="p">,</span> <span class="mf">49.2827</span><span class="p">]</span>
+<span class="c1">#</span>
+<span class="c1"># use a simple sphere as the datum</span>
+<span class="c1">#</span>
+<span class="n">globe</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">Globe</span><span class="p">(</span><span class="n">ellipse</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">semimajor_axis</span><span class="o">=</span><span class="n">radius</span><span class="p">,</span> <span class="n">semiminor_axis</span><span class="o">=</span><span class="n">radius</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># set up</span>
+<span class="c1">#</span>
+<span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">LambertAzimuthalEqualArea</span><span class="p">(</span>
+    <span class="n">central_latitude</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">central_longitude</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">globe</span><span class="o">=</span><span class="n">globe</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pro4 program params: </span><span class="si">{</span><span class="n">projection</span><span class="o">.</span><span class="n">proj4_params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">projection</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pro4 program params: {&#39;a&#39;: 6371228, &#39;b&#39;: 6371228, &#39;proj&#39;: &#39;laea&#39;, &#39;lon_0&#39;: -90, &#39;lat_0&#39;: 90, &#39;x_0&#39;: 0.0, &#39;y_0&#39;: 0.0}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cartopy.crs.LambertAzimuthalEqualArea
 </pre></div>
 </div>
 </div>
@@ -457,18 +528,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="n">projection</span><span class="p">})</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cartopy</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">GSHHSFeature</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="s2">&quot;coarse&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]));</span>
-
-<span class="ne">NameError</span>: name &#39;projection&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/8fffb0668a4d8b3bc70011790fd8fb97288d20555ae6e5a998237281e73ec5ff.png" src="../../_images/8fffb0668a4d8b3bc70011790fd8fb97288d20555ae6e5a998237281e73ec5ff.png" />
 </div>
 </div>
 <ul class="simple">
@@ -521,23 +581,16 @@ you have your region of interest</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="n">projection</span><span class="p">})</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># clip with 0,0 in the center:  [xleft, xright, ybot, ytop]</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">new_extent</span> <span class="o">=</span> <span class="p">[</span><span class="n">xleft</span><span class="p">,</span> <span class="n">xright</span><span class="p">,</span> <span class="n">ybot</span><span class="p">,</span> <span class="n">ytop</span><span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;projection&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vancouver map x, y: -2422235, -3712769 meters
 </pre></div>
 </div>
+<img alt="../../_images/a90db12b9e8c8950e9931acc6d4b69633e4b24a29257f3f4da0f3250ca131d43.png" src="../../_images/a90db12b9e8c8950e9931acc6d4b69633e4b24a29257f3f4da0f3250ca131d43.png" />
 </div>
 </div>
 </section>
+</section>
 <section id="now-plot-a-location-of-your-choice">
-<h2><span class="section-number">14.2. </span>Now plot a location of your choice<a class="headerlink" href="#now-plot-a-location-of-your-choice" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.4. </span>Now plot a location of your choice<a class="headerlink" href="#now-plot-a-location-of-your-choice" title="Link to this heading">#</a></h2>
 <p>As discussed in class, pick a point on the earth you’re interested in, at least 1000 km away from Vancouver with
 a coastline of more than 100 km.   Make a LAEA map with your point located with a red dot.  You will probably need to
 define a new LAEA map projection with a better central lat/lon than the North Pole.</p>
@@ -608,8 +661,13 @@ define a new LAEA map projection with a better central lat/lon than the North Po
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-utm-zone-21s-crs">14.1. Create the UTM zone 21S CRS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-plot-a-location-of-your-choice">14.2. Now plot a location of your choice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-points">14.1. Basic points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example">14.2. An example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-projections">14.3. Map projections</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-vancouver-on-a-map">14.3.1. plotting Vancouver on a map</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-plot-a-location-of-your-choice">14.4. Now plot a location of your choice</a></li>
 </ul>
   </nav></div>
 

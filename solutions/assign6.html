@@ -269,6 +269,17 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">45. Assignment 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/week8/radar.html">46. Notes on the radar equation</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 9</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week9/clip_demo.html">47. What happened to Stanley Park?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week9/rio_land_classification.html">48. Working with surface class data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week9/flux_schwartzchild.html">49. Accounting for slant paths</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week9/diffuse_flux_python.html">54. Calculating the diffuse flux</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -437,7 +448,7 @@ document.write(`
 <p>Upload a pdf and a notebook for the following problems:</p>
 <section id="q1-planck-wavenumber">
 <h2><span class="section-number">45.1. </span>Q1 Planck wavenumber<a class="headerlink" href="#q1-planck-wavenumber" title="Link to this heading">#</a></h2>
-<p>Planck’s law as a fundtion of wavelength</p>
+<p>Planck’s law as a function of wavelength:</p>
 <div class="math notranslate nohighlight" id="equation-planck">
 <span class="eqno">(45.1)<a class="headerlink" href="#equation-planck" title="Link to this equation">#</a></span>\[
 B_\lambda(\lambda, T)=\frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c /\left(\lambda k_{\mathrm{B}} T\right)}-1}
@@ -456,6 +467,16 @@ B_{\tilde{\nu}}(\tilde{\nu}, T)=2 h c^2 \tilde{\nu}^3 \frac{1}{e^{h c \tilde{\nu
 \int_0^\infty \frac{u^3}{(e^u -1 )} du = \frac{\pi^4}{15} 
 \]</div>
 <p>(<a class="reference external" href="https://en.wikipedia.org/wiki/Riemann_zeta_function">Riemann zeta function</a>)</p>
+<p>i.e. show that:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^\infty B_{\nu} d\nu = \frac{\sigma}{\pi} T^4
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma=\frac{2 \pi^4 k^4}{15 c^2 h^3}
+\]</div>
 </section>
 <section id="q3-wien-s-law">
 <h2><span class="section-number">45.3. </span>Q3 Wien’s law<a class="headerlink" href="#q3-wien-s-law" title="Link to this heading">#</a></h2>
@@ -481,7 +502,7 @@ Z \approx 300 RR^{1.5}
 </section>
 <section id="q5-radar-rainrate-python">
 <h2><span class="section-number">45.5. </span>Q5 Radar Rainrate Python<a class="headerlink" href="#q5-radar-rainrate-python" title="Link to this heading">#</a></h2>
-<p>Repeat using numerical integration in python (i.e. np.diff and np.sum) and show that the the result agrees.</p>
+<p>Repeat using numerical integration in python (i.e. np.diff and np.sum) and show that the  result agrees.</p>
 </section>
 </section>
 

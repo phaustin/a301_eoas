@@ -249,9 +249,8 @@ First grab the blue band for the scene
 ```{code-cell} ipython3
 :trusted: true
 
-hls_band = rioxarray.open_rasterio(the_tif,masked=True)
+hls_band = rioxarray.open_rasterio(the_tif,mask_and_scale=True)
 hls_band = hls_band.squeeze()
-hls_band = hls_band*hls_band.scale_factor
 ```
 
 #### Now get the transform for Zone 21N
