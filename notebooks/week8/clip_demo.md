@@ -37,7 +37,9 @@ import numpy as np
 
 ## Read in bounds for landsat and goes
 
-In {ref}`week8:output_bounds` we wrote the 
+In {ref}`week8:output_bounds` we wrote the pyproj geostationary crs
+and the lon/lat bounding boxes out to json files.  Read these in
+so we can start with the same coordinates.
 
 ```{code-cell} ipython3
 :trusted: true
@@ -57,11 +59,9 @@ with open("landsat_bounds.json","r") as infile:
 goes_bounds
 ```
 
-```{code-cell} ipython3
-:trusted: true
+### Make a counterclockwise line
 
-goes_bounds
-```
+These x,y keys start in the ll corner and go around the bounding box counter clockwise. There are 5 values so we return to where we started.
 
 ```{code-cell} ipython3
 :trusted: true
@@ -70,15 +70,25 @@ bbox_keys = [('ll_lon','ur_lon','ur_lon','ll_lon','ll_lon'),
                 ('ll_lat','ll_lat','ur_lat','ur_lat','ll_lat')]
 ```
 
+### Change the order of the coords
+
+Use a list comprehension to
+group the x and y  values together
+
 ```{code-cell} ipython3
 :trusted: true
 
 lons, lats = bbox_keys
 goes_lons_coords = [goes_bounds[key] for key in lons]
 goes_lats_coords = [goes_bounds[key] for key in lats]
-ls_lons_coords = [goes_bounds[key] for key in lons]
+ls_lons_coords = [landsat_bounds[key] for key in lons]
 ls_lats_coords = [landsat_bounds[key] for key in lats]
 ```
+
+## Plot the bounding boxes in lon/lat coords
+
+Note that in this projection the GOES boundary box is actually
+bigger than the landsat bounding box
 
 ```{code-cell} ipython3
 :trusted: true
@@ -87,12 +97,13 @@ ls_lats_coords = [landsat_bounds[key] for key in lats]
 import warnings
 warnings.filterwarnings("ignore")
 projection = ccrs.PlateCarree()
-fig, ax = plt.subplots(1, 1, figsize=(6, 6), subplot_kw={"projection": projection})
+fig, ax = plt.subplots(1, 1, figsize=(6, 6), 
+                       subplot_kw={"projection": projection})
 #
 # set the plot extent to be bigger than geh bounding box
 #
-xmin, xmax = -123.6,-123.
-ymin, ymax = 49,49.6
+xmin, xmax = -123.6,-123.  #longitude degrees east
+ymin, ymax = 49,49.6  #latitude degrees north
 extent = [xmin,xmax,ymin,ymax]
 ax.set_extent(extent)
 ax.gridlines(linewidth=2)
@@ -102,58 +113,41 @@ ax.add_feature(cartopy.feature.GSHHSFeature(scale="auto", levels=[1, 2, 3]))
 ax.legend(loc='best');
 ```
 
-## Redo in GOES coordinates
+## Redo in geostationary coordinates
+
+Now try this again, but in a coordinate system where the vertical
+and horizontal lines are geostationary x and geostationary y instead
+of longitude and latitude.
+
++++
+
+### Construct the cartopy crs for GOES
+
+Remember that cartopy is much older than pyproj, and it has it's own
+way of constructing a geostationary coordiante system, so we can't use
+a format like wkt (well known text).
+
+Take the values from the pyproj.CRS goes_crs we read in from `goes_crs.json`
+and rename them so they will be accepted by cartopy.
+
+Follow [goes2go FieldOfViewAccessor](https://github.com/blaylockbk/goes2go/blob/main/goes2go/accessors.py#L90).crs
 
 ```{code-cell} ipython3
 :trusted: true
 
-getdata = False
-if getdata:
-    g = goes_nearesttime(
-        datetime(2023, 8, 24, 19), satellite="goes18",product="ABI-L2-MCMIP", domain='C', 
-          return_as="xarray", save_dir = save_dir, download = True, overwrite = False
-    )
-    the_path = g.path[0]
-else:
-    the_path = ("noaa-goes18/ABI-L2-MCMIPC/2023/236/19/"
-                "OR_ABI-L2-MCMIPC-M6_G18_s20232361901177"
-                "_e20232361903550_c20232361904064.nc")
-save_dir = Path.home() / "repos/a301/satdata/goes" 
-full_path = save_dir / the_path
-goesC = xr.open_dataset(full_path,mode = 'r',mask_and_scale = True)
-c3 = goesC.metpy.parse_cf('CMI_C03')
-cartopy_crs = c3.metpy.cartopy_crs
-```
-
-```{code-cell} ipython3
-:trusted: true
-
-cartopy_crs.globe.semiminor_axis
-```
-
-```{code-cell} ipython3
-:trusted: true
-
-goesC.goes_imager_projection.semi_minor_axis
-```
-
-```{code-cell} ipython3
-:trusted: true
-
-
-```
-
-## Construct the cartopy crs
-
-Take the falues from the pyproj.CRS goes_crs we just read in.
-Follow [goes2go FieldOfViewAccessor](https://github.com/blaylockbk/goes2go/blob/main/goes2go/accessors.py#L90)
-
-```{code-cell} ipython3
-:trusted: true
-
+#
+# here's what we have from the json file
+#
 goes_coeffs = goes_crs.to_dict()
 goes_coeffs
 ```
+
+### move the pyproj params over to cartopy
+
+Note that pyproj ignores `semiminor_axis`, which I have to
+fill in from reading a goes image and dumping its metadata.  This
+might explain why the x,y coordinates are slightly different from
+goes2go and satpy
 
 ```{code-cell} ipython3
 :trusted: true
@@ -177,25 +171,19 @@ globe=ccrs.Globe(ellipse=None, **globe_kwargs)
 cartopy_crs = ccrs.Geostationary(**crs_kwargs,globe=globe)
 ```
 
-```{code-cell} ipython3
-:trusted: true
+### Transform the boundary coords
 
-
-```
+Transform the lat/lon boundary into geostationary x,y from [epsg 4326](https://epsg.io/4326)
 
 ```{code-cell} ipython3
 :trusted: true
 
+# epsg 4326 is simple geodetic latlon
+# we need the always_xy = True because the 4326 default order is lat,lon for some reason
+# unlike the other coordinate systems, and that's an accident waiting to happen
 latlon_crs = pyproj.CRS.from_epsg(4326)
 transformer = pyproj.Transformer.from_crs(latlon_crs,goes_crs,always_xy =True)
-```
-
-```{code-cell} ipython3
-:trusted: true
-
 goes_x, goes_y = transformer.transform(goes_lons_coords, goes_lats_coords)
-minx, miny = float(np.min(goes_x)), float(np.min(goes_y))
-maxx, maxy = float(np.max(goes_x)), float(np.max(goes_y))
 ```
 
 ```{code-cell} ipython3
@@ -219,30 +207,11 @@ ax.add_feature(cartopy.feature.GSHHSFeature(scale="auto", levels=[1, 2, 3]))
 fig.legend(bbox_to_anchor=(0.5, 0.25, 0.5, 0.5));
 ```
 
-```{code-cell} ipython3
-:trusted: true
+## Summary
 
-cartopy_crs.proj4_params
-```
-
-```{code-cell} ipython3
-:trusted: true
-
-dir(cartopy_crs.globe)
-```
-
-```{code-cell} ipython3
-:trusted: true
-
-cartopy_globe = cartopy_crs.proj4_params
-cartopy_globe
-```
-
-```{code-cell} ipython3
-:trusted: true
-
-cartopy_test = ccrs.CRS(**cartopy_globe)
-```
+From the cell above it's clear that the lower left and upper right corners of
+the bounding box do not give the right west and east boundaries, which are
+created along lines of constant longitude, not lines of constant goes.x
 
 ```{code-cell} ipython3
 :trusted: true
