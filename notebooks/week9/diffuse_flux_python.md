@@ -1,5 +1,6 @@
 ---
 jupytext:
+  formats: ipynb,md:myst
   notebook_metadata_filter: all,-language_info,-toc,-latex_envs
   text_representation:
     extension: .md
@@ -12,8 +13,8 @@ kernelspec:
   name: python3
 ---
 
-(week11:diffuse_flux)=
-# Calculating the diffuse flux
+(week9:pydiffuse)=
+# Calculating the diffuse flux: python code
 
 ```{code-cell} ipython3
 import matplotlib
@@ -22,7 +23,7 @@ import numpy as np
 from scipy.special import expn
 ```
 
-In the {ref}`week11_flux_schwartzchild` notes I claimed
+In the {ref}`week9:diffusivity` notes I claimed
  that the following approximation was a good one:
 
 $$

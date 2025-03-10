@@ -111,8 +111,11 @@ $$
 
 +++
 
-This is called the “diffusivity approximation”: replace the vertical optical thickness $\tau$ by
-$\frac{5}{3} \tau$ and multiply blackbody radiances by $\pi$.
+### Temperature changing with height
+
+To summarize: define the “diffusivity approximation” as: replace the vertical optical thickness $\tau$ by
+$\frac{5}{3} \tau$ and multiply blackbody radiances by $\pi$.  But what about the case where temperature is
+changing with height?
 
 -   Start with the equation for the upward radiance with $\mu=1$ which we saw in {eq}$calc1$:
 
@@ -140,11 +143,7 @@ $\frac{5}{3} \tau$ and multiply blackbody radiances by $\pi$.
 
 +++
 
-
-
-+++
-
-### Integrating over $\mu=\cos \theta$
+#### Integrating over $\mu=\cos \theta$
 
 -   In the {ref}`week2_flux_from_radiance` notes we turned blackbody isotropic radiance
     into a flux by taking the normal component and integrating over the hemisphere, in {eq}`flux_final`:
@@ -231,14 +230,6 @@ $$
 F_\uparrow = \pi  B_{\lambda 0}(T_s) \, t_f(0,\tau)
     +  \int_0^{\tau}  \pi \, B_\lambda(T)\,d t_f(\tau^\prime,\tau)
 $$ (allangles2B)
-
-+++
-
-
-
-+++
-
-
 
 +++
 

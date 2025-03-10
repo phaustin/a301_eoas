@@ -14,12 +14,11 @@ kernelspec:
   name: python3
 ---
 
-(sec:vancartopy)=
-# Mapping Vancouver with cartopy
-
-+++
-
-**This cell sets up the datum and the LAEA projection, with the tangent point at the North Pole and the central meridian at -90 degrees west of Greenwich**
+(week9:stanleypark)=
+# Clipping issues: What happened to Stanley Park?
+ In the {ref}`week8:goes_landsat_rio` notebook we wound up with a cropped image
+ that shaved off the western and eastern sides of our specified bounding box.
+ As explained in that notebook, that was because we selected the bounding box corners in lon/lat coords (or equivalently, UTM), but executed `rioxarray.clip_box` in geostationary coordinates.  In this notebook I make two plots, one showing the bounding box in lon/lat coordinates, and one showing it in geostationary coordinates.  The second plot shows that, because lines of constant longitude are not the same as lines of constant geostationary x values, the clipped bounds differ significantly in the two scenes.
 
 ```{code-cell} ipython3
 :trusted: true
@@ -37,7 +36,7 @@ import numpy as np
 
 ## Read in bounds for landsat and goes
 
-In {ref}`week8:output_bounds` we wrote the pyproj geostationary crs
+I've modified {ref}`week8:output_bounds` to save the pyproj geostationary crs
 and the lon/lat bounding boxes out to json files.  Read these in
 so we can start with the same coordinates.
 
@@ -59,9 +58,10 @@ with open("landsat_bounds.json","r") as infile:
 goes_bounds
 ```
 
-### Make a counterclockwise line
+### Make a counterclockwise set of coordinates
 
-These x,y keys start in the ll corner and go around the bounding box counter clockwise. There are 5 values so we return to where we started.
+We want to show the bounding box on a map in the two coordinate systems.
+The x,y keys below start in the ll corner and go around the bounding box counter clockwise. There are 5 values so we return to where we started.
 
 ```{code-cell} ipython3
 :trusted: true
@@ -70,10 +70,10 @@ bbox_keys = [('ll_lon','ur_lon','ur_lon','ll_lon','ll_lon'),
                 ('ll_lat','ll_lat','ur_lat','ur_lat','ll_lat')]
 ```
 
-### Change the order of the coords
+### Find the x,y coorinates for each crs
 
-Use a list comprehension to
-group the x and y  values together
+Use these keys in a list comprehension to
+group the x and y  values together so we can use pyproj.Transformer
 
 ```{code-cell} ipython3
 :trusted: true
@@ -85,10 +85,11 @@ ls_lons_coords = [landsat_bounds[key] for key in lons]
 ls_lats_coords = [landsat_bounds[key] for key in lats]
 ```
 
-## Plot the bounding boxes in lon/lat coords
+## First Plot: the bounding boxes in lon/lat coords
 
-Note that in this projection the GOES boundary box is actually
-bigger than the landsat bounding box
+Note that in the lon/lat projection the GOES boundary box is actually
+bigger than the landsat bounding box and includes Stanley Park on the east
+and Keats Island on the West
 
 ```{code-cell} ipython3
 :trusted: true
@@ -123,12 +124,12 @@ of longitude and latitude.
 
 ### Construct the cartopy crs for GOES
 
-Remember that cartopy is much older than pyproj, and it has it's own
-way of constructing a geostationary coordiante system, so we can't use
+Remember that cartopy is much older than pyproj, and it has its own
+way of constructing a geostationary coordinate system, so we can't use
 a format like wkt (well known text).
 
-Take the values from the pyproj.CRS goes_crs we read in from `goes_crs.json`
-and rename them so they will be accepted by cartopy.
+I'll take the values from the `pyproj.CRS goes_crs` we read in from `goes_crs.json` above 
+and rename them so they will be accepted by the cartopy.CRS constructor.
 
 Follow [goes2go FieldOfViewAccessor](https://github.com/blaylockbk/goes2go/blob/main/goes2go/accessors.py#L90).crs
 
@@ -147,7 +148,8 @@ goes_coeffs
 Note that pyproj ignores `semiminor_axis`, which I have to
 fill in from reading a goes image and dumping its metadata.  This
 might explain why the x,y coordinates are slightly different from
-goes2go and satpy
+goes2go and satpy.  The next cell does the translation from pyproj arguments
+to cartopy arguments.
 
 ```{code-cell} ipython3
 :trusted: true
@@ -163,6 +165,10 @@ crs_kwargs = dict(central_longitude = goes_coeffs['lon_0'],
                   satellite_height = goes_coeffs['h'],
                   sweep_axis = 'x')
 ```
+
+### Call the cartopy.CRS constructors
+
+cartopy uses the workd `globe` for what we've been calling the `datum`
 
 ```{code-cell} ipython3
 :trusted: true
@@ -186,12 +192,11 @@ transformer = pyproj.Transformer.from_crs(latlon_crs,goes_crs,always_xy =True)
 goes_x, goes_y = transformer.transform(goes_lons_coords, goes_lats_coords)
 ```
 
+## Second plot: the bounding box in geostationary coordinates
+
 ```{code-cell} ipython3
 :trusted: true
 
-# silence geojson warnings
-import warnings
-warnings.filterwarnings("ignore")
 projection = cartopy_crs
 fig, ax = plt.subplots(1, 1, figsize=(6, 6), 
                        subplot_kw={"projection": projection})
@@ -209,9 +214,13 @@ fig.legend(bbox_to_anchor=(0.5, 0.25, 0.5, 0.5));
 
 ## Summary
 
+Compare with {ref}`week8:resampled_goes` to see why the Stanly Park and Keats Island get clipped.
 From the cell above it's clear that the lower left and upper right corners of
-the bounding box do not give the right west and east boundaries, which are
-created along lines of constant longitude, not lines of constant goes.x
+the bounding box do not give the expected west and east boundaries, which are
+created along lines of constant longitude, not lines of constant geostationary.x.  
+
+Bottom line, if we want to clip along UTM Zone10 or lon/lat boundaries, we
+have to resample the goes image into that coordinate system, then clip.  Alternatively, we need to make the bounding box big enough to get the lower left and upper right corners to span the desired longitude range in geostationary coordinates.
 
 ```{code-cell} ipython3
 :trusted: true

@@ -383,4 +383,30 @@ Read Stull Chapter 8 through p. 248 on weather radar
 - Work on {ref}`assign6`
 - Read {ref}`week8:radar` along with the Stull weather radar pages
 
+## Week 9
+
+### Day 26 Monday
+
+- Working with bounding boxes
+
+  - {ref}`week9:clip_demo`
+
+- A land classification dataset
+ 
+  - {ref}`week9:land_classes`
+  
+- More on the Schwartzchild equation: the diffuse flux approximation
+
+  - {ref}`week9:diffusivity`
+  - {ref}`week9:pydiffuse`
+
+#### For Wednesday
+
+- Get the land cover tif for your Landsat region
+- work on {ref}`assign6`
+
+Read:
+
+- {ref}`week9:diffusivity`
+- {ref}`week9:pydiffuse`
 

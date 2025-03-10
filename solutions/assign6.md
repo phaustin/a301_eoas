@@ -80,4 +80,3 @@ $$
 ## Q5 Radar Rainrate Python
 
 Repeat using numerical integration in python (i.e. np.diff and np.sum) and show that the  result agrees.
-

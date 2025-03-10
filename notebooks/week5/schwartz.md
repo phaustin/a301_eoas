@@ -56,7 +56,7 @@ Where does {eq}`stull1` come from? To derive this from the Beer's law we need to
 Our previous form of Beer's law looks like this {ref}`beers-law-diff`
 
 $$
-\frac{dE^\prime}{E^\prime} = \frac{dL^\prime \Delta \omega}{L^\prime \Delta \omega} = d \ln L^\prime = -d (n\,b\,s) = -d \tau^\prime
+\frac{dF^\prime}{F^\prime} = \frac{dL^\prime \Delta \omega}{L^\prime \Delta \omega} = d \ln L^\prime = -d (n\,b\,s) = -d \tau^\prime
 $$ (diffbeers2)
 
 where $s\ (m)$ is the distance travelled (the path length),
