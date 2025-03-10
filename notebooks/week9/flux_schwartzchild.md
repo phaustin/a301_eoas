@@ -145,7 +145,7 @@ changing with height?
 
 #### Integrating over $\mu=\cos \theta$
 
--   In the {ref}`week2_flux_from_radiance` notes we turned blackbody isotropic radiance
+-   In the {ref}`sec:week1-flux-from-radiance` notes we turned blackbody isotropic radiance
     into a flux by taking the normal component and integrating over the hemisphere, in {eq}`flux_final`:
 
     $$
