@@ -41,44 +41,25 @@ $$
 For slant paths start by rewriting {eq}`schwart2` in {ref}`week5-schwartzA` to account for $\mu = \cos \theta$
 
 $$
+   dL_\lambda= \left ( -L_\lambda + B_\lambda (T_{layer} ) \right ) \frac{d\tau_\lambda}{\mu}
+$$ (schwart3)
+
+For constant temperature and $\mu=1$ we know how to solve this:
 
 $$
+L_\lambda = L_{\lambda 0} \exp( -\tau_{\lambda T}/\mu  ) + B_\lambda (T_{layer})(1- \exp( -\tau_{\lambda T} /\mu))
+$$ (rep_constant)
 
-# The diffusivity approximation
 
-From the {ref}`heating-rate` notes we have the heating rate equation {eq}`heating`:cloudsat:
-
-$$
-\frac{dT}{dt} = \frac{1}{\rho c_p} \frac{dF_{net}}{dz}
-$$
-
-But how do we get `F_{net}` if the satellites only measure radiance `L`? Graphically, this is the
-situation we know how to solve, from {ref}`week4_schwartz` notes:
-
-:::{figure} figures/schwartzchild.png
-:name: schwartzchild2
-:scale: 35
+## Integration over angle: The diffusivity approximation
 
 +++
 
-But this only works for photons that are going straight up or straight down.
-For the flux, we need to count
-every photon at going up at any zenith angle $\mu = \cos \theta$. Our situation is more like this:
+Integrating {eq}`schwart3` over a hemisphere with $\mu$ changing between $0 \rightarrow 1$ adds a fair
+amount of complexity.  Luckily, as we've seen in Wallace and Hobbs, the end result is equivalent to assuming
+the photons are traveling in the direction $\theta = 53.6$ degrees.  Where does this come from?
 
-:::{figure} figures/diffuse_flux.png
-:name: diffuse
-:scale: 55
-:::
-
-Where does that leave us? Surprisingly, moving from radiance to flux is reasonably approximated by simply increasing the optical thickness of the layer, to take into account the fact
-that almost all photons have further to travel through the layer than those that are
-going straight up. Specifically for a constant temperature layer we found {eq}`rad_constant`:
-
-$$
-L_\lambda = L_{\lambda 0} \exp( -\tau_{\lambda T}  ) + B_\lambda (T_{layer})(1- \exp( -\tau_{\lambda T} ))
-$$ (rep_constant)
-
-## Accounting for slant paths
+### Accounting for slant paths
 
 Nothing in the derivation of {eq}`rad_constant` prevents us from
 setting the zenith angle for the photon paths
@@ -128,6 +109,8 @@ $$
 F_{\lambda \uparrow} = \sigma T_0^4 \exp( -1.66 \overline{\tau}_{\lambda T}  ) + \sigma T_{layer}^4(1- \exp( -1.66 \overline{\tau}_{\lambda T} ))
 $$
 
++++
+
 This is called the “diffusivity approximation”: replace the vertical optical thickness $\tau$ by
 $\frac{5}{3} \tau$ and multiply blackbody radiances by $\pi$.
 
@@ -155,6 +138,12 @@ $\frac{5}{3} \tau$ and multiply blackbody radiances by $\pi$.
     L_\lambda(\tau,\mu)= B_\lambda(T_{skin}) \hat{t}_{stot}  +    \int_0^{\tau} B_\lambda(T)\,d\hat{t_s}
     $$ (newslant2)
 
++++
+
+
+
++++
+
 ### Integrating over $\mu=\cos \theta$
 
 -   In the {ref}`week2_flux_from_radiance` notes we turned blackbody isotropic radiance
@@ -173,6 +162,12 @@ $\frac{5}{3} \tau$ and multiply blackbody radiances by $\pi$.
     F_\lambda=  2 \pi L_\lambda \int_0^1 \mu  d\mu  = 2 \pi \frac{\mu^2}{2} \Bigg \rvert_0^1 = 2 \pi  L_\lambda \frac{ 1}{ 2}
       = \pi L_\lambda
     $$ (allangles2)
+
++++
+
+
+
++++
 
 ## Radiance into flux
 
@@ -193,8 +188,14 @@ is that now our expression for $L_\lambda(\tau,\mu, \phi)$ depends on
 the zenith angle $\theta$, so that the integral is more difficult (actually
 it’s impossible to do analytically).
 
-Flux transmissivity
-==================+
++++
+
+
+
++++
+
+### Flux transmissivity
+
 
 -   To make progress, first swap the limits of integration (ok because the layers  
     are plane parallel)
@@ -210,11 +211,9 @@ $$ (allanglesmuswapII)
 
 (Remember that $T$ does depend on $z$, and therefore $B_\lambda(T)$ has to stay inside the $\tau^\prime$ integral.)
 
-## Flux transmissivity cont
++++
 
--   Look what happens to this equation if we define $t_f$, the ,
-
-as:
+-   Look what happens to this equation if we define $t_f$, the flux transmissivity as:
 
 $$
 t_f=  2 \int_0^1 \mu  \exp(-(\tau - \tau^\prime)/\mu) d\mu
@@ -233,8 +232,18 @@ F_\uparrow = \pi  B_{\lambda 0}(T_s) \, t_f(0,\tau)
     +  \int_0^{\tau}  \pi \, B_\lambda(T)\,d t_f(\tau^\prime,\tau)
 $$ (allangles2B)
 
-Exponential integrals
-====================+
++++
+
+
+
++++
+
+
+
++++
+
+### Exponential integrals
+
 
 -   But how do we get values for $t_f$ and $dt_f$ if we can’t do
 
@@ -257,8 +266,9 @@ In words, that means that the flux sees a layer that is effectively 5/3 times
 thicker, compared with the layer faced by photons pointed at $\mu=1$ (straight up).
 Be sure you understand why this make physical sense.
 
++++
 
-## Fluxes continued
+### Fluxes continued
 
 $$
 \begin{gather}
@@ -279,7 +289,8 @@ Or just think of it as passing though a layer that’s
 1.66 times thicker than $\tau$.
 
 $$
-F_\uparrow = \pi  B_{\lambda 0}(T_s) \, Tr(0,1.66\tau)
-   +  \int_0^{\tau}  \pi \, B_\lambda(T)\,d Tr(1.66\tau^\prime,1.66\tau)
+F_\uparrow = \pi  B_{\lambda 0}(T_s) \, t_f(0,1.66\tau)
+   +  \int_0^{\tau}  \pi \, B_\lambda(T)\,d t_f(1.66\tau^\prime,1.66\tau)
 $$ (allangles3)
 
++++
