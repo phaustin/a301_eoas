@@ -15,14 +15,14 @@ kernelspec:
 ---
 
 (week9:clip_demo)=
-# What happened to Stanley Park?
+# Clipping issues: What happened to Stanley Park?
  In the {ref}`week8:goes_landsat_rio` notebook we wound up with a cropped image
  that shaved off the western and eastern sides of our specified bounding box.
  As explained in that notebook, that was because we specifed the bounding box corners in lon/lat coords (or equivalently, UTM), but executed rioxarray.clip_box in geostationary coordinates.  In this notebook I make two plots, one showing the bounding box in lon/lat coordinates, and one showing it in geostationary coordinates.  Because lines of constant longitude are not the same as lines of constant geostationary x values, the clipped bounds differ significantly in the two scenes.
 
  ## Installation
 
- - Download clipping_demo.ipynb and three json files from the [week8 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
+ - Download clipping_demo.ipynb and three json files from the [week9 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
 
 ```{code-cell} ipython3
 :trusted: true

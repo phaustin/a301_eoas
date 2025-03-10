@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>47. What happened to Stanley Park? &#8212; ATSC 301</title>
+    <title>47. Clipping issues: What happened to Stanley Park? &#8212; ATSC 301</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -269,10 +269,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 9</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">47. What happened to Stanley Park?</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">47. Clipping issues: What happened to Stanley Park?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rio_land_classification.html">48. Working with surface class data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="flux_schwartzchild.html">49. Integrating the Schwartzchild equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="diffuse_flux_python.html">50. Calculating the diffuse flux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffuse_flux_python.html">50. Calculating the diffuse flux: python code</a></li>
 </ul>
 
     </div>
@@ -411,7 +411,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>What happened to Stanley Park?</h1>
+    <h1>Clipping issues: What happened to Stanley Park?</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -448,15 +448,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="what-happened-to-stanley-park">
-<span id="week9-clip-demo"></span><h1><span class="section-number">47. </span>What happened to Stanley Park?<a class="headerlink" href="#what-happened-to-stanley-park" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="clipping-issues-what-happened-to-stanley-park">
+<span id="week9-clip-demo"></span><h1><span class="section-number">47. </span>Clipping issues: What happened to Stanley Park?<a class="headerlink" href="#clipping-issues-what-happened-to-stanley-park" title="Link to this heading">#</a></h1>
 <p>In the <a class="reference internal" href="../week8/goes_landsat_rio.html#week8-goes-landsat-rio"><span class="std std-ref">Combining goes and landsat data using rioxarray</span></a> notebook we wound up with a cropped image
 that shaved off the western and eastern sides of our specified bounding box.
 As explained in that notebook, that was because we specifed the bounding box corners in lon/lat coords (or equivalently, UTM), but executed rioxarray.clip_box in geostationary coordinates.  In this notebook I make two plots, one showing the bounding box in lon/lat coordinates, and one showing it in geostationary coordinates.  Because lines of constant longitude are not the same as lines of constant geostationary x values, the clipped bounds differ significantly in the two scenes.</p>
 <section id="installation">
 <h2><span class="section-number">47.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Download clipping_demo.ipynb and three json files from the <a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing">week8 folder</a></p></li>
+<li><p>Download clipping_demo.ipynb and three json files from the <a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing">week9 folder</a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
