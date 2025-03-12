@@ -238,24 +238,40 @@ $$
 
 Bottom line:  the longwave radiation code in a climate model:
 
-- Calculates $\Delta \tau_\lambda$, the optical thickness for every model layer and for 30-40 different wavelengths
+- Calculates $\Delta \tau_\lambda$, the optical thickness for every model layer $n$ and for 30-40 different wavelengths
 
-- Use the temperature and the Planck function to get $B_\lambda (T)$ in each layer
+- Uses the temperature and the Planck function to get $B_\lambda (T_n)$ in each layer and wavelength
 
 - Starts from the lowest model level for the upward flux, and the highest model level
   for the downward flux, and finds $F_{\lambda \uparrow}$ and $F_{\lambda \downarrow}$
-  for each layer using the angle integrated Schwartzchild equations.  Integrating {eq}`allangles2c` across layer $n$ assuming constant $T_{layer}$ we get the upward flux through the top of layer $n$ as:
+  for each layer and wavelength using the angle-integrated Schwartzchild equation.  Integrating {eq}`allangles2c` across layer $n$ assuming constant $T_{layer}$ we get the upward flux through the top of layer $n$ as:
 
     $$
-    F_\uparrow = \pi  B_{\lambda 0}(T_s) \, t_f(0,\tau)
-        +  \int_0^{\tau}  \pi \, B_\lambda(T)\,d t_f(\tau^\prime,\tau)
+    F_{\lambda \uparrow n} = F_{\lambda \uparrow n-1}
+        +   B_\lambda(T_n)(1 - t_f(\Delta \tau_n))
     $$ (allangles2Bmodel)
 
-  
 
-+++
+    and the downward flux (downward negative) though the bottom of layer $n$ is: 
 
+    $$
+    F_{\lambda \downarrow n} = F_{\lambda \downarrow n+1}
+        -  B_\lambda(T_n)(1 - t_f(\Delta \tau_n))
+    $$ (allangles2Bmodelc)
 
+- Gets the net flux $F_{net, n} = F_{\uparrow n} + F_{\downarrow n }$ through every  level by summing over all wavelengths
+
+- Gets the heating rate in K/second for each layer
+
+  $$
+  \frac{dT_n}{dt} = -\frac{1}{\rho c_p} \frac{dF_{net\,n}}{dz}
+  $$
+
+- Update each layer temperature for the timestep (say $\Delta t = 20$ minutes)
+
+  $$
+  \frac{dT_{t+1,n}}{dt} = T_{t,n} \Delta t
+  $$
 
 ```{code-cell} ipython3
 
