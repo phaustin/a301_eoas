@@ -14,7 +14,7 @@ kernelspec:
 
 (week9:diffusivity)=
 
-# Integrating the Schwartzchild equation
+# Integrating the Schwartzchild equation 
 
 To calculate the radiative flux passing through an atmospheric layer we need to know the optical depth as a function
 of wavelength, height and direction and the temperature as a function of height. That means we need to do
@@ -44,58 +44,34 @@ $$
    dL_\lambda= \left ( -L_\lambda + B_\lambda (T_{layer} ) \right ) \frac{d\tau_\lambda}{\mu}
 $$ (schwart3)
 
-For constant temperature and $\mu=1$ we know how to solve this:
+For constant temperature  we know how to solve this.  Since $\mu$ isn't related to temperature we can just repeat the change of variables trick in {ref}`schwartz:change` and get the zenith-angle dependent version.
 
 $$
-L_\lambda = L_{\lambda 0} \exp( -\tau_{\lambda T}/\mu  ) + B_\lambda (T_{layer})(1- \exp( -\tau_{\lambda T} /\mu))
+L_\lambda = L_{\lambda 0} \exp( -\tau_{\lambda}/\mu  ) + B_\lambda (T_{layer})(1- \exp( -\tau_{\lambda} /\mu))
 $$ (rep_constant)
 
 
-## Integration over angle: The diffusivity approximation
 
-+++
-
-Integrating {eq}`schwart3` over a hemisphere with $\mu$ changing between $0 \rightarrow 1$ adds a fair
-amount of complexity.  Luckily, as we've seen in Wallace and Hobbs, the end result is equivalent to assuming
-the photons are traveling in the direction $\theta = 53.6$ degrees.  Where does this come from?
-
-### Accounting for slant paths
-
-Nothing in the derivation of {eq}`rad_constant` prevents us from
-setting the zenith angle for the photon paths
-to something besides $\cos \theta = 0\ (\mu = 1)$. Step 1 is to remember the relationship between
-$L$ and $F$. For upward flux we integrate over the upward facing hemisphere:
+For height dependent temperature in r {eq}`integ1` we used an integrating factor of $\exp(\tau)$.  You should convince yourself that if
+we do the same thing for {eq}`schwart3` but with an integrating factor of $\exp(\tau/\mu)$ we
+get:
 
 $$
-\begin{align}
-        F&= \int_0^{2 \pi} \int_0^{\pi/2} \cos \theta\, L \sin \theta d\theta d\phi \\
-        &\text{or changing variables $\mu=\cos \theta$ integrating over azimuth $\phi$}: \\
-        F&= 2\pi\int_0^{1}  \mu  L d\mu
-\end{align}
-$$ (allangles2)
-
-For {eq}`rad_constant` we took $L$ out of the integral and got $F=\pi L$, but this isn’t an option now, because the transmissivity depends on $\mu$. Specifically, with $\mu \neq 1$ we have new
-definitions for the **slant transmissivity** $\hat{t}_s$:
-
-$$
-\begin{align}
-        \hat{t_s} &= \exp \left ( \frac{(\tau - \tau^\prime)}{\mu} \right ) \\
-   d\hat{t_s} &=\frac{d \hat{t_s}(\tau^\prime,\tau)}{d\tau^\prime} d\tau^\prime =
-        \exp\left( -\frac{(\tau -
-   \tau^\prime)}{\mu} \right ) \frac{1}{\mu} d\tau^\prime
- \end{align}
+L_\lambda = B_\lambda(T_{skin}) \exp(-\tau/\mu)  +     \int_0^{\tau} \exp\left(  - (\tau -\tau^\prime)/\,\mu \right ) B_\lambda(T) d \tau^\prime / \mu
 $$ (fluxtrans4)
 
-We can’t integrate this transmission over $\mu$ analytically, but the integrals are easy
-to do numerically. As you’ll show in a separate notebook, the following “diffusivity”
+## Integration over zenith angle
+
+We can’t integrate {eq}`fluxtrans4` over $\mu$ analytically, but the integrals are easy
+to do numerically. As we'll show in a {ref}`week9:pydiffuse`, the following “diffusivity”
 approximation is quite good:
 
 $$
-\hat{t}_f =  \int_0^1 \mu \exp \left ( \frac{(\tau - \tau^\prime)}{\mu} \right ) d\mu
+t_f =  \int_0^1 \mu \exp \left ( \frac{(\tau - \tau^\prime)}{\mu} \right ) d\mu
     =  \exp \left (-1.66 (\tau - \tau^\prime) \right )
 $$ (diffusivity)
 
-where $\hat{t_f}$ is called the **flux transmissivity**.
+where $t_f$ is called the **flux transmissivity**.
 
 This gives a the upward flux version of {eq}`rep_constant`:
 
