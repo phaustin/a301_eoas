@@ -57,10 +57,22 @@ we do the same thing for {eq}`schwart3` but with an integrating factor of $\exp(
 get:
 
 $$
-L_\lambda = B_\lambda(T_{skin}) \exp(-\tau/\mu)  +     \int_0^{\tau} \exp\left(  - (\tau -\tau^\prime)/\,\mu \right ) B_\lambda(T) d \tau^\prime / \mu
+L_\lambda = B_\lambda(T_{skin}) \exp(-\tau/\mu)  +     \int_0^{\tau} \exp\left(  - (\tau -\tau^\prime)/\,\mu \right ) B_\lambda(T) d \tau^\prime / \mu 
 $$ (fluxtrans4)
 
-## Integration over zenith angle
+and defining the slant trasmission:
+
+$$
+t_s = \exp\left(  - (\tau -\tau^\prime)/\,\mu \right )
+$$
+{eq}`fluxtrans4` simplifies to 
+
+$$
+L_\lambda = B_\lambda(T_{skin}) t_s(\tau)  +     \int_0^{\tau}  B_\lambda(T) d ts(\tau,\tau^\prime) / \mu 
+$$ (fluxtrans4b)
+just like {eq}`calc4`.
+
+## Integration over zenith angle: no atmosphere
 
 We can’t integrate {eq}`fluxtrans4` over $\mu$ analytically, but the integrals are easy
 to do numerically. As we'll show in a {ref}`week9:pydiffuse`, the following “diffusivity”
@@ -71,58 +83,12 @@ t_f =  \int_0^1 \mu \exp \left ( \frac{(\tau - \tau^\prime)}{\mu} \right ) d\mu
     =  \exp \left (-1.66 (\tau - \tau^\prime) \right )
 $$ (diffusivity)
 
-where $t_f$ is called the **flux transmissivity**.
+So that the transmissivity for flux is the same as the transmissivity for radiance except that the effective thickness of the atmosphere is increased by a factor of 1.666.
 
-This gives a the upward flux version of {eq}`rep_constant`:
-
-$$
-F_{\lambda \uparrow} = \pi L_{\lambda 0} \exp( -1.66 \tau_{\lambda T}  ) + \pi B_\lambda (T_{layer})(1- \exp( -1.66\tau_{\lambda T} ))
-$$
-
-And if we then integrate this over all wavelengths we get the **broadband flux equation**:
-
-$$
-F_{\lambda \uparrow} = \sigma T_0^4 \exp( -1.66 \overline{\tau}_{\lambda T}  ) + \sigma T_{layer}^4(1- \exp( -1.66 \overline{\tau}_{\lambda T} ))
-$$
-
-+++
-
-### Temperature changing with height
-
-To summarize: define the “diffusivity approximation” as: replace the vertical optical thickness $\tau$ by
-$\frac{5}{3} \tau$ and multiply blackbody radiances by $\pi$.  But what about the case where temperature is
-changing with height?
-
--   Start with the equation for the upward radiance with $\mu=1$ which we saw in {eq}$calc1$:
-
-    $$
-    L_\lambda(\tau)= B_\lambda(T_{skin})( \exp(-\tau) +    \int_0^{\tau} \exp\left(  - (\tau -\tau^\prime) \right )
-    B_\lambda(T)\, d\tau^\prime
-    $$
-
--   Add the fact that the photons that travel along a slant path have lower transmissivity.
-    In fact: they travel a distance $\Delta s = \Delta z/\cos \theta = \Delta z/\mu$ which
-    is Stull’s $\Delta s$ in his equation 2.31b
-
-    $$
-    L_\lambda(\tau,\mu)= B_\lambda(T_{skin})( \exp(-\tau/\mu) +    \int_0^{\tau} \exp\left(  - (\tau -\tau^\prime)/\mu \right )
-      B_\lambda(T)\, \frac{d\tau^\prime}{\mu}
-    $$ (newslant)
-
--   So define a new transmission for the slant path:
-
--   and use it to rewrite {eq}`newslant`:
-
-    $$
-    L_\lambda(\tau,\mu)= B_\lambda(T_{skin}) \hat{t}_{stot}  +    \int_0^{\tau} B_\lambda(T)\,d\hat{t_s}
-    $$ (newslant2)
-
-+++
-
-#### Integrating over $\mu=\cos \theta$
+Where does this factor of 1.66 come from?
 
 -   In the {ref}`sec:week1-flux-from-radiance` notes we turned blackbody isotropic radiance
-    into a flux by taking the normal component and integrating over the hemisphere, in {eq}`flux_final`:
+    into a flux by taking the normal component and integrating over the hemisphere:
 
     $$
     \begin{align}
@@ -131,53 +97,44 @@ changing with height?
      \end{align}
     $$ (allangles2)
 
-    assuming no dependence on $\phi$ and substituting $\mu= \cos \theta$
+    assuming no dependence of $L_\lambda$ on $\phi$ and $\theta$ we can take $L_\lambda$ out
+    of the integral and substituting $\mu= \cos \theta$ write:
 
     $$
     F_\lambda=  2 \pi L_\lambda \int_0^1 \mu  d\mu  = 2 \pi \frac{\mu^2}{2} \Bigg \rvert_0^1 = 2 \pi  L_\lambda \frac{ 1}{ 2}
       = \pi L_\lambda
-    $$ (allangles2)
+    $$ (allangles2b)
 
 +++
 
+### now add an atmosphere
 
+Once we add the atmopsheric transmissivity, we have a much more difficult integral:
 
-+++
-
-## Radiance into flux
-
-So do this to {eq}`Luptrans`
+Getting the flux using $L_\lambda$ from  {eq}`fluxtrans4` looks like this:
 
 $$
-\begin{gather}
- F_\uparrow = \int_0^{2 \pi} \int_0^{\pi/2} \cos \theta\,
- L_\lambda \sin \theta d\theta d\phi =  2\pi \int_0^1 \mu L_\lambda d \mu \notag\\
- = 2 \pi B_{\lambda 0}(T_s) \int_0^1 \mu  \exp(-\tau/\mu) d\mu \nonumber\\
- + 2 \pi \int_0^1
- \int_0^{\tau} \exp\left( -\frac{(\tau - \tau^\prime)}{\mu} \right ) B_\lambda(T)\,d\tau^\prime d\mu
-\end{gather}
-$$ (allanglesmu})
+ F_\uparrow &= \int_0^{2 \pi} \int_0^{\pi/2} \cos \theta\,
+ L_\lambda \sin \theta d\theta d\phi \\
+ &=  2\pi \int_0^1 \mu L_\lambda d \mu \notag\\
+ &= 2 \pi B_{\lambda 0}(T_s) \int_0^1 \mu  \exp(-\tau/\mu) d\mu \nonumber\\
+ &+ 2 \pi \int_0^1
+ \int_0^{\tau} \exp\left( -\frac{(\tau - \tau^\prime)}{\mu} \right ) B_\lambda(T)\,d\tau^\prime  d\mu
+$$ (allangmu)
 
-The difference
-is that now our expression for $L_\lambda(\tau,\mu, \phi)$ depends on
-the zenith angle $\theta$, so that the integral is more difficult (actually
-it’s impossible to do analytically).
-
-+++
-
-
+Comparing these two terms with {eq}`fluxtrans4`, note that the $1/\mu$ has been cancelled from the second term in {eq}`allangmu`, but the structure is otherwise the same for both flux and radiance.
 
 +++
 
 ### Flux transmissivity
 
 
--   To make progress, first swap the limits of integration (ok because the layers  
-    are plane parallel)
+-   To make progress, first swap the limits of integration:
+
 
 $$
 \begin{gather}
-      F_\uparrow =   \pi B_{\lambda 0}(T_s)\, 2 \int_0^1 \mu  \exp(-\tau/\mu) d\mu
+      F_{\lambda \uparrow} =   \pi B_{\lambda 0}(T_s)\, 2 \int_0^1 \mu  \exp(-\tau/\mu) d\mu
       +      \nonumber\\
      \int_0^{\tau} \pi B_\lambda(T)\, 2 \int_0^1 \exp\left( -\frac{(\tau - \tau^\prime)}{\mu}
      \right ) \, d\mu\, d\tau^\prime
@@ -188,7 +145,7 @@ $$ (allanglesmuswapII)
 
 +++
 
--   Look what happens to this equation if we define $t_f$, the flux transmissivity as:
+-   Look what happens to this equation if we define $t_f$, the *flux transmissivity* as:
 
 $$
 t_f=  2 \int_0^1 \mu  \exp(-(\tau - \tau^\prime)/\mu) d\mu
@@ -200,64 +157,106 @@ $$
 dt_f=  2 \int_0^1  \exp(-(\tau - \tau^\prime)/\mu) d\mu d\tau^\prime
 $$ (fluxtransb)
 
+
 Plug these into {eq}`allanglesmuswapII` and get:
 
 $$
 F_\uparrow = \pi  B_{\lambda 0}(T_s) \, t_f(0,\tau)
     +  \int_0^{\tau}  \pi \, B_\lambda(T)\,d t_f(\tau^\prime,\tau)
-$$ (allangles2B)
+$$ (allangles2c)
 
 +++
 
 ### Exponential integrals
 
+#### calculating $t_f$
 
 -   But how do we get values for $t_f$ and $dt_f$ if we can’t do
+    the integration? 
+    
+    – In {ref}`week9:pydiffuse` we use python to evaluate:
 
-the integration? – Use python to evaluate
+    $$
+    t_f=  2 \int_0^1 \mu  \exp(-(\tau - \tau^\prime)/\mu) d\mu = 2 E_3(\tau)
+    $$ (fluxtrans2)
+
+-   As we show there, it turns out to  a very good approximation:
+
+    $$
+    t_f(\tau) = 2 E_3(\tau) \approx \exp \left (- 1.666 \tau \right )
+    $$ (expapprox0)
+
+#### calculating $dt_f$
+
+
+It turns out that $\frac{dE_3}{d\tau^\prime} = -E_2(\tau^\prime)$ (see [wikipedia](https://en.wikipedia.org/wiki/Exponential_integral)).  
+
+In assignment 7 you'll show that 
 
 $$
-t_f=  2 \int_0^1 \mu  \exp(-(\tau - \tau^\prime)/\mu) d\mu = 2 E_3(\tau)
-$$ (fluxtrans2)
-
-exactly.
-
--   We wouldn’t be any further ahead except that, it turns out to
-    a very good approximation:
-
-$$
-t_f(\tau) = 2 E_3(\tau) \approx \exp \left (- \frac{5}{3} \tau \right )
-$$ (expapprox0)
+\frac{dt_f(\tau,\tau^\prime)}{d\tau^\prime} = 2E_2(\tau,\tau^\prime) \approx 1.666\exp(-1.666(\tau - \tau^\prime))
+$$(dtf)
 
 In words, that means that the flux sees a layer that is effectively 5/3 times
-thicker, compared with the layer faced by photons pointed at $\mu=1$ (straight up).
-Be sure you understand why this make physical sense.
+thicker, compared with the radiance case  at $\mu=1$ (straight up/down), for both the flux transmission
+and the weighting function $dt_f$. Be sure you understand why this make physical sense.
 
 +++
 
-### Fluxes continued
+### Matching with Wallace and Hobbs eq. 4.46
+
+Convince yourself that Wallace and Hobbs eq. 4.46
 
 $$
-\begin{gather}
-   t_f(\tau) = 2 E_3(\tau) \approx \exp \left (- \frac{5}{3} \tau \right ) = \\
-   \exp \left (- \tau/(3/5) \right )
-   =\exp \left (- \tau/\cos 53^\circ \right ) \\
-   = \exp \left (- \tau/ \overline{\mu} \right )
- \end{gather}
-$$ (expapprox2)
-
--   So you if you like you can think of the flux as if it was a radiance
-
-going through the layer at an angle of $53^\circ$.
-
-or rewriting {eq}`allangles2B`
-
-Or just think of it as passing though a layer that’s
-1.66 times thicker than $\tau$.
+T_\nu^f \simeq e^{-\tau_\nu / \bar{\mu}}
+$$
+where
 
 $$
-F_\uparrow = \pi  B_{\lambda 0}(T_s) \, t_f(0,1.66\tau)
-   +  \int_0^{\tau}  \pi \, B_\lambda(T)\,d t_f(1.66\tau^\prime,1.66\tau)
-$$ (allangles3)
+\frac{1}{\bar{\mu}} \equiv \sec 53^{\circ}=1.66
+$$
+
+is identical to {eq}`expapprox0`
+
+and that their equation 4.56:
+
+$$
+\left(\frac{d T}{d t}\right)_\nu=-\frac{\pi}{c_p} k_\nu r B_\nu(z) \frac{e^{-\tau_\nu / \bar{\mu}}}{\bar{\mu}}
+$$
+
+is actually:
+
+$$
+\left(\frac{d T}{d t}\right)_\nu=-\frac{\pi}{c_p} k_\nu r B_\nu(z) dt_f
+$$
 
 +++
+
+## Summary
+
++++
+
+Bottom line:  the longwave radiation code in a climate model:
+
+- Calculates $\Delta \tau_\lambda$, the optical thickness for every model layer and for 30-40 different wavelengths
+
+- Use the temperature and the Planck function to get $B_\lambda (T)$ in each layer
+
+- Starts from the lowest model level for the upward flux, and the highest model level
+  for the downward flux, and finds $F_{\lambda \uparrow}$ and $F_{\lambda \downarrow}$
+  for each layer using the angle integrated Schwartzchild equations.  Integrating {eq}`allangles2c` across layer $n$ assuming constant $T_{layer}$ we get the upward flux through the top of layer $n$ as:
+
+    $$
+    F_\uparrow = \pi  B_{\lambda 0}(T_s) \, t_f(0,\tau)
+        +  \int_0^{\tau}  \pi \, B_\lambda(T)\,d t_f(\tau^\prime,\tau)
+    $$ (allangles2Bmodel)
+
+  
+
++++
+
+
+
+```{code-cell} ipython3
+
+```
