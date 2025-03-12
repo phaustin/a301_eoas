@@ -410,3 +410,39 @@ Read:
 - {ref}`week9:diffusivity`
 - {ref}`week9:pydiffuse`
 
+### Day 27 Wednesday
+
+- {ref}`week9:diffusivity`
+- {ref}`week9:pydiffuse`
+- {ref}`week9:marshall`
+
+#### Github part 1: ssh keys
+
+You need to be able to pull and push files from your computer to the github server. Github
+does this using [public key cryptography](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+
+1) log onto your github acount
+2) clone [a301_lib](https://github.com/phaustin/a301_lib)
+3) open a terminal and generate an ssh key  named a301key by doing:
+
+   `ssh-keygen -f a301key`
+   
+4) move both your private key (a301key) and your public key (a301key.pub) into ~/.ssh
+5) upload the a301key.pub to github following their instructions
+6) download the ssh config file from our [gdrive installation folder](https://drive.google.com/file/d/1BlpJIw7Hr-uIAtjVk2VQli7WsVpyaqey/view?usp=drive_link)
+7) if `~/.ssh/config` exists, add the lines from the gdrive file to your config file
+8) if you don't have an ssh config, copy the gdrive config file to `~/.ssh`
+9) test  your keys by doing:
+
+   ```
+   ssh a301git
+   ```
+   
+10) clone the `a301_lib` repository by doing
+
+   ```
+   cd ~/repos
+   git clone a301git:youraccountname/a301_lib
+   ```
+   
+  

@@ -107,7 +107,7 @@ parts:
     - file: notebooks/week9/rio_land_classification.md
     - file: notebooks/week9/flux_schwartzchild.md
     - file: notebooks/week9/diffuse_flux_python.md
-      
+    - file: notebooks/week9/marshall_palmer.md
       
       
       
