@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -275,6 +275,7 @@
 <li class="toctree-l1"><a class="reference internal" href="notebooks/week9/rio_land_classification.html">48. Working with surface class data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/week9/flux_schwartzchild.html">49. Integrating the Schwartzchild equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/week9/diffuse_flux_python.html">50. Calculating the diffuse flux: python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/week9/marshall_palmer.html">51. Notes on the Marshall-Palmer distribution and the Z-RR relation</a></li>
 </ul>
 
     </div>
@@ -536,6 +537,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-9">Week 9</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-26-monday">Day 26 Monday</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-wednesday">For Wednesday</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-27-wednesday">Day 27 Wednesday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-part-1-ssh-keys">Github part 1: ssh keys</a></li>
 </ul>
 </li>
 </ul>
@@ -1072,6 +1077,41 @@ to plot a partly cloudy scene.</p></li>
 </ul>
 </section>
 </section>
+<section id="day-27-wednesday">
+<h3>Day 27 Wednesday<a class="headerlink" href="#day-27-wednesday" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/week9/flux_schwartzchild.html#week9-diffusivity"><span class="std std-ref">Integrating the Schwartzchild equation</span></a></p></li>
+<li><p><a class="reference internal" href="notebooks/week9/diffuse_flux_python.html#week9-pydiffuse"><span class="std std-ref">Calculating the diffuse flux: python code</span></a></p></li>
+<li><p><a class="reference internal" href="notebooks/week9/marshall_palmer.html#week9-marshall"><span class="std std-ref">Notes on the Marshall-Palmer distribution and the Z-RR relation</span></a></p></li>
+</ul>
+<section id="github-part-1-ssh-keys">
+<h4>Github part 1: ssh keys<a class="headerlink" href="#github-part-1-ssh-keys" title="Link to this heading">#</a></h4>
+<p>You need to be able to pull and push files from your computer to the github server. Github
+does this using <a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">public key cryptography</a></p>
+<ol class="arabic">
+<li><p>log onto your github acount</p></li>
+<li><p>clone <a class="reference external" href="https://github.com/phaustin/a301_lib">a301_lib</a></p></li>
+<li><p>open a terminal and generate an ssh key  named a301key by doing:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ssh-keygen</span> <span class="pre">-f</span> <span class="pre">a301key</span></code></p>
+</li>
+<li><p>move both your private key (a301key) and your public key (a301key.pub) into ~/.ssh</p></li>
+<li><p>upload the a301key.pub to github following their instructions</p></li>
+<li><p>download the ssh config file from our <a class="reference external" href="https://drive.google.com/file/d/1BlpJIw7Hr-uIAtjVk2VQli7WsVpyaqey/view?usp=drive_link">gdrive installation folder</a></p></li>
+<li><p>if <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> exists, add the lines from the gdrive file to your config file</p></li>
+<li><p>if you don’t have an ssh config, copy the gdrive config file to <code class="docutils literal notranslate"><span class="pre">~/.ssh</span></code></p></li>
+<li><p>test  your keys by doing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">a301git</span>
+</pre></div>
+</div>
+</li>
+<li><p>clone the <code class="docutils literal notranslate"><span class="pre">a301_lib</span></code> repository by doing</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">repos</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">a301git</span><span class="p">:</span><span class="n">youraccountname</span><span class="o">/</span><span class="n">a301_lib</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 </section>
 
@@ -1252,6 +1292,10 @@ to plot a partly cloudy scene.</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-9">Week 9</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-26-monday">Day 26 Monday</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-wednesday">For Wednesday</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-27-wednesday">Day 27 Wednesday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-part-1-ssh-keys">Github part 1: ssh keys</a></li>
 </ul>
 </li>
 </ul>

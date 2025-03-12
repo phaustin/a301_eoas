@@ -425,20 +425,18 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-over-wavelength">49.1. Integration over wavelength</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-over-optical-depth">49.2. Integration over optical depth</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-over-angle-the-diffusivity-approximation">49.3. Integration over angle: The diffusivity approximation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accounting-for-slant-paths">49.3.1. Accounting for slant paths</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-changing-with-height">49.3.2. Temperature changing with height</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-over-mu-cos-theta">49.3.2.1. Integrating over <span class="math notranslate nohighlight">\(\mu=\cos \theta\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-over-zenith-angle-no-atmosphere">49.3. Integration over zenith angle: no atmosphere</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-add-an-atmosphere">49.3.1. now add an atmosphere</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flux-transmissivity">49.3.2. Flux transmissivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-integrals">49.3.3. Exponential integrals</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-t-f">49.3.3.1. calculating <span class="math notranslate nohighlight">\(t_f\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-dt-f">49.3.3.2. calculating <span class="math notranslate nohighlight">\(dt_f\)</span></a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matching-with-wallace-and-hobbs-eq-4-46">49.3.4. Matching with Wallace and Hobbs eq. 4.46</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radiance-into-flux">49.4. Radiance into flux</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flux-transmissivity">49.4.1. Flux transmissivity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-integrals">49.4.2. Exponential integrals</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fluxes-continued">49.4.3. Fluxes continued</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">49.4. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -477,142 +475,85 @@ Planck function over wavelength. From <a class="reference internal" href="../../
 <span class="eqno">(49.1)<a class="headerlink" href="#equation-schwart3" title="Link to this equation">#</a></span>\[
    dL_\lambda= \left ( -L_\lambda + B_\lambda (T_{layer} ) \right ) \frac{d\tau_\lambda}{\mu}
 \]</div>
-<p>For constant temperature and <span class="math notranslate nohighlight">\(\mu=1\)</span> we know how to solve this:</p>
+<p>For constant temperature  we know how to solve this.  Since <span class="math notranslate nohighlight">\(\mu\)</span> isn’t related to temperature we can just repeat the change of variables trick in <a class="reference internal" href="../week5/schwartz.html#schwartz-change"><span class="std std-ref">Change of variables</span></a> and get the zenith-angle dependent version.</p>
 <div class="math notranslate nohighlight" id="equation-rep-constant">
 <span class="eqno">(49.2)<a class="headerlink" href="#equation-rep-constant" title="Link to this equation">#</a></span>\[
-L_\lambda = L_{\lambda 0} \exp( -\tau_{\lambda T}/\mu  ) + B_\lambda (T_{layer})(1- \exp( -\tau_{\lambda T} /\mu))
+L_\lambda = L_{\lambda 0} \exp( -\tau_{\lambda}/\mu  ) + B_\lambda (T_{layer})(1- \exp( -\tau_{\lambda} /\mu))
 \]</div>
-</section>
-<section id="integration-over-angle-the-diffusivity-approximation">
-<h2><span class="section-number">49.3. </span>Integration over angle: The diffusivity approximation<a class="headerlink" href="#integration-over-angle-the-diffusivity-approximation" title="Link to this heading">#</a></h2>
-<p>Integrating <a class="reference internal" href="#equation-schwart3">(49.1)</a> over a hemisphere with <span class="math notranslate nohighlight">\(\mu\)</span> changing between <span class="math notranslate nohighlight">\(0 \rightarrow 1\)</span> adds a fair
-amount of complexity.  Luckily, as we’ve seen in Wallace and Hobbs, the end result is equivalent to assuming
-the photons are traveling in the direction <span class="math notranslate nohighlight">\(\theta = 53.6\)</span> degrees.  Where does this come from?</p>
-<section id="accounting-for-slant-paths">
-<h3><span class="section-number">49.3.1. </span>Accounting for slant paths<a class="headerlink" href="#accounting-for-slant-paths" title="Link to this heading">#</a></h3>
-<p>Nothing in the derivation of <a class="reference internal" href="../week5/schwartz.html#equation-rad-constant">(28.10)</a> prevents us from
-setting the zenith angle for the photon paths
-to something besides <span class="math notranslate nohighlight">\(\cos \theta = 0\ (\mu = 1)\)</span>. Step 1 is to remember the relationship between
-<span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(F\)</span>. For upward flux we integrate over the upward facing hemisphere:</p>
-<div class="math notranslate nohighlight" id="equation-allangles2">
-<span class="eqno">(49.9)<a class="headerlink" href="#equation-allangles2" title="Link to this equation">#</a></span>\[\begin{split}
-\begin{align}
-        F&amp;= \int_0^{2 \pi} \int_0^{\pi/2} \cos \theta\, L \sin \theta d\theta d\phi \\
-        &amp;\text{or changing variables $\mu=\cos \theta$ integrating over azimuth $\phi$}: \\
-        F&amp;= 2\pi\int_0^{1}  \mu  L d\mu
-\end{align}
-\end{split}\]</div>
-<p>For <a class="reference internal" href="../week5/schwartz.html#equation-rad-constant">(28.10)</a> we took <span class="math notranslate nohighlight">\(L\)</span> out of the integral and got <span class="math notranslate nohighlight">\(F=\pi L\)</span>, but this isn’t an option now, because the transmissivity depends on <span class="math notranslate nohighlight">\(\mu\)</span>. Specifically, with <span class="math notranslate nohighlight">\(\mu \neq 1\)</span> we have new
-definitions for the <strong>slant transmissivity</strong> <span class="math notranslate nohighlight">\(\hat{t}_s\)</span>:</p>
+<p>For height dependent temperature in r <a class="reference internal" href="../week5/schwartz.html#equation-integ1">(28.13)</a> we used an integrating factor of <span class="math notranslate nohighlight">\(\exp(\tau)\)</span>.  You should convince yourself that if
+we do the same thing for <a class="reference internal" href="#equation-schwart3">(49.1)</a> but with an integrating factor of <span class="math notranslate nohighlight">\(\exp(\tau/\mu)\)</span> we
+get:</p>
 <div class="math notranslate nohighlight" id="equation-fluxtrans4">
-<span class="eqno">(49.4)<a class="headerlink" href="#equation-fluxtrans4" title="Link to this equation">#</a></span>\[\begin{split}
-\begin{align}
-        \hat{t_s} &amp;= \exp \left ( \frac{(\tau - \tau^\prime)}{\mu} \right ) \\
-   d\hat{t_s} &amp;=\frac{d \hat{t_s}(\tau^\prime,\tau)}{d\tau^\prime} d\tau^\prime =
-        \exp\left( -\frac{(\tau -
-   \tau^\prime)}{\mu} \right ) \frac{1}{\mu} d\tau^\prime
- \end{align}
-\end{split}\]</div>
-<p>We can’t integrate this transmission over <span class="math notranslate nohighlight">\(\mu\)</span> analytically, but the integrals are easy
-to do numerically. As you’ll show in a separate notebook, the following “diffusivity”
+<span class="eqno">(49.3)<a class="headerlink" href="#equation-fluxtrans4" title="Link to this equation">#</a></span>\[
+L_\lambda = B_\lambda(T_{skin}) \exp(-\tau/\mu)  +     \int_0^{\tau} \exp\left(  - (\tau -\tau^\prime)/\,\mu \right ) B_\lambda(T) d \tau^\prime / \mu 
+\]</div>
+<p>and defining the slant trasmission:</p>
+<div class="math notranslate nohighlight">
+\[
+t_s = \exp\left(  - (\tau -\tau^\prime)/\,\mu \right )
+\]</div>
+<p><a class="reference internal" href="#equation-fluxtrans4">(49.3)</a> simplifies to</p>
+<div class="math notranslate nohighlight" id="equation-fluxtrans4b">
+<span class="eqno">(49.4)<a class="headerlink" href="#equation-fluxtrans4b" title="Link to this equation">#</a></span>\[
+L_\lambda = B_\lambda(T_{skin}) t_s(\tau)  +     \int_0^{\tau}  B_\lambda(T) d ts(\tau,\tau^\prime) / \mu 
+\]</div>
+<p>just like <a class="reference internal" href="../week5/schwartz.html#equation-calc4">(28.21)</a>.</p>
+</section>
+<section id="integration-over-zenith-angle-no-atmosphere">
+<h2><span class="section-number">49.3. </span>Integration over zenith angle: no atmosphere<a class="headerlink" href="#integration-over-zenith-angle-no-atmosphere" title="Link to this heading">#</a></h2>
+<p>We can’t integrate <a class="reference internal" href="#equation-fluxtrans4">(49.3)</a> over <span class="math notranslate nohighlight">\(\mu\)</span> analytically, but the integrals are easy
+to do numerically. As we’ll show in a <a class="reference internal" href="diffuse_flux_python.html#week9-pydiffuse"><span class="std std-ref">Calculating the diffuse flux: python code</span></a>, the following “diffusivity”
 approximation is quite good:</p>
 <div class="math notranslate nohighlight" id="equation-diffusivity">
 <span class="eqno">(49.5)<a class="headerlink" href="#equation-diffusivity" title="Link to this equation">#</a></span>\[
-\hat{t}_f =  \int_0^1 \mu \exp \left ( \frac{(\tau - \tau^\prime)}{\mu} \right ) d\mu
+t_f =  \int_0^1 \mu \exp \left ( \frac{(\tau - \tau^\prime)}{\mu} \right ) d\mu
     =  \exp \left (-1.66 (\tau - \tau^\prime) \right )
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\hat{t_f}\)</span> is called the <strong>flux transmissivity</strong>.</p>
-<p>This gives a the upward flux version of <a class="reference internal" href="#equation-rep-constant">(49.2)</a>:</p>
-<div class="math notranslate nohighlight">
-\[
-F_{\lambda \uparrow} = \pi L_{\lambda 0} \exp( -1.66 \tau_{\lambda T}  ) + \pi B_\lambda (T_{layer})(1- \exp( -1.66\tau_{\lambda T} ))
-\]</div>
-<p>And if we then integrate this over all wavelengths we get the <strong>broadband flux equation</strong>:</p>
-<div class="math notranslate nohighlight">
-\[
-F_{\lambda \uparrow} = \sigma T_0^4 \exp( -1.66 \overline{\tau}_{\lambda T}  ) + \sigma T_{layer}^4(1- \exp( -1.66 \overline{\tau}_{\lambda T} ))
-\]</div>
-</section>
-<section id="temperature-changing-with-height">
-<h3><span class="section-number">49.3.2. </span>Temperature changing with height<a class="headerlink" href="#temperature-changing-with-height" title="Link to this heading">#</a></h3>
-<p>To summarize: define the “diffusivity approximation” as: replace the vertical optical thickness <span class="math notranslate nohighlight">\(\tau\)</span> by
-<span class="math notranslate nohighlight">\(\frac{5}{3} \tau\)</span> and multiply blackbody radiances by <span class="math notranslate nohighlight">\(\pi\)</span>.  But what about the case where temperature is
-changing with height?</p>
-<ul>
-<li><p>Start with the equation for the upward radiance with <span class="math notranslate nohighlight">\(\mu=1\)</span> which we saw in {eq}<span class="math notranslate nohighlight">\(calc1\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-    L_\lambda(\tau)= B_\lambda(T_{skin})( \exp(-\tau) +    \int_0^{\tau} \exp\left(  - (\tau -\tau^\prime) \right )
-    B_\lambda(T)\, d\tau^\prime
-    \]</div>
-</li>
-<li><p>Add the fact that the photons that travel along a slant path have lower transmissivity.
-In fact: they travel a distance <span class="math notranslate nohighlight">\(\Delta s = \Delta z/\cos \theta = \Delta z/\mu\)</span> which
-is Stull’s <span class="math notranslate nohighlight">\(\Delta s\)</span> in his equation 2.31b</p>
-<div class="math notranslate nohighlight" id="equation-newslant">
-<span class="eqno">(49.6)<a class="headerlink" href="#equation-newslant" title="Link to this equation">#</a></span>\[
-    L_\lambda(\tau,\mu)= B_\lambda(T_{skin})( \exp(-\tau/\mu) +    \int_0^{\tau} \exp\left(  - (\tau -\tau^\prime)/\mu \right )
-      B_\lambda(T)\, \frac{d\tau^\prime}{\mu}
-    \]</div>
-</li>
-<li><p>So define a new transmission for the slant path:</p></li>
-<li><p>and use it to rewrite <a class="reference internal" href="#equation-newslant">(49.6)</a>:</p>
-<div class="math notranslate nohighlight" id="equation-newslant2">
-<span class="eqno">(49.7)<a class="headerlink" href="#equation-newslant2" title="Link to this equation">#</a></span>\[
-    L_\lambda(\tau,\mu)= B_\lambda(T_{skin}) \hat{t}_{stot}  +    \int_0^{\tau} B_\lambda(T)\,d\hat{t_s}
-    \]</div>
-</li>
-</ul>
-<section id="integrating-over-mu-cos-theta">
-<h4><span class="section-number">49.3.2.1. </span>Integrating over <span class="math notranslate nohighlight">\(\mu=\cos \theta\)</span><a class="headerlink" href="#integrating-over-mu-cos-theta" title="Link to this heading">#</a></h4>
+<p>So that the transmissivity for flux is the same as the transmissivity for radiance except that the effective thickness of the atmosphere is increased by a factor of 1.666.</p>
+<p>Where does this factor of 1.66 come from?</p>
 <ul>
 <li><p>In the <a class="reference internal" href="../week1/newflux.html#sec-week1-flux-from-radiance"><span class="std std-ref">Finding the flux given the radiance</span></a> notes we turned blackbody isotropic radiance
-into a flux by taking the normal component and integrating over the hemisphere, in <a class="reference internal" href="../week1/newflux.html#equation-flux-final">(9.4)</a>:</p>
+into a flux by taking the normal component and integrating over the hemisphere:</p>
 <div class="math notranslate nohighlight" id="equation-allangles2">
-<span class="eqno">(49.9)<a class="headerlink" href="#equation-allangles2" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(49.6)<a class="headerlink" href="#equation-allangles2" title="Link to this equation">#</a></span>\[\begin{split}
     \begin{align}
       F_\lambda&amp;= \int_0^{2 \pi} \int_0^{\pi/2} \cos \theta\, L_\lambda \sin \theta d\theta d\phi \\
                &amp;= 2 \pi  \int_0^1 \mu \, L_\lambda  d\mu
      \end{align}
     \end{split}\]</div>
-<p>assuming no dependence on <span class="math notranslate nohighlight">\(\phi\)</span> and substituting <span class="math notranslate nohighlight">\(\mu= \cos \theta\)</span></p>
-<div class="math notranslate nohighlight" id="equation-allangles2">
-<span class="eqno">(49.9)<a class="headerlink" href="#equation-allangles2" title="Link to this equation">#</a></span>\[
+<p>assuming no dependence of <span class="math notranslate nohighlight">\(L_\lambda\)</span> on <span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span> we can take <span class="math notranslate nohighlight">\(L_\lambda\)</span> out
+of the integral and substituting <span class="math notranslate nohighlight">\(\mu= \cos \theta\)</span> write:</p>
+<div class="math notranslate nohighlight" id="equation-allangles2b">
+<span class="eqno">(49.7)<a class="headerlink" href="#equation-allangles2b" title="Link to this equation">#</a></span>\[
     F_\lambda=  2 \pi L_\lambda \int_0^1 \mu  d\mu  = 2 \pi \frac{\mu^2}{2} \Bigg \rvert_0^1 = 2 \pi  L_\lambda \frac{ 1}{ 2}
       = \pi L_\lambda
     \]</div>
 </li>
 </ul>
-</section>
-</section>
-</section>
-<section id="radiance-into-flux">
-<h2><span class="section-number">49.4. </span>Radiance into flux<a class="headerlink" href="#radiance-into-flux" title="Link to this heading">#</a></h2>
-<p>So do this to <code class="xref eq docutils literal notranslate"><span class="pre">Luptrans</span></code></p>
-<div class="math notranslate nohighlight" id="equation-allanglesmu">
-<span class="eqno">(49.10)<a class="headerlink" href="#equation-allanglesmu" title="Link to this equation">#</a></span>\[\begin{split}
-\begin{gather}
- F_\uparrow = \int_0^{2 \pi} \int_0^{\pi/2} \cos \theta\,
- L_\lambda \sin \theta d\theta d\phi =  2\pi \int_0^1 \mu L_\lambda d \mu \notag\\
- = 2 \pi B_{\lambda 0}(T_s) \int_0^1 \mu  \exp(-\tau/\mu) d\mu \nonumber\\
- + 2 \pi \int_0^1
- \int_0^{\tau} \exp\left( -\frac{(\tau - \tau^\prime)}{\mu} \right ) B_\lambda(T)\,d\tau^\prime d\mu
-\end{gather}
+<section id="now-add-an-atmosphere">
+<h3><span class="section-number">49.3.1. </span>now add an atmosphere<a class="headerlink" href="#now-add-an-atmosphere" title="Link to this heading">#</a></h3>
+<p>Once we add the atmopsheric transmissivity, we have a much more difficult integral:</p>
+<p>Getting the flux using <span class="math notranslate nohighlight">\(L_\lambda\)</span> from  <a class="reference internal" href="#equation-fluxtrans4">(49.3)</a> looks like this:</p>
+<div class="math notranslate nohighlight" id="equation-allangmu">
+<span class="eqno">(49.8)<a class="headerlink" href="#equation-allangmu" title="Link to this equation">#</a></span>\[\begin{split}
+ F_\uparrow &amp;= \int_0^{2 \pi} \int_0^{\pi/2} \cos \theta\,
+ L_\lambda \sin \theta d\theta d\phi \\
+ &amp;=  2\pi \int_0^1 \mu L_\lambda d \mu \notag\\
+ &amp;= 2 \pi B_{\lambda 0}(T_s) \int_0^1 \mu  \exp(-\tau/\mu) d\mu \nonumber\\
+ &amp;+ 2 \pi \int_0^1
+ \int_0^{\tau} \exp\left( -\frac{(\tau - \tau^\prime)}{\mu} \right ) B_\lambda(T)\,d\tau^\prime  d\mu
 \end{split}\]</div>
-<p>The difference
-is that now our expression for <span class="math notranslate nohighlight">\(L_\lambda(\tau,\mu, \phi)\)</span> depends on
-the zenith angle <span class="math notranslate nohighlight">\(\theta\)</span>, so that the integral is more difficult (actually
-it’s impossible to do analytically).</p>
+<p>Comparing these two terms with <a class="reference internal" href="#equation-fluxtrans4">(49.3)</a>, note that the <span class="math notranslate nohighlight">\(1/\mu\)</span> has been cancelled from the second term in <a class="reference internal" href="#equation-allangmu">(49.8)</a>, but the structure is otherwise the same for both flux and radiance.</p>
+</section>
 <section id="flux-transmissivity">
-<h3><span class="section-number">49.4.1. </span>Flux transmissivity<a class="headerlink" href="#flux-transmissivity" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">49.3.2. </span>Flux transmissivity<a class="headerlink" href="#flux-transmissivity" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>To make progress, first swap the limits of integration (ok because the layers<br />
-are plane parallel)</p></li>
+<li><p>To make progress, first swap the limits of integration:</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-allanglesmuswapii">
-<span class="eqno">(49.11)<a class="headerlink" href="#equation-allanglesmuswapii" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(49.9)<a class="headerlink" href="#equation-allanglesmuswapii" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{gather}
-      F_\uparrow =   \pi B_{\lambda 0}(T_s)\, 2 \int_0^1 \mu  \exp(-\tau/\mu) d\mu
+      F_{\lambda \uparrow} =   \pi B_{\lambda 0}(T_s)\, 2 \int_0^1 \mu  \exp(-\tau/\mu) d\mu
       +      \nonumber\\
      \int_0^{\tau} \pi B_\lambda(T)\, 2 \int_0^1 \exp\left( -\frac{(\tau - \tau^\prime)}{\mu}
      \right ) \, d\mu\, d\tau^\prime
@@ -620,71 +561,118 @@ are plane parallel)</p></li>
 \end{split}\]</div>
 <p>(Remember that <span class="math notranslate nohighlight">\(T\)</span> does depend on <span class="math notranslate nohighlight">\(z\)</span>, and therefore <span class="math notranslate nohighlight">\(B_\lambda(T)\)</span> has to stay inside the <span class="math notranslate nohighlight">\(\tau^\prime\)</span> integral.)</p>
 <ul class="simple">
-<li><p>Look what happens to this equation if we define <span class="math notranslate nohighlight">\(t_f\)</span>, the flux transmissivity as:</p></li>
+<li><p>Look what happens to this equation if we define <span class="math notranslate nohighlight">\(t_f\)</span>, the <em>flux transmissivity</em> as:</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-fluxtrans">
-<span class="eqno">(49.12)<a class="headerlink" href="#equation-fluxtrans" title="Link to this equation">#</a></span>\[
+<span class="eqno">(49.10)<a class="headerlink" href="#equation-fluxtrans" title="Link to this equation">#</a></span>\[
 t_f=  2 \int_0^1 \mu  \exp(-(\tau - \tau^\prime)/\mu) d\mu
 \]</div>
 <p>and differentiating wrt <span class="math notranslate nohighlight">\(\tau^\prime\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-fluxtransb">
-<span class="eqno">(49.13)<a class="headerlink" href="#equation-fluxtransb" title="Link to this equation">#</a></span>\[
+<span class="eqno">(49.11)<a class="headerlink" href="#equation-fluxtransb" title="Link to this equation">#</a></span>\[
 dt_f=  2 \int_0^1  \exp(-(\tau - \tau^\prime)/\mu) d\mu d\tau^\prime
 \]</div>
-<p>Plug these into <a class="reference internal" href="#equation-allanglesmuswapii">(49.11)</a> and get:</p>
-<div class="math notranslate nohighlight" id="equation-allangles2b">
-<span class="eqno">(49.14)<a class="headerlink" href="#equation-allangles2b" title="Link to this equation">#</a></span>\[
+<p>Plug these into <a class="reference internal" href="#equation-allanglesmuswapii">(49.9)</a> and get:</p>
+<div class="math notranslate nohighlight" id="equation-allangles2c">
+<span class="eqno">(49.12)<a class="headerlink" href="#equation-allangles2c" title="Link to this equation">#</a></span>\[
 F_\uparrow = \pi  B_{\lambda 0}(T_s) \, t_f(0,\tau)
     +  \int_0^{\tau}  \pi \, B_\lambda(T)\,d t_f(\tau^\prime,\tau)
 \]</div>
 </section>
 <section id="exponential-integrals">
-<h3><span class="section-number">49.4.2. </span>Exponential integrals<a class="headerlink" href="#exponential-integrals" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>But how do we get values for <span class="math notranslate nohighlight">\(t_f\)</span> and <span class="math notranslate nohighlight">\(dt_f\)</span> if we can’t do</p></li>
-</ul>
-<p>the integration? – Use python to evaluate</p>
+<h3><span class="section-number">49.3.3. </span>Exponential integrals<a class="headerlink" href="#exponential-integrals" title="Link to this heading">#</a></h3>
+<section id="calculating-t-f">
+<h4><span class="section-number">49.3.3.1. </span>calculating <span class="math notranslate nohighlight">\(t_f\)</span><a class="headerlink" href="#calculating-t-f" title="Link to this heading">#</a></h4>
+<ul>
+<li><p>But how do we get values for <span class="math notranslate nohighlight">\(t_f\)</span> and <span class="math notranslate nohighlight">\(dt_f\)</span> if we can’t do
+the integration?</p>
+<p>– In <a class="reference internal" href="diffuse_flux_python.html#week9-pydiffuse"><span class="std std-ref">Calculating the diffuse flux: python code</span></a> we use python to evaluate:</p>
 <div class="math notranslate nohighlight" id="equation-fluxtrans2">
-<span class="eqno">(49.15)<a class="headerlink" href="#equation-fluxtrans2" title="Link to this equation">#</a></span>\[
-t_f=  2 \int_0^1 \mu  \exp(-(\tau - \tau^\prime)/\mu) d\mu = 2 E_3(\tau)
-\]</div>
-<p>exactly.</p>
-<ul class="simple">
-<li><p>We wouldn’t be any further ahead except that, it turns out to
-a very good approximation:</p></li>
-</ul>
+<span class="eqno">(49.13)<a class="headerlink" href="#equation-fluxtrans2" title="Link to this equation">#</a></span>\[
+    t_f=  2 \int_0^1 \mu  \exp(-(\tau - \tau^\prime)/\mu) d\mu = 2 E_3(\tau)
+    \]</div>
+</li>
+<li><p>As we show there, it turns out to  a very good approximation:</p>
 <div class="math notranslate nohighlight" id="equation-expapprox0">
-<span class="eqno">(49.16)<a class="headerlink" href="#equation-expapprox0" title="Link to this equation">#</a></span>\[
-t_f(\tau) = 2 E_3(\tau) \approx \exp \left (- \frac{5}{3} \tau \right )
+<span class="eqno">(49.14)<a class="headerlink" href="#equation-expapprox0" title="Link to this equation">#</a></span>\[
+    t_f(\tau) = 2 E_3(\tau) \approx \exp \left (- 1.666 \tau \right )
+    \]</div>
+</li>
+</ul>
+</section>
+<section id="calculating-dt-f">
+<h4><span class="section-number">49.3.3.2. </span>calculating <span class="math notranslate nohighlight">\(dt_f\)</span><a class="headerlink" href="#calculating-dt-f" title="Link to this heading">#</a></h4>
+<p>It turns out that <span class="math notranslate nohighlight">\(\frac{dE_3}{d\tau^\prime} = -E_2(\tau^\prime)\)</span> (see <a class="reference external" href="https://en.wikipedia.org/wiki/Exponential_integral">wikipedia</a>).</p>
+<p>In assignment 7 you’ll show that</p>
+<div class="math notranslate nohighlight" id="equation-dtf">
+<span class="eqno">(49.15)<a class="headerlink" href="#equation-dtf" title="Link to this equation">#</a></span>\[
+\frac{dt_f(\tau,\tau^\prime)}{d\tau^\prime} = 2E_2(\tau,\tau^\prime) \approx 1.666\exp(-1.666(\tau - \tau^\prime))
 \]</div>
 <p>In words, that means that the flux sees a layer that is effectively 5/3 times
-thicker, compared with the layer faced by photons pointed at <span class="math notranslate nohighlight">\(\mu=1\)</span> (straight up).
-Be sure you understand why this make physical sense.</p>
+thicker, compared with the radiance case  at <span class="math notranslate nohighlight">\(\mu=1\)</span> (straight up/down), for both the flux transmission
+and the weighting function <span class="math notranslate nohighlight">\(dt_f\)</span>. Be sure you understand why this make physical sense.</p>
 </section>
-<section id="fluxes-continued">
-<h3><span class="section-number">49.4.3. </span>Fluxes continued<a class="headerlink" href="#fluxes-continued" title="Link to this heading">#</a></h3>
-<div class="math notranslate nohighlight" id="equation-expapprox2">
-<span class="eqno">(49.17)<a class="headerlink" href="#equation-expapprox2" title="Link to this equation">#</a></span>\[\begin{split}
-\begin{gather}
-   t_f(\tau) = 2 E_3(\tau) \approx \exp \left (- \frac{5}{3} \tau \right ) = \\
-   \exp \left (- \tau/(3/5) \right )
-   =\exp \left (- \tau/\cos 53^\circ \right ) \\
-   = \exp \left (- \tau/ \overline{\mu} \right )
- \end{gather}
-\end{split}\]</div>
-<ul class="simple">
-<li><p>So you if you like you can think of the flux as if it was a radiance</p></li>
-</ul>
-<p>going through the layer at an angle of <span class="math notranslate nohighlight">\(53^\circ\)</span>.</p>
-<p>or rewriting <a class="reference internal" href="#equation-allangles2b">(49.14)</a></p>
-<p>Or just think of it as passing though a layer that’s
-1.66 times thicker than <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
-<div class="math notranslate nohighlight" id="equation-allangles3">
-<span class="eqno">(49.18)<a class="headerlink" href="#equation-allangles3" title="Link to this equation">#</a></span>\[
-F_\uparrow = \pi  B_{\lambda 0}(T_s) \, t_f(0,1.66\tau)
-   +  \int_0^{\tau}  \pi \, B_\lambda(T)\,d t_f(1.66\tau^\prime,1.66\tau)
+</section>
+<section id="matching-with-wallace-and-hobbs-eq-4-46">
+<h3><span class="section-number">49.3.4. </span>Matching with Wallace and Hobbs eq. 4.46<a class="headerlink" href="#matching-with-wallace-and-hobbs-eq-4-46" title="Link to this heading">#</a></h3>
+<p>Convince yourself that Wallace and Hobbs eq. 4.46</p>
+<div class="math notranslate nohighlight">
+\[
+T_\nu^f \simeq e^{-\tau_\nu / \bar{\mu}}
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{\bar{\mu}} \equiv \sec 53^{\circ}=1.66
+\]</div>
+<p>is identical to <a class="reference internal" href="#equation-expapprox0">(49.14)</a></p>
+<p>and that their equation 4.56:</p>
+<div class="math notranslate nohighlight">
+\[
+\left(\frac{d T}{d t}\right)_\nu=-\frac{\pi}{c_p} k_\nu r B_\nu(z) \frac{e^{-\tau_\nu / \bar{\mu}}}{\bar{\mu}}
+\]</div>
+<p>is actually:</p>
+<div class="math notranslate nohighlight">
+\[
+\left(\frac{d T}{d t}\right)_\nu=-\frac{\pi}{c_p} k_\nu r B_\nu(z) dt_f
 \]</div>
 </section>
+</section>
+<section id="summary">
+<h2><span class="section-number">49.4. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>Bottom line:  the longwave radiation code in a climate model:</p>
+<ul>
+<li><p>Calculates <span class="math notranslate nohighlight">\(\Delta \tau_\lambda\)</span>, the optical thickness for every model layer <span class="math notranslate nohighlight">\(n\)</span> and for 30-40 different wavelengths</p></li>
+<li><p>Uses the temperature and the Planck function to get <span class="math notranslate nohighlight">\(B_\lambda (T_n)\)</span> in each layer and wavelength</p></li>
+<li><p>Starts from the lowest model level for the upward flux, and the highest model level
+for the downward flux, and finds <span class="math notranslate nohighlight">\(F_{\lambda \uparrow}\)</span> and <span class="math notranslate nohighlight">\(F_{\lambda \downarrow}\)</span>
+for each layer and wavelength using the angle-integrated Schwartzchild equation.  Integrating <a class="reference internal" href="#equation-allangles2c">(49.12)</a> across layer <span class="math notranslate nohighlight">\(n\)</span> assuming constant <span class="math notranslate nohighlight">\(T_{layer}\)</span> we get the upward flux through the top of layer <span class="math notranslate nohighlight">\(n\)</span> as:</p>
+<div class="math notranslate nohighlight" id="equation-allangles2bmodel">
+<span class="eqno">(49.16)<a class="headerlink" href="#equation-allangles2bmodel" title="Link to this equation">#</a></span>\[
+    F_{\lambda \uparrow n} = F_{\lambda \uparrow n-1}
+        +   B_\lambda(T_n)(1 - t_f(\Delta \tau_n))
+    \]</div>
+<p>and the downward flux (downward negative) though the bottom of layer <span class="math notranslate nohighlight">\(n\)</span> is:</p>
+<div class="math notranslate nohighlight" id="equation-allangles2bmodelc">
+<span class="eqno">(49.17)<a class="headerlink" href="#equation-allangles2bmodelc" title="Link to this equation">#</a></span>\[
+    F_{\lambda \downarrow n} = F_{\lambda \downarrow n+1}
+        -  B_\lambda(T_n)(1 - t_f(\Delta \tau_n))
+    \]</div>
+</li>
+<li><p>Gets the net flux <span class="math notranslate nohighlight">\(F_{net, n} = F_{\uparrow n} + F_{\downarrow n }\)</span> through every  level by summing over all wavelengths</p></li>
+<li><p>Gets the heating rate in K/second for each layer</p>
+<div class="math notranslate nohighlight">
+\[
+  \frac{dT_n}{dt} = -\frac{1}{\rho c_p} \frac{dF_{net\,n}}{dz}
+  \]</div>
+</li>
+<li><p>Update each layer temperature for the timestep (say <span class="math notranslate nohighlight">\(\Delta t = 20\)</span> minutes)</p>
+<div class="math notranslate nohighlight">
+\[
+  \frac{dT_{t+1,n}}{dt} = T_{t,n} \Delta t
+  \]</div>
+</li>
+</ul>
 </section>
 </section>
 
@@ -754,20 +742,18 @@ F_\uparrow = \pi  B_{\lambda 0}(T_s) \, t_f(0,1.66\tau)
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-over-wavelength">49.1. Integration over wavelength</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-over-optical-depth">49.2. Integration over optical depth</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-over-angle-the-diffusivity-approximation">49.3. Integration over angle: The diffusivity approximation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accounting-for-slant-paths">49.3.1. Accounting for slant paths</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-changing-with-height">49.3.2. Temperature changing with height</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-over-mu-cos-theta">49.3.2.1. Integrating over <span class="math notranslate nohighlight">\(\mu=\cos \theta\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-over-zenith-angle-no-atmosphere">49.3. Integration over zenith angle: no atmosphere</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-add-an-atmosphere">49.3.1. now add an atmosphere</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flux-transmissivity">49.3.2. Flux transmissivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-integrals">49.3.3. Exponential integrals</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-t-f">49.3.3.1. calculating <span class="math notranslate nohighlight">\(t_f\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-dt-f">49.3.3.2. calculating <span class="math notranslate nohighlight">\(dt_f\)</span></a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matching-with-wallace-and-hobbs-eq-4-46">49.3.4. Matching with Wallace and Hobbs eq. 4.46</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radiance-into-flux">49.4. Radiance into flux</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flux-transmissivity">49.4.1. Flux transmissivity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-integrals">49.4.2. Exponential integrals</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fluxes-continued">49.4.3. Fluxes continued</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">49.4. Summary</a></li>
 </ul>
   </nav></div>
 
