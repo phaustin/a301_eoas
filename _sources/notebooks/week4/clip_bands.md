@@ -57,7 +57,8 @@ the [wikipedia entry on globbing](https://en.wikipedia.org/wiki/Glob_(programmin
 
 ```{code-cell} ipython3
 data_dir = Path().home() / 'repos/a301/satdata/landsat'
-the_tifs = list(data_dir.glob('**/vancouver_2023/HLS.L30*tif'))
+#the_tifs = list(data_dir.glob('**/vancouver_2023/HLS.L30*tif'))
+the_tifs = list(data_dir.glob('**/vancouver/HLS.L30*tif'))
 print(the_tifs)
 ```
 
@@ -125,10 +126,14 @@ for tif_path in the_tifs:
     # skip fmask for now
     #
     if 'Fmask' in str(tif_path):
-        continue
-    hls_band = rioxarray.open_rasterio(tif_path,mask_and_scale=True)
-    band_name = hls_band.long_name
-    print(f"{band_name=}")
+        hls_band = rioxarray.open_rasterio(tif_path)
+        band_name = 'fmask'
+        hls_band = hls_band.assign_attrs(long_name='fmask')
+        print(f"assigning longname to {band_name}")
+    else:
+        hls_band = rioxarray.open_rasterio(tif_path,mask_and_scale=True)
+        band_name = hls_band.long_name
+    print(f"{band_name=},{tif_path=}")
     band_dict[band_name] = hls_band
     if 'unit' in hls_band.attrs:
         print(f"{hls_band.unit=}")
@@ -220,20 +225,29 @@ def make_new_array(rio_da,crs=None):
     #
     # NASA hls files have bad crs, so allow for an override parameter
     #
+    print("inside")
     if crs is None:
         crs = rio_da.rio.crs
     clipped_da=xr.DataArray(rio_da.data,coords=rio_da.coords,
                             dims=rio_da.dims)
     clipped_da.rio.write_crs(crs, inplace=True)
     clipped_da.rio.write_transform(rio_da.rio.transform(), inplace=True)
-    clipped_da=clipped_da.assign_attrs(rio_da.attrs)
-    clipped_da = clipped_da.rio.set_nodata(np.float32(np.nan))
+    #print(rio_da.attrs)
+    if 'long_name' in rio_da.attrs:
+        clipped_da=clipped_da.assign_attrs(rio_da.attrs)
+        clipped_da = clipped_da.rio.set_nodata(np.float32(np.nan))
+    else:
+        attrs = {'long_name' : rio_da.attrs['long_name']}
+        print(clipped_da.dtype)
+        #clipped_da = clipped_da.rio.set_nodata(None)
+        print(f"{clipped_da.rio.long_name}, {type(clipped_da.rio.nodata)}")
     return clipped_da
 ```
 
 ```{code-cell} ipython3
 band_clipped = {}
 for key, value in band_dict.items():
+    print(value.long_name)
     the_array = value.rio.clip_box(*bounding_box)
     new_clipped = make_new_array(the_array,crs = good_crs)
     band_clipped[key]=new_clipped
@@ -286,7 +300,7 @@ for key, value in band_clipped.items():
     band, nrows, ncols = value.shape
     new_attrs['NROWS'] = nrows
     new_attrs['NCOLS'] = ncols
-    new_attrs['FillValue'] = np.nan
+    # new_attrs['FillValue'] = np.nan
     new_attrs['history'] = "v0.2 -- written by the week4 clip_bands notebook"
     value.rio.update_attrs(new_attrs, inplace = True)
     #
@@ -304,20 +318,27 @@ value.attrs['history'],value.dtype,value.rio.nodata
 ### Write out the new geotiffs
 
 ```{code-cell} ipython3
-band_clipped['Blue'][0,-1,-10:]
+band_clipped['fmask'][0,-1,-10:]
 ```
 
 ```{code-cell} ipython3
 for key, value in band_clipped.items():
     band_name = value.long_name
+    if band_name == "fmask":
+        print(type(value.data[0,0,0]))
+    print(f"{band_name=}")
     tif_filename = data_dir / 'vancouver' / f"week4_clipped_{band_name}.tif"
     #
     # remove the file if it already exists
     #
     if tif_filename.exists():
         tif_filename.unlink()
-    value.rio.to_raster(tif_filename)
-value = band_clipped['Blue']
+    if value.long_name == 'fmask':
+        kwargs = {'nodata':None}
+        value.rio.to_raster(tif_filename,**kwargs)
+    else:
+        value.rio.to_raster(tif_filename)
+value = band_clipped['fmask']
 print(value.data[0,-1,-10:])
 print(f"{(value.dtype, value.rio.nodata,value.rio.crs.to_epsg())=}")
 ```

@@ -276,6 +276,7 @@
 <li class="toctree-l1"><a class="reference internal" href="notebooks/week9/flux_schwartzchild.html">49. Integrating the Schwartzchild equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/week9/diffuse_flux_python.html">50. Calculating the diffuse flux: python code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/week9/marshall_palmer.html">51. Notes on the Marshall-Palmer distribution and the Z-RR relation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/week9/false_color_examples.html">52. Landsat 8 false color examples</a></li>
 </ul>
 
     </div>
@@ -541,6 +542,11 @@ document.write(`
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-27-wednesday">Day 27 Wednesday</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-part-1-ssh-keys">Github part 1: ssh keys</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-28-friday">Day 28 Friday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-part-2-packages">Github part 2: packages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">For Monday</a></li>
 </ul>
 </li>
 </ul>
@@ -1112,6 +1118,47 @@ does this using <a class="reference external" href="https://docs.github.com/en/a
 </div>
 </section>
 </section>
+<section id="day-28-friday">
+<h3>Day 28 Friday<a class="headerlink" href="#day-28-friday" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/week9/false_color_examples.html#week9-false-color-examples"><span class="std std-ref">Landsat 8 false color examples</span></a></p></li>
+</ul>
+<section id="github-part-2-packages">
+<h4>Github part 2: packages<a class="headerlink" href="#github-part-2-packages" title="Link to this heading">#</a></h4>
+<ol class="arabic">
+<li><p>log into your github account</p></li>
+<li><p>fork <a class="github reference external" href="https://github.com/phaustin/a301_extras">phaustin/a301_extras</a></p></li>
+<li><p>git clone a301git:youraccountname/a301_extras</p></li>
+<li><p>checkout a working branch with your initials (mine are pha)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkoout</span> <span class="o">-</span><span class="n">b</span> <span class="n">pha</span>
+</pre></div>
+</div>
+</li>
+<li><p>install with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span> <span class="o">--</span><span class="n">upgrade</span>
+</pre></div>
+</div>
+</li>
+<li><p>test with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">test_imports</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</li>
+<li><p>add a new python file with your functions to the src/ folder</p></li>
+<li><p>commit it to git with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">src</span><span class="o">/</span><span class="n">newfile</span><span class="o">.</span><span class="n">py</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">am</span> <span class="s1">&#39;added new function&#39;</span>
+<span class="n">git</span> <span class="n">push</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="id15">
+<h4>For Monday<a class="headerlink" href="#id15" title="Link to this heading">#</a></h4>
+<p>Read Stull through p. 255 on Doppler radar</p>
+</section>
+</section>
 </section>
 </section>
 
@@ -1296,6 +1343,11 @@ does this using <a class="reference external" href="https://docs.github.com/en/a
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-27-wednesday">Day 27 Wednesday</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-part-1-ssh-keys">Github part 1: ssh keys</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-28-friday">Day 28 Friday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-part-2-packages">Github part 2: packages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">For Monday</a></li>
 </ul>
 </li>
 </ul>
