@@ -308,5 +308,37 @@ ax2.set(title="color ir 543");
 Add swir-1 for moisture content, keep the 5-4 red edge. Less contrast for turbid/fresh water.  See [band654 detail](https://eos.com/make-an-analysis/vegetation-analysis/)
 
 ```{code-cell} ipython3
-
+veg_ir = make_false_color(ds_allbands, band_names=["B06","B05","B04"])
+fig3, ax3 = plt.subplots(1,1,figsize=(6,9))
+veg_ir.plot.imshow(ax=ax3);
+ax3.set(title="veg ir 654");
 ```
+
++++ {"user_expressions": []}
+
+## Agriculture swir-1, near-ir, blue
+
+Swap out red for blue.  See [band652 detail](https://eos.com/make-an-analysis/agriculture-band/)
+
+```{code-cell} ipython3
+agri = make_false_color(ds_allbands, band_names=["B06","B05","B02"])
+fig4, ax4 = plt.subplots(1,1,figsize=(6,9))
+agri.plot.imshow(ax=ax4);
+ax4.set(title="Agri 652");
+```
+
++++ {"user_expressions": []}
+
+## Urban swir-2, swir-1, red
+
+concreate and bare soil have approximately constant reflectivities between 1.6 and 2.2 microns,
+while vegetation reflects more in swir-1 than swir-2.  This combination distinguishes between
+types of urban development.  Less contrast for turbid/fresh water.  See: [band764 detail](https://eos.com/make-an-analysis/shortwave-infrared/)
+
+```{code-cell} ipython3
+urban = make_false_color(ds_allbands, band_names=["B07","B06","B04"])
+fig5, ax5 = plt.subplots(1,1,figsize=(6,9))
+urban.plot.imshow(ax=ax5);
+ax5.set(title="Urban 764");
+```
+
