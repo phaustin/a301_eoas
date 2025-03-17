@@ -448,7 +448,7 @@ does this using [public key cryptography](https://docs.github.com/en/authenticat
   
 ### Day 28 Friday
 
-- {ref}`week9:false_color_examples`
+- {ref}`week10:false_color_examples`
 
 #### Github part 2: packages
 
@@ -485,5 +485,96 @@ does this using [public key cryptography](https://docs.github.com/en/authenticat
 Read Stull through p. 255 on Doppler radar
 
 
+## Week 10
+
+### Github part 3: merging changes
+
+- cd `~/repos/a301_extras`
+- make sure you're on your own main branch 
+  - `git branch` shows an asterisk next to your current branch 
+  - `git branch -a` lists both local and remote branches.
+  - `git branch -vv` (for "very verbose") shows your current commits
+  - `git remote -vv` shows where your origin branch is on github.
+  
+- move to your main branch  
+  
+  ```
+  git checkout main
+  git branch -a
+  ```
+- fetch the changes I've made to the official main branch on origin
+  ```
+  git fetch
+  ```
+- update your main branch with my changes using rebase
+  ```
+  git rebase origin/main
+  ```
+- push your new main to github
+  ```
+  git push
+  git branch -vv
+  ```
+- if you want to continue working on your personal branch (mine is pha), rebase it on the new main branch
+  ```
+  git checkout pha
+  git rebase origin/main
+  git push
+  git branch -vv
+  ```
+- If instead you are done with your personal branch, delete it from github and 
+  delete it from your local repository
+  ```
+  git push -d origin pha
+  git checkout main
+  git branch -d pha
+  git branch -vv
+  ```
+
+### Continue with false color notebook
+
+- {ref}`week10:false_color_examples`
+
+### Working with google Collab and Gemini -- class demo
+
+- [register for google earth engine -- create the project `a301_week10`](https://developers.google.com/earth-engine/guides/access)
+- [demonstration collab notebook](https://github.com/phaustin/a301_eoas/blob/main/notebooks/week10/read_landsat_ee.ipynb)
+
+### Assignment 7 -- due Monday March24 at midnight
+
+### Classification part 1
+
+- Make a jupyter notebook that reproduces the false color examples
+  in{ref}`week10:false_color_examples` for your scene (you'll need to rerun  {ref}`week4:clip_bands` version 3 to get the clipped fmask, and rerun {ref}`week2:hls` to download all of the HLS tifs for bands 1,2,3,4,5,6,7,9,10,11,fmask if you don't have them).
+- Choose one band combination that looks interesting, and compare it with the land classification you created using {ref}`week9:land_classes` for your image with the same bounding box and pixel size -- comment on an y similarities and differences you can find.
+
+### Stull Radar problem
+
+Answer the following questions in a Jupyter notebook, using a function to define the radar equation.
+
+1. Suppose a Nexrad radar (Stull p.~246)  is
+   receiving a signal with returned power Pr = -58 dBm.  Using the radar
+   equation find the precipitation rate under the assumption that
+   there is no attenuation and that it is a rainstorm (i.e. liquid water)
+   100 km away from the radar.
+
+2. Now keep everything the same, but make the mistake of guessing that it's a snowstorm,
+   which means that K2=0.208 and we use the snowfall Z-RR relation
+   of $Z=2000*RR^2$.  What is the new incorrect  precip rate?
    
-   
+3. Now assume it's rain, but make the mistake of guessing that there's a factor of La=2
+   attenuation between the target and the rainstorm.  What is the new precip rate?
+
+Nexrad coefficients:
+
+```
+    #coefficents for nexrad
+    R1=2.17e-10#range factor, km, Stull 8.25
+    Pt=750.e3 #transmitted power, W, stull p. 246
+    b=14255 #equipment factor, Stull 8.26
+```
+
+#### For Wednesday
+
+- Read the [NOAA Doppler notes](https://drive.google.com/file/d/1893L784j7aXhY14_aFlXgbjS97uzaBai/view?usp=drive_link) through page 3.20
+

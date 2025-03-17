@@ -26,6 +26,9 @@
 
 * [Understanding map projections](https://drive.google.com/file/d/1araPnZwMui9tBTPyLO_UHVC2DDEIdZ0p/view?usp=sharing) Chapters 1 and 2
 
+### Radar
+
+* [NOAA Doppler notes](https://drive.google.com/file/d/1893L784j7aXhY14_aFlXgbjS97uzaBai/view?usp=drive_link)
 
 
 

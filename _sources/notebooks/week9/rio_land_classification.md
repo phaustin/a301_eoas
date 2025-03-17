@@ -49,12 +49,11 @@ the instructions for how to use the [stac-browser](https://radiantearth.github.i
 select areas and time periods (the files have been updated every year from 2017 to 2023).  From there select the
 filter box on the right hand side and filter on area and time.  You should get a file offered for each of the 6 years of data.
 
-
 +++
 
 ## Installation
 
-- Download the `rio_land_classification.ipynb` file from [week9 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
+- Download the `rio_land_classification.ipynb` file from the [week9 folder](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)
 - To run this notebook, you'll also need to move 2 files from the `downloads/vancouver_2023` folder to your `~/repos/a301/satdata/landsat/vancouver_2023` folder:  `clipped_band5.tif` (which contains the bounding box we need
 to clip to) and the UTM Zone 10N classified tif file for 2023:  `10U_2023.tif` (137 Mbytes)
 
