@@ -446,3 +446,44 @@ does this using [public key cryptography](https://docs.github.com/en/authenticat
    ```
    
   
+### Day 28 Friday
+
+- {ref}`week9:false_color_examples`
+
+#### Github part 2: packages
+
+1) log into your github account
+2) fork [https://github.com/phaustin/a301_extras](https://github.com/phaustin/a301_extras)
+3) git clone a301git:youraccountname/a301_extras
+4) checkout a working branch with your initials (mine are pha)
+   ```
+   git checkoout -b pha
+   ```
+5) install with
+
+   ```
+   pip install -e . --upgrade
+   ```
+6) test with
+
+   ```
+   python test_imports.py
+   ```
+   
+7) add a new python file with your functions to the src/ folder
+
+8) commit it to git with
+
+   ```
+   git add src/newfile.py
+   git commit -am 'added new function'
+   git push
+   ```
+   
+#### For Monday
+
+Read Stull through p. 255 on Doppler radar
+
+
+   
+   

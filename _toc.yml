@@ -108,6 +108,8 @@ parts:
     - file: notebooks/week9/flux_schwartzchild.md
     - file: notebooks/week9/diffuse_flux_python.md
     - file: notebooks/week9/marshall_palmer.md
+    - file: notebooks/week9/false_color_examples.md
+      
       
       
       

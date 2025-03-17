@@ -14,8 +14,10 @@ kernelspec:
 ---
 
 (week4:clip_bands)=
-# Clipping multiple bands-- v0.2
+# Clipping multiple bands-- v0.3
 
+2025/Mar/15: Now writes out the fmask file using rasterio (rioxarray doesn't seem to be able to handle 8 bit data)
+see 
 
 2025/Feb/27: Fixed a problem where the datatype of the clipped arrays was changed from float32 to int16 when creating geotiffs.  See {ref}`clip:create_arrays` for the new code.
 
@@ -34,7 +36,7 @@ import pprint
 from pathlib import Path
 from osgeo import gdal
 import json
-
+import os
 import cartopy
 import numpy as np
 import numpy.random
@@ -47,6 +49,7 @@ import rioxarray
 import xarray as xr
 from cartopy import crs as ccrs
 from a301_lib import make_pal
+import datetime
 ```
 
 ## Get the original hls tif files from disk
@@ -58,7 +61,7 @@ the [wikipedia entry on globbing](https://en.wikipedia.org/wiki/Glob_(programmin
 ```{code-cell} ipython3
 data_dir = Path().home() / 'repos/a301/satdata/landsat'
 #the_tifs = list(data_dir.glob('**/vancouver_2023/HLS.L30*tif'))
-the_tifs = list(data_dir.glob('**/vancouver/HLS.L30*tif'))
+the_tifs = list(data_dir.glob('**/vancouver_2023/HLS.L30*tif'))
 print(the_tifs)
 ```
 
@@ -254,8 +257,9 @@ for key, value in band_dict.items():
 ```
 
 ```{code-cell} ipython3
-var='TIRS1'
-band_clipped[var].rio.nodata, band_clipped[var].attrs
+var='fmask'
+fmask = band_clipped[var]
+#fmask.rio.to_raster("test_fmask.tif")
 ```
 
 ## Check the brightness temperature in band 11
@@ -301,7 +305,7 @@ for key, value in band_clipped.items():
     new_attrs['NROWS'] = nrows
     new_attrs['NCOLS'] = ncols
     # new_attrs['FillValue'] = np.nan
-    new_attrs['history'] = "v0.2 -- written by the week4 clip_bands notebook"
+    new_attrs['history'] = "v0.3 -- written by the week4 clip_bands notebook"
     value.rio.update_attrs(new_attrs, inplace = True)
     #
     # update_attrs seems to destroy the rio.nodata attribute
@@ -321,32 +325,70 @@ value.attrs['history'],value.dtype,value.rio.nodata
 band_clipped['fmask'][0,-1,-10:]
 ```
 
+### New function: write_fmask
+
+need to call rasterio directly since rioxarray can't handle 8 bit data
+
+```{code-cell} ipython3
+def write_fmask(
+      filename: str | os.PathLike,
+       da_value: xr.DataArray) -> None:
+    """
+    use rasterio to write out the clipped fmask
+
+    Parameter:
+    
+    """
+    
+    data = da_value.data.squeeze()
+    dtype = data.dtype
+    crs = da_value.rio.crs
+    transform = fmask.rio.transform()
+    with rasterio.open(
+        filename,
+        'w',
+        driver='GTiff',
+        height=data.shape[0],
+        width=data.shape[1],
+        count=1,  # Number of bands
+        dtype=dtype,  # Data type (8-byte float)
+        crs=crs,  # Coordinate Reference System (WGS84)
+        transform=transform
+    ) as dst:
+        dst.write(data, 1)  # Write the array to the first band
+        dst.update_tags(
+            history="written by a301_extras/write_fmask",
+            written_on=str(datetime.date.today()),
+        )
+        dst.update_tags(1,long_name="fmask")
+```
+
 ```{code-cell} ipython3
 for key, value in band_clipped.items():
     band_name = value.long_name
-    if band_name == "fmask":
-        print(type(value.data[0,0,0]))
     print(f"{band_name=}")
-    tif_filename = data_dir / 'vancouver' / f"week4_clipped_{band_name}.tif"
+    tif_filename = data_dir / 'vancouver' / f"week10_clipped_{band_name}.tif"
     #
     # remove the file if it already exists
     #
     if tif_filename.exists():
         tif_filename.unlink()
     if value.long_name == 'fmask':
-        kwargs = {'nodata':None}
-        value.rio.to_raster(tif_filename,**kwargs)
+        write_fmask(tif_filename,value)
     else:
         value.rio.to_raster(tif_filename)
-value = band_clipped['fmask']
-print(value.data[0,-1,-10:])
-print(f"{(value.dtype, value.rio.nodata,value.rio.crs.to_epsg())=}")
 ```
 
 ### read one back in to check
 
 ```{code-cell} ipython3
-tif_filename = list(data_dir.glob("**/*week4*NIR.tif"))[0]
+filename = tif_filename = data_dir / 'vancouver' / f"week10_clipped_fmask.tif"
+fmask =  rioxarray.open_rasterio(filename,masked=False)
+fmask
+```
+
+```{code-cell} ipython3
+tif_filename = list(data_dir.glob("**/*week10*NIR.tif"))[0]
 print(f"{tif_filename=}")
 has_file = tif_filename.exists()
 if not has_file:

@@ -314,8 +314,6 @@ veg_ir.plot.imshow(ax=ax3);
 ax3.set(title="veg ir 654");
 ```
 
-+++ {"user_expressions": []}
-
 ## Agriculture swir-1, near-ir, blue
 
 Swap out red for blue.  See [band652 detail](https://eos.com/make-an-analysis/agriculture-band/)
@@ -327,11 +325,9 @@ agri.plot.imshow(ax=ax4);
 ax4.set(title="Agri 652");
 ```
 
-+++ {"user_expressions": []}
-
 ## Urban swir-2, swir-1, red
 
-concreate and bare soil have approximately constant reflectivities between 1.6 and 2.2 microns,
+concrete and bare soil have approximately constant reflectivities between 1.6 and 2.2 microns,
 while vegetation reflects more in swir-1 than swir-2.  This combination distinguishes between
 types of urban development.  Less contrast for turbid/fresh water.  See: [band764 detail](https://eos.com/make-an-analysis/shortwave-infrared/)
 
@@ -341,4 +337,3 @@ fig5, ax5 = plt.subplots(1,1,figsize=(6,9))
 urban.plot.imshow(ax=ax5);
 ax5.set(title="Urban 764");
 ```
-
