@@ -1,5 +1,6 @@
 ---
 jupytext:
+  formats: ipynb,md:myst
   notebook_metadata_filter: all,-language_info,-toc,-latex_envs
   text_representation:
     extension: .md
@@ -12,25 +13,38 @@ kernelspec:
   name: python3
 ---
 
-(week9:false_color_examples)=
+(week10:false_color_examples)=
 # Landsat 8 false color examples
 
 In the {ref}`week7:false_color` notebook we showed how to make a false color composite with Landsat 8 bands 5, 4, 3 mapped to 
 red, blue and green (color infrared)
 
-In this notebook we move that code into a function called `make_false_color`, and show a Vancouver scene with some different band combinations
+In this notebook we move that code into a function called `make_false_color`, and show a Vancouver scene with some different band combinations.  We make use of a boolean mask to get a stretched histogram using
+skimage.exposure that only calculates the stretched histogram for cloud-free pixels over land.
+
+The `make_false_color` function takes an [xarray.Dataset](https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html) containing an fmask and all the Landsat bands
+and returns a false color rioxarray.DataArray containing a [3,nrows,ncols] array with the stacked bands.
+
+New functions:
+
+- {ref}`make_dataset`
+- {ref}`make_bool_mask`
+- {ref}`make_false_color`
+
+## Installation
+
+1) Download [false_color_examples.ipynb](https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing) from the week 10 folder
+2) Download the  week10 tif files from `satdata/landsat/vancouver_2023/week10` and move them to `~/repos/a301/satdata/landsat/week10/
 
 ```{code-cell} ipython3
 import xarray
 import rioxarray
 from matplotlib import pyplot as plt
 import numpy as np
-import seaborn as sns
 from skimage import exposure, img_as_ubyte
 from IPython.display import Image
 from pathlib import Path
 from numpy.typing import NDArray
-#from false_color import make_false_color
 ```
 
 ## Understanding Landsat band location
@@ -108,6 +122,12 @@ bands={'B01':'Coastal_Aerosol',
         'fmask':'fmask'}
 ```
 
+### Read all bands into a dictionary
+
+Use the `bands` dictionary to identify the band by its name (Blue, Green, etc)
+and store it in `scene_dict`.  Masking fmask would convert it from 8 bit to float, so we
+need to special-case the fmask file.
+
 ```{code-cell} ipython3
 data_dir = Path().home() / 'repos/a301/satdata/landsat'
 all_tifs = list(data_dir.glob('**/week10*clipped_*.tif'))
@@ -128,6 +148,7 @@ for key,bandname in bands.items():
 
 ### Create an xarray dataset from the band dictionary
 
+(make_dataset)=
 #### make_dataset function
 
 ```{code-cell} ipython3
@@ -164,6 +185,7 @@ ds_allbands = make_dataset(scene_dict)
 ds_allbands
 ```
 
+(make_bool_mask)=
 ### make_bool_mask function
 
 ```{code-cell} ipython3
@@ -208,6 +230,7 @@ bool_image = make_bool_mask(scene_dict['fmask'])
 plt.imshow(bool_image.squeeze())
 ```
 
+(make_false_color)=
 ### make_false_color function
 
 ```{code-cell} ipython3

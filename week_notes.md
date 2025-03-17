@@ -448,7 +448,7 @@ does this using [public key cryptography](https://docs.github.com/en/authenticat
   
 ### Day 28 Friday
 
-- {ref}`week9:false_color_examples`
+- {ref}`week10:false_color_examples`
 
 #### Github part 2: packages
 
@@ -485,5 +485,48 @@ does this using [public key cryptography](https://docs.github.com/en/authenticat
 Read Stull through p. 255 on Doppler radar
 
 
-   
+## Week 10
+
+### Github part 3: merging changes
+
+- cd `~/repos/a301_extras`
+- make sure you're on your own main branch 
+  `git branch` shows an asterisk next to your current branch and `git bransh -a` lists both local and remote branches. `git branch -vv` (for "very verbose") shows your current commits and `git remote -vv` shows where your origin bransh is on github.
+  
+  ```
+  git checkout main
+  git branch -a
+  ```
+- fetch the changes I've made to the official main branch on origin
+  ```
+  git fetch
+  ```
+- update your main branch with my changes
+  ```
+  git rebase origin/main
+  ```
+- push your new main to github
+  ```
+  git push
+  git branch -vv
+  ```
+- if you want to continue working on your personal branch (mine is pha), rebase it on the new main branch
+  ```
+  git checkout pha
+  git rebase origin/main
+  git push
+  git branch -vv
+  ```
+- If instead you are done with your personal branch, delete it from github and 
+  delete it from your local repository
+  ```
+  git push -d origin pha
+  git checkout main
+  git branch -d pha
+  git branch -vv
+  ```
+
+### Continue with false color notebook
+
+- {ref}`week10:false_color_examples`
    
