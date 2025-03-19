@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>26. Assignment 2: solutions part B &#8212; ATSC 301</title>
+    <title>53. Assignment 6 solution &#8212; ATSC 301</title>
   
   
   
@@ -59,12 +59,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'solutions/assign2_solutionsB';</script>
-    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/solutions/assign2_solutionsB.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'solutions/assign6_solution';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/solutions/assign6_solution.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="27. Getting lat,lon from row, column" href="../notebooks/week5/rowcol2latlon.html" />
-    <link rel="prev" title="25. Assignment 4" href="assign4.html" />
+    <link rel="next" title="54. Phasor examples" href="../notebooks/week10/phasor.html" />
+    <link rel="prev" title="52. Landsat 8 false color examples" href="../notebooks/week10/false_color_examples.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -236,9 +236,9 @@
 <li class="toctree-l1"><a class="reference internal" href="assign2_solutionsA.html">24. Assignment 2: solutions Part A</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="assign4.html">25. Assignment 4</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">26. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign2_solutionsB.html">26. Assignment 2: solutions part B</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/week5/rowcol2latlon.html">27. Getting lat,lon from row, column</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/week5/schwartz.html">28. The Schwartzchild Equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/week5/add_palette.html">29. Adding a palette to an axis</a></li>
@@ -278,9 +278,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/week9/marshall_palmer.html">51. Notes on the Marshall-Palmer distribution and the Z-RR relation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 10</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/false_color_examples.html">52. Landsat 8 false color examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assign6_solution.html">53. Assignment 6</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">53. Assignment 6 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/phasor.html">54. Phasor examples</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">Notes on the Doppler equation</a></li>
 </ul>
 
     </div>
@@ -335,7 +337,7 @@
       
       
       
-      <li><a href="../_sources/solutions/assign2_solutionsB.md" target="_blank"
+      <li><a href="../_sources/solutions/assign6_solution.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -419,7 +421,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Assignment 2: solutions part B</h1>
+    <h1>Assignment 6 solution</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -429,14 +431,24 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-25">26.1. Question 4.25</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answer">26.1.1. Answer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-planck-wavenumber">53.1. Q1 Planck wavenumber</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-solution">53.1.1. Q1 solution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-32">26.2. Question 4.32</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">26.2.1. Answer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-stefan-boltzman">53.2. Q2 Stefan-Boltzman</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-answer">53.2.1. Q2 Answer</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-wien-s-law">53.3. Q3 Wien’s law</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-answer">53.3.1. Q3 Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-radar-rainrate">53.4. Q4  Radar Rainrate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytic">53.4.1. Analytic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-analytic-answer">53.4.2. Q4 Analytic Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-radar-rainrate-python">53.5. Q5 Radar Rainrate Python</a></li>
 </ul>
             </nav>
         </div>
@@ -448,127 +460,284 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="assignment-2-solutions-part-b">
-<span id="assign2b-solution"></span><h1><span class="section-number">26. </span>Assignment 2: solutions part B<a class="headerlink" href="#assignment-2-solutions-part-b" title="Link to this heading">#</a></h1>
-<p>4.25,  4.32</p>
-<section id="question-4-25">
-<h2><span class="section-number">26.1. </span>Question 4.25<a class="headerlink" href="#question-4-25" title="Link to this heading">#</a></h2>
-<p>Show that for radiation with very long wavelengths, the Planck monochromatic intensity <span class="math notranslate nohighlight">\(B_λ (T)\)</span> is linearly proportional to absolute temperature. This is referred to as the Rayleigh-Jeans limit.</p>
-<section id="answer">
-<h3><span class="section-number">26.1.1. </span>Answer<a class="headerlink" href="#answer" title="Link to this heading">#</a></h3>
-<p>Recall WH 4.10:</p>
-<div class="math notranslate nohighlight" id="equation-eq-planck">
-<span class="eqno">(26.1)<a class="headerlink" href="#equation-eq-planck" title="Link to this equation">#</a></span>\[
-B_\lambda(T)=\frac{c_1 \lambda^{-5}}{\pi\left(e^{c_2 / \lambda T}-1\right)}
+  <section class="tex2jax_ignore mathjax_ignore" id="assignment-6-solution">
+<span id="assign6-solution"></span><h1><span class="section-number">53. </span>Assignment 6 solution<a class="headerlink" href="#assignment-6-solution" title="Link to this heading">#</a></h1>
+<p>Upload a pdf and a notebook for the following problems:</p>
+<section id="q1-planck-wavenumber">
+<h2><span class="section-number">53.1. </span>Q1 Planck wavenumber<a class="headerlink" href="#q1-planck-wavenumber" title="Link to this heading">#</a></h2>
+<p>Planck’s law as a function of wavelength:</p>
+<div class="math notranslate nohighlight" id="equation-planck">
+<span class="eqno">(53.1)<a class="headerlink" href="#equation-planck" title="Link to this equation">#</a></span>\[
+B_\lambda(\lambda, T)=\frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c /\left(\lambda k_{\mathrm{B}} T\right)}-1}
 \]</div>
-<p>In the limit <span class="math notranslate nohighlight">\(\lambda \rightarrow \infty\)</span> the term <span class="math notranslate nohighlight">\(c_2 / \lambda T\)</span> gets increasing small.  We can use the fact that</p>
+<p>Use change of variables to rewrite <a class="reference internal" href="#equation-planck">(53.1)</a> in terms of wavenumber <span class="math notranslate nohighlight">\(\tilde{\nu} = 1/\lambda\)</span> and show that it is:</p>
+<div class="math notranslate nohighlight" id="equation-planck-wn">
+<span class="eqno">(53.2)<a class="headerlink" href="#equation-planck-wn" title="Link to this equation">#</a></span>\[
+B_{\tilde{\nu}}(\tilde{\nu}, T)=2 h c^2 \tilde{\nu}^3 \frac{1}{e^{h c \tilde{\nu} /\left(k_{\mathrm{B}} T\right)}-1}
+\]</div>
+<section id="q1-solution">
+<h3><span class="section-number">53.1.1. </span>Q1 solution<a class="headerlink" href="#q1-solution" title="Link to this heading">#</a></h3>
+<p>We want to change variables for the definite integral:</p>
 <div class="math notranslate nohighlight">
 \[
-e^x  = 1+\frac{x^1}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!}+ \ldots
+\int_{\lambda_1}^{\lambda_2} B_\lambda d\lambda = \int_{\tilde{\nu_1}}^{\tilde{\nu_2}} B_{\tilde{\nu}}d{\tilde{\nu}}
 \]</div>
-<p>to get the small x approximation by keeping only the first order term:</p>
-<div class="math notranslate nohighlight" id="equation-eq-small">
-<span class="eqno">(26.2)<a class="headerlink" href="#equation-eq-small" title="Link to this equation">#</a></span>\[
-e^x  \approx 1+ x
+<p>where <span class="math notranslate nohighlight">\(\lambda = 1/\tilde{\nu}\)</span>.  We know that the two integrals are equal because they have to integrate
+to the same flux in <span class="math notranslate nohighlight">\(W\,m^{-2}\)</span>.</p>
+<p>First, make the substitution in <span class="math notranslate nohighlight">\(B_\lambda\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+B_{\tilde{\nu}}: 2 h c^2 \tilde{\nu}^5 \frac{1}{e^{h c \tilde{\nu} /\left( k_{\mathrm{B}} T\right)}-1}
 \]</div>
-<p>Inserting <a class="reference internal" href="#equation-eq-small">(26.2)</a> into <a class="reference internal" href="#equation-eq-planck">(26.1)</a> gives:</p>
-<div class="math notranslate nohighlight" id="equation-eq-rj">
-<span class="eqno">(26.3)<a class="headerlink" href="#equation-eq-rj" title="Link to this equation">#</a></span>\[
-B_\lambda(T) \approx \frac{c_1 \lambda^{-5} \lambda T}{\pi  c_2 } = \frac{c_1 \lambda^{-4} T}{\pi  c_2 } 
+<p>Now add <span class="math notranslate nohighlight">\(d\tilde{\nu}\)</span> given that:</p>
+<div class="math notranslate nohighlight">
+\[
+d\lambda = d \left ( \frac{1}{\tilde{\nu}} \right ) = -\tilde{\nu}^{-2} d\tilde{\nu}
 \]</div>
-<p>which is the Rayleigh-Jean approximation.</p>
+<p>So the integral become:</p>
+<div class="math notranslate nohighlight">
+\[
+ \int_{\tilde{\nu_1}}^{\tilde{\nu_2}} B_{\tilde{\nu}}(\tilde{\nu}, T)d{\tilde{\nu}} 
+   = \int_{\tilde{\nu_1}}^{\tilde{\nu_2}} 2 h c^2 \tilde{\nu}^5 \frac{1}{e^{h c \tilde{\nu} /\left(k_{\mathrm{B}} T\right)}-1} (-\tilde{\nu}^{-2}) d\tilde{\nu}
+\]</div>
+<p>To get rid of the minus sign, recognize that if <span class="math notranslate nohighlight">\(d\lambda &gt; 0\)</span>, then <span class="math notranslate nohighlight">\(d\tilde{\nu} &lt; 0\)</span> since <span class="math notranslate nohighlight">\(\tilde{\nu_1} &gt; \tilde{\nu_2}\)</span> which means that we flip the limits of integration to proceed in a positive <span class="math notranslate nohighlight">\(\tilde{\nu}\)</span> direction and the integral is:</p>
+<div class="math notranslate nohighlight">
+\[
+ \int_{\tilde{\nu_2}}^{\tilde{\nu_1}} B_{\tilde{\nu}}(\tilde{\nu}, T)d{\tilde{\nu}} 
+   = \int_{\tilde{\nu_2}}^{\tilde{\nu_1}} 2 h c^2 \tilde{\nu}^3 \frac{1}{e^{h c \tilde{\nu} /\left(k_{\mathrm{B}} T\right)}-1} d\tilde{\nu}
+\]</div>
 </section>
 </section>
-<section id="question-4-32">
-<h2><span class="section-number">26.2. </span>Question 4.32<a class="headerlink" href="#question-4-32" title="Link to this heading">#</a></h2>
-<p>Show that the approach in Exercise 4.5 in the text, when applied <a class="reference internal" href="assign2_solutionsA.html#p4-31"><span class="std std-numref">Section 24.3</span></a> yields a temperature of</p>
-<div class="math notranslate nohighlight">
-\[
-T_s=T_E\left[\frac{1}{4}\left(\frac{6371}{8371}\right)^2\right]^{1 / 4}=158 \mathrm{~K}
+<section id="q2-stefan-boltzman">
+<h2><span class="section-number">53.2. </span>Q2 Stefan-Boltzman<a class="headerlink" href="#q2-stefan-boltzman" title="Link to this heading">#</a></h2>
+<p>Integrate</p>
+<div class="math notranslate nohighlight" id="equation-planck-2">
+<span class="eqno">(53.3)<a class="headerlink" href="#equation-planck-2" title="Link to this equation">#</a></span>\[
+\int_0^\infty B_{\tilde{\nu}}(\tilde{\nu}, T)d \tilde{\nu}=2 h c^2 \int_0^\infty  \frac{\tilde{\nu}^3}{e^{h c \tilde{\nu} /\left(k_{\mathrm{B}} T\right)}-1}\,d \tilde{\nu}
 \]</div>
-<p>Explain why this approach underestimates the temperature of the satellite. Show that the answer obtained with this approach converges to the exact solution in the previous exercise as the distance between the satellite and the center of the Earth becomes large in comparison to the radius of the Earth <span class="math notranslate nohighlight">\(R_E\)</span>. [Hint: show that as <span class="math notranslate nohighlight">\(d / R_E \rightarrow \infty\)</span>, the arc of solid angle subtended by the Earth approaches <span class="math notranslate nohighlight">\(\pi R_E^2 / d^2\)</span>.]</p>
-<section id="id1">
-<h3><span class="section-number">26.2.1. </span>Answer<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>First redo E4.5 for this case:</p>
-<ul class="simple">
-<li><p>radius of earth = <span class="math notranslate nohighlight">\(R_E\)</span> = 6371 km</p></li>
-<li><p>radius of satellite orbit = <span class="math notranslate nohighlight">\(d\)</span> = 8371 km</p></li>
-<li><p>power in Watts from the earth = <span class="math notranslate nohighlight">\(P_E = 4\pi R_E^2 \sigma T_E^4\)</span> W</p></li>
-<li><p>area of sphere that power is spread over = <span class="math notranslate nohighlight">\(4\pi d^2\)</span> <span class="math notranslate nohighlight">\(km^2\)</span></p></li>
-<li><p>flux <span class="math notranslate nohighlight">\(F_E\)</span> at satellite = <span class="math notranslate nohighlight">\(P_E\)</span>/area = <span class="math notranslate nohighlight">\(\left ( \frac{R_E^2}{d^2} \right ) \sigma T_E^4\)</span></p></li>
-<li><p>The flux is intercepted by the satellite across a disk of area <span class="math notranslate nohighlight">\(\pi r^2\)</span> where <span class="math notranslate nohighlight">\(r\)</span> is the radius
-of the satellite.  As in Q4.31, it assumed to be radiated away over all of the satellite, so in
-equilbrium the new version of <a class="reference internal" href="assign2_solutionsA.html#equation-eq-equil">(24.6)</a> is:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-4 \pi r^2 \sigma T_s^4  &amp;= \pi r^2 F_E = \pi r^2 \left ( \frac{R_E^2}{d^2}  \right ) \sigma T_E^4 \\
-T_S^4 &amp;= 0.145\, \sigma T_E^4 
-\end{split}\]</div>
-<p>compared to the previous exact result from 6.31:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-4 \pi r^2 \sigma T_s^4  &amp;= \pi r^2 \times 1.87 \left ( \frac{  \sigma T_E^4}{\pi} \right ) \\
- T_s^4  &amp;=   \frac{1.87}{4 \pi} T_E^4 = 0.1488\,  T_E^4 
-\end{split}\]</div>
-<p>The reason the flux at the satellite is slightly larger for the exact solution is because the approximation
-assumes a direct beam, with the flux completely perpendicular to the satellite, where the wider solid angle
-in the exact answer captures energy that’s arriving from the full field of view.</p>
-<ul>
-<li><p>We want to show that our  exact version of the flux from <a class="reference internal" href="assign2_solutionsA.html#equation-eq-exact">(24.5)</a></p>
-<div class="math notranslate nohighlight" id="equation-eq-fullflux">
-<span class="eqno">(26.4)<a class="headerlink" href="#equation-eq-fullflux" title="Link to this equation">#</a></span>\[
-  F_E = \int_0^{2 \pi} \int_0^\theta I \cos \theta^\prime \sin \theta^\prime d \theta^\prime d \phi^\prime
-  \]</div>
-<p>converges to the approximate version we’re using in this problem</p>
+<p>to find the Stefan-Boltzman equation given that</p>
+<div class="math notranslate nohighlight" id="equation-planck-int">
+<span class="eqno">(53.4)<a class="headerlink" href="#equation-planck-int" title="Link to this equation">#</a></span>\[
+\int_0^\infty \frac{u^3}{(e^u -1 )} du = \frac{\pi^4}{15} 
+\]</div>
+<p>(<a class="reference external" href="https://en.wikipedia.org/wiki/Riemann_zeta_function">Riemann zeta function</a>)</p>
+<p>i.e. show that:</p>
 <div class="math notranslate nohighlight">
 \[
-  F_E = \left ( \frac{R_E^2}{d^2} \right ) \sigma T_E^4
-  \]</div>
-<p>in the limit <span class="math notranslate nohighlight">\(R_E/d \rightarrow 0\)</span></p>
-<p>First recall that, in the limit of <span class="math notranslate nohighlight">\(\theta \approx 0\)</span>,  <span class="math notranslate nohighlight">\(\sin \theta \approx \theta\)</span> and <span class="math notranslate nohighlight">\(\cos \theta \approx 1\)</span>,
-which implies that <span class="math notranslate nohighlight">\(\sin^{-1} \theta = \theta\)</span>.  Since we know from
-<a class="reference internal" href="assign2_solutionsA.html#q4-30"><span class="std std-numref">Section 24.2.1</span></a> that <span class="math notranslate nohighlight">\(\sin \theta = R_E/d\)</span>, we’ve got</p>
+\int_0^\infty B_{\nu} d\nu = \frac{\sigma}{\pi} T^4
+\]</div>
+<p>where</p>
 <div class="math notranslate nohighlight">
 \[
-  \theta \approx R_E/d
-  \]</div>
-<p>Now use these approximations to integrate <a class="reference internal" href="#equation-eq-fullflux">(26.4)</a> with the blackbody radiance <span class="math notranslate nohighlight">\(I = \frac{\sigma T_E^4}{\pi}\)</span></p>
+\sigma=\frac{2 \pi^5 k_B^4}{15 c^2 h^3}
+\]</div>
+<section id="q2-answer">
+<h3><span class="section-number">53.2.1. </span>Q2 Answer<a class="headerlink" href="#q2-answer" title="Link to this heading">#</a></h3>
+<p>Make the following substitution:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-  F_E &amp;= 2 \pi \int_0^{R_E/d} \frac{\sigma T_E^4}{\pi} \times 1 \times  \theta^\prime d \theta^\prime \\
-      &amp;= 2 \sigma T_E^4 \frac{(\theta^\prime)^2}{2} \Big |_0^{R_E/d} = \left ( \frac{R_E^2}{d^2} \right ) \sigma T_E^4
-  \end{split}\]</div>
-</li>
-</ul>
+\[
+u = \frac{hc\tilde{\nu}}{k_B T}
+\]</div>
+<p>so:</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde{\nu} = \frac{k_B T u}{hc}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+(2hc^2)\,\tilde{\nu}^3 = (2hc^2)\,\frac{k_B^3 T^3 u^3}{h^3c^3}=\frac{2 \pi^4 k_B^4}{15 c^2 h^3}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+d\tilde{\nu} = \frac{k_B T}{hc}dU
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+2 h c^2 \int_0^\infty  \frac{\tilde{\nu}^3}{e^{h c \tilde{\nu} /\left(k_{\mathrm{B}} T\right)}-1}\,d \tilde{\nu}
+= \frac{2 k_B^3T^3}{h^2 c} \frac{k_B T}{hc} \int_0^\infty \frac{u^3}{(e^u - 1)} du
+= \frac{2 k_B^3T^3}{h^2 c} \frac{k_B T}{hc} \frac{\pi^4}{15} = \frac{2 \pi^4 k_B^4}{15 c^2 h^3} T^4
+\]</div>
+</section>
+</section>
+<section id="q3-wien-s-law">
+<h2><span class="section-number">53.3. </span>Q3 Wien’s law<a class="headerlink" href="#q3-wien-s-law" title="Link to this heading">#</a></h2>
+<p>Show that the maximum value for</p>
+<div class="math notranslate nohighlight" id="equation-planck2">
+<span class="eqno">(53.5)<a class="headerlink" href="#equation-planck2" title="Link to this equation">#</a></span>\[
+B_\lambda(\lambda, T)=\frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c /\left(\lambda k_{\mathrm{B}} T\right)}-1}
+\]</div>
+<p>occurs at:</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_{max} \propto \frac{1}{T}
+\]</div>
+<p>(<a class="reference external" href="https://en.wikipedia.org/wiki/Wien%27s_displacement_law">Wien’s law</a>)</p>
+<section id="q3-answer">
+<h3><span class="section-number">53.3.1. </span>Q3 Answer<a class="headerlink" href="#q3-answer" title="Link to this heading">#</a></h3>
+<p>As shown below, we are working with parameters for which <span class="math notranslate nohighlight">\(e^u\)</span>,
+where <span class="math notranslate nohighlight">\(u=h c /\left(\lambda k_B T\right )  \approx e^5 \approx 150 \gg 1\)</span> so it’s safe to write:</p>
+<div class="math notranslate nohighlight" id="equation-planck3">
+<span class="eqno">(53.6)<a class="headerlink" href="#equation-planck3" title="Link to this equation">#</a></span>\[
+B_\lambda(\lambda, T) \approx \frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c /\left(\lambda k_{\mathrm{B}} T\right)}}
+= a \lambda^{-5}\exp(-b/(\lambda T))
+\]</div>
+<p>We want to find <span class="math notranslate nohighlight">\(\lambda_{max}\)</span> the wavelength at which <span class="math notranslate nohighlight">\(\frac{dB}{d\lambda} = 0\)</span>.</p>
+<p>Use the chain rule on <a class="reference internal" href="#equation-planck3">(53.6)</a>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dB}{d\lambda} = a (-5 \lambda^{-6})\exp(-b/(\lambda T)) + a \lambda^{-5} \exp(-b/(\lambda T) (b/(\lambda^2 T) =0
+\]</div>
+<p>Simplify:</p>
+<div class="math notranslate nohighlight">
+\[
+-5\lambda^{-1} + b\lambda^{-2}/T = 0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+5 = \frac{b \lambda^{-1}}{T}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\lambda_{max} = \frac{b}{3T}
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="mi">6370</span><span class="o">/</span><span class="mi">8370</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># From the Planck notebook</span>
+<span class="c1">#</span>
+<span class="n">c</span><span class="o">=</span><span class="mf">2.99792458e+08</span>  <span class="c1">#m/s -- speed of light in vacuum</span>
+<span class="n">h</span><span class="o">=</span><span class="mf">6.62606876e-34</span>  <span class="c1">#J s  -- Planck&#39;s constant</span>
+<span class="n">kb</span><span class="o">=</span><span class="mf">1.3806503e-23</span>  <span class="c1"># J/K  -- Boltzman&#39;s constant</span>
+<span class="c1">#</span>
+<span class="c1"># Try T = 5800 K and the_lambda = 5.e-7 m (solar radiation, green light</span>
+<span class="c1">#</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">5800</span>
+<span class="n">the_lambda</span> <span class="o">=</span> <span class="mf">5.e-7</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">h</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="p">(</span><span class="n">the_lambda</span><span class="o">*</span><span class="n">kb</span><span class="o">*</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;shortwave </span><span class="si">{</span><span class="n">u</span><span class="si">=:</span><span class="s2">8.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># Try T = 300 K and the_lambda = 10.e-6 m (earth radiation, longwave</span>
+<span class="c1">#</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">the_lambda</span> <span class="o">=</span> <span class="mf">10.e-6</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">h</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="p">(</span><span class="n">the_lambda</span><span class="o">*</span><span class="n">kb</span><span class="o">*</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;longwave </span><span class="si">{</span><span class="n">u</span><span class="si">=:</span><span class="s2">8.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="si">=:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7610513739545998
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">re</span> <span class="o">=</span> <span class="mi">6387</span>
-<span class="n">rs</span> <span class="o">=</span> <span class="mi">8387</span>
-<span class="p">(</span><span class="n">re</span><span class="o">**</span><span class="mf">2.</span><span class="o">/</span><span class="n">rs</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span><span class="o">/</span><span class="mf">4.</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.14498415941174297
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shortwave u=    4.96
+longwave u=    4.80
+np.exp(5)=148.4
 </pre></div>
 </div>
 </div>
 </div>
 </section>
+</section>
+<section id="q4-radar-rainrate">
+<h2><span class="section-number">53.4. </span>Q4  Radar Rainrate<a class="headerlink" href="#q4-radar-rainrate" title="Link to this heading">#</a></h2>
+<section id="analytic">
+<h3><span class="section-number">53.4.1. </span>Analytic<a class="headerlink" href="#analytic" title="Link to this heading">#</a></h3>
+<p>Integrate <span class="math notranslate nohighlight">\(Z=\int D^6 n(D) dD\)</span> on paper, assuming a Marshall Palmer size distribution and show that it integrates to:</p>
+<div class="math notranslate nohighlight">
+\[
+Z \approx 300 RR^{1.5}
+\]</div>
+<p>with Z in <span class="math notranslate nohighlight">\(mm^6\,m^{-3}\)</span> and RR in mm/hr.  It’s helpful to know that:</p>
+<div class="math notranslate nohighlight">
+\[
+\int^\infty_0 x^n \exp( -a x) dx = n! / a^{n+1}
+\]</div>
+</section>
+<section id="q4-analytic-answer">
+<h3><span class="section-number">53.4.2. </span>Q4 Analytic Answer<a class="headerlink" href="#q4-analytic-answer" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+n(D) = n_0 \exp(-4.1 RR^{-0.21} D )
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(n_0=8000\)</span> in units of <span class="math notranslate nohighlight">\(m^{-3}\,mm^{-1}\)</span>, D in mm,
+so that <span class="math notranslate nohighlight">\(\Lambda=4.1 RR^{-0.21}\)</span> has to have units
+of <span class="math notranslate nohighlight">\(mm^{-1}\)</span>.</p>
+<p>If we use this to integrate:</p>
+<div class="math notranslate nohighlight">
+\[
+Z=\int D^6 n(D) dD
+\]</div>
+<p>and use the hint that</p>
+<div class="math notranslate nohighlight">
+\[
+\int^\infty_0 x^n \exp( -a x) dx = n! / a^{n+1}
+\]</div>
+<p>with n=6, a=<span class="math notranslate nohighlight">\(\Lambda\)</span> we get:</p>
+<div class="math notranslate nohighlight">
+\[
+Z=\frac{n_0\, 6!}{\Lambda^7}
+\]</div>
+<p>with units of  <span class="math notranslate nohighlight">\(m^{-3}\,mm^{-1}/(mm^{-1})^7=mm^6\,m^{-3}\)</span> as required.  Since
+<span class="math notranslate nohighlight">\(n_0=8000\,m^{-3}\,mm^{-1}\)</span> and 6!=720, the
+numerical coeficient is <span class="math notranslate nohighlight">\(8000x720/(4.1**7)=295.75\)</span> and <span class="math notranslate nohighlight">\((RR^{-0.21})^{-7} = RR^{1.47}\)</span> so the final form is:</p>
+<div class="math notranslate nohighlight">
+\[
+Z=296 RR^{1.47}
+\]</div>
+</section>
+</section>
+<section id="q5-radar-rainrate-python">
+<h2><span class="section-number">53.5. </span>Q5 Radar Rainrate Python<a class="headerlink" href="#q5-radar-rainrate-python" title="Link to this heading">#</a></h2>
+<p>Repeat using numerical integration in python (i.e. np.diff and np.sum) and show that the  result agrees.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="c1">#</span>
+<span class="c1"># Marshall Palmer distribution</span>
+<span class="c1">#</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calc_num_dist</span><span class="p">(</span><span class="n">Dvals</span><span class="p">,</span><span class="n">RR</span><span class="p">,</span><span class="n">n0</span><span class="o">=</span><span class="mi">8000</span><span class="p">):</span>
+    <span class="n">the_dist</span> <span class="o">=</span> <span class="n">n0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">4.1</span><span class="o">*</span><span class="n">RR</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.21</span><span class="p">)</span><span class="o">*</span><span class="n">Dvals</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">the_dist</span>
+
+<span class="n">Dvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">dD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">Dvals</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># need the midpoint diameters for the rectangular integration</span>
+<span class="c1">#</span>
+<span class="n">Dmid</span> <span class="o">=</span> <span class="p">(</span><span class="n">Dvals</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">Dvals</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mf">2.</span>
+
+<span class="c1">#</span>
+<span class="c1"># loop over 100 rain rates</span>
+<span class="c1">#</span>
+<span class="n">RRvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1">#</span>
+<span class="c1"># Brute force integration</span>
+<span class="c1">#</span>
+<span class="n">Zvals</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">the_RR</span> <span class="ow">in</span> <span class="n">RRvals</span><span class="p">:</span>
+    <span class="n">num_dist</span> <span class="o">=</span> <span class="n">calc_num_dist</span><span class="p">(</span><span class="n">Dvals</span><span class="p">,</span><span class="n">the_RR</span><span class="p">)</span>
+    <span class="n">bin_heights</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_dist</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">num_dist</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mf">2.</span>
+    <span class="n">theZ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Dmid</span><span class="o">**</span><span class="mf">6.</span><span class="o">*</span><span class="n">bin_heights</span><span class="o">*</span><span class="n">dD</span><span class="p">)</span>
+    <span class="n">Zvals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">theZ</span><span class="p">)</span>
+    
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">RRvals</span><span class="p">,</span><span class="n">Zvals</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;numeric&#39;</span><span class="p">)</span>
+<span class="n">Z_math</span> <span class="o">=</span> <span class="mi">296</span><span class="o">*</span><span class="n">RRvals</span><span class="o">**</span><span class="mf">1.47</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">RRvals</span><span class="p">,</span><span class="n">Z_math</span><span class="p">,</span><span class="s1">&#39;bx&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;math&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;RR (mm/hour)&quot;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Z mm^6/m^3&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f701b34522f5f1361545ccf95259621686377465579fa2ee98f006a3ae0ac9a4.png" src="../_images/f701b34522f5f1361545ccf95259621686377465579fa2ee98f006a3ae0ac9a4.png" />
+</div>
+</div>
 </section>
 </section>
 
@@ -603,20 +772,20 @@ which implies that <span class="math notranslate nohighlight">\(\sin^{-1} \theta
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="assign4.html"
+       href="../notebooks/week10/false_color_examples.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">25. </span>Assignment 4</p>
+        <p class="prev-next-title"><span class="section-number">52. </span>Landsat 8 false color examples</p>
       </div>
     </a>
     <a class="right-next"
-       href="../notebooks/week5/rowcol2latlon.html"
+       href="../notebooks/week10/phasor.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">27. </span>Getting lat,lon from row, column</p>
+        <p class="prev-next-title"><span class="section-number">54. </span>Phasor examples</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -636,14 +805,24 @@ which implies that <span class="math notranslate nohighlight">\(\sin^{-1} \theta
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-25">26.1. Question 4.25</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answer">26.1.1. Answer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-planck-wavenumber">53.1. Q1 Planck wavenumber</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-solution">53.1.1. Q1 solution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-32">26.2. Question 4.32</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">26.2.1. Answer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-stefan-boltzman">53.2. Q2 Stefan-Boltzman</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-answer">53.2.1. Q2 Answer</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-wien-s-law">53.3. Q3 Wien’s law</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-answer">53.3.1. Q3 Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-radar-rainrate">53.4. Q4  Radar Rainrate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytic">53.4.1. Analytic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-analytic-answer">53.4.2. Q4 Analytic Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-radar-rainrate-python">53.5. Q5 Radar Rainrate Python</a></li>
 </ul>
   </nav></div>
 

@@ -280,6 +280,10 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 10</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="notebooks/week10/false_color_examples.html">52. Landsat 8 false color examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions/assign6_solution.html">53. Assignment 6 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/week10/phasor.html">54. Phasor examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/week10/phaseshift.html">55. phase shift examples</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">Notes on the Doppler equation</a></li>
 </ul>
 
     </div>
@@ -555,13 +559,22 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-10">Week 10</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-part-3-merging-changes">Github part 3: merging changes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continue-with-false-color-notebook">Continue with false color notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-29-monday">Day 29 Monday</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-google-collab-and-gemini-class-demo">Working with google Collab and Gemini – class demo</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-7-due-monday-march24-at-midnight">Assignment 7 – due Monday March24 at midnight</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-part-1">Classification part 1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stull-radar-problem">Stull Radar problem</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">For Wednesday</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-30-wednesday">Day 30 Wednesday</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-6-solutions">Assignment 6 solutions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-part-3-merging-changes-from-upstream-revised-from-monday">Github part 3: merging changes from upstream (revised from Monday)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-and-collab">Github and Collab</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doppler-notes">Doppler notes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#read-for-friday">Read for Friday</a></li>
 </ul>
 </li>
 </ul>
@@ -1177,69 +1190,17 @@ does this using <a class="reference external" href="https://docs.github.com/en/a
 </section>
 <section id="week-10">
 <h2>Week 10<a class="headerlink" href="#week-10" title="Link to this heading">#</a></h2>
-<section id="github-part-3-merging-changes">
-<h3>Github part 3: merging changes<a class="headerlink" href="#github-part-3-merging-changes" title="Link to this heading">#</a></h3>
-<ul>
-<li><p>cd <code class="docutils literal notranslate"><span class="pre">~/repos/a301_extras</span></code></p></li>
-<li><p>make sure you’re on your own main branch</p>
+<section id="day-29-monday">
+<h3>Day 29 Monday<a class="headerlink" href="#day-29-monday" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span></code> shows an asterisk next to your current branch</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-a</span></code> lists both local and remote branches.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-vv</span></code> (for “very verbose”) shows your current commits</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">-vv</span></code> shows where your origin branch is on github.</p></li>
-</ul>
-</li>
-<li><p>move to your main branch</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
-<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">a</span>
-</pre></div>
-</div>
-</li>
-<li><p>fetch the changes I’ve made to the official main branch on origin</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">fetch</span>
-</pre></div>
-</div>
-</li>
-<li><p>update your main branch with my changes using rebase</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rebase</span> <span class="n">origin</span><span class="o">/</span><span class="n">main</span>
-</pre></div>
-</div>
-</li>
-<li><p>push your new main to github</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span>
-<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">vv</span>
-</pre></div>
-</div>
-</li>
-<li><p>if you want to continue working on your personal branch (mine is pha), rebase it on the new main branch</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">pha</span>
-<span class="n">git</span> <span class="n">rebase</span> <span class="n">origin</span><span class="o">/</span><span class="n">main</span>
-<span class="n">git</span> <span class="n">push</span>
-<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">vv</span>
-</pre></div>
-</div>
-</li>
-<li><p>If instead you are done with your personal branch, delete it from github and
-delete it from your local repository</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">d</span> <span class="n">origin</span> <span class="n">pha</span>
-<span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
-<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="n">pha</span>
-<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">vv</span>
-</pre></div>
-</div>
-</li>
-</ul>
-</section>
-<section id="continue-with-false-color-notebook">
-<h3>Continue with false color notebook<a class="headerlink" href="#continue-with-false-color-notebook" title="Link to this heading">#</a></h3>
-<ul class="simple">
+<li><p>Continue with false color notebook</p></li>
 <li><p><a class="reference internal" href="notebooks/week10/false_color_examples.html#week10-false-color-examples"><span class="std std-ref">Landsat 8 false color examples</span></a></p></li>
 </ul>
 </section>
 <section id="working-with-google-collab-and-gemini-class-demo">
 <h3>Working with google Collab and Gemini – class demo<a class="headerlink" href="#working-with-google-collab-and-gemini-class-demo" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://developers.google.com/earth-engine/guides/access">register for google earth engine – create the project <code class="docutils literal notranslate"><span class="pre">ee-a301</span></code></a></p></li>
+<li><p><a class="reference external" href="https://developers.google.com/earth-e%5Dngine/guides/access">register for google earth engine – create the project <code class="docutils literal notranslate"><span class="pre">ee-a301</span></code></a></p></li>
 <li><p><a class="reference external" href="https://github.com/phaustin/a301_eoas/blob/main/notebooks/week10/read_landsat_ee.ipynb">demonstration collab notebook</a></p></li>
 </ul>
 </section>
@@ -1280,6 +1241,140 @@ attenuation between the target and the rainstorm.  What is the new precip rate?<
 <h4>For Wednesday<a class="headerlink" href="#id16" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Read the <a class="reference external" href="https://drive.google.com/file/d/1893L784j7aXhY14_aFlXgbjS97uzaBai/view?usp=drive_link">NOAA Doppler notes</a> through page 3.20</p></li>
+</ul>
+</section>
+</section>
+<section id="day-30-wednesday">
+<h3>Day 30 Wednesday<a class="headerlink" href="#day-30-wednesday" title="Link to this heading">#</a></h3>
+</section>
+<section id="assignment-6-solutions">
+<h3>Assignment 6 solutions<a class="headerlink" href="#assignment-6-solutions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="solutions/assign6_solution.html#assign6-solution"><span class="std std-ref">Assignment 6 solution</span></a></p></li>
+</ul>
+</section>
+<section id="github-part-3-merging-changes-from-upstream-revised-from-monday">
+<h3>Github part 3: merging changes from upstream (revised from Monday)<a class="headerlink" href="#github-part-3-merging-changes-from-upstream-revised-from-monday" title="Link to this heading">#</a></h3>
+<p>To get the new changes from my repository: <a class="github reference external" href="https://github.com/phaustin/a301_extras.git">phaustin/a301_extras.git</a> you need
+to add it to the list of repositories you can pull code from.  By tradition, your own remote github
+repository is called <code class="docutils literal notranslate"><span class="pre">origin</span></code> and the main remote repository that is the source of official releases is
+called <code class="docutils literal notranslate"><span class="pre">upstream</span></code>.</p>
+<p>To add a remote repository:</p>
+<ul>
+<li><p>First verify your remote is correct</p>
+<ul>
+<li><p>cd <code class="docutils literal notranslate"><span class="pre">~/repos/a301_extras</span></code></p></li>
+<li><p>git remote -vv</p>
+<p>This should print something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">origin</span>	<span class="n">yourgithubid</span><span class="p">:</span><span class="n">yourgithubid</span><span class="o">/</span><span class="n">a301_extras</span> <span class="p">(</span><span class="n">fetch</span><span class="p">)</span>
+<span class="n">origin</span>	<span class="n">yourgithubid</span><span class="p">:</span><span class="n">yourgithubid</span><span class="o">/</span><span class="n">a301_extras</span> <span class="p">(</span><span class="n">push</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>Next, add my repository as a remote</p>
+<ul class="simple">
+<li><p>git remote add https://github.com/phaustin/a301_extras.git</p></li>
+<li><p>git remote -vv</p></li>
+</ul>
+<p>Now this should print</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">origin</span>	<span class="n">yourgithubid</span><span class="p">:</span><span class="n">yourgithubid</span><span class="o">/</span><span class="n">a301_extras</span> <span class="p">(</span><span class="n">fetch</span><span class="p">)</span>
+<span class="n">origin</span>	<span class="n">yourgithubid</span><span class="p">:</span><span class="n">yourgithubid</span><span class="o">/</span><span class="n">a301_extras</span> <span class="p">(</span><span class="n">push</span><span class="p">)</span>
+<span class="n">upstream</span>	<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">phaustin</span><span class="o">/</span><span class="n">a301_extras</span><span class="o">.</span><span class="n">git</span> <span class="p">(</span><span class="n">fetch</span><span class="p">)</span>
+<span class="n">upstream</span>	<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">phaustin</span><span class="o">/</span><span class="n">a301_extras</span><span class="o">.</span><span class="n">git</span> <span class="p">(</span><span class="n">push</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>make sure you’re on your own main branch</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span></code> shows an asterisk next to your current branch</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-a</span></code> lists both local and remote branches.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-vv</span></code> (for “very verbose”) shows your current commits</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">-vv</span></code> shows where your origin branch is on github.</p></li>
+</ul>
+</li>
+<li><p>move to your main branch</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>which should print out all your branches</p>
+</li>
+<li><p>fetch the changes I’ve made to the official main branch on upstream</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">fetch</span> <span class="n">upstream</span>
+</pre></div>
+</div>
+</li>
+<li><p>update your main branch with my changes using rebase</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rebase</span> <span class="n">upstream</span><span class="o">/</span><span class="n">main</span>
+</pre></div>
+</div>
+</li>
+<li><p>push your new rebased main to your github remote</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">vv</span>
+</pre></div>
+</div>
+<p>which should show you your updated local branch</p>
+</li>
+<li><p>you’ll need to continue working on your personal branch (which we named with your initials), rebase it on the new main branch</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">yourinitials</span>
+<span class="n">git</span> <span class="n">rebase</span> <span class="n">origin</span><span class="o">/</span><span class="n">main</span>
+<span class="n">git</span> <span class="n">push</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">vv</span>
+</pre></div>
+</div>
+</li>
+<li><p>On github you should see a new week10 folder on your personal branch that should look like mine:</p>
+<ul class="simple">
+<li><p><a class="github reference external" href="https://github.com/phaustin/a301_extras/tree/main/notebooks/week10">phaustin/a301_extras</a>  – you’ll be able to edit and track changes in this notebook on collab</p></li>
+</ul>
+</li>
+<li><p>If instead you are done with your personal branch, delete it from github and
+delete it from your local repository</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">d</span> <span class="n">origin</span> <span class="n">yourinitials</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="n">yourinitials</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">vv</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<section id="github-and-collab">
+<h4>Github and Collab<a class="headerlink" href="#github-and-collab" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>To edit my week10 Collab notebook first log into collab:</p>
+<ul>
+<li><p>go to <a class="reference external" href="https://colab.research.google.com/">https://colab.research.google.com/</a></p></li>
+<li><p>click on <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">collab</span></code> and then from the <code class="docutils literal notranslate"><span class="pre">file</span></code> dropdown click on <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">notebook</span></code></p></li>
+<li><p>click on the github tab, and enter your github username</p></li>
+<li><p>select the <code class="docutils literal notranslate"><span class="pre">a301_extras</span></code> repository, and your personal branch</p></li>
+<li><p>select <code class="docutils literal notranslate"><span class="pre">read_landsat_ee.ipynb</span></code></p></li>
+<li><p>now any changes you save will appear as github commits to this file</p></li>
+<li><p>Alternatively, you could copy the file to your google drive, or upload it, but then you couldn’t
+track/recover changes</p></li>
+<li><p>work through read_landsat_ee.ipynb</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="doppler-notes">
+<h3>Doppler notes<a class="headerlink" href="#doppler-notes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Two short reviews on phase and the unit circle</p>
+<ul>
+<li><p><a class="reference internal" href="notebooks/week10/phasor.html#phasor-examples"><span class="std std-ref">Phasor examples</span></a></p></li>
+<li><p><a class="reference internal" href="notebooks/week10/phaseshift.html#phase-shiftb"><span class="std std-ref">phase shift examples</span></a></p></li>
+</ul>
+</li>
+</ul>
+<section id="read-for-friday">
+<h4>Read for Friday<a class="headerlink" href="#read-for-friday" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">my doppler notes</a>
+(note my disagreement with Stull Figure 8.32, which doesn’t show a phase shift in the reflected wave)</p></li>
 </ul>
 </section>
 </section>
@@ -1477,13 +1572,22 @@ attenuation between the target and the rainstorm.  What is the new precip rate?<
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-10">Week 10</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-part-3-merging-changes">Github part 3: merging changes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continue-with-false-color-notebook">Continue with false color notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-29-monday">Day 29 Monday</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-google-collab-and-gemini-class-demo">Working with google Collab and Gemini – class demo</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-7-due-monday-march24-at-midnight">Assignment 7 – due Monday March24 at midnight</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-part-1">Classification part 1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stull-radar-problem">Stull Radar problem</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">For Wednesday</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-30-wednesday">Day 30 Wednesday</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-6-solutions">Assignment 6 solutions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-part-3-merging-changes-from-upstream-revised-from-monday">Github part 3: merging changes from upstream (revised from Monday)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-and-collab">Github and Collab</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doppler-notes">Doppler notes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#read-for-friday">Read for Friday</a></li>
 </ul>
 </li>
 </ul>

@@ -487,57 +487,16 @@ Read Stull through p. 255 on Doppler radar
 
 ## Week 10
 
-### Github part 3: merging changes
 
-- cd `~/repos/a301_extras`
-- make sure you're on your own main branch 
-  - `git branch` shows an asterisk next to your current branch 
-  - `git branch -a` lists both local and remote branches.
-  - `git branch -vv` (for "very verbose") shows your current commits
-  - `git remote -vv` shows where your origin branch is on github.
-  
-- move to your main branch  
-  
-  ```
-  git checkout main
-  git branch -a
-  ```
-- fetch the changes I've made to the official main branch on origin
-  ```
-  git fetch
-  ```
-- update your main branch with my changes using rebase
-  ```
-  git rebase origin/main
-  ```
-- push your new main to github
-  ```
-  git push
-  git branch -vv
-  ```
-- if you want to continue working on your personal branch (mine is pha), rebase it on the new main branch
-  ```
-  git checkout pha
-  git rebase origin/main
-  git push
-  git branch -vv
-  ```
-- If instead you are done with your personal branch, delete it from github and 
-  delete it from your local repository
-  ```
-  git push -d origin pha
-  git checkout main
-  git branch -d pha
-  git branch -vv
-  ```
+### Day 29 Monday 
 
-### Continue with false color notebook
+- Continue with false color notebook
 
 - {ref}`week10:false_color_examples`
 
 ### Working with google Collab and Gemini -- class demo
 
-- [register for google earth engine -- create the project `ee-a301`](https://developers.google.com/earth-engine/guides/access)
+- [register for google earth engine -- create the project `ee-a301`](https://developers.google.com/earth-e]ngine/guides/access)
 - [demonstration collab notebook](https://github.com/phaustin/a301_eoas/blob/main/notebooks/week10/read_landsat_ee.ipynb)
 
 ### Assignment 7 -- due Monday March24 at midnight
@@ -578,3 +537,121 @@ Nexrad coefficients:
 
 - Read the [NOAA Doppler notes](https://drive.google.com/file/d/1893L784j7aXhY14_aFlXgbjS97uzaBai/view?usp=drive_link) through page 3.20
 
+### Day 30 Wednesday
+
+### Assignment 6 solutions
+
+- {ref}`assign6_solution`
+
+### Github part 3: merging changes from upstream (revised from Monday)
+
+
+To get the new changes from my repository: [https://github.com/phaustin/a301_extras.git](https://github.com/phaustin/a301_extras.git) you need
+to add it to the list of repositories you can pull code from.  By tradition, your own remote github
+repository is called `origin` and the main remote repository that is the source of official releases is
+called `upstream`.
+
+To add a remote repository:
+
+- First verify your remote is correct
+
+  - cd `~/repos/a301_extras`
+  - git remote -vv
+
+    This should print something like:
+
+    ```
+    origin	yourgithubid:yourgithubid/a301_extras (fetch)
+    origin	yourgithubid:yourgithubid/a301_extras (push)
+    ```
+  
+- Next, add my repository as a remote
+
+  - git remote add https://github.com/phaustin/a301_extras.git
+  - git remote -vv
+
+  Now this should print
+  
+  ```
+  origin	yourgithubid:yourgithubid/a301_extras (fetch)
+  origin	yourgithubid:yourgithubid/a301_extras (push)
+  upstream	https://github.com/phaustin/a301_extras.git (fetch)
+  upstream	https://github.com/phaustin/a301_extras.git (push)
+  ```
+
+- make sure you're on your own main branch 
+  - `git branch` shows an asterisk next to your current branch 
+  - `git branch -a` lists both local and remote branches.
+  - `git branch -vv` (for "very verbose") shows your current commits
+  - `git remote -vv` shows where your origin branch is on github.
+  
+- move to your main branch  
+  
+  ```
+  git checkout main
+  git branch -a
+  ```
+  which should print out all your branches
+  
+- fetch the changes I've made to the official main branch on upstream
+  ```
+  git fetch upstream
+  ```
+- update your main branch with my changes using rebase
+  ```
+  git rebase upstream/main
+  ```
+- push your new rebased main to your github remote
+  ```
+  git push
+  git branch -vv
+  ```
+  which should show you your updated local branch
+  
+- you'll need to continue working on your personal branch (which we named with your initials), rebase it on the new main branch
+  ```
+  git checkout yourinitials
+  git rebase origin/main
+  git push
+  git branch -vv
+  ```
+
+  
+- On github you should see a new week10 folder on your personal branch that should look like mine:
+
+  - [https://github.com/phaustin/a301_extras/tree/main/notebooks/week10](https://github.com/phaustin/a301_extras/tree/main/notebooks/week10)  -- you'll be able to edit and track changes in this notebook on collab
+    
+- If instead you are done with your personal branch, delete it from github and 
+  delete it from your local repository
+  ```
+  git push -d origin yourinitials
+  git checkout main
+  git branch -d yourinitials
+  git branch -vv
+  ```
+
+####  Github and Collab
+
+- To edit my week10 Collab notebook first log into collab:
+
+  - go to [https://colab.research.google.com/](https://colab.research.google.com/)
+  - click on `open collab` and then from the `file` dropdown click on `open notebook`
+  - click on the github tab, and enter your github username
+  - select the `a301_extras` repository, and your personal branch
+  - select `read_landsat_ee.ipynb`
+  - now any changes you save will appear as github commits to this file
+  - Alternatively, you could copy the file to your google drive, or upload it, but then you couldn't
+    track/recover changes
+  - work through read_landsat_ee.ipynb
+    
+### Doppler notes
+
+- Two short reviews on phase and the unit circle
+  - {ref}`phasor_examples`
+  - {ref}`phase_shiftb`
+
+#### Read for Friday
+
+-  [my doppler notes](https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link)
+   (note my disagreement with Stull Figure 8.32, which doesn't show a phase shift in the reflected wave)
+   
