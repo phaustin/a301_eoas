@@ -36,4 +36,5 @@ Turn in a notebook that: 
 
 ## Assignment 6 
 
-- 
+- {ref}`assign6`
+- {ref}`assign6_solution`

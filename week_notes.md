@@ -487,46 +487,171 @@ Read Stull through p. 255 on Doppler radar
 
 ## Week 10
 
-### Github part 3: merging changes
 
-- cd `~/repos/a301_extras`
+### Day 29 Monday 
+
+- Continue with false color notebook
+
+- {ref}`week10:false_color_examples`
+
+### Working with google Collab and Gemini -- class demo
+
+- [register for google earth engine -- create the project `ee-a301`](https://developers.google.com/earth-e]ngine/guides/access)
+- [demonstration collab notebook](https://github.com/phaustin/a301_eoas/blob/main/notebooks/week10/read_landsat_ee.ipynb)
+
+### Assignment 7 -- due Monday March24 at midnight
+
+### Classification part 1
+
+- Make a jupyter notebook that reproduces the false color examples
+  in{ref}`week10:false_color_examples` for your scene (you'll need to rerun  {ref}`week4:clip_bands` version 3 to get the clipped fmask, and rerun {ref}`week2:hls` to download all of the HLS tifs for bands 1,2,3,4,5,6,7,9,10,11,fmask if you don't have them).
+- Choose one band combination that looks interesting, and compare it with the land classification you created using {ref}`week9:land_classes` for your image with the same bounding box and pixel size -- comment on an y similarities and differences you can find.  Is the classification accurate?
+
+### Stull Radar problem
+
+Answer the following questions in a Jupyter notebook, using a function to define the radar equation.
+
+1. Suppose a Nexrad radar (Stull p.~246)  is
+   receiving a signal with returned power Pr = -58 dBm.  Using the radar
+   equation find the precipitation rate under the assumption that
+   there is no attenuation and that it is a rainstorm (i.e. liquid water)
+   100 km away from the radar.
+
+2. Now keep everything the same, but make the mistake of guessing that it's a snowstorm,
+   which means that K2=0.208 and we use the snowfall Z-RR relation
+   of $Z=2000*RR^2$.  What is the new incorrect  precip rate?
+   
+3. Now assume it's rain, but make the mistake of guessing that there's a factor of La=2
+   attenuation between the target and the rainstorm.  What is the new precip rate?
+
+Nexrad coefficients:
+
+```
+    #coefficents for nexrad
+    R1=2.17e-10#range factor, km, Stull 8.25
+    Pt=750.e3 #transmitted power, W, stull p. 246
+    b=14255 #equipment factor, Stull 8.26
+```
+
+#### For Wednesday
+
+- Read the [NOAA Doppler notes](https://drive.google.com/file/d/1893L784j7aXhY14_aFlXgbjS97uzaBai/view?usp=drive_link) through page 3.20
+
+### Day 30 Wednesday
+
+### Assignment 6 solutions
+
+- {ref}`assign6_solution`
+
+### Github part 3: merging changes from upstream (revised from Monday)
+
+
+To get the new changes from my repository: [https://github.com/phaustin/a301_extras.git](https://github.com/phaustin/a301_extras.git) you need
+to add it to the list of repositories you can pull code from.  By tradition, your own remote github
+repository is called `origin` and the main remote repository that is the source of official releases is
+called `upstream`.
+
+To add a remote repository:
+
+- First verify your remote is correct
+
+  - cd `~/repos/a301_extras`
+  - git remote -vv
+
+    This should print something like:
+
+    ```
+    origin	yourgithubid:yourgithubid/a301_extras (fetch)
+    origin	yourgithubid:yourgithubid/a301_extras (push)
+    ```
+  
+- Next, add my repository as a remote
+
+  - git remote add https://github.com/phaustin/a301_extras.git
+  - git remote -vv
+
+  Now this should print
+  
+  ```
+  origin	yourgithubid:yourgithubid/a301_extras (fetch)
+  origin	yourgithubid:yourgithubid/a301_extras (push)
+  upstream	https://github.com/phaustin/a301_extras.git (fetch)
+  upstream	https://github.com/phaustin/a301_extras.git (push)
+  ```
+
 - make sure you're on your own main branch 
-  `git branch` shows an asterisk next to your current branch and `git bransh -a` lists both local and remote branches. `git branch -vv` (for "very verbose") shows your current commits and `git remote -vv` shows where your origin bransh is on github.
+  - `git branch` shows an asterisk next to your current branch 
+  - `git branch -a` lists both local and remote branches.
+  - `git branch -vv` (for "very verbose") shows your current commits
+  - `git remote -vv` shows where your origin branch is on github.
+  
+- move to your main branch  
   
   ```
   git checkout main
   git branch -a
   ```
-- fetch the changes I've made to the official main branch on origin
+  which should print out all your branches
+  
+- fetch the changes I've made to the official main branch on upstream
   ```
-  git fetch
+  git fetch upstream
   ```
-- update your main branch with my changes
+- update your main branch with my changes using rebase
   ```
-  git rebase origin/main
+  git rebase upstream/main
   ```
-- push your new main to github
+- push your new rebased main to your github remote
   ```
   git push
   git branch -vv
   ```
-- if you want to continue working on your personal branch (mine is pha), rebase it on the new main branch
+  which should show you your updated local branch
+  
+- you'll need to continue working on your personal branch (which we named with your initials), rebase it on the new main branch
   ```
-  git checkout pha
+  git checkout yourinitials
   git rebase origin/main
   git push
   git branch -vv
   ```
+
+  
+- On github you should see a new week10 folder on your personal branch that should look like mine:
+
+  - [https://github.com/phaustin/a301_extras/tree/main/notebooks/week10](https://github.com/phaustin/a301_extras/tree/main/notebooks/week10)  -- you'll be able to edit and track changes in this notebook on collab
+    
 - If instead you are done with your personal branch, delete it from github and 
   delete it from your local repository
   ```
-  git push -d origin pha
+  git push -d origin yourinitials
   git checkout main
-  git branch -d pha
+  git branch -d yourinitials
   git branch -vv
   ```
 
-### Continue with false color notebook
+####  Github and Collab
 
-- {ref}`week10:false_color_examples`
+- To edit my week10 Collab notebook first log into collab:
+
+  - go to [https://colab.research.google.com/](https://colab.research.google.com/)
+  - click on `open collab` and then from the `file` dropdown click on `open notebook`
+  - click on the github tab, and enter your github username
+  - select the `a301_extras` repository, and your personal branch
+  - select `read_landsat_ee.ipynb`
+  - now any changes you save will appear as github commits to this file
+  - Alternatively, you could copy the file to your google drive, or upload it, but then you couldn't
+    track/recover changes
+  - work through read_landsat_ee.ipynb
+    
+### Doppler notes
+
+- Two short reviews on phase and the unit circle
+  - {ref}`phasor_examples`
+  - {ref}`phase_shiftb`
+
+#### Read for Friday
+
+-  [my doppler notes](https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link)
+   (note my disagreement with Stull Figure 8.32, which doesn't show a phase shift in the reflected wave)
    

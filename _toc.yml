@@ -108,8 +108,16 @@ parts:
     - file: notebooks/week9/flux_schwartzchild.md
     - file: notebooks/week9/diffuse_flux_python.md
     - file: notebooks/week9/marshall_palmer.md
-    - file: notebooks/week9/false_color_examples.md
-      
-      
-      
-      
+- caption: Week 10
+  numbered: true
+  chapters:
+    - file: notebooks/week10/false_color_examples.md
+    - file: solutions/assign6_solution.md
+    - file: notebooks/week10/phasor.md
+    - file: notebooks/week10/phaseshift.md
+    - url: https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link
+      title: Notes on the Doppler equation
+
+
+
+
