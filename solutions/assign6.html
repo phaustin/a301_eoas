@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -280,7 +280,10 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 10</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/false_color_examples.html">52. Landsat 8 false color examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assign6_solution.html">53. Assignment 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign6_solution.html">53. Assignment 6 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/phasor.html">54. Phasor examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/phaseshift.html">55. phase shift examples</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">Notes on the Doppler equation</a></li>
 </ul>
 
     </div>
@@ -455,7 +458,7 @@ document.write(`
 <span class="eqno">(45.1)<a class="headerlink" href="#equation-planck" title="Link to this equation">#</a></span>\[
 B_\lambda(\lambda, T)=\frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c /\left(\lambda k_{\mathrm{B}} T\right)}-1}
 \]</div>
-<p>Use change of variables to rewrite <a class="reference internal" href="assign6_solution.html#equation-planck">(53.1)</a> in terms of wavenumber <span class="math notranslate nohighlight">\(\tilde{\nu} = 1/\lambda\)</span> and show that it is:</p>
+<p>Use change of variables to rewrite <a class="reference internal" href="#equation-planck">(45.1)</a> in terms of wavenumber <span class="math notranslate nohighlight">\(\tilde{\nu} = 1/\lambda\)</span> and show that it is:</p>
 <div class="math notranslate nohighlight" id="equation-planck-wn">
 <span class="eqno">(45.2)<a class="headerlink" href="#equation-planck-wn" title="Link to this equation">#</a></span>\[
 B_{\tilde{\nu}}(\tilde{\nu}, T)=2 h c^2 \tilde{\nu}^3 \frac{1}{e^{h c \tilde{\nu} /\left(k_{\mathrm{B}} T\right)}-1}
@@ -463,7 +466,7 @@ B_{\tilde{\nu}}(\tilde{\nu}, T)=2 h c^2 \tilde{\nu}^3 \frac{1}{e^{h c \tilde{\nu
 </section>
 <section id="q2-stefan-boltzman">
 <h2><span class="section-number">45.2. </span>Q2 Stefan-Boltzman<a class="headerlink" href="#q2-stefan-boltzman" title="Link to this heading">#</a></h2>
-<p>Integrate <a class="reference internal" href="assign6_solution.html#equation-planck-wn">(53.2)</a> to find the Stefan-Boltzman equation given that</p>
+<p>Integrate <a class="reference internal" href="#equation-planck-wn">(45.2)</a> to find the Stefan-Boltzman equation given that</p>
 <div class="math notranslate nohighlight" id="equation-planck-int">
 <span class="eqno">(45.3)<a class="headerlink" href="#equation-planck-int" title="Link to this equation">#</a></span>\[
 \int_0^\infty \frac{u^3}{(e^u -1 )} du = \frac{\pi^4}{15} 
@@ -482,7 +485,7 @@ B_{\tilde{\nu}}(\tilde{\nu}, T)=2 h c^2 \tilde{\nu}^3 \frac{1}{e^{h c \tilde{\nu
 </section>
 <section id="q3-wien-s-law">
 <h2><span class="section-number">45.3. </span>Q3 Wien’s law<a class="headerlink" href="#q3-wien-s-law" title="Link to this heading">#</a></h2>
-<p>Show that the maximum value for <a class="reference internal" href="assign6_solution.html#equation-planck">(53.1)</a> occurs at:</p>
+<p>Show that the maximum value for <a class="reference internal" href="#equation-planck">(45.1)</a> occurs at:</p>
 <div class="math notranslate nohighlight">
 \[
 \lambda_{max} \propto \frac{1}{T}

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -282,6 +282,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/false_color_examples.html">52. Landsat 8 false color examples</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">53. Assignment 6 solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/phasor.html">54. Phasor examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/phaseshift.html">55. phase shift examples</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">Notes on the Doppler equation</a></li>
 </ul>
 
@@ -466,13 +467,13 @@ document.write(`
 <section id="q1-planck-wavenumber">
 <h2><span class="section-number">53.1. </span>Q1 Planck wavenumber<a class="headerlink" href="#q1-planck-wavenumber" title="Link to this heading">#</a></h2>
 <p>Planck’s law as a function of wavelength:</p>
-<div class="math notranslate nohighlight" id="equation-planck">
-<span class="eqno">(53.1)<a class="headerlink" href="#equation-planck" title="Link to this equation">#</a></span>\[
+<div class="math notranslate nohighlight" id="equation-planck-sol">
+<span class="eqno">(53.1)<a class="headerlink" href="#equation-planck-sol" title="Link to this equation">#</a></span>\[
 B_\lambda(\lambda, T)=\frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c /\left(\lambda k_{\mathrm{B}} T\right)}-1}
 \]</div>
-<p>Use change of variables to rewrite <a class="reference internal" href="#equation-planck">(53.1)</a> in terms of wavenumber <span class="math notranslate nohighlight">\(\tilde{\nu} = 1/\lambda\)</span> and show that it is:</p>
-<div class="math notranslate nohighlight" id="equation-planck-wn">
-<span class="eqno">(53.2)<a class="headerlink" href="#equation-planck-wn" title="Link to this equation">#</a></span>\[
+<p>Use change of variables to rewrite <a class="reference internal" href="assign6.html#equation-planck">(45.1)</a> in terms of wavenumber <span class="math notranslate nohighlight">\(\tilde{\nu} = 1/\lambda\)</span> and show that it is:</p>
+<div class="math notranslate nohighlight" id="equation-planck-wn-sol">
+<span class="eqno">(53.2)<a class="headerlink" href="#equation-planck-wn-sol" title="Link to this equation">#</a></span>\[
 B_{\tilde{\nu}}(\tilde{\nu}, T)=2 h c^2 \tilde{\nu}^3 \frac{1}{e^{h c \tilde{\nu} /\left(k_{\mathrm{B}} T\right)}-1}
 \]</div>
 <section id="q1-solution">
@@ -516,8 +517,8 @@ d\lambda = d \left ( \frac{1}{\tilde{\nu}} \right ) = -\tilde{\nu}^{-2} d\tilde{
 \int_0^\infty B_{\tilde{\nu}}(\tilde{\nu}, T)d \tilde{\nu}=2 h c^2 \int_0^\infty  \frac{\tilde{\nu}^3}{e^{h c \tilde{\nu} /\left(k_{\mathrm{B}} T\right)}-1}\,d \tilde{\nu}
 \]</div>
 <p>to find the Stefan-Boltzman equation given that</p>
-<div class="math notranslate nohighlight" id="equation-planck-int">
-<span class="eqno">(53.4)<a class="headerlink" href="#equation-planck-int" title="Link to this equation">#</a></span>\[
+<div class="math notranslate nohighlight" id="equation-planck-int-sol">
+<span class="eqno">(53.4)<a class="headerlink" href="#equation-planck-int-sol" title="Link to this equation">#</a></span>\[
 \int_0^\infty \frac{u^3}{(e^u -1 )} du = \frac{\pi^4}{15} 
 \]</div>
 <p>(<a class="reference external" href="https://en.wikipedia.org/wiki/Riemann_zeta_function">Riemann zeta function</a>)</p>

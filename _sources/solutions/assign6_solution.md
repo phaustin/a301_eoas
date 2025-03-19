@@ -23,14 +23,14 @@ Planck's law as a function of wavelength:
 
 $$
 B_\lambda(\lambda, T)=\frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c /\left(\lambda k_{\mathrm{B}} T\right)}-1}
-$$ (planck)
+$$ (planck_sol)
 
 
 Use change of variables to rewrite {eq}`planck` in terms of wavenumber $\tilde{\nu} = 1/\lambda$ and show that it is:
 
 $$
 B_{\tilde{\nu}}(\tilde{\nu}, T)=2 h c^2 \tilde{\nu}^3 \frac{1}{e^{h c \tilde{\nu} /\left(k_{\mathrm{B}} T\right)}-1}
-$$ (planck_wn)
+$$ (planck_wn_sol)
 
 +++
 
@@ -85,7 +85,7 @@ to find the Stefan-Boltzman equation given that
 
 $$
 \int_0^\infty \frac{u^3}{(e^u -1 )} du = \frac{\pi^4}{15} 
-$$ (planck_int)
+$$ (planck_int_sol)
 
 ([Riemann zeta function](https://en.wikipedia.org/wiki/Riemann_zeta_function))
 
