@@ -13,8 +13,6 @@ kernelspec:
   name: python3
 ---
 
-print("hello world")
-
 (phasor_examples)=
 # Phasor examples
 
