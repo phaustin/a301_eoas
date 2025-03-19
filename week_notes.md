@@ -567,7 +567,7 @@ To add a remote repository:
   
 - Next, add my repository as a remote
 
-  - git remote add https://github.com/phaustin/a301_extras.git
+  - git remote add upstream https://github.com/phaustin/a301_extras.git
   - git remote -vv
 
   Now this should print
