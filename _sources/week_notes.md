@@ -567,7 +567,7 @@ To add a remote repository:
   
 - Next, add my repository as a remote
 
-  - git remote add https://github.com/phaustin/a301_extras.git
+  - git remote add upstream https://github.com/phaustin/a301_extras.git
   - git remote -vv
 
   Now this should print
@@ -653,5 +653,7 @@ To add a remote repository:
 #### Read for Friday
 
 -  [my doppler notes](https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link)
-   (note my disagreement with Stull Figure 8.32, which doesn't show a phase shift in the reflected wave)
+   (note my disagreement with Stull Figure 8.32, which doesn't show a phase shift in the reflected wave.  See [slide 6 of these slides](https://www.amherst.edu/system/files/media/1172/Lecture36%2520slides.pdf).  It won't matter
+   for pulse-pair doppler radar however, because we are comparing two pulses that have both been reflected off of water drops.
+   
    
