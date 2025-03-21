@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>52. Landsat 8 false color examples &#8212; ATSC 301</title>
+    <title>53. Landsat 8 false color examples &#8212; ATSC 301</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -61,8 +61,8 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week10/false_color_examples.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="53. Assignment 6 solution" href="../../solutions/assign6_solution.html" />
-    <link rel="prev" title="51. Notes on the Marshall-Palmer distribution and the Z-RR relation" href="../week9/marshall_palmer.html" />
+    <link rel="next" title="54. Assignment 6 solution" href="../../solutions/assign6_solution.html" />
+    <link rel="prev" title="52. Assignment 7" href="../../solutions/assign7.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -277,11 +277,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 10</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">52. Landsat 8 false color examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6_solution.html">53. Assignment 6 solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="phasor.html">54. Phasor examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="phaseshift.html">55. phase shift examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7.html">52. Assignment 7</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">53. Landsat 8 false color examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6_solution.html">54. Assignment 6 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phasor.html">55. Phasor examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phaseshift.html">56. phase shift examples</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">Notes on the Doppler equation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link">https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link</a></li>
 </ul>
 
     </div>
@@ -430,28 +432,28 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">52.1. Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-landsat-band-location">52.2. Understanding Landsat band location</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-bands-by-surface-type">52.3. Landsat bands by surface type</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-false-color-combinations">52.4. Landsat false color combinations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specific-examples">52.4.1. Specific examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">53.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-landsat-band-location">53.2. Understanding Landsat band location</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-bands-by-surface-type">53.3. Landsat bands by surface type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-false-color-combinations">53.4. Landsat false color combinations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specific-examples">53.4.1. Specific examples</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#false-color-bands-for-vancouver">52.5. False color bands for Vancouver</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-all-bands-into-a-dictionary">52.5.1. Read all bands into a dictionary</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-xarray-dataset-from-the-band-dictionary">52.5.2. Create an xarray dataset from the band dictionary</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#make-dataset-function">52.5.2.1. make_dataset function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#false-color-bands-for-vancouver">53.5. False color bands for Vancouver</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-all-bands-into-a-dictionary">53.5.1. Read all bands into a dictionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-xarray-dataset-from-the-band-dictionary">53.5.2. Create an xarray dataset from the band dictionary</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#make-dataset-function">53.5.2.1. make_dataset function</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-bool-mask-function">52.5.3. make_bool_mask function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-false-color-function">52.5.4. make_false_color function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-bool-mask-function">53.5.3. make_bool_mask function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-false-color-function">53.5.4. make_false_color function</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#true-color-red-green-blue">52.6. True color (red, green, blue)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#color-infrared-near-ir-red-green">52.7. Color infrared: near-ir, red, green</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vegetation-swir-1-near-ir-red">52.8. Vegetation swir-1, near-ir, red</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agriculture-swir-1-near-ir-blue">52.9. Agriculture swir-1, near-ir, blue</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urban-swir-2-swir-1-red">52.10. Urban swir-2, swir-1, red</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#true-color-red-green-blue">53.6. True color (red, green, blue)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#color-infrared-near-ir-red-green">53.7. Color infrared: near-ir, red, green</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vegetation-swir-1-near-ir-red">53.8. Vegetation swir-1, near-ir, red</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agriculture-swir-1-near-ir-blue">53.9. Agriculture swir-1, near-ir, blue</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urban-swir-2-swir-1-red">53.10. Urban swir-2, swir-1, red</a></li>
 </ul>
             </nav>
         </div>
@@ -464,7 +466,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="landsat-8-false-color-examples">
-<span id="week10-false-color-examples"></span><h1><span class="section-number">52. </span>Landsat 8 false color examples<a class="headerlink" href="#landsat-8-false-color-examples" title="Link to this heading">#</a></h1>
+<span id="week10-false-color-examples"></span><h1><span class="section-number">53. </span>Landsat 8 false color examples<a class="headerlink" href="#landsat-8-false-color-examples" title="Link to this heading">#</a></h1>
 <p>In the <a class="reference internal" href="../week7/false_color.html#week7-false-color"><span class="std std-ref">Making color composite (“false color”) images</span></a> notebook we showed how to make a false color composite with Landsat 8 bands 5, 4, 3 mapped to
 red, blue and green (color infrared)</p>
 <p>In this notebook we move that code into a function called <code class="docutils literal notranslate"><span class="pre">make_false_color</span></code>, and show a Vancouver scene with some different band combinations.  We make use of a boolean mask to get a stretched histogram using
@@ -478,7 +480,7 @@ and returns a false color rioxarray.DataArray containing a [3,nrows,ncols] array
 <li><p><a class="reference internal" href="#make-false-color"><span class="std std-ref">make_false_color function</span></a></p></li>
 </ul>
 <section id="installation">
-<h2><span class="section-number">52.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Download <a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing">false_color_examples.ipynb</a> from the week 10 folder</p></li>
 <li><p>Download the  week10 tif files from <code class="docutils literal notranslate"><span class="pre">satdata/landsat/vancouver_2023/week10</span></code> and move them to `~/repos/a301/satdata/landsat/week10/</p></li>
@@ -499,7 +501,7 @@ and returns a false color rioxarray.DataArray containing a [3,nrows,ncols] array
 </div>
 </section>
 <section id="understanding-landsat-band-location">
-<h2><span class="section-number">52.2. </span>Understanding Landsat band location<a class="headerlink" href="#understanding-landsat-band-location" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.2. </span>Understanding Landsat band location<a class="headerlink" href="#understanding-landsat-band-location" title="Link to this heading">#</a></h2>
 <p>The figure below shows average reflectances for various surface types. Compare some of thse
 reflectance values with the landsat band locations in microns</p>
 <ol class="arabic simple">
@@ -514,26 +516,26 @@ reflectance values with the landsat band locations in microns</p>
 <figure class="align-default" id="fig-reflectance-spectra">
 <a class="reference internal image-reference" href="../../_images/hou_reflectance.png"><img alt="../../_images/hou_reflectance.png" src="../../_images/hou_reflectance.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 52.1 </span><span class="caption-text">Reflectance spectra</span><a class="headerlink" href="#fig-reflectance-spectra" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 53.1 </span><span class="caption-text">Reflectance spectra</span><a class="headerlink" href="#fig-reflectance-spectra" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="landsat-bands-by-surface-type">
-<h2><span class="section-number">52.3. </span>Landsat bands by surface type<a class="headerlink" href="#landsat-bands-by-surface-type" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.3. </span>Landsat bands by surface type<a class="headerlink" href="#landsat-bands-by-surface-type" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="landsat-8-bands-landsat8-bands-png-attachment-9454ecea-8cba-488a-87ec-110fb2b5d57f-png">
 <a class="reference internal image-reference" href="../../_images/landsat8_bands.png"><img alt="../../_images/landsat8_bands.png" src="../../_images/landsat8_bands.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 52.2 </span><span class="caption-text">Landsat 8 band wavelengths</span><a class="headerlink" href="#landsat-8-bands-landsat8-bands-png-attachment-9454ecea-8cba-488a-87ec-110fb2b5d57f-png" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 53.2 </span><span class="caption-text">Landsat 8 band wavelengths</span><a class="headerlink" href="#landsat-8-bands-landsat8-bands-png-attachment-9454ecea-8cba-488a-87ec-110fb2b5d57f-png" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="landsat-false-color-combinations">
-<h2><span class="section-number">52.4. </span>Landsat false color combinations<a class="headerlink" href="#landsat-false-color-combinations" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.4. </span>Landsat false color combinations<a class="headerlink" href="#landsat-false-color-combinations" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="landsat-8-bands">
 <a class="reference internal image-reference" href="../../_images/arc_gis_bands.png"><img alt="../../_images/arc_gis_bands.png" src="../../_images/arc_gis_bands.png" style="width: 80%;" /></a>
 </figure>
 <section id="specific-examples">
-<h3><span class="section-number">52.4.1. </span>Specific examples<a class="headerlink" href="#specific-examples" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">53.4.1. </span>Specific examples<a class="headerlink" href="#specific-examples" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>see <a class="reference external" href="https://www.nv5geospatialsoftware.com/Learn/Blogs/Blog-Details/the-many-band-combinations-of-landsat-8">this website</a> for images that demonstrate the combinations</p></li>
 <li><p>see <a class="reference external" href="https://blaylockbk.github.io/goes2go/_build/html/user_guide/notebooks/DEMO_rgb_recipes.html">this goes2go demo</a> for mulitple GOES band combinations</p></li>
@@ -541,7 +543,7 @@ reflectance values with the landsat band locations in microns</p>
 </section>
 </section>
 <section id="false-color-bands-for-vancouver">
-<h2><span class="section-number">52.5. </span>False color bands for Vancouver<a class="headerlink" href="#false-color-bands-for-vancouver" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.5. </span>False color bands for Vancouver<a class="headerlink" href="#false-color-bands-for-vancouver" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bands</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;B01&#39;</span><span class="p">:</span><span class="s1">&#39;Coastal_Aerosol&#39;</span><span class="p">,</span>
@@ -560,7 +562,7 @@ reflectance values with the landsat band locations in microns</p>
 </div>
 </div>
 <section id="read-all-bands-into-a-dictionary">
-<h3><span class="section-number">52.5.1. </span>Read all bands into a dictionary<a class="headerlink" href="#read-all-bands-into-a-dictionary" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">53.5.1. </span>Read all bands into a dictionary<a class="headerlink" href="#read-all-bands-into-a-dictionary" title="Link to this heading">#</a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">bands</span></code> dictionary to identify the band by its name (Blue, Green, etc)
 and store it in <code class="docutils literal notranslate"><span class="pre">scene_dict</span></code>.  Masking fmask would convert it from 8 bit to float, so we
 need to special-case the fmask file.</p>
@@ -602,9 +604,9 @@ reading fmask:/Users/phil/repos/a301/satdata/landsat/vancouver_2023/week10/week1
 </div>
 </section>
 <section id="create-an-xarray-dataset-from-the-band-dictionary">
-<h3><span class="section-number">52.5.2. </span>Create an xarray dataset from the band dictionary<a class="headerlink" href="#create-an-xarray-dataset-from-the-band-dictionary" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">53.5.2. </span>Create an xarray dataset from the band dictionary<a class="headerlink" href="#create-an-xarray-dataset-from-the-band-dictionary" title="Link to this heading">#</a></h3>
 <section id="make-dataset-function">
-<span id="make-dataset"></span><h4><span class="section-number">52.5.2.1. </span>make_dataset function<a class="headerlink" href="#make-dataset-function" title="Link to this heading">#</a></h4>
+<span id="make-dataset"></span><h4><span class="section-number">53.5.2.1. </span>make_dataset function<a class="headerlink" href="#make-dataset-function" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_dataset</span><span class="p">(</span>
@@ -1065,7 +1067,7 @@ Attributes: (12/34)
 </section>
 </section>
 <section id="make-bool-mask-function">
-<span id="make-bool-mask"></span><h3><span class="section-number">52.5.3. </span>make_bool_mask function<a class="headerlink" href="#make-bool-mask-function" title="Link to this heading">#</a></h3>
+<span id="make-bool-mask"></span><h3><span class="section-number">53.5.3. </span>make_bool_mask function<a class="headerlink" href="#make-bool-mask-function" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_bool_mask</span><span class="p">(</span>
@@ -1126,7 +1128,7 @@ Attributes: (12/34)
 </div>
 </section>
 <section id="make-false-color-function">
-<span id="make-false-color"></span><h3><span class="section-number">52.5.4. </span>make_false_color function<a class="headerlink" href="#make-false-color-function" title="Link to this heading">#</a></h3>
+<span id="make-false-color"></span><h3><span class="section-number">53.5.4. </span>make_false_color function<a class="headerlink" href="#make-false-color-function" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_false_color</span><span class="p">(</span>
@@ -1206,7 +1208,7 @@ Attributes: (12/34)
 </section>
 </section>
 <section id="true-color-red-green-blue">
-<h2><span class="section-number">52.6. </span>True color (red, green, blue)<a class="headerlink" href="#true-color-red-green-blue" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.6. </span>True color (red, green, blue)<a class="headerlink" href="#true-color-red-green-blue" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">true_color</span> <span class="o">=</span> <span class="n">make_false_color</span><span class="p">(</span><span class="n">ds_allbands</span><span class="p">,</span> <span class="n">band_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;B04&quot;</span><span class="p">,</span><span class="s2">&quot;B03&quot;</span><span class="p">,</span><span class="s2">&quot;B02&quot;</span><span class="p">])</span>
@@ -1247,7 +1249,7 @@ Attributes: (12/34)
 </div>
 </section>
 <section id="color-infrared-near-ir-red-green">
-<h2><span class="section-number">52.7. </span>Color infrared: near-ir, red, green<a class="headerlink" href="#color-infrared-near-ir-red-green" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.7. </span>Color infrared: near-ir, red, green<a class="headerlink" href="#color-infrared-near-ir-red-green" title="Link to this heading">#</a></h2>
 <p>Add the 5-4 red edge for vegetation, plus green (also vegetation). See <a class="reference external" href="https://eos.com/make-an-analysis/color-infrared/">band543 detail</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1289,7 +1291,7 @@ Attributes: (12/34)
 </div>
 </section>
 <section id="vegetation-swir-1-near-ir-red">
-<h2><span class="section-number">52.8. </span>Vegetation swir-1, near-ir, red<a class="headerlink" href="#vegetation-swir-1-near-ir-red" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.8. </span>Vegetation swir-1, near-ir, red<a class="headerlink" href="#vegetation-swir-1-near-ir-red" title="Link to this heading">#</a></h2>
 <p>Add swir-1 for moisture content, keep the 5-4 red edge. Less contrast for turbid/fresh water.  See <a class="reference external" href="https://eos.com/make-an-analysis/vegetation-analysis/">band654 detail</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1331,7 +1333,7 @@ Attributes: (12/34)
 </div>
 </section>
 <section id="agriculture-swir-1-near-ir-blue">
-<h2><span class="section-number">52.9. </span>Agriculture swir-1, near-ir, blue<a class="headerlink" href="#agriculture-swir-1-near-ir-blue" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.9. </span>Agriculture swir-1, near-ir, blue<a class="headerlink" href="#agriculture-swir-1-near-ir-blue" title="Link to this heading">#</a></h2>
 <p>Swap out red for blue.  See <a class="reference external" href="https://eos.com/make-an-analysis/agriculture-band/">band652 detail</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1373,7 +1375,7 @@ Attributes: (12/34)
 </div>
 </section>
 <section id="urban-swir-2-swir-1-red">
-<h2><span class="section-number">52.10. </span>Urban swir-2, swir-1, red<a class="headerlink" href="#urban-swir-2-swir-1-red" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.10. </span>Urban swir-2, swir-1, red<a class="headerlink" href="#urban-swir-2-swir-1-red" title="Link to this heading">#</a></h2>
 <p>concrete and bare soil have approximately constant reflectivities between 1.6 and 2.2 microns,
 while vegetation reflects more in swir-1 than swir-2.  This combination distinguishes between
 types of urban development.  Less contrast for turbid/fresh water.  See: <a class="reference external" href="https://eos.com/make-an-analysis/shortwave-infrared/">band764 detail</a></p>
@@ -1449,12 +1451,12 @@ types of urban development.  Less contrast for turbid/fresh water.  See: <a clas
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../week9/marshall_palmer.html"
+       href="../../solutions/assign7.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">51. </span>Notes on the Marshall-Palmer distribution and the Z-RR relation</p>
+        <p class="prev-next-title"><span class="section-number">52. </span>Assignment 7</p>
       </div>
     </a>
     <a class="right-next"
@@ -1462,7 +1464,7 @@ types of urban development.  Less contrast for turbid/fresh water.  See: <a clas
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">53. </span>Assignment 6 solution</p>
+        <p class="prev-next-title"><span class="section-number">54. </span>Assignment 6 solution</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1482,28 +1484,28 @@ types of urban development.  Less contrast for turbid/fresh water.  See: <a clas
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">52.1. Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-landsat-band-location">52.2. Understanding Landsat band location</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-bands-by-surface-type">52.3. Landsat bands by surface type</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-false-color-combinations">52.4. Landsat false color combinations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specific-examples">52.4.1. Specific examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">53.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-landsat-band-location">53.2. Understanding Landsat band location</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-bands-by-surface-type">53.3. Landsat bands by surface type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-false-color-combinations">53.4. Landsat false color combinations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specific-examples">53.4.1. Specific examples</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#false-color-bands-for-vancouver">52.5. False color bands for Vancouver</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-all-bands-into-a-dictionary">52.5.1. Read all bands into a dictionary</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-xarray-dataset-from-the-band-dictionary">52.5.2. Create an xarray dataset from the band dictionary</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#make-dataset-function">52.5.2.1. make_dataset function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#false-color-bands-for-vancouver">53.5. False color bands for Vancouver</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-all-bands-into-a-dictionary">53.5.1. Read all bands into a dictionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-xarray-dataset-from-the-band-dictionary">53.5.2. Create an xarray dataset from the band dictionary</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#make-dataset-function">53.5.2.1. make_dataset function</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-bool-mask-function">52.5.3. make_bool_mask function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-false-color-function">52.5.4. make_false_color function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-bool-mask-function">53.5.3. make_bool_mask function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-false-color-function">53.5.4. make_false_color function</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#true-color-red-green-blue">52.6. True color (red, green, blue)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#color-infrared-near-ir-red-green">52.7. Color infrared: near-ir, red, green</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vegetation-swir-1-near-ir-red">52.8. Vegetation swir-1, near-ir, red</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agriculture-swir-1-near-ir-blue">52.9. Agriculture swir-1, near-ir, blue</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urban-swir-2-swir-1-red">52.10. Urban swir-2, swir-1, red</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#true-color-red-green-blue">53.6. True color (red, green, blue)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#color-infrared-near-ir-red-green">53.7. Color infrared: near-ir, red, green</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vegetation-swir-1-near-ir-red">53.8. Vegetation swir-1, near-ir, red</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agriculture-swir-1-near-ir-blue">53.9. Agriculture swir-1, near-ir, blue</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urban-swir-2-swir-1-red">53.10. Urban swir-2, swir-1, red</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>54. Phasor examples &#8212; ATSC 301</title>
+    <title>55. Phasor examples &#8212; ATSC 301</title>
   
   
   
@@ -63,8 +63,8 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week10/phasor.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="55. phase shift examples" href="phaseshift.html" />
-    <link rel="prev" title="53. Assignment 6 solution" href="../../solutions/assign6_solution.html" />
+    <link rel="next" title="56. phase shift examples" href="phaseshift.html" />
+    <link rel="prev" title="54. Assignment 6 solution" href="../../solutions/assign6_solution.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -279,11 +279,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 10</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="false_color_examples.html">52. Landsat 8 false color examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6_solution.html">53. Assignment 6 solution</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">54. Phasor examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="phaseshift.html">55. phase shift examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7.html">52. Assignment 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="false_color_examples.html">53. Landsat 8 false color examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6_solution.html">54. Assignment 6 solution</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">55. Phasor examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phaseshift.html">56. phase shift examples</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">Notes on the Doppler equation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link">https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link</a></li>
 </ul>
 
     </div>
@@ -432,10 +434,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-of-phi-0">54.1. Phase shift of <span class="math notranslate nohighlight">\(\phi=0\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-of-phi-30-deg">54.2. Phase shift of <span class="math notranslate nohighlight">\(\phi=30\ deg\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-of-phi-60-deg">54.3. Phase shift of <span class="math notranslate nohighlight">\(\phi=60\ deg\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-of-phi-90-deg">54.4. Phase shift of <span class="math notranslate nohighlight">\(\phi=90\ deg\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-of-phi-0">55.1. Phase shift of <span class="math notranslate nohighlight">\(\phi=0\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-of-phi-30-deg">55.2. Phase shift of <span class="math notranslate nohighlight">\(\phi=30\ deg\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-of-phi-60-deg">55.3. Phase shift of <span class="math notranslate nohighlight">\(\phi=60\ deg\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-of-phi-90-deg">55.4. Phase shift of <span class="math notranslate nohighlight">\(\phi=90\ deg\)</span></a></li>
 </ul>
             </nav>
         </div>
@@ -449,7 +451,7 @@ document.write(`
                   
   <p>print(“hello world”)</p>
 <section class="tex2jax_ignore mathjax_ignore" id="phasor-examples">
-<span id="id1"></span><h1><span class="section-number">54. </span>Phasor examples<a class="headerlink" href="#phasor-examples" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">55. </span>Phasor examples<a class="headerlink" href="#phasor-examples" title="Link to this heading">#</a></h1>
 <p>Recall the unit circle from trig.  The sine and cosine are generated by rotating the
 unit circle counter-clockwise and reading the cosine off of the x axis and the sine
 off of the  y axis.</p>
@@ -469,7 +471,7 @@ sine leading the cosine.  That is, at any point on the circle</p>
 </div>
 </div>
 <section id="phase-shift-of-phi-0">
-<h2><span class="section-number">54.1. </span>Phase shift of <span class="math notranslate nohighlight">\(\phi=0\)</span><a class="headerlink" href="#phase-shift-of-phi-0" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">55.1. </span>Phase shift of <span class="math notranslate nohighlight">\(\phi=0\)</span><a class="headerlink" href="#phase-shift-of-phi-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>sin(0) =0</p></li>
 <li><p>cos(0) = 1</p></li>
@@ -495,7 +497,7 @@ sine leading the cosine.  That is, at any point on the circle</p>
 </div>
 </section>
 <section id="phase-shift-of-phi-30-deg">
-<h2><span class="section-number">54.2. </span>Phase shift of <span class="math notranslate nohighlight">\(\phi=30\ deg\)</span><a class="headerlink" href="#phase-shift-of-phi-30-deg" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">55.2. </span>Phase shift of <span class="math notranslate nohighlight">\(\phi=30\ deg\)</span><a class="headerlink" href="#phase-shift-of-phi-30-deg" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>sin(0) =0</p></li>
 <li><p>cos(0) = 1</p></li>
@@ -520,7 +522,7 @@ sine leading the cosine.  That is, at any point on the circle</p>
 </div>
 </section>
 <section id="phase-shift-of-phi-60-deg">
-<h2><span class="section-number">54.3. </span>Phase shift of <span class="math notranslate nohighlight">\(\phi=60\ deg\)</span><a class="headerlink" href="#phase-shift-of-phi-60-deg" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">55.3. </span>Phase shift of <span class="math notranslate nohighlight">\(\phi=60\ deg\)</span><a class="headerlink" href="#phase-shift-of-phi-60-deg" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">60.</span><span class="p">,</span><span class="mf">60.</span><span class="p">])</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.</span><span class="p">;</span>
@@ -541,7 +543,7 @@ sine leading the cosine.  That is, at any point on the circle</p>
 </div>
 </section>
 <section id="phase-shift-of-phi-90-deg">
-<h2><span class="section-number">54.4. </span>Phase shift of <span class="math notranslate nohighlight">\(\phi=90\ deg\)</span><a class="headerlink" href="#phase-shift-of-phi-90-deg" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">55.4. </span>Phase shift of <span class="math notranslate nohighlight">\(\phi=90\ deg\)</span><a class="headerlink" href="#phase-shift-of-phi-90-deg" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">90.</span><span class="p">,</span><span class="mf">90.</span><span class="p">])</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.</span><span class="p">;</span>
@@ -600,7 +602,7 @@ sine leading the cosine.  That is, at any point on the circle</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">53. </span>Assignment 6 solution</p>
+        <p class="prev-next-title"><span class="section-number">54. </span>Assignment 6 solution</p>
       </div>
     </a>
     <a class="right-next"
@@ -608,7 +610,7 @@ sine leading the cosine.  That is, at any point on the circle</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">55. </span>phase shift examples</p>
+        <p class="prev-next-title"><span class="section-number">56. </span>phase shift examples</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -628,10 +630,10 @@ sine leading the cosine.  That is, at any point on the circle</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-of-phi-0">54.1. Phase shift of <span class="math notranslate nohighlight">\(\phi=0\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-of-phi-30-deg">54.2. Phase shift of <span class="math notranslate nohighlight">\(\phi=30\ deg\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-of-phi-60-deg">54.3. Phase shift of <span class="math notranslate nohighlight">\(\phi=60\ deg\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-of-phi-90-deg">54.4. Phase shift of <span class="math notranslate nohighlight">\(\phi=90\ deg\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-of-phi-0">55.1. Phase shift of <span class="math notranslate nohighlight">\(\phi=0\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-of-phi-30-deg">55.2. Phase shift of <span class="math notranslate nohighlight">\(\phi=30\ deg\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-of-phi-60-deg">55.3. Phase shift of <span class="math notranslate nohighlight">\(\phi=60\ deg\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-shift-of-phi-90-deg">55.4. Phase shift of <span class="math notranslate nohighlight">\(\phi=90\ deg\)</span></a></li>
 </ul>
   </nav></div>
 

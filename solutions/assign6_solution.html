@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>53. Assignment 6 solution &#8212; ATSC 301</title>
+    <title>54. Assignment 6 solution &#8212; ATSC 301</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -63,8 +63,8 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/solutions/assign6_solution.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="54. Phasor examples" href="../notebooks/week10/phasor.html" />
-    <link rel="prev" title="52. Landsat 8 false color examples" href="../notebooks/week10/false_color_examples.html" />
+    <link rel="next" title="55. Phasor examples" href="../notebooks/week10/phasor.html" />
+    <link rel="prev" title="53. Landsat 8 false color examples" href="../notebooks/week10/false_color_examples.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -279,11 +279,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 10</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/false_color_examples.html">52. Landsat 8 false color examples</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">53. Assignment 6 solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/phasor.html">54. Phasor examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/phaseshift.html">55. phase shift examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign7.html">52. Assignment 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/false_color_examples.html">53. Landsat 8 false color examples</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">54. Assignment 6 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/phasor.html">55. Phasor examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/phaseshift.html">56. phase shift examples</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">Notes on the Doppler equation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link">https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link</a></li>
 </ul>
 
     </div>
@@ -432,24 +434,24 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-planck-wavenumber">53.1. Q1 Planck wavenumber</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-solution">53.1.1. Q1 solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-planck-wavenumber">54.1. Q1 Planck wavenumber</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-solution">54.1.1. Q1 solution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-stefan-boltzman">53.2. Q2 Stefan-Boltzman</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-answer">53.2.1. Q2 Answer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-stefan-boltzman">54.2. Q2 Stefan-Boltzman</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-answer">54.2.1. Q2 Answer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-wien-s-law">53.3. Q3 Wien’s law</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-answer">53.3.1. Q3 Answer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-wien-s-law">54.3. Q3 Wien’s law</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-answer">54.3.1. Q3 Answer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-radar-rainrate">53.4. Q4  Radar Rainrate</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytic">53.4.1. Analytic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-analytic-answer">53.4.2. Q4 Analytic Answer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-radar-rainrate">54.4. Q4  Radar Rainrate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytic">54.4.1. Analytic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-analytic-answer">54.4.2. Q4 Analytic Answer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-radar-rainrate-python">53.5. Q5 Radar Rainrate Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-radar-rainrate-python">54.5. Q5 Radar Rainrate Python</a></li>
 </ul>
             </nav>
         </div>
@@ -462,22 +464,22 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="assignment-6-solution">
-<span id="assign6-solution"></span><h1><span class="section-number">53. </span>Assignment 6 solution<a class="headerlink" href="#assignment-6-solution" title="Link to this heading">#</a></h1>
+<span id="assign6-solution"></span><h1><span class="section-number">54. </span>Assignment 6 solution<a class="headerlink" href="#assignment-6-solution" title="Link to this heading">#</a></h1>
 <p>Upload a pdf and a notebook for the following problems:</p>
 <section id="q1-planck-wavenumber">
-<h2><span class="section-number">53.1. </span>Q1 Planck wavenumber<a class="headerlink" href="#q1-planck-wavenumber" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">54.1. </span>Q1 Planck wavenumber<a class="headerlink" href="#q1-planck-wavenumber" title="Link to this heading">#</a></h2>
 <p>Planck’s law as a function of wavelength:</p>
 <div class="math notranslate nohighlight" id="equation-planck-sol">
-<span class="eqno">(53.1)<a class="headerlink" href="#equation-planck-sol" title="Link to this equation">#</a></span>\[
+<span class="eqno">(54.1)<a class="headerlink" href="#equation-planck-sol" title="Link to this equation">#</a></span>\[
 B_\lambda(\lambda, T)=\frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c /\left(\lambda k_{\mathrm{B}} T\right)}-1}
 \]</div>
 <p>Use change of variables to rewrite <a class="reference internal" href="assign6.html#equation-planck">(45.1)</a> in terms of wavenumber <span class="math notranslate nohighlight">\(\tilde{\nu} = 1/\lambda\)</span> and show that it is:</p>
 <div class="math notranslate nohighlight" id="equation-planck-wn-sol">
-<span class="eqno">(53.2)<a class="headerlink" href="#equation-planck-wn-sol" title="Link to this equation">#</a></span>\[
+<span class="eqno">(54.2)<a class="headerlink" href="#equation-planck-wn-sol" title="Link to this equation">#</a></span>\[
 B_{\tilde{\nu}}(\tilde{\nu}, T)=2 h c^2 \tilde{\nu}^3 \frac{1}{e^{h c \tilde{\nu} /\left(k_{\mathrm{B}} T\right)}-1}
 \]</div>
 <section id="q1-solution">
-<h3><span class="section-number">53.1.1. </span>Q1 solution<a class="headerlink" href="#q1-solution" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">54.1.1. </span>Q1 solution<a class="headerlink" href="#q1-solution" title="Link to this heading">#</a></h3>
 <p>We want to change variables for the definite integral:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -510,15 +512,15 @@ d\lambda = d \left ( \frac{1}{\tilde{\nu}} \right ) = -\tilde{\nu}^{-2} d\tilde{
 </section>
 </section>
 <section id="q2-stefan-boltzman">
-<h2><span class="section-number">53.2. </span>Q2 Stefan-Boltzman<a class="headerlink" href="#q2-stefan-boltzman" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">54.2. </span>Q2 Stefan-Boltzman<a class="headerlink" href="#q2-stefan-boltzman" title="Link to this heading">#</a></h2>
 <p>Integrate</p>
 <div class="math notranslate nohighlight" id="equation-planck-2">
-<span class="eqno">(53.3)<a class="headerlink" href="#equation-planck-2" title="Link to this equation">#</a></span>\[
+<span class="eqno">(54.3)<a class="headerlink" href="#equation-planck-2" title="Link to this equation">#</a></span>\[
 \int_0^\infty B_{\tilde{\nu}}(\tilde{\nu}, T)d \tilde{\nu}=2 h c^2 \int_0^\infty  \frac{\tilde{\nu}^3}{e^{h c \tilde{\nu} /\left(k_{\mathrm{B}} T\right)}-1}\,d \tilde{\nu}
 \]</div>
 <p>to find the Stefan-Boltzman equation given that</p>
 <div class="math notranslate nohighlight" id="equation-planck-int-sol">
-<span class="eqno">(53.4)<a class="headerlink" href="#equation-planck-int-sol" title="Link to this equation">#</a></span>\[
+<span class="eqno">(54.4)<a class="headerlink" href="#equation-planck-int-sol" title="Link to this equation">#</a></span>\[
 \int_0^\infty \frac{u^3}{(e^u -1 )} du = \frac{\pi^4}{15} 
 \]</div>
 <p>(<a class="reference external" href="https://en.wikipedia.org/wiki/Riemann_zeta_function">Riemann zeta function</a>)</p>
@@ -533,7 +535,7 @@ d\lambda = d \left ( \frac{1}{\tilde{\nu}} \right ) = -\tilde{\nu}^{-2} d\tilde{
 \sigma=\frac{2 \pi^5 k_B^4}{15 c^2 h^3}
 \]</div>
 <section id="q2-answer">
-<h3><span class="section-number">53.2.1. </span>Q2 Answer<a class="headerlink" href="#q2-answer" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">54.2.1. </span>Q2 Answer<a class="headerlink" href="#q2-answer" title="Link to this heading">#</a></h3>
 <p>Make the following substitution:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -561,10 +563,10 @@ d\tilde{\nu} = \frac{k_B T}{hc}dU
 </section>
 </section>
 <section id="q3-wien-s-law">
-<h2><span class="section-number">53.3. </span>Q3 Wien’s law<a class="headerlink" href="#q3-wien-s-law" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">54.3. </span>Q3 Wien’s law<a class="headerlink" href="#q3-wien-s-law" title="Link to this heading">#</a></h2>
 <p>Show that the maximum value for</p>
 <div class="math notranslate nohighlight" id="equation-planck2">
-<span class="eqno">(53.5)<a class="headerlink" href="#equation-planck2" title="Link to this equation">#</a></span>\[
+<span class="eqno">(54.5)<a class="headerlink" href="#equation-planck2" title="Link to this equation">#</a></span>\[
 B_\lambda(\lambda, T)=\frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c /\left(\lambda k_{\mathrm{B}} T\right)}-1}
 \]</div>
 <p>occurs at:</p>
@@ -574,16 +576,16 @@ B_\lambda(\lambda, T)=\frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c /\left(\lambda k
 \]</div>
 <p>(<a class="reference external" href="https://en.wikipedia.org/wiki/Wien%27s_displacement_law">Wien’s law</a>)</p>
 <section id="q3-answer">
-<h3><span class="section-number">53.3.1. </span>Q3 Answer<a class="headerlink" href="#q3-answer" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">54.3.1. </span>Q3 Answer<a class="headerlink" href="#q3-answer" title="Link to this heading">#</a></h3>
 <p>As shown below, we are working with parameters for which <span class="math notranslate nohighlight">\(e^u\)</span>,
 where <span class="math notranslate nohighlight">\(u=h c /\left(\lambda k_B T\right )  \approx e^5 \approx 150 \gg 1\)</span> so it’s safe to write:</p>
 <div class="math notranslate nohighlight" id="equation-planck3">
-<span class="eqno">(53.6)<a class="headerlink" href="#equation-planck3" title="Link to this equation">#</a></span>\[
+<span class="eqno">(54.6)<a class="headerlink" href="#equation-planck3" title="Link to this equation">#</a></span>\[
 B_\lambda(\lambda, T) \approx \frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c /\left(\lambda k_{\mathrm{B}} T\right)}}
 = a \lambda^{-5}\exp(-b/(\lambda T))
 \]</div>
 <p>We want to find <span class="math notranslate nohighlight">\(\lambda_{max}\)</span> the wavelength at which <span class="math notranslate nohighlight">\(\frac{dB}{d\lambda} = 0\)</span>.</p>
-<p>Use the chain rule on <a class="reference internal" href="#equation-planck3">(53.6)</a>:</p>
+<p>Use the chain rule on <a class="reference internal" href="#equation-planck3">(54.6)</a>:</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{dB}{d\lambda} = a (-5 \lambda^{-6})\exp(-b/(\lambda T)) + a \lambda^{-5} \exp(-b/(\lambda T) (b/(\lambda^2 T) =0
@@ -642,9 +644,9 @@ np.exp(5)=148.4
 </section>
 </section>
 <section id="q4-radar-rainrate">
-<h2><span class="section-number">53.4. </span>Q4  Radar Rainrate<a class="headerlink" href="#q4-radar-rainrate" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">54.4. </span>Q4  Radar Rainrate<a class="headerlink" href="#q4-radar-rainrate" title="Link to this heading">#</a></h2>
 <section id="analytic">
-<h3><span class="section-number">53.4.1. </span>Analytic<a class="headerlink" href="#analytic" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">54.4.1. </span>Analytic<a class="headerlink" href="#analytic" title="Link to this heading">#</a></h3>
 <p>Integrate <span class="math notranslate nohighlight">\(Z=\int D^6 n(D) dD\)</span> on paper, assuming a Marshall Palmer size distribution and show that it integrates to:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -657,7 +659,7 @@ Z \approx 300 RR^{1.5}
 \]</div>
 </section>
 <section id="q4-analytic-answer">
-<h3><span class="section-number">53.4.2. </span>Q4 Analytic Answer<a class="headerlink" href="#q4-analytic-answer" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">54.4.2. </span>Q4 Analytic Answer<a class="headerlink" href="#q4-analytic-answer" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 n(D) = n_0 \exp(-4.1 RR^{-0.21} D )
@@ -690,7 +692,7 @@ Z=296 RR^{1.47}
 </section>
 </section>
 <section id="q5-radar-rainrate-python">
-<h2><span class="section-number">53.5. </span>Q5 Radar Rainrate Python<a class="headerlink" href="#q5-radar-rainrate-python" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">54.5. </span>Q5 Radar Rainrate Python<a class="headerlink" href="#q5-radar-rainrate-python" title="Link to this heading">#</a></h2>
 <p>Repeat using numerical integration in python (i.e. np.diff and np.sum) and show that the  result agrees.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -778,7 +780,7 @@ Z=296 RR^{1.47}
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">52. </span>Landsat 8 false color examples</p>
+        <p class="prev-next-title"><span class="section-number">53. </span>Landsat 8 false color examples</p>
       </div>
     </a>
     <a class="right-next"
@@ -786,7 +788,7 @@ Z=296 RR^{1.47}
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">54. </span>Phasor examples</p>
+        <p class="prev-next-title"><span class="section-number">55. </span>Phasor examples</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -806,24 +808,24 @@ Z=296 RR^{1.47}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-planck-wavenumber">53.1. Q1 Planck wavenumber</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-solution">53.1.1. Q1 solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-planck-wavenumber">54.1. Q1 Planck wavenumber</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-solution">54.1.1. Q1 solution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-stefan-boltzman">53.2. Q2 Stefan-Boltzman</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-answer">53.2.1. Q2 Answer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-stefan-boltzman">54.2. Q2 Stefan-Boltzman</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-answer">54.2.1. Q2 Answer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-wien-s-law">53.3. Q3 Wien’s law</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-answer">53.3.1. Q3 Answer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-wien-s-law">54.3. Q3 Wien’s law</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-answer">54.3.1. Q3 Answer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-radar-rainrate">53.4. Q4  Radar Rainrate</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytic">53.4.1. Analytic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-analytic-answer">53.4.2. Q4 Analytic Answer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-radar-rainrate">54.4. Q4  Radar Rainrate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytic">54.4.1. Analytic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-analytic-answer">54.4.2. Q4 Analytic Answer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-radar-rainrate-python">53.5. Q5 Radar Rainrate Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-radar-rainrate-python">54.5. Q5 Radar Rainrate Python</a></li>
 </ul>
   </nav></div>
 

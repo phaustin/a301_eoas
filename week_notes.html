@@ -279,11 +279,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 10</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="notebooks/week10/false_color_examples.html">52. Landsat 8 false color examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="solutions/assign6_solution.html">53. Assignment 6 solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/week10/phasor.html">54. Phasor examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/week10/phaseshift.html">55. phase shift examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions/assign7.html">52. Assignment 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/week10/false_color_examples.html">53. Landsat 8 false color examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions/assign6_solution.html">54. Assignment 6 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/week10/phasor.html">55. Phasor examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/week10/phaseshift.html">56. phase shift examples</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">Notes on the Doppler equation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link">https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link</a></li>
 </ul>
 
     </div>
@@ -559,24 +561,23 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-10">Week 10</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-29-monday">Day 29 Monday</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-google-collab-and-gemini-class-demo">Working with google Collab and Gemini – class demo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-7-due-monday-march24-at-midnight">Assignment 7 – due Monday March24 at midnight</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-part-1">Classification part 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stull-radar-problem">Stull Radar problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-29-monday">Day 29 Monday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-google-collab-and-gemini-class-demo">Working with google Collab and Gemini – class demo</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-7-due-monday-march24-at-midnight">Assignment 7 – due Monday March24 at midnight</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">For Wednesday</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-30-wednesday">Day 30 Wednesday</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-6-solutions">Assignment 6 solutions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-part-3-merging-changes-from-upstream-revised-from-monday">Github part 3: merging changes from upstream (revised from Monday)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-30-wednesday">Day 30 Wednesday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-6-solutions">Assignment 6 solutions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-part-3-merging-changes-from-upstream-revised-from-monday">Github part 3: merging changes from upstream (revised from Monday)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-and-collab">Github and Collab</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#doppler-notes">Doppler notes</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#read-for-friday">Read for Friday</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doppler-notes">Doppler notes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#read-for-friday">Read for Friday</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-31-friday">Day 31 Friday</a></li>
 </ul>
 </li>
 </ul>
@@ -1196,47 +1197,19 @@ does this using <a class="reference external" href="https://docs.github.com/en/a
 <li><p>Continue with false color notebook</p></li>
 <li><p><a class="reference internal" href="notebooks/week10/false_color_examples.html#week10-false-color-examples"><span class="std std-ref">Landsat 8 false color examples</span></a></p></li>
 </ul>
-</section>
 <section id="working-with-google-collab-and-gemini-class-demo">
-<h3>Working with google Collab and Gemini – class demo<a class="headerlink" href="#working-with-google-collab-and-gemini-class-demo" title="Link to this heading">#</a></h3>
+<h4>Working with google Collab and Gemini – class demo<a class="headerlink" href="#working-with-google-collab-and-gemini-class-demo" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://developers.google.com/earth-e%5Dngine/guides/access">register for google earth engine – create the project <code class="docutils literal notranslate"><span class="pre">ee-a301</span></code></a></p></li>
 <li><p><a class="reference external" href="https://github.com/phaustin/a301_eoas/blob/main/notebooks/week10/read_landsat_ee.ipynb">demonstration collab notebook</a></p></li>
 </ul>
 </section>
 <section id="assignment-7-due-monday-march24-at-midnight">
-<h3>Assignment 7 – due Monday March24 at midnight<a class="headerlink" href="#assignment-7-due-monday-march24-at-midnight" title="Link to this heading">#</a></h3>
-</section>
-<section id="classification-part-1">
-<h3>Classification part 1<a class="headerlink" href="#classification-part-1" title="Link to this heading">#</a></h3>
+<h4>Assignment 7 – due Monday March24 at midnight<a class="headerlink" href="#assignment-7-due-monday-march24-at-midnight" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p>Make a jupyter notebook that reproduces the false color examples
-in<a class="reference internal" href="notebooks/week10/false_color_examples.html#week10-false-color-examples"><span class="std std-ref">Landsat 8 false color examples</span></a> for your scene (you’ll need to rerun  <a class="reference internal" href="notebooks/week4/clip_bands.html#week4-clip-bands"><span class="std std-ref">Clipping multiple bands– v0.3</span></a> version 3 to get the clipped fmask, and rerun <a class="reference internal" href="notebooks/week2/get_landsat_bands.html#week2-hls"><span class="std std-ref">Landsat 1: Dowloading Landsat and Sentinel data from NASA</span></a> to download all of the HLS tifs for bands 1,2,3,4,5,6,7,9,10,11,fmask if you don’t have them).</p></li>
-<li><p>Choose one band combination that looks interesting, and compare it with the land classification you created using <a class="reference internal" href="notebooks/week9/rio_land_classification.html#week9-land-classes"><span class="std std-ref">Working with surface class data</span></a> for your image with the same bounding box and pixel size – comment on an y similarities and differences you can find.  Is the classification accurate?</p></li>
+<li><p><a class="reference internal" href="solutions/assign7.html#assign7"><span class="std std-ref">Assignment 7</span></a></p></li>
 </ul>
 </section>
-<section id="stull-radar-problem">
-<h3>Stull Radar problem<a class="headerlink" href="#stull-radar-problem" title="Link to this heading">#</a></h3>
-<p>Answer the following questions in a Jupyter notebook, using a function to define the radar equation.</p>
-<ol class="arabic simple">
-<li><p>Suppose a Nexrad radar (Stull p.~246)  is
-receiving a signal with returned power Pr = -58 dBm.  Using the radar
-equation find the precipitation rate under the assumption that
-there is no attenuation and that it is a rainstorm (i.e. liquid water)
-100 km away from the radar.</p></li>
-<li><p>Now keep everything the same, but make the mistake of guessing that it’s a snowstorm,
-which means that K2=0.208 and we use the snowfall Z-RR relation
-of <span class="math notranslate nohighlight">\(Z=2000*RR^2\)</span>.  What is the new incorrect  precip rate?</p></li>
-<li><p>Now assume it’s rain, but make the mistake of guessing that there’s a factor of La=2
-attenuation between the target and the rainstorm.  What is the new precip rate?</p></li>
-</ol>
-<p>Nexrad coefficients:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="c1">#coefficents for nexrad</span>
-    <span class="n">R1</span><span class="o">=</span><span class="mf">2.17e-10</span><span class="c1">#range factor, km, Stull 8.25</span>
-    <span class="n">Pt</span><span class="o">=</span><span class="mf">750.e3</span> <span class="c1">#transmitted power, W, stull p. 246</span>
-    <span class="n">b</span><span class="o">=</span><span class="mi">14255</span> <span class="c1">#equipment factor, Stull 8.26</span>
-</pre></div>
-</div>
 <section id="id16">
 <h4>For Wednesday<a class="headerlink" href="#id16" title="Link to this heading">#</a></h4>
 <ul class="simple">
@@ -1246,15 +1219,14 @@ attenuation between the target and the rainstorm.  What is the new precip rate?<
 </section>
 <section id="day-30-wednesday">
 <h3>Day 30 Wednesday<a class="headerlink" href="#day-30-wednesday" title="Link to this heading">#</a></h3>
-</section>
 <section id="assignment-6-solutions">
-<h3>Assignment 6 solutions<a class="headerlink" href="#assignment-6-solutions" title="Link to this heading">#</a></h3>
+<h4>Assignment 6 solutions<a class="headerlink" href="#assignment-6-solutions" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference internal" href="solutions/assign6_solution.html#assign6-solution"><span class="std std-ref">Assignment 6 solution</span></a></p></li>
 </ul>
 </section>
 <section id="github-part-3-merging-changes-from-upstream-revised-from-monday">
-<h3>Github part 3: merging changes from upstream (revised from Monday)<a class="headerlink" href="#github-part-3-merging-changes-from-upstream-revised-from-monday" title="Link to this heading">#</a></h3>
+<h4>Github part 3: merging changes from upstream (revised from Monday)<a class="headerlink" href="#github-part-3-merging-changes-from-upstream-revised-from-monday" title="Link to this heading">#</a></h4>
 <p>To get the new changes from my repository: <a class="github reference external" href="https://github.com/phaustin/a301_extras.git">phaustin/a301_extras.git</a> you need
 to add it to the list of repositories you can pull code from.  By tradition, your own remote github
 repository is called <code class="docutils literal notranslate"><span class="pre">origin</span></code> and the main remote repository that is the source of official releases is
@@ -1341,6 +1313,7 @@ delete it from your local repository</p>
 </div>
 </li>
 </ul>
+</section>
 <section id="github-and-collab">
 <h4>Github and Collab<a class="headerlink" href="#github-and-collab" title="Link to this heading">#</a></h4>
 <ul class="simple">
@@ -1359,9 +1332,8 @@ track/recover changes</p></li>
 </li>
 </ul>
 </section>
-</section>
 <section id="doppler-notes">
-<h3>Doppler notes<a class="headerlink" href="#doppler-notes" title="Link to this heading">#</a></h3>
+<h4>Doppler notes<a class="headerlink" href="#doppler-notes" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Two short reviews on phase and the unit circle</p>
 <ul>
@@ -1371,13 +1343,32 @@ track/recover changes</p></li>
 </li>
 </ul>
 <section id="read-for-friday">
-<h4>Read for Friday<a class="headerlink" href="#read-for-friday" title="Link to this heading">#</a></h4>
+<h5>Read for Friday<a class="headerlink" href="#read-for-friday" title="Link to this heading">#</a></h5>
 <ul class="simple">
 <li><p><a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">my doppler notes</a>
 (note my disagreement with Stull Figure 8.32, which doesn’t show a phase shift in the reflected wave.  See <a class="reference external" href="https://www.amherst.edu/system/files/media/1172/Lecture36%2520slides.pdf">slide 6 of these slides</a>.  It won’t matter
 for pulse-pair doppler radar however, because we are comparing two pulses that have both been reflected off of water drops.</p></li>
 </ul>
 </section>
+</section>
+</section>
+<section id="day-31-friday">
+<h3>Day 31 Friday<a class="headerlink" href="#day-31-friday" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Important concepts from Stull 8.3.1 and 8.3.2</p>
+<ul>
+<li><p>Size of radar sample volume</p></li>
+<li><p>Maximum unambiguous range (MUR)</p></li>
+<li><p>Z-RR relationship</p></li>
+<li><p>Radar equation</p></li>
+<li><p>bright band</p></li>
+</ul>
+</li>
+<li><p>Review my <a class="reference internal" href="notebooks/week8/radar.html#week8-radar"><span class="std std-ref">Notes on the radar equation</span></a> questions</p></li>
+<li><p>Review <a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">my doppler notes</a></p></li>
+<li><p>Compare the Nexrad radar (700,000 Watts, 8.5 meter diameter dish) with
+the <a class="reference external" href="https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link">Earthcare satellite</a></p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -1573,24 +1564,23 @@ for pulse-pair doppler radar however, because we are comparing two pulses that h
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-10">Week 10</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-29-monday">Day 29 Monday</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-google-collab-and-gemini-class-demo">Working with google Collab and Gemini – class demo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-7-due-monday-march24-at-midnight">Assignment 7 – due Monday March24 at midnight</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-part-1">Classification part 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stull-radar-problem">Stull Radar problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-29-monday">Day 29 Monday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-google-collab-and-gemini-class-demo">Working with google Collab and Gemini – class demo</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-7-due-monday-march24-at-midnight">Assignment 7 – due Monday March24 at midnight</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">For Wednesday</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-30-wednesday">Day 30 Wednesday</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-6-solutions">Assignment 6 solutions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-part-3-merging-changes-from-upstream-revised-from-monday">Github part 3: merging changes from upstream (revised from Monday)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-30-wednesday">Day 30 Wednesday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-6-solutions">Assignment 6 solutions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-part-3-merging-changes-from-upstream-revised-from-monday">Github part 3: merging changes from upstream (revised from Monday)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-and-collab">Github and Collab</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#doppler-notes">Doppler notes</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#read-for-friday">Read for Friday</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doppler-notes">Doppler notes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#read-for-friday">Read for Friday</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-31-friday">Day 31 Friday</a></li>
 </ul>
 </li>
 </ul>
