@@ -38,3 +38,8 @@ Turn in a notebook that: 
 
 - {ref}`assign6`
 - {ref}`assign6_solution`
+
+## Assignment 7
+
+- {ref}`assign7`
+

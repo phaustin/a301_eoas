@@ -111,12 +111,15 @@ parts:
 - caption: Week 10
   numbered: true
   chapters:
+    - file: solutions/assign7.md
     - file: notebooks/week10/false_color_examples.md
     - file: solutions/assign6_solution.md
     - file: notebooks/week10/phasor.md
     - file: notebooks/week10/phaseshift.md
     - url: https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link
       title: Notes on the Doppler equation
+    - url: https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link
+      
 
 
 

@@ -494,44 +494,14 @@ Read Stull through p. 255 on Doppler radar
 
 - {ref}`week10:false_color_examples`
 
-### Working with google Collab and Gemini -- class demo
+#### Working with google Collab and Gemini -- class demo
 
 - [register for google earth engine -- create the project `ee-a301`](https://developers.google.com/earth-e]ngine/guides/access)
 - [demonstration collab notebook](https://github.com/phaustin/a301_eoas/blob/main/notebooks/week10/read_landsat_ee.ipynb)
 
-### Assignment 7 -- due Monday March24 at midnight
+#### Assignment 7 -- due Monday March24 at midnight
 
-### Classification part 1
-
-- Make a jupyter notebook that reproduces the false color examples
-  in{ref}`week10:false_color_examples` for your scene (you'll need to rerun  {ref}`week4:clip_bands` version 3 to get the clipped fmask, and rerun {ref}`week2:hls` to download all of the HLS tifs for bands 1,2,3,4,5,6,7,9,10,11,fmask if you don't have them).
-- Choose one band combination that looks interesting, and compare it with the land classification you created using {ref}`week9:land_classes` for your image with the same bounding box and pixel size -- comment on an y similarities and differences you can find.  Is the classification accurate?
-
-### Stull Radar problem
-
-Answer the following questions in a Jupyter notebook, using a function to define the radar equation.
-
-1. Suppose a Nexrad radar (Stull p.~246)  is
-   receiving a signal with returned power Pr = -58 dBm.  Using the radar
-   equation find the precipitation rate under the assumption that
-   there is no attenuation and that it is a rainstorm (i.e. liquid water)
-   100 km away from the radar.
-
-2. Now keep everything the same, but make the mistake of guessing that it's a snowstorm,
-   which means that K2=0.208 and we use the snowfall Z-RR relation
-   of $Z=2000*RR^2$.  What is the new incorrect  precip rate?
-   
-3. Now assume it's rain, but make the mistake of guessing that there's a factor of La=2
-   attenuation between the target and the rainstorm.  What is the new precip rate?
-
-Nexrad coefficients:
-
-```
-    #coefficents for nexrad
-    R1=2.17e-10#range factor, km, Stull 8.25
-    Pt=750.e3 #transmitted power, W, stull p. 246
-    b=14255 #equipment factor, Stull 8.26
-```
+- {ref}`assign7`
 
 #### For Wednesday
 
@@ -539,11 +509,11 @@ Nexrad coefficients:
 
 ### Day 30 Wednesday
 
-### Assignment 6 solutions
+#### Assignment 6 solutions
 
 - {ref}`assign6_solution`
 
-### Github part 3: merging changes from upstream (revised from Monday)
+#### Github part 3: merging changes from upstream (revised from Monday)
 
 
 To get the new changes from my repository: [https://github.com/phaustin/a301_extras.git](https://github.com/phaustin/a301_extras.git) you need
@@ -644,16 +614,33 @@ To add a remote repository:
     track/recover changes
   - work through read_landsat_ee.ipynb
     
-### Doppler notes
+#### Doppler notes
 
 - Two short reviews on phase and the unit circle
   - {ref}`phasor_examples`
   - {ref}`phase_shiftb`
 
-#### Read for Friday
+##### Read for Friday
 
 -  [my doppler notes](https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link)
    (note my disagreement with Stull Figure 8.32, which doesn't show a phase shift in the reflected wave.  See [slide 6 of these slides](https://www.amherst.edu/system/files/media/1172/Lecture36%2520slides.pdf).  It won't matter
    for pulse-pair doppler radar however, because we are comparing two pulses that have both been reflected off of water drops.
    
    
+### Day 31 Friday
+
+- Important concepts from Stull 8.3.1 and 8.3.2
+  - Size of radar sample volume
+  - Maximum unambiguous range (MUR)
+  - Z-RR relationship
+  - Radar equation
+  - bright band
+  
+- Review my {ref}`week8:radar` questions
+- Review [my doppler notes](https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link)
+- Compare the Nexrad radar (700,000 Watts, 8.5 meter diameter dish) with
+  the [Earthcare satellite](https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link)
+  
+#### Do for Monday
+
+- Finish - {ref}`assign7`
