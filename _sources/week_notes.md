@@ -641,3 +641,6 @@ To add a remote repository:
 - Compare the Nexrad radar (700,000 Watts, 8.5 meter diameter dish) with
   the [Earthcare satellite](https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link)
   
+#### Do for Monday
+
+- Finish - {ref}`assign7`
