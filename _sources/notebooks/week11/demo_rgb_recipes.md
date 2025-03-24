@@ -12,10 +12,12 @@ kernelspec:
   name: python3
 ---
 
+(week11:goesrgb2)=
+# GOES ABI RGB Recipes
+
 **Brian Blaylock**  
 **September 26, 2019**
 
-# GOES ABI RGB Recipes
 
 For details on the RGB recipies below see  the [RAMMB CIRA](http://rammb.cira.colostate.edu/training/visit/quick_guides/) website
 for GOES-R, including:

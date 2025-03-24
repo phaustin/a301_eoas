@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -456,18 +456,21 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="goes-stability-indices">
-<h1><span class="section-number">59. </span>GOES stability indices<a class="headerlink" href="#goes-stability-indices" title="Link to this heading">#</a></h1>
-<p>Another GOES level 2 product is “”ABI-L2-DSI”, which stands for “Advanced Baseline Imager, Level 2, Derived Stability Indices”</p>
+<span id="week11-stability"></span><h1><span class="section-number">59. </span>GOES stability indices<a class="headerlink" href="#goes-stability-indices" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Another GOES level 2 product is “”ABI-L2-DSI”, which stands for “Advanced Baseline Imager, Level 2, Derived Stability Indices”’</p></li>
+<li><p>This product and all other products available on amazon, are listed
+<a class="reference external" href="https://docs.opendata.aws/noaa-goes16/cics-readme.html">here</a></p></li>
+</ul>
 <section id="some-review">
 <h2><span class="section-number">59.1. </span>Some review<a class="headerlink" href="#some-review" title="Link to this heading">#</a></h2>
 <p>Stability indices are a shorthand proxy for CAPE, the convective available potential energy that lifts surface air upward into the atmosphere.</p>
 <ul class="simple">
 <li><p>A list of indices: <a class="reference external" href="https://www.weather.gov/lmk/indices">from NOAA</a>.</p></li>
-<li><p>Remember how cape is calculated, for example, here’s an <a class="reference external" href="https://phaustin.github.io/a405_2024/notebooks/worksheets/cape_part1.html">ATSC 405 notebook</a></p></li>
+<li><p>Remember how  CAPE is calculated, for example, here’s an <a class="reference external" href="https://phaustin.github.io/a405_2024/notebooks/worksheets/cape_part1.html">ATSC 405 notebook</a></p></li>
 <li><p>How do you do this with the GOES channels?  Recall our <a class="reference internal" href="../week6/weighting_functions.html#week6-weighting-funs"><span class="std std-ref">Weighting functions for temperature retrieval</span></a> notebook and Stull Section 8.2.4.  The GOES-R satellite series has 7 channels with different weight functions you can look at
 <a class="reference external" href="https://cimss.ssec.wisc.edu/goes-wf/plot-viewer/#/plot-viewer/plot/model/abi18/default/20250323_1200Z/50,240">at this link</a>.  For each pixel, the GOES postprocessing software fits temperature and vapor soundings to best reproduce those 7 radiance measurements, much like Roland does in that section.  This produces temperature and vapor values at 105 separate pressure levels, which are used to calculate the CAPE and the indices below.</p></li>
 </ul>
-<p>https://cimss.ssec.wisc.edu/goes-wf/plot-viewer/#/plot-viewer/plot/model/abi18/default/20250323_1200Z/50,240</p>
 </section>
 <section id="simple-rgb-figure">
 <h2><span class="section-number">59.2. </span>Simple RGB Figure<a class="headerlink" href="#simple-rgb-figure" title="Link to this heading">#</a></h2>

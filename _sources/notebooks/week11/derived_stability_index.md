@@ -12,11 +12,14 @@ kernelspec:
   name: python3
 ---
 
+(week11:stability)=
 # GOES stability indices
 
 +++
 
-Another GOES level 2 product is ""ABI-L2-DSI", which stands for "Advanced Baseline Imager, Level 2, Derived Stability Indices"
+- Another GOES level 2 product is ""ABI-L2-DSI", which stands for "Advanced Baseline Imager, Level 2, Derived Stability Indices"'
+- This product and all other products available on amazon, are listed
+  [here](https://docs.opendata.aws/noaa-goes16/cics-readme.html)
 
 +++
 
@@ -26,15 +29,10 @@ Stability indices are a shorthand proxy for CAPE, the convective available poten
 
 - A list of indices: [from NOAA](https://www.weather.gov/lmk/indices).  
 
-- Remember how cape is calculated, for example, here's an [ATSC 405 notebook](https://phaustin.github.io/a405_2024/notebooks/worksheets/cape_part1.html)
+- Remember how  CAPE is calculated, for example, here's an [ATSC 405 notebook](https://phaustin.github.io/a405_2024/notebooks/worksheets/cape_part1.html)
 
 - How do you do this with the GOES channels?  Recall our {ref}`week6:weighting_funs` notebook and Stull Section 8.2.4.  The GOES-R satellite series has 7 channels with different weight functions you can look at
 [at this link](https://cimss.ssec.wisc.edu/goes-wf/plot-viewer/#/plot-viewer/plot/model/abi18/default/20250323_1200Z/50,240).  For each pixel, the GOES postprocessing software fits temperature and vapor soundings to best reproduce those 7 radiance measurements, much like Roland does in that section.  This produces temperature and vapor values at 105 separate pressure levels, which are used to calculate the CAPE and the indices below.
-
-
-+++
-
-https://cimss.ssec.wisc.edu/goes-wf/plot-viewer/#/plot-viewer/plot/model/abi18/default/20250323_1200Z/50,240
 
 +++
 

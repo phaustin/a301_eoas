@@ -650,7 +650,7 @@ To add a remote repository:
 ### Day 32 Monday
 
 - {ref}`assign5_solution`
-- {ref}`week11:goesrgb`
+- {ref}`week11:goesrgb2`
 - {ref}`week11:stability`
 
 
