@@ -119,6 +119,13 @@ parts:
     - url: https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link
       title: Notes on the Doppler equation
     - url: https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link
+      title: Slides on the EarthCare mission
+- caption: Week 11
+  numbered: true
+  chapters:
+    - file: solutions/assign5_solution.md
+    - file: notebooks/week11/demo_rgb_recipes.md
+    - file: notebooks/week11/derived_stability_index.md
       
 
 

@@ -644,3 +644,16 @@ To add a remote repository:
 #### Do for Monday
 
 - Finish - {ref}`assign7`
+
+## Week 11
+
+### Day 32 Monday
+
+- {ref}`assign5_solution`
+- {ref}`week11:goesrgb2`
+- {ref}`week11:stability`
+
+
+#### Do for Wednesday
+
+- Start on the [Assignment 8 doppler problem](https://drive.google.com/file/d/1OrIQnwRJGdkDhQyKtjNVtlctEZH0EgJc/view?usp=drive_link) using the [NOAA Doppler notes](https://drive.google.com/file/d/1893L784j7aXhY14_aFlXgbjS97uzaBai/view?usp=drive_link)

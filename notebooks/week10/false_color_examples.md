@@ -251,7 +251,7 @@ def make_false_color(
     ----------
 
     the_ds:
-       output og get_landsat_datascene -- must contain at least 3 bands and Fmask
+       created by make_dataset -- must contain at least 3 bands and Fmask
     band_names: 
        list of strings with the names of the bands to be mapped to red, green and blue
 
