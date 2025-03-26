@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -292,6 +292,7 @@
 <li class="toctree-l1"><a class="reference internal" href="solutions/assign5_solution.html">57. Assignment 5 solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/week11/demo_rgb_recipes.html">58. GOES ABI RGB Recipes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/week11/derived_stability_index.html">59. GOES stability indices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/week11/plot_earthcare.html">60. Reading earthcare level1b data</a></li>
 </ul>
 
     </div>
@@ -592,6 +593,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-11">Week 11</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-32-monday">Day 32 Monday</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Do for Wednesday</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-33-wednesday">Day 33 Wednesday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Do for Friday</a></li>
 </ul>
 </li>
 </ul>
@@ -1409,6 +1414,21 @@ the <a class="reference external" href="https://drive.google.com/file/d/1ZQ_uq4S
 </ul>
 </section>
 </section>
+<section id="day-33-wednesday">
+<h3>Day 33 Wednesday<a class="headerlink" href="#day-33-wednesday" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Go over how to approach the the <a class="reference external" href="https://drive.google.com/file/d/1OrIQnwRJGdkDhQyKtjNVtlctEZH0EgJc/view?usp=drive_link">Assignment 8 doppler problem</a>
+using the first guess/second guess phasor discussion from the <a class="reference external" href="https://drive.google.com/file/d/1893L784j7aXhY14_aFlXgbjS97uzaBai/view?usp=drive_link">NOAA Doppler notes</a></p></li>
+<li><p>Introduce the earthcare cases:  <a class="reference internal" href="notebooks/week11/plot_earthcare.html#week11-earthcare"><span class="std std-ref">Reading earthcare level1b data</span></a></p></li>
+</ul>
+<section id="id19">
+<h4>Do for Friday<a class="headerlink" href="#id19" title="Link to this heading">#</a></h4>
+<p>Use code in the <a class="reference internal" href="notebooks/week8/goes_landsat_rio.html#week8-goes-landsat-rio"><span class="std std-ref">Combining goes and landsat data using rioxarray</span></a> notebook to find a GOES 16 image that is taken
+as close as possible to your earthcare radar segment.  Plot the truecolor image using the
+goes2go rgb module, clip it to a reasonable lat, lon square and overlay your earthcare
+groundtrack</p>
+</section>
+</section>
 </section>
 </section>
 
@@ -1628,6 +1648,10 @@ the <a class="reference external" href="https://drive.google.com/file/d/1ZQ_uq4S
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-11">Week 11</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-32-monday">Day 32 Monday</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Do for Wednesday</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-33-wednesday">Day 33 Wednesday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Do for Friday</a></li>
 </ul>
 </li>
 </ul>

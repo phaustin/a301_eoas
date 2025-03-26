@@ -657,3 +657,20 @@ To add a remote repository:
 #### Do for Wednesday
 
 - Start on the [Assignment 8 doppler problem](https://drive.google.com/file/d/1OrIQnwRJGdkDhQyKtjNVtlctEZH0EgJc/view?usp=drive_link) using the [NOAA Doppler notes](https://drive.google.com/file/d/1893L784j7aXhY14_aFlXgbjS97uzaBai/view?usp=drive_link)
+
+
+### Day 33 Wednesday
+
+- Go over how to approach the the [Assignment 8 doppler problem](https://drive.google.com/file/d/1OrIQnwRJGdkDhQyKtjNVtlctEZH0EgJc/view?usp=drive_link)
+  using the first guess/second guess phasor discussion from the [NOAA Doppler notes](https://drive.google.com/file/d/1893L784j7aXhY14_aFlXgbjS97uzaBai/view?usp=drive_link)
+
+- Introduce the earthcare cases:  {ref}`week11:earthcare` 
+
+#### Do for Friday
+
+Use code in the {ref}`week8:goes_landsat_rio` notebook to find a GOES 16 image that is taken
+as close as possible to your earthcare radar segment.  Plot the truecolor image using the
+goes2go rgb module, clip it to a reasonable lat, lon square and overlay your earthcare
+groundtrack
+
+
