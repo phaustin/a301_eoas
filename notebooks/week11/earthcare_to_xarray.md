@@ -12,8 +12,8 @@ kernelspec:
   name: python3
 ---
 
-(week11:earthcare)=
-# Reading earthcare level1b data
+(week11:earthcare_xarray)=
+# Convert earthcare to xarray
 
 This notebook does a quick inspection of one of the earthcare cases, with
 plots of the radar reflectivity and doppler velocity.  The earthcare data
@@ -82,61 +82,6 @@ These are netcdf files, so no dimensions or coordinates, we'll need to
 create these.  Start by naming the time and height dimensions
 
 ```{code-cell} ipython3
-cpr_data = xr.open_dataset(filepaths[casenum], engine='h5netcdf', group='/ScienceData/Data',
-                            decode_times=True,  phony_dims='access')
-cpr_data = cpr_data.rename_dims({'phony_dim_0':'time','phony_dim_1': 'height'})
-
-cpr_meta = xr.open_dataset(filepaths[casenum], engine='h5netcdf', group='/ScienceData/Geo',
-                           decode_times=True, phony_dims='access')
-cpr_meta = cpr_meta.rename_dims({'phony_dim_0':'time','phony_dim_1': 'height'})
-```
-
-```{code-cell} ipython3
-cpr_meta
-```
-
-## construct height, time, distance coords
-
-+++
-
-### get times
-
-```{code-cell} ipython3
-def find_times(filepath):
-    """
-    times are stored as seconds after Jan 1, 2000
-    use the datetime.timedelta function to increment from
-    that start time
-
-    Also set the timezone as utc
-    """
-    cpr_meta = xr.open_dataset(filepath, engine='h5netcdf', group='/ScienceData/Geo',
-                           decode_times=False, phony_dims='access')
-    times = cpr_meta['profileTime'].data
-    start_time = datetime.datetime(2000,1,1,0,0,0)
-    the_times =[start_time + datetime.timedelta(seconds=item) for item in times]
-    the_times = [item.replace(tzinfo = pytz.utc) for item in the_times]
-    return the_times
-```
-
-```{code-cell} ipython3
-the_times = find_times(filepaths[casenum])
-print(len(the_times))
-the_times[:4]
-```
-
-### print the case times
-
-```{code-cell} ipython3
-for casename in sorted_keys:
-    filepath = filepaths[casename]
-    check_times = find_times(filepath)
-    print(casename, check_times[0], check_times[-1])
-```
-
-### get binheights
-
-```{code-cell} ipython3
 def get_binheights(cpr_meta):
     """
     the radar bin heights are stored for every radar pulse.  If the terrain is
@@ -160,16 +105,22 @@ def get_binheights(cpr_meta):
             new_y.append(float(old_y))
     return np.array(new_y)
 
-heights = get_binheights(cpr_meta)
-```
+def find_times(filepath):
+    """
+    times are stored as seconds after Jan 1, 2000
+    use the datetime.timedelta function to increment from
+    that start time
 
-### get the along-track distance
+    Also set the timezone as utc
+    """
+    cpr_meta = xr.open_dataset(filepath, engine='h5netcdf', group='/ScienceData/Geo',
+                           decode_times=False, phony_dims='access')
+    times = cpr_meta['profileTime'].data
+    start_time = datetime.datetime(2000,1,1,0,0,0)
+    the_times =[start_time + datetime.timedelta(seconds=item) for item in times]
+    the_times = [item.replace(tzinfo = pytz.utc) for item in the_times]
+    return the_times
 
-We want to turn time into distance, so use pyproj to
-find the great circle distance between each set of pulses,
-using their lon, lat coords
-
-```{code-cell} ipython3
 great_circle=pyproj.Geod(ellps='WGS84')
 meters2km = 1.e-3
 def calc_distance(lonvec,latvec):
@@ -181,24 +132,95 @@ def calc_distance(lonvec,latvec):
         startlon,startlat = lon, lat
     distance=np.array(distance)*meters2km
     return distance
-```
 
-```{code-cell} ipython3
-lonvec = cpr_meta['longitude'].data
-latvec = cpr_meta['latitude'].data
-distance = calc_distance(lonvec, latvec)
-distance[:4]
-```
-
-## add time, height coords
-
-```{code-cell} ipython3
-coords = dict(time=("time", the_times),
+def ec_to_xarray(ec_filepath):
+    #
+    # read the h5 files into xarray dataarrays
+    # 
+    cpr_data = xr.open_dataset(ec_filepath, engine='h5netcdf', group='/ScienceData/Data',
+                                decode_times=False,  phony_dims='access')
+    cpr_data = cpr_data.rename_dims({'phony_dim_0':'time','phony_dim_1': 'height'})
+    cpr_meta = xr.open_dataset(ec_filepath, engine='h5netcdf', group='/ScienceData/Geo',
+                               decode_times=False, phony_dims='access')
+    cpr_meta = cpr_meta.rename_dims({'phony_dim_0':'time','phony_dim_1': 'height'})
+    lonvec = cpr_meta['longitude']
+    latvec = cpr_meta['latitude']
+    distance = calc_distance(lonvec.data, latvec.data)
+    the_times = find_times(filepaths[casenum])
+    heights = get_binheights(cpr_meta)
+    coords = dict(time=("time", the_times),
               height=("height",heights),
               distance = ("time",distance))
-cpr_meta = cpr_meta.assign_coords(coords=coords)
-cpr_data = cpr_data.assign_coords(coords=coords)
+    # cpr_meta = cpr_meta.assign_coords(coords=coords)
+    # cpr_data = cpr_data.assign_coords(coords=coords)
+    velocity = cpr_data['dopplerVelocity'].T
+    radar = cpr_data['radarReflectivityFactor'].T
+    dbZ = 10*np.log10(radar)
+    #velocity =velocity.set_xindex("distance")
+    #dbZ = dbZ.set_xindex("distance")
+    binHeights = cpr_meta.binHeight[...].T
+    attrs=dict(history = f"written by ec_to_xarray on {str(datetime.datetime.now())}")
+    var_dict = dict(dbZ = dbZ , velocity=velocity,binHeights=binHeights,
+                   longitude=lonvec, latitude=latvec)
+    ds_earthcare = xr.Dataset(data_vars=var_dict,
+        coords=coords,attrs=attrs)
+    ds_earthcare=ds_earthcare.set_xindex("distance")
+    print(f"{binHeights.dims=},{binHeights.shape=}")
+    print(f"{velocity.dims=},{velocity.shape=}")
+    print(f"{dbZ.dims=},{dbZ.shape=}")
+    #ds_earthcare = None
+    return ds_earthcare
+    
+
+    
+    
 ```
+
+```{code-cell} ipython3
+str(datetime.datetime.now())
+```
+
+```{code-cell} ipython3
+filepaths[casenum]
+test = ec_to_xarray(filepaths[casenum])
+test
+```
+
+## construct height, time, distance coords
+
++++
+
+### get times
+
+```{code-cell} ipython3
+filepath = filepaths[casenum]
+cpr_meta = xr.open_dataset(filepath, engine='h5netcdf', group='/ScienceData/Geo',
+                           decode_times=False, phony_dims='access')
+cpr_meta
+```
+
+### print the case times
+
+```{code-cell} ipython3
+for casename in sorted_keys:
+    filepath = filepaths[casename]
+    check_times = find_times(filepath)
+    print(casename, check_times[0], check_times[-1])
+```
+
+### get binheights
+
++++
+
+### get the along-track distance
+
+We want to turn time into distance, so use pyproj to
+find the great circle distance between each set of pulses,
+using their lon, lat coords
+
++++
+
+## add time, height coords
 
 ```{code-cell} ipython3
 cpr_meta.coords
