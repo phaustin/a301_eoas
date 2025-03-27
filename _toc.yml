@@ -126,6 +126,8 @@ parts:
     - file: solutions/assign5_solution.md
     - file: notebooks/week11/demo_rgb_recipes.md
     - file: notebooks/week11/derived_stability_index.md
+    - file: notebooks/week11/plot_earthcare.md
+      
       
 
 
