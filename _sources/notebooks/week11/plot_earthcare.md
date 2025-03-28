@@ -56,7 +56,11 @@ for filepath in radar_filepaths:
     relpath = filepath.relative_to(data_dir)
     casename = relpath.parts[0]
     filepaths[casename]=filepath
-    
+relpath
+```
+
+```{code-cell} ipython3
+filepaths
 ```
 
 ```{code-cell} ipython3
@@ -117,6 +121,7 @@ def find_times(filepath):
 
 ```{code-cell} ipython3
 the_times = find_times(filepaths[casenum])
+print(len(the_times))
 the_times[:4]
 ```
 
@@ -125,8 +130,8 @@ the_times[:4]
 ```{code-cell} ipython3
 for casename in sorted_keys:
     filepath = filepaths[casename]
-    the_times = find_times(filepath)
-    print(casename, the_times[0], the_times[-1])
+    check_times = find_times(filepath)
+    print(casename, check_times[0], check_times[-1])
 ```
 
 ### get binheights
@@ -188,10 +193,15 @@ distance[:4]
 ## add time, height coords
 
 ```{code-cell} ipython3
-# coords = dict(time=("time", the_times),
-#               height=("height",heights))
-# cpr_meta = cpr_meta.assign_coords(coords=coords)
-# cpr_data = cpr_data.assign_coords(coords=coords)
+coords = dict(time=("time", the_times),
+              height=("height",heights),
+              distance = ("time",distance))
+cpr_meta = cpr_meta.assign_coords(coords=coords)
+cpr_data = cpr_data.assign_coords(coords=coords)
+```
+
+```{code-cell} ipython3
+cpr_meta.coords
 ```
 
 ## plot the radar reflectivity
@@ -210,8 +220,12 @@ len(distance),dbZ.shape,len(heights)
 ```
 
 ```{code-cell} ipython3
+dbZ.coords
+```
+
+```{code-cell} ipython3
 fig, ax = plt.subplots(1, 1, figsize=(12, 4))
-dbZ.plot.pcolormesh(yincrease=False,vmin=-3,vmax=25);
+dbZ.plot.pcolormesh(x="distance",y="height",vmin=-3,vmax=25);
 ax.set_title(casenum);
 ```
 
@@ -223,8 +237,14 @@ velocity = cpr_data['dopplerVelocity'].T
 
 ```{code-cell} ipython3
 fig, ax = plt.subplots(1, 1, figsize=(12, 4))
-velocity.plot.pcolormesh(yincrease=False,vmin=-3,vmax=3);
+velocity.plot.pcolormesh(ax=ax,x="distance",y="height",vmin=-3,vmax=3)
+ax.set_xlabel("distance (km)")
+ax.set_ylabel("height (m)")
 ax.set_title(casenum);
+```
+
+```{code-cell} ipython3
+velocity =velocity.set_xindex("distance")
 ```
 
 ## Your assignment

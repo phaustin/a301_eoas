@@ -1,0 +1,1649 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>61. Convert earthcare to xarray &#8212; ATSC 301</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week11/earthcare_to_xarray';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week11/earthcare_to_xarray.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="62. Radar Problems – solution" href="../../solutions/assign7_radar_solution.html" />
+    <link rel="prev" title="60. Reading earthcare level1b data" href="plot_earthcare.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ATSC 301</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    ATSC 301: 2024 Term 2 Winter
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Useful links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">ATSC 301: syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrity.html">UBC academic integrity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../texts.html">Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pixi_install.html">pixi install for macos and windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windows_install.html">Windows installation using a conda lock file</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)">Notebook downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebook_index.html">code snippets by notebook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Week notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_review.html">Weekly review</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midterm</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../midterm/midterm_focus.html">1. Study topics for midterm</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1E6Gs6zUARHdEAb2UqIyMnyXj-jCiOiXw/view?usp=drive_link">2025 mid-term equation sheet</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/12ZDN8NZzgafeCMDTy4t0u-w80o3-foNT/view?usp=sharing">2022 mid-term</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI.html">2. Sample mid-term questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII.html">3. Midterm review questions II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI_solutions.html">4. Midterm Solutions: midterm sample questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII_solutions.html">5. Midterm solutions: sample questions II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/midterm/a301_2024t2_midterm_solution.html">6. A301 midterm solutions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">7. Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">8. Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">9. Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">10. Plotting the Planck function with python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week2/planck_sol.html">11. Plotting the Planck function - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/assign1.html">12. Assignment 1, brightness temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_maps.html">13. Introduction to Cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_mapping_vancouver.html">14. Mapping Vancouver with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/get_landsat_bands.html">15. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">16. Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">17. Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">18. Zooming an image</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">20. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">21. Optical depth and partial transmission</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">22. Clipping multiple bands– v0.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">23. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">24. Assignment 2: solutions Part A</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">25. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">26. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">27. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">28. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">29. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">30. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">31. Hydrostatic balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">32. Cartopy mapping Buenos Aires</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">33. Assignment 3: solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/hydrostatic_balance.html">34. Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">35. Weighting functions for temperature retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">36. Finding the heating rate of the atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/assign4_two_layer_sol.html">37. Assignment 4 two layer solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4_solution.html">38. Assignment 4 solutions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week7/false_color.html">39. Making color composite (“false color”) images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week7/fmask.html">40. Using fmask to mask water pixels</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week8/install_part1.html">41. Python packages Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_true_color.html">42. GOES-16: True Color Images from GOES ABI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat.html">43. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat_rio.html">44. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6.html">45. Assignment 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/radar.html">46. Notes on the radar equation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 9</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week9/clip_demo.html">47. Clipping issues: What happened to Stanley Park?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/rio_land_classification.html">48. Working with surface class data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/flux_schwartzchild.html">49. Integrating the Schwartzchild equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/diffuse_flux_python.html">50. Calculating the diffuse flux: python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/marshall_palmer.html">51. Notes on the Marshall-Palmer distribution and the Z-RR relation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 10</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7.html">52. Assignment 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week10/false_color_examples.html">53. Landsat 8 false color examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6_solution.html">54. Assignment 6 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week10/phasor.html">55. Phasor examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week10/phaseshift.html">56. phase shift examples</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">Notes on the Doppler equation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link">Slides on the EarthCare mission</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 11</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign5_solution.html">57. Assignment 5 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demo_rgb_recipes.html">58. GOES ABI RGB Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="derived_stability_index.html">59. GOES stability indices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_earthcare.html">60. Reading earthcare level1b data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">61. Convert earthcare to xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7_radar_solution.html">62. Radar Problems – solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phasor_notes.html">63. Notes on phasors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/week11/earthcare_to_xarray.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Convert earthcare to xarray</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">61.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-case-files">61.2. Find the case files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#this-functions-sorts-the-cases-by-case-number">61.2.1. This functions sorts the cases by case number</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-case-4">61.2.2. Pick case 4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-coordinates">61.3. Get coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-dataset">61.4. Create the dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#call-ec-to-xarray">61.4.1. call ec_to_xarray</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-radar-reflectivity">61.4.2. Plot the radar reflectivity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">61.5. Data cleaning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-find-the-new-index-for-the-start">61.5.1. First find the new index for the start</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replace-the-height-coordinates-with-the-value-at-index-1924">61.5.2. Replace the height coordinates with the value at index 1924</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-with-new-height-coordinate">61.5.3. Plot with new height coordinate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-first-1000-km">61.5.4. Crop first 1000 km</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cropped-plot-original-x-axis">61.5.5. Cropped plot - original x axis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rewrite-the-distance-coordinate">61.5.6. rewrite the distance coordinate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cropped-plot-new-x-axis">61.5.7. Cropped plot – new x axis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-dataset-to-netcdf">61.6. Save the dataset to netcdf</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-datetimes-to-numpy-datetime64-objects">61.6.1. convert datetimes to numpy.datetime64 objects</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#read-it-back-in-to-check">61.6.1.1. Read it back in to check</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="convert-earthcare-to-xarray">
+<span id="week11-earthcare-xarray"></span><h1><span class="section-number">61. </span>Convert earthcare to xarray<a class="headerlink" href="#convert-earthcare-to-xarray" title="Link to this heading">#</a></h1>
+<p>This notebook reads in an earthcare hdf5 file and converts it to an xarray dataset by adding
+dimensions, coordinates and variables.
+We store the height of the first ray, the time and the along-track distance as coordinates, and the longitude,
+latitude, reflectivity in dbZ and doppler velocity as variables.</p>
+<p>The first 1000 km of the data have a height glitch, so in the second part of the notebook we show how to
+remove the bad data by cropping on the distance coordinate, rewrite the coordinates with the new height, distance
+coordinates, and write the dataset out to a netcdf file.</p>
+<section id="installation">
+<h2><span class="section-number">61.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Download a case folder from the satdata/earthcare folder on our
+<a class="reference external" href="https://drive.google.com/drive/folders/1-D6y9MlE8LZRLZg-qRCxPZSgar8kGjBT?usp=drive_link">gdrive folder</a></p></li>
+<li><p>fetch and rebase from upstream/main to get this notebook in week11. You’ll want to
+modify this notebook to work with your case, so checkout and rebase on to your
+initials branch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">fetch</span> <span class="n">upstream</span>
+<span class="n">git</span> <span class="n">rebase</span> <span class="n">upstream</span><span class="o">/</span><span class="n">main</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">your_initials</span>
+<span class="n">git</span> <span class="n">rebase</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">push</span>
+</pre></div>
+</div>
+<p>To save your work:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;commit message&#39;</span>
+<span class="n">git</span> <span class="n">push</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyproj</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytz</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyproj</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="find-the-case-files">
+<h2><span class="section-number">61.2. </span>Find the case files<a class="headerlink" href="#find-the-case-files" title="Link to this heading">#</a></h2>
+<p>Organize them in a dictionary keyed by the case name, which
+is at the start of the relative file path.  pathlib has a function that
+finds the relative path, and also can break the folder path into
+its various parts</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;repos/a301/satdata/earthcare&#39;</span>
+<span class="n">radar_filepaths</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;**/*.h5&quot;</span><span class="p">))</span>
+<span class="n">filepaths</span><span class="o">=</span><span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">filepath</span> <span class="ow">in</span> <span class="n">radar_filepaths</span><span class="p">:</span>
+    <span class="n">relpath</span> <span class="o">=</span> <span class="n">filepath</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
+    <span class="n">casename</span> <span class="o">=</span> <span class="n">relpath</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">filepaths</span><span class="p">[</span><span class="n">casename</span><span class="p">]</span><span class="o">=</span><span class="n">filepath</span>
+<span class="n">relpath</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PosixPath(&#39;case4/ECA_JXCA_CPR_NOM_1B_20241213T224328Z_20250213T185124Z_03096D.h5&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="this-functions-sorts-the-cases-by-case-number">
+<h3><span class="section-number">61.2.1. </span>This functions sorts the cases by case number<a class="headerlink" href="#this-functions-sorts-the-cases-by-case-number" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sort_keys</span><span class="p">(</span><span class="n">the_case</span><span class="p">):</span>
+    <span class="c1">#</span>
+    <span class="c1"># the case number starts after &#39;case&#39; at position 4</span>
+    <span class="c1">#</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="n">the_case</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>
+    <span class="c1">#</span>
+    <span class="c1"># return case number as an integer so it will sort</span>
+    <span class="c1"># correctly</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pick-case-4">
+<h3><span class="section-number">61.2.2. </span>Pick case 4<a class="headerlink" href="#pick-case-4" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">filepaths</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">sorted_keys</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">sort_keys</span><span class="p">)</span>
+<span class="n">casenum</span> <span class="o">=</span> <span class="s1">&#39;case4&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="get-coordinates">
+<h2><span class="section-number">61.3. </span>Get coordinates<a class="headerlink" href="#get-coordinates" title="Link to this heading">#</a></h2>
+<p>The  three functions below calculate vectors of height, time and distance that
+can be used as coordinates for axis labeling, and as indexes for
+selecting/cropping values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_binheight</span><span class="p">(</span><span class="n">the_bins</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    select one of the the radar bin heights and fill in missing data with</span>
+<span class="sd">    estimated values.  By default we&#39;ll</span>
+<span class="sd">    take index=0, i.e. the bin heights for the first pulse</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">the_bins</span> <span class="o">=</span> <span class="n">the_bins</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+    <span class="n">diff_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">the_bins</span><span class="p">)</span>
+    <span class="n">del_y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">diff_bins</span><span class="p">))</span>
+    <span class="n">new_y</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">the_bins</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+    <span class="k">for</span> <span class="n">count</span><span class="p">,</span><span class="n">old_y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">the_bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="c1">#</span>
+        <span class="c1"># found a nan to be replaced</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">old_y</span><span class="p">):</span>
+            <span class="n">new_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">new_y</span><span class="p">[</span><span class="n">count</span><span class="p">])</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">del_y</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">old_y</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">new_y</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_times</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    times are stored as seconds after Jan 1, 2000 UTC</span>
+<span class="sd">    use the datetime.timedelta function to increment from</span>
+<span class="sd">    that start time</span>
+
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cpr_meta</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;h5netcdf&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;/ScienceData/Geo&#39;</span><span class="p">,</span>
+                           <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">phony_dims</span><span class="o">=</span><span class="s1">&#39;access&#39;</span><span class="p">)</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">cpr_meta</span><span class="p">[</span><span class="s1">&#39;profileTime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">the_times</span> <span class="o">=</span><span class="p">[</span><span class="n">start_time</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">times</span><span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="c1"># netcdf doesn&#39;t understand timezones so document the UTC timezone in</span>
+    <span class="c1"># the metadata</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">the_times</span>
+
+<span class="n">great_circle</span><span class="o">=</span><span class="n">pyproj</span><span class="o">.</span><span class="n">Geod</span><span class="p">(</span><span class="n">ellps</span><span class="o">=</span><span class="s1">&#39;WGS84&#39;</span><span class="p">)</span>
+<span class="n">meters2km</span> <span class="o">=</span> <span class="mf">1.e-3</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calc_distance</span><span class="p">(</span><span class="n">lonvec</span><span class="p">,</span><span class="n">latvec</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    the pyproj.Geod object calculates the lat, lon between</span>
+<span class="sd">    2 points on a great circle, and the inverse calculates</span>
+<span class="sd">    the great circle distance between 2 lot/lon points</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">distance</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">startlon</span><span class="p">,</span><span class="n">startlat</span> <span class="o">=</span> <span class="n">lonvec</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">latvec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">lon</span><span class="p">,</span><span class="n">lat</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">lonvec</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="n">latvec</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="n">azi12</span><span class="p">,</span><span class="n">azi21</span><span class="p">,</span><span class="n">step</span><span class="o">=</span> <span class="n">great_circle</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">startlon</span><span class="p">,</span><span class="n">startlat</span><span class="p">,</span><span class="n">lon</span><span class="p">,</span><span class="n">lat</span><span class="p">)</span>
+        <span class="n">distance</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">distance</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">step</span><span class="p">)</span>
+        <span class="n">startlon</span><span class="p">,</span><span class="n">startlat</span> <span class="o">=</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span>
+    <span class="n">distance</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span><span class="o">*</span><span class="n">meters2km</span>
+    <span class="k">return</span> <span class="n">distance</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ec_to_xarray</span><span class="p">(</span><span class="n">ec_filepath</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    open an earthcare h5 file and read the times, latitude, longitude, radar reflectivity</span>
+<span class="sd">    and the dopple velocity. Save this as an xarray dataset with coordinates and dimensions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cpr_data</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">ec_filepath</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;h5netcdf&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;/ScienceData/Data&#39;</span><span class="p">,</span>
+                                <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="n">phony_dims</span><span class="o">=</span><span class="s1">&#39;access&#39;</span><span class="p">)</span>
+    <span class="n">cpr_data</span> <span class="o">=</span> <span class="n">cpr_data</span><span class="o">.</span><span class="n">rename_dims</span><span class="p">({</span><span class="s1">&#39;phony_dim_0&#39;</span><span class="p">:</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span><span class="s1">&#39;phony_dim_1&#39;</span><span class="p">:</span> <span class="s1">&#39;height&#39;</span><span class="p">})</span>
+    <span class="n">cpr_meta</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">ec_filepath</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;h5netcdf&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;/ScienceData/Geo&#39;</span><span class="p">,</span>
+                               <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">phony_dims</span><span class="o">=</span><span class="s1">&#39;access&#39;</span><span class="p">)</span>
+    <span class="n">cpr_meta</span> <span class="o">=</span> <span class="n">cpr_meta</span><span class="o">.</span><span class="n">rename_dims</span><span class="p">({</span><span class="s1">&#39;phony_dim_0&#39;</span><span class="p">:</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span><span class="s1">&#39;phony_dim_1&#39;</span><span class="p">:</span> <span class="s1">&#39;height&#39;</span><span class="p">})</span>
+    <span class="n">lonvec</span> <span class="o">=</span> <span class="n">cpr_meta</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span>
+    <span class="n">latvec</span> <span class="o">=</span> <span class="n">cpr_meta</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">calc_distance</span><span class="p">(</span><span class="n">lonvec</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">latvec</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">the_times</span> <span class="o">=</span> <span class="n">find_times</span><span class="p">(</span><span class="n">ec_filepath</span><span class="p">)</span>
+    <span class="n">binHeights</span> <span class="o">=</span> <span class="n">cpr_meta</span><span class="o">.</span><span class="n">binHeight</span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">heights</span> <span class="o">=</span> <span class="n">get_binheight</span><span class="p">(</span><span class="n">binHeights</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span><span class="n">heights</span><span class="p">),</span>
+              <span class="n">distance</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span><span class="n">distance</span><span class="p">))</span>
+    <span class="n">velocity</span> <span class="o">=</span> <span class="n">cpr_data</span><span class="p">[</span><span class="s1">&#39;dopplerVelocity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">radar</span> <span class="o">=</span> <span class="n">cpr_data</span><span class="p">[</span><span class="s1">&#39;radarReflectivityFactor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">dbZ</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">radar</span><span class="p">)</span>
+    <span class="n">attrs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">history</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;written by ec_to_xarray on </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+               <span class="n">timezone</span><span class="o">=</span><span class="s2">&quot;UTC&quot;</span><span class="p">)</span>
+    <span class="n">var_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">dbZ</span> <span class="o">=</span> <span class="n">dbZ</span> <span class="p">,</span> <span class="n">velocity</span><span class="o">=</span><span class="n">velocity</span><span class="p">,</span><span class="n">binHeights</span><span class="o">=</span><span class="n">binHeights</span><span class="p">,</span>
+                   <span class="n">longitude</span><span class="o">=</span><span class="n">lonvec</span><span class="p">,</span> <span class="n">latitude</span><span class="o">=</span><span class="n">latvec</span><span class="p">,</span><span class="n">time</span><span class="o">=</span><span class="n">the_times</span><span class="p">)</span>
+    <span class="n">ds_earthcare</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">data_vars</span><span class="o">=</span><span class="n">var_dict</span><span class="p">,</span>
+        <span class="n">coords</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span><span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ds_earthcare</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-the-dataset">
+<h2><span class="section-number">61.4. </span>Create the dataset<a class="headerlink" href="#create-the-dataset" title="Link to this heading">#</a></h2>
+<p>Note that the dataset <code class="docutils literal notranslate"><span class="pre">radar_ds</span></code> has dimensions: (height, time, distance),
+coordinates: (height, time and distance) and indices: (height, time, and distance).
+They all have the same names but they serve different purposes.  The dimensions
+show the shape of the data, the coordinates allow for different axis labels,
+and the indices can be used for selecting the data, as demonstrated  below.</p>
+<section id="call-ec-to-xarray">
+<h3><span class="section-number">61.4.1. </span>call ec_to_xarray<a class="headerlink" href="#call-ec-to-xarray" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filepaths</span><span class="p">[</span><span class="n">casenum</span><span class="p">]</span>
+<span class="n">radar_ds</span> <span class="o">=</span> <span class="n">ec_to_xarray</span><span class="p">(</span><span class="n">filepaths</span><span class="p">[</span><span class="n">casenum</span><span class="p">])</span>
+<span class="n">radar_ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/phil/mini310/envs/a301/lib/python3.13/site-packages/xarray/computation/apply_ufunc.py:821: RuntimeWarning: divide by zero encountered in log10
+  result_data = func(*input_data)
+/Users/phil/mini310/envs/a301/lib/python3.13/site-packages/xarray/computation/apply_ufunc.py:821: RuntimeWarning: invalid value encountered in log10
+  result_data = func(*input_data)
+</pre></div>
+</div>
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1f1f1f;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 26MB
+Dimensions:     (height: 218, distance: 9946, time: 9946)
+Coordinates:
+  * height      (height) float64 2kB 1.618e+04 1.608e+04 ... -5.501e+03
+  * distance    (distance) float64 80kB 0.0 0.5002 1.0 ... 5.172e+03 5.173e+03
+  * time        (time) datetime64[ns] 80kB 2024-12-13T22:43:31.511866 ... 202...
+Data variables:
+    dbZ         (height, distance) float32 9MB -39.15 -46.38 nan ... nan nan nan
+    velocity    (height, distance) float32 9MB ...
+    binHeights  (height, distance) float32 9MB ...
+    longitude   (distance) float64 80kB -113.8 -113.8 -113.8 ... -131.1 -131.1
+    latitude    (distance) float64 80kB 67.62 67.62 67.61 ... 22.38 22.37 22.37
+Attributes:
+    history:   written by ec_to_xarray on 2025-03-28 07:57:24.733636
+    timezone:  UTC</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-6b2f3e4f-7dea-4ba0-ba50-582bd4d9603e' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-6b2f3e4f-7dea-4ba0-ba50-582bd4d9603e' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>height</span>: 218</li><li><span class='xr-has-index'>distance</span>: 9946</li><li><span class='xr-has-index'>time</span>: 9946</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-032e6bc3-6836-4a9a-b43b-87a214de1711' class='xr-section-summary-in' type='checkbox'  checked><label for='section-032e6bc3-6836-4a9a-b43b-87a214de1711' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>height</span></div><div class='xr-var-dims'>(height)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>1.618e+04 1.608e+04 ... -5.501e+03</div><input id='attrs-b485c6a0-47f3-45cb-950b-1e17c5bc2908' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-b485c6a0-47f3-45cb-950b-1e17c5bc2908' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7e92cdb3-661a-46d0-9a86-18ce217e8d9b' class='xr-var-data-in' type='checkbox'><label for='data-7e92cdb3-661a-46d0-9a86-18ce217e8d9b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([16183.709961, 16083.779297, 15983.848633, ..., -5301.416138,
+       -5401.346954, -5501.277771])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>distance</span></div><div class='xr-var-dims'>(distance)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 0.5002 ... 5.172e+03 5.173e+03</div><input id='attrs-880e8596-f14b-4ffe-a26d-fa383227f5b7' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-880e8596-f14b-4ffe-a26d-fa383227f5b7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c51b0899-16fe-4bfd-92f3-916b452409cf' class='xr-var-data-in' type='checkbox'><label for='data-c51b0899-16fe-4bfd-92f3-916b452409cf' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0.000000e+00, 5.002080e-01, 1.000415e+00, ..., 5.171400e+03,
+       5.172247e+03, 5.172742e+03])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2024-12-13T22:43:31.511866 ... 2...</div><input id='attrs-24e9af2b-d952-45a6-86aa-1a0699958fbe' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-24e9af2b-d952-45a6-86aa-1a0699958fbe' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e1dc0599-4ada-45b1-9966-3da0a5dc958a' class='xr-var-data-in' type='checkbox'><label for='data-e1dc0599-4ada-45b1-9966-3da0a5dc958a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2024-12-13T22:43:31.511866000&#x27;, &#x27;2024-12-13T22:43:31.580652000&#x27;,
+       &#x27;2024-12-13T22:43:31.649437000&#x27;, ..., &#x27;2024-12-13T22:55:21.720509000&#x27;,
+       &#x27;2024-12-13T22:55:21.836699000&#x27;, &#x27;2024-12-13T22:55:21.904667000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-2d8230e5-ac90-4729-88c3-428b8a06fc3d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-2d8230e5-ac90-4729-88c3-428b8a06fc3d' class='xr-section-summary' >Data variables: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>dbZ</span></div><div class='xr-var-dims'>(height, distance)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-39.15 -46.38 nan ... nan nan nan</div><input id='attrs-909ac8b4-3bfc-442c-8f84-936eb909092e' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-909ac8b4-3bfc-442c-8f84-936eb909092e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-df781d8e-a98c-47b2-ad59-fbe70d86f604' class='xr-var-data-in' type='checkbox'><label for='data-df781d8e-a98c-47b2-ad59-fbe70d86f604' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[-39.151455, -46.38126 ,        nan, ...,        nan,        nan,
+               nan],
+       [-42.987347, -41.47432 , -47.480705, ...,        nan,        nan,
+               nan],
+       [-45.915016, -41.98107 , -47.80346 , ..., -39.781532,        nan,
+               nan],
+       ...,
+       [       nan,        nan,        nan, ...,        nan, -35.769684,
+        -33.69903 ],
+       [       nan,        nan,        nan, ...,        nan,        nan,
+               nan],
+       [       nan,        nan,        nan, ...,        nan,        nan,
+               nan]], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>velocity</span></div><div class='xr-var-dims'>(height, distance)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-7a90d19b-961e-49f0-83e9-9422ce1f7dde' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7a90d19b-961e-49f0-83e9-9422ce1f7dde' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-83114e62-00b2-43f4-bdcb-89108962a66a' class='xr-var-data-in' type='checkbox'><label for='data-83114e62-00b2-43f4-bdcb-89108962a66a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>DimensionNames :</span></dt><dd>nray,nbin</dd><dt><span>long_name :</span></dt><dd>doppler velocity</dd><dt><span>units :</span></dt><dd>m/s</dd><dt><span>valid_range :</span></dt><dd></dd></dl></div><div class='xr-var-data'><pre>[2168228 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>binHeights</span></div><div class='xr-var-dims'>(height, distance)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e92e243c-e26b-4cbd-a058-791baa18c0f6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e92e243c-e26b-4cbd-a058-791baa18c0f6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1b134004-3573-401a-bc5a-3594a7a361b8' class='xr-var-data-in' type='checkbox'><label for='data-1b134004-3573-401a-bc5a-3594a7a361b8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>DimensionNames :</span></dt><dd>nray,nbin</dd><dt><span>long_name :</span></dt><dd>bin height</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>valid_range :</span></dt><dd></dd></dl></div><div class='xr-var-data'><pre>[2168228 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>longitude</span></div><div class='xr-var-dims'>(distance)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-113.8 -113.8 ... -131.1 -131.1</div><input id='attrs-a2596209-069d-43d9-b8f8-b81b9100d374' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a2596209-069d-43d9-b8f8-b81b9100d374' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9f4a7d39-af96-4c36-8893-26bc21a9c374' class='xr-var-data-in' type='checkbox'><label for='data-9f4a7d39-af96-4c36-8893-26bc21a9c374' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>DimensionNames :</span></dt><dd>nray</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd><dt><span>valid_range :</span></dt><dd>[-180.  180.]</dd></dl></div><div class='xr-var-data'><pre>array([-113.776179, -113.780192, -113.784204, ..., -131.092203, -131.093754,
+       -131.094661])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>latitude</span></div><div class='xr-var-dims'>(distance)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>67.62 67.62 67.61 ... 22.37 22.37</div><input id='attrs-cef06ad3-404e-45eb-9204-8f939e9b0b87' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cef06ad3-404e-45eb-9204-8f939e9b0b87' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5697706f-5a24-4196-8b00-383d22281b51' class='xr-var-data-in' type='checkbox'><label for='data-5697706f-5a24-4196-8b00-383d22281b51' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>DimensionNames :</span></dt><dd>nray</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degree_north</dd><dt><span>valid_range :</span></dt><dd>[-90.  90.]</dd></dl></div><div class='xr-var-data'><pre>array([67.620049, 67.615832, 67.611616, ..., 22.378856, 22.371345, 22.366952])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-79ab09be-4690-4b8f-a821-878e9c546037' class='xr-section-summary-in' type='checkbox'  ><label for='section-79ab09be-4690-4b8f-a821-878e9c546037' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>height</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-da841c0b-f228-4541-b9ad-2eb8fca74af1' class='xr-index-data-in' type='checkbox'/><label for='index-da841c0b-f228-4541-b9ad-2eb8fca74af1' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([   16183.7099609375,     16083.779296875,    15983.8486328125,
+          15883.9169921875,     15783.986328125,    15684.0556640625,
+                 15584.125,    15484.1943359375,     15384.263671875,
+          15284.3330078125,
+       ...
+        -4601.900421142578,  -4701.831237792969,  -4801.762054443359,
+         -4901.69287109375,  -5001.623687744141,  -5101.554504394531,
+        -5201.485321044922, -5301.4161376953125,  -5401.346954345703,
+        -5501.277770996094],
+      dtype=&#x27;float64&#x27;, name=&#x27;height&#x27;, length=218))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>distance</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-c5ad0ab1-6474-487e-afa6-de23fcb7e2f3' class='xr-index-data-in' type='checkbox'/><label for='index-c5ad0ab1-6474-487e-afa6-de23fcb7e2f3' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([               0.0,  0.500208036061439, 1.0004145299898775,
+       1.5006944921121328,  2.270176748317494,   2.77044342489138,
+        3.270703126402196, 3.7709125860368786, 4.2712413176546855,
+       4.7716017829466395,
+       ...
+        5167.930722292646,  5168.426399824077,  5168.922010542674,
+        5169.417534830324,  5169.913017791256,  5170.408554433771,
+        5170.904132007367,  5171.399675518967,  5172.246593261433,
+       5172.7419435537195],
+      dtype=&#x27;float64&#x27;, name=&#x27;distance&#x27;, length=9946))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-b7868b8d-1368-408e-a73d-daaa28c6a27f' class='xr-index-data-in' type='checkbox'/><label for='index-b7868b8d-1368-408e-a73d-daaa28c6a27f' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2024-12-13 22:43:31.511866&#x27;, &#x27;2024-12-13 22:43:31.580652&#x27;,
+               &#x27;2024-12-13 22:43:31.649437&#x27;, &#x27;2024-12-13 22:43:31.718223&#x27;,
+               &#x27;2024-12-13 22:43:31.824029&#x27;, &#x27;2024-12-13 22:43:31.892815&#x27;,
+               &#x27;2024-12-13 22:43:31.961600&#x27;, &#x27;2024-12-13 22:43:32.030386&#x27;,
+               &#x27;2024-12-13 22:43:32.099171&#x27;, &#x27;2024-12-13 22:43:32.167957&#x27;,
+               ...
+               &#x27;2024-12-13 22:55:21.244607&#x27;, &#x27;2024-12-13 22:55:21.312593&#x27;,
+               &#x27;2024-12-13 22:55:21.380579&#x27;, &#x27;2024-12-13 22:55:21.448565&#x27;,
+               &#x27;2024-12-13 22:55:21.516551&#x27;, &#x27;2024-12-13 22:55:21.584537&#x27;,
+               &#x27;2024-12-13 22:55:21.652523&#x27;, &#x27;2024-12-13 22:55:21.720509&#x27;,
+               &#x27;2024-12-13 22:55:21.836699&#x27;, &#x27;2024-12-13 22:55:21.904667&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=9946, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-3bc4c355-3b8b-4aa3-9b16-5fa767b8f744' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3bc4c355-3b8b-4aa3-9b16-5fa767b8f744' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>history :</span></dt><dd>written by ec_to_xarray on 2025-03-28 07:57:24.733636</dd><dt><span>timezone :</span></dt><dd>UTC</dd></dl></div></li></ul></div></div></div></div>
+</div>
+</section>
+<section id="plot-the-radar-reflectivity">
+<h3><span class="section-number">61.4.2. </span>Plot the radar reflectivity<a class="headerlink" href="#plot-the-radar-reflectivity" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">radar_ds</span><span class="p">[</span><span class="s1">&#39;dbZ&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;height&quot;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">3</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">25</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;distance (km)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;height (m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">casenum</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f76d0c9fd0dd33ad5b6bf20d7711025180fb20936f470f8c616a6924e83517fc.png" src="../../_images/f76d0c9fd0dd33ad5b6bf20d7711025180fb20936f470f8c616a6924e83517fc.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="data-cleaning">
+<h2><span class="section-number">61.5. </span>Data cleaning<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h2>
+<p>there’s some data loss in the upper atmosphere for the first 1000 km. When those data values appear at 1000 km
+it causes an abrupt change in the bin heights.  If we really cared about the first 1000 km, we could split the
+dataset to keep both regions. Instead let’s just remove that data by cropping the first 1000 km.</p>
+<section id="first-find-the-new-index-for-the-start">
+<h3><span class="section-number">61.5.1. </span>First find the new index for the start<a class="headerlink" href="#first-find-the-new-index-for-the-start" title="Link to this heading">#</a></h3>
+<p>The line below finds the index closest to 1000 km, which is index 1924. We want to use this to select
+our new set of heights, instead of the height values at index 0.  np.argmin returns the index of the
+distance vector that has the smallest absolute difference from 1000.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">radar_ds</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="mi">1000</span><span class="p">))</span>
+<span class="n">new_index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(1924)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="replace-the-height-coordinates-with-the-value-at-index-1924">
+<h3><span class="section-number">61.5.2. </span>Replace the height coordinates with the value at index 1924<a class="headerlink" href="#replace-the-height-coordinates-with-the-value-at-index-1924" title="Link to this heading">#</a></h3>
+<p>This function will overwrite the height coordinate with the
+new value using <code class="docutils literal notranslate"><span class="pre">assign_coords</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">set_new_height</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="n">target_index</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    replace the height coordinate with a new height</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">height_array</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;binHeights&#39;</span><span class="p">]</span>
+    <span class="n">bin_height</span> <span class="o">=</span> <span class="n">get_binheight</span><span class="p">(</span><span class="n">height_array</span><span class="p">,</span><span class="n">target_index</span><span class="p">)</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span><span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="n">bin_height</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">ds</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">radar_ds</span> <span class="o">=</span> <span class="n">set_new_height</span><span class="p">(</span><span class="n">radar_ds</span><span class="p">,</span><span class="n">new_index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-with-new-height-coordinate">
+<h3><span class="section-number">61.5.3. </span>Plot with new height coordinate<a class="headerlink" href="#plot-with-new-height-coordinate" title="Link to this heading">#</a></h3>
+<p>Now that we’re using the heights at 1000 km, the surface is at z=0 starting at 1000 km</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">radar_ds</span><span class="p">[</span><span class="s1">&#39;dbZ&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;height&quot;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">3</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">25</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;distance (km)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;height (m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">casenum</span><span class="si">}</span><span class="s2"> with correct heights&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/bca437dc497ee16dcf35b4bb467800f10bf230e0522ce7d0fda0d00080fce94b.png" src="../../_images/bca437dc497ee16dcf35b4bb467800f10bf230e0522ce7d0fda0d00080fce94b.png" />
+</div>
+</div>
+</section>
+<section id="crop-first-1000-km">
+<h3><span class="section-number">61.5.4. </span>Crop first 1000 km<a class="headerlink" href="#crop-first-1000-km" title="Link to this heading">#</a></h3>
+<p>Next remove the first 1000 km using the <code class="docutils literal notranslate"><span class="pre">where</span></code> function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">radar_ds</span> <span class="o">=</span> <span class="n">radar_ds</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">radar_ds</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">1000.</span><span class="p">,</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cropped-plot-original-x-axis">
+<h3><span class="section-number">61.5.5. </span>Cropped plot - original x axis<a class="headerlink" href="#cropped-plot-original-x-axis" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">radar_ds</span><span class="p">[</span><span class="s1">&#39;dbZ&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;height&quot;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">3</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">25</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;distance (km)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;height (m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">casenum</span><span class="si">}</span><span class="s2"> cropped&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b92a4d41a901443fcadd257fbb3fb0c189f718e507cccf7b17eb29b8d478510f.png" src="../../_images/b92a4d41a901443fcadd257fbb3fb0c189f718e507cccf7b17eb29b8d478510f.png" />
+</div>
+</div>
+</section>
+<section id="rewrite-the-distance-coordinate">
+<h3><span class="section-number">61.5.6. </span>rewrite the distance coordinate<a class="headerlink" href="#rewrite-the-distance-coordinate" title="Link to this heading">#</a></h3>
+<p>Finally, make the new distance start from 0</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_distance</span> <span class="o">=</span> <span class="n">radar_ds</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">radar_ds</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">radar_ds</span> <span class="o">=</span> <span class="n">radar_ds</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span><span class="s1">&#39;distance&#39;</span><span class="p">:</span> <span class="n">new_distance</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cropped-plot-new-x-axis">
+<h3><span class="section-number">61.5.7. </span>Cropped plot – new x axis<a class="headerlink" href="#cropped-plot-new-x-axis" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">radar_ds</span><span class="p">[</span><span class="s1">&#39;dbZ&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;height&quot;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">3</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">25</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;distance (km)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;height (m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">casenum</span><span class="si">}</span><span class="s2"> new x coordinate&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/bfb8b92cd3ff4e6150cb85d7c0c47486981500259149739ebb678948373a8702.png" src="../../_images/bfb8b92cd3ff4e6150cb85d7c0c47486981500259149739ebb678948373a8702.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">radar_ds</span><span class="p">[</span><span class="s1">&#39;velocity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;height&quot;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">3</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;distance (km)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;height (m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">casenum</span><span class="si">}</span><span class="s2"> velocity&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/62c2fa26277d602905bc0ee8a2732444e9c26dd47c2a0085c91c9ab2ec2cb695.png" src="../../_images/62c2fa26277d602905bc0ee8a2732444e9c26dd47c2a0085c91c9ab2ec2cb695.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="save-the-dataset-to-netcdf">
+<h2><span class="section-number">61.6. </span>Save the dataset to netcdf<a class="headerlink" href="#save-the-dataset-to-netcdf" title="Link to this heading">#</a></h2>
+<section id="convert-datetimes-to-numpy-datetime64-objects">
+<h3><span class="section-number">61.6.1. </span>convert datetimes to numpy.datetime64 objects<a class="headerlink" href="#convert-datetimes-to-numpy-datetime64-objects" title="Link to this heading">#</a></h3>
+<p>the netcdf writer doesn’t like python datetimes, but can handle numpy datetimes, so convert times to
+<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.datetime.html">numpy datetime64</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_times</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">radar_ds</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">]</span>
+<span class="n">radar_ds</span> <span class="o">=</span> <span class="n">radar_ds</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="n">new_times</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;week11_</span><span class="si">{</span><span class="n">casenum</span><span class="si">}</span><span class="s2">_radar.nc&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">radar_ds</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;week11_</span><span class="si">{</span><span class="n">casenum</span><span class="si">}</span><span class="s2">_radar.nc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/backends/file_manager.py:211,</span> in <span class="ni">CachingFileManager._acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">211</span>     <span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span> <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/backends/lru_cache.py:56,</span> in <span class="ni">LRUCache.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;/Users/phil/repos/a301_eoas/notebooks/week11/week11_case4_radar.nc&#39;,), &#39;a&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;64fb3772-fb11-430c-b731-307236ac2e7f&#39;]
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">PermissionError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">radar_ds</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;week11_</span><span class="si">{</span><span class="n">casenum</span><span class="si">}</span><span class="s2">_radar.nc&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/core/dataset.py:2074,</span> in <span class="ni">Dataset.to_netcdf</span><span class="nt">(self, path, mode, format, group, engine, encoding, unlimited_dims, compute, invalid_netcdf, auto_complex)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2071</span>     <span class="n">encoding</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="g g-Whitespace">   </span><span class="mi">2072</span> <span class="kn">from</span><span class="w"> </span><span class="nn">xarray.backends.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_netcdf</span>
+<span class="ne">-&gt; </span><span class="mi">2074</span> <span class="k">return</span> <span class="n">to_netcdf</span><span class="p">(</span>  <span class="c1"># type: ignore[return-value]  # mypy cannot resolve the overloads:(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2075</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2076</span>     <span class="n">path</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2077</span>     <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2078</span>     <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2079</span>     <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2080</span>     <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2081</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2082</span>     <span class="n">unlimited_dims</span><span class="o">=</span><span class="n">unlimited_dims</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2083</span>     <span class="n">compute</span><span class="o">=</span><span class="n">compute</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2084</span>     <span class="n">multifile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2085</span>     <span class="n">invalid_netcdf</span><span class="o">=</span><span class="n">invalid_netcdf</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2086</span>     <span class="n">auto_complex</span><span class="o">=</span><span class="n">auto_complex</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2087</span> <span class="p">)</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/backends/api.py:1911,</span> in <span class="ni">to_netcdf</span><span class="nt">(dataset, path_or_file, mode, format, group, engine, encoding, unlimited_dims, compute, multifile, invalid_netcdf, auto_complex)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1908</span> <span class="k">if</span> <span class="n">auto_complex</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1909</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;auto_complex&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">auto_complex</span>
+<span class="ne">-&gt; </span><span class="mi">1911</span> <span class="n">store</span> <span class="o">=</span> <span class="n">store_open</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1913</span> <span class="k">if</span> <span class="n">unlimited_dims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1914</span>     <span class="n">unlimited_dims</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">encoding</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unlimited_dims&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/backends/netCDF4_.py:452,</span> in <span class="ni">NetCDF4DataStore.open</span><span class="nt">(cls, filename, mode, format, group, clobber, diskless, persist, auto_complex, lock, lock_maker, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;auto_complex&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">auto_complex</span>
+<span class="g g-Whitespace">    </span><span class="mi">449</span> <span class="n">manager</span> <span class="o">=</span> <span class="n">CachingFileManager</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">450</span>     <span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">451</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">452</span> <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">manager</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">lock</span><span class="o">=</span><span class="n">lock</span><span class="p">,</span> <span class="n">autoclose</span><span class="o">=</span><span class="n">autoclose</span><span class="p">)</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/backends/netCDF4_.py:393,</span> in <span class="ni">NetCDF4DataStore.__init__</span><span class="nt">(self, manager, group, mode, lock, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">391</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group</span> <span class="o">=</span> <span class="n">group</span>
+<span class="g g-Whitespace">    </span><span class="mi">392</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode</span>
+<span class="ne">--&gt; </span><span class="mi">393</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span><span class="o">.</span><span class="n">data_model</span>
+<span class="g g-Whitespace">    </span><span class="mi">394</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span><span class="o">.</span><span class="n">filepath</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">395</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_remote</span> <span class="o">=</span> <span class="n">is_remote_uri</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="p">)</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/backends/netCDF4_.py:461,</span> in <span class="ni">NetCDF4DataStore.ds</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">459</span> <span class="nd">@property</span>
+<span class="g g-Whitespace">    </span><span class="mi">460</span> <span class="k">def</span><span class="w"> </span><span class="nf">ds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">461</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acquire</span><span class="p">()</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/backends/netCDF4_.py:455,</span> in <span class="ni">NetCDF4DataStore._acquire</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span> <span class="k">def</span><span class="w"> </span><span class="nf">_acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">455</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_manager</span><span class="o">.</span><span class="n">acquire_context</span><span class="p">(</span><span class="n">needs_lock</span><span class="p">)</span> <span class="k">as</span> <span class="n">root</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">456</span>         <span class="n">ds</span> <span class="o">=</span> <span class="n">_nc4_require_group</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">457</span>     <span class="k">return</span> <span class="n">ds</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/contextlib.py:141,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">141</span>     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/backends/file_manager.py:199,</span> in <span class="ni">CachingFileManager.acquire_context</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span> <span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span> <span class="k">def</span><span class="w"> </span><span class="nf">acquire_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Context manager for acquiring a file.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">199</span>     <span class="n">file</span><span class="p">,</span> <span class="n">cached</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acquire_with_cache_info</span><span class="p">(</span><span class="n">needs_lock</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span>     <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span>         <span class="k">yield</span> <span class="n">file</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/backends/file_manager.py:217,</span> in <span class="ni">CachingFileManager._acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span>
+<span class="ne">--&gt; </span><span class="mi">217</span> <span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opener</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="s2">&quot;w&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span>     <span class="c1"># ensure file doesn&#39;t get overridden when opened again</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span>
+
+<span class="nn">File src/netCDF4/_netCDF4.pyx:2521,</span> in <span class="ni">netCDF4._netCDF4.Dataset.__init__</span><span class="nt">()</span>
+
+<span class="nn">File src/netCDF4/_netCDF4.pyx:2158,</span> in <span class="ni">netCDF4._netCDF4._ensure_nc_success</span><span class="nt">()</span>
+
+<span class="ne">PermissionError</span>: [Errno 13] Permission denied: &#39;/Users/phil/repos/a301_eoas/notebooks/week11/week11_case4_radar.nc&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="read-it-back-in-to-check">
+<h4><span class="section-number">61.6.1.1. </span>Read it back in to check<a class="headerlink" href="#read-it-back-in-to-check" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">decode_times</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">test_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">decode_times</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/backends/api.py:668,</span> in <span class="ni">open_dataset</span><span class="nt">(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, inline_array, chunked_array_type, from_array_kwargs, backend_kwargs, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">665</span>     <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">backend_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span> <span class="k">if</span> <span class="n">engine</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">668</span>     <span class="n">engine</span> <span class="o">=</span> <span class="n">plugins</span><span class="o">.</span><span class="n">guess_engine</span><span class="p">(</span><span class="n">filename_or_obj</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">670</span> <span class="k">if</span> <span class="n">from_array_kwargs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">671</span>     <span class="n">from_array_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="nn">File ~/mini310/envs/a301/lib/python3.13/site-packages/xarray/backends/plugins.py:194,</span> in <span class="ni">guess_engine</span><span class="nt">(store_spec)</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">187</span>     <span class="n">error_msg</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span>         <span class="s2">&quot;found the following matches with the input file in xarray&#39;s IO &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="sa">f</span><span class="s2">&quot;backends: </span><span class="si">{</span><span class="n">compatible_engines</span><span class="si">}</span><span class="s2">. But their dependencies may not be installed, see:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">190</span>         <span class="s2">&quot;https://docs.xarray.dev/en/stable/user-guide/io.html </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span>         <span class="s2">&quot;https://docs.xarray.dev/en/stable/getting-started-guide/installing.html&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">194</span> <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">error_msg</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: did not find a match in any of xarray&#39;s currently installed IO backends [&#39;netcdf4&#39;, &#39;h5netcdf&#39;, &#39;scipy&#39;, &#39;cfgrib&#39;, &#39;gini&#39;, &#39;rasterio&#39;, &#39;zarr&#39;]. Consider explicitly selecting one of the installed engines via the ``engine`` parameter, or installing additional IO dependencies, see:
+<span class="ne">https</span>://docs.xarray.dev/en/stable/getting-started-guide/installing.html
+<span class="ne">https</span>://docs.xarray.dev/en/stable/user-guide/io.html
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">test_ds</span>
+
+<span class="ne">NameError</span>: name &#39;test_ds&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/week11"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="plot_earthcare.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">60. </span>Reading earthcare level1b data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../solutions/assign7_radar_solution.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">62. </span>Radar Problems – solution</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">61.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-case-files">61.2. Find the case files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#this-functions-sorts-the-cases-by-case-number">61.2.1. This functions sorts the cases by case number</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-case-4">61.2.2. Pick case 4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-coordinates">61.3. Get coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-dataset">61.4. Create the dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#call-ec-to-xarray">61.4.1. call ec_to_xarray</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-radar-reflectivity">61.4.2. Plot the radar reflectivity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">61.5. Data cleaning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-find-the-new-index-for-the-start">61.5.1. First find the new index for the start</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replace-the-height-coordinates-with-the-value-at-index-1924">61.5.2. Replace the height coordinates with the value at index 1924</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-with-new-height-coordinate">61.5.3. Plot with new height coordinate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-first-1000-km">61.5.4. Crop first 1000 km</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cropped-plot-original-x-axis">61.5.5. Cropped plot - original x axis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rewrite-the-distance-coordinate">61.5.6. rewrite the distance coordinate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cropped-plot-new-x-axis">61.5.7. Cropped plot – new x axis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-dataset-to-netcdf">61.6. Save the dataset to netcdf</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-datetimes-to-numpy-datetime64-objects">61.6.1. convert datetimes to numpy.datetime64 objects</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#read-it-back-in-to-check">61.6.1.1. Read it back in to check</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Philip Austin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

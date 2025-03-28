@@ -673,4 +673,9 @@ as close as possible to your earthcare radar segment.  Plot the truecolor image 
 goes2go rgb module, clip it to a reasonable lat, lon square and overlay your earthcare
 groundtrack
 
+### Day 34 Friday
+
+- {ref}`week11:earthcare_xarray`
+- {ref}`week11:stull_radar_solution`
+- {ref}`week11:phasor_notes2`
 
