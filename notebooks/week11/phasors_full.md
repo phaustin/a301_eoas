@@ -1,24 +1,20 @@
 ---
-jupyter:
-  jupytext:
-    formats: "md:pandoc,ipynb"
-    text_representation:
-      extension: .md
-      format_name: pandoc
-      format_version: 3.6.2
-      jupytext_version: 1.16.6
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
-  nbformat: 4
-  nbformat_minor: 5
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.6
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
 ---
 
-::: {#ab431be6-b11c-4bd6-87f2-caa94408501b .cell .markdown}
-(phasors)=
 
-# Notes on phasors
+(week11:phasor_notes2)=
+# Notes on phasors 
 
 How do radars measure the phase $\phi$ of a returning pulse?
 
@@ -44,7 +40,7 @@ How do radars measure the phase $\phi$ of a returning pulse?
 :::
 
 The dotted wave is the in-phase returning pulse which is recorded with a voltage of 0.866 in the A-D converter (where
-we've normalized the voltage so it goes betwee -1 and 1 in some units). Without more information, this single measurement
+we've normalized the voltage so it goes between -1 and 1 in some units). Without more information, this single measurement
 is consistent with a phase shift of either +30 degrees or -30 degrees, since cos(+30deg)=cos(-30deg) = 0.866.
 The quadrature wave arrives at the converter with a 90 degree phase shift, which means that it records a voltage
 of -0.5. Turning this into an angle requires the following trig relation:
@@ -97,7 +93,7 @@ Quadrature
     to be useful.
 :::
 
-::: {#0165d64b-f8fc-4a42-8080-500b9750a3dd .cell .markdown}
+
 ## Derivitives and Euler notation
 
 Not required but potentially usefull. Remember in grade 12 (?) you learned about
@@ -106,46 +102,49 @@ complex numbers.
 
 -   Some trigonometry facts:
 
-\$\$
+$$
+\exp(x) = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \ldots
 
-\(x\) = 1 + x + + + +
+\exp(ix)= 1 + ix - \frac{x^2}{2!} - i\frac{x^3}{3!} + \frac{x^4}{4!} + \ldots
 
-(ix)= 1 + ix - - i + +
+\cos(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!}  + \ldots
 
-\(x\) = 1 - + +
+\sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!}  + \ldots
 
-\(x\) = x - + +
+\text{so this means: }
 
-\(ix\) = cos(x) + i sin(x)
-\$\$
+\exp(ix) = cos(x) + i sin(x)
+$$
 
 -   Some facts about complex numbers
 
     -   Any complex number can be written in either cartesian or euler form:
 
-        \$\$
 
-        I = x + iy
+- Cartesian
 
-        I=A (i ) = A( ) + Ai()
+$$
+I = x + iy
+$$
 
-        A\^2 = x\^2 + y\^2
+- Euler
 
-        = (y/x)
-        \$\$
+$$
+I=A \exp(i \phi) = A\cos( \phi) + Ai\sin(\phi)
+$$
+
+where $A^2 = x^2 + y^2$ and $\phi = \arctan(y/x)$
 
 -   Put these together:
 
-    \$\$
-    i=(i )
+$$
+ i&=\exp \left (i \frac{\pi}{2} \right ) \\
+ \frac{d \exp(i\phi)}{d\phi} &= i \exp(i\phi) = \exp\left (i\frac{\pi}{2} \right ) \exp(i\phi) = \exp \left (i \left ( \phi + \frac{\pi}{2} \right ) \right ) \\
+$$
 
-    = i (i) = (i ) (i) = (i ( + ) )
-    \$\$
-
-    so adding a positive phase shift of $\pi/2$ is the same thing as taking the derivitive. To get the phase of the pulse
-    in the proper quadrant, you measure two real voltages at the A-D converter: $I=A\cos(\phi)$, which is called the **in-phase** component, and
-    $Q= -A\cos(\phi + \frac{\pi}{2}) = A \sin(\phi)$ which is called the **quadrature** component. This is equivalent
-    to finding the real part of $I$ and the real part of its derivitive, which gives it a unique quadrant location.
+so adding a positive phase shift of $\pi/2$ is the same thing as taking the derivitive. To get the phase of the pulse in the proper quadrant, you measure two real voltages at the A-D converter: $I=A\cos(\phi)$, which is called the **in-phase** component, and
+$Q= -A\cos(\phi + \frac{\pi}{2}) = A \sin(\phi)$ which is called the **quadrature** component. This is equivalent
+to finding the real part of $I$ and the real part of its derivative, which gives it a unique quadrant location.
 
 (pulse-pair-solution)=
 :::
@@ -164,17 +163,17 @@ Quadrature
 
 -   For pulse 1 I read I = $\cos(\phi)$ = -1, so we know that the phase angle for the pulse $\pm \pi$.
 
--   If I take the derivitive of pulse 1 by adding a phase shift of $\pi/2$ I get $\cos(\phi + \pi/2) = Q = -\sin(\phi)$ = 0,
+-   If I take the derivative of pulse 1 by adding a phase shift of $\pi/2$ I get $\cos(\phi + \pi/2) = Q = -\sin(\phi)$ = 0,
     so $\sin(\phi)$ = 0 which is consistent with $\phi = \pm \pi$ for pulse 1.
 
 -   For pulse 2 I have I= $\cos(\phi)$ = +0.5, so $\phi$ is either 60 degrees or 300 degrees.
 
--   If I take the derivitive of pulse 2 by adding a phase shift of $\pi/2$ I get $\cos(\phi + \pi/2) = Q = -\sin(\phi)$ = +0.866,
+-   If I take the derivative of pulse 2 by adding a phase shift of $\pi/2$ I get $\cos(\phi + \pi/2) = Q = -\sin(\phi)$ = +0.866,
     so $\sin(\phi)$ = -0.866 and $\phi =$ 300 degrees for pulse 2.
 
 -   Here is pulse 1 (cyan) and pulse 2 (green) on the phasor
 
-:::{figure} figures/wednesday_pair.png
+:::{figure} ./figures/wednesday_pair.png
 :name: third phase
 :scale: 80
 
@@ -182,7 +181,6 @@ Quadrature
 :::
 :::
 
-::: {#ead9d676-4909-4588-bbb6-28e9aa566cda .cell .markdown}
 -   The first guess velocity goes to the smallest phase angle, which is the increase from 180 to 300 degrees = 120 degress.
     So the first guess velocity is positive (away from the radar). From (10) in
     my \[Doppler notes\] we know that with $\lambda$ =10 cm and PRF = 600 Hz:
@@ -203,8 +201,8 @@ Quadrature
 
 ## Doppler problem solution
 
-:::{figure} ./figures/figures/final_doppler_0_0.png
-:name: secondphase
+:::{figure} ./figures/final_doppler_0_0.png
+:name: secondphaseb
 :scale: 80
 
 Quadrature

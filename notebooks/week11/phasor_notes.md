@@ -133,6 +133,8 @@ $$
 
 where $A^2 = x^2 + y^2$ and $\phi = \arctan(y/x)$
 
+In other words -- a phasor diagram is just the same as a complex number [Argand plot](https://mathworld.wolfram.com/ArgandDiagram.html).
+
 -   Put these together:
 
 $$

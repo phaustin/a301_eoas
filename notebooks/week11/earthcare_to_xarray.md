@@ -31,7 +31,25 @@ coordinates, and write the dataset out to a netcdf file.
 - Download a case folder from the satdata/earthcare folder on our
 [gdrive folder](https://drive.google.com/drive/folders/1-D6y9MlE8LZRLZg-qRCxPZSgar8kGjBT?usp=drive_link)
 
-- fetch and rebase from upstream/main to get this notebook in week11
+- fetch and rebase from upstream/main to get this notebook in week11. You'll want to
+  modify this notebook to work with your case, so checkout and rebase on to your
+  initials branch:
+  
+  ```
+  git checkout main
+  git fetch upstream
+  git rebase upstream/main
+  git checkout your_initials
+  git rebase main
+  git push
+  ```
+  
+  To save your work:
+  
+  ```
+  git commit -m 'commit message'
+  git push
+  ```
 
 ```{code-cell} ipython3
 from pathlib import Path
@@ -87,7 +105,7 @@ casenum = 'case4'
 
 ## Get coordinates
 
-The  three functions below calculator vectors of height, time and distance that
+The  three functions below calculate vectors of height, time and distance that
 can be used as coordinates for axis labeling, and as indexes for
 selecting/cropping values.
 
