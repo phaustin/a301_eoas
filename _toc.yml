@@ -127,6 +127,10 @@ parts:
     - file: notebooks/week11/demo_rgb_recipes.md
     - file: notebooks/week11/derived_stability_index.md
     - file: notebooks/week11/plot_earthcare.md
+    - file: notebooks/week11/earthcare_to_xarray.md
+    - file: solutions/assign7_radar_solution.md
+    - file: notebooks/week11/phasor_notes.md
+      
       
       
 

@@ -17,9 +17,14 @@ How do radars measure the phase $\phi$ of a returning pulse?
 
    Consider this specific example:
 
-   ```{image} figures/phase_shift90.png
-   :scale: 80
-   ```
+:::{figure} ./figures/phase_shift90.png
+:name: phase90
+:scale: 80
+
+90 degree phase shift
+:::
+
+
 
    The dotted wave is the in-phase returning pulse which is recorded with a voltage of 0.866 in the A-D converter (where
    we've normalized the voltage so it goes betwee -1 and 1 in some units). Without more information, this single measurement
@@ -37,21 +42,29 @@ How do radars measure the phase $\phi$ of a returning pulse?
    northeast quadrant, as shown here by the green line, with the black line showing
    the 90 degree phase shift:
 
-   ```{image} figures/myshift.png
-   :scale: 80
-   ```
+:::{figure} ./figures/myshift.png
+:name: secondphase
+:scale: 80
+
+Quadrature
+:::
+
 
 (pulse-pair-problem)=
 
-## Doppler pulse-pair problem
+## Practice dopper problem
 
 - A cloud radar operates at $\lambda$ =10 cm with a PRF of 600 $s^{-1}$
   This figure shows the in-phase (coherence) plots of two wavetrains returning from a pulse pair
   separated by 1/600th of a second.
 
-  ```{image} figures/final_phase.png
-  :scale: 30
-  ```
+:::{figure} ./figures/final_phase.png
+:name: Dopler problem
+:scale: 30
+
+Quadrature
+:::
+
 
   1. Find the values of I ($\cos(\phi)$) and Q ($-\sin(\phi)$) for the two pulses, and use them to find the phase angle for each pulse. Draw the two phase angles on a phasor plot.
   2. Calculate a *first guess* radial velocity with direction, plus two other
@@ -66,9 +79,9 @@ How do radars measure the phase $\phi$ of a returning pulse?
 
   to be useful.
 
-## Extra -- euler notation
+## Derivitives and Euler notation
 
-Not required but kind of interesting. Remember in grade 12 (?) you learned about
+Not required but potentially usefull. Remember in grade 12 (?) you learned about
 the [euler notation](http://www.mathsisfun.com/algebra/eulers-formula.html) for
 complex numbers.
 
@@ -129,9 +142,13 @@ complex numbers.
 
 - Repeat the figure for the problem:
 
-  ```{image} figures/final_phase.png
-  :scale: 30
-  ```
+
+:::{figure} figures/final_phase.png
+:name: secondphase
+:scale: 80
+
+Quadrature
+:::
 
 - For pulse 1 I read I = $\cos(\phi)$ = -1, so we know that the phase angle for the pulse $\pm \pi$.
 
@@ -145,9 +162,15 @@ complex numbers.
 
 - Here is pulse 1 (cyan) and pulse 2 (green) on the phasor
 
-  ```{image} figures/wednesday_pair.png
-  :scale: 80
-  ```
+
+:::{figure} figures/wednesday_pair.png
+:name: third phase
+:scale: 80
+
+Quadrature
+:::
+
+
 
 - The first guess velocity goes to the smallest phase angle, which is the increase from 180 to 300 degrees = 120 degress.
   So the first guess velocity is positive (away from the radar). From (10) in
@@ -167,8 +190,14 @@ complex numbers.
 
 ## Doppler problem solution
 
-```{image} figures/final_doppler_0_0.png
-```
+:::{figure} ./figures/figures/final_doppler_0_0.png
+:name: secondphase
+:scale: 80
+
+Quadrature
+:::
+
+
 
 1. The attached color Doppler image shows a velocity pattern measured by
    Doppler radar with a wavelength of $\lambda=10$ cm and a PRF of
