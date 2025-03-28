@@ -60,10 +60,6 @@ relpath
 ```
 
 ```{code-cell} ipython3
-filepaths
-```
-
-```{code-cell} ipython3
 def sort_keys(the_case):
     number = the_case[4:]
     return int(number)
@@ -82,7 +78,7 @@ These are netcdf files, so no dimensions or coordinates, we'll need to
 create these.  Start by naming the time and height dimensions
 
 ```{code-cell} ipython3
-def get_binheights(cpr_meta):
+def get_binheight(the_bins, index=0):
     """
     the radar bin heights are stored for every radar pulse.  If the terrain is
     roughly level, these should be the same pulse to pulse, so just use the
@@ -93,8 +89,7 @@ def get_binheights(cpr_meta):
 
     Questions -- what does [...] accomplish here? Why all the float() calls?
     """
-    the_bins = cpr_meta.binHeight[...]
-    the_bins = the_bins[0,:].data
+    the_bins = the_bins[:,index].data
     diff_bins = np.diff(the_bins)
     del_y = float(np.nanmean(diff_bins))
     new_y = [float(the_bins[0])]
@@ -139,36 +134,29 @@ def ec_to_xarray(ec_filepath):
     # 
     cpr_data = xr.open_dataset(ec_filepath, engine='h5netcdf', group='/ScienceData/Data',
                                 decode_times=False,  phony_dims='access')
-    cpr_data = cpr_data.rename_dims({'phony_dim_0':'time','phony_dim_1': 'height'})
+    cpr_data = cpr_data.rename_dims({'phony_dim_0':'distance','phony_dim_1': 'height'})
     cpr_meta = xr.open_dataset(ec_filepath, engine='h5netcdf', group='/ScienceData/Geo',
                                decode_times=False, phony_dims='access')
-    cpr_meta = cpr_meta.rename_dims({'phony_dim_0':'time','phony_dim_1': 'height'})
+    cpr_meta = cpr_meta.rename_dims({'phony_dim_0':'distance','phony_dim_1': 'height'})
     lonvec = cpr_meta['longitude']
     latvec = cpr_meta['latitude']
     distance = calc_distance(lonvec.data, latvec.data)
-    the_times = find_times(filepaths[casenum])
-    heights = get_binheights(cpr_meta)
-    coords = dict(time=("time", the_times),
-              height=("height",heights),
-              distance = ("time",distance))
-    # cpr_meta = cpr_meta.assign_coords(coords=coords)
-    # cpr_data = cpr_data.assign_coords(coords=coords)
+    the_times = find_times(ec_filepath)
+    binHeights = cpr_meta.binHeight[...].T
+    heights = get_binheight(binHeights,0)
+    coords = dict(height=("height",heights),
+              distance = ("distance",distance))
     velocity = cpr_data['dopplerVelocity'].T
     radar = cpr_data['radarReflectivityFactor'].T
     dbZ = 10*np.log10(radar)
-    #velocity =velocity.set_xindex("distance")
-    #dbZ = dbZ.set_xindex("distance")
-    binHeights = cpr_meta.binHeight[...].T
     attrs=dict(history = f"written by ec_to_xarray on {str(datetime.datetime.now())}")
     var_dict = dict(dbZ = dbZ , velocity=velocity,binHeights=binHeights,
-                   longitude=lonvec, latitude=latvec)
+                   longitude=lonvec, latitude=latvec,time=the_times)
     ds_earthcare = xr.Dataset(data_vars=var_dict,
         coords=coords,attrs=attrs)
-    ds_earthcare=ds_earthcare.set_xindex("distance")
     print(f"{binHeights.dims=},{binHeights.shape=}")
     print(f"{velocity.dims=},{velocity.shape=}")
     print(f"{dbZ.dims=},{dbZ.shape=}")
-    #ds_earthcare = None
     return ds_earthcare
     
 
@@ -177,26 +165,7 @@ def ec_to_xarray(ec_filepath):
 ```
 
 ```{code-cell} ipython3
-str(datetime.datetime.now())
-```
 
-```{code-cell} ipython3
-filepaths[casenum]
-test = ec_to_xarray(filepaths[casenum])
-test
-```
-
-## construct height, time, distance coords
-
-+++
-
-### get times
-
-```{code-cell} ipython3
-filepath = filepaths[casenum]
-cpr_meta = xr.open_dataset(filepath, engine='h5netcdf', group='/ScienceData/Geo',
-                           decode_times=False, phony_dims='access')
-cpr_meta
 ```
 
 ### print the case times
@@ -208,72 +177,67 @@ for casename in sorted_keys:
     print(casename, check_times[0], check_times[-1])
 ```
 
-### get binheights
-
-+++
-
-### get the along-track distance
-
-We want to turn time into distance, so use pyproj to
-find the great circle distance between each set of pulses,
-using their lon, lat coords
-
-+++
-
-## add time, height coords
-
-```{code-cell} ipython3
-cpr_meta.coords
-```
-
 ## plot the radar reflectivity
 
 ```{code-cell} ipython3
-radar = cpr_data['radarReflectivityFactor'].T
-radar.shape
+filepaths[casenum]
+radar_ds = ec_to_xarray(filepaths[casenum])
+radar_ds
 ```
 
 ```{code-cell} ipython3
-dbZ = 10*np.log10(radar)
+
 ```
 
 ```{code-cell} ipython3
-len(distance),dbZ.shape,len(heights)
+def set_new_height(ds,target_index):
+    """
+    replace the height coordinate with a new height
+    """
+    height_array = ds['binHeights']
+    bin_height = get_binheight(height_array,target_index)
+    print(bin_height[-1])
+    ds = ds.assign_coords({'height': bin_height})
+    return ds
+    
 ```
 
 ```{code-cell} ipython3
-dbZ.coords
+new_index = np.argmin(np.abs(radar_ds.distance.data - 1000))
+new_index
 ```
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots(1, 1, figsize=(12, 4))
-dbZ.plot.pcolormesh(x="distance",y="height",vmin=-3,vmax=25);
-ax.set_title(casenum);
-```
-
-## plot the doppler velocity
-
-```{code-cell} ipython3
-velocity = cpr_data['dopplerVelocity'].T
+radar_ds = set_new_height(radar_ds,new_index)
+radar_ds.coords['height'].data[-1]
 ```
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots(1, 1, figsize=(12, 4))
-velocity.plot.pcolormesh(ax=ax,x="distance",y="height",vmin=-3,vmax=3)
+fig, ax = plt.subplots(1,1,figsize=(12,3))
+radar_ds['dbZ'].plot(ax = ax, x="distance",y="height",vmin=-3,vmax=25);
+ax.set_xlim(1000,5000)
 ax.set_xlabel("distance (km)")
 ax.set_ylabel("height (m)")
 ax.set_title(casenum);
 ```
 
 ```{code-cell} ipython3
-velocity =velocity.set_xindex("distance")
+fig, ax = plt.subplots(1,1,figsize=(12,3))
+radar_ds['velocity'].plot(ax = ax, x="distance",y="height",vmin=-3,vmax=3);
+ax.set_xlabel("distance (km)")
+ax.set_ylabel("height (m)")
+ax.set_xlim(1000,5000)
+ax.set_title(casenum);
 ```
 
-## Your assignment
+```{code-cell} ipython3
+radar_ds.where(radar_ds.coords['distance'] > 1000.)
+```
 
-Pick one of the available earthcare cases, and find the closest GOES 16 image to the
-central time of the earthcare segment.   Plot the eathcare ground track on top
-of the clipped goes false color image
+```{code-cell} ipython3
+start_index = radar_ds = radar_ds.isel(radar_ds.distance > 1000, drop = True)
+radar_ds.isel(distance=hit)
+```
 
 ```{code-cell} ipython3
 
