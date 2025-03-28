@@ -1,5 +1,4 @@
 (phasors)=
-
 # Notes on phasors
 
 How do radars measure the phase $\phi$ of a returning pulse?
