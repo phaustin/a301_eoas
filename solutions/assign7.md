@@ -46,4 +46,3 @@ Nexrad coefficients:
     Pt=750.e3 #transmitted power, W, stull p. 246
     b=14255 #equipment factor, Stull 8.26
 ```
-

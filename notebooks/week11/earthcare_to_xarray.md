@@ -203,6 +203,10 @@ def set_new_height(ds,target_index):
 ```
 
 ```{code-cell} ipython3
+radar_ds.coords['height'].data[-1]
+```
+
+```{code-cell} ipython3
 new_index = np.argmin(np.abs(radar_ds.distance.data - 1000))
 new_index
 ```
