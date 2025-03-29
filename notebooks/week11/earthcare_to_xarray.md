@@ -183,10 +183,15 @@ def ec_to_xarray(ec_filepath,casenum=0):
     cpr_meta = xr.open_dataset(ec_filepath, engine='h5netcdf', group='/ScienceData/Geo',
                                decode_times=False, phony_dims='access')
     cpr_meta = cpr_meta.rename_dims({'phony_dim_0':'distance','phony_dim_1': 'height'})
+    print(f"{cpr_meta.dims=}")
     lonvec = cpr_meta['longitude']
     latvec = cpr_meta['latitude']
     distance = calc_distance(lonvec.data, latvec.data)
     the_times = find_times(ec_filepath)
+    #
+    # create a DataArray from the list to get correct dimension
+    #
+    the_times = xr.DataArray(the_times,dims=('distance',))
     binHeights = cpr_meta.binHeight[...].T
     heights = get_binheight(binHeights,0)
     coords = dict(height=("height",heights),
@@ -197,7 +202,7 @@ def ec_to_xarray(ec_filepath,casenum=0):
     attrs=dict(history = f"written by ec_to_xarray on {str(datetime.datetime.now())}",
                timezone="UTC",casenum=casenum)
     var_dict = dict(dbZ = dbZ , velocity=velocity,binHeights=binHeights,
-                   longitude=lonvec, latitude=latvec,time=the_times)
+                   longitude=lonvec, latitude=latvec, time = the_times)
     ds_earthcare = xr.Dataset(data_vars=var_dict,
         coords=coords,attrs=attrs)
     return ds_earthcare
@@ -336,8 +341,12 @@ the netcdf writer doesn't like python datetimes, but can handle numpy datetimes,
 [numpy datetime64](https://numpy.org/doc/stable/reference/arrays.datetime.html).
 
 ```{code-cell} ipython3
-new_times = [np.datetime64(item) for item in radar_ds.coords['time'].data]
-radar_ds = radar_ds.assign_coords({'time': new_times})
+new_times = [np.datetime64(item) for item in radar_ds.variables['time'].data]
+#
+# create a DataAr
+#
+new_times = xr.DataArray(new_times,dims=('distance',))
+radar_ds['time']=new_times
 ```
 
 ```{code-cell} ipython3
@@ -353,7 +362,7 @@ radar_ds.to_netcdf(filename,'w')
 #### Read it back in to check
 
 ```{code-cell} ipython3
-test_ds = xr.open_dataset(filename,decode_times=True)
+test_ds = xr.open_dataset(filename)
 ```
 
 ```{code-cell} ipython3
