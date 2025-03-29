@@ -172,7 +172,7 @@ def calc_distance(lonvec,latvec):
 ```
 
 ```{code-cell} ipython3
-def ec_to_xarray(ec_filepath):
+def ec_to_xarray(ec_filepath,casenum=0):
     """
     open an earthcare h5 file and read the times, latitude, longitude, radar reflectivity
     and the dopple velocity. Save this as an xarray dataset with coordinates and dimensions
@@ -195,7 +195,7 @@ def ec_to_xarray(ec_filepath):
     radar = cpr_data['radarReflectivityFactor'].T
     dbZ = 10*np.log10(radar)
     attrs=dict(history = f"written by ec_to_xarray on {str(datetime.datetime.now())}",
-               timezone="UTC")
+               timezone="UTC",casenum=casenum)
     var_dict = dict(dbZ = dbZ , velocity=velocity,binHeights=binHeights,
                    longitude=lonvec, latitude=latvec,time=the_times)
     ds_earthcare = xr.Dataset(data_vars=var_dict,
@@ -217,7 +217,7 @@ and the indices can be used for selecting the data, as demonstrated  below.
 
 ```{code-cell} ipython3
 filepaths[casenum]
-radar_ds = ec_to_xarray(filepaths[casenum])
+radar_ds = ec_to_xarray(filepaths[casenum],casenum)
 radar_ds
 ```
 
@@ -341,7 +341,7 @@ radar_ds = radar_ds.assign_coords({'time': new_times})
 ```
 
 ```{code-cell} ipython3
-filename = Path() / f"week11_{casenum}_radar.nc"
+filename = Path().home()  / f"repos/a301/satdata/earthcare/week11_{casenum}_radar.nc"
 ```
 
 ```{code-cell} ipython3
