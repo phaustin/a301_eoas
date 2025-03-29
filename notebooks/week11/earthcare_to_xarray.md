@@ -341,11 +341,13 @@ radar_ds = radar_ds.assign_coords({'time': new_times})
 ```
 
 ```{code-cell} ipython3
-filename = f"week11_{casenum}_radar.nc"
+filename = Path() / f"week11_{casenum}_radar.nc"
 ```
 
 ```{code-cell} ipython3
-radar_ds.to_netcdf(f"week11_{casenum}_radar.nc")
+if filename.exists():
+    filename.unlink()
+radar_ds.to_netcdf(filename,'w')
 ```
 
 #### Read it back in to check
