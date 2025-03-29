@@ -12,9 +12,8 @@ kernelspec:
   name: python3
 ---
 
-(week11:earthcare)=
-# Reading earth data
-
+(week11:goes_earthcare)=
+# goes-earthcare overaly
 
 ```{code-cell} ipython3
 from pathlib import Path
@@ -24,24 +23,162 @@ import pyproj
 from matplotlib import pyplot as plt
 import datetime
 import pytz
+import pandas as pd
+from pyproj import CRS
+```
+
+```{code-cell} ipython3
+## open the radar netcdf file
 ```
 
 ```{code-cell} ipython3
 data_dir = Path().home() / 'repos/a301/satdata/earthcare'
-radar_filepaths = list(data_dir.glob("**/*.h5"))
-filepaths=dict()
-for filepath in radar_filepaths:
-    relpath = filepath.relative_to(data_dir)
-    casename = relpath.parts[0]
-    filepaths[casename]=filepath
-    
+radar_filepath = list(data_dir.glob("**/*.nc"))[0]
+radar_ds = xr.open_dataset(radar_filepath)
+radar_ds
+```
+
+## get the time and bounding box corners
+
+```{code-cell} ipython3
+midpoint = int(len(radar_ds['time'])/2.)
+midtime = radar_ds['time'][midpoint].data
+
+#datetime.datetime(midtime)
+timestamp = pd.to_datetime(midtime)
+timestamp
+```
+
+```{code-cell} ipython3
+lats = radar_ds['latitude']
+lons = radar_ds['longitude']
+ymin, ymax = np.min(lats),np.max(lats)
+xmin, xmax = np.min(lats),np.max(lats)
+```
+
++++ {"jp-MarkdownHeadingCollapsed": true}
+
+## Find the nearest GOES image
+
+```{code-cell} ipython3
+from goes2go import goes_nearesttime
+save_dir = Path.home() / "repos/a301/satdata/earthcare"
+def get_goes(timestamp, satellite="goes16", product="ABI-L2-MCMIP",domain="C",
+             download=True, save_dir=None):
+    g = goes_nearesttime(
+        timestamp, satellite=satellite,product=product, domain=domain, 
+          return_as="xarray", save_dir = save_dir, download = download, overwrite = False
+    )
+    the_path = g.path[0]
+```
+
+```{code-cell} ipython3
+download_dict = dict(satellite="goes16",product = "ABI-L2-ACHAC",save_dir=save_dir)
+```
+
+## Get the cloudtop heights
+
+```{code-cell} ipython3
+writeit = False
+if writeit:
+    the_path = get_goes(timestamp,**download_dict)
+else:
+    the_path = ('noaa-goes16/ABI-L2-ACHAC/2024/348/22/OR_ABI-L2-ACHAC-M6_G16_s20243482251172'
+                '_e20243482253545_c20243482256029.nc'
+               )
+full_path = save_dir / the_path
+```
+
+```{code-cell} ipython3
+goes_ct = xr.open_dataset(full_path,mode = 'r',mask_and_scale = True)
+```
+
+```{code-cell} ipython3
+cloud_top = goes_ct.metpy.parse_cf('HT')
+cloud_top.plot.imshow()
+```
+
+## Get the cloud moisture imagery
+
+```{code-cell} ipython3
+download_dict = dict(satellite="goes16",
+                     product = "ABI-L2-MCMIPC",save_dir=save_dir)
+```
+
+```{code-cell} ipython3
+writeit = False
+if writeit:
+    the_path = get_goes(timestamp,**download_dict)
+else:
+    the_path = ('noaa-goes16/ABI-L2-MCMIPC/2024/348/22/OR_ABI-L2-MCMIPC-M6_G16_s20243482251172_'
+                'e20243482253545_c20243482254074.nc'
+               )
+full_path = save_dir / the_path
+```
+
+```{code-cell} ipython3
+goes_mc = xr.open_dataset(full_path,mode = 'r',mask_and_scale = True)
+list(goes_mc.variables)
+```
+
+## get the cloud top height
+
++++
+
+## convert to a rioxarray
+
+```{code-cell} ipython3
+type(cartopy_crs.to_cartopy())
+```
+
+```{code-cell} ipython3
+pyproj_crs = cloud_top.metpy.crs.to_pyproj()
+cartopy_crs = cloud_top.metpy.crs.to_cartopy()
+geodetic_crs = CRS.from_epsg(4326)
+goes_coords = dict(cloud_top.coords)
+goes_dims = cloud_top.dims
+```
+
+```{code-cell} ipython3
+cartopy_crs = goesC.metpy.cartopy_crs
+goes_crs = pyproj.CRS(cartopy_crs)
+goes_coords = dict(goesC.coords)
+goes_dims = goesC.dims
+print(goesC.dims)
+#
+# use average pixel size for the transform
+#
+resolutionx = np.mean(np.diff(goesC.x))
+resolutiony = np.mean(np.diff(goesC.y))
+missing = np.float32(np.nan)
+print(f"{(resolutionx, resolutiony)=}")
+attrs = goesC.attrs
+attrs['valid_range'] = np.array([0.,1.])
+attrs['missing'] = missing
+```
+
+## crop the goes image
+
+```{code-cell} ipython3
+#
+# transform bounds from lat,lon to goes crs
+#
+transform = Transformer.from_crs(landsat_crs, goes_crs)
+xmin_goes,ymin_goes = transform.transform(xmin,ymin)
+xmax_goes,ymax_goes = transform.transform(xmax,ymax)
+print(f"{(xmax_goes - xmin_goes)=} m")
+print(f"{(ymax_goes - ymin_goes)=} m")
+bounds_goes = xmin_goes,ymin_goes,xmax_goes,ymax_goes
+#
+# now crop to these bounds using clip_box
+#
+clipped_c3=goes_c3.rio.clip_box(*bounds_goes)
 ```
 
 ```{code-cell} ipython3
 def sort_keys(the_case):
     number = the_case[4:]
     return int(number)
-
 ```
 
 ```{code-cell} ipython3
@@ -96,7 +233,6 @@ the_times[-1],the_times[0]
 ## get binheights
 
 ```{code-cell} ipython3
-
 def get_binheights(cpr_meta):
     the_bins = cpr_meta.binHeight[...]
     the_bins = the_bins[0,:].data
@@ -259,7 +395,6 @@ image.plot.imshow();
 +++
 
 ## Read earthcare
-
 
 ```{code-cell} ipython3
 g.rgb.imshow_kwargs
