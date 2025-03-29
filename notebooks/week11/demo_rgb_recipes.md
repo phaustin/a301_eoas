@@ -106,14 +106,10 @@ if writeit:
     G18 = goes_nearesttime('2024-06-25 18',satellite=18,save_dir=save_dir)
     print(G18.path[0])
 else:
-    the_path = ("noaa-goes16/ABI-L2-MCMIPC/2024/177/18"
-                "/OR_ABI-L2-MCMIPC-M6_G16_s20241771801172_e20241771803557_c20241771804062.nc")
+    the_path = ("noaa-goes18/ABI-L2-MCMIPC/2024/177/18/OR_ABI-L2-MCMIPC-M6_G18_s20241771801172_"
+                "e20241771803545_c20241771804067.nc")
     full_path = save_dir / the_path
     G18 = xarray.open_dataset(full_path,mode = 'r',mask_and_scale = True)
-```
-
-```{code-cell} ipython3
-
 ```
 
 ```{code-cell} ipython3
