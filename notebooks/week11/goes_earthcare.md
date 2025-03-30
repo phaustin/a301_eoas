@@ -13,7 +13,7 @@ kernelspec:
 ---
 
 (week11:goes_earthcare)=
-# goes-earthcare overaly
+# goes-earthcare overlay
 
 ```{code-cell} ipython3
 from pathlib import Path
@@ -25,11 +25,11 @@ import datetime
 import pytz
 import pandas as pd
 from pyproj import CRS
+import affine
+from a301_extras.sat_lib import make_new_rioxarray
 ```
 
-```{code-cell} ipython3
-## open the radar netcdf file
-```
+## open the earthcare radar file
 
 ```{code-cell} ipython3
 data_dir = Path().home() / 'repos/a301/satdata/earthcare'
@@ -38,7 +38,7 @@ radar_ds = xr.open_dataset(radar_filepath)
 radar_ds
 ```
 
-## get the time and bounding box corners
+### get the time and bounding box corners
 
 ```{code-cell} ipython3
 midpoint = int(len(radar_ds['time'])/2.)
@@ -56,9 +56,11 @@ ymin, ymax = np.min(lats),np.max(lats)
 xmin, xmax = np.min(lats),np.max(lats)
 ```
 
-+++ {"jp-MarkdownHeadingCollapsed": true}
-
 ## Find the nearest GOES image
+
++++
+
+### Function get_goes
 
 ```{code-cell} ipython3
 from goes2go import goes_nearesttime
@@ -70,13 +72,17 @@ def get_goes(timestamp, satellite="goes16", product="ABI-L2-MCMIP",domain="C",
           return_as="xarray", save_dir = save_dir, download = download, overwrite = False
     )
     the_path = g.path[0]
+    return the_path
 ```
+
+## Get the cloudtop height
+
+This variable is in the `ABI-L2-ACHAC` product, at 10 km resolution.  It is available every 60 minutes. The
+full description is [here](https://www.star.nesdis.noaa.gov/goesr/docs/ATBD/Cloud_Height.pdf)
 
 ```{code-cell} ipython3
 download_dict = dict(satellite="goes16",product = "ABI-L2-ACHAC",save_dir=save_dir)
 ```
-
-## Get the cloudtop heights
 
 ```{code-cell} ipython3
 writeit = False
@@ -91,14 +97,30 @@ full_path = save_dir / the_path
 
 ```{code-cell} ipython3
 goes_ct = xr.open_dataset(full_path,mode = 'r',mask_and_scale = True)
+type(goes_ct)
 ```
+
+## calculate the projection coordinates
+
+The x and y coordinates for the Dataset `goes_ct` are in radians.  The function `parse_cf` (where `CF` stands
+for `climate and forecast`) extracts a dataset variable as a DataArray and converts those x and y values to meters in the geostationary CRS by multiplying by the height of the satellite. It also sets the `grid_mapping` attribute
+to `goes_imager_projection` which allows goes2go to produce the geostationary CRS using `cloud_ct.metpy.pyproj_crs` or `cloud_ct.metpy.cartopy_crs`. The CF conventions
+are documented [here](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#_geostationary_projection) ).
 
 ```{code-cell} ipython3
 cloud_top = goes_ct.metpy.parse_cf('HT')
+type(cloud_top)
+```
+
+```{code-cell} ipython3
 cloud_top.plot.imshow()
 ```
 
-## Get the cloud moisture imagery
+## Get the 11 micron thermal band
+
+This is [channel 14](https://www.noaa.gov/jetstream/goes_east) in the
+moisture and cloud product.  The brightness temperatures will have 2 km resolution,
+but no atmospheric correction
 
 ```{code-cell} ipython3
 download_dict = dict(satellite="goes16",
@@ -118,203 +140,39 @@ full_path = save_dir / the_path
 
 ```{code-cell} ipython3
 goes_mc = xr.open_dataset(full_path,mode = 'r',mask_and_scale = True)
-list(goes_mc.variables)
+chan_14 = goes_mc.metpy.parse_cf('CMI_C14')
 ```
 
-## get the cloud top height
+## Calculate the affine transforms
 
 +++
 
-## convert to a rioxarray
+### Function get_affine
 
 ```{code-cell} ipython3
-type(cartopy_crs.to_cartopy())
+def get_affine(goes_da):
+    resolutionx = np.mean(np.diff(goes_da.x))
+    resolutiony = np.mean(np.diff(goes_da.y))
+    ul_x = goes_da.x[0].data
+    ul_y = goes_da.y[0].data
+    goes_transform = affine.Affine(resolutionx, 0.0, ul_x, 0.0, resolutiony, ul_y)
+    return goes_transform
+    
 ```
 
 ```{code-cell} ipython3
-pyproj_crs = cloud_top.metpy.crs.to_pyproj()
-cartopy_crs = cloud_top.metpy.crs.to_cartopy()
-geodetic_crs = CRS.from_epsg(4326)
-goes_coords = dict(cloud_top.coords)
-goes_dims = cloud_top.dims
+cloud_top_affine = get_affine(cloud_top)
+chan_14_affine = get_affine(chan_14)
+chan_14_affine, cloud_top_affine
 ```
 
-```{code-cell} ipython3
-cartopy_crs = goesC.metpy.cartopy_crs
-goes_crs = pyproj.CRS(cartopy_crs)
-goes_coords = dict(goesC.coords)
-goes_dims = goesC.dims
-print(goesC.dims)
-#
-# use average pixel size for the transform
-#
-resolutionx = np.mean(np.diff(goesC.x))
-resolutiony = np.mean(np.diff(goesC.y))
-missing = np.float32(np.nan)
-print(f"{(resolutionx, resolutiony)=}")
-attrs = goesC.attrs
-attrs['valid_range'] = np.array([0.,1.])
-attrs['missing'] = missing
-```
+## convert  cloud_top  to a rioxarray
 
-## crop the goes image
++++
 
-```{code-cell} ipython3
-#
-# transform bounds from lat,lon to goes crs
-#
-transform = Transformer.from_crs(landsat_crs, goes_crs)
-xmin_goes,ymin_goes = transform.transform(xmin,ymin)
-xmax_goes,ymax_goes = transform.transform(xmax,ymax)
-print(f"{(xmax_goes - xmin_goes)=} m")
-print(f"{(ymax_goes - ymin_goes)=} m")
-bounds_goes = xmin_goes,ymin_goes,xmax_goes,ymax_goes
-#
-# now crop to these bounds using clip_box
-#
-clipped_c3=goes_c3.rio.clip_box(*bounds_goes)
-```
+Use make_new_rioxarray introduced in {ref}`week8:goes_landsat_rio`
 
-```{code-cell} ipython3
-def sort_keys(the_case):
-    number = the_case[4:]
-    return int(number)
-```
-
-```{code-cell} ipython3
-sorted_keys = list(filepaths.keys())
-sorted_keys.sort(key=sort_keys)
-casenum = 'case5'
-#sorted_keys
-```
-
-```{code-cell} ipython3
-cpr_data = xr.open_dataset(filepaths[casenum], engine='h5netcdf', group='/ScienceData/Data',
-                            decode_times=True,  phony_dims='access')
-cpr_meta = xr.open_dataset(filepaths[casenum], engine='h5netcdf', group='/ScienceData/Geo',
-                           decode_times=True, phony_dims='access')
-```
-
-```{code-cell} ipython3
-def find_times(filepath):
-    cpr_meta = xr.open_dataset(filepath, engine='h5netcdf', group='/ScienceData/Geo',
-                           decode_times=False, phony_dims='access')
-    times = cpr_meta['profileTime'].data
-    start_time = datetime.datetime(2000,1,1,0,0,0)
-    the_times =[start_time + datetime.timedelta(seconds=item) for item in times]
-    the_times = [item.replace(tzinfo = pytz.utc) for item in the_times]
-    return the_times[0],the_times[-1]
-```
-
-## Print the case times
-
-```{code-cell} ipython3
-for casename in sorted_keys:
-    filepath = filepaths[casename]
-    start, stop = find_times(filepath)
-    print(casename, start, stop)
-```
-
-```{code-cell} ipython3
-times = cpr_meta['profileTime'].data
-start_time = datetime.datetime(2000,1,1,0,0,0)
-the_times =[start_time + datetime.timedelta(seconds=item) for item in times]
-the_times = [item.replace(tzinfo = pytz.utc) for item in the_times]
-the_times[-1],the_times[0]
-```
-
-```{code-cell} ipython3
-cpr_meta = xr.open_dataset(filepaths['case2'], engine='h5netcdf', group='/ScienceData/Geo',
-                            phony_dims='access')
-the_times = cpr_meta['profileTime'].data
-the_times[-1],the_times[0]
-```
-
-## get binheights
-
-```{code-cell} ipython3
-def get_binheights(cpr_meta):
-    the_bins = cpr_meta.binHeight[...]
-    the_bins = the_bins[0,:].data
-    diff_bins = np.diff(the_bins)
-    del_y = float(np.nanmean(diff_bins))
-    new_y = [float(the_bins[0])]
-    for count,old_y in enumerate(the_bins[1:]):
-        if np.isnan(old_y):
-            new_y.append(float(new_y[count]) + del_y)
-        else:
-            new_y.append(float(old_y))
-    return np.array(new_y)
-
-yheights = get_binheights(cpr_meta)
-```
-
-## Get reflectivity
-
-```{code-cell} ipython3
-radar = np.flipud(cpr_data['radarReflectivityFactor'].T)
-#plt.imshow(cpr_data['radarReflectivityFactor'])
-out = 10*np.log10(radar)
-distance.shape
-yheights.shape
-```
-
-```{code-cell} ipython3
-ax[0]
-```
-
-```{code-cell} ipython3
-fig, ax = plt.subplots(1, 1, figsize=(12, 5))
-plt.pcolormesh(out,ax=ax,y=yheights,x=distance) 
-```
-
-```{code-cell} ipython3
-
-```
-
-```{code-cell} ipython3
-great_circle=pyproj.Geod(ellps='WGS84')
-meters2km = 1.e-3
-def calc_distance(lonvec,latvec):
-    distance=[0]
-    startlon,startlat = lonvec[0],latvec[0]
-    for lon,lat in zip(lonvec[1:],latvec[1:]):
-        azi12,azi21,step= great_circle.inv(startlon,startlat,lon,lat)
-        distance.append(distance[-1] + step)
-        startlon,startlat = lon, lat
-    distance=np.array(distance)*meters2km
-    return distance
-```
-
-```{code-cell} ipython3
-cpr_new = cpr_data.rename_dims({'phony_dim_0':'time','phony_dim_1': 'height'})
-```
-
-```{code-cell} ipython3
-meta_new  = cpr_meta.rename_dims({'phony_dim_0':'time','phony_dim_1': 'height'})
-height = cpr_meta['binHeight'].data[0,::-1]
-lonvec = cpr_meta['longitude'].data
-latvec = cpr_meta['latitude'].data
-distance = calc_distance(lonvec, latvec)
-coords = dict(distance=("time", distance),height=("height",height))
-cpr_meta = cpr_meta.assign_coords(coords=coords)
-cpr_data = cpr_data.assign_coords(coords=coords)
-```
-
-```{code-cell} ipython3
-plt.plot(lonvec,latvec)
-```
-
-```{code-cell} ipython3
-test = np.float64(cpr_meta['profileTime'].data)
-test
-```
-
-```{code-cell} ipython3
-cpr_meta
-```
-
-```{code-cell} ipython3
+```python
 def make_new_rioxarray(
     rawdata: np.ndarray,
     coords: dict,
@@ -333,7 +191,7 @@ def make_new_rioxarray(
     rawdata: numpy array
     crs: pyproj crs for scene
     coords: xarray coordinate dict
-    dims: x and y dimension names from coorcds
+    dims: x and y dimension names from coords
     transform: scene affine transform
     attrs: optional attribute dictionary
     missing: optional missing value
@@ -344,51 +202,100 @@ def make_new_rioxarray(
 
     rio_da: a new rioxarray
     """
-    rio_da=xr.DataArray(rawdata.data,coords=coords,
-                            dims=dims,name=name)
-    rio_da.rio.write_crs(crs, inplace=True)
-    rio_da.rio.write_transform(transform, inplace=True)
-    if attrs is not None:
-        rio_da=rio_da.assign_attrs(attrs)
-    if missing is not None:
-        rio_da = rio_da.rio.set_nodata(missing)
-    return rio_da
+```
+
++++
+
+### Set cloud top height attributes
+
+```{code-cell} ipython3
+attribute_names=['long_name','standard_name','units','grid_mapping']
+attributes ={name:item for name,item in cloud_top.attrs.items()
+             if name in attribute_names}
+attributes['history'] = f"written by goes_earthcare.ipynb on {datetime.datetime.now()}"
+attributes['start'] = goes_ct.attrs['time_coverage_start']
+attributes['end'] = goes_ct.attrs['time_coverage_end']
+attributes['dataset'] = goes_ct.attrs['dataset_name']
+attributes['title'] = 'cloud layer height'
+attributes
+```
+
+```{code-cell} ipython3
+the_dims = ('y','x')
+pyproj_crs = cloud_top.metpy.pyproj_crs
+coords_cloud_top = dict(x=cloud_top.x,y=cloud_top.y)
+cloud_top_da = make_new_rioxarray(cloud_top,
+                                  coords_cloud_top,
+                                  the_dims,
+                                  pyproj_crs,
+                                  cloud_top_affine,
+                                  attrs = attributes,
+                                  missing=np.float32(np.nan),
+                                  name = 'ht')
+                                                                   
+```
+
+```{code-cell} ipython3
+attribute_names=['long_name','standard_name','units','grid_mapping']
+attributes ={name:item for name,item in chan_14.attrs.items()
+             if name in attribute_names}
+attributes['history'] = f"written by goes_earthcare.ipynb on {datetime.datetime.now()}"
+attributes['start'] = goes_mc.attrs['time_coverage_start']
+attributes['end'] = goes_mc.attrs['time_coverage_end']
+attributes['dataset'] = goes_mc.attrs['dataset_name']
+attributes['title'] = 'chan_14'
+attributes
+```
+
+## convert chan_14 to a rioxarray
+
++++
+
+### set chan_14 attributes
+
+```{code-cell} ipython3
+the_dims = ('y','x')
+pyproj_crs = cloud_top.metpy.pyproj_crs
+coords_chan_14 = dict(x=chan_14.x,y=chan_14.y)
+chan_14_da = make_new_rioxarray(chan_14,
+                                  coords_chan_14,
+                                  the_dims,
+                                  pyproj_crs,
+                                  chan_14_affine,
+                                  attrs = attributes,
+                                  missing=np.float32(np.nan),
+                                  name = 'chan_14')
+                                  
+```
+
+```{code-cell} ipython3
+chan_14_da.plot.imshow()
+```
+
+## crop the images
+
+We want to crop the images to the radar track.  To do that, we first need to get
+the bounding box in geostationary coordinates, so we can use the `rio.clip_box` function.
+
+```{code-cell} ipython3
+#
+# transform bounds from lat,lon to goes crs
+#
+transform = Transformer.from_crs(landsat_crs, goes_crs)
+xmin_goes,ymin_goes = transform.transform(xmin,ymin)
+xmax_goes,ymax_goes = transform.transform(xmax,ymax)
+print(f"{(xmax_goes - xmin_goes)=} m")
+print(f"{(ymax_goes - ymin_goes)=} m")
+bounds_goes = xmin_goes,ymin_goes,xmax_goes,ymax_goes
+#
+# now crop to these bounds using clip_box
+#
+clipped_c3=goes_c3.rio.clip_box(*bounds_goes)
 ```
 
 ## clip to lat lon box
 
 +++
-
-## Simple RGB Figure
-At the most simple level, here is how to produce an RGB from the GOES ABI data.
-
-```{code-cell} ipython3
-from goes2go.data import goes_nearesttime
-import matplotlib.pyplot as plt 
-from datetime import datetime
-from pathlib import Path
-import xarray
-```
-
-```{code-cell} ipython3
-# Get an ABI Dataset
-save_dir = Path.home() / "repos/a301/satdata/goes" 
-writeit = False
-if writeit:
-    g = goes_nearesttime(
-        datetime(2020, 6, 25, 18), satellite="goes16",product="ABI-L2-MCMIP", domain='C', 
-          return_as="xarray", save_dir = save_dir, download = True, overwrite = False
-    )
-    the_path = g.path[0]
-else:
-    the_path = ("noaa-goes16/ABI-L2-MCMIPC/2020/177/18/"
-                "OR_ABI-L2-MCMIPC-M6_G16_s20201771801172_e20201771803551_c20201771804104.nc")
-    full_path = save_dir / the_path
-    g = xarray.open_dataset(full_path,mode = 'r',mask_and_scale = True)
-# Create RGB and plot
-image = g.rgb.TrueColor()
-image.plot.imshow();
-```
 
 ### keywords for cartopy plotting
 
