@@ -24,9 +24,11 @@ from matplotlib import pyplot as plt
 import datetime
 import pytz
 import pandas as pd
-from pyproj import CRS
+from pyproj import CRS, Transformer
 import affine
 from a301_extras.sat_lib import make_new_rioxarray
+import cartopy.crs as ccrs
+import cartopy.feature as cfeature
 ```
 
 ## open the earthcare radar file
@@ -52,8 +54,9 @@ timestamp
 ```{code-cell} ipython3
 lats = radar_ds['latitude']
 lons = radar_ds['longitude']
-ymin, ymax = np.min(lats),np.max(lats)
-xmin, xmax = np.min(lats),np.max(lats)
+ymin, ymax = np.min(lats.data),np.max(lats.data)
+xmin, xmax = np.min(lons.data),np.max(lons.data)
+(xmin,ymin,xmax,ymax)
 ```
 
 ## Find the nearest GOES image
@@ -222,12 +225,12 @@ attributes
 
 ```{code-cell} ipython3
 the_dims = ('y','x')
-pyproj_crs = cloud_top.metpy.pyproj_crs
+goes_crs = cloud_top.metpy.pyproj_crs
 coords_cloud_top = dict(x=cloud_top.x,y=cloud_top.y)
 cloud_top_da = make_new_rioxarray(cloud_top,
                                   coords_cloud_top,
                                   the_dims,
-                                  pyproj_crs,
+                                  goes_crs,
                                   cloud_top_affine,
                                   attrs = attributes,
                                   missing=np.float32(np.nan),
@@ -255,12 +258,12 @@ attributes
 
 ```{code-cell} ipython3
 the_dims = ('y','x')
-pyproj_crs = cloud_top.metpy.pyproj_crs
+goes_crs = cloud_top.metpy.pyproj_crs
 coords_chan_14 = dict(x=chan_14.x,y=chan_14.y)
 chan_14_da = make_new_rioxarray(chan_14,
                                   coords_chan_14,
                                   the_dims,
-                                  pyproj_crs,
+                                  goes_crs,
                                   chan_14_affine,
                                   attrs = attributes,
                                   missing=np.float32(np.nan),
@@ -276,87 +279,89 @@ chan_14_da.plot.imshow()
 
 We want to crop the images to the radar track.  To do that, we first need to get
 the bounding box in geostationary coordinates, so we can use the `rio.clip_box` function.
+We did this in week 8 in {ref}`week8:goes_clip_bounds`
+
+```{code-cell} ipython3
+xmin,ymin,xmax,ymax
+```
+
+### Transform the bounds from lat/lon to geostationary crs
 
 ```{code-cell} ipython3
 #
 # transform bounds from lat,lon to goes crs
 #
-transform = Transformer.from_crs(landsat_crs, goes_crs)
+latlon_crs = pyproj.CRS.from_epsg(4326)
+transform = Transformer.from_crs(latlon_crs, goes_crs,always_xy=True)
 xmin_goes,ymin_goes = transform.transform(xmin,ymin)
 xmax_goes,ymax_goes = transform.transform(xmax,ymax)
 print(f"{(xmax_goes - xmin_goes)=} m")
 print(f"{(ymax_goes - ymin_goes)=} m")
 bounds_goes = xmin_goes,ymin_goes,xmax_goes,ymax_goes
+```
+
+### Crop using clip_box
+
+```{code-cell} ipython3
 #
 # now crop to these bounds using clip_box
 #
-clipped_c3=goes_c3.rio.clip_box(*bounds_goes)
-```
-
-## clip to lat lon box
-
-+++
-
-### keywords for cartopy plotting
-
-+++
-
-## Read earthcare
-
-```{code-cell} ipython3
-g.rgb.imshow_kwargs
-```
-
-## All available RGB recipes
-
-```{code-cell} ipython3
-from goes2go.data import goes_nearesttime
-import cartopy.crs as ccrs
-import matplotlib.pyplot as plt
+clipped_cloud_top=cloud_top_da.rio.clip_box(*bounds_goes)
+clipped_chan_14 = chan_14_da.rio.clip_box(*bounds_goes)
 ```
 
 ```{code-cell} ipython3
-writeit = False
-if writeit:
-    G16 = goes_nearesttime('2024-06-25 18',satellite=16,save_dir=save_dir)
-    print(G16.path[0])
-else:
-    the_path = ("noaa-goes16/ABI-L2-MCMIPC/2024/177/18"
-                "/OR_ABI-L2-MCMIPC-M6_G16_s20241771801172_e20241771803557_c20241771804062.nc")
-    full_path = save_dir / the_path
-    G16 = xarray.open_dataset(full_path,mode = 'r',mask_and_scale = True)
-if writeit:
-    G18 = goes_nearesttime('2024-06-25 18',satellite=18,save_dir=save_dir)
-    print(G18.path[0])
-else:
-    the_path = ("noaa-goes16/ABI-L2-MCMIPC/2024/177/18"
-                "/OR_ABI-L2-MCMIPC-M6_G16_s20241771801172_e20241771803557_c20241771804062.nc")
-    full_path = save_dir / the_path
-    G18 = xarray.open_dataset(full_path,mode = 'r',mask_and_scale = True)
+clipped_cloud_top.plot.imshow()
 ```
 
 ```{code-cell} ipython3
+clipped_chan_14.plot.imshow()
+```
 
+## Make cartopy plots with radar ground track
+
+Borrow code from {ref}`week8:cartopy_goes`
+
+```{code-cell} ipython3
+extent = (xmin_goes,xmax_goes,ymin_goes,ymax_goes)
+cartopy_crs = cloud_top.metpy.cartopy_crs
+fig,ax = plt.subplots(1,1,figsize=(10,8), subplot_kw={"projection":cartopy_crs})
+clipped_chan_14.plot.imshow(
+    ax = ax,
+    origin="upper",
+    extent= extent,
+    transform=cartopy_crs,
+    interpolation="nearest",
+    vmin=220,
+    vmax=285
+);
+ax.coastlines(resolution="50m", color="black", linewidth=2)
+ax.add_feature(ccrs.cartopy.feature.STATES,edgecolor="red")
 ```
 
 ```{code-cell} ipython3
-rgb_products = [i for i in dir(G16.rgb) if i[0].isupper()]
+fig,ax = plt.subplots(1,1,figsize=(10,8), subplot_kw={"projection":cartopy_crs})
+clipped_cloud_top.plot.imshow(
+    ax = ax,
+    origin="upper",
+    extent= extent,
+    transform=cartopy_crs,
+    interpolation="nearest"
+);
+ax.coastlines(resolution="50m", color="black", linewidth=2)
+ax.add_feature(ccrs.cartopy.feature.STATES,edgecolor="red");
+```
 
-for product in rgb_products:
+## Add the groundtrack
 
-    fig = plt.figure(figsize=(15, 12))
-    ax18 = fig.add_subplot(1, 2, 1, projection=G18.rgb.crs)
-    ax16 = fig.add_subplot(1, 2, 2, projection=G16.rgb.crs)
+```{code-cell} ipython3
+goes_x, goes_y =  transform.transform(lons, lats)
+hit = lats > 35
+```
 
-    for ax, G in zip([ax18, ax16], [G18, G16]):
-        RGB = getattr(G.rgb, product)()
-
-        #common_features('50m', STATES=True, ax=ax)
-        ax.imshow(RGB, **G.rgb.imshow_kwargs)
-        ax.set_title(f"{G.orbital_slot} {product}", loc='left', fontweight='bold')
-        ax.set_title(f"{G.t.dt.strftime('%H:%M UTC %d-%b-%Y').item()}", loc="right")
-    plt.subplots_adjust(wspace=0.01)
-    #plt.savefig(f'../docs/_static/{product}', bbox_inches='tight')
+```{code-cell} ipython3
+ax.plot(goes_x[hit],goes_y[hit],'w-')
+display(fig)
 ```
 
 ```{code-cell} ipython3
