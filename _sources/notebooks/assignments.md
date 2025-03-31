@@ -45,6 +45,6 @@ Turn in a notebook that: 
 - {ref}`week11:stull_radar_solution`
 - {ref}`week11:assign7_landclass_solution`
 
-## Asignment 8
+## Assignment 8
 
 - {ref}`week12:assign8`
