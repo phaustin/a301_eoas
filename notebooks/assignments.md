@@ -42,4 +42,9 @@ Turn in a notebook that: 
 ## Assignment 7
 
 - {ref}`assign7`
+- {ref}`week11:stull_radar_solution`
+- {ref}`week11:assign7_landclass_solution`
 
+## Assignment 8
+
+- {ref}`week12:assign8`

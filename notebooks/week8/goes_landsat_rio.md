@@ -364,6 +364,7 @@ ax.coastlines(resolution="50m", color="red", linewidth=1)
 ax.add_feature(ccrs.cartopy.feature.STATES, edgecolor="red");
 ```
 
+(week8:goes_clip_bounds)=
 ## Now clip the GOES image to Landsat bounds
 
 ### Transform the landsat bounds to GOES coords

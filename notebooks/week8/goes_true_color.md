@@ -441,6 +441,7 @@ ax2.set_title("%s" % scan_start.strftime("%d %B %Y %H:%M UTC "), loc="right")
 ax2.axis("off");
 ```
 
+(week8:cartopy_goes)=
 ## Plot the mapped image using cartopy
 
 ```{code-cell} ipython3

@@ -32,7 +32,15 @@ parts:
   - file: notebooks/midterm/mid_term_reviewI_solutions.md
   - file: notebooks/midterm/mid_term_reviewII_solutions.md
   - file: solutions/midterm/a301_2024t2_midterm_solution.md
-
+- caption: Final
+  numbered: true
+  chapters:
+  - file: solutions/final_guide.md
+  - url: https://drive.google.com/file/d/17jhwpTbpT21fCBCqhatxccmA_tm8NJD9/view?usp=drive_link
+    title: 2014 final exam
+  - url: https://drive.google.com/file/d/1P--fLrVzcd18l8QSxjjs7YbyMv9889fC/view?usp=drive_link
+    title: 2022 final exam
+    
 - caption: Week 1
   numbered: true
   chapters:
@@ -130,6 +138,12 @@ parts:
     - file: notebooks/week11/earthcare_to_xarray.md
     - file: solutions/assign7_radar_solution.md
     - file: notebooks/week11/phasor_notes.md
+- caption: Week 12
+  numbered: true
+  chapters:
+    - file: notebooks/week12/goes_earthcare.md
+    - file: solutions/assign8.md
+    - file: solutions/assign7_classification_solution.md
       
       
       

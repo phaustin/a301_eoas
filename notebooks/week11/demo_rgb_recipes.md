@@ -73,9 +73,14 @@ image.plot.imshow();
 The RGB can easily be added to a Cartopy axis
 
 ```{code-cell} ipython3
+g.rgb.imshow_kwargs
+```
+
+```{code-cell} ipython3
 ax = plt.subplot(projection=g.rgb.crs)
 ax.imshow(g.rgb.TrueColor(), **g.rgb.imshow_kwargs)
 ax.coastlines()
+ax.get_extent()
 ```
 
 ### keywords for cartopy plotting

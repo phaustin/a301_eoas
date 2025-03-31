@@ -12,8 +12,26 @@ kernelspec:
   name: python3
 ---
 
-(week11:goes_earthcare)=
+(week12:goes_earthcare)=
 # goes-earthcare overlay
+
+## Introduction
+
+This notebook 
+
+- reads in the netcdf file container the Earthcare case you saved in {ref}`week12:goes_earthcare`
+- finds the closest GOES 16 or GOES 18 image and extracts the cloud top height and the channel 14 (11 micron) brightness temperature
+- crops the GOES image to the region of the Earthcare radar groundtrack
+- plots the groundtrack on top of the GOES heights
+
+This sets up the second problem in {ref}`week12:assign8`
+
+## Installation
+
+- fetch and rebase to pick up the week12 folder with this ipynb file
+- `pip install -r requirements.txt`  to install the newest version of the `a301_extras` library
+
+## open the earthcare radar file
 
 ```{code-cell} ipython3
 from pathlib import Path
@@ -30,8 +48,6 @@ from a301_extras.sat_lib import make_new_rioxarray
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 ```
-
-## open the earthcare radar file
 
 ```{code-cell} ipython3
 data_dir = Path().home() / 'repos/a301/satdata/earthcare'
@@ -56,7 +72,18 @@ lats = radar_ds['latitude']
 lons = radar_ds['longitude']
 ymin, ymax = np.min(lats.data),np.max(lats.data)
 xmin, xmax = np.min(lons.data),np.max(lons.data)
-(xmin,ymin,xmax,ymax)
+print(f"{(xmin,ymin,xmax,ymax)=}")
+```
+
+### overwrite bounding box
+
+We want a wider bounding box, since radar groundtrack is almost due north-south.
+GOES west probably has a better view, so use GOES 18
+
+```{code-cell} ipython3
+xmin = -145
+xmax = -85.
+ymax = 70
 ```
 
 ## Find the nearest GOES image
@@ -84,7 +111,7 @@ This variable is in the `ABI-L2-ACHAC` product, at 10 km resolution.  It is avai
 full description is [here](https://www.star.nesdis.noaa.gov/goesr/docs/ATBD/Cloud_Height.pdf)
 
 ```{code-cell} ipython3
-download_dict = dict(satellite="goes16",product = "ABI-L2-ACHAC",save_dir=save_dir)
+download_dict = dict(satellite="goes18",product = "ABI-L2-ACHAC",save_dir=save_dir)
 ```
 
 ```{code-cell} ipython3
@@ -92,10 +119,14 @@ writeit = False
 if writeit:
     the_path = get_goes(timestamp,**download_dict)
 else:
-    the_path = ('noaa-goes16/ABI-L2-ACHAC/2024/348/22/OR_ABI-L2-ACHAC-M6_G16_s20243482251172'
-                '_e20243482253545_c20243482256029.nc'
+    the_path = ('noaa-goes18/ABI-L2-ACHAC/2024/348/22/OR_ABI-L2-ACHAC-M6_G18_s20243482251177'
+                '_e20243482253550_c20243482256172.nc'
                )
 full_path = save_dir / the_path
+```
+
+```{code-cell} ipython3
+the_path
 ```
 
 ```{code-cell} ipython3
@@ -126,7 +157,7 @@ moisture and cloud product.  The brightness temperatures will have 2 km resoluti
 but no atmospheric correction
 
 ```{code-cell} ipython3
-download_dict = dict(satellite="goes16",
+download_dict = dict(satellite="goes18",
                      product = "ABI-L2-MCMIPC",save_dir=save_dir)
 ```
 
@@ -135,10 +166,11 @@ writeit = False
 if writeit:
     the_path = get_goes(timestamp,**download_dict)
 else:
-    the_path = ('noaa-goes16/ABI-L2-MCMIPC/2024/348/22/OR_ABI-L2-MCMIPC-M6_G16_s20243482251172_'
-                'e20243482253545_c20243482254074.nc'
+    the_path = ('noaa-goes18/ABI-L2-MCMIPC/2024/348/22/OR_ABI-L2-MCMIPC-M6_G18_s20243482251177'
+                '_e20243482253562_c20243482254081.nc'
                )
 full_path = save_dir / the_path
+the_path
 ```
 
 ```{code-cell} ipython3
@@ -356,7 +388,7 @@ ax.add_feature(ccrs.cartopy.feature.STATES,edgecolor="red");
 
 ```{code-cell} ipython3
 goes_x, goes_y =  transform.transform(lons, lats)
-hit = lats > 35
+hit = lats > 0
 ```
 
 ```{code-cell} ipython3
