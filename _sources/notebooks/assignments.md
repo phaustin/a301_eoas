@@ -43,7 +43,7 @@ Turn in a notebook that: 
 
 - {ref}`assign7`
 - {ref}`week11:stull_radar_solution`
-- {ref}`week11:assign7_landclass_solution`
+- {ref}`assign7_solution`
 
 ## Assignment 8
 

@@ -687,6 +687,7 @@ groundtrack
 - {ref}`final-guide`
 - [Practice final 2014](https://drive.google.com/file/d/17jhwpTbpT21fCBCqhatxccmA_tm8NJD9/view?usp=drive_link)
 - [Practice final 2022](https://drive.google.com/file/d/1P--fLrVzcd18l8QSxjjs7YbyMv9889fC/view?usp=drive_link)
+- {ref}`assign7_solution`
 - {ref}`week12:goes_earthcare`
 - {ref}`week12:assign8`
 
