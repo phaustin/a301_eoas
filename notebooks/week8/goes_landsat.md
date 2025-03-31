@@ -188,7 +188,7 @@ offsets = Row_col_offsets(west = -500,
 nir = band_dict['NIR']
 ```
 
-#### Why parameter typing is helpful
+### Why parameter typing is helpful
 
 In the box below, the class `Clip_point` cannot convert the string 'cinco' to a float,
 and will raise an exception.  Passing integers or strings that can be

@@ -380,10 +380,6 @@ next few notebooks.
 ### For Monday's class
 For Monday, copy this notebook and edit it to download and save a new tif containing band 4 (red) for your location.
 
-```{code-cell} ipython3
-!python --version
 ```
-
-```{code-cell} ipython3
-
+!python --version
 ```
