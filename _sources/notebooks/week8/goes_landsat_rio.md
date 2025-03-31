@@ -160,7 +160,7 @@ clipped_landsat.plot.imshow(ax=ax,
 (week8:output_bounds)=
 ### Save landsat latlon bounds to a file
 
-Added 2025/Mar7:  We need to read these bound in 
+Added 2025/Mar7:  We need to read these bound in
 
 ```{code-cell} ipython3
 p_latlon = pyproj.CRS.from_epsg(4326)
@@ -247,6 +247,7 @@ cartopy_crs = c3.metpy.cartopy_crs
 goes_crs = pyproj.CRS(cartopy_crs)
 goes_coords = dict(c3.coords)
 goes_dims = c3.dims
+print(c3.dims)
 #
 # use average pixel size for the transform
 #

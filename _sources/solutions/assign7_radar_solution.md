@@ -119,7 +119,6 @@ K2=0.93  #stull p. 245
 Pr=10**(-5.8)*1.e-3  #dBm=-58, convert from mWatts to Watts
 La=1  # no attenuation
 R=100.  #km
-
 ```
 
 #### Question 1 dbZ
@@ -141,12 +140,10 @@ print(f"calculate rain rate is {RR=:6.1f} mm/hour")
  Now keep everything the same, but make the mistake of guessing that it's a snowstorm,
    which means that K2=0.208 and we use the snowfall Z-RR relation
    of $Z=2000*RR^2$.  What is the new incorrect  precip rate?
-   
 
 +++
 
 ### Question 2 answer
-
 
 +++
 
