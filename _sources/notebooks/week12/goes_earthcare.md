@@ -15,6 +15,25 @@ kernelspec:
 (week12:goes_earthcare)=
 # goes-earthcare overlay
 
+## Introduction
+
+This notebook 
+
+- reads in the netcdf file container the Earthcare case you saved in {ref}`week12:goes_earthcare`
+- finds the closest GOES 16 or GOES 18 image and extracts the cloud top height and the channel 14 (11 micron) brightness temperature
+- crops the GOES image to the region of the Earthcare radar groundtrack
+- plots the groundtrack on top of the GOES heights
+
+This sets up the second problem in {ref}`week12:assign8`
+
+## Installation
+
+- fetch and rebase to pick up the week12 folder with this ipynb file
+- `pip install -r requirements.txt`  to install the newest version of the `a301_extras` library
+
+## open the earthcare radar file
+
+
 ```{code-cell} ipython3
 from pathlib import Path
 import xarray as xr
@@ -31,7 +50,6 @@ import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 ```
 
-## open the earthcare radar file
 
 ```{code-cell} ipython3
 data_dir = Path().home() / 'repos/a301/satdata/earthcare'

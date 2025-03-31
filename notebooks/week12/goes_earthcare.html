@@ -61,7 +61,7 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week12/goes_earthcare.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="66. Assignment 7" href="../../solutions/assign8.html" />
+    <link rel="next" title="66. Assignment 8" href="../../solutions/assign8.html" />
     <link rel="prev" title="64. Notes on phasors" href="../week11/phasor_notes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -304,7 +304,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 12</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">65. goes-earthcare overlay</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8.html">66. Assignment 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8.html">66. Assignment 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7_classification_solution.html">67. Assign7 Classification problem – solution</a></li>
 </ul>
 
     </div>
@@ -453,37 +454,39 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-earthcare-radar-file">65.1. open the earthcare radar file</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-time-and-bounding-box-corners">65.1.1. get the time and bounding box corners</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overwrite-bounding-box">65.1.2. overwrite bounding box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">65.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">65.2. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-earthcare-radar-file">65.3. open the earthcare radar file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-time-and-bounding-box-corners">65.3.1. get the time and bounding box corners</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overwrite-bounding-box">65.3.2. overwrite bounding box</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-nearest-goes-image">65.2. Find the nearest GOES image</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-goes">65.2.1. Function get_goes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-nearest-goes-image">65.4. Find the nearest GOES image</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-goes">65.4.1. Function get_goes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-cloudtop-height">65.3. Get the cloudtop height</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-projection-coordinates">65.4. calculate the projection coordinates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-11-micron-thermal-band">65.5. Get the 11 micron thermal band</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-affine-transforms">65.6. Calculate the affine transforms</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-affine">65.6.1. Function get_affine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-cloudtop-height">65.5. Get the cloudtop height</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-projection-coordinates">65.6. calculate the projection coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-11-micron-thermal-band">65.7. Get the 11 micron thermal band</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-affine-transforms">65.8. Calculate the affine transforms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-affine">65.8.1. Function get_affine</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-cloud-top-to-a-rioxarray">65.7. convert  cloud_top  to a rioxarray</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-cloud-top-height-attributes">65.7.1. Set cloud top height attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-cloud-top-to-a-rioxarray">65.9. convert  cloud_top  to a rioxarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-cloud-top-height-attributes">65.9.1. Set cloud top height attributes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-chan-14-to-a-rioxarray">65.8. convert chan_14 to a rioxarray</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-chan-14-attributes">65.8.1. set chan_14 attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-chan-14-to-a-rioxarray">65.10. convert chan_14 to a rioxarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-chan-14-attributes">65.10.1. set chan_14 attributes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-the-images">65.9. crop the images</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-the-bounds-from-lat-lon-to-geostationary-crs">65.9.1. Transform the bounds from lat/lon to geostationary crs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-using-clip-box">65.9.2. Crop using clip_box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-the-images">65.11. crop the images</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-the-bounds-from-lat-lon-to-geostationary-crs">65.11.1. Transform the bounds from lat/lon to geostationary crs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-using-clip-box">65.11.2. Crop using clip_box</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-cartopy-plots-with-radar-ground-track">65.10. Make cartopy plots with radar ground track</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-the-groundtrack">65.11. Add the groundtrack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-cartopy-plots-with-radar-ground-track">65.12. Make cartopy plots with radar ground track</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-the-groundtrack">65.13. Add the groundtrack</a></li>
 </ul>
             </nav>
         </div>
@@ -497,6 +500,26 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="goes-earthcare-overlay">
 <span id="week12-goes-earthcare"></span><h1><span class="section-number">65. </span>goes-earthcare overlay<a class="headerlink" href="#goes-earthcare-overlay" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">65.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>This notebook</p>
+<ul class="simple">
+<li><p>reads in the netcdf file container the Earthcare case you saved in <a class="reference internal" href="#week12-goes-earthcare"><span class="std std-ref">goes-earthcare overlay</span></a></p></li>
+<li><p>finds the closest GOES 16 or GOES 18 image and extracts the cloud top height and the channel 14 (11 micron) brightness temperature</p></li>
+<li><p>crops the GOES image to the region of the Earthcare radar groundtrack</p></li>
+<li><p>plots the groundtrack on top of the GOES heights</p></li>
+</ul>
+<p>This sets up the second problem in <a class="reference internal" href="../../solutions/assign8.html#week12-assign8"><span class="std std-ref">Assignment 8</span></a></p>
+</section>
+<section id="installation">
+<h2><span class="section-number">65.2. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>fetch and rebase to pick up the week12 folder with this ipynb file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code>  to install the newest version of the <code class="docutils literal notranslate"><span class="pre">a301_extras</span></code> library</p></li>
+</ul>
+</section>
+<section id="open-the-earthcare-radar-file">
+<h2><span class="section-number">65.3. </span>open the earthcare radar file<a class="headerlink" href="#open-the-earthcare-radar-file" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -521,8 +544,6 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="open-the-earthcare-radar-file">
-<h2><span class="section-number">65.1. </span>open the earthcare radar file<a class="headerlink" href="#open-the-earthcare-radar-file" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;repos/a301/satdata/earthcare&#39;</span>
@@ -941,7 +962,7 @@ Attributes:
       dtype=&#x27;float64&#x27;, name=&#x27;distance&#x27;, length=8021))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9cb642f6-c164-4c5e-98de-614a688a77c3' class='xr-section-summary-in' type='checkbox'  checked><label for='section-9cb642f6-c164-4c5e-98de-614a688a77c3' class='xr-section-summary' >Attributes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>history :</span></dt><dd>written by ec_to_xarray on 2025-03-29 09:50:41.584666</dd><dt><span>timezone :</span></dt><dd>UTC</dd><dt><span>casenum :</span></dt><dd>case4</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <section id="get-the-time-and-bounding-box-corners">
-<h3><span class="section-number">65.1.1. </span>get the time and bounding box corners<a class="headerlink" href="#get-the-time-and-bounding-box-corners" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">65.3.1. </span>get the time and bounding box corners<a class="headerlink" href="#get-the-time-and-bounding-box-corners" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">midpoint</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">radar_ds</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
@@ -977,7 +998,7 @@ Attributes:
 </div>
 </section>
 <section id="overwrite-bounding-box">
-<h3><span class="section-number">65.1.2. </span>overwrite bounding box<a class="headerlink" href="#overwrite-bounding-box" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">65.3.2. </span>overwrite bounding box<a class="headerlink" href="#overwrite-bounding-box" title="Link to this heading">#</a></h3>
 <p>We want a wider bounding box, since radar groundtrack is almost due north-south.
 GOES west probably has a better view, so use GOES 18</p>
 <div class="cell docutils container">
@@ -992,9 +1013,9 @@ GOES west probably has a better view, so use GOES 18</p>
 </section>
 </section>
 <section id="find-the-nearest-goes-image">
-<h2><span class="section-number">65.2. </span>Find the nearest GOES image<a class="headerlink" href="#find-the-nearest-goes-image" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">65.4. </span>Find the nearest GOES image<a class="headerlink" href="#find-the-nearest-goes-image" title="Link to this heading">#</a></h2>
 <section id="function-get-goes">
-<h3><span class="section-number">65.2.1. </span>Function get_goes<a class="headerlink" href="#function-get-goes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">65.4.1. </span>Function get_goes<a class="headerlink" href="#function-get-goes" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">goes2go</span><span class="w"> </span><span class="kn">import</span> <span class="n">goes_nearesttime</span>
@@ -1022,7 +1043,7 @@ GOES west probably has a better view, so use GOES 18</p>
 </section>
 </section>
 <section id="get-the-cloudtop-height">
-<h2><span class="section-number">65.3. </span>Get the cloudtop height<a class="headerlink" href="#get-the-cloudtop-height" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">65.5. </span>Get the cloudtop height<a class="headerlink" href="#get-the-cloudtop-height" title="Link to this heading">#</a></h2>
 <p>This variable is in the <code class="docutils literal notranslate"><span class="pre">ABI-L2-ACHAC</span></code> product, at 10 km resolution.  It is available every 60 minutes. The
 full description is <a class="reference external" href="https://www.star.nesdis.noaa.gov/goesr/docs/ATBD/Cloud_Height.pdf">here</a></p>
 <div class="cell docutils container">
@@ -1073,7 +1094,7 @@ full description is <a class="reference external" href="https://www.star.nesdis.
 </div>
 </section>
 <section id="calculate-the-projection-coordinates">
-<h2><span class="section-number">65.4. </span>calculate the projection coordinates<a class="headerlink" href="#calculate-the-projection-coordinates" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">65.6. </span>calculate the projection coordinates<a class="headerlink" href="#calculate-the-projection-coordinates" title="Link to this heading">#</a></h2>
 <p>The x and y coordinates for the Dataset <code class="docutils literal notranslate"><span class="pre">goes_ct</span></code> are in radians.  The function <code class="docutils literal notranslate"><span class="pre">parse_cf</span></code> (where <code class="docutils literal notranslate"><span class="pre">CF</span></code> stands
 for <code class="docutils literal notranslate"><span class="pre">climate</span> <span class="pre">and</span> <span class="pre">forecast</span></code>) extracts a dataset variable as a DataArray and converts those x and y values to meters in the geostationary CRS by multiplying by the height of the satellite. It also sets the <code class="docutils literal notranslate"><span class="pre">grid_mapping</span></code> attribute
 to <code class="docutils literal notranslate"><span class="pre">goes_imager_projection</span></code> which allows goes2go to produce the geostationary CRS using <code class="docutils literal notranslate"><span class="pre">cloud_ct.metpy.pyproj_crs</span></code> or <code class="docutils literal notranslate"><span class="pre">cloud_ct.metpy.cartopy_crs</span></code>. The CF conventions
@@ -1106,7 +1127,7 @@ are documented <a class="reference external" href="https://cfconventions.org/Dat
 </div>
 </section>
 <section id="get-the-11-micron-thermal-band">
-<h2><span class="section-number">65.5. </span>Get the 11 micron thermal band<a class="headerlink" href="#get-the-11-micron-thermal-band" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">65.7. </span>Get the 11 micron thermal band<a class="headerlink" href="#get-the-11-micron-thermal-band" title="Link to this heading">#</a></h2>
 <p>This is <a class="reference external" href="https://www.noaa.gov/jetstream/goes_east">channel 14</a> in the
 moisture and cloud product.  The brightness temperatures will have 2 km resolution,
 but no atmospheric correction</p>
@@ -1148,9 +1169,9 @@ but no atmospheric correction</p>
 </div>
 </section>
 <section id="calculate-the-affine-transforms">
-<h2><span class="section-number">65.6. </span>Calculate the affine transforms<a class="headerlink" href="#calculate-the-affine-transforms" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">65.8. </span>Calculate the affine transforms<a class="headerlink" href="#calculate-the-affine-transforms" title="Link to this heading">#</a></h2>
 <section id="function-get-affine">
-<h3><span class="section-number">65.6.1. </span>Function get_affine<a class="headerlink" href="#function-get-affine" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">65.8.1. </span>Function get_affine<a class="headerlink" href="#function-get-affine" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_affine</span><span class="p">(</span><span class="n">goes_da</span><span class="p">):</span>
@@ -1185,7 +1206,7 @@ but no atmospheric correction</p>
 </section>
 </section>
 <section id="convert-cloud-top-to-a-rioxarray">
-<h2><span class="section-number">65.7. </span>convert  cloud_top  to a rioxarray<a class="headerlink" href="#convert-cloud-top-to-a-rioxarray" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">65.9. </span>convert  cloud_top  to a rioxarray<a class="headerlink" href="#convert-cloud-top-to-a-rioxarray" title="Link to this heading">#</a></h2>
 <p>Use make_new_rioxarray introduced in <a class="reference internal" href="../week8/goes_landsat_rio.html#week8-goes-landsat-rio"><span class="std std-ref">Combining goes and landsat data using rioxarray</span></a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_new_rioxarray</span><span class="p">(</span>
     <span class="n">rawdata</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
@@ -1219,7 +1240,7 @@ but no atmospheric correction</p>
 </pre></div>
 </div>
 <section id="set-cloud-top-height-attributes">
-<h3><span class="section-number">65.7.1. </span>Set cloud top height attributes<a class="headerlink" href="#set-cloud-top-height-attributes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">65.9.1. </span>Set cloud top height attributes<a class="headerlink" href="#set-cloud-top-height-attributes" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attribute_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">,</span><span class="s1">&#39;standard_name&#39;</span><span class="p">,</span><span class="s1">&#39;units&#39;</span><span class="p">,</span><span class="s1">&#39;grid_mapping&#39;</span><span class="p">]</span>
@@ -1297,9 +1318,9 @@ but no atmospheric correction</p>
 </section>
 </section>
 <section id="convert-chan-14-to-a-rioxarray">
-<h2><span class="section-number">65.8. </span>convert chan_14 to a rioxarray<a class="headerlink" href="#convert-chan-14-to-a-rioxarray" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">65.10. </span>convert chan_14 to a rioxarray<a class="headerlink" href="#convert-chan-14-to-a-rioxarray" title="Link to this heading">#</a></h2>
 <section id="set-chan-14-attributes">
-<h3><span class="section-number">65.8.1. </span>set chan_14 attributes<a class="headerlink" href="#set-chan-14-attributes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">65.10.1. </span>set chan_14 attributes<a class="headerlink" href="#set-chan-14-attributes" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">the_dims</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
@@ -1334,7 +1355,7 @@ but no atmospheric correction</p>
 </section>
 </section>
 <section id="crop-the-images">
-<h2><span class="section-number">65.9. </span>crop the images<a class="headerlink" href="#crop-the-images" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">65.11. </span>crop the images<a class="headerlink" href="#crop-the-images" title="Link to this heading">#</a></h2>
 <p>We want to crop the images to the radar track.  To do that, we first need to get
 the bounding box in geostationary coordinates, so we can use the <code class="docutils literal notranslate"><span class="pre">rio.clip_box</span></code> function.
 We did this in week 8 in <span class="xref std std-ref">week8:goes_clip_bounds</span></p>
@@ -1351,7 +1372,7 @@ We did this in week 8 in <span class="xref std std-ref">week8:goes_clip_bounds</
 </div>
 </div>
 <section id="transform-the-bounds-from-lat-lon-to-geostationary-crs">
-<h3><span class="section-number">65.9.1. </span>Transform the bounds from lat/lon to geostationary crs<a class="headerlink" href="#transform-the-bounds-from-lat-lon-to-geostationary-crs" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">65.11.1. </span>Transform the bounds from lat/lon to geostationary crs<a class="headerlink" href="#transform-the-bounds-from-lat-lon-to-geostationary-crs" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
@@ -1376,7 +1397,7 @@ We did this in week 8 in <span class="xref std std-ref">week8:goes_clip_bounds</
 </div>
 </section>
 <section id="crop-using-clip-box">
-<h3><span class="section-number">65.9.2. </span>Crop using clip_box<a class="headerlink" href="#crop-using-clip-box" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">65.11.2. </span>Crop using clip_box<a class="headerlink" href="#crop-using-clip-box" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
@@ -1417,7 +1438,7 @@ We did this in week 8 in <span class="xref std std-ref">week8:goes_clip_bounds</
 </section>
 </section>
 <section id="make-cartopy-plots-with-radar-ground-track">
-<h2><span class="section-number">65.10. </span>Make cartopy plots with radar ground track<a class="headerlink" href="#make-cartopy-plots-with-radar-ground-track" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">65.12. </span>Make cartopy plots with radar ground track<a class="headerlink" href="#make-cartopy-plots-with-radar-ground-track" title="Link to this heading">#</a></h2>
 <p>Borrow code from <a class="reference internal" href="../week8/goes_true_color.html#week8-cartopy-goes"><span class="std std-ref">Plot the mapped image using cartopy</span></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1466,7 +1487,7 @@ We did this in week 8 in <span class="xref std std-ref">week8:goes_clip_bounds</
 </div>
 </section>
 <section id="add-the-groundtrack">
-<h2><span class="section-number">65.11. </span>Add the groundtrack<a class="headerlink" href="#add-the-groundtrack" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">65.13. </span>Add the groundtrack<a class="headerlink" href="#add-the-groundtrack" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">goes_x</span><span class="p">,</span> <span class="n">goes_y</span> <span class="o">=</span>  <span class="n">transform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">)</span>
@@ -1533,7 +1554,7 @@ We did this in week 8 in <span class="xref std std-ref">week8:goes_clip_bounds</
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">66. </span>Assignment 7</p>
+        <p class="prev-next-title"><span class="section-number">66. </span>Assignment 8</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1553,37 +1574,39 @@ We did this in week 8 in <span class="xref std std-ref">week8:goes_clip_bounds</
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-earthcare-radar-file">65.1. open the earthcare radar file</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-time-and-bounding-box-corners">65.1.1. get the time and bounding box corners</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overwrite-bounding-box">65.1.2. overwrite bounding box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">65.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">65.2. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-earthcare-radar-file">65.3. open the earthcare radar file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-time-and-bounding-box-corners">65.3.1. get the time and bounding box corners</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overwrite-bounding-box">65.3.2. overwrite bounding box</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-nearest-goes-image">65.2. Find the nearest GOES image</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-goes">65.2.1. Function get_goes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-nearest-goes-image">65.4. Find the nearest GOES image</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-goes">65.4.1. Function get_goes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-cloudtop-height">65.3. Get the cloudtop height</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-projection-coordinates">65.4. calculate the projection coordinates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-11-micron-thermal-band">65.5. Get the 11 micron thermal band</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-affine-transforms">65.6. Calculate the affine transforms</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-affine">65.6.1. Function get_affine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-cloudtop-height">65.5. Get the cloudtop height</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-projection-coordinates">65.6. calculate the projection coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-11-micron-thermal-band">65.7. Get the 11 micron thermal band</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-affine-transforms">65.8. Calculate the affine transforms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-affine">65.8.1. Function get_affine</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-cloud-top-to-a-rioxarray">65.7. convert  cloud_top  to a rioxarray</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-cloud-top-height-attributes">65.7.1. Set cloud top height attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-cloud-top-to-a-rioxarray">65.9. convert  cloud_top  to a rioxarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-cloud-top-height-attributes">65.9.1. Set cloud top height attributes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-chan-14-to-a-rioxarray">65.8. convert chan_14 to a rioxarray</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-chan-14-attributes">65.8.1. set chan_14 attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-chan-14-to-a-rioxarray">65.10. convert chan_14 to a rioxarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-chan-14-attributes">65.10.1. set chan_14 attributes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-the-images">65.9. crop the images</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-the-bounds-from-lat-lon-to-geostationary-crs">65.9.1. Transform the bounds from lat/lon to geostationary crs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-using-clip-box">65.9.2. Crop using clip_box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-the-images">65.11. crop the images</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-the-bounds-from-lat-lon-to-geostationary-crs">65.11.1. Transform the bounds from lat/lon to geostationary crs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-using-clip-box">65.11.2. Crop using clip_box</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-cartopy-plots-with-radar-ground-track">65.10. Make cartopy plots with radar ground track</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-the-groundtrack">65.11. Add the groundtrack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-cartopy-plots-with-radar-ground-track">65.12. Make cartopy plots with radar ground track</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-the-groundtrack">65.13. Add the groundtrack</a></li>
 </ul>
   </nav></div>
 
