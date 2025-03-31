@@ -208,7 +208,6 @@ def make_bool_mask(
     mask_select =  0b00100011  #find water (bit 5), cloud (bit 1) , cirrus (bit 0)
     ref_mask = np.zeros_like(scene_mask)
     ref_mask[...] = mask_select
-    print(type(scene_mask.dtype),type(ref_mask.dtype))
     masked_values = np.bitwise_and(scene_mask,ref_mask)
     masked_values[masked_values>0]=1  #cloud or water
     masked_values[masked_values==0]=0 #rest of scene

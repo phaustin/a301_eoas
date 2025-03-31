@@ -33,7 +33,6 @@ This sets up the second problem in {ref}`week12:assign8`
 
 ## open the earthcare radar file
 
-
 ```{code-cell} ipython3
 from pathlib import Path
 import xarray as xr
@@ -49,7 +48,6 @@ from a301_extras.sat_lib import make_new_rioxarray
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 ```
-
 
 ```{code-cell} ipython3
 data_dir = Path().home() / 'repos/a301/satdata/earthcare'
