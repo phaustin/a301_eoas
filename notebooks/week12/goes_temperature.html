@@ -1,0 +1,1304 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>68. Comparing cloudtop and 11 \(\mu m\) temperatures &#8212; ATSC 301</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/week12/goes_temperature';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week12/goes_temperature.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="67. Assign7 Classification problem – solution" href="../../solutions/assign7_classification_solution.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ATSC 301</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    ATSC 301: 2024 Term 2 Winter
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Useful links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">ATSC 301: syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrity.html">UBC academic integrity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../texts.html">Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments.html">A301 Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pixi_install.html">pixi install for macos and windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windows_install.html">Windows installation using a conda lock file</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)">Notebook downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebook_index.html">code snippets by notebook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Week notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week_review.html">Weekly review</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midterm</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../midterm/midterm_focus.html">1. Study topics for midterm</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1E6Gs6zUARHdEAb2UqIyMnyXj-jCiOiXw/view?usp=drive_link">2025 mid-term equation sheet</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/12ZDN8NZzgafeCMDTy4t0u-w80o3-foNT/view?usp=sharing">2022 mid-term</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI.html">2. Sample mid-term questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII.html">3. Midterm review questions II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewI_solutions.html">4. Midterm Solutions: midterm sample questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midterm/mid_term_reviewII_solutions.html">5. Midterm solutions: sample questions II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/midterm/a301_2024t2_midterm_solution.html">6. A301 midterm solutions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Final</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/final_guide.html">7. Study guide for final exam</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/17jhwpTbpT21fCBCqhatxccmA_tm8NJD9/view?usp=drive_link">2014 final exam</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1P--fLrVzcd18l8QSxjjs7YbyMv9889fC/view?usp=drive_link">2022 final exam</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/beers_law.html">8. Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/radiance.html">9. Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/newflux.html">10. Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/planck_function.html">11. Plotting the Planck function with python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week2/planck_sol.html">12. Plotting the Planck function - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/assign1.html">13. Assignment 1, brightness temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_maps.html">14. Introduction to Cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/cartopy_mapping_vancouver.html">15. Mapping Vancouver with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/get_landsat_bands.html">16. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week3/map_landsat.html">17. Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">18. Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">19. Zooming an image</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">21. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">22. Optical depth and partial transmission</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">23. Clipping multiple bands– v0.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">24. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">25. Assignment 2: solutions Part A</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">26. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">27. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">28. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">29. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">30. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">31. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">32. Hydrostatic balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">33. Cartopy mapping Buenos Aires</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">34. Assignment 3: solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/hydrostatic_balance.html">35. Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">36. Weighting functions for temperature retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">37. Finding the heating rate of the atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/assign4_two_layer_sol.html">38. Assignment 4 two layer solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4_solution.html">39. Assignment 4 solutions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week7/false_color.html">40. Making color composite (“false color”) images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week7/fmask.html">41. Using fmask to mask water pixels</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week8/install_part1.html">42. Python packages Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_true_color.html">43. GOES-16: True Color Images from GOES ABI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat.html">44. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat_rio.html">45. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6.html">46. Assignment 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/radar.html">47. Notes on the radar equation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 9</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week9/clip_demo.html">48. Clipping issues: What happened to Stanley Park?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/rio_land_classification.html">49. Working with surface class data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/flux_schwartzchild.html">50. Integrating the Schwartzchild equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/diffuse_flux_python.html">51. Calculating the diffuse flux: python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/marshall_palmer.html">52. Notes on the Marshall-Palmer distribution and the Z-RR relation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 10</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7.html">53. Assignment 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week10/false_color_examples.html">54. Landsat 8 false color examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6_solution.html">55. Assignment 6 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week10/phasor.html">56. Phasor examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week10/phaseshift.html">57. phase shift examples</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">Notes on the Doppler equation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link">Slides on the EarthCare mission</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 11</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign5_solution.html">58. Assignment 5 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/demo_rgb_recipes.html">59. GOES ABI RGB Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/derived_stability_index.html">60. GOES stability indices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/plot_earthcare.html">61. Reading earthcare level1b data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/earthcare_to_xarray.html">62. Convert earthcare to xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7_radar_solution.html">63. Assign7 Radar Problems – solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/phasor_notes.html">64. Notes on phasors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 12</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="goes_earthcare.html">65. goes-earthcare overlay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8.html">66. Assignment 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7_classification_solution.html">67. Assign7 Classification problem – solution</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">68. Comparing cloudtop and 11 <span class="math notranslate nohighlight">\(\mu m\)</span> temperatures</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/week12/goes_temperature.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Comparing cloudtop and 11 \mu m temperatures</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">68.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">68.2. Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-time-and-bounding-box-corners">68.2.1. set the time and bounding box corners</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-nearest-goes-mcmip-image">68.3. Find the nearest GOES MCMIP image</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-goes">68.3.1. Function get_goes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-cloud-top-temperature">68.4. Get the cloud top temperature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-cloud-probability">68.5. Get the cloud probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-11-micron-thermal-band-channel-14">68.6. Get the 11 micron thermal band – channel 14</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-affine-transforms">68.7. Calculate the affine transforms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-affine">68.7.1. Function get_affine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#note-the-cloud-temp-affine-transform-has-a-diffrent-resolution-and-corner-coords">68.7.2. Note the cloud_temp affine transform has a diffrent resolution and corner coords</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-cloud-temp-to-a-rioxarray">68.8. convert  cloud_temp  to a rioxarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-attributes">68.8.1. Set the attributes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-rioxarray">68.8.2. Create the rioxarray</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-chan-14-to-a-rioxarray">68.9. convert chan_14 to a rioxarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-chan-14-attributes">68.9.1. set chan_14 attributes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-cloud-prob-to-a-rioxarray">68.10. Convert cloud_prob to a rioxarray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-the-images">68.11. crop the images</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lon-lat-bounds">68.11.1. lon, lat bounds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-the-bounds-from-lat-lon-to-geostationary-crs">68.11.2. Transform the bounds from lat/lon to geostationary crs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-using-clip-box">68.11.3. Crop using clip_box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#again-note-the-cropped-cloud-temp-has-a-different-shape-and-transform">68.11.4. Again, note the cropped cloud_temp has a different shape and transform</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-reproject-match-to-transform-cloud-temp-to-same-grid-as-clipped-chan14">68.12. Use reproject_match to transform cloud_temp to same grid as clipped_chan14</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-the-cloud-mask">68.13. apply the cloud mask</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-cloud-temp-chan14-temperature-difference">68.14. Find the cloud_temp - chan14 temperature difference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-but-only-for-positive-differences">68.15. Repeat, but only for positive differences</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="comparing-cloudtop-and-11-mu-m-temperatures">
+<span id="week12-goes-temperature"></span><h1><span class="section-number">68. </span>Comparing cloudtop and 11 <span class="math notranslate nohighlight">\(\mu m\)</span> temperatures<a class="headerlink" href="#comparing-cloudtop-and-11-mu-m-temperatures" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">68.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>In this notebook we look at the difference between the cloud top temperature (the variable <code class="docutils literal notranslate"><span class="pre">TEMP</span></code> in the product ABI-L2-ACHTF) and the Channel 14 11 <span class="math notranslate nohighlight">\(\mu m\)</span> brightness
+temperature (the variable CMI-C14 in the product ABI-L2-MCMIPC).</p>
+<p>We can only compare the two temperatures for cloud pixels, so we also need to get the
+cloud mask, which is the variable <code class="docutils literal notranslate"><span class="pre">Cloud_Probabilities</span></code> in the product <code class="docutils literal notranslate"><span class="pre">ABI-L2-ACMC</span></code>.</p>
+<p>Here is the list of <a class="reference external" href="https://docs.opendata.aws/noaa-goes16/cics-readme.html">all GOES products</a></p>
+<p>It turns out that the cloud top temperature is only available hourly for the full disk, not the continental us.  As a result the closest times are different between the
+cloud top temperature and channel 14 variables.  In the cells below we:</p>
+<ol class="arabic simple">
+<li><p>Read in the three datasets</p></li>
+<li><p>Convert them to rioxarrays with transforms, crs, dims, coords</p></li>
+<li><p>Crop all three to the same bounding box</p></li>
+<li><p>Reproject cloud_top_temp to the same grid as Chan14 and the cloud mask.</p></li>
+<li><p>Histogram the cloud_top_temp - Chan14 temperature difference for the masked pixels</p></li>
+</ol>
+<p><strong>Question</strong> Do you expect the cloudtop temperatures to be warmer, colder or the same
+temperature as the Channel 14 window temperatures?</p>
+</section>
+<section id="installation">
+<h2><span class="section-number">68.2. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>fetch and rebase to pick up the week12 folder with this ipynb file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code>  to install the newest version of the <code class="docutils literal notranslate"><span class="pre">a301_extras</span></code> library</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyproj</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytz</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyproj</span><span class="w"> </span><span class="kn">import</span> <span class="n">CRS</span><span class="p">,</span> <span class="n">Transformer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">affine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">a301_extras.sat_lib</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_new_rioxarray</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.feature</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cfeature</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running __init__.py
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">save_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;repos/a301/satdata/earthcare&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="set-the-time-and-bounding-box-corners">
+<h3><span class="section-number">68.2.1. </span>set the time and bounding box corners<a class="headerlink" href="#set-the-time-and-bounding-box-corners" title="Link to this heading">#</a></h3>
+<p>Copy these from <a class="reference internal" href="goes_earthcare.html#week12-goes-earthcare"><span class="std std-ref">goes-earthcare overlay</span></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">145</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">85.</span>
+<span class="n">ymin</span> <span class="o">=</span> <span class="mf">22.</span>
+<span class="n">ymax</span> <span class="o">=</span> <span class="mi">70</span>
+<span class="n">timestamp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2024-12-13 22:50:35.447906&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="find-the-nearest-goes-mcmip-image">
+<h2><span class="section-number">68.3. </span>Find the nearest GOES MCMIP image<a class="headerlink" href="#find-the-nearest-goes-mcmip-image" title="Link to this heading">#</a></h2>
+<section id="function-get-goes">
+<h3><span class="section-number">68.3.1. </span>Function get_goes<a class="headerlink" href="#function-get-goes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">goes2go</span><span class="w"> </span><span class="kn">import</span> <span class="n">goes_nearesttime</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_goes</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">satellite</span><span class="o">=</span><span class="s2">&quot;goes16&quot;</span><span class="p">,</span> <span class="n">product</span><span class="o">=</span><span class="s2">&quot;ABI-L2-MCMIP&quot;</span><span class="p">,</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span>
+             <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">save_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">goes_nearesttime</span><span class="p">(</span>
+        <span class="n">timestamp</span><span class="p">,</span> <span class="n">satellite</span><span class="o">=</span><span class="n">satellite</span><span class="p">,</span><span class="n">product</span><span class="o">=</span><span class="n">product</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="p">,</span> 
+          <span class="n">return_as</span><span class="o">=</span><span class="s2">&quot;xarray&quot;</span><span class="p">,</span> <span class="n">save_dir</span> <span class="o">=</span> <span class="n">save_dir</span><span class="p">,</span> <span class="n">download</span> <span class="o">=</span> <span class="n">download</span><span class="p">,</span> <span class="n">overwrite</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">)</span>
+    <span class="n">the_path</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">the_path</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/phil/mini310/envs/a301/lib/python3.13/site-packages/goes2go/data.py:673: FutureWarning: &#39;H&#39; is deprecated and will be removed in a future version. Please use &#39;h&#39; instead of &#39;H&#39;.
+  within=pd.to_timedelta(config[&quot;nearesttime&quot;].get(&quot;within&quot;, &quot;1h&quot;)),
+/Users/phil/mini310/envs/a301/lib/python3.13/site-packages/goes2go/NEW.py:185: FutureWarning: &#39;H&#39; is deprecated and will be removed in a future version. Please use &#39;h&#39; instead of &#39;H&#39;.
+  within=pd.to_timedelta(config[&quot;nearesttime&quot;].get(&quot;within&quot;, &quot;1h&quot;)),
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="get-the-cloud-top-temperature">
+<h2><span class="section-number">68.4. </span>Get the cloud top temperature<a class="headerlink" href="#get-the-cloud-top-temperature" title="Link to this heading">#</a></h2>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">Temp</span></code> is in the <code class="docutils literal notranslate"><span class="pre">ABI-L2-ACHTF</span></code> product, at 2 km resolution.  It is available every 15 minutes, but only for the full disk. It is calculated by the same algorithm that computes the cloud top pressure and height.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">satellite</span><span class="o">=</span><span class="s2">&quot;goes18&quot;</span><span class="p">,</span><span class="n">product</span> <span class="o">=</span> <span class="s2">&quot;ABI-L2-ACHTF&quot;</span><span class="p">,</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span>
+                     <span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">writeit</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">if</span> <span class="n">writeit</span><span class="p">:</span>
+    <span class="n">the_path</span> <span class="o">=</span> <span class="n">get_goes</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span><span class="o">**</span><span class="n">download_dict</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">the_path</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;noaa-goes18/ABI-L2-ACHTF/2024/348/22/OR_ABI-L2-ACHTF-M6_G18_s20243482250209&#39;</span>
+                <span class="s1">&#39;_e20243482259517_c20243482301529.nc&#39;</span>
+               <span class="p">)</span>
+<span class="n">full_path</span> <span class="o">=</span> <span class="n">save_dir</span> <span class="o">/</span> <span class="n">the_path</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">the_path</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;noaa-goes18/ABI-L2-ACHTF/2024/348/22/OR_ABI-L2-ACHTF-M6_G18_s20243482250209_e20243482259517_c20243482301529.nc&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">goes_ct</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">full_path</span><span class="p">,</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">mask_and_scale</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">cloud_temp</span> <span class="o">=</span> <span class="n">goes_ct</span><span class="o">.</span><span class="n">metpy</span><span class="o">.</span><span class="n">parse_cf</span><span class="p">(</span><span class="s1">&#39;TEMP&#39;</span><span class="p">)</span>
+<span class="n">cloud_temp</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/51fcf12b0330c12fee4c8ff738f545e88584b598c9d970474fde61caa184589c.png" src="../../_images/51fcf12b0330c12fee4c8ff738f545e88584b598c9d970474fde61caa184589c.png" />
+</div>
+</div>
+</section>
+<section id="get-the-cloud-probability">
+<h2><span class="section-number">68.5. </span>Get the cloud probability<a class="headerlink" href="#get-the-cloud-probability" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Cloud_Probabilities</span></code> variable is in the <code class="docutils literal notranslate"><span class="pre">ABI-L2-ACMC</span> </code> product, at 2 km resolution.  It is available every 15 minutes. The
+full description is <a class="reference external" href="https://www.ospo.noaa.gov/data/messages/2021/11/MSG_20211118_1544.html">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">satellite</span><span class="o">=</span><span class="s2">&quot;goes18&quot;</span><span class="p">,</span><span class="n">product</span> <span class="o">=</span> <span class="s2">&quot;ABI-L2-ACMC&quot;</span><span class="p">,</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span>
+                     <span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">writeit</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">if</span> <span class="n">writeit</span><span class="p">:</span>
+    <span class="n">the_path</span> <span class="o">=</span> <span class="n">get_goes</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span><span class="o">**</span><span class="n">download_dict</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">the_path</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;noaa-goes18/ABI-L2-ACMC/2024/348/22/OR_ABI-L2-ACMC-M6_G18&#39;</span>
+                <span class="s1">&#39;_s20243482251177_e20243482253550_c20243482254451.nc&#39;</span>
+               <span class="p">)</span>
+<span class="n">full_path</span> <span class="o">=</span> <span class="n">save_dir</span> <span class="o">/</span> <span class="n">the_path</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">the_path</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;noaa-goes18/ABI-L2-ACMC/2024/348/22/OR_ABI-L2-ACMC-M6_G18_s20243482251177_e20243482253550_c20243482254451.nc&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">goes_mask</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">full_path</span><span class="p">,</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">mask_and_scale</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cloud_prob</span> <span class="o">=</span> <span class="n">goes_mask</span><span class="o">.</span><span class="n">metpy</span><span class="o">.</span><span class="n">parse_cf</span><span class="p">(</span><span class="s1">&#39;Cloud_Probabilities&#39;</span><span class="p">)</span>
+<span class="n">cloud_prob</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/15a4d1e9f16a36cd1d25cd6651415eb9c63aa3f6e3fb2673f8a3b66c20c35306.png" src="../../_images/15a4d1e9f16a36cd1d25cd6651415eb9c63aa3f6e3fb2673f8a3b66c20c35306.png" />
+</div>
+</div>
+</section>
+<section id="get-the-11-micron-thermal-band-channel-14">
+<h2><span class="section-number">68.6. </span>Get the 11 micron thermal band – channel 14<a class="headerlink" href="#get-the-11-micron-thermal-band-channel-14" title="Link to this heading">#</a></h2>
+<p>This is <a class="reference external" href="https://www.noaa.gov/jetstream/goes_east">channel 14</a>  (CMI-C14) in the
+moisture and cloud product MCMIPC.  The brightness temperature has 2 km resolution,
+but unlike the <code class="docutils literal notranslate"><span class="pre">TEMP</span></code> variable, there is no atmospheric correction for water vapor above the cloud.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">satellite</span><span class="o">=</span><span class="s2">&quot;goes18&quot;</span><span class="p">,</span>
+                     <span class="n">product</span> <span class="o">=</span> <span class="s2">&quot;ABI-L2-MCMIPC&quot;</span><span class="p">,</span><span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">writeit</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">if</span> <span class="n">writeit</span><span class="p">:</span>
+    <span class="n">the_path</span> <span class="o">=</span> <span class="n">get_goes</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span><span class="o">**</span><span class="n">download_dict</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">the_path</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;noaa-goes18/ABI-L2-MCMIPC/2024/348/22/OR_ABI-L2-MCMIPC-M6_G18_s20243482251177&#39;</span>
+                <span class="s1">&#39;_e20243482253562_c20243482254081.nc&#39;</span>
+               <span class="p">)</span>
+<span class="n">full_path</span> <span class="o">=</span> <span class="n">save_dir</span> <span class="o">/</span> <span class="n">the_path</span>
+<span class="n">the_path</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;noaa-goes18/ABI-L2-MCMIPC/2024/348/22/OR_ABI-L2-MCMIPC-M6_G18_s20243482251177_e20243482253562_c20243482254081.nc&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">goes_mc</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">full_path</span><span class="p">,</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">mask_and_scale</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">chan_14</span> <span class="o">=</span> <span class="n">goes_mc</span><span class="o">.</span><span class="n">metpy</span><span class="o">.</span><span class="n">parse_cf</span><span class="p">(</span><span class="s1">&#39;CMI_C14&#39;</span><span class="p">)</span>
+<span class="n">chan_14</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a5f3e4dda22aeaa1c281655d7781d97b28a907ab469f7d7d6a7f5b9737a0424d.png" src="../../_images/a5f3e4dda22aeaa1c281655d7781d97b28a907ab469f7d7d6a7f5b9737a0424d.png" />
+</div>
+</div>
+</section>
+<section id="calculate-the-affine-transforms">
+<h2><span class="section-number">68.7. </span>Calculate the affine transforms<a class="headerlink" href="#calculate-the-affine-transforms" title="Link to this heading">#</a></h2>
+<section id="function-get-affine">
+<h3><span class="section-number">68.7.1. </span>Function get_affine<a class="headerlink" href="#function-get-affine" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_affine</span><span class="p">(</span><span class="n">goes_da</span><span class="p">):</span>
+    <span class="n">resolutionx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">goes_da</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">resolutiony</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">goes_da</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+    <span class="n">ul_x</span> <span class="o">=</span> <span class="n">goes_da</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+    <span class="n">ul_y</span> <span class="o">=</span> <span class="n">goes_da</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+    <span class="n">goes_transform</span> <span class="o">=</span> <span class="n">affine</span><span class="o">.</span><span class="n">Affine</span><span class="p">(</span><span class="n">resolutionx</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">ul_x</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">resolutiony</span><span class="p">,</span> <span class="n">ul_y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">goes_transform</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="note-the-cloud-temp-affine-transform-has-a-diffrent-resolution-and-corner-coords">
+<h3><span class="section-number">68.7.2. </span>Note the cloud_temp affine transform has a diffrent resolution and corner coords<a class="headerlink" href="#note-the-cloud-temp-affine-transform-has-a-diffrent-resolution-and-corner-coords" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cloud_temp_affine</span> <span class="o">=</span> <span class="n">get_affine</span><span class="p">(</span><span class="n">cloud_temp</span><span class="p">)</span>
+<span class="n">chan_14_affine</span> <span class="o">=</span> <span class="n">get_affine</span><span class="p">(</span><span class="n">chan_14</span><span class="p">)</span>
+<span class="n">cloud_prob_affine</span> <span class="o">=</span> <span class="n">get_affine</span><span class="p">(</span><span class="n">cloud_prob</span><span class="p">)</span>
+<span class="n">chan_14_affine</span><span class="p">,</span>  <span class="n">cloud_prob_affine</span><span class="p">,</span> <span class="n">cloud_temp_affine</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Affine(np.float64(2004.017317102528), 0.0, np.float64(-2504019.637719609),
+        0.0, np.float64(-2004.017295251391), np.float64(4588197.756226748)),
+ Affine(np.float64(2004.017317102528), 0.0, np.float64(-2504019.637719609),
+        0.0, np.float64(-2004.017295251391), np.float64(4588197.756226748)),
+ Affine(np.float64(2004.0172201085857), 0.0, np.float64(-5433892.69232443),
+        0.0, np.float64(-2004.0172201085857), np.float64(5433892.69232443)))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chan_14</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">cloud_prob</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">cloud_temp</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((1500, 2500), (1500, 2500), (5424, 5424))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="convert-cloud-temp-to-a-rioxarray">
+<h2><span class="section-number">68.8. </span>convert  cloud_temp  to a rioxarray<a class="headerlink" href="#convert-cloud-temp-to-a-rioxarray" title="Link to this heading">#</a></h2>
+<p>Use make_new_rioxarray introduced in <a class="reference internal" href="../week8/goes_landsat_rio.html#week8-goes-landsat-rio"><span class="std std-ref">Combining goes and landsat data using rioxarray</span></a></p>
+<section id="set-the-attributes">
+<h3><span class="section-number">68.8.1. </span>Set the attributes<a class="headerlink" href="#set-the-attributes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_goes_attributes</span><span class="p">(</span><span class="n">goes_da</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;no title&quot;</span><span class="p">,</span> <span class="n">history</span><span class="o">=</span><span class="s2">&quot;no history&quot;</span><span class="p">):</span>
+    <span class="n">attribute_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">,</span><span class="s1">&#39;standard_name&#39;</span><span class="p">,</span><span class="s1">&#39;units&#39;</span><span class="p">,</span><span class="s1">&#39;grid_mapping&#39;</span><span class="p">]</span>
+    <span class="n">attributes</span> <span class="o">=</span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="n">item</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">item</span> <span class="ow">in</span> <span class="n">cloud_temp</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                 <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">attribute_names</span><span class="p">}</span>
+    <span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">history</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">goes_ct</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;time_coverage_start&#39;</span><span class="p">]</span>
+    <span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">goes_ct</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;time_coverage_end&#39;</span><span class="p">]</span>
+    <span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;dataset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">goes_ct</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;dataset_name&#39;</span><span class="p">]</span>
+    <span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">title</span>
+    <span class="k">return</span> <span class="n">attributes</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-the-rioxarray">
+<h3><span class="section-number">68.8.2. </span>Create the rioxarray<a class="headerlink" href="#create-the-rioxarray" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attributes</span> <span class="o">=</span> <span class="n">get_goes_attributes</span><span class="p">(</span><span class="n">cloud_temp</span><span class="p">,</span> <span class="n">history</span><span class="o">=</span><span class="s2">&quot;written by goes_temperature.ipynb&quot;</span><span class="p">,</span>
+                                 <span class="n">title</span><span class="o">=</span><span class="s2">&quot;goes cloud top temperature (K)&quot;</span><span class="p">)</span>
+<span class="n">the_dims</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">goes_crs</span> <span class="o">=</span> <span class="n">cloud_temp</span><span class="o">.</span><span class="n">metpy</span><span class="o">.</span><span class="n">pyproj_crs</span>
+<span class="n">coords_cloud_temp</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">cloud_temp</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">cloud_temp</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+<span class="n">cloud_temp_da</span> <span class="o">=</span> <span class="n">make_new_rioxarray</span><span class="p">(</span><span class="n">cloud_temp</span><span class="p">,</span>
+                                  <span class="n">coords_cloud_temp</span><span class="p">,</span>
+                                  <span class="n">the_dims</span><span class="p">,</span>
+                                  <span class="n">goes_crs</span><span class="p">,</span>
+                                  <span class="n">cloud_temp_affine</span><span class="p">,</span>
+                                  <span class="n">attrs</span> <span class="o">=</span> <span class="n">attributes</span><span class="p">,</span>
+                                  <span class="n">missing</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">),</span>
+                                  <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ht&#39;</span><span class="p">)</span>
+                                                                   
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cloud_temp_da</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1521ce990&gt;
+</pre></div>
+</div>
+<img alt="../../_images/0c31dcd6ded47d5c4943e80fe6ac2a27cf78fd005327f8ab73c48bf9af4496aa.png" src="../../_images/0c31dcd6ded47d5c4943e80fe6ac2a27cf78fd005327f8ab73c48bf9af4496aa.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="convert-chan-14-to-a-rioxarray">
+<h2><span class="section-number">68.9. </span>convert chan_14 to a rioxarray<a class="headerlink" href="#convert-chan-14-to-a-rioxarray" title="Link to this heading">#</a></h2>
+<section id="set-chan-14-attributes">
+<h3><span class="section-number">68.9.1. </span>set chan_14 attributes<a class="headerlink" href="#set-chan-14-attributes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attributes</span> <span class="o">=</span> <span class="n">get_goes_attributes</span><span class="p">(</span><span class="n">cloud_temp</span><span class="p">,</span> <span class="n">history</span><span class="o">=</span><span class="s2">&quot;written by goes_temperature.ipynb&quot;</span><span class="p">,</span>
+                                 <span class="n">title</span><span class="o">=</span><span class="s2">&quot;goes channel 14 brightness temperature (K)&quot;</span><span class="p">)</span>
+<span class="n">the_dims</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">goes_crs</span> <span class="o">=</span> <span class="n">cloud_temp</span><span class="o">.</span><span class="n">metpy</span><span class="o">.</span><span class="n">pyproj_crs</span>
+<span class="n">coords_chan_14</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">chan_14</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">chan_14</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+<span class="n">chan_14_da</span> <span class="o">=</span> <span class="n">make_new_rioxarray</span><span class="p">(</span><span class="n">chan_14</span><span class="p">,</span>
+                                  <span class="n">coords_chan_14</span><span class="p">,</span>
+                                  <span class="n">the_dims</span><span class="p">,</span>
+                                  <span class="n">goes_crs</span><span class="p">,</span>
+                                  <span class="n">chan_14_affine</span><span class="p">,</span>
+                                  <span class="n">attrs</span> <span class="o">=</span> <span class="n">attributes</span><span class="p">,</span>
+                                  <span class="n">missing</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">),</span>
+                                  <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;chan_14&#39;</span><span class="p">)</span>
+                                  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chan_14_da</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9c4c20d911956de4e6e0f1bb5c17241a1d93ee50c4593402102b7fdf4c3187cc.png" src="../../_images/9c4c20d911956de4e6e0f1bb5c17241a1d93ee50c4593402102b7fdf4c3187cc.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="convert-cloud-prob-to-a-rioxarray">
+<h2><span class="section-number">68.10. </span>Convert cloud_prob to a rioxarray<a class="headerlink" href="#convert-cloud-prob-to-a-rioxarray" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attributes</span> <span class="o">=</span> <span class="n">get_goes_attributes</span><span class="p">(</span><span class="n">cloud_temp</span><span class="p">,</span> <span class="n">history</span><span class="o">=</span><span class="s2">&quot;written by goes_temperature.ipynb&quot;</span><span class="p">,</span>
+                                 <span class="n">title</span><span class="o">=</span><span class="s2">&quot;goes cloud probability&quot;</span><span class="p">)</span>
+<span class="n">the_dims</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">goes_crs</span> <span class="o">=</span> <span class="n">cloud_prob</span><span class="o">.</span><span class="n">metpy</span><span class="o">.</span><span class="n">pyproj_crs</span>
+<span class="n">coords_cloud_prob</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">cloud_prob</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">cloud_prob</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+<span class="n">cloud_prob_da</span> <span class="o">=</span> <span class="n">make_new_rioxarray</span><span class="p">(</span><span class="n">cloud_prob</span><span class="p">,</span>
+                                  <span class="n">coords_cloud_prob</span><span class="p">,</span>
+                                  <span class="n">the_dims</span><span class="p">,</span>
+                                  <span class="n">goes_crs</span><span class="p">,</span>
+                                  <span class="n">cloud_prob_affine</span><span class="p">,</span>
+                                  <span class="n">attrs</span> <span class="o">=</span> <span class="n">attributes</span><span class="p">,</span>
+                                  <span class="n">missing</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">),</span>
+                                  <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;cloud_probability&#39;</span><span class="p">)</span>
+<span class="n">cloud_prob_da</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">()</span> <span class="p">;</span>                                 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/c67cb9fd7afe08fbc7274c47605e5152a004d9b3bf45784288e6fa96a5ebcc08.png" src="../../_images/c67cb9fd7afe08fbc7274c47605e5152a004d9b3bf45784288e6fa96a5ebcc08.png" />
+</div>
+</div>
+</section>
+<section id="crop-the-images">
+<h2><span class="section-number">68.11. </span>crop the images<a class="headerlink" href="#crop-the-images" title="Link to this heading">#</a></h2>
+<p>We want to crop the images to the west coast.  To do that, we first need to get
+the bounding box in geostationary coordinates, so we can use the <code class="docutils literal notranslate"><span class="pre">rio.clip_box</span></code> function. We did this in week 8 in <a class="reference internal" href="../week8/goes_landsat_rio.html#week8-goes-clip-bounds"><span class="std std-ref">Now clip the GOES image to Landsat bounds</span></a></p>
+<section id="lon-lat-bounds">
+<h3><span class="section-number">68.11.1. </span>lon, lat bounds<a class="headerlink" href="#lon-lat-bounds" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmin</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymax</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-145, 22.0, -85.0, 70)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="transform-the-bounds-from-lat-lon-to-geostationary-crs">
+<h3><span class="section-number">68.11.2. </span>Transform the bounds from lat/lon to geostationary crs<a class="headerlink" href="#transform-the-bounds-from-lat-lon-to-geostationary-crs" title="Link to this heading">#</a></h3>
+<p>Resulting image is 2304 km wide x 2861 km tall</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># transform bounds from lat,lon to goes crs</span>
+<span class="c1">#</span>
+<span class="n">latlon_crs</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">CRS</span><span class="o">.</span><span class="n">from_epsg</span><span class="p">(</span><span class="mi">4326</span><span class="p">)</span>
+<span class="n">transform</span> <span class="o">=</span> <span class="n">Transformer</span><span class="o">.</span><span class="n">from_crs</span><span class="p">(</span><span class="n">latlon_crs</span><span class="p">,</span> <span class="n">goes_crs</span><span class="p">,</span><span class="n">always_xy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">xmin_goes</span><span class="p">,</span><span class="n">ymin_goes</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span><span class="n">ymin</span><span class="p">)</span>
+<span class="n">xmax_goes</span><span class="p">,</span><span class="n">ymax_goes</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymax</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">xmax_goes</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">xmin_goes</span><span class="p">)</span><span class="si">=}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">ymax_goes</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ymin_goes</span><span class="p">)</span><span class="si">=}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+<span class="n">bounds_goes</span> <span class="o">=</span> <span class="n">xmin_goes</span><span class="p">,</span><span class="n">ymin_goes</span><span class="p">,</span><span class="n">xmax_goes</span><span class="p">,</span><span class="n">ymax_goes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(xmax_goes - xmin_goes)=2304578.6198025653 m
+(ymax_goes - ymin_goes)=2861053.251833326 m
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="crop-using-clip-box">
+<h3><span class="section-number">68.11.3. </span>Crop using clip_box<a class="headerlink" href="#crop-using-clip-box" title="Link to this heading">#</a></h3>
+<p>Clip all three images to the same box</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># now crop to these bounds using clip_box</span>
+<span class="c1">#</span>
+<span class="n">clipped_cloud_temp</span><span class="o">=</span><span class="n">cloud_temp_da</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip_box</span><span class="p">(</span><span class="o">*</span><span class="n">bounds_goes</span><span class="p">)</span>
+<span class="n">clipped_chan_14</span> <span class="o">=</span> <span class="n">chan_14_da</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip_box</span><span class="p">(</span><span class="o">*</span><span class="n">bounds_goes</span><span class="p">)</span>
+<span class="n">clipped_cloud_prob</span> <span class="o">=</span> <span class="n">cloud_prob_da</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip_box</span><span class="p">(</span><span class="o">*</span><span class="n">bounds_goes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clipped_cloud_temp</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x15292efd0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/3f92ddf03bb338b604a6ef7a903ec30ae3c86567bae6b1742f603e273248f96a.png" src="../../_images/3f92ddf03bb338b604a6ef7a903ec30ae3c86567bae6b1742f603e273248f96a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clipped_chan_14</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x156c142d0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/bfb3795da07a1d7c0866f77888150977b40a948e4d6a1e08bef31ec142582e54.png" src="../../_images/bfb3795da07a1d7c0866f77888150977b40a948e4d6a1e08bef31ec142582e54.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clipped_cloud_prob</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x156cd0410&gt;
+</pre></div>
+</div>
+<img alt="../../_images/9480538810b9535ac277d06155e6dd6dee5a0d49553d726f27805350b9f4f97e.png" src="../../_images/9480538810b9535ac277d06155e6dd6dee5a0d49553d726f27805350b9f4f97e.png" />
+</div>
+</div>
+</section>
+<section id="again-note-the-cropped-cloud-temp-has-a-different-shape-and-transform">
+<h3><span class="section-number">68.11.4. </span>Again, note the cropped cloud_temp has a different shape and transform<a class="headerlink" href="#again-note-the-cropped-cloud-temp-has-a-different-shape-and-transform" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clipped_cloud_temp</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">clipped_chan_14</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">clipped_cloud_prob</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((1428, 1151), (1124, 1151), (1124, 1151))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clipped_cloud_temp</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="p">(),</span><span class="n">clipped_chan_14</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="p">(),</span><span class="n">clipped_cloud_prob</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Affine(2004.0173614498456, 0.0, -811627.0084341107,
+        0.0, -2004.017459908606, 5198420.860140239),
+ Affine(2004.0173614498456, 0.0, -811627.0084341107,
+        0.0, -2004.0174118249295, 4589199.76493266),
+ Affine(2004.0173614498456, 0.0, -811627.0084341107,
+        0.0, -2004.0174118249295, 4589199.76493266))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="use-reproject-match-to-transform-cloud-temp-to-same-grid-as-clipped-chan14">
+<h2><span class="section-number">68.12. </span>Use reproject_match to transform cloud_temp to same grid as clipped_chan14<a class="headerlink" href="#use-reproject-match-to-transform-cloud-temp-to-same-grid-as-clipped-chan14" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_cloud_temp</span> <span class="o">=</span> <span class="n">clipped_cloud_temp</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject_match</span><span class="p">(</span><span class="n">clipped_chan_14</span><span class="p">)</span>
+<span class="n">new_cloud_temp</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/42416c90870b412e3892cd3d23f1b6d8f0ee8f08005e6ff7ef4a441ad9a9b6fe.png" src="../../_images/42416c90870b412e3892cd3d23f1b6d8f0ee8f08005e6ff7ef4a441ad9a9b6fe.png" />
+</div>
+</div>
+</section>
+<section id="apply-the-cloud-mask">
+<h2><span class="section-number">68.13. </span>apply the cloud mask<a class="headerlink" href="#apply-the-cloud-mask" title="Link to this heading">#</a></h2>
+<p>Mask all pixels that have less than a 99% chance of being cloudy</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_cloud_temp</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">clipped_cloud_prob</span> <span class="o">&lt;</span> <span class="mf">0.99</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">clipped_chan_14</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">clipped_cloud_prob</span> <span class="o">&lt;</span> <span class="mf">0.99</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_cloud_temp</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3c7e0069f6000a974a8fbdf81b67cf18579ec3587ed5cfd088707595a2485114.png" src="../../_images/3c7e0069f6000a974a8fbdf81b67cf18579ec3587ed5cfd088707595a2485114.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clipped_chan_14</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/c94bdece4ded0c4f7fb435a73a3157367173ca5f0b0da573583620ad577bf209.png" src="../../_images/c94bdece4ded0c4f7fb435a73a3157367173ca5f0b0da573583620ad577bf209.png" />
+</div>
+</div>
+</section>
+<section id="find-the-cloud-temp-chan14-temperature-difference">
+<h2><span class="section-number">68.14. </span>Find the cloud_temp - chan14 temperature difference<a class="headerlink" href="#find-the-cloud-temp-chan14-temperature-difference" title="Link to this heading">#</a></h2>
+<p>Why are there large negative numbers?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_diff</span> <span class="o">=</span> <span class="n">new_cloud_temp</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">clipped_chan_14</span><span class="o">.</span><span class="n">data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">temp_diff</span><span class="o">.</span><span class="n">flat</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/66476c258a305d037147228e2a5ec03fb28dab7c900d9f5e4722789d1a952bb1.png" src="../../_images/66476c258a305d037147228e2a5ec03fb28dab7c900d9f5e4722789d1a952bb1.png" />
+</div>
+</div>
+</section>
+<section id="repeat-but-only-for-positive-differences">
+<h2><span class="section-number">68.15. </span>Repeat, but only for positive differences<a class="headerlink" href="#repeat-but-only-for-positive-differences" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos_temp_diff</span> <span class="o">=</span> <span class="n">temp_diff</span><span class="p">[</span><span class="n">temp_diff</span> <span class="o">&gt;</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">pos_temp_diff</span><span class="o">.</span><span class="n">flat</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;postitive cloud_temp - chan14&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;postitive cloud_temp - chan14&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/22710e59cf46f0d6d20d22982184761204f1435783e70fb7627f08272592a8dd.png" src="../../_images/22710e59cf46f0d6d20d22982184761204f1435783e70fb7627f08272592a8dd.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/week12"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../solutions/assign7_classification_solution.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">67. </span>Assign7 Classification problem – solution</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">68.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">68.2. Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-time-and-bounding-box-corners">68.2.1. set the time and bounding box corners</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-nearest-goes-mcmip-image">68.3. Find the nearest GOES MCMIP image</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-goes">68.3.1. Function get_goes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-cloud-top-temperature">68.4. Get the cloud top temperature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-cloud-probability">68.5. Get the cloud probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-11-micron-thermal-band-channel-14">68.6. Get the 11 micron thermal band – channel 14</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-affine-transforms">68.7. Calculate the affine transforms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-affine">68.7.1. Function get_affine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#note-the-cloud-temp-affine-transform-has-a-diffrent-resolution-and-corner-coords">68.7.2. Note the cloud_temp affine transform has a diffrent resolution and corner coords</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-cloud-temp-to-a-rioxarray">68.8. convert  cloud_temp  to a rioxarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-attributes">68.8.1. Set the attributes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-rioxarray">68.8.2. Create the rioxarray</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-chan-14-to-a-rioxarray">68.9. convert chan_14 to a rioxarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-chan-14-attributes">68.9.1. set chan_14 attributes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-cloud-prob-to-a-rioxarray">68.10. Convert cloud_prob to a rioxarray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-the-images">68.11. crop the images</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lon-lat-bounds">68.11.1. lon, lat bounds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-the-bounds-from-lat-lon-to-geostationary-crs">68.11.2. Transform the bounds from lat/lon to geostationary crs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-using-clip-box">68.11.3. Crop using clip_box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#again-note-the-cropped-cloud-temp-has-a-different-shape-and-transform">68.11.4. Again, note the cropped cloud_temp has a different shape and transform</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-reproject-match-to-transform-cloud-temp-to-same-grid-as-clipped-chan14">68.12. Use reproject_match to transform cloud_temp to same grid as clipped_chan14</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-the-cloud-mask">68.13. apply the cloud mask</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-cloud-temp-chan14-temperature-difference">68.14. Find the cloud_temp - chan14 temperature difference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-but-only-for-positive-differences">68.15. Repeat, but only for positive differences</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Philip Austin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

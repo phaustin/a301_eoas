@@ -691,3 +691,9 @@ groundtrack
 - {ref}`week12:goes_earthcare`
 - {ref}`week12:assign8`
 
+### Day 36 Wednesday
+
+- {ref}`week12:goes_temperature`
+
+
+

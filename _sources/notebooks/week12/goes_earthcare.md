@@ -19,7 +19,7 @@ kernelspec:
 
 This notebook 
 
-- reads in the netcdf file container the Earthcare case you saved in {ref}`week12:goes_earthcare`
+- reads in the netcdf file container the Earthcare case you saved in {ref}`week11:earthcare_xarray`
 - finds the closest GOES 16 or GOES 18 image and extracts the cloud top height and the channel 14 (11 micron) brightness temperature
 - crops the GOES image to the region of the Earthcare radar groundtrack
 - plots the groundtrack on top of the GOES heights
