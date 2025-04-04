@@ -400,7 +400,7 @@ clipped_chan_14.plot.imshow();
 
 ## Find the cloud_temp - chan14 temperature difference
 
-Why are there large negative numbers?
+### Why are there large negative numbers?
 
 ```{code-cell} ipython3
 temp_diff = new_cloud_temp.data - clipped_chan_14.data
@@ -414,7 +414,7 @@ pos_temp_diff = temp_diff[temp_diff > 0.]
 plt.hist(pos_temp_diff.flat,bins=40)
 ax = plt.gca()
 ax.set_xlim((0,7))
-ax.set_title("postitive cloud_temp - chan14")
+ax.set_title("postitive cloud_temp - chan14");
 ```
 
 ```{code-cell} ipython3

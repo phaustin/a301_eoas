@@ -492,7 +492,10 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-reproject-match-to-transform-cloud-temp-to-same-grid-as-clipped-chan14">68.12. Use reproject_match to transform cloud_temp to same grid as clipped_chan14</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-the-cloud-mask">68.13. apply the cloud mask</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-cloud-temp-chan14-temperature-difference">68.14. Find the cloud_temp - chan14 temperature difference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-cloud-temp-chan14-temperature-difference">68.14. Find the cloud_temp - chan14 temperature difference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-there-large-negative-numbers">68.14.1. Why are there large negative numbers?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-but-only-for-positive-differences">68.15. Repeat, but only for positive differences</a></li>
 </ul>
             </nav>
@@ -868,7 +871,7 @@ but unlike the <code class="docutils literal notranslate"><span class="pre">TEMP
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1521ce990&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x14e1d65d0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/0c31dcd6ded47d5c4943e80fe6ac2a27cf78fd005327f8ab73c48bf9af4496aa.png" src="../../_images/0c31dcd6ded47d5c4943e80fe6ac2a27cf78fd005327f8ab73c48bf9af4496aa.png" />
@@ -1005,7 +1008,7 @@ the bounding box in geostationary coordinates, so we can use the <code class="do
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x15292efd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x14e1942d0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/3f92ddf03bb338b604a6ef7a903ec30ae3c86567bae6b1742f603e273248f96a.png" src="../../_images/3f92ddf03bb338b604a6ef7a903ec30ae3c86567bae6b1742f603e273248f96a.png" />
@@ -1018,7 +1021,7 @@ the bounding box in geostationary coordinates, so we can use the <code class="do
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x156c142d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x17fb14190&gt;
 </pre></div>
 </div>
 <img alt="../../_images/bfb3795da07a1d7c0866f77888150977b40a948e4d6a1e08bef31ec142582e54.png" src="../../_images/bfb3795da07a1d7c0866f77888150977b40a948e4d6a1e08bef31ec142582e54.png" />
@@ -1031,7 +1034,7 @@ the bounding box in geostationary coordinates, so we can use the <code class="do
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x156cd0410&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x17fbd02d0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/9480538810b9535ac277d06155e6dd6dee5a0d49553d726f27805350b9f4f97e.png" src="../../_images/9480538810b9535ac277d06155e6dd6dee5a0d49553d726f27805350b9f4f97e.png" />
@@ -1119,7 +1122,8 @@ the bounding box in geostationary coordinates, so we can use the <code class="do
 </section>
 <section id="find-the-cloud-temp-chan14-temperature-difference">
 <h2><span class="section-number">68.14. </span>Find the cloud_temp - chan14 temperature difference<a class="headerlink" href="#find-the-cloud-temp-chan14-temperature-difference" title="Link to this heading">#</a></h2>
-<p>Why are there large negative numbers?</p>
+<section id="why-are-there-large-negative-numbers">
+<h3><span class="section-number">68.14.1. </span>Why are there large negative numbers?<a class="headerlink" href="#why-are-there-large-negative-numbers" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_diff</span> <span class="o">=</span> <span class="n">new_cloud_temp</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">clipped_chan_14</span><span class="o">.</span><span class="n">data</span>
@@ -1132,6 +1136,7 @@ the bounding box in geostationary coordinates, so we can use the <code class="do
 </div>
 </div>
 </section>
+</section>
 <section id="repeat-but-only-for-positive-differences">
 <h2><span class="section-number">68.15. </span>Repeat, but only for positive differences<a class="headerlink" href="#repeat-but-only-for-positive-differences" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -1140,14 +1145,11 @@ the bounding box in geostationary coordinates, so we can use the <code class="do
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">pos_temp_diff</span><span class="o">.</span><span class="n">flat</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;postitive cloud_temp - chan14&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;postitive cloud_temp - chan14&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;postitive cloud_temp - chan14&#39;)
-</pre></div>
-</div>
 <img alt="../../_images/22710e59cf46f0d6d20d22982184761204f1435783e70fb7627f08272592a8dd.png" src="../../_images/22710e59cf46f0d6d20d22982184761204f1435783e70fb7627f08272592a8dd.png" />
 </div>
 </div>
@@ -1245,7 +1247,10 @@ the bounding box in geostationary coordinates, so we can use the <code class="do
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-reproject-match-to-transform-cloud-temp-to-same-grid-as-clipped-chan14">68.12. Use reproject_match to transform cloud_temp to same grid as clipped_chan14</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-the-cloud-mask">68.13. apply the cloud mask</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-cloud-temp-chan14-temperature-difference">68.14. Find the cloud_temp - chan14 temperature difference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-cloud-temp-chan14-temperature-difference">68.14. Find the cloud_temp - chan14 temperature difference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-there-large-negative-numbers">68.14.1. Why are there large negative numbers?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-but-only-for-positive-differences">68.15. Repeat, but only for positive differences</a></li>
 </ul>
   </nav></div>

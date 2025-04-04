@@ -695,5 +695,21 @@ groundtrack
 
 - {ref}`week12:goes_temperature`
 
+### Day 37 Friday
 
+- FYI: Interesting links we didn't have time for
+  - [Developing a classifier using random forests with sentinel 2
+](https://projectpythia.org/eo-datascience-cookbook/notebooks/templates/classification.html)
+  - [Synthetic aperture radar SAR with sentinel 1](https://projectpythia.org/eo-datascience-cookbook/notebooks/courses/microwave-remote-sensing.html)
+  - [SAR flood detection with sentinel 1](https://projectpythia.org/eo-datascience-cookbook/notebooks/courses/microwave-remote-sensing.html)
+  
+  - And a good intro to [stac and open data cube (odc)](https://www.geocorner.net/post/are-you-still-downloading-satellite-images-stop-and-stac-part-2)
+
+  - [odc-geo xarray plugin](https://odc-geo.readthedocs.io/en/latest/intro-xr.html)
+
+- Go over {ref}`final_2014_answers`
+
+### For Monday
+
+Send me an email on canvas with your preferred start day and time for your 4 day window. Needs to be between Monday April 7 and Tuesday April 15.
 
