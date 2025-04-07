@@ -396,6 +396,24 @@ ax.plot(goes_x[hit],goes_y[hit],'w-')
 display(fig)
 ```
 
+## write the file out to tiff
+
+```{code-cell} ipython3
+cartopy_crs_string = cartopy_crs.to_wkt()
+cartopy_crs_string
+```
+
+```{code-cell} ipython3
+clipped_cloud_top = clipped_cloud_top.assign_attrs(cartopy_crs = cartopy_crs_string)
+```
+
+```{code-cell} ipython3
+clipped_out = data_dir / "clipped_goes.tif"
+if clipped_out.exists():
+    clipped_out.unlink()
+clipped_cloud_top.rio.to_raster(clipped_out)
+```
+
 ```{code-cell} ipython3
 
 ```

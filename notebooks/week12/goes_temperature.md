@@ -12,26 +12,36 @@ kernelspec:
   name: python3
 ---
 
-(week12:goes_earthcare)=
-# goes-earthcare overlay
+(week12:goes_temperature)=
+# Comparing cloudtop and 11 $\mu m$ temperatures
 
 ## Introduction
 
-This notebook 
+In this notebook we look at the difference between the cloud top temperature (the variable `TEMP` in the product ABI-L2-ACHTF) and the Channel 14 11 $\mu m$ brightness
+temperature (the variable CMI-C14 in the product ABI-L2-MCMIPC). 
 
-- reads in the netcdf file container the Earthcare case you saved in {ref}`week11:earthcare_xarray`
-- finds the closest GOES 16 or GOES 18 image and extracts the cloud top height and the channel 14 (11 micron) brightness temperature
-- crops the GOES image to the region of the Earthcare radar groundtrack
-- plots the groundtrack on top of the GOES heights
+We can only compare the two temperatures for cloud pixels, so we also need to get the
+cloud mask, which is the variable `Cloud_Probabilities` in the product `ABI-L2-ACMC`.
 
-This sets up the second problem in {ref}`week12:assign8`
+Here is the list of [all GOES products](https://docs.opendata.aws/noaa-goes16/cics-readme.html)
+
+It turns out that the cloud top temperature is only available hourly for the full disk, not the continental us.  As a result the closest times are different between the
+cloud top temperature and channel 14 variables.  In the cells below we:
+
+1. Read in the three datasets
+2. Convert them to rioxarrays with transforms, crs, dims, coords
+3. Crop all three to the same bounding box
+4. Reproject cloud_top_temp to the same grid as Chan14 and the cloud mask.
+5. Histogram the cloud_top_temp - Chan14 temperature difference for the masked pixels
+
+
+**Question** Do you expect the cloudtop temperatures to be warmer, colder or the same
+temperature as the Channel 14 window temperatures?
 
 ## Installation
 
 - fetch and rebase to pick up the week12 folder with this ipynb file
 - `pip install -r requirements.txt`  to install the newest version of the `a301_extras` library
-
-## open the earthcare radar file
 
 ```{code-cell} ipython3
 from pathlib import Path
@@ -50,43 +60,22 @@ import cartopy.feature as cfeature
 ```
 
 ```{code-cell} ipython3
-data_dir = Path().home() / 'repos/a301/satdata/earthcare'
-radar_filepath = list(data_dir.glob("**/*.nc"))[0]
-radar_ds = xr.open_dataset(radar_filepath)
-radar_ds
+save_dir = Path.home() / "repos/a301/satdata/earthcare"
 ```
 
-### get the time and bounding box corners
+### set the time and bounding box corners
 
-```{code-cell} ipython3
-midpoint = int(len(radar_ds['time'])/2.)
-midtime = radar_ds['time'][midpoint].data
-
-#datetime.datetime(midtime)
-timestamp = pd.to_datetime(midtime)
-timestamp
-```
-
-```{code-cell} ipython3
-lats = radar_ds['latitude']
-lons = radar_ds['longitude']
-ymin, ymax = np.min(lats.data),np.max(lats.data)
-xmin, xmax = np.min(lons.data),np.max(lons.data)
-print(f"{(xmin,ymin,xmax,ymax)=}")
-```
-
-### overwrite bounding box
-
-We want a wider bounding box, since radar groundtrack is almost due north-south.
-GOES west probably has a better view, so use GOES 18
+Copy these from {ref}`week12:goes_earthcare`
 
 ```{code-cell} ipython3
 xmin = -145
 xmax = -85.
+ymin = 22.
 ymax = 70
+timestamp = pd.Timestamp('2024-12-13 22:50:35.447906')
 ```
 
-## Find the nearest GOES image
+## Find the nearest GOES MCMIP image
 
 +++
 
@@ -94,7 +83,7 @@ ymax = 70
 
 ```{code-cell} ipython3
 from goes2go import goes_nearesttime
-save_dir = Path.home() / "repos/a301/satdata/earthcare"
+
 def get_goes(timestamp, satellite="goes16", product="ABI-L2-MCMIP",domain="C",
              download=True, save_dir=None):
     g = goes_nearesttime(
@@ -105,13 +94,13 @@ def get_goes(timestamp, satellite="goes16", product="ABI-L2-MCMIP",domain="C",
     return the_path
 ```
 
-## Get the cloudtop height
+## Get the cloud top temperature
 
-This variable is in the `ABI-L2-ACHAC` product, at 10 km resolution.  It is available every 60 minutes. The
-full description is [here](https://www.star.nesdis.noaa.gov/goesr/docs/ATBD/Cloud_Height.pdf)
+The variable `Temp` is in the `ABI-L2-ACHTF` product, at 2 km resolution.  It is available every 15 minutes, but only for the full disk. It is calculated by the same algorithm that computes the cloud top pressure and height.
 
 ```{code-cell} ipython3
-download_dict = dict(satellite="goes18",product = "ABI-L2-ACHAC",save_dir=save_dir)
+download_dict = dict(satellite="goes18",product = "ABI-L2-ACHTF",domain="C",
+                     save_dir=save_dir)
 ```
 
 ```{code-cell} ipython3
@@ -119,8 +108,8 @@ writeit = False
 if writeit:
     the_path = get_goes(timestamp,**download_dict)
 else:
-    the_path = ('noaa-goes18/ABI-L2-ACHAC/2024/348/22/OR_ABI-L2-ACHAC-M6_G18_s20243482251177'
-                '_e20243482253550_c20243482256172.nc'
+    the_path = ('noaa-goes18/ABI-L2-ACHTF/2024/348/22/OR_ABI-L2-ACHTF-M6_G18_s20243482250209'
+                '_e20243482259517_c20243482301529.nc'
                )
 full_path = save_dir / the_path
 ```
@@ -131,30 +120,49 @@ the_path
 
 ```{code-cell} ipython3
 goes_ct = xr.open_dataset(full_path,mode = 'r',mask_and_scale = True)
-type(goes_ct)
+cloud_temp = goes_ct.metpy.parse_cf('TEMP')
+cloud_temp.plot.imshow();
 ```
 
-## calculate the projection coordinates
+## Get the cloud probability
 
-The x and y coordinates for the Dataset `goes_ct` are in radians.  The function `parse_cf` (where `CF` stands
-for `climate and forecast`) extracts a dataset variable as a DataArray and converts those x and y values to meters in the geostationary CRS by multiplying by the height of the satellite. It also sets the `grid_mapping` attribute
-to `goes_imager_projection` which allows goes2go to produce the geostationary CRS using `cloud_ct.metpy.pyproj_crs` or `cloud_ct.metpy.cartopy_crs`. The CF conventions
-are documented [here](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#_geostationary_projection) ).
+The `Cloud_Probabilities` variable is in the `ABI-L2-ACMC ` product, at 2 km resolution.  It is available every 15 minutes. The
+full description is [here](https://www.ospo.noaa.gov/data/messages/2021/11/MSG_20211118_1544.html).
 
 ```{code-cell} ipython3
-cloud_top = goes_ct.metpy.parse_cf('HT')
-type(cloud_top)
+download_dict = dict(satellite="goes18",product = "ABI-L2-ACMC",domain="C",
+                     save_dir=save_dir)
 ```
 
 ```{code-cell} ipython3
-cloud_top.plot.imshow()
+writeit = False
+if writeit:
+    the_path = get_goes(timestamp,**download_dict)
+else:
+    the_path = ('noaa-goes18/ABI-L2-ACMC/2024/348/22/OR_ABI-L2-ACMC-M6_G18'
+                '_s20243482251177_e20243482253550_c20243482254451.nc'
+               )
+full_path = save_dir / the_path
 ```
 
-## Get the 11 micron thermal band
+```{code-cell} ipython3
+the_path
+```
 
-This is [channel 14](https://www.noaa.gov/jetstream/goes_east) in the
-moisture and cloud product.  The brightness temperatures will have 2 km resolution,
-but no atmospheric correction
+```{code-cell} ipython3
+goes_mask = xr.open_dataset(full_path,mode = 'r',mask_and_scale = True)
+```
+
+```{code-cell} ipython3
+cloud_prob = goes_mask.metpy.parse_cf('Cloud_Probabilities')
+cloud_prob.plot.imshow();
+```
+
+## Get the 11 micron thermal band -- channel 14
+
+This is [channel 14](https://www.noaa.gov/jetstream/goes_east)  (CMI-C14) in the
+moisture and cloud product MCMIPC.  The brightness temperature has 2 km resolution,
+but unlike the `TEMP` variable, there is no atmospheric correction for water vapor above the cloud.
 
 ```{code-cell} ipython3
 download_dict = dict(satellite="goes18",
@@ -176,6 +184,7 @@ the_path
 ```{code-cell} ipython3
 goes_mc = xr.open_dataset(full_path,mode = 'r',mask_and_scale = True)
 chan_14 = goes_mc.metpy.parse_cf('CMI_C14')
+chan_14.plot.imshow();
 ```
 
 ## Calculate the affine transforms
@@ -195,75 +204,55 @@ def get_affine(goes_da):
     
 ```
 
+### Note the cloud_temp affine transform has a diffrent resolution and corner coords
+
 ```{code-cell} ipython3
-cloud_top_affine = get_affine(cloud_top)
+cloud_temp_affine = get_affine(cloud_temp)
 chan_14_affine = get_affine(chan_14)
-chan_14_affine, cloud_top_affine
+cloud_prob_affine = get_affine(cloud_prob)
+chan_14_affine,  cloud_prob_affine, cloud_temp_affine
 ```
 
-## convert  cloud_top  to a rioxarray
+```{code-cell} ipython3
+chan_14.shape, cloud_prob.shape, cloud_temp.shape
+```
+
+## convert  cloud_temp  to a rioxarray
 
 +++
 
 Use make_new_rioxarray introduced in {ref}`week8:goes_landsat_rio`
 
-```python
-def make_new_rioxarray(
-    rawdata: np.ndarray,
-    coords: dict,
-    dims: tuple,
-    crs: pyproj.CRS,
-    transform: affine.Affine,
-    attrs: dict | None = None,
-    missing: float | None = None,
-    name: str | None = "name_here") -> xr.DataArray:
-    """
-    create a new rioxarray from an ndarray plus components
-
-    Parameters
-    ----------
-
-    rawdata: numpy array
-    crs: pyproj crs for scene
-    coords: xarray coordinate dict
-    dims: x and y dimension names from coords
-    transform: scene affine transform
-    attrs: optional attribute dictionary
-    missing: optional missing value
-    name: optional variable name, defaults to "name_here"
-
-    Returns
-    -------
-
-    rio_da: a new rioxarray
-    """
-```
-
 +++
 
-### Set cloud top height attributes
+### Set the attributes
 
 ```{code-cell} ipython3
-attribute_names=['long_name','standard_name','units','grid_mapping']
-attributes ={name:item for name,item in cloud_top.attrs.items()
-             if name in attribute_names}
-attributes['history'] = f"written by goes_earthcare.ipynb on {datetime.datetime.now()}"
-attributes['start'] = goes_ct.attrs['time_coverage_start']
-attributes['end'] = goes_ct.attrs['time_coverage_end']
-attributes['dataset'] = goes_ct.attrs['dataset_name']
-attributes['title'] = 'cloud layer height'
-attributes
+def get_goes_attributes(goes_da,title="no title", history="no history"):
+    attribute_names=['long_name','standard_name','units','grid_mapping']
+    attributes ={name:item for name,item in cloud_temp.attrs.items()
+                 if name in attribute_names}
+    attributes['history'] = f"{history}:{datetime.datetime.now()}"
+    attributes['start'] = goes_ct.attrs['time_coverage_start']
+    attributes['end'] = goes_ct.attrs['time_coverage_end']
+    attributes['dataset'] = goes_ct.attrs['dataset_name']
+    attributes['title'] = title
+    return attributes
 ```
 
+### Create the rioxarray
+
 ```{code-cell} ipython3
+attributes = get_goes_attributes(cloud_temp, history="written by goes_temperature.ipynb",
+                                 title="goes cloud top temperature (K)")
 the_dims = ('y','x')
-goes_crs = cloud_top.metpy.pyproj_crs
-coords_cloud_top = dict(x=cloud_top.x,y=cloud_top.y)
-cloud_top_da = make_new_rioxarray(cloud_top,
-                                  coords_cloud_top,
+goes_crs = cloud_temp.metpy.pyproj_crs
+coords_cloud_temp = dict(x=cloud_temp.x,y=cloud_temp.y)
+cloud_temp_da = make_new_rioxarray(cloud_temp,
+                                  coords_cloud_temp,
                                   the_dims,
                                   goes_crs,
-                                  cloud_top_affine,
+                                  cloud_temp_affine,
                                   attrs = attributes,
                                   missing=np.float32(np.nan),
                                   name = 'ht')
@@ -271,15 +260,7 @@ cloud_top_da = make_new_rioxarray(cloud_top,
 ```
 
 ```{code-cell} ipython3
-attribute_names=['long_name','standard_name','units','grid_mapping']
-attributes ={name:item for name,item in chan_14.attrs.items()
-             if name in attribute_names}
-attributes['history'] = f"written by goes_earthcare.ipynb on {datetime.datetime.now()}"
-attributes['start'] = goes_mc.attrs['time_coverage_start']
-attributes['end'] = goes_mc.attrs['time_coverage_end']
-attributes['dataset'] = goes_mc.attrs['dataset_name']
-attributes['title'] = 'chan_14'
-attributes
+cloud_temp_da.plot.imshow()
 ```
 
 ## convert chan_14 to a rioxarray
@@ -289,8 +270,10 @@ attributes
 ### set chan_14 attributes
 
 ```{code-cell} ipython3
+attributes = get_goes_attributes(cloud_temp, history="written by goes_temperature.ipynb",
+                                 title="goes channel 14 brightness temperature (K)")
 the_dims = ('y','x')
-goes_crs = cloud_top.metpy.pyproj_crs
+goes_crs = cloud_temp.metpy.pyproj_crs
 coords_chan_14 = dict(x=chan_14.x,y=chan_14.y)
 chan_14_da = make_new_rioxarray(chan_14,
                                   coords_chan_14,
@@ -304,20 +287,44 @@ chan_14_da = make_new_rioxarray(chan_14,
 ```
 
 ```{code-cell} ipython3
-chan_14_da.plot.imshow()
+chan_14_da.plot.imshow();
+```
+
+## Convert cloud_prob to a rioxarray
+
+```{code-cell} ipython3
+attributes = get_goes_attributes(cloud_temp, history="written by goes_temperature.ipynb",
+                                 title="goes cloud probability")
+the_dims = ('y','x')
+goes_crs = cloud_prob.metpy.pyproj_crs
+coords_cloud_prob = dict(x=cloud_prob.x,y=cloud_prob.y)
+cloud_prob_da = make_new_rioxarray(cloud_prob,
+                                  coords_cloud_prob,
+                                  the_dims,
+                                  goes_crs,
+                                  cloud_prob_affine,
+                                  attrs = attributes,
+                                  missing=np.float32(np.nan),
+                                  name = 'cloud_probability')
+cloud_prob_da.plot.imshow() ;                                 
 ```
 
 ## crop the images
 
-We want to crop the images to the radar track.  To do that, we first need to get
-the bounding box in geostationary coordinates, so we can use the `rio.clip_box` function.
-We did this in week 8 in {ref}`week8:goes_clip_bounds`
+We want to crop the images to the west coast.  To do that, we first need to get
+the bounding box in geostationary coordinates, so we can use the `rio.clip_box` function. We did this in week 8 in {ref}`week8:goes_clip_bounds`
+
++++
+
+### lon, lat bounds
 
 ```{code-cell} ipython3
 xmin,ymin,xmax,ymax
 ```
 
 ### Transform the bounds from lat/lon to geostationary crs
+
+Resulting image is 2304 km wide x 2861 km tall
 
 ```{code-cell} ipython3
 #
@@ -334,66 +341,80 @@ bounds_goes = xmin_goes,ymin_goes,xmax_goes,ymax_goes
 
 ### Crop using clip_box
 
+Clip all three images to the same box
+
 ```{code-cell} ipython3
 #
 # now crop to these bounds using clip_box
 #
-clipped_cloud_top=cloud_top_da.rio.clip_box(*bounds_goes)
+clipped_cloud_temp=cloud_temp_da.rio.clip_box(*bounds_goes)
 clipped_chan_14 = chan_14_da.rio.clip_box(*bounds_goes)
+clipped_cloud_prob = cloud_prob_da.rio.clip_box(*bounds_goes)
 ```
 
 ```{code-cell} ipython3
-clipped_cloud_top.plot.imshow()
+clipped_cloud_temp.plot.imshow()
 ```
 
 ```{code-cell} ipython3
 clipped_chan_14.plot.imshow()
 ```
 
-## Make cartopy plots with radar ground track
+```{code-cell} ipython3
+clipped_cloud_prob.plot.imshow()
+```
 
-Borrow code from {ref}`week8:cartopy_goes`
+### Again, note the cropped cloud_temp has a different shape and transform
 
 ```{code-cell} ipython3
-extent = (xmin_goes,xmax_goes,ymin_goes,ymax_goes)
-cartopy_crs = cloud_top.metpy.cartopy_crs
-fig,ax = plt.subplots(1,1,figsize=(10,8), subplot_kw={"projection":cartopy_crs})
-clipped_chan_14.plot.imshow(
-    ax = ax,
-    origin="upper",
-    extent= extent,
-    transform=cartopy_crs,
-    interpolation="nearest",
-    vmin=220,
-    vmax=285
-);
-ax.coastlines(resolution="50m", color="black", linewidth=2)
-ax.add_feature(ccrs.cartopy.feature.STATES,edgecolor="red")
+clipped_cloud_temp.shape,clipped_chan_14.shape,clipped_cloud_prob.shape
 ```
 
 ```{code-cell} ipython3
-fig,ax = plt.subplots(1,1,figsize=(10,8), subplot_kw={"projection":cartopy_crs})
-clipped_cloud_top.plot.imshow(
-    ax = ax,
-    origin="upper",
-    extent= extent,
-    transform=cartopy_crs,
-    interpolation="nearest"
-);
-ax.coastlines(resolution="50m", color="black", linewidth=2)
-ax.add_feature(ccrs.cartopy.feature.STATES,edgecolor="red");
+clipped_cloud_temp.rio.transform(),clipped_chan_14.rio.transform(),clipped_cloud_prob.rio.transform()
 ```
 
-## Add the groundtrack
+## Use reproject_match to transform cloud_temp to same grid as clipped_chan14
 
 ```{code-cell} ipython3
-goes_x, goes_y =  transform.transform(lons, lats)
-hit = lats > 0
+new_cloud_temp = clipped_cloud_temp.rio.reproject_match(clipped_chan_14)
+new_cloud_temp.plot.imshow();
+```
+
+## apply the cloud mask
+
+Mask all pixels that have less than a 99% chance of being cloudy
+
+```{code-cell} ipython3
+new_cloud_temp.data[clipped_cloud_prob < 0.99]=np.nan
+clipped_chan_14.data[clipped_cloud_prob < 0.99] = np.nan
 ```
 
 ```{code-cell} ipython3
-ax.plot(goes_x[hit],goes_y[hit],'w-')
-display(fig)
+new_cloud_temp.plot.imshow();
+```
+
+```{code-cell} ipython3
+clipped_chan_14.plot.imshow();
+```
+
+## Find the cloud_temp - chan14 temperature difference
+
+### Why are there large negative numbers?
+
+```{code-cell} ipython3
+temp_diff = new_cloud_temp.data - clipped_chan_14.data
+plt.hist(temp_diff.flat);
+```
+
+## Repeat, but only for positive differences
+
+```{code-cell} ipython3
+pos_temp_diff = temp_diff[temp_diff > 0.]
+plt.hist(pos_temp_diff.flat,bins=40)
+ax = plt.gca()
+ax.set_xlim((0,7))
+ax.set_title("postitive cloud_temp - chan14");
 ```
 
 ```{code-cell} ipython3

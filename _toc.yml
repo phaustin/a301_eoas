@@ -40,6 +40,8 @@ parts:
     title: 2014 final exam
   - url: https://drive.google.com/file/d/1P--fLrVzcd18l8QSxjjs7YbyMv9889fC/view?usp=drive_link
     title: 2022 final exam
+  - url: https://drive.google.com/file/d/1_uypEFfAluDzxdt2_Eu07lYfJj7aafFa/view?usp=drive_link
+    title: 2010 final exam
     
 - caption: Week 1
   numbered: true
@@ -144,6 +146,13 @@ parts:
     - file: notebooks/week12/goes_earthcare.md
     - file: solutions/assign8.md
     - file: solutions/assign7_classification_solution.md
+    - file: notebooks/week12/goes_temperature.md
+    - file: solutions/final_2014/final_2014_answers.md
+- caption: Week 13
+  numbered: true
+  chapters:
+    - file: solutions/assign8_doppler_solution.md
+    - file: solutions/assign8_goes_solution.md
       
       
       
