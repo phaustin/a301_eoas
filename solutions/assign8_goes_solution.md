@@ -12,8 +12,10 @@ kernelspec:
   name: python3
 ---
 
-(assign8_goes_solution)=
-# Assignment 8 GOES heights solution
++++ {"jp-MarkdownHeadingCollapsed": true}
+
+(assign8:solution_heights)=
+# Assignment 8 solution
 
 
 - upload a notebook that
@@ -25,12 +27,20 @@ kernelspec:
 
 ## Installation
 
-- fetch and rebase to pick up the week12 folder with this ipynb file
-- `pip install -r requirements.txt`  to install the newest version of the `a301_extras` library
+- fetch and rebase to pick up the week13 folder with this ipynb file
+- I modified the end of the {ref}`week12:goes_earthcare` notebook
+  to produce a new file called [clipped_goes.tif](https://drive.google.com/drive/folders/1tZQ9fG8C32fOR5NR-dsLvR0iT6SOUegn?usp=sharing) which needs to be copied to `~/repos/a301/satdata/earthcare`.  In that file I also included the cartopy CRS so I could make a map of the GOES heights to show how to debug the satellite track.
 
-## open the earthcare radar file
+## Workflow
 
-Use the file written by {ref}`week11:earthcare_xarray`
+1) Get the radar groundtrack
+2) Read the GOES heights from `clipped_goes.tif`
+3) Find the row, column on the image for every radar lat,lon point
+4) Plot the radar reflectivity and add the GOES height lin for each of those points
+
+## Debugging
+
+In the last section I show how to plot the radar groundtrack on the satellie image, by setting the row, column pixels along the groundtrack to a high value show they show up.
 
 ```{code-cell} ipython3
 from pathlib import Path
@@ -83,7 +93,7 @@ goes_ht.plot.imshow();
 
 ### Function get_rowcol
 
-reuse code from {ref}`week12:goes_earthcare` and {ref}`week12:goes_temperature`
+reuse code from {ref}`(week12:goes_earthcare` and {ref}`week12:goes_temperature`
 
 ```{code-cell} ipython3
 affine_transform = goes_ht.rio.transform()
@@ -115,6 +125,8 @@ for row, col in zip(track_col, track_row):
 
 ## Add to the radar reflectivity plot
 
+Not sure why GOES doesn't see the cloud at 600 km, but overall good agreement.  Notice that the GOES estimates are about 200 meters below the radar cloud top.
+
 ```{code-cell} ipython3
 fig, ax = plt.subplots(1,1,figsize=(12,3))
 radar_ds['dbZ'].plot(ax = ax, x="distance",y="height",vmin=-3,vmax=25);
@@ -127,19 +139,28 @@ ax.set_title(f"{casenum}");
 
 ## To debug: check against image
 
+If GOES and the radar are not close to each other, then it might help to
+see the radar track on the GOES image.  To do that, use `imshow` to 
+show the heights, but modified the pixel values along the groundtrack
+so the are clear in the image.
+
 +++
 
 ### Make groundtrack heights stand out
+
+Set all the pixels along the ground track to 20000 m.
 
 ```{code-cell} ipython3
 for row, col in zip(track_col, track_row):
     goes_ht[row,col]=20000
 ```
 
+### Plot the modified image
+
 ```{code-cell} ipython3
-xmin = -145
+xmin = -145 #longitude degrees east
 xmax = -85.
-ymax = 70
+ymax = 70  #latitude degrees north
 ymin = 20
 xmin_goes,ymin_goes = goes_latlon_xy.transform(xmin,ymin)
 xmax_goes,ymax_goes = goes_latlon_xy.transform(xmax,ymax)
@@ -148,6 +169,12 @@ extent = (xmin_goes,xmax_goes,ymin_goes,ymax_goes)
 
 ```{code-cell} ipython3
 def make_cartopy_crs(wkt_string):
+    """
+    Hack to solve cartopy bug which prevents it from using
+    pyproj CRS objects directly.  I create the pyproj crs then
+    take it apart as a dictionary and put it back together
+    as a cartopy crs
+    """
     bad_cartopy_crs = ccrs.Projection(wkt_string)
     terms=bad_cartopy_crs.to_dict()
     globe_kwargs = dict(semimajor_axis = terms['a'],
@@ -160,6 +187,8 @@ def make_cartopy_crs(wkt_string):
     cartopy_crs = ccrs.Geostationary(**crs_kwargs,globe=globe)
     return cartopy_crs
 ```
+
+### Use the CRS I wrote out in the tif file
 
 ```{code-cell} ipython3
 wkt_string = goes_ht.attrs['cartopy_crs']
