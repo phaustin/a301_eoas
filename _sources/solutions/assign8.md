@@ -27,5 +27,3 @@ kernelspec:
     of the GOES height image. Use it to produce a height/distance plot that shows the
     radar reflectivity image  with the colocated GOES HT heights overlaid as a line on the image.  Do
     GOES and eartcare agree on the location of cloudtop?
-    
-    

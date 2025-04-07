@@ -1,0 +1,751 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>70. Assignment 8 doppler solution &#8212; ATSC 301</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'solutions/assign8_doppler_solution';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a301_eoas/solutions/assign8_doppler_solution.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="71. Assignment 8 solution" href="assign8_goes_solution.html" />
+    <link rel="prev" title="69. 2014 final solutions" href="final_2014/final_2014_answers.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../notebooks/index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ATSC 301</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../notebooks/index.html">
+                    ATSC 301: 2024 Term 2 Winter
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Useful links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/syllabus.html">ATSC 301: syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/integrity.html">UBC academic integrity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/texts.html">Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/assignments.html">A301 Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/pixi_install.html">pixi install for macos and windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/windows_install.html">Windows installation using a conda lock file</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing)">Notebook downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/notebook_index.html">code snippets by notebook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week_notes.html">Week notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week_review.html">Weekly review</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midterm</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/midterm/midterm_focus.html">1. Study topics for midterm</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1E6Gs6zUARHdEAb2UqIyMnyXj-jCiOiXw/view?usp=drive_link">2025 mid-term equation sheet</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/12ZDN8NZzgafeCMDTy4t0u-w80o3-foNT/view?usp=sharing">2022 mid-term</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/midterm/mid_term_reviewI.html">2. Sample mid-term questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/midterm/mid_term_reviewII.html">3. Midterm review questions II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/midterm/mid_term_reviewI_solutions.html">4. Midterm Solutions: midterm sample questions I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/midterm/mid_term_reviewII_solutions.html">5. Midterm solutions: sample questions II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="midterm/a301_2024t2_midterm_solution.html">6. A301 midterm solutions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Final</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="final_guide.html">7. Study guide for final exam</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/17jhwpTbpT21fCBCqhatxccmA_tm8NJD9/view?usp=drive_link">2014 final exam</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1P--fLrVzcd18l8QSxjjs7YbyMv9889fC/view?usp=drive_link">2022 final exam</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1_uypEFfAluDzxdt2_Eu07lYfJj7aafFa/view?usp=drive_link">2010 final exam</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch02-radiation-v102b.pdf">Stull Chapter 2, pp. 34-43</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week1/beers_law.html">8. Beers and inverse squared laws</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0000517195&amp;title=Atmospheric%20Science%3A%20An%20Introductory%20Survey">Wallace and Hobbs Chapter 4, pp. 113-118</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week1/radiance.html">9. Solid angle and radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week1/newflux.html">10. Finding the flux given the radiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week1/planck_function.html">11. Plotting the Planck function with python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week2/planck_sol.html">12. Plotting the Planck function - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week2/assign1.html">13. Assignment 1, brightness temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week2/cartopy_maps.html">14. Introduction to Cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week2/cartopy_mapping_vancouver.html">15. Mapping Vancouver with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week2/get_landsat_bands.html">16. Landsat 1: Dowloading Landsat and Sentinel data from NASA</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week3/map_landsat.html">17. Mapping the landsat scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week3/assign1_solution.html">18. Assignment 1, brightness temperatures - solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week3/zoom_landsat.html">19. Zooming an image</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week3/kirchoff.html">21. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week3/optical_depth.html">22. Optical depth and partial transmission</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week4/clip_bands.html">23. Clipping multiple bands– v0.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week4/optical_depth2.html">24. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign2_solutionsA.html">25. Assignment 2: solutions Part A</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="assign4.html">26. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign2_solutionsB.html">27. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week5/rowcol2latlon.html">28. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week5/schwartz.html">29. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week5/add_palette.html">30. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign2_solutionsC.html">31. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week5/hydrostat.html">32. Hydrostatic balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week5/cartopy_mapping_buenos_aires.html">33. Cartopy mapping Buenos Aires</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="assign3_solutions.html">34. Assignment 3: solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week6/hydrostatic_balance.html">35. Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week6/weighting_functions.html">36. Weighting functions for temperature retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week6/heating_rate.html">37. Finding the heating rate of the atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week6/assign4_two_layer_sol.html">38. Assignment 4 two layer solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign4_solution.html">39. Assignment 4 solutions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week7/false_color.html">40. Making color composite (“false color”) images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week7/fmask.html">41. Using fmask to mask water pixels</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week8/install_part1.html">42. Python packages Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week8/goes_true_color.html">43. GOES-16: True Color Images from GOES ABI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week8/goes_landsat.html">44. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week8/goes_landsat_rio.html">45. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign6.html">46. Assignment 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week8/radar.html">47. Notes on the radar equation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 9</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week9/clip_demo.html">48. Clipping issues: What happened to Stanley Park?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week9/rio_land_classification.html">49. Working with surface class data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week9/flux_schwartzchild.html">50. Integrating the Schwartzchild equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week9/diffuse_flux_python.html">51. Calculating the diffuse flux: python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week9/marshall_palmer.html">52. Notes on the Marshall-Palmer distribution and the Z-RR relation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 10</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="assign7.html">53. Assignment 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/false_color_examples.html">54. Landsat 8 false color examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign6_solution.html">55. Assignment 6 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/phasor.html">56. Phasor examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week10/phaseshift.html">57. phase shift examples</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">Notes on the Doppler equation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link">Slides on the EarthCare mission</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 11</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="assign5_solution.html">58. Assignment 5 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week11/demo_rgb_recipes.html">59. GOES ABI RGB Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week11/derived_stability_index.html">60. GOES stability indices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week11/plot_earthcare.html">61. Reading earthcare level1b data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week11/earthcare_to_xarray.html">62. Convert earthcare to xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign7_radar_solution.html">63. Assign7 Radar Problems – solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week11/phasor_notes.html">64. Notes on phasors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 12</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week12/goes_earthcare.html">65. goes-earthcare overlay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign8.html">66. Assignment 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign7_classification_solution.html">67. Assign7 Classification problem – solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/week12/goes_temperature.html">68. Comparing cloudtop and 11 <span class="math notranslate nohighlight">\(\mu m\)</span> temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="final_2014/final_2014_answers.html">69. 2014 final solutions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 13</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">70. Assignment 8 doppler solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assign8_goes_solution.html">71. Assignment 8 solution</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/solutions/assign8_doppler_solution.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Assignment 8 doppler solution</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">70.1. Q1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-answer">70.1.1. Q1 Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">70.2. Question 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-answer">70.2.1. Question 2 answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3">70.3. Question 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-answer">70.3.1. Question 3 answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4">70.4. Question 4</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="assignment-8-doppler-solution">
+<span id="assign8-doppler-solution"></span><h1><span class="section-number">70. </span>Assignment 8 doppler solution<a class="headerlink" href="#assignment-8-doppler-solution" title="Link to this heading">#</a></h1>
+<section id="q1">
+<h2><span class="section-number">70.1. </span>Q1<a class="headerlink" href="#q1" title="Link to this heading">#</a></h2>
+<p>The attached color Doppler image shows a velocity pattern measured by Doppler radar with a wavelength of λ = 10 cm and a PRF of 2200 Hz. Using the space below the figure, plot the wind direction (with wind from the east at 90 degrees and wind from the west at 270 degrees) and the wind speed as functions of height, Assume that the outer range ring is at vertical elevation of 24 km and that the radar is at sea level, and pretend that the wind speed is in m/s, not knots. (so the blue colors start at -51 m/s and go in steps of 7 m/s towards zero then on to speeds of +51 m/s in the yellow).</p>
+<section id="q1-answer">
+<h3><span class="section-number">70.1.1. </span>Q1 Answer<a class="headerlink" href="#q1-answer" title="Link to this heading">#</a></h3>
+<p>This is similar to Stull Figure 8.38a, with the wind blowing into the radar (minus, blue/green) from the west/left and away from the radar (positive, yellow/read) on the right (east).  There is a maximum in the windspeed at an altitude of about 12 km with a spped of 51 m/s, falling to zero at the surface and about 24 m/s at 24 km.</p>
+<figure class="align-default" id="doppler-fig">
+<a class="reference internal image-reference" href="../_images/doppler_assign8.jpg"><img alt="../_images/doppler_assign8.jpg" src="../_images/doppler_assign8.jpg" style="width: 500.0px; height: 500.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 70.1 </span><span class="caption-text">Doppler velocity plot</span><a class="headerlink" href="#doppler-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="question-2">
+<h2><span class="section-number">70.2. </span>Question 2<a class="headerlink" href="#question-2" title="Link to this heading">#</a></h2>
+<p>Now assume that the the PRF is reduced to 1100 Hz. Describe qualitatively what the radar image would look like if it was not corrected for aliasing. You can draw contour lines on the map and verbally describe the color patterns inside the ring</p>
+<section id="question-2-answer">
+<h3><span class="section-number">70.2.1. </span>Question 2 answer<a class="headerlink" href="#question-2-answer" title="Link to this heading">#</a></h3>
+<p>From the equation sheet we know that:</p>
+<div class="math notranslate nohighlight">
+\[
+M_{r\,max} = \lambda \cdot \mathrm{PRF}/4
+\]</div>
+<p>So with the PRF at 2200 Hz, the maximum unambiguous velocity is 55 m/s.  Once the PRF is reduced to 1100 Hz, you would get aliasing for speeds above 27.5 m/s.  On the left, shades above green on the pallette would switch to orange/yellow and on the right the reverse would happen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.1</span><span class="o">*</span><span class="mi">2200</span><span class="o">/</span><span class="mf">4.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>55.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="question-3">
+<h2><span class="section-number">70.3. </span>Question 3<a class="headerlink" href="#question-3" title="Link to this heading">#</a></h2>
+<p>Find the smallest phase angle (magnitude and direction) between two pulses when the radial wind speed is 30 m/s and the PRF is at i) 1100 Hz and ii) 2200 Hz</p>
+<section id="question-3-answer">
+<h3><span class="section-number">70.3.1. </span>Question 3 answer<a class="headerlink" href="#question-3-answer" title="Link to this heading">#</a></h3>
+<p>From the equation sheet we know that</p>
+<div class="math notranslate nohighlight" id="equation-delphi">
+<span class="eqno">(70.1)<a class="headerlink" href="#equation-delphi" title="Link to this equation">#</a></span>\[
+\frac{\Delta \phi} {2 \pi} = \frac{ 2d}{\lambda} = \frac{ -2 T_r M_r}{\lambda} 
+\]</div>
+<p>Note that if</p>
+<div class="math notranslate nohighlight">
+\[
+M_r = M_{r\,max} = \lambda \cdot \mathrm{PRF}/4
+\]</div>
+<p>the <a class="reference internal" href="#equation-delphi">(70.1)</a> reduces to</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\Delta \phi} { \pi} =1
+\]</div>
+<p>That is, the maximum velocity is just enough to rotate the phasor through an angle of 180 degrees.</p>
+<p>i) At 1100 Hz using <a class="reference internal" href="#equation-delphi">(70.1)</a> gives a phase difference of -196 degrees away from the radar.  That angle  would not be reported however, because of aliasing due to the fact that the phasor has rotated through more than 180 degrees.  The radar would incorrectly report the smaller postive phase difference of 360 - 196 = 164 degrees.  This would be interpreted as a speed of (164/180)*27.5 = 25 m/s towards the radar.</p>
+<p>ii) At 2200 Hz <a class="reference internal" href="#equation-delphi">(70.1)</a> gives a phase difference of -98 degrees away from the radar. This is a smaller magnitude than 180 degrees so this would be intrepreted correctly as (98.5/180)*55 = 30 m/s away from the radar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">Tr</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">1100</span>
+<span class="n">Mr</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">the_lambda</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">del_phi</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">Tr</span><span class="o">*</span><span class="n">Mr</span><span class="o">/</span><span class="n">the_lambda</span>
+<span class="n">del_phi_deg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">del_phi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;for 1100 Hz: </span><span class="si">{</span><span class="n">del_phi_deg</span><span class="si">=:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> degrees&quot;</span><span class="p">)</span>
+<span class="n">del_phi_wrong</span> <span class="o">=</span> <span class="mi">360</span> <span class="o">+</span> <span class="n">del_phi_deg</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;incorrect angle: </span><span class="si">{</span><span class="n">del_phi_wrong</span><span class="si">=:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;incorrect velocity </span><span class="si">{</span><span class="p">(</span><span class="n">del_phi_wrong</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span><span class="o">*</span><span class="mf">27.5</span><span class="si">=:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m/s towards the radar</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">Tr</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2200</span>
+<span class="n">del_phi</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">Tr</span><span class="o">*</span><span class="n">Mr</span><span class="o">/</span><span class="n">the_lambda</span>
+<span class="n">del_phi_deg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">del_phi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;correct angle for 2200 Hz: </span><span class="si">{</span><span class="n">del_phi_deg</span><span class="si">=:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> degrees&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;correct velocity </span><span class="si">{</span><span class="p">(</span><span class="o">-</span><span class="n">del_phi_deg</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span><span class="o">*</span><span class="mi">55</span><span class="si">=:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m/s away from the radar&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>for 1100 Hz: del_phi_deg=-196.4 degrees
+incorrect angle: del_phi_wrong=163.6
+incorrect velocity (del_phi_wrong/180)*27.5=25.0 m/s towards the radar
+
+
+correct angle for 2200 Hz: del_phi_deg=-98.2 degrees
+correct velocity (-del_phi_deg/180)*55=30.0 m/s away from the radar
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="question-4">
+<h2><span class="section-number">70.4. </span>Question 4<a class="headerlink" href="#question-4" title="Link to this heading">#</a></h2>
+<p>Find the maximum unambiguous range for this radar when the PRF is at i) 1100 Hz and ii) 2200 Hz</p>
+<p>The equation:</p>
+<div class="math notranslate nohighlight">
+\[
+  MUR = \frac{c}{2 \cdot \mathrm{PRF}}
+\]</div>
+<p>See cell below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="mf">3e8</span>  <span class="c1">#m/s</span>
+<span class="n">prf</span> <span class="o">=</span> <span class="mi">1100</span>
+<span class="n">mur</span> <span class="o">=</span> <span class="n">c</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">prf</span><span class="o">*</span><span class="mf">1.e3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;at </span><span class="si">{</span><span class="n">prf</span><span class="si">}</span><span class="s2"> Hz the </span><span class="si">{</span><span class="n">mur</span><span class="si">=:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
+<span class="n">prf</span> <span class="o">=</span> <span class="mi">2200</span>
+<span class="n">mur</span> <span class="o">=</span> <span class="n">c</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">prf</span><span class="o">*</span><span class="mf">1.e3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;at </span><span class="si">{</span><span class="n">prf</span><span class="si">}</span><span class="s2"> Hz the </span><span class="si">{</span><span class="n">mur</span><span class="si">=:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>at 1100 Hz the mur=136 km
+at 2200 Hz the mur=68.2 km
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./solutions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="final_2014/final_2014_answers.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">69. </span>2014 final solutions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="assign8_goes_solution.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">71. </span>Assignment 8 solution</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">70.1. Q1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-answer">70.1.1. Q1 Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">70.2. Question 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-answer">70.2.1. Question 2 answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3">70.3. Question 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-answer">70.3.1. Question 3 answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4">70.4. Question 4</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Philip Austin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

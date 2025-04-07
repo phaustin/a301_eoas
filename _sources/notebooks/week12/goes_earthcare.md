@@ -19,7 +19,7 @@ kernelspec:
 
 This notebook 
 
-- reads in the netcdf file container the Earthcare case you saved in {ref}`week11:earthcare_xarray`
+- reads in the netcdf file container the Earthcare case you saved in {ref}`week12:goes_earthcare`
 - finds the closest GOES 16 or GOES 18 image and extracts the cloud top height and the channel 14 (11 micron) brightness temperature
 - crops the GOES image to the region of the Earthcare radar groundtrack
 - plots the groundtrack on top of the GOES heights
@@ -394,6 +394,26 @@ hit = lats > 0
 ```{code-cell} ipython3
 ax.plot(goes_x[hit],goes_y[hit],'w-')
 display(fig)
+```
+
+## write the file out to tiff
+
+Add the cartopy crs as an attribute so that we can make a map with the image.  There's a cartopy bug that prevents us from using the DataArray.rio.crs pyproj version, but we'll need that one to translate lat/lon into goex x,y in Assignment 8
+
+```{code-cell} ipython3
+cartopy_crs_string = cartopy_crs.to_wkt()
+cartopy_crs_string
+```
+
+```{code-cell} ipython3
+clipped_cloud_top = clipped_cloud_top.assign_attrs(cartopy_crs = cartopy_crs_string)
+```
+
+```{code-cell} ipython3
+clipped_out = data_dir / "clipped_goes.tif"
+if clipped_out.exists():
+    clipped_out.unlink()
+clipped_cloud_top.rio.to_raster(clipped_out)
 ```
 
 ```{code-cell} ipython3

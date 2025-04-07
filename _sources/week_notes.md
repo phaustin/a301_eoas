@@ -713,3 +713,20 @@ groundtrack
 
 Send me an email on canvas with your preferred start day and time for your 4 day window. Needs to be between Monday April 7 and Tuesday April 15.
 
+## Week 13
+
+- Go over {ref}`assign8_doppler_solution`
+- Go over {ref}`assign8_goes_solution2`
+- Added the [2010 final exam](  https://drive.google.com/file/d/1_uypEFfAluDzxdt2_Eu07lYfJj7aafFa/view?usp=drive_link)
+
+### do by Wednesday
+
+- hand in your update Assignment 8 part b satellite notebook for partial credit (and to get ready for the takehome exam)
+- send me your start time for the takehome via canvas email
+
+### do before final
+
+- post your solutions to final exam practice questions on piazza
+
+
+
