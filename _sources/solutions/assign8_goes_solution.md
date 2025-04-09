@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-(assign8_goes_solution2)=
+(assign8:solution_heights)=
 # Assignment 8 solution
 
 
@@ -91,7 +91,9 @@ goes_ht.plot.imshow();
 
 ### Function get_rowcol
 
-reuse code from {ref}`week12:goes_earthcare` and {ref}`week12:goes_temperature`
+fixed 2025/4/9 -- swapped row,col, then swapped back again
+
+reuse code from {ref}`(week12:goes_earthcare` and {ref}`week12:goes_temperature`
 
 ```{code-cell} ipython3
 affine_transform = goes_ht.rio.transform()
@@ -103,7 +105,7 @@ x_goes,y_goes = goes_latlon_xy.transform(lonvec,latvec)
 
 ```{code-cell} ipython3
 def get_rowcol(affine_transform,x_coords,y_coords):
-    image_row, image_col = ~affine_transform * (x_coords,y_coords)
+    image_col, image_row = ~affine_transform * (x_coords,y_coords)
     image_col = np.round(image_col).astype(np.int32)
     image_row = np.round(image_row).astype(np.int32)
     return image_col,image_row
@@ -117,13 +119,13 @@ track_col, track_row = get_rowcol(affine_transform,x_goes,y_goes)
 
 ```{code-cell} ipython3
 the_heights = []
-for row, col in zip(track_col, track_row):
+for col, row in zip(track_col, track_row):
     the_heights.append(goes_ht[row,col].data)
 ```
 
 ## Add to the radar reflectivity plot
 
-Remember that resolution of the GOES cloud top data is 10 km x 10 km, so not expecting exact agreement here.  The cloud ad x =600 km is missed by GOES, presumably because it only fills a small part of the grid box.  Overall good agreement though.
+Not sure why GOES doesn't see the cloud at 600 km, but overall good agreement.  Notice that the GOES estimates are about 200 meters below the radar cloud top.
 
 ```{code-cell} ipython3
 fig, ax = plt.subplots(1,1,figsize=(12,3))
@@ -135,29 +137,25 @@ ax.set_ylabel("height (m)")
 ax.set_title(f"{casenum}");
 ```
 
-## Extra: to debug, plot the ground track dirrectly on the satellite image
+## To debug: check against image
 
 If GOES and the radar are not close to each other, then it might help to
-overlay the radar track on a GOES image -- for example on one of the visible channels with higher 2 km x 2 km resolution.  This might confirm that the radar saw a cloud that was too small for the goes height algorithm to detect.
-
-To do that, use `imshow` to 
-show the goes raster, but change the pixel values along the groundtrack
-so they stand out on the scene.  We show this below using the height image.
+see the radar track on the GOES image.  To do that, use `imshow` to 
+show the heights, but modified the pixel values along the groundtrack
+so the are clear in the image.
 
 +++
 
 ### Make groundtrack heights stand out
 
-Set all the pixels along the ground track to a height of 20000 m -- much larger than the real values.
+Set all the pixels along the ground track to 20000 m.
 
 ```{code-cell} ipython3
-for row, col in zip(track_col, track_row):
+for col, row in zip(track_col, track_row):
     goes_ht[row,col]=20000
 ```
 
 ### Plot the modified image
-
-First get the extent in goes coordinates
 
 ```{code-cell} ipython3
 xmin = -145 #longitude degrees east
@@ -172,8 +170,8 @@ extent = (xmin_goes,xmax_goes,ymin_goes,ymax_goes)
 ```{code-cell} ipython3
 def make_cartopy_crs(wkt_string):
     """
-    This is ah ack to solve the cartopy bug which prevents it from using
-    the pyproj CRS objects directly to creat a cartopy crs.  I create the pyproj crs then
+    Hack to solve cartopy bug which prevents it from using
+    pyproj CRS objects directly.  I create the pyproj crs then
     take it apart as a dictionary and put it back together
     as a cartopy crs
     """

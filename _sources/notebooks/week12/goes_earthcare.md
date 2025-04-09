@@ -83,7 +83,7 @@ GOES west probably has a better view, so use GOES 18
 ```{code-cell} ipython3
 xmin = -145
 xmax = -85.
-ymax = 70
+ymax = 55
 ```
 
 ## Find the nearest GOES image
@@ -93,16 +93,14 @@ ymax = 70
 ### Function get_goes
 
 ```{code-cell} ipython3
+from a301_extras.sat_lib import *
+dir()
+```
+
+```{code-cell} ipython3
 from goes2go import goes_nearesttime
 save_dir = Path.home() / "repos/a301/satdata/earthcare"
-def get_goes(timestamp, satellite="goes16", product="ABI-L2-MCMIP",domain="C",
-             download=True, save_dir=None):
-    g = goes_nearesttime(
-        timestamp, satellite=satellite,product=product, domain=domain, 
-          return_as="xarray", save_dir = save_dir, download = download, overwrite = False
-    )
-    the_path = g.path[0]
-    return the_path
+from a301_extras.sat_lib import get_goes
 ```
 
 ## Get the cloudtop height
@@ -355,7 +353,7 @@ clipped_chan_14.plot.imshow()
 Borrow code from {ref}`week8:cartopy_goes`
 
 ```{code-cell} ipython3
-extent = (xmin_goes,xmax_goes,ymin_goes,ymax_goes)
+extent = (xmin_goes,xmax_goes,ymin_goes,ymax_goes*1.3)
 cartopy_crs = cloud_top.metpy.cartopy_crs
 fig,ax = plt.subplots(1,1,figsize=(10,8), subplot_kw={"projection":cartopy_crs})
 clipped_chan_14.plot.imshow(
@@ -372,6 +370,7 @@ ax.add_feature(ccrs.cartopy.feature.STATES,edgecolor="red")
 ```
 
 ```{code-cell} ipython3
+extent = (xmin_goes,xmax_goes,ymin_goes,ymax_goes*1.8)
 fig,ax = plt.subplots(1,1,figsize=(10,8), subplot_kw={"projection":cartopy_crs})
 clipped_cloud_top.plot.imshow(
     ax = ax,
@@ -388,7 +387,7 @@ ax.add_feature(ccrs.cartopy.feature.STATES,edgecolor="red");
 
 ```{code-cell} ipython3
 goes_x, goes_y =  transform.transform(lons, lats)
-hit = lats > 0
+hit = lats < 55
 ```
 
 ```{code-cell} ipython3
