@@ -12,8 +12,6 @@ kernelspec:
   name: python3
 ---
 
-+++ {"jp-MarkdownHeadingCollapsed": true}
-
 (assign8:solution_heights)=
 # Assignment 8 solution
 
@@ -105,7 +103,7 @@ x_goes,y_goes = goes_latlon_xy.transform(lonvec,latvec)
 
 ```{code-cell} ipython3
 def get_rowcol(affine_transform,x_coords,y_coords):
-    image_row, image_col = ~affine_transform * (x_coords,y_coords)
+    image_col, image_row = ~affine_transform * (x_coords,y_coords)
     image_col = np.round(image_col).astype(np.int32)
     image_row = np.round(image_row).astype(np.int32)
     return image_col,image_row
@@ -119,7 +117,7 @@ track_col, track_row = get_rowcol(affine_transform,x_goes,y_goes)
 
 ```{code-cell} ipython3
 the_heights = []
-for row, col in zip(track_col, track_row):
+for col, row in zip(track_col, track_row):
     the_heights.append(goes_ht[row,col].data)
 ```
 
@@ -151,7 +149,7 @@ so the are clear in the image.
 Set all the pixels along the ground track to 20000 m.
 
 ```{code-cell} ipython3
-for row, col in zip(track_col, track_row):
+for col, row in zip(track_col, track_row):
     goes_ht[row,col]=20000
 ```
 
