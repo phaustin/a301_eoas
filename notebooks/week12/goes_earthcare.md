@@ -93,11 +93,6 @@ ymax = 55
 ### Function get_goes
 
 ```{code-cell} ipython3
-from a301_extras.sat_lib import *
-dir()
-```
-
-```{code-cell} ipython3
 from goes2go import goes_nearesttime
 save_dir = Path.home() / "repos/a301/satdata/earthcare"
 from a301_extras.sat_lib import get_goes

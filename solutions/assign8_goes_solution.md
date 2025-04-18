@@ -91,6 +91,8 @@ goes_ht.plot.imshow();
 
 ### Function get_rowcol
 
+fixed 2025/4/9 -- swapped row,col, then swapped back again
+
 reuse code from {ref}`(week12:goes_earthcare` and {ref}`week12:goes_temperature`
 
 ```{code-cell} ipython3
