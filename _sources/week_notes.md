@@ -716,7 +716,7 @@ Send me an email on canvas with your preferred start day and time for your 4 day
 ## Week 13
 
 - Go over {ref}`assign8_doppler_solution`
-- Go over {ref}`assign8_goes_solution2`
+- Go over {ref}`assign8:solution_heights`
 - Added the [2010 final exam](  https://drive.google.com/file/d/1_uypEFfAluDzxdt2_Eu07lYfJj7aafFa/view?usp=drive_link)
 
 ### do by Wednesday

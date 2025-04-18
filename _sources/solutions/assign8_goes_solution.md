@@ -93,7 +93,7 @@ goes_ht.plot.imshow();
 
 fixed 2025/4/9 -- swapped row,col, then swapped back again
 
-reuse code from {ref}`(week12:goes_earthcare` and {ref}`week12:goes_temperature`
+reuse code from {ref}`week12:goes_earthcare` and {ref}`week12:goes_temperature`
 
 ```{code-cell} ipython3
 affine_transform = goes_ht.rio.transform()
