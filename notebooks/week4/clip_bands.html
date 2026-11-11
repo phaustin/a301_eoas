@@ -6,9 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>23. Clipping multiple bands– v0.3 &#8212; ATSC 301</title>
+    <title>22. Clipping multiple bands– v0.3 &#8212; ATSC 301</title>
   
   
   
@@ -16,37 +16,40 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -61,10 +64,11 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week4/clip_bands.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="24. Optical depth II: mean free path" href="optical_depth2.html" />
-    <link rel="prev" title="22. Optical depth and partial transmission" href="../week3/optical_depth.html" />
+    <link rel="next" title="23. Optical depth II: mean free path" href="optical_depth2.html" />
+    <link rel="prev" title="21. Optical depth and partial transmission" href="../week3/optical_depth.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -80,19 +84,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -100,7 +93,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -108,8 +100,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -125,7 +117,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -155,22 +148,18 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    ATSC 301: 2024 Term 2 Winter
+                    ATSC 301: 2024 Term 2 Winter – pha
                 </a>
             </li>
         </ul>
@@ -232,89 +221,89 @@
 <li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">18. Assignment 1, brightness temperatures - solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">19. Zooming an image</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">21. Kirchoff worksheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">22. Optical depth and partial transmission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">20. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">21. Optical depth and partial transmission</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">23. Clipping multiple bands– v0.3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="optical_depth2.html">24. Optical depth II: mean free path</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">25. Assignment 2: solutions Part A</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">22. Clipping multiple bands– v0.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optical_depth2.html">23. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">24. Assignment 2: solutions Part A</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">26. Assignment 4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">27. Assignment 2: solutions part B</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">28. Getting lat,lon from row, column</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">29. The Schwartzchild Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">30. Adding a palette to an axis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">31. Assignment 2: solutions part C</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">32. Hydrostatic balance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">33. Cartopy mapping Buenos Aires</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">25. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">26. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">27. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">28. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">29. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">30. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">31. Hydrostatic balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">32. Cartopy mapping Buenos Aires</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">34. Assignment 3: solutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/hydrostatic_balance.html">35. Scale heights for typical atmospheric soundings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">36. Weighting functions for temperature retrieval</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">37. Finding the heating rate of the atmosphere</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/assign4_two_layer_sol.html">38. Assignment 4 two layer solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4_solution.html">39. Assignment 4 solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">33. Assignment 3: solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/hydrostatic_balance.html">34. Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">35. Weighting functions for temperature retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">36. Finding the heating rate of the atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/assign4_two_layer_sol.html">37. Assignment 4 two layer solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4_solution.html">38. Assignment 4 solutions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week7/false_color.html">40. Making color composite (“false color”) images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week7/fmask.html">41. Using fmask to mask water pixels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week7/false_color.html">39. Making color composite (“false color”) images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week7/fmask.html">40. Using fmask to mask water pixels</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week8/install_part1.html">42. Python packages Part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/goes_true_color.html">43. GOES-16: True Color Images from GOES ABI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat.html">44. Combining goes and landsat data using rioxarray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat_rio.html">45. Combining goes and landsat data using rioxarray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6.html">46. Assignment 6</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/radar.html">47. Notes on the radar equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/install_part1.html">41. Python packages Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_true_color.html">42. GOES-16: True Color Images from GOES ABI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat.html">43. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat_rio.html">44. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6.html">45. Assignment 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/radar.html">46. Notes on the radar equation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 9</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week9/clip_demo.html">48. Clipping issues: What happened to Stanley Park?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week9/rio_land_classification.html">49. Working with surface class data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week9/flux_schwartzchild.html">50. Integrating the Schwartzchild equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week9/diffuse_flux_python.html">51. Calculating the diffuse flux: python code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week9/marshall_palmer.html">52. Notes on the Marshall-Palmer distribution and the Z-RR relation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/clip_demo.html">47. Clipping issues: What happened to Stanley Park?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/rio_land_classification.html">48. Working with surface class data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/flux_schwartzchild.html">49. Integrating the Schwartzchild equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/diffuse_flux_python.html">50. Calculating the diffuse flux: python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/marshall_palmer.html">51. Notes on the Marshall-Palmer distribution and the Z-RR relation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 10</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7.html">53. Assignment 7</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week10/false_color_examples.html">54. Landsat 8 false color examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6_solution.html">55. Assignment 6 solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week10/phasor.html">56. Phasor examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week10/phaseshift.html">57. phase shift examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7.html">52. Assignment 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week10/false_color_examples.html">53. Landsat 8 false color examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6_solution.html">54. Assignment 6 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week10/phasor.html">55. Phasor examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week10/phaseshift.html">56. phase shift examples</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">Notes on the Doppler equation</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link">Slides on the EarthCare mission</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 11</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign5_solution.html">58. Assignment 5 solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week11/demo_rgb_recipes.html">59. GOES ABI RGB Recipes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week11/derived_stability_index.html">60. GOES stability indices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week11/plot_earthcare.html">61. Reading earthcare level1b data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week11/earthcare_to_xarray.html">62. Convert earthcare to xarray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7_radar_solution.html">63. Assign7 Radar Problems – solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week11/phasor_notes.html">64. Notes on phasors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign5_solution.html">57. Assignment 5 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/demo_rgb_recipes.html">58. GOES ABI RGB Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/derived_stability_index.html">59. GOES stability indices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/plot_earthcare.html">60. Reading earthcare level1b data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/earthcare_to_xarray.html">61. Convert earthcare to xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7_radar_solution.html">62. Assign7 Radar Problems – solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/phasor_notes.html">63. Notes on phasors</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 12</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week12/goes_earthcare.html">65. goes-earthcare overlay</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8.html">66. Assignment 8</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7_classification_solution.html">67. Assign7 Classification problem – solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week12/goes_temperature.html">68. Comparing cloudtop and 11 <span class="math notranslate nohighlight">\(\mu m\)</span> temperatures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/final_2014/final_2014_answers.html">69. 2014 final solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week12/goes_earthcare.html">64. goes-earthcare overlay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8.html">65. Assignment 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7_classification_solution.html">66. Assign7 Classification problem – solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week12/goes_temperature.html">67. Comparing cloudtop and 11 <span class="math notranslate nohighlight">\(\mu m\)</span> temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/final_2014/final_2014_answers.html">68. 2014 final solutions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 13</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8_doppler_solution.html">70. Assignment 8 doppler solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8_goes_solution.html">71. Assignment 8 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8_doppler_solution.html">69. Assignment 8 doppler solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8_goes_solution.html">70. Assignment 8 solution</a></li>
 </ul>
 
     </div>
@@ -323,9 +312,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -408,7 +402,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -422,25 +416,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -463,35 +449,35 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">23.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-original-hls-tif-files-from-disk">23.2. Get the original hls tif files from disk</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-geotif-metadata">23.3. Examine the geotif metadata</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-gdalinfo-from-the-terminal">23.3.1. Using gdalinfo from the terminal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-python-gdal-api">23.3.2. Using the python gdal api</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dump-all-the-metadata">23.3.3. Dump all the metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">22.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-original-hls-tif-files-from-disk">22.2. Get the original hls tif files from disk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-geotif-metadata">22.3. Examine the geotif metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-gdalinfo-from-the-terminal">22.3.1. Using gdalinfo from the terminal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-python-gdal-api">22.3.2. Using the python gdal api</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dump-all-the-metadata">22.3.3. Dump all the metadata</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-bands-into-a-dictionary">23.4. Read the bands into a dictionary</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-dtype-of-the-data-and-missing-data">23.4.1. check the dtype of the data and missing data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-bands-into-a-dictionary">22.4. Read the bands into a dictionary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-dtype-of-the-data-and-missing-data">22.4.1. check the dtype of the data and missing data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-clipped-week3-band-5-bounding-box">23.5. Read the clipped week3 band 5 bounding box</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-bounding-box-using-the-upper-left-and-lower-right-corners">23.5.1. Create the bounding box using the upper left and lower right corners</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-pyproj-crs-to-copy-to-output-tif">23.5.2. Get the pyproj crs to copy to output tif</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-clipped-week3-band-5-bounding-box">22.5. Read the clipped week3 band 5 bounding box</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-bounding-box-using-the-upper-left-and-lower-right-corners">22.5.1. Create the bounding box using the upper left and lower right corners</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-pyproj-crs-to-copy-to-output-tif">22.5.2. Get the pyproj crs to copy to output tif</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-new-clipped-arrays">23.6. Create new clipped arrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-brightness-temperature-in-band-11">23.7. Check the brightness temperature in band 11</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-the-clipped-geotiffs">23.8. Write the clipped geotiffs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-some-attributes">23.8.1. change some attributes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-attributes">23.8.1.1. check the attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-new-clipped-arrays">22.6. Create new clipped arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-brightness-temperature-in-band-11">22.7. Check the brightness temperature in band 11</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-the-clipped-geotiffs">22.8. Write the clipped geotiffs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-some-attributes">22.8.1. change some attributes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-attributes">22.8.1.1. check the attributes</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-out-the-new-geotiffs">23.8.2. Write out the new geotiffs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-function-write-fmask">23.8.3. New function: write_fmask</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-one-back-in-to-check">23.8.4. read one back in to check</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#note-that-we-now-have-the-correct-epsg-code">23.8.4.1. note that we now have the correct epsg code</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-metadata">23.8.4.2. Check the metadata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-out-the-new-geotiffs">22.8.2. Write out the new geotiffs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-function-write-fmask">22.8.3. New function: write_fmask</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-one-back-in-to-check">22.8.4. read one back in to check</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#note-that-we-now-have-the-correct-epsg-code">22.8.4.1. note that we now have the correct epsg code</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-metadata">22.8.4.2. Check the metadata</a></li>
 </ul>
 </li>
 </ul>
@@ -508,12 +494,12 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="clipping-multiple-bands-v0-3">
-<span id="week4-clip-bands"></span><h1><span class="section-number">23. </span>Clipping multiple bands– v0.3<a class="headerlink" href="#clipping-multiple-bands-v0-3" title="Link to this heading">#</a></h1>
+<span id="week4-clip-bands"></span><h1><span class="section-number">22. </span>Clipping multiple bands– v0.3<a class="headerlink" href="#clipping-multiple-bands-v0-3" title="Link to this heading">#</a></h1>
 <p>2025/Mar/15: Now writes out the fmask file using rasterio (rioxarray doesn’t seem to be able to handle 8 bit data)
 see</p>
 <p>2025/Feb/27: Fixed a problem where the datatype of the clipped arrays was changed from float32 to int16 when creating geotiffs.  See <a class="reference internal" href="#clip-create-arrays"><span class="std std-ref">Create new clipped arrays</span></a> for the new code.</p>
 <section id="introduction">
-<h2><span class="section-number">23.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>We are going to need to look at bands 2, 3, 4, 5, 9, 10 and 11.  This notebook uses the clipped band we wrote in
 <a class="reference internal" href="../week3/zoom_landsat.html#week3-image-zoom"><span class="std std-ref">Zooming an image</span></a> to get the clipping box, then reads in each of these bands, clips to the same box
 and writes them out to new smaller geotifs.</p>
@@ -548,30 +534,30 @@ and writes them out to new smaller geotifs.</p>
 </div>
 </section>
 <section id="get-the-original-hls-tif-files-from-disk">
-<h2><span class="section-number">23.2. </span>Get the original hls tif files from disk<a class="headerlink" href="#get-the-original-hls-tif-files-from-disk" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.2. </span>Get the original hls tif files from disk<a class="headerlink" href="#get-the-original-hls-tif-files-from-disk" title="Link to this heading">#</a></h2>
 <p>This cell finds all the 3660 x 3660 landsat tifs we downloaded in the satdata/landsat/vancouver folder.  We can use the <code class="docutils literal notranslate"><span class="pre">*</span></code> wildcard
 so we don’t have to type in long filenames, and the <code class="docutils literal notranslate"><span class="pre">**</span></code> wildcard so we look in all subfolders.  If you’re interested  here’s
 the <a class="reference external" href="https://en.wikipedia.org/wiki/Glob_(programming)#:~:text=6%20References-,Origin,command%3A%20%2Fetc%2Fglob.">wikipedia entry on globbing</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;repos/a301/satdata/landsat&#39;</span>
-<span class="c1">#the_tifs = list(data_dir.glob(&#39;**/vancouver_2023/HLS.L30*tif&#39;))</span>
-<span class="n">the_tifs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/vancouver_2023/HLS.L30*tif&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">'repos/a301/satdata/landsat'</span>
+<span class="c1">#the_tifs = list(data_dir.glob('**/vancouver_2023/HLS.L30*tif'))</span>
+<span class="n">the_tifs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'**/vancouver_2023/HLS.L30*tif'</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">the_tifs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.Fmask.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B05.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B11.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B10.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B04.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B06.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B07.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B03.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B02.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B01.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023226T190707.v2.0.Fmask.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023226T190707.v2.0.B05.tif&#39;), PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B09.tif&#39;)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.Fmask.tif'), PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B05.tif'), PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B11.tif'), PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B10.tif'), PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B04.tif'), PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B06.tif'), PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B07.tif'), PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B03.tif'), PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B02.tif'), PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B01.tif'), PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023226T190707.v2.0.Fmask.tif'), PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023226T190707.v2.0.B05.tif'), PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B09.tif')]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="examine-the-geotif-metadata">
-<h2><span class="section-number">23.3. </span>Examine the geotif metadata<a class="headerlink" href="#examine-the-geotif-metadata" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.3. </span>Examine the geotif metadata<a class="headerlink" href="#examine-the-geotif-metadata" title="Link to this heading">#</a></h2>
 <section id="using-gdalinfo-from-the-terminal">
-<h3><span class="section-number">23.3.1. </span>Using gdalinfo from the terminal<a class="headerlink" href="#using-gdalinfo-from-the-terminal" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.3.1. </span>Using gdalinfo from the terminal<a class="headerlink" href="#using-gdalinfo-from-the-terminal" title="Link to this heading">#</a></h3>
 <p>It turns out that rioxarray only copies part of the metadata into the <code class="docutils literal notranslate"><span class="pre">DataArray</span></code>.  To get all the metadata, we can use the underlying <a class="reference external" href="https://gdal.org/en/stable/programs/gdalinfo.html">gdal module</a>. Do the following:</p>
 <ul class="simple">
 <li><p>open a terminal</p></li>
@@ -584,11 +570,11 @@ the <a class="reference external" href="https://en.wikipedia.org/wiki/Glob_(prog
 </ul>
 </section>
 <section id="using-the-python-gdal-api">
-<h3><span class="section-number">23.3.2. </span>Using the python gdal api<a class="headerlink" href="#using-the-python-gdal-api" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.3.2. </span>Using the python gdal api<a class="headerlink" href="#using-the-python-gdal-api" title="Link to this heading">#</a></h3>
 <p>We can also do that from inside python.  To get all the information for the first tif, do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Info</span><span class="p">(</span><span class="n">the_tifs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Info</span><span class="p">(</span><span class="n">the_tifs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'json'</span><span class="p">)</span>
 <span class="n">info</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -598,24 +584,24 @@ the <a class="reference external" href="https://en.wikipedia.org/wiki/Glob_(prog
   warnings.warn(
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;description&#39;, &#39;driverShortName&#39;, &#39;driverLongName&#39;, &#39;files&#39;, &#39;size&#39;, &#39;coordinateSystem&#39;, &#39;geoTransform&#39;, &#39;metadata&#39;, &#39;cornerCoordinates&#39;, &#39;wgs84Extent&#39;, &#39;bands&#39;, &#39;stac&#39;])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys(['description', 'driverShortName', 'driverLongName', 'files', 'size', 'coordinateSystem', 'geoTransform', 'metadata', 'cornerCoordinates', 'wgs84Extent', 'bands', 'stac'])
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="dump-all-the-metadata">
-<h3><span class="section-number">23.3.3. </span>Dump all the metadata<a class="headerlink" href="#dump-all-the-metadata" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.3.3. </span>Dump all the metadata<a class="headerlink" href="#dump-all-the-metadata" title="Link to this heading">#</a></h3>
 <p>You can print the  <code class="docutils literal notranslate"><span class="pre">info</span></code> dictionary to see the full gdal metadata dictionary.
 Scanning through it, will see that the <code class="docutils literal notranslate"><span class="pre">metadata</span></code> key has two sub-keys:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="s1">'metadata'</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>info[&#39;metadata&#39;].keys()=dict_keys([&#39;&#39;, &#39;IMAGE_STRUCTURE&#39;])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>info['metadata'].keys()=dict_keys(['', 'IMAGE_STRUCTURE'])
 </pre></div>
 </div>
 </div>
@@ -623,12 +609,12 @@ Scanning through it, will see that the <code class="docutils literal notranslate
 <p>And looking at the first key shows all of the metadata that rioxarray transfers to the DataArray attributes.  these are the entries that we’ll need to change for our clipped, scaled image.  We need to change <code class="docutils literal notranslate"><span class="pre">NCOLS,</span> <span class="pre">NROWS,</span> <span class="pre">ULX,</span> <span class="pre">ULY</span> <span class="pre">and</span> <span class="pre">scale_factor</span></code> when we write the clipped geotif.  Descriptions of each of the metadata items are in the <a class="reference external" href="https://lpdaac.usgs.gov/documents/1007/HLS_User_Guide_V15_provisional.pdf">hls user guide</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="s1">'metadata'</span><span class="p">][</span><span class="s1">''</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>info[&#39;metadata&#39;][&#39;&#39;].keys()=dict_keys([&#39;ACCODE&#39;, &#39;add_offset&#39;, &#39;arop_ave_xshift(meters)&#39;, &#39;arop_ave_yshift(meters)&#39;, &#39;arop_ncp&#39;, &#39;arop_rmse(meters)&#39;, &#39;arop_s2_refimg&#39;, &#39;cloud_coverage&#39;, &#39;HLS_PROCESSING_TIME&#39;, &#39;HORIZONTAL_CS_NAME&#39;, &#39;L1_PROCESSING_TIME&#39;, &#39;LANDSAT_PRODUCT_ID&#39;, &#39;LANDSAT_SCENE_ID&#39;, &#39;long_name&#39;, &#39;MEAN_SUN_AZIMUTH_ANGLE&#39;, &#39;MEAN_SUN_ZENITH_ANGLE&#39;, &#39;MEAN_VIEW_AZIMUTH_ANGLE&#39;, &#39;MEAN_VIEW_ZENITH_ANGLE&#39;, &#39;NBAR_SOLAR_ZENITH&#39;, &#39;NCOLS&#39;, &#39;NROWS&#39;, &#39;OVR_RESAMPLING_ALG&#39;, &#39;PROCESSING_LEVEL&#39;, &#39;scale_factor&#39;, &#39;SENSING_TIME&#39;, &#39;SENSOR&#39;, &#39;SENTINEL2_TILEID&#39;, &#39;spatial_coverage&#39;, &#39;SPATIAL_RESOLUTION&#39;, &#39;TIRS_SSM_MODEL&#39;, &#39;TIRS_SSM_POSITION_STATUS&#39;, &#39;ULX&#39;, &#39;ULY&#39;, &#39;USGS_SOFTWARE&#39;, &#39;_FillValue&#39;, &#39;AREA_OR_POINT&#39;])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>info['metadata'][''].keys()=dict_keys(['ACCODE', 'add_offset', 'arop_ave_xshift(meters)', 'arop_ave_yshift(meters)', 'arop_ncp', 'arop_rmse(meters)', 'arop_s2_refimg', 'cloud_coverage', 'HLS_PROCESSING_TIME', 'HORIZONTAL_CS_NAME', 'L1_PROCESSING_TIME', 'LANDSAT_PRODUCT_ID', 'LANDSAT_SCENE_ID', 'long_name', 'MEAN_SUN_AZIMUTH_ANGLE', 'MEAN_SUN_ZENITH_ANGLE', 'MEAN_VIEW_AZIMUTH_ANGLE', 'MEAN_VIEW_ZENITH_ANGLE', 'NBAR_SOLAR_ZENITH', 'NCOLS', 'NROWS', 'OVR_RESAMPLING_ALG', 'PROCESSING_LEVEL', 'scale_factor', 'SENSING_TIME', 'SENSOR', 'SENTINEL2_TILEID', 'spatial_coverage', 'SPATIAL_RESOLUTION', 'TIRS_SSM_MODEL', 'TIRS_SSM_POSITION_STATUS', 'ULX', 'ULY', 'USGS_SOFTWARE', '_FillValue', 'AREA_OR_POINT'])
 </pre></div>
 </div>
 </div>
@@ -636,12 +622,12 @@ Scanning through it, will see that the <code class="docutils literal notranslate
 <p>We want to check the <code class="docutils literal notranslate"><span class="pre">long_name</span></code> key in particular, to make sure we are looking at the right wavelength:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;&#39;</span><span class="p">][</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="s1">'metadata'</span><span class="p">][</span><span class="s1">''</span><span class="p">][</span><span class="s1">'long_name'</span><span class="p">]</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>info[&#39;metadata&#39;][&#39;&#39;][&#39;long_name&#39;]=&#39;NIR&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>info['metadata']['']['long_name']='NIR'
 </pre></div>
 </div>
 </div>
@@ -650,7 +636,7 @@ Scanning through it, will see that the <code class="docutils literal notranslate
 </section>
 </section>
 <section id="read-the-bands-into-a-dictionary">
-<h2><span class="section-number">23.4. </span>Read the bands into a dictionary<a class="headerlink" href="#read-the-bands-into-a-dictionary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.4. </span>Read the bands into a dictionary<a class="headerlink" href="#read-the-bands-into-a-dictionary" title="Link to this heading">#</a></h2>
 <p>We’re ready to read all of the bands into a dictionary, keyed by the band <code class="docutils literal notranslate"><span class="pre">long_name</span></code>.  All the band names are listed in the
 <a class="reference external" href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/#hls-spectral-bands">spectral band table</a>. Note one complication – the <code class="docutils literal notranslate"><span class="pre">unit</span></code> attribute is only present for brightness temperatures, not reflectivities.</p>
 <p>Note on the next cell:</p>
@@ -664,53 +650,53 @@ Scanning through it, will see that the <code class="docutils literal notranslate
     <span class="c1">#</span>
     <span class="c1"># skip fmask for now</span>
     <span class="c1">#</span>
-    <span class="k">if</span> <span class="s1">&#39;Fmask&#39;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">tif_path</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">'Fmask'</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">tif_path</span><span class="p">):</span>
         <span class="n">hls_band</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">tif_path</span><span class="p">)</span>
-        <span class="n">band_name</span> <span class="o">=</span> <span class="s1">&#39;fmask&#39;</span>
-        <span class="n">hls_band</span> <span class="o">=</span> <span class="n">hls_band</span><span class="o">.</span><span class="n">assign_attrs</span><span class="p">(</span><span class="n">long_name</span><span class="o">=</span><span class="s1">&#39;fmask&#39;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;assigning longname to </span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">band_name</span> <span class="o">=</span> <span class="s1">'fmask'</span>
+        <span class="n">hls_band</span> <span class="o">=</span> <span class="n">hls_band</span><span class="o">.</span><span class="n">assign_attrs</span><span class="p">(</span><span class="n">long_name</span><span class="o">=</span><span class="s1">'fmask'</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"assigning longname to </span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">hls_band</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">tif_path</span><span class="p">,</span><span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">band_name</span> <span class="o">=</span> <span class="n">hls_band</span><span class="o">.</span><span class="n">long_name</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">band_name</span><span class="si">=}</span><span class="s2">,</span><span class="si">{</span><span class="n">tif_path</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">band_name</span><span class="si">=}</span><span class="s2">,</span><span class="si">{</span><span class="n">tif_path</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
     <span class="n">band_dict</span><span class="p">[</span><span class="n">band_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">hls_band</span>
-    <span class="k">if</span> <span class="s1">&#39;unit&#39;</span> <span class="ow">in</span> <span class="n">hls_band</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hls_band</span><span class="o">.</span><span class="n">unit</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">'unit'</span> <span class="ow">in</span> <span class="n">hls_band</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">hls_band</span><span class="o">.</span><span class="n">unit</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>assigning longname to fmask
-band_name=&#39;fmask&#39;,tif_path=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.Fmask.tif&#39;)
-band_name=&#39;NIR&#39;,tif_path=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B05.tif&#39;)
-band_name=&#39;TIRS2&#39;,tif_path=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B11.tif&#39;)
-hls_band.unit=&#39;Celsius&#39;
-band_name=&#39;TIRS1&#39;,tif_path=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B10.tif&#39;)
-hls_band.unit=&#39;Celsius&#39;
-band_name=&#39;Red&#39;,tif_path=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B04.tif&#39;)
-band_name=&#39;SWIR1&#39;,tif_path=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B06.tif&#39;)
-band_name=&#39;SWIR2&#39;,tif_path=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B07.tif&#39;)
-band_name=&#39;Green&#39;,tif_path=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B03.tif&#39;)
-band_name=&#39;Blue&#39;,tif_path=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B02.tif&#39;)
-band_name=&#39;Coastal_Aerosol&#39;,tif_path=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B01.tif&#39;)
+band_name='fmask',tif_path=PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.Fmask.tif')
+band_name='NIR',tif_path=PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B05.tif')
+band_name='TIRS2',tif_path=PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B11.tif')
+hls_band.unit='Celsius'
+band_name='TIRS1',tif_path=PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B10.tif')
+hls_band.unit='Celsius'
+band_name='Red',tif_path=PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B04.tif')
+band_name='SWIR1',tif_path=PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B06.tif')
+band_name='SWIR2',tif_path=PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B07.tif')
+band_name='Green',tif_path=PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B03.tif')
+band_name='Blue',tif_path=PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B02.tif')
+band_name='Coastal_Aerosol',tif_path=PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B01.tif')
 assigning longname to fmask
-band_name=&#39;fmask&#39;,tif_path=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023226T190707.v2.0.Fmask.tif&#39;)
-band_name=&#39;NIR&#39;,tif_path=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023226T190707.v2.0.B05.tif&#39;)
-band_name=&#39;Cirrus&#39;,tif_path=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B09.tif&#39;)
+band_name='fmask',tif_path=PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023226T190707.v2.0.Fmask.tif')
+band_name='NIR',tif_path=PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023226T190707.v2.0.B05.tif')
+band_name='Cirrus',tif_path=PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver_2023/HLS.L30.T10UDV.2023178T190646.v2.0.B09.tif')
 </pre></div>
 </div>
 </div>
 </div>
 <section id="check-the-dtype-of-the-data-and-missing-data">
-<h3><span class="section-number">23.4.1. </span>check the dtype of the data and missing data<a class="headerlink" href="#check-the-dtype-of-the-data-and-missing-data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.4.1. </span>check the dtype of the data and missing data<a class="headerlink" href="#check-the-dtype-of-the-data-and-missing-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band_dict</span><span class="p">[</span><span class="s1">&#39;Green&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">band_dict</span><span class="p">[</span><span class="s1">&#39;Green&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">nodata</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band_dict</span><span class="p">[</span><span class="s1">'Green'</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">band_dict</span><span class="p">[</span><span class="s1">'Green'</span><span class="p">]</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">nodata</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(dtype(&#39;float32&#39;), np.float32(nan))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(dtype('float32'), np.float32(nan))
 </pre></div>
 </div>
 </div>
@@ -718,17 +704,17 @@ band_name=&#39;Cirrus&#39;,tif_path=PosixPath(&#39;/Users/phil/repos/a301/satdat
 </section>
 </section>
 <section id="read-the-clipped-week3-band-5-bounding-box">
-<h2><span class="section-number">23.5. </span>Read the clipped week3 band 5 bounding box<a class="headerlink" href="#read-the-clipped-week3-band-5-bounding-box" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.5. </span>Read the clipped week3 band 5 bounding box<a class="headerlink" href="#read-the-clipped-week3-band-5-bounding-box" title="Link to this heading">#</a></h2>
 <p>Next we want to get the affine transform from week 3 clipped band file, so we can set the same bounding box for all tifs</p>
 <section id="create-the-bounding-box-using-the-upper-left-and-lower-right-corners">
-<span id="bounding-box"></span><h3><span class="section-number">23.5.1. </span>Create the bounding box using the upper left and lower right corners<a class="headerlink" href="#create-the-bounding-box-using-the-upper-left-and-lower-right-corners" title="Link to this heading">#</a></h3>
+<span id="bounding-box"></span><h3><span class="section-number">22.5.1. </span>Create the bounding box using the upper left and lower right corners<a class="headerlink" href="#create-the-bounding-box-using-the-upper-left-and-lower-right-corners" title="Link to this heading">#</a></h3>
 <p>This should be identical to the bounding box we found in <a class="reference internal" href="../week3/zoom_landsat.html#zoom-landsat-array"><span class="std std-ref">Create the DataArray</span></a>, which was:</p>
 <p><code class="docutils literal notranslate"><span class="pre">bounding_box=(476100.0,</span> <span class="pre">5447460.0,</span> <span class="pre">488100.0,</span> <span class="pre">5465460.0)</span></code></p>
 <p>We can get them using the clipped affine transform.  Again, we search for the file using wild cards.  We just want
 the first file we find, which means we need convert the python generator returned by glob into a list we can index.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span>  <span class="nb">list</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/band5_clipped*&#39;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span>  <span class="nb">list</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'**/band5_clipped*'</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 <span class="n">clipped_5</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">clipped_transform</span> <span class="o">=</span> <span class="n">clipped_5</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="p">()</span>
@@ -764,7 +750,7 @@ the first file we find, which means we need convert the python generator returne
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ul_x</span><span class="p">,</span> <span class="n">ul_y</span> <span class="o">=</span> <span class="n">clipped_transform</span> <span class="o">*</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">lr_x</span><span class="p">,</span> <span class="n">lr_y</span> <span class="o">=</span> <span class="n">clipped_transform</span> <span class="o">*</span> <span class="p">(</span><span class="n">ncols</span><span class="p">,</span> <span class="n">nrows</span><span class="p">)</span>
 <span class="n">bounding_box</span> <span class="o">=</span> <span class="p">(</span><span class="n">ul_x</span><span class="p">,</span> <span class="n">lr_y</span><span class="p">,</span> <span class="n">lr_x</span><span class="p">,</span> <span class="n">ul_y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bounding_box</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">bounding_box</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -776,12 +762,12 @@ the first file we find, which means we need convert the python generator returne
 </div>
 </section>
 <section id="get-the-pyproj-crs-to-copy-to-output-tif">
-<h3><span class="section-number">23.5.2. </span>Get the pyproj crs to copy to output tif<a class="headerlink" href="#get-the-pyproj-crs-to-copy-to-output-tif" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.5.2. </span>Get the pyproj crs to copy to output tif<a class="headerlink" href="#get-the-pyproj-crs-to-copy-to-output-tif" title="Link to this heading">#</a></h3>
 <p>We want the improved crs we wrote out in <a class="reference internal" href="../week3/zoom_landsat.html#week3-image-zoom"><span class="std std-ref">Zooming an image</span></a> for the band5 clipped tif, since  it includes the epsg code</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">good_crs</span> <span class="o">=</span> <span class="n">clipped_5</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">good_crs</span><span class="o">.</span><span class="n">to_epsg</span><span class="p">()</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">good_crs</span><span class="o">.</span><span class="n">to_epsg</span><span class="p">()</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -794,7 +780,7 @@ the first file we find, which means we need convert the python generator returne
 </section>
 </section>
 <section id="create-new-clipped-arrays">
-<span id="clip-create-arrays"></span><h2><span class="section-number">23.6. </span>Create new clipped arrays<a class="headerlink" href="#create-new-clipped-arrays" title="Link to this heading">#</a></h2>
+<span id="clip-create-arrays"></span><h2><span class="section-number">22.6. </span>Create new clipped arrays<a class="headerlink" href="#create-new-clipped-arrays" title="Link to this heading">#</a></h2>
 <p>Fixed in version 0.2:  Just copying all the metadata from the original NASA files led to issues with missing data values and the ouput datatype for the data. To fix this, create the rioxarray DataArrays from scratch with
 only those attributes that are consistent with the new mask_and_scaled array.
 We’ll add more attributes in <a class="reference internal" href="#change-attrs"><span class="std std-ref">change some attributes</span></a> below. In particular note
@@ -802,7 +788,7 @@ that ULX, ULY, NROWS and NCOLS have not been updated from the original full scen
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_new_array</span><span class="p">(</span><span class="n">rio_da</span><span class="p">,</span><span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    transfer data into from rio_da into a fresh DataArray, copying only the selected metadata</span>
 <span class="sd">    from rio_da.  This avoids copying old metadata from the original hls tif file</span>
 
@@ -813,7 +799,7 @@ that ULX, ULY, NROWS and NCOLS have not been updated from the original full scen
 <span class="sd">       a DataArray with rasterio metadata</span>
 <span class="sd">    crs: optional pyproj crs</span>
 <span class="sd">       a crs which is able to return its epsg code</span>
-<span class="sd">       if it&#39;s missing, the crs from rio_da will be copied</span>
+<span class="sd">       if it's missing, the crs from rio_da will be copied</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -823,11 +809,11 @@ that ULX, ULY, NROWS and NCOLS have not been updated from the original full scen
 <span class="sd">    </span>
 
 <span class="sd">    </span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1">#</span>
     <span class="c1"># NASA hls files have bad crs, so allow for an override parameter</span>
     <span class="c1">#</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inside&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"inside"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">crs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">crs</span> <span class="o">=</span> <span class="n">rio_da</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span>
     <span class="n">clipped_da</span><span class="o">=</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">rio_da</span><span class="o">.</span><span class="n">data</span><span class="p">,</span><span class="n">coords</span><span class="o">=</span><span class="n">rio_da</span><span class="o">.</span><span class="n">coords</span><span class="p">,</span>
@@ -835,14 +821,14 @@ that ULX, ULY, NROWS and NCOLS have not been updated from the original full scen
     <span class="n">clipped_da</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">write_crs</span><span class="p">(</span><span class="n">crs</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">clipped_da</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">write_transform</span><span class="p">(</span><span class="n">rio_da</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="p">(),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="c1">#print(rio_da.attrs)</span>
-    <span class="k">if</span> <span class="s1">&#39;long_name&#39;</span> <span class="ow">in</span> <span class="n">rio_da</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">'long_name'</span> <span class="ow">in</span> <span class="n">rio_da</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
         <span class="n">clipped_da</span><span class="o">=</span><span class="n">clipped_da</span><span class="o">.</span><span class="n">assign_attrs</span><span class="p">(</span><span class="n">rio_da</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
         <span class="n">clipped_da</span> <span class="o">=</span> <span class="n">clipped_da</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">set_nodata</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;long_name&#39;</span> <span class="p">:</span> <span class="n">rio_da</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]}</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'long_name'</span> <span class="p">:</span> <span class="n">rio_da</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">'long_name'</span><span class="p">]}</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">clipped_da</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
         <span class="c1">#clipped_da = clipped_da.rio.set_nodata(None)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">clipped_da</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">long_name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">clipped_da</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">nodata</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">clipped_da</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">long_name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">clipped_da</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">nodata</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">clipped_da</span>
 </pre></div>
 </div>
@@ -888,16 +874,16 @@ inside
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span><span class="o">=</span><span class="s1">&#39;fmask&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span><span class="o">=</span><span class="s1">'fmask'</span>
 <span class="n">fmask</span> <span class="o">=</span> <span class="n">band_clipped</span><span class="p">[</span><span class="n">var</span><span class="p">]</span>
-<span class="c1">#fmask.rio.to_raster(&quot;test_fmask.tif&quot;)</span>
+<span class="c1">#fmask.rio.to_raster("test_fmask.tif")</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="check-the-brightness-temperature-in-band-11">
-<h2><span class="section-number">23.7. </span>Check the brightness temperature in band 11<a class="headerlink" href="#check-the-brightness-temperature-in-band-11" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.7. </span>Check the brightness temperature in band 11<a class="headerlink" href="#check-the-brightness-temperature-in-band-11" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">band_clipped</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">nodata</span><span class="p">)</span>
@@ -912,15 +898,15 @@ inside
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;TIRS2&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key</span> <span class="o">=</span> <span class="s1">'TIRS2'</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">band_clipped</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;band </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">band_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">unit</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"band </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">band_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">unit</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;band TIRS2 (Celsius)&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, 'band TIRS2 (Celsius)')
 </pre></div>
 </div>
 <img alt="../../_images/252918a675a5337c9dc64df8d315718e01161e2b19992a94ebeaada3bcecd175.png" src="../../_images/252918a675a5337c9dc64df8d315718e01161e2b19992a94ebeaada3bcecd175.png" />
@@ -928,20 +914,20 @@ inside
 </div>
 </section>
 <section id="write-the-clipped-geotiffs">
-<h2><span class="section-number">23.8. </span>Write the clipped geotiffs<a class="headerlink" href="#write-the-clipped-geotiffs" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.8. </span>Write the clipped geotiffs<a class="headerlink" href="#write-the-clipped-geotiffs" title="Link to this heading">#</a></h2>
 <p>Put these into the vancouver folder.  We can copy code from <a class="reference internal" href="../week3/zoom_landsat.html#week3-write-clipped"><span class="std std-ref">add the transform and the crs</span></a></p>
 <section id="change-some-attributes">
-<span id="change-attrs"></span><h3><span class="section-number">23.8.1. </span>change some attributes<a class="headerlink" href="#change-some-attributes" title="Link to this heading">#</a></h3>
+<span id="change-attrs"></span><h3><span class="section-number">22.8.1. </span>change some attributes<a class="headerlink" href="#change-some-attributes" title="Link to this heading">#</a></h3>
 <p>We need to adjust some of the attributions for the new subscene.  To do this, copy the exiting attributes into
 a dictionary and rewrite the parts you want to change, adding any extras.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band_clipped</span><span class="p">[</span><span class="s1">&#39;Red&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span><span class="n">band_clipped</span><span class="p">[</span><span class="s1">&#39;Red&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">nodata</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band_clipped</span><span class="p">[</span><span class="s1">'Red'</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span><span class="n">band_clipped</span><span class="p">[</span><span class="s1">'Red'</span><span class="p">]</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">nodata</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(dtype(&#39;float32&#39;), np.float32(nan))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(dtype('float32'), np.float32(nan))
 </pre></div>
 </div>
 </div>
@@ -963,13 +949,13 @@ a dictionary and rewrite the parts you want to change, adding any extras.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">band_clipped</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">new_attrs</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
-    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">&#39;ULX&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">ul_x</span>
-    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">&#39;ULY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ul_y</span>
+    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">'ULX'</span><span class="p">]</span><span class="o">=</span> <span class="n">ul_x</span>
+    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">'ULY'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ul_y</span>
     <span class="n">band</span><span class="p">,</span> <span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">&#39;NROWS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nrows</span>
-    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">&#39;NCOLS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ncols</span>
-    <span class="c1"># new_attrs[&#39;FillValue&#39;] = np.nan</span>
-    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;v0.3 -- written by the week4 clip_bands notebook&quot;</span>
+    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">'NROWS'</span><span class="p">]</span> <span class="o">=</span> <span class="n">nrows</span>
+    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">'NCOLS'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ncols</span>
+    <span class="c1"># new_attrs['FillValue'] = np.nan</span>
+    <span class="n">new_attrs</span><span class="p">[</span><span class="s1">'history'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"v0.3 -- written by the week4 clip_bands notebook"</span>
     <span class="n">value</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">update_attrs</span><span class="p">(</span><span class="n">new_attrs</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
     <span class="c1">#</span>
     <span class="c1"># update_attrs seems to destroy the rio.nodata attribute</span>
@@ -980,16 +966,16 @@ a dictionary and rewrite the parts you want to change, adding any extras.</p>
 </div>
 </div>
 <section id="check-the-attributes">
-<h4><span class="section-number">23.8.1.1. </span>check the attributes<a class="headerlink" href="#check-the-attributes" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">22.8.1.1. </span>check the attributes<a class="headerlink" href="#check-the-attributes" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span><span class="n">value</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">nodata</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">'history'</span><span class="p">],</span><span class="n">value</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span><span class="n">value</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">nodata</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;v0.3 -- written by the week4 clip_bands notebook&#39;,
- dtype(&#39;float32&#39;),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>('v0.3 -- written by the week4 clip_bands notebook',
+ dtype('float32'),
  np.float32(nan))
 </pre></div>
 </div>
@@ -998,10 +984,10 @@ a dictionary and rewrite the parts you want to change, adding any extras.</p>
 </section>
 </section>
 <section id="write-out-the-new-geotiffs">
-<h3><span class="section-number">23.8.2. </span>Write out the new geotiffs<a class="headerlink" href="#write-out-the-new-geotiffs" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.8.2. </span>Write out the new geotiffs<a class="headerlink" href="#write-out-the-new-geotiffs" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band_clipped</span><span class="p">[</span><span class="s1">&#39;fmask&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band_clipped</span><span class="p">[</span><span class="s1">'fmask'</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -1415,19 +1401,19 @@ Attributes: (12/38)
 </div>
 </section>
 <section id="new-function-write-fmask">
-<h3><span class="section-number">23.8.3. </span>New function: write_fmask<a class="headerlink" href="#new-function-write-fmask" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.8.3. </span>New function: write_fmask<a class="headerlink" href="#new-function-write-fmask" title="Link to this heading">#</a></h3>
 <p>need to call rasterio directly since rioxarray can’t handle 8 bit data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">write_fmask</span><span class="p">(</span>
       <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span>
        <span class="n">da_value</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    use rasterio to write out the clipped fmask</span>
 
 <span class="sd">    Parameter:</span>
 <span class="sd">    </span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     
     <span class="n">data</span> <span class="o">=</span> <span class="n">da_value</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
     <span class="n">dtype</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dtype</span>
@@ -1435,8 +1421,8 @@ Attributes: (12/38)
     <span class="n">transform</span> <span class="o">=</span> <span class="n">fmask</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="p">()</span>
     <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
         <span class="n">filename</span><span class="p">,</span>
-        <span class="s1">&#39;w&#39;</span><span class="p">,</span>
-        <span class="n">driver</span><span class="o">=</span><span class="s1">&#39;GTiff&#39;</span><span class="p">,</span>
+        <span class="s1">'w'</span><span class="p">,</span>
+        <span class="n">driver</span><span class="o">=</span><span class="s1">'GTiff'</span><span class="p">,</span>
         <span class="n">height</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
         <span class="n">width</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
         <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># Number of bands</span>
@@ -1446,10 +1432,10 @@ Attributes: (12/38)
     <span class="p">)</span> <span class="k">as</span> <span class="n">dst</span><span class="p">:</span>
         <span class="n">dst</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Write the array to the first band</span>
         <span class="n">dst</span><span class="o">.</span><span class="n">update_tags</span><span class="p">(</span>
-            <span class="n">history</span><span class="o">=</span><span class="s2">&quot;written by a301_extras/write_fmask&quot;</span><span class="p">,</span>
+            <span class="n">history</span><span class="o">=</span><span class="s2">"written by a301_extras/write_fmask"</span><span class="p">,</span>
             <span class="n">written_on</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()),</span>
         <span class="p">)</span>
-        <span class="n">dst</span><span class="o">.</span><span class="n">update_tags</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">long_name</span><span class="o">=</span><span class="s2">&quot;fmask&quot;</span><span class="p">)</span>
+        <span class="n">dst</span><span class="o">.</span><span class="n">update_tags</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">long_name</span><span class="o">=</span><span class="s2">"fmask"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1458,14 +1444,14 @@ Attributes: (12/38)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">band_clipped</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">band_name</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">long_name</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">band_name</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">tif_filename</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s1">&#39;vancouver&#39;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;week10_clipped_</span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">.tif&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">band_name</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">tif_filename</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s1">'vancouver'</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"week10_clipped_</span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">.tif"</span>
     <span class="c1">#</span>
     <span class="c1"># remove the file if it already exists</span>
     <span class="c1">#</span>
     <span class="k">if</span> <span class="n">tif_filename</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
         <span class="n">tif_filename</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">long_name</span> <span class="o">==</span> <span class="s1">&#39;fmask&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">long_name</span> <span class="o">==</span> <span class="s1">'fmask'</span><span class="p">:</span>
         <span class="n">write_fmask</span><span class="p">(</span><span class="n">tif_filename</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">value</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">to_raster</span><span class="p">(</span><span class="n">tif_filename</span><span class="p">)</span>
@@ -1473,27 +1459,27 @@ Attributes: (12/38)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>band_name=&#39;fmask&#39;
-band_name=&#39;NIR&#39;
-band_name=&#39;TIRS2&#39;
-band_name=&#39;TIRS1&#39;
-band_name=&#39;Red&#39;
-band_name=&#39;SWIR1&#39;
-band_name=&#39;SWIR2&#39;
-band_name=&#39;Green&#39;
-band_name=&#39;Blue&#39;
-band_name=&#39;Coastal_Aerosol&#39;
-band_name=&#39;Cirrus&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>band_name='fmask'
+band_name='NIR'
+band_name='TIRS2'
+band_name='TIRS1'
+band_name='Red'
+band_name='SWIR1'
+band_name='SWIR2'
+band_name='Green'
+band_name='Blue'
+band_name='Coastal_Aerosol'
+band_name='Cirrus'
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="read-one-back-in-to-check">
-<h3><span class="section-number">23.8.4. </span>read one back in to check<a class="headerlink" href="#read-one-back-in-to-check" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.8.4. </span>read one back in to check<a class="headerlink" href="#read-one-back-in-to-check" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="n">tif_filename</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s1">&#39;vancouver&#39;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;week10_clipped_fmask.tif&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="n">tif_filename</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s1">'vancouver'</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"week10_clipped_fmask.tif"</span>
 <span class="n">fmask</span> <span class="o">=</span>  <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">masked</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">fmask</span>
 </pre></div>
@@ -1897,33 +1883,33 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tif_filename</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;**/*week10*NIR.tif&quot;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tif_filename</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tif_filename</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"**/*week10*NIR.tif"</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">tif_filename</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
 <span class="n">has_file</span> <span class="o">=</span> <span class="n">tif_filename</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">has_file</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;can&#39;t find </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">, something went wrong above&quot;</span><span class="p">)</span> 
+    <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"can't find </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">, something went wrong above"</span><span class="p">)</span> 
 <span class="n">small_band</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">tif_filename</span><span class="p">,</span><span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">small_band</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">small_band</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
 <span class="n">small_band</span> <span class="o">=</span> <span class="n">small_band</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
 <span class="n">band_name</span> <span class="o">=</span> <span class="n">small_band</span><span class="o">.</span><span class="n">long_name</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">band_name</span><span class="p">,</span><span class="w"> </span><span class="n">small_band</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="p">(</span><span class="n">band_name</span><span class="p">,</span><span class="w"> </span><span class="n">small_band</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">,</span><span class="mf">0.5</span>
 <span class="n">pal_dict</span> <span class="o">=</span> <span class="n">make_pal</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span>
 <span class="n">small_band</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
-                    <span class="n">norm</span> <span class="o">=</span> <span class="n">pal_dict</span><span class="p">[</span><span class="s1">&#39;norm&#39;</span><span class="p">],</span>
-                    <span class="n">cmap</span> <span class="o">=</span> <span class="n">pal_dict</span><span class="p">[</span><span class="s1">&#39;cmap&#39;</span><span class="p">],</span>
-                    <span class="n">extend</span> <span class="o">=</span> <span class="s2">&quot;both&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Landsat band </span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
+                    <span class="n">norm</span> <span class="o">=</span> <span class="n">pal_dict</span><span class="p">[</span><span class="s1">'norm'</span><span class="p">],</span>
+                    <span class="n">cmap</span> <span class="o">=</span> <span class="n">pal_dict</span><span class="p">[</span><span class="s1">'cmap'</span><span class="p">],</span>
+                    <span class="n">extend</span> <span class="o">=</span> <span class="s2">"both"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Landsat band </span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tif_filename=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/week10_clipped_NIR.tif&#39;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tif_filename=PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver/week10_clipped_NIR.tif')
 small_band.data[0,-1,-10:]=array([0.227     , 0.2357    , 0.19999999, 0.2024    , 0.213     ,
        0.1812    , 0.2015    , 0.2394    , 0.23099999, 0.2409    ],
       dtype=float32)
-(band_name, small_band.dtype)=(&#39;NIR&#39;, dtype(&#39;float32&#39;))
+(band_name, small_band.dtype)=('NIR', dtype('float32'))
 </pre></div>
 </div>
 <img alt="../../_images/64cfebe30e5052fa1dd3fd2b8bba7895ec22c916809673301c79563f3e8bffac.png" src="../../_images/64cfebe30e5052fa1dd3fd2b8bba7895ec22c916809673301c79563f3e8bffac.png" />
@@ -1931,18 +1917,18 @@ small_band.data[0,-1,-10:]=array([0.227     , 0.2357    , 0.19999999, 0.2024    
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">small_band</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">small_band</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">'history'</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;v0.3 -- written by the week4 clip_bands notebook&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'v0.3 -- written by the week4 clip_bands notebook'
 </pre></div>
 </div>
 </div>
 </div>
 <section id="note-that-we-now-have-the-correct-epsg-code">
-<h4><span class="section-number">23.8.4.1. </span>note that we now have the correct epsg code<a class="headerlink" href="#note-that-we-now-have-the-correct-epsg-code" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">22.8.4.1. </span>note that we now have the correct epsg code<a class="headerlink" href="#note-that-we-now-have-the-correct-epsg-code" title="Link to this heading">#</a></h4>
 <p>Because we used the pyproj <code class="docutils literal notranslate"><span class="pre">good_crs</span></code> in our raster write we’ve fixed the missing epsg code problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1951,26 +1937,26 @@ small_band.data[0,-1,-10:]=array([0.227     , 0.2357    , 0.19999999, 0.2024    
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(32610, np.float32(nan), dtype(&#39;float32&#39;))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(32610, np.float32(nan), dtype('float32'))
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="check-the-metadata">
-<h4><span class="section-number">23.8.4.2. </span>Check the metadata<a class="headerlink" href="#check-the-metadata" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">22.8.4.2. </span>Check the metadata<a class="headerlink" href="#check-the-metadata" title="Link to this heading">#</a></h4>
 <p>Write all the metadata out to a file for a detailed check</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Info</span><span class="p">(</span><span class="n">tif_filename</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tif_filename</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;dump.json&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Info</span><span class="p">(</span><span class="n">tif_filename</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'json'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">tif_filename</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'dump.json'</span><span class="p">,</span><span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
     <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">info</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tif_filename=PosixPath(&#39;/Users/phil/repos/a301/satdata/landsat/vancouver/week10_clipped_NIR.tif&#39;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tif_filename=PosixPath('/Users/phil/repos/a301/satdata/landsat/vancouver/week10_clipped_NIR.tif')
 </pre></div>
 </div>
 </div>
@@ -2016,7 +2002,7 @@ small_band.data[0,-1,-10:]=array([0.227     , 0.2357    , 0.19999999, 0.2024    
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">22. </span>Optical depth and partial transmission</p>
+        <p class="prev-next-title"><span class="section-number">21. </span>Optical depth and partial transmission</p>
       </div>
     </a>
     <a class="right-next"
@@ -2024,7 +2010,7 @@ small_band.data[0,-1,-10:]=array([0.227     , 0.2357    , 0.19999999, 0.2024    
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">24. </span>Optical depth II: mean free path</p>
+        <p class="prev-next-title"><span class="section-number">23. </span>Optical depth II: mean free path</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2035,44 +2021,46 @@ small_band.data[0,-1,-10:]=array([0.227     , 0.2357    , 0.19999999, 0.2024    
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">23.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-original-hls-tif-files-from-disk">23.2. Get the original hls tif files from disk</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-geotif-metadata">23.3. Examine the geotif metadata</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-gdalinfo-from-the-terminal">23.3.1. Using gdalinfo from the terminal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-python-gdal-api">23.3.2. Using the python gdal api</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dump-all-the-metadata">23.3.3. Dump all the metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">22.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-original-hls-tif-files-from-disk">22.2. Get the original hls tif files from disk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-geotif-metadata">22.3. Examine the geotif metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-gdalinfo-from-the-terminal">22.3.1. Using gdalinfo from the terminal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-python-gdal-api">22.3.2. Using the python gdal api</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dump-all-the-metadata">22.3.3. Dump all the metadata</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-bands-into-a-dictionary">23.4. Read the bands into a dictionary</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-dtype-of-the-data-and-missing-data">23.4.1. check the dtype of the data and missing data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-bands-into-a-dictionary">22.4. Read the bands into a dictionary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-dtype-of-the-data-and-missing-data">22.4.1. check the dtype of the data and missing data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-clipped-week3-band-5-bounding-box">23.5. Read the clipped week3 band 5 bounding box</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-bounding-box-using-the-upper-left-and-lower-right-corners">23.5.1. Create the bounding box using the upper left and lower right corners</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-pyproj-crs-to-copy-to-output-tif">23.5.2. Get the pyproj crs to copy to output tif</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-clipped-week3-band-5-bounding-box">22.5. Read the clipped week3 band 5 bounding box</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-bounding-box-using-the-upper-left-and-lower-right-corners">22.5.1. Create the bounding box using the upper left and lower right corners</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-pyproj-crs-to-copy-to-output-tif">22.5.2. Get the pyproj crs to copy to output tif</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-new-clipped-arrays">23.6. Create new clipped arrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-brightness-temperature-in-band-11">23.7. Check the brightness temperature in band 11</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-the-clipped-geotiffs">23.8. Write the clipped geotiffs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-some-attributes">23.8.1. change some attributes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-attributes">23.8.1.1. check the attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-new-clipped-arrays">22.6. Create new clipped arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-brightness-temperature-in-band-11">22.7. Check the brightness temperature in band 11</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-the-clipped-geotiffs">22.8. Write the clipped geotiffs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-some-attributes">22.8.1. change some attributes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-attributes">22.8.1.1. check the attributes</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-out-the-new-geotiffs">23.8.2. Write out the new geotiffs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-function-write-fmask">23.8.3. New function: write_fmask</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-one-back-in-to-check">23.8.4. read one back in to check</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#note-that-we-now-have-the-correct-epsg-code">23.8.4.1. note that we now have the correct epsg code</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-metadata">23.8.4.2. Check the metadata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-out-the-new-geotiffs">22.8.2. Write out the new geotiffs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-function-write-fmask">22.8.3. New function: write_fmask</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-one-back-in-to-check">22.8.4. read one back in to check</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#note-that-we-now-have-the-correct-epsg-code">22.8.4.1. note that we now have the correct epsg code</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-metadata">22.8.4.2. Check the metadata</a></li>
 </ul>
 </li>
 </ul>
@@ -2125,8 +2113,8 @@ By Philip Austin
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

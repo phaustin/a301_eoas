@@ -6,9 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>54. Landsat 8 false color examples &#8212; ATSC 301</title>
+    <title>53. Landsat 8 false color examples &#8212; ATSC 301</title>
   
   
   
@@ -16,37 +16,40 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -61,10 +64,11 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week10/false_color_examples.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="55. Assignment 6 solution" href="../../solutions/assign6_solution.html" />
-    <link rel="prev" title="53. Assignment 7" href="../../solutions/assign7.html" />
+    <link rel="next" title="54. Assignment 6 solution" href="../../solutions/assign6_solution.html" />
+    <link rel="prev" title="52. Assignment 7" href="../../solutions/assign7.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -80,19 +84,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -100,7 +93,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -108,8 +100,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -125,7 +117,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -155,22 +148,18 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    ATSC 301: 2024 Term 2 Winter
+                    ATSC 301: 2024 Term 2 Winter – pha
                 </a>
             </li>
         </ul>
@@ -232,89 +221,89 @@
 <li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">18. Assignment 1, brightness temperatures - solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">19. Zooming an image</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">21. Kirchoff worksheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">22. Optical depth and partial transmission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">20. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">21. Optical depth and partial transmission</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">23. Clipping multiple bands– v0.3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">24. Optical depth II: mean free path</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">25. Assignment 2: solutions Part A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">22. Clipping multiple bands– v0.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">23. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">24. Assignment 2: solutions Part A</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">26. Assignment 4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">27. Assignment 2: solutions part B</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">28. Getting lat,lon from row, column</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">29. The Schwartzchild Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">30. Adding a palette to an axis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">31. Assignment 2: solutions part C</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">32. Hydrostatic balance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">33. Cartopy mapping Buenos Aires</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">25. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">26. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">27. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">28. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">29. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">30. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">31. Hydrostatic balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">32. Cartopy mapping Buenos Aires</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">34. Assignment 3: solutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/hydrostatic_balance.html">35. Scale heights for typical atmospheric soundings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">36. Weighting functions for temperature retrieval</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">37. Finding the heating rate of the atmosphere</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/assign4_two_layer_sol.html">38. Assignment 4 two layer solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4_solution.html">39. Assignment 4 solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">33. Assignment 3: solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/hydrostatic_balance.html">34. Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">35. Weighting functions for temperature retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">36. Finding the heating rate of the atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/assign4_two_layer_sol.html">37. Assignment 4 two layer solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4_solution.html">38. Assignment 4 solutions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week7/false_color.html">40. Making color composite (“false color”) images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week7/fmask.html">41. Using fmask to mask water pixels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week7/false_color.html">39. Making color composite (“false color”) images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week7/fmask.html">40. Using fmask to mask water pixels</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week8/install_part1.html">42. Python packages Part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/goes_true_color.html">43. GOES-16: True Color Images from GOES ABI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat.html">44. Combining goes and landsat data using rioxarray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat_rio.html">45. Combining goes and landsat data using rioxarray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6.html">46. Assignment 6</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/radar.html">47. Notes on the radar equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/install_part1.html">41. Python packages Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_true_color.html">42. GOES-16: True Color Images from GOES ABI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat.html">43. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat_rio.html">44. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6.html">45. Assignment 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/radar.html">46. Notes on the radar equation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 9</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week9/clip_demo.html">48. Clipping issues: What happened to Stanley Park?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week9/rio_land_classification.html">49. Working with surface class data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week9/flux_schwartzchild.html">50. Integrating the Schwartzchild equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week9/diffuse_flux_python.html">51. Calculating the diffuse flux: python code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week9/marshall_palmer.html">52. Notes on the Marshall-Palmer distribution and the Z-RR relation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/clip_demo.html">47. Clipping issues: What happened to Stanley Park?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/rio_land_classification.html">48. Working with surface class data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/flux_schwartzchild.html">49. Integrating the Schwartzchild equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/diffuse_flux_python.html">50. Calculating the diffuse flux: python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/marshall_palmer.html">51. Notes on the Marshall-Palmer distribution and the Z-RR relation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 10</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7.html">53. Assignment 7</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">54. Landsat 8 false color examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6_solution.html">55. Assignment 6 solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="phasor.html">56. Phasor examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="phaseshift.html">57. phase shift examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7.html">52. Assignment 7</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">53. Landsat 8 false color examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6_solution.html">54. Assignment 6 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phasor.html">55. Phasor examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phaseshift.html">56. phase shift examples</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">Notes on the Doppler equation</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link">Slides on the EarthCare mission</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 11</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign5_solution.html">58. Assignment 5 solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week11/demo_rgb_recipes.html">59. GOES ABI RGB Recipes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week11/derived_stability_index.html">60. GOES stability indices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week11/plot_earthcare.html">61. Reading earthcare level1b data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week11/earthcare_to_xarray.html">62. Convert earthcare to xarray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7_radar_solution.html">63. Assign7 Radar Problems – solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week11/phasor_notes.html">64. Notes on phasors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign5_solution.html">57. Assignment 5 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/demo_rgb_recipes.html">58. GOES ABI RGB Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/derived_stability_index.html">59. GOES stability indices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/plot_earthcare.html">60. Reading earthcare level1b data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/earthcare_to_xarray.html">61. Convert earthcare to xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7_radar_solution.html">62. Assign7 Radar Problems – solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/phasor_notes.html">63. Notes on phasors</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 12</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week12/goes_earthcare.html">65. goes-earthcare overlay</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8.html">66. Assignment 8</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7_classification_solution.html">67. Assign7 Classification problem – solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week12/goes_temperature.html">68. Comparing cloudtop and 11 <span class="math notranslate nohighlight">\(\mu m\)</span> temperatures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/final_2014/final_2014_answers.html">69. 2014 final solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week12/goes_earthcare.html">64. goes-earthcare overlay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8.html">65. Assignment 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7_classification_solution.html">66. Assign7 Classification problem – solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week12/goes_temperature.html">67. Comparing cloudtop and 11 <span class="math notranslate nohighlight">\(\mu m\)</span> temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/final_2014/final_2014_answers.html">68. 2014 final solutions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 13</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8_doppler_solution.html">70. Assignment 8 doppler solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8_goes_solution.html">71. Assignment 8 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8_doppler_solution.html">69. Assignment 8 doppler solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8_goes_solution.html">70. Assignment 8 solution</a></li>
 </ul>
 
     </div>
@@ -323,9 +312,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -408,7 +402,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -422,25 +416,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -463,28 +449,28 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">54.1. Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-landsat-band-location">54.2. Understanding Landsat band location</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-bands-by-surface-type">54.3. Landsat bands by surface type</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-false-color-combinations">54.4. Landsat false color combinations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specific-examples">54.4.1. Specific examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">53.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-landsat-band-location">53.2. Understanding Landsat band location</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-bands-by-surface-type">53.3. Landsat bands by surface type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-false-color-combinations">53.4. Landsat false color combinations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specific-examples">53.4.1. Specific examples</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#false-color-bands-for-vancouver">54.5. False color bands for Vancouver</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-all-bands-into-a-dictionary">54.5.1. Read all bands into a dictionary</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-xarray-dataset-from-the-band-dictionary">54.5.2. Create an xarray dataset from the band dictionary</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#make-dataset-function">54.5.2.1. make_dataset function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#false-color-bands-for-vancouver">53.5. False color bands for Vancouver</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-all-bands-into-a-dictionary">53.5.1. Read all bands into a dictionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-xarray-dataset-from-the-band-dictionary">53.5.2. Create an xarray dataset from the band dictionary</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#make-dataset-function">53.5.2.1. make_dataset function</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-bool-mask-function">54.5.3. make_bool_mask function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-false-color-function">54.5.4. make_false_color function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-bool-mask-function">53.5.3. make_bool_mask function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-false-color-function">53.5.4. make_false_color function</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#true-color-red-green-blue">54.6. True color (red, green, blue)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#color-infrared-near-ir-red-green">54.7. Color infrared: near-ir, red, green</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vegetation-swir-1-near-ir-red">54.8. Vegetation swir-1, near-ir, red</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agriculture-swir-1-near-ir-blue">54.9. Agriculture swir-1, near-ir, blue</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urban-swir-2-swir-1-red">54.10. Urban swir-2, swir-1, red</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#true-color-red-green-blue">53.6. True color (red, green, blue)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#color-infrared-near-ir-red-green">53.7. Color infrared: near-ir, red, green</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vegetation-swir-1-near-ir-red">53.8. Vegetation swir-1, near-ir, red</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agriculture-swir-1-near-ir-blue">53.9. Agriculture swir-1, near-ir, blue</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urban-swir-2-swir-1-red">53.10. Urban swir-2, swir-1, red</a></li>
 </ul>
             </nav>
         </div>
@@ -497,7 +483,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="landsat-8-false-color-examples">
-<span id="week10-false-color-examples"></span><h1><span class="section-number">54. </span>Landsat 8 false color examples<a class="headerlink" href="#landsat-8-false-color-examples" title="Link to this heading">#</a></h1>
+<span id="week10-false-color-examples"></span><h1><span class="section-number">53. </span>Landsat 8 false color examples<a class="headerlink" href="#landsat-8-false-color-examples" title="Link to this heading">#</a></h1>
 <p>In the <a class="reference internal" href="../week7/false_color.html#week7-false-color"><span class="std std-ref">Making color composite (“false color”) images</span></a> notebook we showed how to make a false color composite with Landsat 8 bands 5, 4, 3 mapped to
 red, blue and green (color infrared)</p>
 <p>In this notebook we move that code into a function called <code class="docutils literal notranslate"><span class="pre">make_false_color</span></code>, and show a Vancouver scene with some different band combinations.  We make use of a boolean mask to get a stretched histogram using
@@ -511,7 +497,7 @@ and returns a false color rioxarray.DataArray containing a [3,nrows,ncols] array
 <li><p><a class="reference internal" href="#make-false-color"><span class="std std-ref">make_false_color function</span></a></p></li>
 </ul>
 <section id="installation">
-<h2><span class="section-number">54.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Download <a class="reference external" href="https://drive.google.com/drive/folders/1-Ja2wVKVIjkZb7Gx_rfc14J_aBYiknuw?usp=sharing">false_color_examples.ipynb</a> from the week 10 folder</p></li>
 <li><p>Download the  week10 tif files from <code class="docutils literal notranslate"><span class="pre">satdata/landsat/vancouver_2023/week10</span></code> and move them to `~/repos/a301/satdata/landsat/week10/</p></li>
@@ -532,7 +518,7 @@ and returns a false color rioxarray.DataArray containing a [3,nrows,ncols] array
 </div>
 </section>
 <section id="understanding-landsat-band-location">
-<h2><span class="section-number">54.2. </span>Understanding Landsat band location<a class="headerlink" href="#understanding-landsat-band-location" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.2. </span>Understanding Landsat band location<a class="headerlink" href="#understanding-landsat-band-location" title="Link to this heading">#</a></h2>
 <p>The figure below shows average reflectances for various surface types. Compare some of thse
 reflectance values with the landsat band locations in microns</p>
 <ol class="arabic simple">
@@ -545,28 +531,31 @@ reflectance values with the landsat band locations in microns</p>
 <li><p>swir2: 2.2</p></li>
 </ol>
 <figure class="align-default" id="fig-reflectance-spectra">
-<a class="reference internal image-reference" href="../../_images/hou_reflectance.png"><img alt="../../_images/hou_reflectance.png" src="../../_images/hou_reflectance.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../../_images/hou_reflectance.png"><img alt="../../_images/hou_reflectance.png" src="../../_images/hou_reflectance.png" style="width: 80%;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 54.1 </span><span class="caption-text">Reflectance spectra</span><a class="headerlink" href="#fig-reflectance-spectra" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 53.1 </span><span class="caption-text">Reflectance spectra</span><a class="headerlink" href="#fig-reflectance-spectra" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="landsat-bands-by-surface-type">
-<h2><span class="section-number">54.3. </span>Landsat bands by surface type<a class="headerlink" href="#landsat-bands-by-surface-type" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.3. </span>Landsat bands by surface type<a class="headerlink" href="#landsat-bands-by-surface-type" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="landsat-8-bands-landsat8-bands-png-attachment-9454ecea-8cba-488a-87ec-110fb2b5d57f-png">
-<a class="reference internal image-reference" href="../../_images/landsat8_bands.png"><img alt="../../_images/landsat8_bands.png" src="../../_images/landsat8_bands.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../../_images/landsat8_bands.png"><img alt="../../_images/landsat8_bands.png" src="../../_images/landsat8_bands.png" style="width: 80%;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 54.2 </span><span class="caption-text">Landsat 8 band wavelengths</span><a class="headerlink" href="#landsat-8-bands-landsat8-bands-png-attachment-9454ecea-8cba-488a-87ec-110fb2b5d57f-png" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 53.2 </span><span class="caption-text">Landsat 8 band wavelengths</span><a class="headerlink" href="#landsat-8-bands-landsat8-bands-png-attachment-9454ecea-8cba-488a-87ec-110fb2b5d57f-png" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="landsat-false-color-combinations">
-<h2><span class="section-number">54.4. </span>Landsat false color combinations<a class="headerlink" href="#landsat-false-color-combinations" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.4. </span>Landsat false color combinations<a class="headerlink" href="#landsat-false-color-combinations" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="landsat-8-bands">
-<a class="reference internal image-reference" href="../../_images/arc_gis_bands.png"><img alt="../../_images/arc_gis_bands.png" src="../../_images/arc_gis_bands.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../../_images/arc_gis_bands.png"><img alt="../../_images/arc_gis_bands.png" src="../../_images/arc_gis_bands.png" style="width: 80%;" />
+</a>
 </figure>
 <section id="specific-examples">
-<h3><span class="section-number">54.4.1. </span>Specific examples<a class="headerlink" href="#specific-examples" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">53.4.1. </span>Specific examples<a class="headerlink" href="#specific-examples" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>see <a class="reference external" href="https://www.nv5geospatialsoftware.com/Learn/Blogs/Blog-Details/the-many-band-combinations-of-landsat-8">this website</a> for images that demonstrate the combinations</p></li>
 <li><p>see <a class="reference external" href="https://blaylockbk.github.io/goes2go/_build/html/user_guide/notebooks/DEMO_rgb_recipes.html">this goes2go demo</a> for mulitple GOES band combinations</p></li>
@@ -574,40 +563,40 @@ reflectance values with the landsat band locations in microns</p>
 </section>
 </section>
 <section id="false-color-bands-for-vancouver">
-<h2><span class="section-number">54.5. </span>False color bands for Vancouver<a class="headerlink" href="#false-color-bands-for-vancouver" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.5. </span>False color bands for Vancouver<a class="headerlink" href="#false-color-bands-for-vancouver" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bands</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;B01&#39;</span><span class="p">:</span><span class="s1">&#39;Coastal_Aerosol&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;B02&#39;</span><span class="p">:</span><span class="s1">&#39;Blue&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;B03&#39;</span><span class="p">:</span><span class="s1">&#39;Green&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;B04&#39;</span><span class="p">:</span><span class="s1">&#39;Red&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;B05&#39;</span><span class="p">:</span><span class="s1">&#39;NIR&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;B06&#39;</span><span class="p">:</span><span class="s1">&#39;SWIR1&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;B07&#39;</span><span class="p">:</span><span class="s1">&#39;SWIR2&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;B09&#39;</span><span class="p">:</span><span class="s1">&#39;Cirrus&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;B10&#39;</span><span class="p">:</span><span class="s1">&#39;TIRS1&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;B11&#39;</span><span class="p">:</span><span class="s1">&#39;TIRS2&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;fmask&#39;</span><span class="p">:</span><span class="s1">&#39;fmask&#39;</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bands</span><span class="o">=</span><span class="p">{</span><span class="s1">'B01'</span><span class="p">:</span><span class="s1">'Coastal_Aerosol'</span><span class="p">,</span>
+        <span class="s1">'B02'</span><span class="p">:</span><span class="s1">'Blue'</span><span class="p">,</span>
+        <span class="s1">'B03'</span><span class="p">:</span><span class="s1">'Green'</span><span class="p">,</span>
+        <span class="s1">'B04'</span><span class="p">:</span><span class="s1">'Red'</span><span class="p">,</span>
+        <span class="s1">'B05'</span><span class="p">:</span><span class="s1">'NIR'</span><span class="p">,</span>
+        <span class="s1">'B06'</span><span class="p">:</span><span class="s1">'SWIR1'</span><span class="p">,</span>
+        <span class="s1">'B07'</span><span class="p">:</span><span class="s1">'SWIR2'</span><span class="p">,</span>
+        <span class="s1">'B09'</span><span class="p">:</span><span class="s1">'Cirrus'</span><span class="p">,</span>
+        <span class="s1">'B10'</span><span class="p">:</span><span class="s1">'TIRS1'</span><span class="p">,</span>
+        <span class="s1">'B11'</span><span class="p">:</span><span class="s1">'TIRS2'</span><span class="p">,</span>
+        <span class="s1">'fmask'</span><span class="p">:</span><span class="s1">'fmask'</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 <section id="read-all-bands-into-a-dictionary">
-<h3><span class="section-number">54.5.1. </span>Read all bands into a dictionary<a class="headerlink" href="#read-all-bands-into-a-dictionary" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">53.5.1. </span>Read all bands into a dictionary<a class="headerlink" href="#read-all-bands-into-a-dictionary" title="Link to this heading">#</a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">bands</span></code> dictionary to identify the band by its name (Blue, Green, etc)
 and store it in <code class="docutils literal notranslate"><span class="pre">scene_dict</span></code>.  Masking fmask would convert it from 8 bit to float, so we
 need to special-case the fmask file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;repos/a301/satdata/landsat&#39;</span>
-<span class="n">all_tifs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/week10*clipped_*.tif&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">'repos/a301/satdata/landsat'</span>
+<span class="n">all_tifs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'**/week10*clipped_*.tif'</span><span class="p">))</span>
 <span class="n">scene_dict</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">bandname</span> <span class="ow">in</span> <span class="n">bands</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">band_tif</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">for</span> <span class="n">the_tif</span> <span class="ow">in</span> <span class="n">all_tifs</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">the_tif</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">bandname</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;reading </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">the_tif</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;fmask&#39;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"reading </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">the_tif</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">'fmask'</span><span class="p">:</span>
                 <span class="n">scene_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">the_tif</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">scene_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">the_tif</span><span class="p">,</span> <span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -635,14 +624,14 @@ reading fmask:/Users/phil/repos/a301/satdata/landsat/vancouver_2023/week10/week1
 </div>
 </section>
 <section id="create-an-xarray-dataset-from-the-band-dictionary">
-<h3><span class="section-number">54.5.2. </span>Create an xarray dataset from the band dictionary<a class="headerlink" href="#create-an-xarray-dataset-from-the-band-dictionary" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">53.5.2. </span>Create an xarray dataset from the band dictionary<a class="headerlink" href="#create-an-xarray-dataset-from-the-band-dictionary" title="Link to this heading">#</a></h3>
 <section id="make-dataset-function">
-<span id="make-dataset"></span><h4><span class="section-number">54.5.2.1. </span>make_dataset function<a class="headerlink" href="#make-dataset-function" title="Link to this heading">#</a></h4>
+<span id="make-dataset"></span><h4><span class="section-number">53.5.2.1. </span>make_dataset function<a class="headerlink" href="#make-dataset-function" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_dataset</span><span class="p">(</span>
       <span class="n">scene_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">xarray</span><span class="o">.</span><span class="n">Dataset</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    given a dictionary with landsat bands stored as rioxarray, keyed by</span>
 <span class="sd">    the band name, return an rioxarray dataset containing all the bands</span>
 <span class="sd">    plus metadata</span>
@@ -650,14 +639,14 @@ reading fmask:/Users/phil/repos/a301/satdata/landsat/vancouver_2023/week10/week1
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 
-<span class="sd">    scene_dict: dictionary with keys like &#39;B03&#39;</span>
+<span class="sd">    scene_dict: dictionary with keys like 'B03'</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 
 <span class="sd">    ds_allbands: xarray dataset with all bands from the dictionary stored as variables</span>
 <span class="sd">    </span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">the_keys</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">scene_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
     <span class="n">first_band</span><span class="o">=</span><span class="n">the_keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">ds_allbands</span> <span class="o">=</span> <span class="n">xarray</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">data_vars</span><span class="o">=</span><span class="n">scene_dict</span><span class="p">,</span>
@@ -1098,13 +1087,13 @@ Attributes: (12/34)
 </section>
 </section>
 <section id="make-bool-mask-function">
-<span id="make-bool-mask"></span><h3><span class="section-number">54.5.3. </span>make_bool_mask function<a class="headerlink" href="#make-bool-mask-function" title="Link to this heading">#</a></h3>
+<span id="make-bool-mask"></span><h3><span class="section-number">53.5.3. </span>make_bool_mask function<a class="headerlink" href="#make-bool-mask-function" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_bool_mask</span><span class="p">(</span>
       <span class="n">da_fmask</span><span class="p">:</span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span>
      <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;&#39;</span>
+<span class="w">    </span><span class="sd">"""'</span>
 <span class="sd">    turn a Landsat fmask into a boolean 1/0 array where</span>
 <span class="sd">    cloud-free land pixels are 1 and all other pixels are 0</span>
 <span class="sd">    For use by skimage.exposure.equalize_hist</span>
@@ -1115,7 +1104,7 @@ Attributes: (12/34)
 <span class="sd">    da_fmask: the fmask DataArray</span>
 
 <span class="sd">    Returns: bool_mask with the same shape</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">scene_mask</span> <span class="o">=</span> <span class="n">da_fmask</span><span class="o">.</span><span class="n">data</span>
     <span class="n">mask_select</span> <span class="o">=</span>  <span class="mb">0b00100011</span>  <span class="c1">#find water (bit 5), cloud (bit 1) , cirrus (bit 0)</span>
     <span class="n">ref_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">scene_mask</span><span class="p">)</span>
@@ -1141,7 +1130,7 @@ Attributes: (12/34)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bool_image</span> <span class="o">=</span> <span class="n">make_bool_mask</span><span class="p">(</span><span class="n">scene_dict</span><span class="p">[</span><span class="s1">&#39;fmask&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bool_image</span> <span class="o">=</span> <span class="n">make_bool_mask</span><span class="p">(</span><span class="n">scene_dict</span><span class="p">[</span><span class="s1">'fmask'</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">bool_image</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -1155,20 +1144,20 @@ Attributes: (12/34)
 </div>
 </section>
 <section id="make-false-color-function">
-<span id="make-false-color"></span><h3><span class="section-number">54.5.4. </span>make_false_color function<a class="headerlink" href="#make-false-color-function" title="Link to this heading">#</a></h3>
+<span id="make-false-color"></span><h3><span class="section-number">53.5.4. </span>make_false_color function<a class="headerlink" href="#make-false-color-function" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_false_color</span><span class="p">(</span>
         <span class="n">the_ds</span><span class="p">:</span> <span class="n">xarray</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span>
         <span class="n">band_names</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    given a landsat dataset created with at least an fmask and 3 bands,</span>
 <span class="sd">    return a histogram-equalized false color image with rgb mapped</span>
 <span class="sd">    to the bands in the order they appear in the list band_names</span>
 
 <span class="sd">    example usage:</span>
 
-<span class="sd">    landsat_654 = make_false_color(the_ds,[&#39;B06&#39;,&#39;B05&#39;,&#39;B04&#39;])</span>
+<span class="sd">    landsat_654 = make_false_color(the_ds,['B06','B05','B04'])</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1182,19 +1171,19 @@ Attributes: (12/34)
 <span class="sd">    -------</span>
 
 <span class="sd">    false_color: rioxarray with shape [3,nrows,ncols] that can be converted to png</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">the_ds</span> <span class="o">=</span> <span class="n">the_ds</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
-    <span class="n">rgb_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;band_red&quot;</span><span class="p">,</span> <span class="s2">&quot;band_green&quot;</span><span class="p">,</span> <span class="s2">&quot;band_blue&quot;</span><span class="p">]</span>
+    <span class="n">rgb_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"band_red"</span><span class="p">,</span> <span class="s2">"band_green"</span><span class="p">,</span> <span class="s2">"band_blue"</span><span class="p">]</span>
     <span class="c1">#</span>
     <span class="c1"># dictionary to hold the 3 rgb bands</span>
     <span class="c1">#</span>
     <span class="n">scene_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">the_rgb</span><span class="p">,</span> <span class="n">the_band</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">rgb_names</span><span class="p">,</span> <span class="n">band_names</span><span class="p">):</span>
-        <span class="c1"># print(f&quot;{the_rgb=}, {the_band=}&quot;)</span>
+        <span class="c1"># print(f"{the_rgb=}, {the_band=}")</span>
         <span class="n">scene_dict</span><span class="p">[</span><span class="n">the_rgb</span><span class="p">]</span> <span class="o">=</span> <span class="n">the_ds</span><span class="p">[</span><span class="n">the_band</span><span class="p">]</span>
     <span class="n">crs</span> <span class="o">=</span> <span class="n">the_ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span>
     <span class="n">transform</span> <span class="o">=</span> <span class="n">the_ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="p">()</span>
-    <span class="n">fmask</span> <span class="o">=</span> <span class="n">the_ds</span><span class="p">[</span><span class="s2">&quot;fmask&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+    <span class="n">fmask</span> <span class="o">=</span> <span class="n">the_ds</span><span class="p">[</span><span class="s2">"fmask"</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
     <span class="n">bool_mask</span> <span class="o">=</span> <span class="n">make_bool_mask</span><span class="p">(</span><span class="n">fmask</span><span class="p">)</span>
     <span class="c1">#</span>
     <span class="c1"># histogram equalize the 3 bands</span>
@@ -1212,16 +1201,16 @@ Attributes: (12/34)
     <span class="c1">#</span>
     <span class="c1"># only keep a subset of the attributes</span>
     <span class="c1">#</span>
-    <span class="n">keep_attrs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cloud_cover&quot;</span><span class="p">,</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;target_lat&quot;</span><span class="p">,</span> <span class="s2">&quot;target_lon&quot;</span><span class="p">]</span>
+    <span class="n">keep_attrs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"cloud_cover"</span><span class="p">,</span> <span class="s2">"date"</span><span class="p">,</span> <span class="s2">"day"</span><span class="p">,</span> <span class="s2">"target_lat"</span><span class="p">,</span> <span class="s2">"target_lon"</span><span class="p">]</span>
     <span class="n">all_attrs</span> <span class="o">=</span> <span class="n">the_ds</span><span class="o">.</span><span class="n">attrs</span>
     <span class="n">attr_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">all_attrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keep_attrs</span><span class="p">}</span>
-    <span class="n">attr_dict</span><span class="p">[</span><span class="s2">&quot;history&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;written by make_false_color&quot;</span>
-    <span class="n">attr_dict</span><span class="p">[</span><span class="s2">&quot;landsat_rgb_bands&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">band_names</span>
+    <span class="n">attr_dict</span><span class="p">[</span><span class="s2">"history"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"written by make_false_color"</span>
+    <span class="n">attr_dict</span><span class="p">[</span><span class="s2">"landsat_rgb_bands"</span><span class="p">]</span> <span class="o">=</span> <span class="n">band_names</span>
     <span class="n">band_nums</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">band_names</span><span class="p">]</span>
-    <span class="n">coords</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;band&quot;</span><span class="p">:</span> <span class="n">band_nums</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">the_ds</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">the_ds</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]}</span>
-    <span class="n">dims</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;band&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">]</span>
-    <span class="c1"># print(f&quot;{dims=}&quot;)</span>
-    <span class="c1"># print(f&quot;{band_values.shape=}&quot;)</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"band"</span><span class="p">:</span> <span class="n">band_nums</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="n">the_ds</span><span class="p">[</span><span class="s2">"y"</span><span class="p">],</span> <span class="s2">"x"</span><span class="p">:</span> <span class="n">the_ds</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]}</span>
+    <span class="n">dims</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"band"</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]</span>
+    <span class="c1"># print(f"{dims=}")</span>
+    <span class="c1"># print(f"{band_values.shape=}")</span>
     <span class="n">false_color</span> <span class="o">=</span> <span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
         <span class="n">band_values</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="n">dims</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">attr_dict</span>
     <span class="p">)</span>
@@ -1235,13 +1224,13 @@ Attributes: (12/34)
 </section>
 </section>
 <section id="true-color-red-green-blue">
-<h2><span class="section-number">54.6. </span>True color (red, green, blue)<a class="headerlink" href="#true-color-red-green-blue" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.6. </span>True color (red, green, blue)<a class="headerlink" href="#true-color-red-green-blue" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">true_color</span> <span class="o">=</span> <span class="n">make_false_color</span><span class="p">(</span><span class="n">ds_allbands</span><span class="p">,</span> <span class="n">band_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;B04&quot;</span><span class="p">,</span><span class="s2">&quot;B03&quot;</span><span class="p">,</span><span class="s2">&quot;B02&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">true_color</span> <span class="o">=</span> <span class="n">make_false_color</span><span class="p">(</span><span class="n">ds_allbands</span><span class="p">,</span> <span class="n">band_names</span><span class="o">=</span><span class="p">[</span><span class="s2">"B04"</span><span class="p">,</span><span class="s2">"B03"</span><span class="p">,</span><span class="s2">"B02"</span><span class="p">])</span>
 <span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
 <span class="n">true_color</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">);</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;True color 432&quot;</span><span class="p">);</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"True color 432"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1251,14 +1240,14 @@ Attributes: (12/34)
 </div>
 </section>
 <section id="color-infrared-near-ir-red-green">
-<h2><span class="section-number">54.7. </span>Color infrared: near-ir, red, green<a class="headerlink" href="#color-infrared-near-ir-red-green" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.7. </span>Color infrared: near-ir, red, green<a class="headerlink" href="#color-infrared-near-ir-red-green" title="Link to this heading">#</a></h2>
 <p>Add the 5-4 red edge for vegetation, plus green (also vegetation). See <a class="reference external" href="https://eos.com/make-an-analysis/color-infrared/">band543 detail</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color_ir</span> <span class="o">=</span> <span class="n">make_false_color</span><span class="p">(</span><span class="n">ds_allbands</span><span class="p">,</span> <span class="n">band_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;B05&quot;</span><span class="p">,</span><span class="s2">&quot;B04&quot;</span><span class="p">,</span><span class="s2">&quot;B03&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color_ir</span> <span class="o">=</span> <span class="n">make_false_color</span><span class="p">(</span><span class="n">ds_allbands</span><span class="p">,</span> <span class="n">band_names</span><span class="o">=</span><span class="p">[</span><span class="s2">"B05"</span><span class="p">,</span><span class="s2">"B04"</span><span class="p">,</span><span class="s2">"B03"</span><span class="p">])</span>
 <span class="n">fig2</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
 <span class="n">color_ir</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">);</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;color ir 543&quot;</span><span class="p">);</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"color ir 543"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1268,14 +1257,14 @@ Attributes: (12/34)
 </div>
 </section>
 <section id="vegetation-swir-1-near-ir-red">
-<h2><span class="section-number">54.8. </span>Vegetation swir-1, near-ir, red<a class="headerlink" href="#vegetation-swir-1-near-ir-red" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.8. </span>Vegetation swir-1, near-ir, red<a class="headerlink" href="#vegetation-swir-1-near-ir-red" title="Link to this heading">#</a></h2>
 <p>Add swir-1 for moisture content, keep the 5-4 red edge. Less contrast for turbid/fresh water.  See <a class="reference external" href="https://eos.com/make-an-analysis/vegetation-analysis/">band654 detail</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">veg_ir</span> <span class="o">=</span> <span class="n">make_false_color</span><span class="p">(</span><span class="n">ds_allbands</span><span class="p">,</span> <span class="n">band_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;B06&quot;</span><span class="p">,</span><span class="s2">&quot;B05&quot;</span><span class="p">,</span><span class="s2">&quot;B04&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">veg_ir</span> <span class="o">=</span> <span class="n">make_false_color</span><span class="p">(</span><span class="n">ds_allbands</span><span class="p">,</span> <span class="n">band_names</span><span class="o">=</span><span class="p">[</span><span class="s2">"B06"</span><span class="p">,</span><span class="s2">"B05"</span><span class="p">,</span><span class="s2">"B04"</span><span class="p">])</span>
 <span class="n">fig3</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
 <span class="n">veg_ir</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">);</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;veg ir 654&quot;</span><span class="p">);</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"veg ir 654"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1285,14 +1274,14 @@ Attributes: (12/34)
 </div>
 </section>
 <section id="agriculture-swir-1-near-ir-blue">
-<h2><span class="section-number">54.9. </span>Agriculture swir-1, near-ir, blue<a class="headerlink" href="#agriculture-swir-1-near-ir-blue" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.9. </span>Agriculture swir-1, near-ir, blue<a class="headerlink" href="#agriculture-swir-1-near-ir-blue" title="Link to this heading">#</a></h2>
 <p>Swap out red for blue.  See <a class="reference external" href="https://eos.com/make-an-analysis/agriculture-band/">band652 detail</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">agri</span> <span class="o">=</span> <span class="n">make_false_color</span><span class="p">(</span><span class="n">ds_allbands</span><span class="p">,</span> <span class="n">band_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;B06&quot;</span><span class="p">,</span><span class="s2">&quot;B05&quot;</span><span class="p">,</span><span class="s2">&quot;B02&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">agri</span> <span class="o">=</span> <span class="n">make_false_color</span><span class="p">(</span><span class="n">ds_allbands</span><span class="p">,</span> <span class="n">band_names</span><span class="o">=</span><span class="p">[</span><span class="s2">"B06"</span><span class="p">,</span><span class="s2">"B05"</span><span class="p">,</span><span class="s2">"B02"</span><span class="p">])</span>
 <span class="n">fig4</span><span class="p">,</span> <span class="n">ax4</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
 <span class="n">agri</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax4</span><span class="p">);</span>
-<span class="n">ax4</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Agri 652&quot;</span><span class="p">);</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Agri 652"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1302,16 +1291,16 @@ Attributes: (12/34)
 </div>
 </section>
 <section id="urban-swir-2-swir-1-red">
-<h2><span class="section-number">54.10. </span>Urban swir-2, swir-1, red<a class="headerlink" href="#urban-swir-2-swir-1-red" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.10. </span>Urban swir-2, swir-1, red<a class="headerlink" href="#urban-swir-2-swir-1-red" title="Link to this heading">#</a></h2>
 <p>concrete and bare soil have approximately constant reflectivities between 1.6 and 2.2 microns,
 while vegetation reflects more in swir-1 than swir-2.  This combination distinguishes between
 types of urban development.  Less contrast for turbid/fresh water.  See: <a class="reference external" href="https://eos.com/make-an-analysis/shortwave-infrared/">band764 detail</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">urban</span> <span class="o">=</span> <span class="n">make_false_color</span><span class="p">(</span><span class="n">ds_allbands</span><span class="p">,</span> <span class="n">band_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;B07&quot;</span><span class="p">,</span><span class="s2">&quot;B06&quot;</span><span class="p">,</span><span class="s2">&quot;B04&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">urban</span> <span class="o">=</span> <span class="n">make_false_color</span><span class="p">(</span><span class="n">ds_allbands</span><span class="p">,</span> <span class="n">band_names</span><span class="o">=</span><span class="p">[</span><span class="s2">"B07"</span><span class="p">,</span><span class="s2">"B06"</span><span class="p">,</span><span class="s2">"B04"</span><span class="p">])</span>
 <span class="n">fig5</span><span class="p">,</span> <span class="n">ax5</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
 <span class="n">urban</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax5</span><span class="p">);</span>
-<span class="n">ax5</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Urban 764&quot;</span><span class="p">);</span>
+<span class="n">ax5</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Urban 764"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1358,7 +1347,7 @@ types of urban development.  Less contrast for turbid/fresh water.  See: <a clas
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">53. </span>Assignment 7</p>
+        <p class="prev-next-title"><span class="section-number">52. </span>Assignment 7</p>
       </div>
     </a>
     <a class="right-next"
@@ -1366,7 +1355,7 @@ types of urban development.  Less contrast for turbid/fresh water.  See: <a clas
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">55. </span>Assignment 6 solution</p>
+        <p class="prev-next-title"><span class="section-number">54. </span>Assignment 6 solution</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1377,37 +1366,39 @@ types of urban development.  Less contrast for turbid/fresh water.  See: <a clas
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">54.1. Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-landsat-band-location">54.2. Understanding Landsat band location</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-bands-by-surface-type">54.3. Landsat bands by surface type</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-false-color-combinations">54.4. Landsat false color combinations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specific-examples">54.4.1. Specific examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">53.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-landsat-band-location">53.2. Understanding Landsat band location</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-bands-by-surface-type">53.3. Landsat bands by surface type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-false-color-combinations">53.4. Landsat false color combinations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specific-examples">53.4.1. Specific examples</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#false-color-bands-for-vancouver">54.5. False color bands for Vancouver</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-all-bands-into-a-dictionary">54.5.1. Read all bands into a dictionary</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-xarray-dataset-from-the-band-dictionary">54.5.2. Create an xarray dataset from the band dictionary</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#make-dataset-function">54.5.2.1. make_dataset function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#false-color-bands-for-vancouver">53.5. False color bands for Vancouver</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-all-bands-into-a-dictionary">53.5.1. Read all bands into a dictionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-xarray-dataset-from-the-band-dictionary">53.5.2. Create an xarray dataset from the band dictionary</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#make-dataset-function">53.5.2.1. make_dataset function</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-bool-mask-function">54.5.3. make_bool_mask function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-false-color-function">54.5.4. make_false_color function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-bool-mask-function">53.5.3. make_bool_mask function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-false-color-function">53.5.4. make_false_color function</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#true-color-red-green-blue">54.6. True color (red, green, blue)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#color-infrared-near-ir-red-green">54.7. Color infrared: near-ir, red, green</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vegetation-swir-1-near-ir-red">54.8. Vegetation swir-1, near-ir, red</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agriculture-swir-1-near-ir-blue">54.9. Agriculture swir-1, near-ir, blue</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urban-swir-2-swir-1-red">54.10. Urban swir-2, swir-1, red</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#true-color-red-green-blue">53.6. True color (red, green, blue)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#color-infrared-near-ir-red-green">53.7. Color infrared: near-ir, red, green</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vegetation-swir-1-near-ir-red">53.8. Vegetation swir-1, near-ir, red</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agriculture-swir-1-near-ir-blue">53.9. Agriculture swir-1, near-ir, blue</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urban-swir-2-swir-1-red">53.10. Urban swir-2, swir-1, red</a></li>
 </ul>
   </nav></div>
 
@@ -1456,8 +1447,8 @@ By Philip Austin
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

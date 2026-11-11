@@ -6,9 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>65. goes-earthcare overlay &#8212; ATSC 301</title>
+    <title>64. goes-earthcare overlay &#8212; ATSC 301</title>
   
   
   
@@ -16,37 +16,40 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -61,10 +64,11 @@
     <link rel="canonical" href="https://phaustin.github.io/a301_eoas/notebooks/week12/goes_earthcare.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="66. Assignment 8" href="../../solutions/assign8.html" />
-    <link rel="prev" title="64. Notes on phasors" href="../week11/phasor_notes.html" />
+    <link rel="next" title="65. Assignment 8" href="../../solutions/assign8.html" />
+    <link rel="prev" title="63. Notes on phasors" href="../week11/phasor_notes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -80,19 +84,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -100,7 +93,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -108,8 +100,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -125,7 +117,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -155,22 +148,18 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    ATSC 301: 2024 Term 2 Winter
+                    ATSC 301: 2024 Term 2 Winter – pha
                 </a>
             </li>
         </ul>
@@ -232,89 +221,89 @@
 <li class="toctree-l1"><a class="reference internal" href="../week3/assign1_solution.html">18. Assignment 1, brightness temperatures - solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week3/zoom_landsat.html">19. Zooming an image</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">21. Kirchoff worksheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">22. Optical depth and partial transmission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/kirchoff.html">20. Kirchoff worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/optical_depth.html">21. Optical depth and partial transmission</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">23. Clipping multiple bands– v0.3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">24. Optical depth II: mean free path</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">25. Assignment 2: solutions Part A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/clip_bands.html">22. Clipping multiple bands– v0.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/optical_depth2.html">23. Optical depth II: mean free path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsA.html">24. Assignment 2: solutions Part A</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">26. Assignment 4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">27. Assignment 2: solutions part B</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">28. Getting lat,lon from row, column</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">29. The Schwartzchild Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">30. Adding a palette to an axis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">31. Assignment 2: solutions part C</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">32. Hydrostatic balance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">33. Cartopy mapping Buenos Aires</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4.html">25. Assignment 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsB.html">26. Assignment 2: solutions part B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/rowcol2latlon.html">27. Getting lat,lon from row, column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/schwartz.html">28. The Schwartzchild Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/add_palette.html">29. Adding a palette to an axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign2_solutionsC.html">30. Assignment 2: solutions part C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/hydrostat.html">31. Hydrostatic balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/cartopy_mapping_buenos_aires.html">32. Cartopy mapping Buenos Aires</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">34. Assignment 3: solutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/hydrostatic_balance.html">35. Scale heights for typical atmospheric soundings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">36. Weighting functions for temperature retrieval</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">37. Finding the heating rate of the atmosphere</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week6/assign4_two_layer_sol.html">38. Assignment 4 two layer solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4_solution.html">39. Assignment 4 solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign3_solutions.html">33. Assignment 3: solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/hydrostatic_balance.html">34. Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/weighting_functions.html">35. Weighting functions for temperature retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/heating_rate.html">36. Finding the heating rate of the atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/assign4_two_layer_sol.html">37. Assignment 4 two layer solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign4_solution.html">38. Assignment 4 solutions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week7/false_color.html">40. Making color composite (“false color”) images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week7/fmask.html">41. Using fmask to mask water pixels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week7/false_color.html">39. Making color composite (“false color”) images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week7/fmask.html">40. Using fmask to mask water pixels</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week8/install_part1.html">42. Python packages Part 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/goes_true_color.html">43. GOES-16: True Color Images from GOES ABI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat.html">44. Combining goes and landsat data using rioxarray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat_rio.html">45. Combining goes and landsat data using rioxarray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6.html">46. Assignment 6</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week8/radar.html">47. Notes on the radar equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/install_part1.html">41. Python packages Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_true_color.html">42. GOES-16: True Color Images from GOES ABI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat.html">43. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/goes_landsat_rio.html">44. Combining goes and landsat data using rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6.html">45. Assignment 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/radar.html">46. Notes on the radar equation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 9</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week9/clip_demo.html">48. Clipping issues: What happened to Stanley Park?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week9/rio_land_classification.html">49. Working with surface class data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week9/flux_schwartzchild.html">50. Integrating the Schwartzchild equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week9/diffuse_flux_python.html">51. Calculating the diffuse flux: python code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week9/marshall_palmer.html">52. Notes on the Marshall-Palmer distribution and the Z-RR relation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/clip_demo.html">47. Clipping issues: What happened to Stanley Park?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/rio_land_classification.html">48. Working with surface class data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/flux_schwartzchild.html">49. Integrating the Schwartzchild equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/diffuse_flux_python.html">50. Calculating the diffuse flux: python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week9/marshall_palmer.html">51. Notes on the Marshall-Palmer distribution and the Z-RR relation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 10</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7.html">53. Assignment 7</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week10/false_color_examples.html">54. Landsat 8 false color examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6_solution.html">55. Assignment 6 solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week10/phasor.html">56. Phasor examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week10/phaseshift.html">57. phase shift examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7.html">52. Assignment 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week10/false_color_examples.html">53. Landsat 8 false color examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign6_solution.html">54. Assignment 6 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week10/phasor.html">55. Phasor examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week10/phaseshift.html">56. phase shift examples</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/13rMkduBy7Q68DW5UVXUdkgo48AmbmMDW/view?usp=drive_link">Notes on the Doppler equation</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1ZQ_uq4SIm_phs9y-doRlhA8uNSwxKv4q/view?usp=drive_link">Slides on the EarthCare mission</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 11</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign5_solution.html">58. Assignment 5 solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week11/demo_rgb_recipes.html">59. GOES ABI RGB Recipes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week11/derived_stability_index.html">60. GOES stability indices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week11/plot_earthcare.html">61. Reading earthcare level1b data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week11/earthcare_to_xarray.html">62. Convert earthcare to xarray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7_radar_solution.html">63. Assign7 Radar Problems – solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week11/phasor_notes.html">64. Notes on phasors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign5_solution.html">57. Assignment 5 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/demo_rgb_recipes.html">58. GOES ABI RGB Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/derived_stability_index.html">59. GOES stability indices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/plot_earthcare.html">60. Reading earthcare level1b data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/earthcare_to_xarray.html">61. Convert earthcare to xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7_radar_solution.html">62. Assign7 Radar Problems – solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week11/phasor_notes.html">63. Notes on phasors</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 12</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">65. goes-earthcare overlay</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8.html">66. Assignment 8</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7_classification_solution.html">67. Assign7 Classification problem – solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="goes_temperature.html">68. Comparing cloudtop and 11 <span class="math notranslate nohighlight">\(\mu m\)</span> temperatures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/final_2014/final_2014_answers.html">69. 2014 final solutions</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">64. goes-earthcare overlay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8.html">65. Assignment 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign7_classification_solution.html">66. Assign7 Classification problem – solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goes_temperature.html">67. Comparing cloudtop and 11 <span class="math notranslate nohighlight">\(\mu m\)</span> temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/final_2014/final_2014_answers.html">68. 2014 final solutions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 13</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8_doppler_solution.html">70. Assignment 8 doppler solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8_goes_solution.html">71. Assignment 8 solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8_doppler_solution.html">69. Assignment 8 doppler solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solutions/assign8_goes_solution.html">70. Assignment 8 solution</a></li>
 </ul>
 
     </div>
@@ -323,9 +312,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -408,7 +402,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -422,25 +416,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -463,40 +449,40 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">65.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">65.2. Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-earthcare-radar-file">65.3. open the earthcare radar file</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-time-and-bounding-box-corners">65.3.1. get the time and bounding box corners</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overwrite-bounding-box">65.3.2. overwrite bounding box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">64.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">64.2. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-earthcare-radar-file">64.3. open the earthcare radar file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-time-and-bounding-box-corners">64.3.1. get the time and bounding box corners</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overwrite-bounding-box">64.3.2. overwrite bounding box</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-nearest-goes-image">65.4. Find the nearest GOES image</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-goes">65.4.1. Function get_goes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-nearest-goes-image">64.4. Find the nearest GOES image</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-goes">64.4.1. Function get_goes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-cloudtop-height">65.5. Get the cloudtop height</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-projection-coordinates">65.6. calculate the projection coordinates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-11-micron-thermal-band">65.7. Get the 11 micron thermal band</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-affine-transforms">65.8. Calculate the affine transforms</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-affine">65.8.1. Function get_affine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-cloudtop-height">64.5. Get the cloudtop height</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-projection-coordinates">64.6. calculate the projection coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-11-micron-thermal-band">64.7. Get the 11 micron thermal band</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-affine-transforms">64.8. Calculate the affine transforms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-affine">64.8.1. Function get_affine</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-cloud-top-to-a-rioxarray">65.9. convert  cloud_top  to a rioxarray</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-cloud-top-height-attributes">65.9.1. Set cloud top height attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-cloud-top-to-a-rioxarray">64.9. convert  cloud_top  to a rioxarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-cloud-top-height-attributes">64.9.1. Set cloud top height attributes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-chan-14-to-a-rioxarray">65.10. convert chan_14 to a rioxarray</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-chan-14-attributes">65.10.1. set chan_14 attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-chan-14-to-a-rioxarray">64.10. convert chan_14 to a rioxarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-chan-14-attributes">64.10.1. set chan_14 attributes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-the-images">65.11. crop the images</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-the-bounds-from-lat-lon-to-geostationary-crs">65.11.1. Transform the bounds from lat/lon to geostationary crs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-using-clip-box">65.11.2. Crop using clip_box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-the-images">64.11. crop the images</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-the-bounds-from-lat-lon-to-geostationary-crs">64.11.1. Transform the bounds from lat/lon to geostationary crs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-using-clip-box">64.11.2. Crop using clip_box</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-cartopy-plots-with-radar-ground-track">65.12. Make cartopy plots with radar ground track</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-the-groundtrack">65.13. Add the groundtrack</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-the-file-out-to-tiff">65.14. write the file out to tiff</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-cartopy-plots-with-radar-ground-track">64.12. Make cartopy plots with radar ground track</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-the-groundtrack">64.13. Add the groundtrack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-the-file-out-to-tiff">64.14. write the file out to tiff</a></li>
 </ul>
             </nav>
         </div>
@@ -509,9 +495,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="goes-earthcare-overlay">
-<span id="week12-goes-earthcare"></span><h1><span class="section-number">65. </span>goes-earthcare overlay<a class="headerlink" href="#goes-earthcare-overlay" title="Link to this heading">#</a></h1>
+<span id="week12-goes-earthcare"></span><h1><span class="section-number">64. </span>goes-earthcare overlay<a class="headerlink" href="#goes-earthcare-overlay" title="Link to this heading">#</a></h1>
 <section id="introduction">
-<h2><span class="section-number">65.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>This notebook</p>
 <ul class="simple">
 <li><p>reads in the netcdf file container the Earthcare case you saved in <a class="reference internal" href="#week12-goes-earthcare"><span class="std std-ref">goes-earthcare overlay</span></a></p></li>
@@ -522,14 +508,14 @@ document.write(`
 <p>This sets up the second problem in <a class="reference internal" href="../../solutions/assign8.html#week12-assign8"><span class="std std-ref">Assignment 8</span></a></p>
 </section>
 <section id="installation">
-<h2><span class="section-number">65.2. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.2. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>fetch and rebase to pick up the week12 folder with this ipynb file</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code>  to install the newest version of the <code class="docutils literal notranslate"><span class="pre">a301_extras</span></code> library</p></li>
 </ul>
 </section>
 <section id="open-the-earthcare-radar-file">
-<h2><span class="section-number">65.3. </span>open the earthcare radar file<a class="headerlink" href="#open-the-earthcare-radar-file" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.3. </span>open the earthcare radar file<a class="headerlink" href="#open-the-earthcare-radar-file" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -552,18 +538,18 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>running __init__.py
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/phil/mini310/envs/a301/lib/python3.13/site-packages/goes2go/data.py:673: FutureWarning: &#39;H&#39; is deprecated and will be removed in a future version. Please use &#39;h&#39; instead of &#39;H&#39;.
-  within=pd.to_timedelta(config[&quot;nearesttime&quot;].get(&quot;within&quot;, &quot;1h&quot;)),
-/Users/phil/mini310/envs/a301/lib/python3.13/site-packages/goes2go/NEW.py:185: FutureWarning: &#39;H&#39; is deprecated and will be removed in a future version. Please use &#39;h&#39; instead of &#39;H&#39;.
-  within=pd.to_timedelta(config[&quot;nearesttime&quot;].get(&quot;within&quot;, &quot;1h&quot;)),
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/phil/mini310/envs/a301/lib/python3.13/site-packages/goes2go/data.py:673: FutureWarning: 'H' is deprecated and will be removed in a future version. Please use 'h' instead of 'H'.
+  within=pd.to_timedelta(config["nearesttime"].get("within", "1h")),
+/Users/phil/mini310/envs/a301/lib/python3.13/site-packages/goes2go/NEW.py:185: FutureWarning: 'H' is deprecated and will be removed in a future version. Please use 'h' instead of 'H'.
+  within=pd.to_timedelta(config["nearesttime"].get("within", "1h")),
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;repos/a301/satdata/earthcare&#39;</span>
-<span class="n">radar_filepath</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;**/*.nc&quot;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">'repos/a301/satdata/earthcare'</span>
+<span class="n">radar_filepath</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"**/*.nc"</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">radar_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">radar_filepath</span><span class="p">)</span>
 <span class="n">radar_ds</span>
 </pre></div>
@@ -978,11 +964,11 @@ Attributes:
       dtype=&#x27;float64&#x27;, name=&#x27;distance&#x27;, length=8021))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-2b31d00c-873b-4329-b67f-ef3f8b302302' class='xr-section-summary-in' type='checkbox'  checked><label for='section-2b31d00c-873b-4329-b67f-ef3f8b302302' class='xr-section-summary' >Attributes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>history :</span></dt><dd>written by ec_to_xarray on 2025-03-29 09:50:41.584666</dd><dt><span>timezone :</span></dt><dd>UTC</dd><dt><span>casenum :</span></dt><dd>case4</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <section id="get-the-time-and-bounding-box-corners">
-<h3><span class="section-number">65.3.1. </span>get the time and bounding box corners<a class="headerlink" href="#get-the-time-and-bounding-box-corners" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">64.3.1. </span>get the time and bounding box corners<a class="headerlink" href="#get-the-time-and-bounding-box-corners" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">midpoint</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">radar_ds</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
-<span class="n">midtime</span> <span class="o">=</span> <span class="n">radar_ds</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="n">midpoint</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">midpoint</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">radar_ds</span><span class="p">[</span><span class="s1">'time'</span><span class="p">])</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+<span class="n">midtime</span> <span class="o">=</span> <span class="n">radar_ds</span><span class="p">[</span><span class="s1">'time'</span><span class="p">][</span><span class="n">midpoint</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
 
 <span class="c1">#datetime.datetime(midtime)</span>
 <span class="n">timestamp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">midtime</span><span class="p">)</span>
@@ -991,18 +977,18 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2024-12-13 22:50:35.447906&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp('2024-12-13 22:50:35.447906')
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lats</span> <span class="o">=</span> <span class="n">radar_ds</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
-<span class="n">lons</span> <span class="o">=</span> <span class="n">radar_ds</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lats</span> <span class="o">=</span> <span class="n">radar_ds</span><span class="p">[</span><span class="s1">'latitude'</span><span class="p">]</span>
+<span class="n">lons</span> <span class="o">=</span> <span class="n">radar_ds</span><span class="p">[</span><span class="s1">'longitude'</span><span class="p">]</span>
 <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">lats</span><span class="o">.</span><span class="n">data</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">lats</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">lons</span><span class="o">.</span><span class="n">data</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">lons</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymax</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymax</span><span class="p">)</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1014,7 +1000,7 @@ Attributes:
 </div>
 </section>
 <section id="overwrite-bounding-box">
-<h3><span class="section-number">65.3.2. </span>overwrite bounding box<a class="headerlink" href="#overwrite-bounding-box" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">64.3.2. </span>overwrite bounding box<a class="headerlink" href="#overwrite-bounding-box" title="Link to this heading">#</a></h3>
 <p>We want a wider bounding box, since radar groundtrack is almost due north-south.
 GOES west probably has a better view, so use GOES 18</p>
 <div class="cell docutils container">
@@ -1029,13 +1015,13 @@ GOES west probably has a better view, so use GOES 18</p>
 </section>
 </section>
 <section id="find-the-nearest-goes-image">
-<h2><span class="section-number">65.4. </span>Find the nearest GOES image<a class="headerlink" href="#find-the-nearest-goes-image" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.4. </span>Find the nearest GOES image<a class="headerlink" href="#find-the-nearest-goes-image" title="Link to this heading">#</a></h2>
 <section id="function-get-goes">
-<h3><span class="section-number">65.4.1. </span>Function get_goes<a class="headerlink" href="#function-get-goes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">64.4.1. </span>Function get_goes<a class="headerlink" href="#function-get-goes" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">goes2go</span><span class="w"> </span><span class="kn">import</span> <span class="n">goes_nearesttime</span>
-<span class="n">save_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;repos/a301/satdata/earthcare&quot;</span>
+<span class="n">save_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"repos/a301/satdata/earthcare"</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">a301_extras.sat_lib</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_goes</span>
 </pre></div>
 </div>
@@ -1044,12 +1030,12 @@ GOES west probably has a better view, so use GOES 18</p>
 </section>
 </section>
 <section id="get-the-cloudtop-height">
-<h2><span class="section-number">65.5. </span>Get the cloudtop height<a class="headerlink" href="#get-the-cloudtop-height" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.5. </span>Get the cloudtop height<a class="headerlink" href="#get-the-cloudtop-height" title="Link to this heading">#</a></h2>
 <p>This variable is in the <code class="docutils literal notranslate"><span class="pre">ABI-L2-ACHAC</span></code> product, at 10 km resolution.  It is available every 60 minutes. The
 full description is <a class="reference external" href="https://www.star.nesdis.noaa.gov/goesr/docs/ATBD/Cloud_Height.pdf">here</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">satellite</span><span class="o">=</span><span class="s2">&quot;goes18&quot;</span><span class="p">,</span><span class="n">product</span> <span class="o">=</span> <span class="s2">&quot;ABI-L2-ACHAC&quot;</span><span class="p">,</span><span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">satellite</span><span class="o">=</span><span class="s2">"goes18"</span><span class="p">,</span><span class="n">product</span> <span class="o">=</span> <span class="s2">"ABI-L2-ACHAC"</span><span class="p">,</span><span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1060,8 +1046,8 @@ full description is <a class="reference external" href="https://www.star.nesdis.
 <span class="k">if</span> <span class="n">writeit</span><span class="p">:</span>
     <span class="n">the_path</span> <span class="o">=</span> <span class="n">get_goes</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span><span class="o">**</span><span class="n">download_dict</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">the_path</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;noaa-goes18/ABI-L2-ACHAC/2024/348/22/OR_ABI-L2-ACHAC-M6_G18_s20243482251177&#39;</span>
-                <span class="s1">&#39;_e20243482253550_c20243482256172.nc&#39;</span>
+    <span class="n">the_path</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'noaa-goes18/ABI-L2-ACHAC/2024/348/22/OR_ABI-L2-ACHAC-M6_G18_s20243482251177'</span>
+                <span class="s1">'_e20243482253550_c20243482256172.nc'</span>
                <span class="p">)</span>
 <span class="n">full_path</span> <span class="o">=</span> <span class="n">save_dir</span> <span class="o">/</span> <span class="n">the_path</span>
 </pre></div>
@@ -1075,14 +1061,14 @@ full description is <a class="reference external" href="https://www.star.nesdis.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;noaa-goes18/ABI-L2-ACHAC/2024/348/22/OR_ABI-L2-ACHAC-M6_G18_s20243482251177_e20243482253550_c20243482256172.nc&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'noaa-goes18/ABI-L2-ACHAC/2024/348/22/OR_ABI-L2-ACHAC-M6_G18_s20243482251177_e20243482253550_c20243482256172.nc'
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">goes_ct</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">full_path</span><span class="p">,</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">mask_and_scale</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">goes_ct</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">full_path</span><span class="p">,</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">'r'</span><span class="p">,</span><span class="n">mask_and_scale</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">goes_ct</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1095,14 +1081,14 @@ full description is <a class="reference external" href="https://www.star.nesdis.
 </div>
 </section>
 <section id="calculate-the-projection-coordinates">
-<h2><span class="section-number">65.6. </span>calculate the projection coordinates<a class="headerlink" href="#calculate-the-projection-coordinates" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.6. </span>calculate the projection coordinates<a class="headerlink" href="#calculate-the-projection-coordinates" title="Link to this heading">#</a></h2>
 <p>The x and y coordinates for the Dataset <code class="docutils literal notranslate"><span class="pre">goes_ct</span></code> are in radians.  The function <code class="docutils literal notranslate"><span class="pre">parse_cf</span></code> (where <code class="docutils literal notranslate"><span class="pre">CF</span></code> stands
 for <code class="docutils literal notranslate"><span class="pre">climate</span> <span class="pre">and</span> <span class="pre">forecast</span></code>) extracts a dataset variable as a DataArray and converts those x and y values to meters in the geostationary CRS by multiplying by the height of the satellite. It also sets the <code class="docutils literal notranslate"><span class="pre">grid_mapping</span></code> attribute
 to <code class="docutils literal notranslate"><span class="pre">goes_imager_projection</span></code> which allows goes2go to produce the geostationary CRS using <code class="docutils literal notranslate"><span class="pre">cloud_ct.metpy.pyproj_crs</span></code> or <code class="docutils literal notranslate"><span class="pre">cloud_ct.metpy.cartopy_crs</span></code>. The CF conventions
 are documented <a class="reference external" href="https://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#_geostationary_projection">here</a> ).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cloud_top</span> <span class="o">=</span> <span class="n">goes_ct</span><span class="o">.</span><span class="n">metpy</span><span class="o">.</span><span class="n">parse_cf</span><span class="p">(</span><span class="s1">&#39;HT&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cloud_top</span> <span class="o">=</span> <span class="n">goes_ct</span><span class="o">.</span><span class="n">metpy</span><span class="o">.</span><span class="n">parse_cf</span><span class="p">(</span><span class="s1">'HT'</span><span class="p">)</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">cloud_top</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1128,14 +1114,14 @@ are documented <a class="reference external" href="https://cfconventions.org/Dat
 </div>
 </section>
 <section id="get-the-11-micron-thermal-band">
-<h2><span class="section-number">65.7. </span>Get the 11 micron thermal band<a class="headerlink" href="#get-the-11-micron-thermal-band" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.7. </span>Get the 11 micron thermal band<a class="headerlink" href="#get-the-11-micron-thermal-band" title="Link to this heading">#</a></h2>
 <p>This is <a class="reference external" href="https://www.noaa.gov/jetstream/goes_east">channel 14</a> in the
 moisture and cloud product.  The brightness temperatures will have 2 km resolution,
 but no atmospheric correction</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">satellite</span><span class="o">=</span><span class="s2">&quot;goes18&quot;</span><span class="p">,</span>
-                     <span class="n">product</span> <span class="o">=</span> <span class="s2">&quot;ABI-L2-MCMIPC&quot;</span><span class="p">,</span><span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">satellite</span><span class="o">=</span><span class="s2">"goes18"</span><span class="p">,</span>
+                     <span class="n">product</span> <span class="o">=</span> <span class="s2">"ABI-L2-MCMIPC"</span><span class="p">,</span><span class="n">save_dir</span><span class="o">=</span><span class="n">save_dir</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1146,8 +1132,8 @@ but no atmospheric correction</p>
 <span class="k">if</span> <span class="n">writeit</span><span class="p">:</span>
     <span class="n">the_path</span> <span class="o">=</span> <span class="n">get_goes</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span><span class="o">**</span><span class="n">download_dict</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">the_path</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;noaa-goes18/ABI-L2-MCMIPC/2024/348/22/OR_ABI-L2-MCMIPC-M6_G18_s20243482251177&#39;</span>
-                <span class="s1">&#39;_e20243482253562_c20243482254081.nc&#39;</span>
+    <span class="n">the_path</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'noaa-goes18/ABI-L2-MCMIPC/2024/348/22/OR_ABI-L2-MCMIPC-M6_G18_s20243482251177'</span>
+                <span class="s1">'_e20243482253562_c20243482254081.nc'</span>
                <span class="p">)</span>
 <span class="n">full_path</span> <span class="o">=</span> <span class="n">save_dir</span> <span class="o">/</span> <span class="n">the_path</span>
 <span class="n">the_path</span>
@@ -1155,24 +1141,24 @@ but no atmospheric correction</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;noaa-goes18/ABI-L2-MCMIPC/2024/348/22/OR_ABI-L2-MCMIPC-M6_G18_s20243482251177_e20243482253562_c20243482254081.nc&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'noaa-goes18/ABI-L2-MCMIPC/2024/348/22/OR_ABI-L2-MCMIPC-M6_G18_s20243482251177_e20243482253562_c20243482254081.nc'
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">goes_mc</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">full_path</span><span class="p">,</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">mask_and_scale</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">chan_14</span> <span class="o">=</span> <span class="n">goes_mc</span><span class="o">.</span><span class="n">metpy</span><span class="o">.</span><span class="n">parse_cf</span><span class="p">(</span><span class="s1">&#39;CMI_C14&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">goes_mc</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">full_path</span><span class="p">,</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">'r'</span><span class="p">,</span><span class="n">mask_and_scale</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">chan_14</span> <span class="o">=</span> <span class="n">goes_mc</span><span class="o">.</span><span class="n">metpy</span><span class="o">.</span><span class="n">parse_cf</span><span class="p">(</span><span class="s1">'CMI_C14'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="calculate-the-affine-transforms">
-<h2><span class="section-number">65.8. </span>Calculate the affine transforms<a class="headerlink" href="#calculate-the-affine-transforms" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.8. </span>Calculate the affine transforms<a class="headerlink" href="#calculate-the-affine-transforms" title="Link to this heading">#</a></h2>
 <section id="function-get-affine">
-<h3><span class="section-number">65.8.1. </span>Function get_affine<a class="headerlink" href="#function-get-affine" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">64.8.1. </span>Function get_affine<a class="headerlink" href="#function-get-affine" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_affine</span><span class="p">(</span><span class="n">goes_da</span><span class="p">):</span>
@@ -1207,7 +1193,7 @@ but no atmospheric correction</p>
 </section>
 </section>
 <section id="convert-cloud-top-to-a-rioxarray">
-<h2><span class="section-number">65.9. </span>convert  cloud_top  to a rioxarray<a class="headerlink" href="#convert-cloud-top-to-a-rioxarray" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.9. </span>convert  cloud_top  to a rioxarray<a class="headerlink" href="#convert-cloud-top-to-a-rioxarray" title="Link to this heading">#</a></h2>
 <p>Use make_new_rioxarray introduced in <a class="reference internal" href="../week8/goes_landsat_rio.html#week8-goes-landsat-rio"><span class="std std-ref">Combining goes and landsat data using rioxarray</span></a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_new_rioxarray</span><span class="p">(</span>
     <span class="n">rawdata</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
@@ -1217,8 +1203,8 @@ but no atmospheric correction</p>
     <span class="n">transform</span><span class="p">:</span> <span class="n">affine</span><span class="o">.</span><span class="n">Affine</span><span class="p">,</span>
     <span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">missing</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s2">&quot;name_here&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s2">"name_here"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    create a new rioxarray from an ndarray plus components</span>
 
 <span class="sd">    Parameters</span>
@@ -1231,48 +1217,48 @@ but no atmospheric correction</p>
 <span class="sd">    transform: scene affine transform</span>
 <span class="sd">    attrs: optional attribute dictionary</span>
 <span class="sd">    missing: optional missing value</span>
-<span class="sd">    name: optional variable name, defaults to &quot;name_here&quot;</span>
+<span class="sd">    name: optional variable name, defaults to "name_here"</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 
 <span class="sd">    rio_da: a new rioxarray</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 </pre></div>
 </div>
 <section id="set-cloud-top-height-attributes">
-<h3><span class="section-number">65.9.1. </span>Set cloud top height attributes<a class="headerlink" href="#set-cloud-top-height-attributes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">64.9.1. </span>Set cloud top height attributes<a class="headerlink" href="#set-cloud-top-height-attributes" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attribute_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">,</span><span class="s1">&#39;standard_name&#39;</span><span class="p">,</span><span class="s1">&#39;units&#39;</span><span class="p">,</span><span class="s1">&#39;grid_mapping&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attribute_names</span><span class="o">=</span><span class="p">[</span><span class="s1">'long_name'</span><span class="p">,</span><span class="s1">'standard_name'</span><span class="p">,</span><span class="s1">'units'</span><span class="p">,</span><span class="s1">'grid_mapping'</span><span class="p">]</span>
 <span class="n">attributes</span> <span class="o">=</span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="n">item</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">item</span> <span class="ow">in</span> <span class="n">cloud_top</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
              <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">attribute_names</span><span class="p">}</span>
-<span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;written by goes_earthcare.ipynb on </span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">goes_ct</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;time_coverage_start&#39;</span><span class="p">]</span>
-<span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">goes_ct</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;time_coverage_end&#39;</span><span class="p">]</span>
-<span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;dataset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">goes_ct</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;dataset_name&#39;</span><span class="p">]</span>
-<span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cloud layer height&#39;</span>
+<span class="n">attributes</span><span class="p">[</span><span class="s1">'history'</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"written by goes_earthcare.ipynb on </span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span>
+<span class="n">attributes</span><span class="p">[</span><span class="s1">'start'</span><span class="p">]</span> <span class="o">=</span> <span class="n">goes_ct</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">'time_coverage_start'</span><span class="p">]</span>
+<span class="n">attributes</span><span class="p">[</span><span class="s1">'end'</span><span class="p">]</span> <span class="o">=</span> <span class="n">goes_ct</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">'time_coverage_end'</span><span class="p">]</span>
+<span class="n">attributes</span><span class="p">[</span><span class="s1">'dataset'</span><span class="p">]</span> <span class="o">=</span> <span class="n">goes_ct</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">'dataset_name'</span><span class="p">]</span>
+<span class="n">attributes</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'cloud layer height'</span>
 <span class="n">attributes</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;long_name&#39;: &#39;ABI L2+ Cloud Top Height&#39;,
- &#39;standard_name&#39;: &#39;geopotential_height_at_cloud_top&#39;,
- &#39;units&#39;: &#39;m&#39;,
- &#39;grid_mapping&#39;: &#39;goes_imager_projection&#39;,
- &#39;history&#39;: &#39;written by goes_earthcare.ipynb on 2025-04-18 11:28:11.800296&#39;,
- &#39;start&#39;: &#39;2024-12-13T22:51:17.7Z&#39;,
- &#39;end&#39;: &#39;2024-12-13T22:53:55.0Z&#39;,
- &#39;dataset&#39;: &#39;OR_ABI-L2-ACHAC-M6_G18_s20243482251177_e20243482253550_c20243482256172.nc&#39;,
- &#39;title&#39;: &#39;cloud layer height&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'long_name': 'ABI L2+ Cloud Top Height',
+ 'standard_name': 'geopotential_height_at_cloud_top',
+ 'units': 'm',
+ 'grid_mapping': 'goes_imager_projection',
+ 'history': 'written by goes_earthcare.ipynb on 2025-04-18 11:28:11.800296',
+ 'start': '2024-12-13T22:51:17.7Z',
+ 'end': '2024-12-13T22:53:55.0Z',
+ 'dataset': 'OR_ABI-L2-ACHAC-M6_G18_s20243482251177_e20243482253550_c20243482256172.nc',
+ 'title': 'cloud layer height'}
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">the_dims</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">the_dims</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'y'</span><span class="p">,</span><span class="s1">'x'</span><span class="p">)</span>
 <span class="n">goes_crs</span> <span class="o">=</span> <span class="n">cloud_top</span><span class="o">.</span><span class="n">metpy</span><span class="o">.</span><span class="n">pyproj_crs</span>
 <span class="n">coords_cloud_top</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">cloud_top</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">cloud_top</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
 <span class="n">cloud_top_da</span> <span class="o">=</span> <span class="n">make_new_rioxarray</span><span class="p">(</span><span class="n">cloud_top</span><span class="p">,</span>
@@ -1282,7 +1268,7 @@ but no atmospheric correction</p>
                                   <span class="n">cloud_top_affine</span><span class="p">,</span>
                                   <span class="n">attrs</span> <span class="o">=</span> <span class="n">attributes</span><span class="p">,</span>
                                   <span class="n">missing</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">),</span>
-                                  <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ht&#39;</span><span class="p">)</span>
+                                  <span class="n">name</span> <span class="o">=</span> <span class="s1">'ht'</span><span class="p">)</span>
                                                                    
 </pre></div>
 </div>
@@ -1290,28 +1276,28 @@ but no atmospheric correction</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attribute_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">,</span><span class="s1">&#39;standard_name&#39;</span><span class="p">,</span><span class="s1">&#39;units&#39;</span><span class="p">,</span><span class="s1">&#39;grid_mapping&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attribute_names</span><span class="o">=</span><span class="p">[</span><span class="s1">'long_name'</span><span class="p">,</span><span class="s1">'standard_name'</span><span class="p">,</span><span class="s1">'units'</span><span class="p">,</span><span class="s1">'grid_mapping'</span><span class="p">]</span>
 <span class="n">attributes</span> <span class="o">=</span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="n">item</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">item</span> <span class="ow">in</span> <span class="n">chan_14</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
              <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">attribute_names</span><span class="p">}</span>
-<span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;written by goes_earthcare.ipynb on </span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">goes_mc</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;time_coverage_start&#39;</span><span class="p">]</span>
-<span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">goes_mc</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;time_coverage_end&#39;</span><span class="p">]</span>
-<span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;dataset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">goes_mc</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;dataset_name&#39;</span><span class="p">]</span>
-<span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;chan_14&#39;</span>
+<span class="n">attributes</span><span class="p">[</span><span class="s1">'history'</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"written by goes_earthcare.ipynb on </span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span>
+<span class="n">attributes</span><span class="p">[</span><span class="s1">'start'</span><span class="p">]</span> <span class="o">=</span> <span class="n">goes_mc</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">'time_coverage_start'</span><span class="p">]</span>
+<span class="n">attributes</span><span class="p">[</span><span class="s1">'end'</span><span class="p">]</span> <span class="o">=</span> <span class="n">goes_mc</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">'time_coverage_end'</span><span class="p">]</span>
+<span class="n">attributes</span><span class="p">[</span><span class="s1">'dataset'</span><span class="p">]</span> <span class="o">=</span> <span class="n">goes_mc</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">'dataset_name'</span><span class="p">]</span>
+<span class="n">attributes</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'chan_14'</span>
 <span class="n">attributes</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;long_name&#39;: &#39;ABI Cloud and Moisture Imagery brightness temperature at top of atmosphere&#39;,
- &#39;standard_name&#39;: &#39;toa_brightness_temperature&#39;,
- &#39;units&#39;: &#39;K&#39;,
- &#39;grid_mapping&#39;: &#39;goes_imager_projection&#39;,
- &#39;history&#39;: &#39;written by goes_earthcare.ipynb on 2025-04-18 11:28:12.003302&#39;,
- &#39;start&#39;: &#39;2024-12-13T22:51:17.7Z&#39;,
- &#39;end&#39;: &#39;2024-12-13T22:53:56.2Z&#39;,
- &#39;dataset&#39;: &#39;OR_ABI-L2-MCMIPC-M6_G18_s20243482251177_e20243482253562_c20243482254081.nc&#39;,
- &#39;title&#39;: &#39;chan_14&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'long_name': 'ABI Cloud and Moisture Imagery brightness temperature at top of atmosphere',
+ 'standard_name': 'toa_brightness_temperature',
+ 'units': 'K',
+ 'grid_mapping': 'goes_imager_projection',
+ 'history': 'written by goes_earthcare.ipynb on 2025-04-18 11:28:12.003302',
+ 'start': '2024-12-13T22:51:17.7Z',
+ 'end': '2024-12-13T22:53:56.2Z',
+ 'dataset': 'OR_ABI-L2-MCMIPC-M6_G18_s20243482251177_e20243482253562_c20243482254081.nc',
+ 'title': 'chan_14'}
 </pre></div>
 </div>
 </div>
@@ -1319,12 +1305,12 @@ but no atmospheric correction</p>
 </section>
 </section>
 <section id="convert-chan-14-to-a-rioxarray">
-<h2><span class="section-number">65.10. </span>convert chan_14 to a rioxarray<a class="headerlink" href="#convert-chan-14-to-a-rioxarray" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.10. </span>convert chan_14 to a rioxarray<a class="headerlink" href="#convert-chan-14-to-a-rioxarray" title="Link to this heading">#</a></h2>
 <section id="set-chan-14-attributes">
-<h3><span class="section-number">65.10.1. </span>set chan_14 attributes<a class="headerlink" href="#set-chan-14-attributes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">64.10.1. </span>set chan_14 attributes<a class="headerlink" href="#set-chan-14-attributes" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">the_dims</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">the_dims</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'y'</span><span class="p">,</span><span class="s1">'x'</span><span class="p">)</span>
 <span class="n">goes_crs</span> <span class="o">=</span> <span class="n">cloud_top</span><span class="o">.</span><span class="n">metpy</span><span class="o">.</span><span class="n">pyproj_crs</span>
 <span class="n">coords_chan_14</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">chan_14</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">chan_14</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
 <span class="n">chan_14_da</span> <span class="o">=</span> <span class="n">make_new_rioxarray</span><span class="p">(</span><span class="n">chan_14</span><span class="p">,</span>
@@ -1334,7 +1320,7 @@ but no atmospheric correction</p>
                                   <span class="n">chan_14_affine</span><span class="p">,</span>
                                   <span class="n">attrs</span> <span class="o">=</span> <span class="n">attributes</span><span class="p">,</span>
                                   <span class="n">missing</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">),</span>
-                                  <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;chan_14&#39;</span><span class="p">)</span>
+                                  <span class="n">name</span> <span class="o">=</span> <span class="s1">'chan_14'</span><span class="p">)</span>
                                   
 </pre></div>
 </div>
@@ -1356,7 +1342,7 @@ but no atmospheric correction</p>
 </section>
 </section>
 <section id="crop-the-images">
-<h2><span class="section-number">65.11. </span>crop the images<a class="headerlink" href="#crop-the-images" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.11. </span>crop the images<a class="headerlink" href="#crop-the-images" title="Link to this heading">#</a></h2>
 <p>We want to crop the images to the radar track.  To do that, we first need to get
 the bounding box in geostationary coordinates, so we can use the <code class="docutils literal notranslate"><span class="pre">rio.clip_box</span></code> function.
 We did this in week 8 in <a class="reference internal" href="../week8/goes_landsat_rio.html#week8-goes-clip-bounds"><span class="std std-ref">Now clip the GOES image to Landsat bounds</span></a></p>
@@ -1373,7 +1359,7 @@ We did this in week 8 in <a class="reference internal" href="../week8/goes_lands
 </div>
 </div>
 <section id="transform-the-bounds-from-lat-lon-to-geostationary-crs">
-<h3><span class="section-number">65.11.1. </span>Transform the bounds from lat/lon to geostationary crs<a class="headerlink" href="#transform-the-bounds-from-lat-lon-to-geostationary-crs" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">64.11.1. </span>Transform the bounds from lat/lon to geostationary crs<a class="headerlink" href="#transform-the-bounds-from-lat-lon-to-geostationary-crs" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
@@ -1383,8 +1369,8 @@ We did this in week 8 in <a class="reference internal" href="../week8/goes_lands
 <span class="n">transform</span> <span class="o">=</span> <span class="n">Transformer</span><span class="o">.</span><span class="n">from_crs</span><span class="p">(</span><span class="n">latlon_crs</span><span class="p">,</span> <span class="n">goes_crs</span><span class="p">,</span><span class="n">always_xy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">xmin_goes</span><span class="p">,</span><span class="n">ymin_goes</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span><span class="n">ymin</span><span class="p">)</span>
 <span class="n">xmax_goes</span><span class="p">,</span><span class="n">ymax_goes</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymax</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">xmax_goes</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">xmin_goes</span><span class="p">)</span><span class="si">=}</span><span class="s2"> m&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">ymax_goes</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ymin_goes</span><span class="p">)</span><span class="si">=}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="p">(</span><span class="n">xmax_goes</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">xmin_goes</span><span class="p">)</span><span class="si">=}</span><span class="s2"> m"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="p">(</span><span class="n">ymax_goes</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ymin_goes</span><span class="p">)</span><span class="si">=}</span><span class="s2"> m"</span><span class="p">)</span>
 <span class="n">bounds_goes</span> <span class="o">=</span> <span class="n">xmin_goes</span><span class="p">,</span><span class="n">ymin_goes</span><span class="p">,</span><span class="n">xmax_goes</span><span class="p">,</span><span class="n">ymax_goes</span>
 </pre></div>
 </div>
@@ -1398,7 +1384,7 @@ We did this in week 8 in <a class="reference internal" href="../week8/goes_lands
 </div>
 </section>
 <section id="crop-using-clip-box">
-<h3><span class="section-number">65.11.2. </span>Crop using clip_box<a class="headerlink" href="#crop-using-clip-box" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">64.11.2. </span>Crop using clip_box<a class="headerlink" href="#crop-using-clip-box" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
@@ -1439,24 +1425,24 @@ We did this in week 8 in <a class="reference internal" href="../week8/goes_lands
 </section>
 </section>
 <section id="make-cartopy-plots-with-radar-ground-track">
-<h2><span class="section-number">65.12. </span>Make cartopy plots with radar ground track<a class="headerlink" href="#make-cartopy-plots-with-radar-ground-track" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.12. </span>Make cartopy plots with radar ground track<a class="headerlink" href="#make-cartopy-plots-with-radar-ground-track" title="Link to this heading">#</a></h2>
 <p>Borrow code from <a class="reference internal" href="../week8/goes_true_color.html#week8-cartopy-goes"><span class="std std-ref">Plot the mapped image using cartopy</span></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">extent</span> <span class="o">=</span> <span class="p">(</span><span class="n">xmin_goes</span><span class="p">,</span><span class="n">xmax_goes</span><span class="p">,</span><span class="n">ymin_goes</span><span class="p">,</span><span class="n">ymax_goes</span><span class="o">*</span><span class="mf">1.3</span><span class="p">)</span>
 <span class="n">cartopy_crs</span> <span class="o">=</span> <span class="n">cloud_top</span><span class="o">.</span><span class="n">metpy</span><span class="o">.</span><span class="n">cartopy_crs</span>
-<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span><span class="n">cartopy_crs</span><span class="p">})</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">"projection"</span><span class="p">:</span><span class="n">cartopy_crs</span><span class="p">})</span>
 <span class="n">clipped_chan_14</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span>
-    <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;upper&quot;</span><span class="p">,</span>
+    <span class="n">origin</span><span class="o">=</span><span class="s2">"upper"</span><span class="p">,</span>
     <span class="n">extent</span><span class="o">=</span> <span class="n">extent</span><span class="p">,</span>
     <span class="n">transform</span><span class="o">=</span><span class="n">cartopy_crs</span><span class="p">,</span>
-    <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span>
+    <span class="n">interpolation</span><span class="o">=</span><span class="s2">"nearest"</span><span class="p">,</span>
     <span class="n">vmin</span><span class="o">=</span><span class="mi">220</span><span class="p">,</span>
     <span class="n">vmax</span><span class="o">=</span><span class="mi">285</span>
 <span class="p">);</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;50m&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">ccrs</span><span class="o">.</span><span class="n">cartopy</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">STATES</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s2">"50m"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">ccrs</span><span class="o">.</span><span class="n">cartopy</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">STATES</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1470,16 +1456,16 @@ We did this in week 8 in <a class="reference internal" href="../week8/goes_lands
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">extent</span> <span class="o">=</span> <span class="p">(</span><span class="n">xmin_goes</span><span class="p">,</span><span class="n">xmax_goes</span><span class="p">,</span><span class="n">ymin_goes</span><span class="p">,</span><span class="n">ymax_goes</span><span class="o">*</span><span class="mf">1.8</span><span class="p">)</span>
-<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span><span class="n">cartopy_crs</span><span class="p">})</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">"projection"</span><span class="p">:</span><span class="n">cartopy_crs</span><span class="p">})</span>
 <span class="n">clipped_cloud_top</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span>
-    <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;upper&quot;</span><span class="p">,</span>
+    <span class="n">origin</span><span class="o">=</span><span class="s2">"upper"</span><span class="p">,</span>
     <span class="n">extent</span><span class="o">=</span> <span class="n">extent</span><span class="p">,</span>
     <span class="n">transform</span><span class="o">=</span><span class="n">cartopy_crs</span><span class="p">,</span>
-    <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span>
+    <span class="n">interpolation</span><span class="o">=</span><span class="s2">"nearest"</span>
 <span class="p">);</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;50m&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">ccrs</span><span class="o">.</span><span class="n">cartopy</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">STATES</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s2">"50m"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">ccrs</span><span class="o">.</span><span class="n">cartopy</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">STATES</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">"red"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1489,7 +1475,7 @@ We did this in week 8 in <a class="reference internal" href="../week8/goes_lands
 </div>
 </section>
 <section id="add-the-groundtrack">
-<h2><span class="section-number">65.13. </span>Add the groundtrack<a class="headerlink" href="#add-the-groundtrack" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.13. </span>Add the groundtrack<a class="headerlink" href="#add-the-groundtrack" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">goes_x</span><span class="p">,</span> <span class="n">goes_y</span> <span class="o">=</span>  <span class="n">transform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">)</span>
@@ -1500,7 +1486,7 @@ We did this in week 8 in <a class="reference internal" href="../week8/goes_lands
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">goes_x</span><span class="p">[</span><span class="n">hit</span><span class="p">],</span><span class="n">goes_y</span><span class="p">[</span><span class="n">hit</span><span class="p">],</span><span class="s1">&#39;w-&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">goes_x</span><span class="p">[</span><span class="n">hit</span><span class="p">],</span><span class="n">goes_y</span><span class="p">[</span><span class="n">hit</span><span class="p">],</span><span class="s1">'w-'</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1511,7 +1497,7 @@ We did this in week 8 in <a class="reference internal" href="../week8/goes_lands
 </div>
 </section>
 <section id="write-the-file-out-to-tiff">
-<h2><span class="section-number">65.14. </span>write the file out to tiff<a class="headerlink" href="#write-the-file-out-to-tiff" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.14. </span>write the file out to tiff<a class="headerlink" href="#write-the-file-out-to-tiff" title="Link to this heading">#</a></h2>
 <p>Add the cartopy crs as an attribute so that we can make a map with the image.  There’s a cartopy bug that prevents us from using the DataArray.rio.crs pyproj version, but we’ll need that one to translate lat/lon into goex x,y in Assignment 8</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1521,7 +1507,7 @@ We did this in week 8 in <a class="reference internal" href="../week8/goes_lands
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;PROJCRS[&quot;unknown&quot;,BASEGEOGCRS[&quot;unknown&quot;,DATUM[&quot;Unknown based on GRS 1980 ellipsoid&quot;,ELLIPSOID[&quot;GRS 1980&quot;,6378137,298.2572221,LENGTHUNIT[&quot;metre&quot;,1,ID[&quot;EPSG&quot;,9001]]]],PRIMEM[&quot;Greenwich&quot;,0,ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],ID[&quot;EPSG&quot;,8901]]],CONVERSION[&quot;unknown&quot;,METHOD[&quot;Geostationary Satellite (Sweep X)&quot;],PARAMETER[&quot;Longitude of natural origin&quot;,-137,ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],ID[&quot;EPSG&quot;,8802]],PARAMETER[&quot;Satellite Height&quot;,35786023,LENGTHUNIT[&quot;metre&quot;,1,ID[&quot;EPSG&quot;,9001]]],PARAMETER[&quot;False easting&quot;,0,LENGTHUNIT[&quot;metre&quot;,1],ID[&quot;EPSG&quot;,8806]],PARAMETER[&quot;False northing&quot;,0,LENGTHUNIT[&quot;metre&quot;,1],ID[&quot;EPSG&quot;,8807]]],CS[Cartesian,2],AXIS[&quot;(E)&quot;,east,ORDER[1],LENGTHUNIT[&quot;metre&quot;,1,ID[&quot;EPSG&quot;,9001]]],AXIS[&quot;(N)&quot;,north,ORDER[2],LENGTHUNIT[&quot;metre&quot;,1,ID[&quot;EPSG&quot;,9001]]],REMARK[&quot;PROJ CRS string: +proj=geos +a=6378137.0 +rf=298.2572221 +lon_0=-137.0 +lat_0=0.0 +h=35786023.0 +x_0=0 +y_0=0 +units=m +sweep=x +no_defs&quot;]]&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'PROJCRS["unknown",BASEGEOGCRS["unknown",DATUM["Unknown based on GRS 1980 ellipsoid",ELLIPSOID["GRS 1980",6378137,298.2572221,LENGTHUNIT["metre",1,ID["EPSG",9001]]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8901]]],CONVERSION["unknown",METHOD["Geostationary Satellite (Sweep X)"],PARAMETER["Longitude of natural origin",-137,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["Satellite Height",35786023,LENGTHUNIT["metre",1,ID["EPSG",9001]]],PARAMETER["False easting",0,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",0,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1,ID["EPSG",9001]]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1,ID["EPSG",9001]]],REMARK["PROJ CRS string: +proj=geos +a=6378137.0 +rf=298.2572221 +lon_0=-137.0 +lat_0=0.0 +h=35786023.0 +x_0=0 +y_0=0 +units=m +sweep=x +no_defs"]]'
 </pre></div>
 </div>
 </div>
@@ -1535,7 +1521,7 @@ We did this in week 8 in <a class="reference internal" href="../week8/goes_lands
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clipped_out</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s2">&quot;clipped_goes.tif&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clipped_out</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s2">"clipped_goes.tif"</span>
 <span class="k">if</span> <span class="n">clipped_out</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
     <span class="n">clipped_out</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
 <span class="n">clipped_cloud_top</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">to_raster</span><span class="p">(</span><span class="n">clipped_out</span><span class="p">)</span>
@@ -1582,7 +1568,7 @@ We did this in week 8 in <a class="reference internal" href="../week8/goes_lands
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">64. </span>Notes on phasors</p>
+        <p class="prev-next-title"><span class="section-number">63. </span>Notes on phasors</p>
       </div>
     </a>
     <a class="right-next"
@@ -1590,7 +1576,7 @@ We did this in week 8 in <a class="reference internal" href="../week8/goes_lands
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">66. </span>Assignment 8</p>
+        <p class="prev-next-title"><span class="section-number">65. </span>Assignment 8</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1601,49 +1587,51 @@ We did this in week 8 in <a class="reference internal" href="../week8/goes_lands
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">65.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">65.2. Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-earthcare-radar-file">65.3. open the earthcare radar file</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-time-and-bounding-box-corners">65.3.1. get the time and bounding box corners</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overwrite-bounding-box">65.3.2. overwrite bounding box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">64.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">64.2. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-earthcare-radar-file">64.3. open the earthcare radar file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-time-and-bounding-box-corners">64.3.1. get the time and bounding box corners</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overwrite-bounding-box">64.3.2. overwrite bounding box</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-nearest-goes-image">65.4. Find the nearest GOES image</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-goes">65.4.1. Function get_goes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-nearest-goes-image">64.4. Find the nearest GOES image</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-goes">64.4.1. Function get_goes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-cloudtop-height">65.5. Get the cloudtop height</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-projection-coordinates">65.6. calculate the projection coordinates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-11-micron-thermal-band">65.7. Get the 11 micron thermal band</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-affine-transforms">65.8. Calculate the affine transforms</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-affine">65.8.1. Function get_affine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-cloudtop-height">64.5. Get the cloudtop height</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-projection-coordinates">64.6. calculate the projection coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-11-micron-thermal-band">64.7. Get the 11 micron thermal band</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-affine-transforms">64.8. Calculate the affine transforms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-get-affine">64.8.1. Function get_affine</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-cloud-top-to-a-rioxarray">65.9. convert  cloud_top  to a rioxarray</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-cloud-top-height-attributes">65.9.1. Set cloud top height attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-cloud-top-to-a-rioxarray">64.9. convert  cloud_top  to a rioxarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-cloud-top-height-attributes">64.9.1. Set cloud top height attributes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-chan-14-to-a-rioxarray">65.10. convert chan_14 to a rioxarray</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-chan-14-attributes">65.10.1. set chan_14 attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-chan-14-to-a-rioxarray">64.10. convert chan_14 to a rioxarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-chan-14-attributes">64.10.1. set chan_14 attributes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-the-images">65.11. crop the images</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-the-bounds-from-lat-lon-to-geostationary-crs">65.11.1. Transform the bounds from lat/lon to geostationary crs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-using-clip-box">65.11.2. Crop using clip_box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-the-images">64.11. crop the images</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-the-bounds-from-lat-lon-to-geostationary-crs">64.11.1. Transform the bounds from lat/lon to geostationary crs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crop-using-clip-box">64.11.2. Crop using clip_box</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-cartopy-plots-with-radar-ground-track">65.12. Make cartopy plots with radar ground track</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-the-groundtrack">65.13. Add the groundtrack</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-the-file-out-to-tiff">65.14. write the file out to tiff</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-cartopy-plots-with-radar-ground-track">64.12. Make cartopy plots with radar ground track</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-the-groundtrack">64.13. Add the groundtrack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-the-file-out-to-tiff">64.14. write the file out to tiff</a></li>
 </ul>
   </nav></div>
 
@@ -1692,8 +1680,8 @@ By Philip Austin
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
